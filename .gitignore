@@ -63,3 +63,6 @@ fastlane/test_output
 
 # Superpowers brainstorming session files
 .superpowers/
+
+# Claude Code local settings (per-developer overrides)
+.claude/settings.local.json
