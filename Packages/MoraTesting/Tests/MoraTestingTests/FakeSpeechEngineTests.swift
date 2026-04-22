@@ -5,36 +5,46 @@ import XCTest
 @testable import MoraTesting
 
 final class FakeSpeechEngineTests: XCTestCase {
-    func test_listen_returnsScriptedResult() async throws {
-        let engine = FakeSpeechEngine()
-        engine.scriptedResults = [
-            ASRResult(transcript: "ship", confidence: 0.95)
-        ]
-        let result = try await engine.listen()
-        XCTAssertEqual(result.transcript, "ship")
+    func test_yieldingFinals_producesFinalEvents() async throws {
+        let engine = FakeSpeechEngine.yielding(finals: [
+            ASRResult(transcript: "ship", confidence: 0.9),
+            ASRResult(transcript: "shop", confidence: 0.85),
+        ])
+        var events: [SpeechEvent] = []
+        for try await event in engine.listen() {
+            events.append(event)
+        }
+        XCTAssertEqual(events.count, 1)
+        if case .final(let asr) = events.first {
+            XCTAssertEqual(asr.transcript, "ship")
+        } else {
+            XCTFail("Expected first event to be .final")
+        }
     }
 
-    func test_listen_consumesScriptedResultsInOrder() async throws {
-        let engine = FakeSpeechEngine()
-        engine.scriptedResults = [
-            ASRResult(transcript: "first", confidence: 1),
-            ASRResult(transcript: "second", confidence: 1),
-        ]
-        let a = try await engine.listen()
-        let b = try await engine.listen()
-        XCTAssertEqual(a.transcript, "first")
-        XCTAssertEqual(b.transcript, "second")
+    func test_yieldingEvents_producesPartialsThenFinal() async throws {
+        let engine = FakeSpeechEngine.yielding([
+            .started,
+            .partial("sh"),
+            .partial("shi"),
+            .final(ASRResult(transcript: "ship", confidence: 0.92)),
+        ])
+        var events: [SpeechEvent] = []
+        for try await event in engine.listen() {
+            events.append(event)
+        }
+        XCTAssertEqual(events.count, 4)
     }
 
-    func test_listen_throwsWhenEmpty() async {
-        let engine = FakeSpeechEngine()
+    func test_scriptExhausted_throws() async {
+        let engine = FakeSpeechEngine(scripts: [])
         do {
-            _ = try await engine.listen()
-            XCTFail("expected exhausted error")
-        } catch FakeSpeechEngineError.scriptExhausted {
-            // ok
+            for try await _ in engine.listen() {
+                XCTFail("Should have thrown before yielding")
+            }
+            XCTFail("Should have thrown")
         } catch {
-            XCTFail("unexpected error: \(error)")
+            XCTAssertEqual(error as? FakeSpeechEngineError, .scriptExhausted)
         }
     }
 }
