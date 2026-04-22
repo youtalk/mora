@@ -6,32 +6,53 @@ struct WarmupView: View {
     let orchestrator: SessionOrchestrator
 
     var body: some View {
-        VStack(spacing: 32) {
+        VStack(spacing: MoraTheme.Space.xl) {
+            Spacer()
             Text("Which one says /\(targetIPA)/?")
-                .font(.largeTitle.weight(.semibold))
+                .font(MoraType.heading())
+                .foregroundStyle(MoraTheme.Ink.primary)
             Text("Listen and tap.")
-                .font(.title3)
-                .foregroundStyle(.secondary)
-            HStack(spacing: 32) {
+                .font(MoraType.label())
+                .foregroundStyle(MoraTheme.Ink.muted)
+
+            HStack(spacing: MoraTheme.Space.xl) {
                 ForEach(orchestrator.warmupOptions, id: \.letters) { g in
                     Button(action: {
                         Task { await orchestrator.handle(.warmupTap(g)) }
                     }) {
                         Text(g.letters)
-                            .font(.system(size: 84, weight: .bold, design: .rounded))
-                            .frame(minWidth: 140, minHeight: 140)
-                            .background(Color.white, in: .rect(cornerRadius: 24))
-                            .shadow(radius: 3)
+                            .font(.system(size: 84, weight: .heavy, design: .rounded))
+                            .foregroundStyle(MoraTheme.Ink.primary)
+                            .frame(width: 140, height: 140)
+                            .background(Color.white, in: .rect(cornerRadius: MoraTheme.Radius.card))
+                            .shadow(color: MoraTheme.Ink.secondary.opacity(0.20), radius: 4, y: 2)
                     }
                     .buttonStyle(.plain)
                 }
             }
+            .padding(.top, MoraTheme.Space.lg)
+
             if orchestrator.warmupMissCount > 0 {
                 Text("Let's try again — listen.")
-                    .foregroundStyle(.orange)
+                    .font(MoraType.label())
+                    .foregroundStyle(MoraTheme.Accent.orange)
             }
+
+            Spacer()
+
+            Button(action: {
+                // TTS replay wires in PR 6; no-op stub keeps the layout today.
+            }) {
+                Label("Listen again", systemImage: "speaker.wave.2.fill")
+                    .font(MoraType.label())
+                    .foregroundStyle(MoraTheme.Accent.teal)
+                    .padding(.vertical, MoraTheme.Space.md)
+                    .padding(.horizontal, MoraTheme.Space.lg)
+                    .background(MoraTheme.Background.mint, in: .capsule)
+            }
+            .buttonStyle(.plain)
+            .padding(.bottom, MoraTheme.Space.lg)
         }
-        .padding()
     }
 
     private var targetIPA: String {
