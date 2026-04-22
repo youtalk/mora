@@ -4,15 +4,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Language policy
 
-All content that lands in this repository must be written in **English only**. This applies to:
+All **governance and authoring artifacts** in this repository are written in **English only**:
 
-- Markdown files (README, docs, design notes, this file)
+- Markdown files used as repo governance / architecture docs (README, CLAUDE.md, most design notes)
 - Source code identifiers (variable / function / type / file names)
 - Code comments and docstrings
 - Commit messages, PR titles and bodies, GitHub issues
-- Any other artifact checked into the repo
+- Any other discussion artifact checked into the repo
 
-Conversations with the user may continue in Japanese, but nothing Japanese should be committed.
+**Exception — localized product content.** Because the product itself ships localized UI (Japanese-first for the alpha), these are explicitly allowed to contain non-English text:
+
+- `MoraStrings` catalog values and any per-locale string literals embedded in `L1Profile` implementations (e.g. `JapaneseL1Profile.stringsMid`)
+- Locale-specific registries of linguistic data (e.g. `JPKanjiLevel`, which holds sets of kanji characters by MEXT grade)
+- Sections of design specs and implementation plans that **quote** those strings or describe the locale-specific constraints around them (e.g. the per-string authoring table in `docs/superpowers/specs/2026-04-22-native-language-and-age-selection-design.md §7.2`)
+- Inline test expectations that compare against the above values
+
+Surrounding prose, file-level doc comments, git commit messages, and PR bodies stay English even inside files that carry localized strings.
+
+Conversations with the user may continue in Japanese.
 
 ## Co-author / generated-by attribution
 
