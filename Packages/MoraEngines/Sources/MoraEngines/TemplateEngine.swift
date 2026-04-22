@@ -69,7 +69,10 @@ public struct TemplateEngine: Sendable {
             let candidates = vocabulary.filter { item in
                 guard item.slotKinds.contains(kind) else { return false }
                 if !interestKeys.isEmpty, let i = item.interest,
-                   !interestKeys.contains(i.key) { return false }
+                    !interestKeys.contains(i.key)
+                {
+                    return false
+                }
                 return item.word.isDecodable(
                     taughtGraphemes: taughtGraphemes,
                     target: target

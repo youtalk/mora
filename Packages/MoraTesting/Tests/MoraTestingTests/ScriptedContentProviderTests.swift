@@ -41,10 +41,11 @@ final class ScriptedContentProviderTests: XCTestCase {
                 "Sentence does not contain target grapheme: \(sentence.text)"
             )
             for word in sentence.words {
-                XCTAssertTrue(word.isDecodable(
-                    taughtGraphemes: provider.taughtGraphemes,
-                    target: provider.target
-                ), "Undecodable word in sentence: \(sentence.text) — \(word.surface)")
+                XCTAssertTrue(
+                    word.isDecodable(
+                        taughtGraphemes: provider.taughtGraphemes,
+                        target: provider.target
+                    ), "Undecodable word in sentence: \(sentence.text) — \(word.surface)")
             }
         }
     }

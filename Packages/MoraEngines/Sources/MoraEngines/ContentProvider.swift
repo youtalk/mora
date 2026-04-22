@@ -27,8 +27,10 @@ public struct ContentRequest: Sendable {
     public let interests: [InterestCategory]
     public let count: Int
 
-    public init(target: Grapheme, taughtGraphemes: Set<Grapheme>,
-                interests: [InterestCategory], count: Int) {
+    public init(
+        target: Grapheme, taughtGraphemes: Set<Grapheme>,
+        interests: [InterestCategory], count: Int
+    ) {
         self.target = target
         self.taughtGraphemes = taughtGraphemes
         self.interests = interests

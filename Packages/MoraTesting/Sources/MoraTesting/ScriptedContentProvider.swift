@@ -8,10 +8,12 @@ public struct ScriptedContentProvider: ContentProvider {
     public let words: [DecodeWord]
     public let sentences: [DecodeSentence]
 
-    public init(target: Grapheme,
-                taughtGraphemes: Set<Grapheme>,
-                words: [DecodeWord],
-                sentences: [DecodeSentence]) {
+    public init(
+        target: Grapheme,
+        taughtGraphemes: Set<Grapheme>,
+        words: [DecodeWord],
+        sentences: [DecodeSentence]
+    ) {
         self.target = target
         self.taughtGraphemes = taughtGraphemes
         self.words = words
@@ -20,9 +22,9 @@ public struct ScriptedContentProvider: ContentProvider {
 
     public func decodeWords(_ request: ContentRequest) throws -> [DecodeWord] {
         let filtered = words.filter { dw in
-            dw.word.isDecodable(taughtGraphemes: request.taughtGraphemes,
-                                target: request.target) &&
-            dw.word.graphemes.contains(request.target)
+            dw.word.isDecodable(
+                taughtGraphemes: request.taughtGraphemes,
+                target: request.target) && dw.word.graphemes.contains(request.target)
         }
         return Array(filtered.prefix(request.count))
     }
@@ -30,10 +32,10 @@ public struct ScriptedContentProvider: ContentProvider {
     public func decodeSentences(_ request: ContentRequest) throws -> [DecodeSentence] {
         let filtered = sentences.filter { s in
             s.words.allSatisfy {
-                $0.isDecodable(taughtGraphemes: request.taughtGraphemes,
-                               target: request.target)
-            } &&
-            s.words.contains { $0.graphemes.contains(request.target) }
+                $0.isDecodable(
+                    taughtGraphemes: request.taughtGraphemes,
+                    target: request.target)
+            } && s.words.contains { $0.graphemes.contains(request.target) }
         }
         return Array(filtered.prefix(request.count))
     }
@@ -48,8 +50,8 @@ public struct ScriptedContentProvider: ContentProvider {
         let payload = try JSONDecoder().decode(ShWeek1Payload.self, from: data)
         return ScriptedContentProvider(
             target: Grapheme(letters: payload.target.letters),
-            taughtGraphemes: Set(payload.l2_taught_graphemes.map(Grapheme.init(letters:))),
-            words: payload.decode_words.map { $0.asDecodeWord() },
+            taughtGraphemes: Set(payload.l2TaughtGraphemes.map(Grapheme.init(letters:))),
+            words: payload.decodeWords.map { $0.asDecodeWord() },
             sentences: payload.sentences.map { $0.asDecodeSentence() }
         )
     }
@@ -61,9 +63,16 @@ public enum ScriptedContentError: Error, Equatable {
 
 private struct ShWeek1Payload: Decodable {
     let target: TargetPayload
-    let l2_taught_graphemes: [String]
-    let decode_words: [WordPayload]
+    let l2TaughtGraphemes: [String]
+    let decodeWords: [WordPayload]
     let sentences: [SentencePayload]
+
+    enum CodingKeys: String, CodingKey {
+        case target
+        case l2TaughtGraphemes = "l2_taught_graphemes"
+        case decodeWords = "decode_words"
+        case sentences
+    }
 }
 
 private struct TargetPayload: Decodable {
@@ -79,17 +88,19 @@ private struct WordPayload: Decodable {
 
     func asDecodeWord() -> DecodeWord {
         DecodeWord(
-            word: Word(surface: surface,
-                       graphemes: graphemes.map(Grapheme.init(letters:)),
-                       phonemes: phonemes.map(Phoneme.init(ipa:))),
+            word: Word(
+                surface: surface,
+                graphemes: graphemes.map(Grapheme.init(letters:)),
+                phonemes: phonemes.map(Phoneme.init(ipa:))),
             note: note
         )
     }
 
     func asWord() -> Word {
-        Word(surface: surface,
-             graphemes: graphemes.map(Grapheme.init(letters:)),
-             phonemes: phonemes.map(Phoneme.init(ipa:)))
+        Word(
+            surface: surface,
+            graphemes: graphemes.map(Grapheme.init(letters:)),
+            phonemes: phonemes.map(Phoneme.init(ipa:)))
     }
 }
 

@@ -13,9 +13,10 @@ final class TemplateTypesTests: XCTestCase {
     }
 
     func test_vocabularyItem_tracksInterestAndSlotKinds() {
-        let w = Word(surface: "ship",
-                     graphemes: [.init(letters: "sh"), .init(letters: "i"), .init(letters: "p")],
-                     phonemes: [.init(ipa: "ʃ"), .init(ipa: "ɪ"), .init(ipa: "p")])
+        let w = Word(
+            surface: "ship",
+            graphemes: [.init(letters: "sh"), .init(letters: "i"), .init(letters: "p")],
+            phonemes: [.init(ipa: "ʃ"), .init(ipa: "ɪ"), .init(ipa: "p")])
         let v = VocabularyItem(
             word: w,
             slotKinds: [.subject, .noun],

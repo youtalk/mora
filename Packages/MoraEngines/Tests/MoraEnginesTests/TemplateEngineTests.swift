@@ -4,28 +4,37 @@ import MoraCore
 
 final class TemplateEngineTests: XCTestCase {
     private func word(_ surface: String, graphemes: [String], phonemes: [String]) -> Word {
-        Word(surface: surface,
-             graphemes: graphemes.map { Grapheme(letters: $0) },
-             phonemes: phonemes.map { Phoneme(ipa: $0) })
+        Word(
+            surface: surface,
+            graphemes: graphemes.map { Grapheme(letters: $0) },
+            phonemes: phonemes.map { Phoneme(ipa: $0) })
     }
 
     private lazy var vocab: [VocabularyItem] = [
         // "ship" uses sh, i, p — requires sh as target for decodability
-        VocabularyItem(word: word("ship", graphemes: ["sh","i","p"],
-                                  phonemes: ["ʃ","ɪ","p"]),
-                       slotKinds: [.subject, .noun]),
+        VocabularyItem(
+            word: word(
+                "ship", graphemes: ["sh", "i", "p"],
+                phonemes: ["ʃ", "ɪ", "p"]),
+            slotKinds: [.subject, .noun]),
         // "cat" uses c, a, t — fully taught L2
-        VocabularyItem(word: word("cat", graphemes: ["c","a","t"],
-                                  phonemes: ["k","æ","t"]),
-                       slotKinds: [.subject, .noun]),
+        VocabularyItem(
+            word: word(
+                "cat", graphemes: ["c", "a", "t"],
+                phonemes: ["k", "æ", "t"]),
+            slotKinds: [.subject, .noun]),
         // "hop" uses h, o, p — fully taught L2
-        VocabularyItem(word: word("hop", graphemes: ["h","o","p"],
-                                  phonemes: ["h","ɒ","p"]),
-                       slotKinds: [.verb]),
+        VocabularyItem(
+            word: word(
+                "hop", graphemes: ["h", "o", "p"],
+                phonemes: ["h", "ɒ", "p"]),
+            slotKinds: [.verb]),
         // "run" uses r, u, n — not taught here; should get filtered out
-        VocabularyItem(word: word("run", graphemes: ["r","u","n"],
-                                  phonemes: ["r","ʌ","n"]),
-                       slotKinds: [.verb]),
+        VocabularyItem(
+            word: word(
+                "run", graphemes: ["r", "u", "n"],
+                phonemes: ["r", "ʌ", "n"]),
+            slotKinds: [.verb]),
     ]
 
     private let taughtL2: Set<Grapheme> = [
@@ -35,25 +44,28 @@ final class TemplateEngineTests: XCTestCase {
     ]
 
     private let templates: [Template] = [
-        Template(skeleton: "The {subject} can {verb}.",
-                 slotKinds: ["subject": .subject, "verb": .verb])
+        Template(
+            skeleton: "The {subject} can {verb}.",
+            slotKinds: ["subject": .subject, "verb": .verb])
     ]
 
     func test_generate_producesSentenceUsingOnlyDecodableWords() throws {
         let engine = TemplateEngine(templates: templates, vocabulary: vocab)
         var rng = SeededRNG(seed: 42)
-        let result = try XCTUnwrap(engine.generateSentence(
-            target: Grapheme(letters: "sh"),
-            taughtGraphemes: taughtL2,
-            interests: [],
-            rng: &rng
-        ))
+        let result = try XCTUnwrap(
+            engine.generateSentence(
+                target: Grapheme(letters: "sh"),
+                taughtGraphemes: taughtL2,
+                interests: [],
+                rng: &rng
+            ))
         XCTAssertTrue(result.text.hasPrefix("The "))
         XCTAssertTrue(result.text.hasSuffix("."))
         for word in result.words {
             XCTAssertTrue(
-                word.isDecodable(taughtGraphemes: taughtL2,
-                                 target: Grapheme(letters: "sh"))
+                word.isDecodable(
+                    taughtGraphemes: taughtL2,
+                    target: Grapheme(letters: "sh"))
             )
         }
     }
@@ -63,29 +75,32 @@ final class TemplateEngineTests: XCTestCase {
         var rng = SeededRNG(seed: 1)
         // Draw many sentences; "run" (uses untaught "r") must never appear.
         for _ in 0..<25 {
-            let sentence = try XCTUnwrap(engine.generateSentence(
-                target: Grapheme(letters: "sh"),
-                taughtGraphemes: taughtL2,
-                interests: [],
-                rng: &rng
-            ))
+            let sentence = try XCTUnwrap(
+                engine.generateSentence(
+                    target: Grapheme(letters: "sh"),
+                    taughtGraphemes: taughtL2,
+                    interests: [],
+                    rng: &rng
+                ))
             XCTAssertFalse(sentence.text.contains("run"))
         }
     }
 
     func test_generate_replacesEachSlotOccurrenceIndependently() throws {
         let repeatedTemplates: [Template] = [
-            Template(skeleton: "The {noun} and the {noun}.",
-                     slotKinds: ["noun": .noun])
+            Template(
+                skeleton: "The {noun} and the {noun}.",
+                slotKinds: ["noun": .noun])
         ]
         let engine = TemplateEngine(templates: repeatedTemplates, vocabulary: vocab)
         var rng = SeededRNG(seed: 7)
-        let sentence = try XCTUnwrap(engine.generateSentence(
-            target: Grapheme(letters: "sh"),
-            taughtGraphemes: taughtL2,
-            interests: [],
-            rng: &rng
-        ))
+        let sentence = try XCTUnwrap(
+            engine.generateSentence(
+                target: Grapheme(letters: "sh"),
+                taughtGraphemes: taughtL2,
+                interests: [],
+                rng: &rng
+            ))
         // Every {noun} token must have been replaced — none left behind.
         XCTAssertFalse(sentence.text.contains("{noun}"))
         // usedWords and the text must agree on arity.
@@ -97,7 +112,7 @@ final class TemplateEngineTests: XCTestCase {
         var rng = SeededRNG(seed: 1)
         let result = engine.generateSentence(
             target: Grapheme(letters: "sh"),
-            taughtGraphemes: [], // nothing taught, no fallback verb "hop"
+            taughtGraphemes: [],  // nothing taught, no fallback verb "hop"
             interests: [],
             rng: &rng
         )

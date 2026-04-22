@@ -22,7 +22,8 @@ public struct Template: Hashable, Codable, Sendable, Identifiable {
         var out: [String] = []
         var i = skeleton.startIndex
         while let open = skeleton[i...].firstIndex(of: "{"),
-              let close = skeleton[open...].firstIndex(of: "}") {
+            let close = skeleton[open...].firstIndex(of: "}")
+        {
             let name = String(skeleton[skeleton.index(after: open)..<close])
             out.append(name)
             i = skeleton.index(after: close)
@@ -36,8 +37,10 @@ public struct VocabularyItem: Hashable, Codable, Sendable {
     public let slotKinds: Set<SlotKind>
     public let interest: InterestCategory?
 
-    public init(word: Word, slotKinds: Set<SlotKind>,
-                interest: InterestCategory? = nil) {
+    public init(
+        word: Word, slotKinds: Set<SlotKind>,
+        interest: InterestCategory? = nil
+    ) {
         self.word = word
         self.slotKinds = slotKinds
         self.interest = interest
