@@ -194,6 +194,9 @@ jobs:
         working-directory: bench
         run: xcodegen generate
 
+      # Biggest single cache win: bench pulls heavy MLX / HuggingFace / swift-transformers
+      # SPM packages. Keying on bench/project.yml invalidates on pin bumps; source-only
+      # changes fall through to the restore-key and reuse the dependency builds.
       - name: Cache Xcode DerivedData (bench)
         uses: actions/cache@v4
         with:
