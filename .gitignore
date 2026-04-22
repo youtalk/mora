@@ -64,6 +64,10 @@ fastlane/test_output
 # Superpowers brainstorming session files
 .superpowers/
 
+# Superpowers / Claude Code worktree scratch space
+.worktrees/
+.claude/worktrees/
+
 # Claude Code local settings (per-developer overrides)
 .claude/settings.local.json
 
