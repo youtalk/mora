@@ -17,14 +17,7 @@
 
 ## Baseline & measurement strategy
 
-Before changing anything, Task 1 records the current timings so later tasks can prove speedup (or flag a regression). We don't build a custom benchmarking harness — we just read the GitHub Actions UI / `gh run view` output and paste numbers into this plan's "Measurements" table at the bottom.
-
-One commit per task, pushed to a dedicated branch so CI runs on every step and each cache key is seeded on its own run. We intentionally push tasks individually (no batching) because:
-
-1. A cache created in run N is only usable from run N+1 onwards. Splitting tasks ensures each cache gets at least one "cold" seed run + one "warm" reuse run before the next task layers on.
-2. If a later task breaks CI, bisection is trivial.
-
-Branch: `ci/cache-and-parallelize`. PR is opened after Task 2 and keeps receiving commits through Task 6. Merge once all tasks are done and the Measurements table shows the expected wins.
+Before changing anything, Task 1 records the current timings so later tasks can prove speedup. Tasks 2–6 (parallelism + all cache steps) are then bundled into a single commit on branch `ci/cache-and-parallelize`; Task 3 triggers a warm run (empty commit) once the seed run is green, and records cold-vs-warm timings in the Measurements table. This deviates from the original per-task commit structure to save ~150 macOS-minutes of CI wait; the detailed per-task YAML snippets below are retained as reference for what changed.
 
 ---
 
@@ -704,14 +697,11 @@ Fill this in as tasks execute. Times are wall-clock minutes (Started → Complet
 
 | Task / scenario | `swift-format` | `Build / Test` | `Bench Build / Test` | Notes |
 |---|---|---|---|---|
-| Task 1 (baseline on `main`) | 0.3 | 3.9 | skipped | Run ID: 24794759855 |
-| Task 2 (parallel jobs, cold) | | | | |
-| Task 3 (Homebrew cache, warm) | | | | |
-| Task 4 (SwiftPM cache, warm) | | | | |
-| Task 4 (SwiftPM cache, partial restore) | | | | single-file touch |
-| Task 5 (Xcode DerivedData, warm) | | | | |
-| Task 6 (bench DerivedData, warm) | | | | |
-| Task 7 (typical PR, all caches warm) | | | | MoraUI single-file touch |
+| Baseline (main, no bench changes) | 0.3 | 3.9 | skipped | Run ID: 24794759855 |
+| Baseline (historical, bench ran) | 0.3 | 3.0 | 14.1 | Run ID: 24765928314 (PR #15) |
+| Bundle, cold cache | | | | |
+| Bundle, warm cache | | | | |
+| Typical PR (MoraUI single-file touch) | | | | partial restore |
 
 ## Summary
 
