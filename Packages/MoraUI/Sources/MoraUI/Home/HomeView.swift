@@ -21,7 +21,7 @@ public struct HomeView: View {
             }
         }
         #if os(iOS)
-            .navigationBarHidden(true)
+        .navigationBarHidden(true)
         #endif
     }
 
