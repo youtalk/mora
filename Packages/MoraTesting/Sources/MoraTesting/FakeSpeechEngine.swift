@@ -7,35 +7,48 @@ public enum FakeSpeechEngineError: Error, Equatable {
 }
 
 public final class FakeSpeechEngine: SpeechEngine, @unchecked Sendable {
-    private var _scriptedResults: [ASRResult] = []
+    /// Scripted sequence of events emitted by `listen()`. Each call to
+    /// `listen()` consumes one script. A script that does not end with a
+    /// `.final` event is a test bug — the orchestrator waits for a
+    /// terminating event to advance.
+    private var scripts: [[SpeechEvent]]
     private let lock = NSLock()
 
-    /// Mutating `scriptedResults` from outside `listen()` is safe — both
-    /// the getter and setter take the same lock that `listen()` uses.
-    public var scriptedResults: [ASRResult] {
-        get {
-            lock.lock()
-            defer { lock.unlock() }
-            return _scriptedResults
-        }
-        set {
-            lock.lock()
-            defer { lock.unlock() }
-            _scriptedResults = newValue
-        }
+    public init(scripts: [[SpeechEvent]] = []) {
+        self.scripts = scripts
     }
 
-    public init(scriptedResults: [ASRResult] = []) {
-        self._scriptedResults = scriptedResults
+    /// Convenience: wrap a sequence of final ASRResults into single-event
+    /// scripts. Used by the existing integration tests that only care about
+    /// the final transcript.
+    public static func yielding(finals: [ASRResult]) -> FakeSpeechEngine {
+        FakeSpeechEngine(scripts: finals.map { [SpeechEvent.final($0)] })
     }
 
-    public func listen() async throws -> ASRResult {
-        lock.lock()
-        defer { lock.unlock() }
-        guard !_scriptedResults.isEmpty else {
-            throw FakeSpeechEngineError.scriptExhausted
+    /// Convenience: wrap a sequence of events into a single script.
+    public static func yielding(_ events: [SpeechEvent]) -> FakeSpeechEngine {
+        FakeSpeechEngine(scripts: [events])
+    }
+
+    public func listen() -> AsyncThrowingStream<SpeechEvent, Error> {
+        let script: [SpeechEvent]? = {
+            lock.lock()
+            defer { lock.unlock() }
+            guard !scripts.isEmpty else { return nil }
+            return scripts.removeFirst()
+        }()
+        return AsyncThrowingStream { continuation in
+            guard let script else {
+                continuation.finish(throwing: FakeSpeechEngineError.scriptExhausted)
+                return
+            }
+            Task {
+                for event in script {
+                    continuation.yield(event)
+                }
+                continuation.finish()
+            }
         }
-        return _scriptedResults.removeFirst()
     }
 
     public func cancel() {}

@@ -67,21 +67,17 @@ final class FullADayIntegrationTests: XCTestCase {
 
         for w in words {
             await orchestrator.handle(
-                .answerResult(
-                    correct: true,
-                    asr: ASRResult(transcript: w.word.surface, confidence: 1.0)
-                )
+                .answerHeard(ASRResult(transcript: w.word.surface, confidence: 1.0))
             )
         }
         XCTAssertEqual(orchestrator.phase, .shortSentences)
 
-        for s in sentences {
-            await orchestrator.handle(
-                .answerResult(
-                    correct: true,
-                    asr: ASRResult(transcript: s.text, confidence: 1.0)
-                )
-            )
+        // Sentences target a single word inside the sentence text, so an ASR
+        // transcript of the whole sentence would not match. Use the manual
+        // path to keep this walkthrough's intent of "all sentences correct"
+        // without replicating the orchestrator's target-word selection here.
+        for _ in sentences {
+            await orchestrator.handle(.answerManual(correct: true))
         }
         XCTAssertEqual(orchestrator.phase, .completion)
 
@@ -139,23 +135,16 @@ final class FullADayIntegrationTests: XCTestCase {
 
         for (i, w) in words.enumerated() {
             let correct = i != missIndex
-            await orchestrator.handle(
-                .answerResult(
-                    correct: correct,
-                    asr: ASRResult(
-                        transcript: correct ? w.word.surface : "",
-                        confidence: correct ? 1.0 : 0.0
-                    )
+            if correct {
+                await orchestrator.handle(
+                    .answerHeard(ASRResult(transcript: w.word.surface, confidence: 1.0))
                 )
-            )
+            } else {
+                await orchestrator.handle(.answerManual(correct: false))
+            }
         }
-        for s in sentences {
-            await orchestrator.handle(
-                .answerResult(
-                    correct: true,
-                    asr: ASRResult(transcript: s.text, confidence: 1.0)
-                )
-            )
+        for _ in sentences {
+            await orchestrator.handle(.answerManual(correct: true))
         }
 
         XCTAssertEqual(orchestrator.phase, .completion)

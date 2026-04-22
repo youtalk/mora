@@ -5,9 +5,8 @@ import SwiftData
 import SwiftUI
 
 private let persistLog = Logger(subsystem: "tech.reenable.Mora", category: "Persistence")
+private let speechLog = Logger(subsystem: "tech.reenable.Mora", category: "Speech")
 
-/// UI mode is currently fixed to `.tap` until PR 5 introduces `.mic`. Keep the
-/// enum so downstream views can switch on it without a later rewrite.
 public enum SessionUIMode: Equatable, Sendable {
     case tap
     case mic
@@ -20,6 +19,7 @@ public struct SessionContainerView: View {
     @State private var bootError: String?
     @State private var feedback: FeedbackState = .none
     @State private var uiMode: SessionUIMode = .tap
+    @State private var speechEngine: SpeechEngine?
 
     public init() {}
 
@@ -84,10 +84,16 @@ public struct SessionContainerView: View {
                 NewRuleView(orchestrator: orchestrator)
             case .decoding:
                 DecodeActivityView(
-                    orchestrator: orchestrator, uiMode: uiMode, feedback: $feedback)
+                    orchestrator: orchestrator, uiMode: uiMode,
+                    feedback: $feedback,
+                    speechEngine: uiMode == .mic ? speechEngine : nil
+                )
             case .shortSentences:
                 ShortSentencesView(
-                    orchestrator: orchestrator, uiMode: uiMode, feedback: $feedback)
+                    orchestrator: orchestrator, uiMode: uiMode,
+                    feedback: $feedback,
+                    speechEngine: uiMode == .mic ? speechEngine : nil
+                )
             case .completion:
                 CompletionView(
                     orchestrator: orchestrator,
@@ -106,6 +112,28 @@ public struct SessionContainerView: View {
 
     @MainActor
     private func bootstrap() async {
+        #if os(iOS)
+        // Decide mic vs tap before building the engine — if the user
+        // denied either permission, skip engine construction entirely.
+        let coord = PermissionCoordinator()
+        switch coord.current() {
+        case .allGranted:
+            do {
+                speechEngine = try AppleSpeechEngine()
+                uiMode = .mic
+            } catch {
+                speechLog.error(
+                    "AppleSpeechEngine init failed, falling back to tap: \(String(describing: error))"
+                )
+                uiMode = .tap
+            }
+        case .partial, .notDetermined:
+            uiMode = .tap
+        }
+        #else
+        uiMode = .tap
+        #endif
+
         do {
             let curriculum = CurriculumEngine.defaultV1Ladder()
             let target = curriculum.currentTarget(forWeekIndex: 0)

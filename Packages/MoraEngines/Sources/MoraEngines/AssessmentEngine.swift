@@ -1,13 +1,16 @@
 import Foundation
 import MoraCore
 
+public enum AssessmentLeniency: Sendable {
+    case newWord
+    case mastered
+}
+
 public struct AssessmentEngine: Sendable {
     public let l1Profile: any L1Profile
-    /// 0.0 = strictest (exact match required), 1.0 = most lenient.
-    /// Reserved for the v1.5 swap to real ASR, where it will gate
-    /// confidence thresholds and edit-distance tolerance. The current
-    /// fake-ASR scoring path treats every transcript as definitive
-    /// and ignores this value.
+    /// 0.0 = strictest, 1.0 = most lenient. Pre-dates the `AssessmentLeniency`
+    /// enum; left in place for the current test suite and the future
+    /// AdaptivePlanEngine refactor that will consolidate leniency semantics.
     public let leniency: Double
 
     public init(l1Profile: any L1Profile, leniency: Double = 0.5) {
@@ -15,7 +18,19 @@ public struct AssessmentEngine: Sendable {
         self.leniency = leniency
     }
 
+    /// Backwards-compatible entry point: same as `.mastered`.
     public func assess(expected: Word, asr: ASRResult) -> TrialAssessment {
+        assess(expected: expected, asr: asr, leniency: .mastered)
+    }
+
+    /// Three-argument form used by `SessionOrchestrator` in v1 (always `.newWord`
+    /// until mastery tracking lands). `.newWord` accepts one extra edit-distance
+    /// unit and lowers the confidence floor; `.mastered` uses the strict path.
+    public func assess(
+        expected: Word,
+        asr: ASRResult,
+        leniency: AssessmentLeniency
+    ) -> TrialAssessment {
         let normalized = normalize(asr.transcript)
         let target = expected.surface.lowercased()
 
@@ -34,9 +49,21 @@ public struct AssessmentEngine: Sendable {
             )
         }
 
+        // Leniency-aware path: for .newWord, accept the transcript as
+        // correct when it is within one edit of the target AND the ASR
+        // confidence is at least 0.25 (i.e. not a stab in the dark).
+        if leniency == .newWord {
+            if editDistance(normalized, target) <= 1 && asr.confidence >= 0.25 {
+                return TrialAssessment(
+                    expected: expected, heard: asr.transcript,
+                    correct: true, errorKind: .none,
+                    l1InterferenceTag: nil
+                )
+            }
+        }
+
         let (errorKind, l1Tag) = classify(
-            expected: expected,
-            heardNormalized: normalized
+            expected: expected, heardNormalized: normalized
         )
         return TrialAssessment(
             expected: expected, heard: asr.transcript,
@@ -101,5 +128,26 @@ public struct AssessmentEngine: Sendable {
         case "t": return Phoneme(ipa: "t")
         default: return nil
         }
+    }
+
+    /// Iterative Levenshtein distance over Swift's Character collection.
+    /// Inlined here rather than in a shared utility — it is only used by
+    /// the leniency branch and small enough that a helper obscures flow.
+    private func editDistance(_ a: String, _ b: String) -> Int {
+        let ac = Array(a)
+        let bc = Array(b)
+        if ac.isEmpty { return bc.count }
+        if bc.isEmpty { return ac.count }
+        var prev = Array(0...bc.count)
+        var curr = Array(repeating: 0, count: bc.count + 1)
+        for i in 1...ac.count {
+            curr[0] = i
+            for j in 1...bc.count {
+                let cost = ac[i - 1] == bc[j - 1] ? 0 : 1
+                curr[j] = min(curr[j - 1] + 1, prev[j] + 1, prev[j - 1] + cost)
+            }
+            swap(&prev, &curr)
+        }
+        return prev[bc.count]
     }
 }

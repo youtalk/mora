@@ -2,10 +2,19 @@ import MoraCore
 import MoraEngines
 import SwiftUI
 
+private enum SentenceMicUIState: Equatable {
+    case idle
+    case listening(partialText: String)
+    case assessing
+}
+
 struct ShortSentencesView: View {
     let orchestrator: SessionOrchestrator
     let uiMode: SessionUIMode
     @Binding var feedback: FeedbackState
+    let speechEngine: SpeechEngine?
+
+    @State private var micState: SentenceMicUIState = .idle
 
     var body: some View {
         VStack(spacing: MoraTheme.Space.lg) {
@@ -23,11 +32,7 @@ struct ShortSentencesView: View {
                 case .tap:
                     tapPair(sentence: current)
                 case .mic:
-                    MicButton(state: .idle, action: {})
-                        .disabled(true)
-                        .allowsHitTesting(false)
-                        .accessibilityLabel("Recording unavailable")
-                        .accessibilityHint("Microphone input lands in a later update.")
+                    micStack
                 }
 
                 Text(
@@ -42,6 +47,34 @@ struct ShortSentencesView: View {
         }
     }
 
+    private var micStack: some View {
+        VStack(spacing: MoraTheme.Space.sm) {
+            MicButton(state: micButtonState) {
+                switch micState {
+                case .idle:
+                    if let engine = speechEngine { startListening(engine: engine) }
+                case .listening:
+                    speechEngine?.cancel()
+                case .assessing:
+                    break
+                }
+            }
+            if case .listening(let text) = micState, !text.isEmpty {
+                Text(text)
+                    .font(MoraType.label())
+                    .foregroundStyle(MoraTheme.Ink.muted)
+            }
+        }
+    }
+
+    private var micButtonState: MicButtonState {
+        switch micState {
+        case .idle: return .idle
+        case .listening: return .listening
+        case .assessing: return .assessing
+        }
+    }
+
     private var currentSentence: DecodeSentence? {
         guard orchestrator.sentenceIndex < orchestrator.sentences.count else { return nil }
         return orchestrator.sentences[orchestrator.sentenceIndex]
@@ -52,11 +85,7 @@ struct ShortSentencesView: View {
             tapButton("Correct", color: MoraTheme.Feedback.correct) {
                 feedback = .correct
                 Task { @MainActor in
-                    await orchestrator.handle(
-                        .answerResult(
-                            correct: true,
-                            asr: ASRResult(transcript: sentence.text, confidence: 1.0)
-                        ))
+                    await orchestrator.handle(.answerManual(correct: true))
                     try? await Task.sleep(nanoseconds: 450_000_000)
                     feedback = .none
                 }
@@ -64,10 +93,7 @@ struct ShortSentencesView: View {
             tapButton("Wrong", color: MoraTheme.Feedback.wrong) {
                 feedback = .wrong
                 Task { @MainActor in
-                    await orchestrator.handle(
-                        .answerResult(
-                            correct: false, asr: ASRResult(transcript: "", confidence: 0)
-                        ))
+                    await orchestrator.handle(.answerManual(correct: false))
                     try? await Task.sleep(nanoseconds: 650_000_000)
                     feedback = .none
                 }
@@ -86,5 +112,42 @@ struct ShortSentencesView: View {
                 .background(color, in: .capsule)
         }
         .buttonStyle(.plain)
+    }
+
+    private func startListening(engine: SpeechEngine) {
+        guard currentSentence != nil else { return }
+        micState = .listening(partialText: "")
+        Task { @MainActor in
+            defer {
+                // Stream may terminate without a .final event (cancel, early
+                // return). Always return to .idle so the MicButton doesn't
+                // stay stuck in .listening/.assessing.
+                if micState != .idle { micState = .idle }
+            }
+            do {
+                for try await event in engine.listen() {
+                    switch event {
+                    case .started:
+                        break
+                    case .partial(let text):
+                        if case .listening = micState {
+                            micState = .listening(partialText: text)
+                        }
+                    case .final(let asr):
+                        micState = .assessing
+                        try? await Task.sleep(nanoseconds: 120_000_000)
+                        await orchestrator.handle(.answerHeard(asr))
+                        let wasCorrect = orchestrator.trials.last?.correct ?? false
+                        feedback = wasCorrect ? .correct : .wrong
+                        try? await Task.sleep(
+                            nanoseconds: wasCorrect ? 450_000_000 : 650_000_000)
+                        feedback = .none
+                        micState = .idle
+                    }
+                }
+            } catch {
+                micState = .idle
+            }
+        }
     }
 }
