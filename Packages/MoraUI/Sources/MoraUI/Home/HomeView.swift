@@ -25,6 +25,7 @@ public struct HomeView: View {
     // after downloading a premium voice flips the prompt off immediately.
     @State private var needsBetterVoice: Bool = AppleTTSEngine.needsEnhancedVoice
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.moraStrings) private var strings
 
     public init() {}
 
@@ -58,7 +59,7 @@ public struct HomeView: View {
             Spacer()
             if needsBetterVoice {
                 Button(action: openVoiceSettings) {
-                    Text("Better voice ›")
+                    Text(strings.homeBetterVoiceChip)
                         .font(MoraType.pill())
                         .foregroundStyle(MoraTheme.Ink.secondary)
                         .padding(.horizontal, MoraTheme.Space.md)
@@ -75,7 +76,7 @@ public struct HomeView: View {
 
     private var hero: some View {
         VStack(spacing: MoraTheme.Space.md) {
-            Text("Today's quest")
+            Text(strings.homeTodayQuest)
                 .font(MoraType.label())
                 .foregroundStyle(MoraTheme.Ink.muted)
 
@@ -88,7 +89,7 @@ public struct HomeView: View {
                 .foregroundStyle(MoraTheme.Ink.secondary)
 
             NavigationLink(value: "session") {
-                Text("▶ Start")
+                Text(strings.homeStart)
                     .font(MoraType.cta())
                     .foregroundStyle(.white)
                     .padding(.horizontal, MoraTheme.Space.xl)
@@ -100,9 +101,9 @@ public struct HomeView: View {
             .padding(.top, MoraTheme.Space.md)
 
             HStack(spacing: MoraTheme.Space.sm) {
-                pill("16 min")
-                pill("5 words")
-                pill("2 sentences")
+                pill(strings.homeDurationPill(16))
+                pill(strings.homeWordsPill(5))
+                pill(strings.homeSentencesPill(2))
             }
         }
     }
