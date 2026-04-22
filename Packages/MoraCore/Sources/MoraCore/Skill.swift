@@ -1,7 +1,8 @@
 import Foundation
 
 public struct SkillCode: Hashable, Codable, Sendable, RawRepresentable,
-                         ExpressibleByStringLiteral {
+    ExpressibleByStringLiteral
+{
     public let rawValue: String
 
     public init(_ rawValue: String) { self.rawValue = rawValue }
