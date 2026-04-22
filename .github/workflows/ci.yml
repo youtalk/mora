@@ -86,9 +86,9 @@ jobs:
             ~/Library/Developer/Xcode/DerivedData
             !~/Library/Developer/Xcode/DerivedData/ModuleCache.noindex
             !~/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex
-          key: xcode-deriveddata-mora-${{ runner.os }}-${{ hashFiles('project.yml', 'Packages/*/Package.swift', 'Mora/**/*.swift', 'Packages/*/Sources/**/*.swift') }}
+          key: xcode-deriveddata-mora-v2-${{ runner.os }}-${{ hashFiles('project.yml', 'Packages/*/Package.swift', 'Mora/**/*.swift', 'Packages/*/Sources/**/*.swift') }}
           restore-keys: |
-            xcode-deriveddata-mora-${{ runner.os }}-
+            xcode-deriveddata-mora-v2-${{ runner.os }}-
 
       - name: Build Mora (iOS Simulator)
         run: |
@@ -213,9 +213,9 @@ jobs:
             ~/Library/Developer/Xcode/DerivedData
             !~/Library/Developer/Xcode/DerivedData/ModuleCache.noindex
             !~/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex
-          key: xcode-deriveddata-bench-${{ runner.os }}-${{ hashFiles('bench/project.yml', 'bench/MoraBench/**/*.swift', 'bench/MoraBenchTests/**/*.swift') }}
+          key: xcode-deriveddata-bench-v2-${{ runner.os }}-${{ hashFiles('bench/project.yml', 'bench/MoraBench/**/*.swift', 'bench/MoraBenchTests/**/*.swift') }}
           restore-keys: |
-            xcode-deriveddata-bench-${{ runner.os }}-
+            xcode-deriveddata-bench-v2-${{ runner.os }}-
 
       - name: Build MoraBench (iOS Simulator)
         working-directory: bench
