@@ -68,10 +68,6 @@ struct NewRuleView: View {
             .shadow(color: MoraTheme.Ink.secondary.opacity(0.15), radius: 3, y: 2)
     }
 
-    private var letters: String {
-        orchestrator.target.skill.graphemePhoneme?.grapheme.letters ?? "?"
-    }
-    private var ipa: String {
-        orchestrator.target.skill.graphemePhoneme?.phoneme.ipa ?? "?"
-    }
+    private var letters: String { orchestrator.target.letters ?? "?" }
+    private var ipa: String { orchestrator.target.ipa ?? "?" }
 }

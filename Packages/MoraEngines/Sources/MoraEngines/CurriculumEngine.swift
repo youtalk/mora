@@ -32,6 +32,11 @@ public struct CurriculumEngine: Sendable {
         return accumulated
     }
 
+    /// Shared singleton used by HomeView and SessionContainerView so the ladder
+    /// builder (and its ~30 static Grapheme allocations) runs once per launch
+    /// rather than on every SwiftUI body evaluation or session bootstrap.
+    public static let sharedV1: CurriculumEngine = defaultV1Ladder()
+
     public static func defaultV1Ladder() -> CurriculumEngine {
         let l2Alphabet: Set<Grapheme> = Set(
             "abcdefghijklmnopqrstuvwxyz".map { Grapheme(letters: String($0)) }

@@ -11,6 +11,11 @@ public actor AppleTTSEngine: TTSEngine {
     private let l1Profile: any L1Profile
     private let rate: Float
     public let preferredVoiceIdentifier: String?
+    // Resolving the voice walks `AVSpeechSynthesisVoice.speechVoices()` (~50-100
+    // entries). The installed voice set is stable for the process lifetime, so
+    // cache the first lookup and reuse it for every subsequent utterance.
+    private var cachedVoice: AVSpeechSynthesisVoice?
+    private var voiceResolved = false
 
     public init(
         l1Profile: any L1Profile,
@@ -32,7 +37,14 @@ public actor AppleTTSEngine: TTSEngine {
     }
 
     public func speak(phoneme: Phoneme) async {
-        let exemplars = l1Profile.exemplars(for: phoneme)
+        await speak(text: Self.phoneticLeadPhrase(for: phoneme, using: l1Profile))
+    }
+
+    /// Builds the "sh, as in ship." lead phrase spoken by `speak(phoneme:)`.
+    /// Extracted as a pure function so it can be unit-tested without audio.
+    public nonisolated static func phoneticLeadPhrase(
+        for phoneme: Phoneme, using profile: any L1Profile
+    ) -> String {
         let lead: String
         switch phoneme.ipa {
         case "ʃ": lead = "sh"
@@ -40,13 +52,10 @@ public actor AppleTTSEngine: TTSEngine {
         case "θ": lead = "th"
         default: lead = phoneme.ipa
         }
-        let text: String
-        if let first = exemplars.first {
-            text = "\(lead), as in \(first)."
-        } else {
-            text = "the \(lead) sound."
+        if let first = profile.exemplars(for: phoneme).first {
+            return "\(lead), as in \(first)."
         }
-        await speak(text: text)
+        return "the \(lead) sound."
     }
 
     /// `true` when no installed en-US voice is enhanced or premium. Callers
@@ -89,6 +98,13 @@ public actor AppleTTSEngine: TTSEngine {
     }
 
     private func pickVoice() -> AVSpeechSynthesisVoice? {
+        if voiceResolved { return cachedVoice }
+        cachedVoice = resolveVoice()
+        voiceResolved = true
+        return cachedVoice
+    }
+
+    private func resolveVoice() -> AVSpeechSynthesisVoice? {
         if let id = preferredVoiceIdentifier,
             let v = AVSpeechSynthesisVoice(identifier: id)
         {

@@ -14,16 +14,20 @@ public struct PhasePips: View {
     /// warmup=0, newRule=1, decoding=2, shortSentences=3, completion=4.
     /// .notStarted shows no active pip (index -1).
     public init(phase: ADayPhase) {
-        let idx: Int
+        self.init(currentIndex: Self.pipIndex(for: phase), totalCount: 5)
+    }
+
+    /// Exposed for testing so the phase → pip mapping is verifiable without
+    /// rendering the view.
+    public static func pipIndex(for phase: ADayPhase) -> Int {
         switch phase {
-        case .notStarted: idx = -1
-        case .warmup: idx = 0
-        case .newRule: idx = 1
-        case .decoding: idx = 2
-        case .shortSentences: idx = 3
-        case .completion: idx = 4
+        case .notStarted: return -1
+        case .warmup: return 0
+        case .newRule: return 1
+        case .decoding: return 2
+        case .shortSentences: return 3
+        case .completion: return 4
         }
-        self.init(currentIndex: idx, totalCount: 5)
     }
 
     public var body: some View {
@@ -38,7 +42,7 @@ public struct PhasePips: View {
         .accessibilityLabel(accessibilityLabel)
     }
 
-    private var accessibilityLabel: String {
+    public var accessibilityLabel: String {
         guard currentIndex >= 0 else { return "Session not started" }
         return "Phase \(currentIndex + 1) of \(totalCount)"
     }
