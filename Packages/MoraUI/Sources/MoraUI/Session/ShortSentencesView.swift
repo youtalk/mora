@@ -4,52 +4,41 @@ import SwiftUI
 
 struct ShortSentencesView: View {
     let orchestrator: SessionOrchestrator
+    let uiMode: SessionUIMode
+    @Binding var feedback: FeedbackState
 
     var body: some View {
-        VStack(spacing: 24) {
-            Text("Read the sentence")
-                .font(.title3.weight(.semibold))
-                .foregroundStyle(.secondary)
+        VStack(spacing: MoraTheme.Space.lg) {
+            Spacer()
             if let current = currentSentence {
                 Text(current.text)
-                    .font(.system(size: 52, weight: .semibold, design: .rounded))
+                    .font(MoraType.sentence())
+                    .foregroundStyle(MoraTheme.Ink.primary)
                     .multilineTextAlignment(.center)
-                    .padding()
-                HStack(spacing: 40) {
-                    sentenceButton("Correct", color: .green) {
-                        Task {
-                            await orchestrator.handle(
-                                .answerResult(
-                                    correct: true,
-                                    asr: ASRResult(
-                                        transcript: current.text,
-                                        confidence: 1.0
-                                    )
-                                )
-                            )
-                        }
+                    .padding(.horizontal, MoraTheme.Space.xl)
+                    .onLongPressGesture {
+                        // TTS replay wires in PR 6.
                     }
-                    sentenceButton("Wrong", color: .orange) {
-                        Task {
-                            await orchestrator.handle(
-                                .answerResult(
-                                    correct: false,
-                                    asr: ASRResult(transcript: "", confidence: 0.0)
-                                )
-                            )
-                        }
-                    }
+
+                Spacer()
+
+                switch uiMode {
+                case .tap:
+                    tapPair(sentence: current)
+                case .mic:
+                    MicButton(state: .idle, action: {})
                 }
+
                 Text(
-                    "Sentence \(orchestrator.sentenceIndex + 1) of \(orchestrator.sentences.count)"
+                    "Sentence \(orchestrator.sentenceIndex + 1) of \(orchestrator.sentences.count) · long-press to hear"
                 )
-                .font(.footnote)
-                .foregroundStyle(.secondary)
+                .font(MoraType.label())
+                .foregroundStyle(MoraTheme.Ink.muted)
+                .padding(.bottom, MoraTheme.Space.lg)
             } else {
                 ProgressView()
             }
         }
-        .padding()
     }
 
     private var currentSentence: DecodeSentence? {
@@ -57,16 +46,43 @@ struct ShortSentencesView: View {
         return orchestrator.sentences[orchestrator.sentenceIndex]
     }
 
-    private func sentenceButton(
-        _ title: String, color: Color,
-        action: @escaping () -> Void
+    private func tapPair(sentence: DecodeSentence) -> some View {
+        HStack(spacing: MoraTheme.Space.xl) {
+            tapButton("Correct", color: MoraTheme.Feedback.correct) {
+                feedback = .correct
+                Task {
+                    await orchestrator.handle(
+                        .answerResult(
+                            correct: true,
+                            asr: ASRResult(transcript: sentence.text, confidence: 1.0)
+                        ))
+                    try? await Task.sleep(nanoseconds: 450_000_000)
+                    feedback = .none
+                }
+            }
+            tapButton("Wrong", color: MoraTheme.Feedback.wrong) {
+                feedback = .wrong
+                Task {
+                    await orchestrator.handle(
+                        .answerResult(
+                            correct: false, asr: ASRResult(transcript: "", confidence: 0)
+                        ))
+                    try? await Task.sleep(nanoseconds: 650_000_000)
+                    feedback = .none
+                }
+            }
+        }
+    }
+
+    private func tapButton(
+        _ title: String, color: Color, action: @escaping () -> Void
     ) -> some View {
         Button(action: action) {
             Text(title)
-                .font(.title3.weight(.semibold))
-                .frame(minWidth: 160, minHeight: 60)
-                .background(color, in: .capsule)
+                .font(MoraType.heading())
                 .foregroundStyle(.white)
+                .frame(minWidth: 200, minHeight: 72)
+                .background(color, in: .capsule)
         }
         .buttonStyle(.plain)
     }
