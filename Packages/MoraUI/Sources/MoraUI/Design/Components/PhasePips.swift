@@ -16,12 +16,12 @@ public struct PhasePips: View {
     public init(phase: ADayPhase) {
         let idx: Int
         switch phase {
-        case .notStarted:       idx = -1
-        case .warmup:           idx = 0
-        case .newRule:          idx = 1
-        case .decoding:         idx = 2
-        case .shortSentences:   idx = 3
-        case .completion:       idx = 4
+        case .notStarted: idx = -1
+        case .warmup: idx = 0
+        case .newRule: idx = 1
+        case .decoding: idx = 2
+        case .shortSentences: idx = 3
+        case .completion: idx = 4
         }
         self.init(currentIndex: idx, totalCount: 5)
     }

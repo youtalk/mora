@@ -5,7 +5,7 @@ public enum MoraTheme {
         public static let pageHex: UInt32 = 0xFFFBF5
         public static let creamHex: UInt32 = 0xFFE8D6
         public static let peachHex: UInt32 = 0xFFCFA5
-        public static let mintHex:  UInt32 = 0xD5F0EA
+        public static let mintHex: UInt32 = 0xD5F0EA
 
         public static let page = Color(hex: pageHex)
         public static let cream = Color(hex: creamHex)
@@ -34,7 +34,7 @@ public enum MoraTheme {
     }
     public enum Feedback {
         public static let correct = Color(hex: 0x00A896)
-        public static let wrong   = Color(hex: 0xFF7A00)
+        public static let wrong = Color(hex: 0xFF7A00)
     }
     public enum Space {
         public static let xs: CGFloat = 4
@@ -55,8 +55,8 @@ public enum MoraTheme {
 public extension Color {
     init(hex: UInt32) {
         let r = Double((hex >> 16) & 0xFF) / 255.0
-        let g = Double((hex >>  8) & 0xFF) / 255.0
-        let b = Double( hex        & 0xFF) / 255.0
+        let g = Double((hex >> 8) & 0xFF) / 255.0
+        let b = Double(hex & 0xFF) / 255.0
         self.init(.sRGB, red: r, green: g, blue: b, opacity: 1.0)
     }
 }

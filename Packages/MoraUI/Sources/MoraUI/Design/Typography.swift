@@ -10,9 +10,11 @@ public enum MoraFontRegistration {
     /// no-op if the font is already registered.
     @discardableResult
     public static func registerBundledFonts() -> Bool {
-        guard let url = Bundle.module.url(
-            forResource: "OpenDyslexic-Regular", withExtension: "otf"
-        ) else {
+        guard
+            let url = Bundle.module.url(
+                forResource: "OpenDyslexic-Regular", withExtension: "otf"
+            )
+        else {
             return false
         }
         var error: Unmanaged<CFError>?

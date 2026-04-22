@@ -48,9 +48,9 @@ public struct MicButton: View {
 
     private var icon: String {
         switch state {
-        case .idle:       return "mic.fill"
-        case .listening:  return "waveform"
-        case .assessing:  return "ellipsis"
+        case .idle: return "mic.fill"
+        case .listening: return "waveform"
+        case .assessing: return "ellipsis"
         }
     }
 }
