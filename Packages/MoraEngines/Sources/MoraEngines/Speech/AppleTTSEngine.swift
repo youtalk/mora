@@ -1,6 +1,9 @@
 import AVFoundation
 import Foundation
 import MoraCore
+import OSLog
+
+private let audioLog = Logger(subsystem: "tech.reenable.Mora", category: "AudioSession")
 
 public actor AppleTTSEngine: TTSEngine {
     private let synthesizer: AVSpeechSynthesizer
@@ -57,6 +60,7 @@ public actor AppleTTSEngine: TTSEngine {
     }
 
     private func speak(text: String) async {
+        configurePlaybackSession()
         let utterance = AVSpeechUtterance(string: text)
         utterance.rate = rate
         utterance.voice = pickVoice()
@@ -64,6 +68,24 @@ public actor AppleTTSEngine: TTSEngine {
             delegateProxy.enqueue { cont.resume() }
             synthesizer.speak(utterance)
         }
+    }
+
+    /// AppleSpeechEngine leaves the audio session in `.record` category and
+    /// never deactivates it, so a TTS call running right after a decode phase
+    /// would otherwise route through the receiver and be inaudible on iPad.
+    /// Re-categorize to `.playback` per utterance; the speech engine flips it
+    /// back on its next `listen()`. Failures are logged (so a session misconfig
+    /// is visible in device sysdiagnose) but don't suppress the speak attempt.
+    private func configurePlaybackSession() {
+        #if os(iOS)
+        let session = AVAudioSession.sharedInstance()
+        do {
+            try session.setCategory(.playback, mode: .spokenAudio, options: .duckOthers)
+            try session.setActive(true, options: [])
+        } catch {
+            audioLog.error("AppleTTSEngine: failed to configure playback session: \(error)")
+        }
+        #endif
     }
 
     private func pickVoice() -> AVSpeechSynthesisVoice? {
