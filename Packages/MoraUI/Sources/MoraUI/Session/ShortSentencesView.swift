@@ -50,8 +50,13 @@ struct ShortSentencesView: View {
     private var micStack: some View {
         VStack(spacing: MoraTheme.Space.sm) {
             MicButton(state: micButtonState) {
-                if case .idle = micState, let engine = speechEngine {
-                    startListening(engine: engine)
+                switch micState {
+                case .idle:
+                    if let engine = speechEngine { startListening(engine: engine) }
+                case .listening:
+                    speechEngine?.cancel()
+                case .assessing:
+                    break
                 }
             }
             if case .listening(let text) = micState, !text.isEmpty {
@@ -110,8 +115,15 @@ struct ShortSentencesView: View {
     }
 
     private func startListening(engine: SpeechEngine) {
+        guard currentSentence != nil else { return }
         micState = .listening(partialText: "")
         Task { @MainActor in
+            defer {
+                // Stream may terminate without a .final event (cancel, early
+                // return). Always return to .idle so the MicButton doesn't
+                // stay stuck in .listening/.assessing.
+                if micState != .idle { micState = .idle }
+            }
             do {
                 for try await event in engine.listen() {
                     switch event {

@@ -54,8 +54,16 @@ struct DecodeActivityView: View {
     private var micStack: some View {
         VStack(spacing: MoraTheme.Space.sm) {
             MicButton(state: micButtonState) {
-                if case .idle = micState, let engine = speechEngine {
-                    startListening(engine: engine)
+                switch micState {
+                case .idle:
+                    if let engine = speechEngine { startListening(engine: engine) }
+                case .listening:
+                    // Match MicButton's "Tap to stop recording" hint: cancel
+                    // the engine so the consumer's for-try-await loop exits
+                    // via onTermination and the state machine resets.
+                    speechEngine?.cancel()
+                case .assessing:
+                    break
                 }
             }
             if case .listening(let text) = micState, !text.isEmpty {

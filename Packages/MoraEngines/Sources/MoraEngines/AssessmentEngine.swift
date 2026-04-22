@@ -49,8 +49,9 @@ public struct AssessmentEngine: Sendable {
             )
         }
 
-        // Leniency-aware path: for .newWord, accept an edit distance of 1
-        // against the target OR a confidence >= 0.25 with partial overlap.
+        // Leniency-aware path: for .newWord, accept the transcript as
+        // correct when it is within one edit of the target AND the ASR
+        // confidence is at least 0.25 (i.e. not a stab in the dark).
         if leniency == .newWord {
             if editDistance(normalized, target) <= 1 && asr.confidence >= 0.25 {
                 return TrialAssessment(

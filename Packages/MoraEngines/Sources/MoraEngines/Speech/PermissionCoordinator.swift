@@ -35,16 +35,18 @@ public final class PermissionCoordinator {
     }
 
     private func map(mic: PermissionOutcome, speech: PermissionOutcome) -> PermissionStatus {
-        switch (mic, speech) {
-        case (.notDetermined, .notDetermined):
+        // If either permission is still not-determined, the coordinator has
+        // nothing definitive to say — the caller should prompt. Only collapse
+        // to .partial once both have been decided.
+        if mic == .notDetermined || speech == .notDetermined {
             return .notDetermined
-        case (.granted, .granted):
-            return .allGranted
-        default:
-            return .partial(
-                micDenied: mic == .denied,
-                speechDenied: speech == .denied
-            )
         }
+        if mic == .granted && speech == .granted {
+            return .allGranted
+        }
+        return .partial(
+            micDenied: mic == .denied,
+            speechDenied: speech == .denied
+        )
     }
 }

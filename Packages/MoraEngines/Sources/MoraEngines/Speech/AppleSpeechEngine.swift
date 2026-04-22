@@ -6,6 +6,7 @@ public enum AppleSpeechEngineError: Error, Equatable {
     case notSupportedOnDevice
     case audioEngineStartFailed
     case recognizerUnavailable
+    case audioSessionConfigurationFailed
 }
 
 public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
@@ -36,6 +37,12 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
 
     public func listen() -> AsyncThrowingStream<SpeechEvent, Error> {
         AsyncThrowingStream { continuation in
+            // If the consumer stops iterating early (view disappears, task
+            // cancelled), tear the engine down so the audio tap and
+            // recognition task don't keep running until the watchdog fires.
+            continuation.onTermination = { [weak self] _ in
+                self?.cancel()
+            }
             do {
                 try self.startSession(continuation: continuation)
             } catch {
@@ -53,6 +60,18 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
     private func startSession(
         continuation: AsyncThrowingStream<SpeechEvent, Error>.Continuation
     ) throws {
+        #if os(iOS)
+        // SFSpeechRecognizer needs an active record audio session; without
+        // this, engine.start() either fails or the tap captures nothing.
+        let session = AVAudioSession.sharedInstance()
+        do {
+            try session.setCategory(.record, mode: .measurement, options: .duckOthers)
+            try session.setActive(true, options: .notifyOthersOnDeactivation)
+        } catch {
+            throw AppleSpeechEngineError.audioSessionConfigurationFailed
+        }
+        #endif
+
         lock.lock()
         tearDownLocked()
         let engine = AVAudioEngine()
