@@ -27,4 +27,4 @@ Then build the `Mora` scheme against an iPad simulator.
 
 ## License
 
-[PolyForm Noncommercial 1.0.0](./LICENSE). Source-available; not OSI-approved open source.
+[PolyForm Noncommercial License 1.0.0](./LICENSE). Source-available; not OSI-approved open source.
