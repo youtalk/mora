@@ -26,7 +26,11 @@ public enum MoraModelContainer {
         birthYear: Int = 2017,
         l1Identifier: String = "ja"
     ) throws {
-        let learners = try ctx.fetch(FetchDescriptor<LearnerEntity>())
+        // fetchLimit=1 keeps the existence check O(1) regardless of how many
+        // learners already exist; we only care whether the table is empty.
+        var descriptor = FetchDescriptor<LearnerEntity>()
+        descriptor.fetchLimit = 1
+        let learners = try ctx.fetch(descriptor)
         if !learners.isEmpty { return }
         let learner = LearnerEntity(
             displayName: defaultName,

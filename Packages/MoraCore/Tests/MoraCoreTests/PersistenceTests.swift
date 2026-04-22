@@ -70,12 +70,34 @@ final class PersistenceTests: XCTestCase {
             expected: "ship",
             heard: "sip",
             correct: false,
-            l1InterferenceTag: nil,
+            l1InterferenceTag: "f_h_sub",
             timestamp: Date()
         )
         ctx.insert(perf)
         try ctx.save()
         let fetched = try ctx.fetch(FetchDescriptor<PerformanceEntity>())
         XCTAssertEqual(fetched.first?.expected, "ship")
+        XCTAssertEqual(fetched.first?.heard, "sip")
+        XCTAssertEqual(fetched.first?.l1InterferenceTag, "f_h_sub")
+    }
+
+    @MainActor
+    func test_performance_storesNilL1Tag() throws {
+        let container = try makeContainer()
+        let ctx = container.mainContext
+        let perf = PerformanceEntity(
+            id: UUID(),
+            sessionId: UUID(),
+            skillCode: "sh_onset",
+            expected: "ship",
+            heard: "ship",
+            correct: true,
+            l1InterferenceTag: nil,
+            timestamp: Date()
+        )
+        ctx.insert(perf)
+        try ctx.save()
+        let fetched = try ctx.fetch(FetchDescriptor<PerformanceEntity>())
+        XCTAssertNil(fetched.first?.l1InterferenceTag)
     }
 }
