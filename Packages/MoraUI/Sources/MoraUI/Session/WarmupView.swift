@@ -3,6 +3,7 @@ import MoraEngines
 import SwiftUI
 
 struct WarmupView: View {
+    @Environment(\.moraStrings) private var strings
     let orchestrator: SessionOrchestrator
     let ttsEngine: TTSEngine?
 
@@ -43,7 +44,7 @@ struct WarmupView: View {
             Button(action: {
                 Task { await playTargetPhoneme() }
             }) {
-                Label("Listen again", systemImage: "speaker.wave.2.fill")
+                Text(strings.warmupListenAgain)
                     .font(MoraType.label())
                     .foregroundStyle(MoraTheme.Accent.teal)
                     .padding(.vertical, MoraTheme.Space.md)
