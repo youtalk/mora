@@ -119,7 +119,12 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
             }
             guard !timestamps.isFinalized() else { return }
             timestamps.markFinalized()
-            continuation.yield(.final(ASRResult(transcript: transcript, confidence: confidence)))
+            continuation.yield(
+                .final(
+                    TrialRecording(
+                        asr: ASRResult(transcript: transcript, confidence: confidence),
+                        audio: .empty
+                    )))
             continuation.finish()
             self.cancel()
         }
@@ -135,8 +140,11 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
                 if silence >= self.silenceTimeout || total >= self.hardTimeout {
                     timestamps.markFinalized()
                     continuation.yield(
-                        .final(ASRResult(transcript: "", confidence: 0))
-                    )
+                        .final(
+                            TrialRecording(
+                                asr: ASRResult(transcript: "", confidence: 0),
+                                audio: .empty
+                            )))
                     continuation.finish()
                     self.cancel()
                     return

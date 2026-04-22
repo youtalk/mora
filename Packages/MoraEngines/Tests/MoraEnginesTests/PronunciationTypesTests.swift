@@ -42,4 +42,12 @@ final class PronunciationTypesTests: XCTestCase {
         XCTAssertEqual(assessment.features["spectralCentroidHz"], 6100.0)
         XCTAssertEqual(assessment.coachingKey, "coaching.sh_sub_s.ja")
     }
+
+    func testTrialRecordingCarriesASRAndAudio() {
+        let asr = ASRResult(transcript: "ship", confidence: 0.85)
+        let audio = AudioClip(samples: [0.0, 0.1], sampleRate: 16_000)
+        let recording = TrialRecording(asr: asr, audio: audio)
+        XCTAssertEqual(recording.asr.transcript, "ship")
+        XCTAssertEqual(recording.audio.samples, [0.0, 0.1])
+    }
 }

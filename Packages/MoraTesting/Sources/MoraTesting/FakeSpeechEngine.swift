@@ -19,10 +19,19 @@ public final class FakeSpeechEngine: SpeechEngine, @unchecked Sendable {
     }
 
     /// Convenience: wrap a sequence of final ASRResults into single-event
-    /// scripts. Used by the existing integration tests that only care about
-    /// the final transcript.
+    /// scripts that carry an empty `AudioClip`. Existing tests that do not
+    /// exercise the pronunciation pipeline continue to work unchanged — the
+    /// empty clip flows through and the evaluator is expected to skip it.
     public static func yielding(finals: [ASRResult]) -> FakeSpeechEngine {
-        FakeSpeechEngine(scripts: finals.map { [SpeechEvent.final($0)] })
+        FakeSpeechEngine(
+            scripts: finals.map { asr in
+                [SpeechEvent.final(TrialRecording(asr: asr, audio: .empty))]
+            })
+    }
+
+    /// Convenience overload for tests that want to control the audio payload.
+    public static func yielding(recordings: [TrialRecording]) -> FakeSpeechEngine {
+        FakeSpeechEngine(scripts: recordings.map { [SpeechEvent.final($0)] })
     }
 
     /// Convenience: wrap a sequence of events into a single script.

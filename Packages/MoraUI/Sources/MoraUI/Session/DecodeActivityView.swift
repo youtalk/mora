@@ -159,10 +159,10 @@ struct DecodeActivityView: View {
                         if case .listening = micState {
                             micState = .listening(partialText: text)
                         }
-                    case .final(let asr):
+                    case .final(let recording):
                         micState = .assessing
                         try? await Task.sleep(nanoseconds: 120_000_000)
-                        await orchestrator.handle(.answerHeard(asr))
+                        await orchestrator.handle(.answerHeard(recording.asr))
                         let wasCorrect = orchestrator.trials.last?.correct ?? false
                         feedback = wasCorrect ? .correct : .wrong
                         if !wasCorrect, let tts = ttsEngine {

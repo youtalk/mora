@@ -15,8 +15,8 @@ final class FakeSpeechEngineTests: XCTestCase {
             events.append(event)
         }
         XCTAssertEqual(events.count, 1)
-        if case .final(let asr) = events.first {
-            XCTAssertEqual(asr.transcript, "ship")
+        if case .final(let recording) = events.first {
+            XCTAssertEqual(recording.asr.transcript, "ship")
         } else {
             XCTFail("Expected first event to be .final")
         }
@@ -27,7 +27,7 @@ final class FakeSpeechEngineTests: XCTestCase {
             .started,
             .partial("sh"),
             .partial("shi"),
-            .final(ASRResult(transcript: "ship", confidence: 0.92)),
+            .final(TrialRecording(asr: ASRResult(transcript: "ship", confidence: 0.92), audio: .empty)),
         ])
         var events: [SpeechEvent] = []
         for try await event in engine.listen() {
