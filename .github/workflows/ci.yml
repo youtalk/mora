@@ -19,13 +19,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install tools
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: "1"
+          HOMEBREW_NO_INSTALL_CLEANUP: "1"
+        run: brew install swift-format xcodegen
+
       - name: Show toolchain
         run: |
           xcodebuild -version
           swift --version
-
-      - name: Install tools
-        run: brew install swift-format xcodegen
+          swift-format --version
+          xcodegen --version
+          brew list --versions swift-format xcodegen
 
       - name: swift-format lint
         # Package.swift is excluded because swift-format's built-in
@@ -54,3 +60,9 @@ jobs:
             (cd Packages/$pkg && swift test)
             echo "::endgroup::"
           done
+
+      - name: Build MoraMLX (no test target)
+        run: |
+          echo "::group::swift build — MoraMLX"
+          (cd Packages/MoraMLX && swift build)
+          echo "::endgroup::"
