@@ -57,6 +57,7 @@ public actor AppleTTSEngine: TTSEngine {
     }
 
     private func speak(text: String) async {
+        configurePlaybackSession()
         let utterance = AVSpeechUtterance(string: text)
         utterance.rate = rate
         utterance.voice = pickVoice()
@@ -64,6 +65,20 @@ public actor AppleTTSEngine: TTSEngine {
             delegateProxy.enqueue { cont.resume() }
             synthesizer.speak(utterance)
         }
+    }
+
+    /// AppleSpeechEngine leaves the audio session in `.record` category and
+    /// never deactivates it, so a TTS call running right after a decode phase
+    /// would otherwise route through the receiver and be inaudible on iPad.
+    /// Re-categorize to `.playback` per utterance; the speech engine flips it
+    /// back on its next `listen()`. Failures are swallowed — a session config
+    /// error shouldn't suppress the speak attempt itself.
+    private func configurePlaybackSession() {
+        #if os(iOS)
+        let session = AVAudioSession.sharedInstance()
+        try? session.setCategory(.playback, mode: .spokenAudio, options: .duckOthers)
+        try? session.setActive(true, options: [])
+        #endif
     }
 
     private func pickVoice() -> AVSpeechSynthesisVoice? {
