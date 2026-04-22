@@ -62,9 +62,14 @@ To launch the built app without a paid signing identity, ad-hoc sign
 it first:
 
 ```bash
-APP="$HOME/Library/Developer/Xcode/DerivedData/Mora_Bench-"*"/Build/Products/Debug-maccatalyst/MoraBench.app"
-codesign -s - --force --deep --timestamp=none $APP
-open -n $APP
+# Resolve the glob once (newest match) and capture into a single
+# variable. `ls -td … | head -1` works in both bash and zsh and tolerates
+# DerivedData paths that contain spaces; the plain `$APP` pattern would
+# otherwise need either unquoted-to-glob or quoted-to-preserve-spaces
+# and can't do both.
+APP=$(ls -td "$HOME"/Library/Developer/Xcode/DerivedData/Mora_Bench-*/Build/Products/Debug-maccatalyst/MoraBench.app | head -1)
+codesign -s - --force --deep --timestamp=none "$APP"
+open -n "$APP"
 ```
 
 Unit tests also run on Mac Catalyst (the jetsam-sensitive
@@ -89,13 +94,17 @@ or "Offload App".
 ## Running the benchmark
 
 1. Launch the app on iPad Air.
-2. Tap a model. If weights are missing, accept the download.
-3. Pick a prompt shape (slot-fill short / with history / freeform /
-   vocab-expansion).
-4. Tap **Run once** to get a single-turn metrics report, or
-   **20-min endurance** to loop the prompt and capture thermal /
+2. Tap a model. If weights are missing, tap **Load** to accept the
+   download.
+3. Once loaded, tap **Run single** for a single-turn metrics report,
+   or **Run 20-min endurance** to loop the prompt and capture thermal /
    jetsam behaviour.
-5. Tap **Export** to share the JSON results off-device via Share Sheet.
+4. On the single-run screen, pick a prompt shape (slot-fill short /
+   with history / freeform / vocab-expansion) and tap **Run once**.
+   On the endurance screen, pick a prompt shape, set the duration via
+   the stepper, and tap **Start**.
+5. Open **Results** (sidebar toolbar) and tap **Export** to share the
+   JSON results off-device via the Share Sheet.
 
 ## Metrics captured
 
@@ -134,14 +143,16 @@ iPad Air numbers count for that.
 1. Build, ad-hoc sign, launch (see the Mac Catalyst build section above).
 2. Sidebar shows the four catalog entries; tapping each one opens
    the download screen in the detail column.
-3. Pick **SmolLM 135M Instruct (smoke)** and confirm it downloads
-   (~60-100 MB) without network errors.
-4. Tap **Run single** with **Slot-fill (short)** — confirm token
-   count climbs in real time and the result summary renders with
-   finite TTFT, prefill tok/s, and decode tok/s.
-5. Tap **Run single** twice more with different prompts — confirm
-   entries appear in **Results** (toolbar button) and **Export**
-   produces a valid JSON file via the Share Sheet.
+3. Pick **SmolLM 135M Instruct (smoke)**, tap **Load**, and confirm
+   it downloads (~60-100 MB) without network errors.
+4. Tap **Run single**, pick **Slot-fill (short)** in the picker, and
+   tap **Run once** — confirm the live token counter climbs and the
+   result summary renders with finite TTFT, prefill tok/s, and decode
+   tok/s.
+5. On the same single-run screen, change the prompt and tap **Run
+   once** twice more — confirm entries accumulate in **Results**
+   (sidebar toolbar) and **Export** produces a valid JSON file via
+   the Share Sheet.
 6. Relaunch — confirm cold load reuses the cached weights in
    `~/Library/Containers/tech.reenable.MoraBench/Data/Library/Application Support`.
 
@@ -162,19 +173,24 @@ Known Mac Catalyst limitations:
 
 1. Clean install: delete the app, reboot the device, leave WiFi on.
 2. Launch and pick **Qwen 2.5 3B Instruct** (or the exact Qwen 3.5 4B
-   entry once added).
+   entry once added), then tap **Load**.
 3. Let the download complete — record: download time (min), final
    Application Support size (GB).
-4. Tap **Run single** with **Slot-fill (short)** — record: cold load
-   time, TTFT, prefill tok/s, decode tok/s, peak RSS, thermal.
-5. Tap **Run single** again — record the same metrics as **warm**.
-6. Run three more single prompts: **Slot-fill with history**,
-   **Freeform decodable**, **Vocab expansion** — record their
+4. Tap **Run single**, pick **Slot-fill (short)** in the picker, and
+   tap **Run once** — record: cold load time, TTFT, prefill tok/s,
+   decode tok/s, peak RSS, thermal.
+5. Tap **Run once** again on the same screen — record the same
+   metrics as **warm**.
+6. Run three more single prompts (**Slot-fill with history**,
+   **Freeform decodable**, **Vocab expansion**) by changing the
+   picker and tapping **Run once** each time — record their
    per-prompt metrics.
-7. Switch to **20-min endurance** with **Slot-fill with history**
-   (the closest to Mora's real load). Let it run the full 20 minutes.
-   Plug the iPad in to AC only if the spec's 20-minute claim assumes
-   plugged-in usage; otherwise leave on battery.
+7. Back out to the download screen and tap **Run 20-min endurance**.
+   Select **Slot-fill with history** (the closest to Mora's real
+   load), leave the duration at 20 minutes, and tap **Start**. Let
+   it run the full 20 minutes. Plug the iPad in to AC only if the
+   spec's 20-minute claim assumes plugged-in usage; otherwise leave
+   on battery.
 8. After completion, open **Results** → **Export** → AirDrop or Mail
    the JSON off-device.
 9. Relaunch the app; if a "previous run was killed" banner appears,
