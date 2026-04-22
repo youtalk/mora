@@ -89,13 +89,13 @@ public struct JapaneseL1Profile: L1Profile {
 
     public func interestCategoryDisplayName(key: String, forAgeYears years: Int) -> String {
         switch key {
-        case "animals":   return "どうぶつ"
+        case "animals": return "どうぶつ"
         case "dinosaurs": return "きょうりゅう"
-        case "vehicles":  return "のりもの"
-        case "space":     return "うちゅう"
-        case "sports":    return "スポーツ"
-        case "robots":    return "ロボット"
-        default:          return key
+        case "vehicles": return "のりもの"
+        case "space": return "うちゅう"
+        case "sports": return "スポーツ"
+        case "robots": return "ロボット"
+        default: return key
         }
     }
 

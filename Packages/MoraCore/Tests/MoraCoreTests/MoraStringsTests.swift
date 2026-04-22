@@ -172,10 +172,10 @@ final class MoraStringsTests: XCTestCase {
 
     private func isCJKIdeograph(_ scalar: Unicode.Scalar) -> Bool {
         switch scalar.value {
-        case 0x3400...0x4DBF: return true   // CJK Unified Extension A
-        case 0x4E00...0x9FFF: return true   // CJK Unified
-        case 0x20000...0x2A6DF: return true // Ext B
-        case 0xF900...0xFAFF: return true   // Compatibility Ideographs
+        case 0x3400...0x4DBF: return true  // CJK Unified Extension A
+        case 0x4E00...0x9FFF: return true  // CJK Unified
+        case 0x20000...0x2A6DF: return true  // Ext B
+        case 0xF900...0xFAFF: return true  // Compatibility Ideographs
         default: return false
         }
     }
@@ -194,12 +194,12 @@ final class MoraStringsTests: XCTestCase {
             Unicode.Scalar(0x2026)!,  // …
             Unicode.Scalar(0x203A)!,  // ›
             Unicode.Scalar(0x25B6)!,  // ▶
-            Unicode.Scalar(0x1F50A)!, // 🔊
+            Unicode.Scalar(0x1F50A)!,  // 🔊
         ]
         switch scalar.value {
-        case 0x3040...0x309F: return true   // Hiragana
-        case 0x30A0...0x30FF: return true   // Katakana
-        case 0x0020...0x007E: return true   // ASCII printable (digits, /, etc.)
+        case 0x3040...0x309F: return true  // Hiragana
+        case 0x30A0...0x30FF: return true  // Katakana
+        case 0x0020...0x007E: return true  // ASCII printable (digits, /, etc.)
         default: return allowedSymbols.contains(scalar)
         }
     }

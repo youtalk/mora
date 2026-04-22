@@ -26,8 +26,8 @@ final class JPKanjiLevelTests: XCTestCase {
         XCTAssertTrue(JPKanjiLevel.grade1.contains("日"))
         XCTAssertTrue(JPKanjiLevel.grade2.contains("今"))
         XCTAssertTrue(JPKanjiLevel.grade1And2.contains("読"))
-        XCTAssertFalse(JPKanjiLevel.grade1And2.contains("始"))   // G3
-        XCTAssertFalse(JPKanjiLevel.grade1And2.contains("終"))   // G3
-        XCTAssertFalse(JPKanjiLevel.grade1And2.contains("解"))   // G5
+        XCTAssertFalse(JPKanjiLevel.grade1And2.contains("始"))  // G3
+        XCTAssertFalse(JPKanjiLevel.grade1And2.contains("終"))  // G3
+        XCTAssertFalse(JPKanjiLevel.grade1And2.contains("解"))  // G5
     }
 }
