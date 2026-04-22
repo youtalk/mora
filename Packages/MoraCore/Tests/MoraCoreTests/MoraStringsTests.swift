@@ -119,6 +119,43 @@ final class MoraStringsTests: XCTestCase {
         }
     }
 
+    func test_closureOutputs_sweptAcrossBoundaries_stayInBudget() {
+        let s = profile.uiStrings(forAgeYears: 8)
+        let singleArgSamples: [Int] = [0, 1, 5, 16, 60, 99, 100, 999]
+        let pairSamples: [(Int, Int)] = [
+            (0, 0), (0, 5), (1, 1), (3, 5), (6, 7),
+            (9, 10), (99, 100), (100, 100),
+        ]
+        for n in singleArgSamples {
+            auditString("homeDurationPill(\(n))", s.homeDurationPill(n))
+            auditString("homeWordsPill(\(n))", s.homeWordsPill(n))
+            auditString("homeSentencesPill(\(n))", s.homeSentencesPill(n))
+            auditString("a11yStreakChip(\(n))", s.a11yStreakChip(n))
+        }
+        for (a, b) in pairSamples {
+            auditString("sessionWordCounter(\(a),\(b))", s.sessionWordCounter(a, b))
+            auditString("sessionSentenceCounter(\(a),\(b))", s.sessionSentenceCounter(a, b))
+            auditString("completionScore(\(a),\(b))", s.completionScore(a, b))
+        }
+    }
+
+    private func auditString(_ name: String, _ value: String) {
+        for scalar in value.unicodeScalars {
+            if isCJKIdeograph(scalar) {
+                let char = Character(scalar)
+                XCTAssertTrue(
+                    JPKanjiLevel.grade1And2.contains(char),
+                    "\(name) contains out-of-budget kanji '\(char)' (U+\(String(scalar.value, radix: 16, uppercase: true)))"
+                )
+            } else {
+                XCTAssertTrue(
+                    Self.isAllowedNonKanji(scalar),
+                    "\(name) contains disallowed codepoint U+\(String(scalar.value, radix: 16, uppercase: true)) '\(scalar)'"
+                )
+            }
+        }
+    }
+
     // MARK: - Helpers
 
     private static func allRenderedStrings(

@@ -507,13 +507,15 @@ Explicitly deferred, with a pointer to where each belongs:
 - UD Digi Kyokasho font integration — future typography plan.
 - Furigana rendering — avoided here by constraining the kanji budget.
 
-## 14. Open Questions
+## 14. Open Questions — Resolutions
 
-1. **Draft Japanese copy proofing** — the table in §7.2 is a first draft. Yutaka hand-edits in PR 1 before merge. The spec will be updated with post-proof wording if any lines change materially.
-2. **`13+` tile label** — plain `13+` vs `13さいいじょう`. Leaning toward `13+` (one tile, universal). Will revisit after device smoke with a 13+ tester (non-alpha).
-3. **`NameView` skip affordance location** — skip is currently top-right in the existing view. With JP `スキップ` being shorter than English `Skip`, visual weight changes; may move inline with CTA. Decide during PR 3.
-4. **Interest display name age variance** — alpha makes display name age-invariant. A preschool bucket might prefer `わんわん` over `どうぶつ`. Revisit when authoring the `preschool` bucket.
-5. **Home IPA subline** — kept in English per §9. Some parents may prefer JP exemplars (`/ʃ/ · ship, shop, fish のおと`). Defer decision to field test.
+| # | Question | Resolution |
+|---|---|---|
+| 1 | Draft Japanese copy proofing | PR 1 proof pass completed; the table in §7.2 is the final alpha copy unless PR 4 device testing surfaces a specific readability problem. |
+| 2 | `13+` tile label | Shipped as `13+`. PR 4 simulator smoke confirmed readable on iPad 10.9"; no non-JP parent testers available at this time. Revisit when an actual 13+ tester exists. |
+| 3 | `NameView` skip affordance location | Kept top-right (alpha spec §9.2). PR 3 review confirmed visual weight acceptable with the shorter JP `スキップ` string. |
+| 4 | Interest display name age variance | Deferred. Alpha shipped age-invariant category names. Preschool bucket may prefer `わんわん` etc.; revisit when that bucket is authored. |
+| 5 | Home IPA subline | Kept English per §9. Field test deferred (no alpha user outside the dev's son). |
 
 ## 15. References
 
