@@ -100,19 +100,7 @@ public struct SessionContainerView: View {
     }
 }
 
-// TEMPORARY stubs — replaced in Tasks 26 and 27.
-struct WarmupView: View {
-    let orchestrator: SessionOrchestrator
-    var body: some View { Text("Warmup placeholder") }
-}
-struct NewRuleView: View {
-    let orchestrator: SessionOrchestrator
-    var body: some View { Text("New Rule placeholder") }
-}
-struct DecodeActivityView: View {
-    let orchestrator: SessionOrchestrator
-    var body: some View { Text("Decode placeholder") }
-}
+// TEMPORARY stubs — replaced in Task 27.
 struct ShortSentencesView: View {
     let orchestrator: SessionOrchestrator
     var body: some View { Text("Sentences placeholder") }
