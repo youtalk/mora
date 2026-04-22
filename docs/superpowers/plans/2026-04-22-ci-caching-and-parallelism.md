@@ -699,18 +699,19 @@ Fill this in as tasks execute. Times are wall-clock minutes (Started → Complet
 |---|---|---|---|---|
 | Baseline (main, no bench changes) | 0.3 | 3.9 | skipped | Run ID: 24794759855 |
 | Baseline (historical, bench ran) | 0.3 | 3.0 | 14.1 | Run ID: 24765928314 (PR #15) |
-| Bundle, cold cache | 0.4 | 5.8 | 17.0 | Run ID: 24795735049 (PR #29 seed run; cache saves add ~1 min overhead on miss) |
-| Bundle, warm cache | | | | |
-| Typical PR (MoraUI single-file touch) | | | | partial restore |
+| Bundle, cold cache (v1 seed) | 0.4 | 5.8 | 17.0 | Run ID: 24795735049; cache uploads add ~1 min overhead on miss |
+| Bundle, warm cache (first attempt) | 0.3 | 2.8 | **failed** | Run ID: 24796966221; bench failed with ModuleCache mtime error from cross-runner SDK drift |
+| Bundle, seed after fix (v2 key) | 0.3 | 2.9 | 17.4 | Run ID: 24797298326; DerivedData re-seeded with ModuleCache excluded, brew+SPM caches already warm |
+| Bundle, warm cache (all v2 caches hit) | 0.3 | 3.2 | 13.0 | Run ID: 24798154633; final measurement |
 
 ## Summary
 
-Fill in after Task 7:
+- `swift-format`: 0.3 min → 0.3 min (no change; lint was already fast, brew cache hit is a wash with cold download).
+- `Build / Test`: 3.9 min baseline → 3.2 min warm (~18% faster). The SwiftPM `.build` per-package caches account for most of the win; the Xcode DerivedData cache adds little once `ModuleCache.noindex` is excluded, because Xcode has to rebuild the SDK-shim precompiled modules on every run anyway.
+- `Bench Build / Test`: 17.4 min cold (v2 seed) → 13.0 min warm (~25% faster vs cold, ~8% faster vs 14.1 min historical baseline). The win is modest because excluding `ModuleCache.noindex` forces a rebuild of precompiled C modules (CNIO*, etc) on every warm run; the SPM-checkouts portion of DerivedData is genuinely cached, which saves the package resolve + fetch time for MLX / HuggingFace / swift-transformers.
+- Lint no longer gates `Build / Test` / `Bench Build / Test`. Total workflow wall time on a non-bench PR: `max(0.3, 3.2) = 3.2 min` (vs. sequential 0.3 + 3.9 = 4.2 min baseline); on a bench PR: `max(0.3, 3.2, 13.0) = 13.0 min` (vs. 0.3 + 14.1 = 14.4 min historical).
 
-- `Build / Test`: **X** min (baseline) → **Y** min (warm, typical PR) — **Z%** faster
-- `Bench Build / Test`: **X** min (baseline) → **Y** min (warm) — **Z%** faster
-- `swift-format`: **X** min (baseline) → **Y** min (warm) — **Z%** faster
-- Lint no longer gates build-test; total workflow wall time reduced by max(lint) per run.
+Known follow-ups (see "Out of scope"): matrix-parallelizing the four per-package `swift test` invocations could further shave Build / Test, at the cost of extra runner-minutes. The bench warm win is capped at ~4 min by the `ModuleCache.noindex` rebuild; a narrower cache definition (e.g. only `SourcePackages/checkouts` + `SourcePackages/artifacts`) could be tried if bench stays painful.
 
 ---
 
