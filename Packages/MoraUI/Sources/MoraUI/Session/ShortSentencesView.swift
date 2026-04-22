@@ -7,6 +7,7 @@ import UIKit
 #endif
 
 struct ShortSentencesView: View {
+    @Environment(\.moraStrings) private var strings
     let orchestrator: SessionOrchestrator
     let uiMode: SessionUIMode
     @Binding var feedback: FeedbackState
@@ -41,9 +42,15 @@ struct ShortSentencesView: View {
                     micStack
                 }
 
-                Text(
-                    "Sentence \(orchestrator.sentenceIndex + 1) of \(orchestrator.sentences.count)"
-                )
+                HStack(spacing: MoraTheme.Space.sm) {
+                    Text(
+                        strings.sessionSentenceCounter(
+                            orchestrator.sentenceIndex + 1, orchestrator.sentences.count
+                        )
+                    )
+                    Text("·")
+                    Text(strings.sentencesLongPressHint)
+                }
                 .font(MoraType.label())
                 .foregroundStyle(MoraTheme.Ink.muted)
                 .padding(.bottom, MoraTheme.Space.lg)
@@ -100,7 +107,7 @@ struct ShortSentencesView: View {
 
     private func tapPair(sentence: DecodeSentence) -> some View {
         HStack(spacing: MoraTheme.Space.xl) {
-            tapButton("Correct", color: MoraTheme.Feedback.correct) {
+            tapButton(strings.feedbackCorrect, color: MoraTheme.Feedback.correct) {
                 feedback = .correct
                 Task { @MainActor in
                     await orchestrator.handle(.answerManual(correct: true))
@@ -108,7 +115,7 @@ struct ShortSentencesView: View {
                     feedback = .none
                 }
             }
-            tapButton("Wrong", color: MoraTheme.Feedback.wrong) {
+            tapButton(strings.feedbackTryAgain, color: MoraTheme.Feedback.wrong) {
                 feedback = .wrong
                 Task { @MainActor in
                     await orchestrator.handle(.answerManual(correct: false))

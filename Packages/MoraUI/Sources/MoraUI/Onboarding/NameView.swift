@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct NameView: View {
+    @Environment(\.moraStrings) private var strings
     @Binding var name: String
     let onContinue: () -> Void
     let onSkip: () -> Void
@@ -9,7 +10,7 @@ struct NameView: View {
         VStack(spacing: MoraTheme.Space.lg) {
             HStack {
                 Spacer()
-                Button("Skip", action: onSkip)
+                Button(strings.nameSkip, action: onSkip)
                     .font(MoraType.label())
                     .foregroundStyle(MoraTheme.Ink.muted)
             }
@@ -17,7 +18,7 @@ struct NameView: View {
 
             Spacer()
 
-            Text("What should we call you?")
+            Text(strings.namePrompt)
                 .font(MoraType.heading())
                 .foregroundStyle(MoraTheme.Ink.primary)
 
@@ -33,7 +34,7 @@ struct NameView: View {
 
             Spacer()
 
-            HeroCTA(title: "Next", action: onContinue)
+            HeroCTA(title: strings.nameCTA, action: onContinue)
                 .padding(.bottom, MoraTheme.Space.xl)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
