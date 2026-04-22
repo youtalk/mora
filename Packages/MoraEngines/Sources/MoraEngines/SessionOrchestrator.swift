@@ -42,20 +42,20 @@ public final class SessionOrchestrator {
     public func start() async {
         guard phase == .notStarted else { return }
         sessionStartedAt = clock()
-        phase = .warmup
+        transitionTo(.warmup)
     }
 
     public func handle(_ event: OrchestratorEvent) async {
         switch (phase, event) {
         case (.warmup, .warmupTap(let g)):
             if let targetG = target.skill.graphemePhoneme?.grapheme, g == targetG {
-                phase = .newRule
+                transitionTo(.newRule)
             } else {
                 warmupMissCount += 1
             }
 
         case (.newRule, .advance):
-            phase = .decoding
+            transitionTo(.decoding)
 
         case (.decoding, .answerResult(let correct, let asr)):
             handleDecodingAnswer(correct: correct, asr: asr)
@@ -63,63 +63,75 @@ public final class SessionOrchestrator {
         case (.shortSentences, .answerResult(let correct, let asr)):
             handleSentenceAnswer(correct: correct, asr: asr)
 
-        case (.completion, _):
+        default:
+            // Other (phase, event) pairs — including .advance outside .newRule
+            // — are intentionally ignored so the gated state machine can't be
+            // skipped (e.g., bypassing warmup with a stray .advance event).
             break
+        }
+    }
 
-        case (_, .advance):
-            // Fallback advance: move forward one phase.
-            advanceCurrentPhase()
-
+    /// Sets `phase` and immediately skips through any subsequent phase whose
+    /// queue is empty, so the orchestrator can never get stuck waiting for an
+    /// answer that has no question to ask.
+    private func transitionTo(_ newPhase: ADayPhase) {
+        phase = newPhase
+        switch phase {
+        case .decoding where words.isEmpty:
+            transitionTo(.shortSentences)
+        case .shortSentences where sentences.isEmpty:
+            transitionTo(.completion)
         default:
             break
         }
     }
 
-    private func advanceCurrentPhase() {
-        switch phase {
-        case .notStarted: phase = .warmup
-        case .warmup: phase = .newRule
-        case .newRule: phase = .decoding
-        case .decoding: phase = .shortSentences
-        case .shortSentences: phase = .completion
-        case .completion: break
-        }
-    }
-
     private func handleDecodingAnswer(correct: Bool, asr: ASRResult?) {
-        guard wordIndex < words.count else { return }
+        guard wordIndex < words.count else {
+            transitionTo(.shortSentences)
+            return
+        }
         let expected = words[wordIndex].word
         trials.append(makeTrial(expected: expected, correct: correct, asr: asr))
         wordIndex += 1
-        if wordIndex >= words.count { phase = .shortSentences }
+        if wordIndex >= words.count { transitionTo(.shortSentences) }
     }
 
     private func handleSentenceAnswer(correct: Bool, asr: ASRResult?) {
-        guard sentenceIndex < sentences.count else { return }
+        guard sentenceIndex < sentences.count else {
+            transitionTo(.completion)
+            return
+        }
         let sentence = sentences[sentenceIndex]
-        // First word in the sentence that contains the target grapheme is
-        // the one the trial assesses against. Fallback: the sentence's first word.
+        // Pick the first word that contains the target grapheme; fall back to
+        // the sentence's first word. If the sentence has no words at all
+        // (malformed content), skip it without recording a trial rather than
+        // force-unwrapping into a crash.
         let targetGrapheme = target.skill.graphemePhoneme?.grapheme
         let expected =
             sentence.words.first { w in
                 guard let g = targetGrapheme else { return true }
                 return w.graphemes.contains(g)
-            } ?? sentence.words.first!
-        trials.append(makeTrial(expected: expected, correct: correct, asr: asr))
+            } ?? sentence.words.first
+        if let expected {
+            trials.append(makeTrial(expected: expected, correct: correct, asr: asr))
+        }
         sentenceIndex += 1
-        if sentenceIndex >= sentences.count { phase = .completion }
+        if sentenceIndex >= sentences.count { transitionTo(.completion) }
     }
 
     /// The dev-mode "Correct"/"Wrong" buttons treat the `correct` flag as the
-    /// source of truth — when correct, we record a clean pass even if the
-    /// supplied ASRResult would have failed the engine's match. On a miss we
-    /// hand off to AssessmentEngine so error kind and L1 interference tagging
-    /// stay accurate.
+    /// source of truth — when correct, we record a clean pass with `heard`
+    /// pinned to `expected.surface` (the supplied ASR transcript may be
+    /// stale or empty in dev mode and would otherwise produce inconsistent
+    /// rows like correct=true / heard="x"). On a miss we hand off to
+    /// AssessmentEngine so error kind and L1 interference tagging stay
+    /// accurate against the actual transcript.
     private func makeTrial(expected: Word, correct: Bool, asr: ASRResult?) -> TrialAssessment {
         if correct {
             return TrialAssessment(
                 expected: expected,
-                heard: asr?.transcript ?? expected.surface,
+                heard: expected.surface,
                 correct: true,
                 errorKind: .none,
                 l1InterferenceTag: nil

@@ -52,11 +52,58 @@ final class SessionOrchestratorPhasesTests: XCTestCase {
     }
 
     func test_newRule_next_advancesToDecoding() async {
-        let o = makeOrchestrator()
+        let o = makeOrchestrator(words: [shipDW])
         await o.start()
         await o.handle(.warmupTap(.init(letters: "sh")))
         XCTAssertEqual(o.phase, .newRule)
         await o.handle(.advance)
         XCTAssertEqual(o.phase, .decoding)
+    }
+
+    func test_advance_outsideNewRule_isIgnored() async {
+        let o = makeOrchestrator(words: [shipDW])
+        await o.start()
+        XCTAssertEqual(o.phase, .warmup)
+        await o.handle(.advance)
+        XCTAssertEqual(o.phase, .warmup)  // gating preserved
+    }
+
+    func test_emptyDecodingQueue_skipsToShortSentences() async {
+        let o = makeOrchestrator(words: [], sentences: [shipDS])
+        await o.start()
+        await o.handle(.warmupTap(.init(letters: "sh")))
+        await o.handle(.advance)  // newRule → decoding (auto-skipped)
+        XCTAssertEqual(o.phase, .shortSentences)
+    }
+
+    func test_emptyDecodingAndSentenceQueues_skipsToCompletion() async {
+        let o = makeOrchestrator(words: [], sentences: [])
+        await o.start()
+        await o.handle(.warmupTap(.init(letters: "sh")))
+        await o.handle(.advance)
+        XCTAssertEqual(o.phase, .completion)
+    }
+
+    private var shipDW: DecodeWord {
+        DecodeWord(
+            word: Word(
+                surface: "ship",
+                graphemes: [.init(letters: "sh"), .init(letters: "i"), .init(letters: "p")],
+                phonemes: [.init(ipa: "ʃ"), .init(ipa: "ɪ"), .init(ipa: "p")]
+            )
+        )
+    }
+
+    private var shipDS: DecodeSentence {
+        DecodeSentence(
+            text: "Ship.",
+            words: [
+                Word(
+                    surface: "ship",
+                    graphemes: [.init(letters: "sh"), .init(letters: "i"), .init(letters: "p")],
+                    phonemes: [.init(ipa: "ʃ"), .init(ipa: "ɪ"), .init(ipa: "p")]
+                )
+            ]
+        )
     }
 }
