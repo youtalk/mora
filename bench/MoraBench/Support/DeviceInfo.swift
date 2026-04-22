@@ -6,6 +6,10 @@ struct DeviceInfo: Codable {
     let systemName: String
     let systemVersion: String
     let physicalMemoryBytes: UInt64
+    // UIDevice.systemName returns "iPadOS" on Mac Catalyst too, so the
+    // export would otherwise be ambiguous. Spec numbers only count when
+    // this is false.
+    let isMacCatalyst: Bool
 
     static func current() -> DeviceInfo {
         var sysinfo = utsname()
@@ -17,7 +21,8 @@ struct DeviceInfo: Codable {
             modelIdentifier: model,
             systemName: UIDevice.current.systemName,
             systemVersion: UIDevice.current.systemVersion,
-            physicalMemoryBytes: ProcessInfo.processInfo.physicalMemory
+            physicalMemoryBytes: ProcessInfo.processInfo.physicalMemory,
+            isMacCatalyst: ProcessInfo.processInfo.isMacCatalystApp
         )
     }
 }

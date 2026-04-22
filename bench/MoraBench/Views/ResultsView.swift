@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct ResultsView: View {
+    @Environment(\.dismiss) private var dismiss
     @State private var results: [BenchResult] = []
     @State private var shareTarget: ShareTarget?
 
@@ -22,6 +23,9 @@ struct ResultsView: View {
         }
         .navigationTitle("Results")
         .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Done") { dismiss() }
+            }
             ToolbarItem(placement: .primaryAction) {
                 Button("Export") {
                     if let url = ResultStore.shared.exportURL() {

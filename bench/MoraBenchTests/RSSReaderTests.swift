@@ -9,9 +9,11 @@ final class RSSReaderTests: XCTestCase {
     }
 
     func testAvailableMemoryIsPositive() throws {
-        #if targetEnvironment(simulator)
-        // os_proc_available_memory() returns 0 in non-app process contexts
-        // (Apple os/proc.h). This test is meaningful only on a real device.
+        #if targetEnvironment(simulator) || targetEnvironment(macCatalyst)
+        // os_proc_available_memory() returns 0 when no iOS-style per-process
+        // memory limit is in effect (simulator, and Mac Catalyst where the
+        // host macOS doesn't enforce jetsam-style ceilings). This test is
+        // only meaningful on a physical iPad.
         try XCTSkipIf(true, "AvailableMemory is only meaningful on physical iPad")
         #else
         let avail = AvailableMemory.current()
