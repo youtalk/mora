@@ -48,6 +48,7 @@ public enum MicUIState: Equatable, Sendable {
 }
 
 public struct MicButton: View {
+    @Environment(\.moraStrings) private var strings
     public let state: MicButtonState
     public let action: () -> Void
 
@@ -82,7 +83,7 @@ public struct MicButton: View {
         .disabled(state == .assessing)
         .onAppear { pulse = state == .listening }
         .onChange(of: state) { _, new in pulse = new == .listening }
-        .accessibilityLabel(state.accessibilityLabel)
+        .accessibilityLabel(strings.a11yMicButton)
         .accessibilityHint(state.accessibilityHint)
         .accessibilityAddTraits(state == .assessing ? .isStaticText : [])
     }
