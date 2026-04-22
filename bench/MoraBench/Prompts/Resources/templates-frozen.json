@@ -1,0 +1,24 @@
+{
+  "snapshot_source": "Mora Phase 4 sh_week1 + three synthetic extensions",
+  "frozen_at": "2026-04-21",
+  "target_grapheme": "sh",
+  "taught_graphemes": ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"],
+  "vocabulary": {
+    "subject": ["ship","fish","cat","dog","kid","shop","dish","boy","girl","fox"],
+    "verb": ["can","is","has","runs","sits","hops","shuts","wishes","mashes","sees"],
+    "noun": ["ship","fish","shop","dish","cash","shed","shin","wish","mash","shell"],
+    "adjective": ["fast","red","big","hot","shy","fresh","harsh","short","shiny","snug"]
+  },
+  "templates": [
+    "The {subject} {verb} a {noun}.",
+    "A {adjective} {subject} {verb}.",
+    "The {subject} is {adjective}.",
+    "Can a {subject} {verb} a {noun}?",
+    "I see a {adjective} {noun}.",
+    "The {noun} can be {adjective}.",
+    "A {subject} {verb} in the {noun}.",
+    "The {subject} and a {noun} are {adjective}.",
+    "Here is a {adjective} {noun}.",
+    "The {subject} has a {noun}."
+  ]
+}

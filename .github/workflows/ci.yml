@@ -86,3 +86,77 @@ jobs:
           echo "::group::swift build — MoraMLX"
           (cd Packages/MoraMLX && swift build)
           echo "::endgroup::"
+
+  changes:
+    name: Changes
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    outputs:
+      bench: ${{ steps.filter.outputs.bench }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            bench:
+              - 'bench/**'
+              - '.github/workflows/ci.yml'
+
+  bench-build:
+    name: Bench Build / Test
+    needs: [lint, changes]
+    if: ${{ needs.changes.outputs.bench == 'true' || github.event_name == 'workflow_dispatch' }}
+    runs-on: macos-15
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install xcodegen
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: "1"
+          HOMEBREW_NO_INSTALL_CLEANUP: "1"
+        run: brew install xcodegen
+
+      - name: Generate bench project
+        working-directory: bench
+        run: xcodegen generate
+
+      - name: Build MoraBench (iOS Simulator)
+        working-directory: bench
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project 'Mora Bench.xcodeproj' \
+            -scheme MoraBench \
+            -destination 'generic/platform=iOS Simulator' \
+            -configuration Debug \
+            -skipMacroValidation \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Pick iPad simulator
+        id: sim
+        run: |
+          # simctl lines look like: "    iPad Pro 13-inch (M5) (UUID) (Shutdown)"
+          # We want the device name including any generation suffix, so strip
+          # only the UUID paren and the state paren, not inner parens like (M5).
+          NAME=$(xcrun simctl list devices available \
+            | grep -iE 'iPad' \
+            | head -1 \
+            | sed -E 's/^[[:space:]]*(.+) \([0-9A-Fa-f-]{36}\) \([A-Za-z]+\)[[:space:]]*$/\1/')
+          echo "name=$NAME" >> "$GITHUB_OUTPUT"
+          echo "Selected simulator: $NAME"
+
+      - name: Test MoraBench
+        working-directory: bench
+        env:
+          SIM_NAME: ${{ steps.sim.outputs.name }}
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -project 'Mora Bench.xcodeproj' \
+            -scheme MoraBench \
+            -destination "platform=iOS Simulator,name=${SIM_NAME},OS=latest" \
+            -skipMacroValidation \
+            CODE_SIGNING_ALLOWED=NO
