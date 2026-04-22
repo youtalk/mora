@@ -5,10 +5,14 @@ final class ResultStore {
 
     private let fileURL: URL
 
-    init() {
+    convenience init() {
         let support = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
         try? FileManager.default.createDirectory(at: support, withIntermediateDirectories: true)
-        self.fileURL = support.appending(path: "bench-results.json")
+        self.init(fileURL: support.appending(path: "bench-results.json"))
+    }
+
+    init(fileURL: URL) {
+        self.fileURL = fileURL
     }
 
     func append(_ result: BenchResult) {
@@ -25,7 +29,7 @@ final class ResultStore {
 
     func loadAll() -> [BenchResult] {
         guard let data = try? Data(contentsOf: fileURL) else { return [] }
-        return (try? JSONDecoder().decode([BenchResult].self, from: data)) ?? []
+        return (try? Self.decoder().decode([BenchResult].self, from: data)) ?? []
     }
 
     func exportURL() -> URL? {
@@ -34,9 +38,8 @@ final class ResultStore {
         let export = FileManager.default.temporaryDirectory.appending(
             path: "bench-results-\(ISO8601DateFormatter().string(from: Date())).json"
         )
-        let encoder = JSONEncoder()
+        let encoder = Self.encoder()
         encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
-        encoder.dateEncodingStrategy = .iso8601
         guard let data = try? encoder.encode(ExportEnvelope(device: DeviceInfo.current(), results: all)),
               (try? data.write(to: export)) != nil else {
             return nil
@@ -45,11 +48,21 @@ final class ResultStore {
     }
 
     private func save(_ all: [BenchResult]) {
-        let encoder = JSONEncoder()
-        encoder.dateEncodingStrategy = .iso8601
-        if let data = try? encoder.encode(all) {
+        if let data = try? Self.encoder().encode(all) {
             try? data.write(to: fileURL)
         }
+    }
+
+    private static func encoder() -> JSONEncoder {
+        let e = JSONEncoder()
+        e.dateEncodingStrategy = .iso8601
+        return e
+    }
+
+    private static func decoder() -> JSONDecoder {
+        let d = JSONDecoder()
+        d.dateDecodingStrategy = .iso8601
+        return d
     }
 }
 
