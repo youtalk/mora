@@ -1,7 +1,7 @@
-import XCTest
 import MoraCore
-import MoraEngines
-@testable import MoraTesting
+import XCTest
+
+@testable import MoraEngines
 
 final class ScriptedContentProviderTests: XCTestCase {
     func test_bundledShWeek1_exposesTargetAndTaughtGraphemesFromJSON() throws {
