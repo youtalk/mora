@@ -6,7 +6,7 @@ struct WelcomeView: View {
     var body: some View {
         VStack(spacing: MoraTheme.Space.lg) {
             Spacer()
-            Text("mora")
+            Text("Mora")
                 .font(.system(size: 120, weight: .heavy, design: .rounded))
                 .foregroundStyle(MoraTheme.Accent.orange)
             Text("Let's learn English sounds together")

@@ -29,7 +29,6 @@ struct NameView: View {
                 .autocorrectionDisabled()
                 .padding(MoraTheme.Space.lg)
                 .background(Color.white, in: .rect(cornerRadius: MoraTheme.Radius.card))
-                .shadow(color: MoraTheme.Ink.secondary.opacity(0.15), radius: 3, y: 2)
                 .frame(maxWidth: 520)
 
             Spacer()
