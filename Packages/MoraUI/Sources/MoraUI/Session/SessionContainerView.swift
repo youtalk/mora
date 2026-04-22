@@ -15,6 +15,7 @@ public enum SessionUIMode: Equatable, Sendable {
 public struct SessionContainerView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.moraStrings) private var strings
     @Query(sort: \DailyStreak.lastCompletedOn, order: .reverse)
     private var streaks: [DailyStreak]
     @State private var orchestrator: SessionOrchestrator?
@@ -44,9 +45,9 @@ public struct SessionContainerView: View {
 
             FeedbackOverlay(state: feedback)
         }
-        .alert("End today's quest?", isPresented: $showCloseConfirm) {
-            Button("Keep going", role: .cancel) {}
-            Button("End quest", role: .destructive) {
+        .alert(strings.sessionCloseTitle, isPresented: $showCloseConfirm) {
+            Button(strings.sessionCloseKeepGoing, role: .cancel) {}
+            Button(strings.sessionCloseEnd, role: .destructive) {
                 // Record a partial summary so progress is not silently dropped.
                 if let orchestrator {
                     let partial = orchestrator.sessionSummary(endedAt: Date())
@@ -55,7 +56,7 @@ public struct SessionContainerView: View {
                 dismiss()
             }
         } message: {
-            Text("Your progress so far will be saved.")
+            Text(strings.sessionCloseMessage)
         }
         #if os(iOS)
         .navigationBarHidden(true)
@@ -72,7 +73,7 @@ public struct SessionContainerView: View {
                     .background(Color.white.opacity(0.6), in: .circle)
             }
             .buttonStyle(.plain)
-            .accessibilityLabel("Close session")
+            .accessibilityLabel(strings.a11yCloseSession)
             .accessibilityHint("Confirms before leaving so you don't lose progress.")
 
             Spacer()
