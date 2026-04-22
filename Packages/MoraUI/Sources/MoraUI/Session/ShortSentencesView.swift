@@ -3,7 +3,7 @@ import MoraEngines
 import SwiftUI
 
 #if canImport(UIKit)
-    import UIKit
+import UIKit
 #endif
 
 private enum SentenceMicUIState: Equatable {
@@ -65,11 +65,11 @@ struct ShortSentencesView: View {
                 }
             }
             #if canImport(UIKit)
-                switch new {
-                case .correct: UINotificationFeedbackGenerator().notificationOccurred(.success)
-                case .wrong: UINotificationFeedbackGenerator().notificationOccurred(.error)
-                case .none: break
-                }
+            switch new {
+            case .correct: UINotificationFeedbackGenerator().notificationOccurred(.success)
+            case .wrong: UINotificationFeedbackGenerator().notificationOccurred(.error)
+            case .none: break
+            }
             #endif
         }
     }

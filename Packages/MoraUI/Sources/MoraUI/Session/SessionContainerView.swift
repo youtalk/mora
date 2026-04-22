@@ -56,7 +56,7 @@ public struct SessionContainerView: View {
             Text("Your progress so far will be saved.")
         }
         #if os(iOS)
-            .navigationBarHidden(true)
+        .navigationBarHidden(true)
         #endif
     }
 
