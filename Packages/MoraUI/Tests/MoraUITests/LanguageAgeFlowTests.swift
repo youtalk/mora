@@ -61,7 +61,7 @@ final class LanguageAgeFlowTests: XCTestCase {
         let profiles = try ctx.fetch(FetchDescriptor<LearnerProfile>())
         XCTAssertEqual(profiles.count, 1)
         XCTAssertEqual(profiles.first?.displayName, "hiro")  // preserved
-        XCTAssertEqual(profiles.first?.ageYears, 8)          // backfilled
+        XCTAssertEqual(profiles.first?.ageYears, 8)  // backfilled
         XCTAssertEqual(
             Set(profiles.first?.interests ?? []), ["animals", "robots"]
         )  // preserved

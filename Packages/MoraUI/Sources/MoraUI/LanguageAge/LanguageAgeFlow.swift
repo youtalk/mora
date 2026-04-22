@@ -9,7 +9,7 @@ import SwiftUI
 final class LanguageAgeState {
     var step: Step = .language
     var selectedLanguageID: String = "ja"  // pre-selected per spec §6.1
-    var selectedAge: Int? = 8              // pre-selected per spec §6.2
+    var selectedAge: Int? = 8  // pre-selected per spec §6.2
 
     static let onboardedKey = "tech.reenable.Mora.languageAgeOnboarded"
 
