@@ -53,4 +53,14 @@ public struct JapaneseL1Profile: L1Profile {
     ]
 
     public init() {}
+
+    public func exemplars(for phoneme: Phoneme) -> [String] {
+        switch phoneme.ipa {
+        case "ʃ": return ["ship", "shop", "fish"]
+        case "tʃ": return ["chop", "chin", "rich"]
+        case "θ": return ["thin", "thick", "math"]
+        case "k": return ["duck", "back", "rock"]  // for "ck" coda
+        default: return []
+        }
+    }
 }
