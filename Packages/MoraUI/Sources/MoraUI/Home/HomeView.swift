@@ -52,7 +52,7 @@ public struct HomeView: View {
 
     private var header: some View {
         HStack {
-            Text("mora")
+            Text("Mora")
                 .font(MoraType.heading())
                 .foregroundStyle(MoraTheme.Accent.orange)
             Spacer()
@@ -88,8 +88,6 @@ public struct HomeView: View {
                 .foregroundStyle(MoraTheme.Ink.secondary)
 
             NavigationLink(value: "session") {
-                // Match HeroCTA spec §6.4: 18pt Rounded Bold, orange capsule
-                // with y=5 shadow. Inlined so NavigationLink owns the tap.
                 Text("▶ Start")
                     .font(MoraType.cta())
                     .foregroundStyle(.white)
@@ -97,7 +95,6 @@ public struct HomeView: View {
                     .padding(.vertical, MoraTheme.Space.md)
                     .frame(minHeight: 88)
                     .background(MoraTheme.Accent.orange, in: .capsule)
-                    .shadow(color: MoraTheme.Accent.orangeShadow, radius: 0, x: 0, y: 5)
             }
             .buttonStyle(.plain)
             .padding(.top, MoraTheme.Space.md)

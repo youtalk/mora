@@ -73,7 +73,6 @@ public struct MicButton: View {
                 Circle()
                     .fill(MoraTheme.Accent.orange)
                     .frame(width: 96, height: 96)
-                    .shadow(color: MoraTheme.Accent.orangeShadow, radius: 0, x: 0, y: 5)
                 Image(systemName: state.iconName)
                     .font(.system(size: 44, weight: .bold))
                     .foregroundStyle(Color.white)

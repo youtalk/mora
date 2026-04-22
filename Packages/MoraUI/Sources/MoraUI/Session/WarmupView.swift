@@ -26,7 +26,6 @@ struct WarmupView: View {
                             .foregroundStyle(MoraTheme.Ink.primary)
                             .frame(width: 140, height: 140)
                             .background(Color.white, in: .rect(cornerRadius: MoraTheme.Radius.card))
-                            .shadow(color: MoraTheme.Ink.secondary.opacity(0.20), radius: 4, y: 2)
                     }
                     .buttonStyle(.plain)
                 }
