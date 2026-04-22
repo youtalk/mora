@@ -14,8 +14,7 @@ let package = Package(
     targets: [
         .target(
             name: "MoraTesting",
-            dependencies: ["MoraCore", "MoraEngines"],
-            resources: [.process("Resources")]
+            dependencies: ["MoraCore", "MoraEngines"]
         ),
         .testTarget(
             name: "MoraTestingTests",
