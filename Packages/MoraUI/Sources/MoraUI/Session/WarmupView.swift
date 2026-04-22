@@ -64,13 +64,11 @@ struct WarmupView: View {
     }
 
     private func playTargetPhoneme() async {
-        guard let tts = ttsEngine,
-            let phoneme = orchestrator.target.skill.graphemePhoneme?.phoneme
-        else { return }
+        guard let tts = ttsEngine, let phoneme = orchestrator.target.phoneme else { return }
         await tts.speak(phoneme: phoneme)
     }
 
     private var targetIPA: String {
-        orchestrator.target.skill.graphemePhoneme?.phoneme.ipa ?? "?"
+        orchestrator.target.ipa ?? "?"
     }
 }

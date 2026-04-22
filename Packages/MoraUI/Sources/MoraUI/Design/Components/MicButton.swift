@@ -4,6 +4,47 @@ public enum MicButtonState: Equatable, Sendable {
     case idle
     case listening
     case assessing
+
+    public var iconName: String {
+        switch self {
+        case .idle: return "mic.fill"
+        case .listening: return "waveform"
+        case .assessing: return "ellipsis"
+        }
+    }
+
+    public var accessibilityLabel: String {
+        switch self {
+        case .idle: return "Start speaking"
+        case .listening: return "Listening"
+        case .assessing: return "Checking your answer"
+        }
+    }
+
+    public var accessibilityHint: String {
+        switch self {
+        case .idle: return "Tap to start recording"
+        case .listening: return "Tap to stop recording"
+        case .assessing: return ""
+        }
+    }
+}
+
+/// View-level state for the mic flow. Unlike `MicButtonState` it carries the
+/// partial-transcript text, which the decoding/sentence views surface below the
+/// mic button while the recognizer streams intermediate results.
+public enum MicUIState: Equatable, Sendable {
+    case idle
+    case listening(partialText: String)
+    case assessing
+
+    public var buttonState: MicButtonState {
+        switch self {
+        case .idle: return .idle
+        case .listening: return .listening
+        case .assessing: return .assessing
+        }
+    }
 }
 
 public struct MicButton: View {
@@ -33,7 +74,7 @@ public struct MicButton: View {
                     .fill(MoraTheme.Accent.orange)
                     .frame(width: 96, height: 96)
                     .shadow(color: MoraTheme.Accent.orangeShadow, radius: 0, x: 0, y: 5)
-                Image(systemName: icon)
+                Image(systemName: state.iconName)
                     .font(.system(size: 44, weight: .bold))
                     .foregroundStyle(Color.white)
             }
@@ -42,34 +83,10 @@ public struct MicButton: View {
         .disabled(state == .assessing)
         .onAppear { pulse = state == .listening }
         .onChange(of: state) { _, new in pulse = new == .listening }
-        .accessibilityLabel(accessibilityLabel)
-        .accessibilityHint(accessibilityHint)
+        .accessibilityLabel(state.accessibilityLabel)
+        .accessibilityHint(state.accessibilityHint)
         .accessibilityAddTraits(state == .assessing ? .isStaticText : [])
     }
 
     @State private var pulse: Bool = false
-
-    private var icon: String {
-        switch state {
-        case .idle: return "mic.fill"
-        case .listening: return "waveform"
-        case .assessing: return "ellipsis"
-        }
-    }
-
-    private var accessibilityLabel: String {
-        switch state {
-        case .idle: return "Start speaking"
-        case .listening: return "Listening"
-        case .assessing: return "Checking your answer"
-        }
-    }
-
-    private var accessibilityHint: String {
-        switch state {
-        case .idle: return "Tap to start recording"
-        case .listening: return "Tap to stop recording"
-        case .assessing: return ""
-        }
-    }
 }

@@ -8,4 +8,9 @@ public struct Target: Hashable, Codable, Sendable {
         self.weekStart = weekStart
         self.skill = skill
     }
+
+    public var grapheme: Grapheme? { skill.graphemePhoneme?.grapheme }
+    public var phoneme: Phoneme? { skill.graphemePhoneme?.phoneme }
+    public var letters: String? { skill.graphemePhoneme?.grapheme.letters }
+    public var ipa: String? { skill.graphemePhoneme?.phoneme.ipa }
 }

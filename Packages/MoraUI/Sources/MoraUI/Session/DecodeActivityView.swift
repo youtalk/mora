@@ -6,12 +6,6 @@ import SwiftUI
 import UIKit
 #endif
 
-private enum MicUIState: Equatable {
-    case idle
-    case listening(partialText: String)
-    case assessing
-}
-
 struct DecodeActivityView: View {
     let orchestrator: SessionOrchestrator
     let uiMode: SessionUIMode
@@ -85,7 +79,7 @@ struct DecodeActivityView: View {
 
     private var micStack: some View {
         VStack(spacing: MoraTheme.Space.sm) {
-            MicButton(state: micButtonState) {
+            MicButton(state: micState.buttonState) {
                 switch micState {
                 case .idle:
                     if let engine = speechEngine { startListening(engine: engine) }
@@ -103,14 +97,6 @@ struct DecodeActivityView: View {
                     .font(MoraType.label())
                     .foregroundStyle(MoraTheme.Ink.muted)
             }
-        }
-    }
-
-    private var micButtonState: MicButtonState {
-        switch micState {
-        case .idle: return .idle
-        case .listening: return .listening
-        case .assessing: return .assessing
         }
     }
 

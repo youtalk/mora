@@ -6,12 +6,6 @@ import SwiftUI
 import UIKit
 #endif
 
-private enum SentenceMicUIState: Equatable {
-    case idle
-    case listening(partialText: String)
-    case assessing
-}
-
 struct ShortSentencesView: View {
     let orchestrator: SessionOrchestrator
     let uiMode: SessionUIMode
@@ -19,7 +13,7 @@ struct ShortSentencesView: View {
     let speechEngine: SpeechEngine?
     let ttsEngine: TTSEngine?
 
-    @State private var micState: SentenceMicUIState = .idle
+    @State private var micState: MicUIState = .idle
     @State private var shakeAmount: CGFloat = 0
     @State private var shakeResetTask: Task<Void, Never>?
 
@@ -81,7 +75,7 @@ struct ShortSentencesView: View {
 
     private var micStack: some View {
         VStack(spacing: MoraTheme.Space.sm) {
-            MicButton(state: micButtonState) {
+            MicButton(state: micState.buttonState) {
                 switch micState {
                 case .idle:
                     if let engine = speechEngine { startListening(engine: engine) }
@@ -96,14 +90,6 @@ struct ShortSentencesView: View {
                     .font(MoraType.label())
                     .foregroundStyle(MoraTheme.Ink.muted)
             }
-        }
-    }
-
-    private var micButtonState: MicButtonState {
-        switch micState {
-        case .idle: return .idle
-        case .listening: return .listening
-        case .assessing: return .assessing
         }
     }
 

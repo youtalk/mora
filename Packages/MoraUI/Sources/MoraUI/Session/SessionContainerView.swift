@@ -15,6 +15,8 @@ public enum SessionUIMode: Equatable, Sendable {
 public struct SessionContainerView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
+    @Query(sort: \DailyStreak.lastCompletedOn, order: .reverse)
+    private var streaks: [DailyStreak]
     @State private var orchestrator: SessionOrchestrator?
     @State private var bootError: String?
     @State private var feedback: FeedbackState = .none
@@ -83,8 +85,7 @@ public struct SessionContainerView: View {
 
             Spacer()
 
-            // Streak is wired in PR 3 when DailyStreak lands; until then, stub 0.
-            StreakChip(count: 0)
+            StreakChip(count: streaks.first?.currentCount ?? 0)
         }
     }
 
@@ -155,10 +156,10 @@ public struct SessionContainerView: View {
         #endif
 
         do {
-            let curriculum = CurriculumEngine.defaultV1Ladder()
+            let curriculum = CurriculumEngine.sharedV1
             let target = curriculum.currentTarget(forWeekIndex: 0)
             let taught = curriculum.taughtGraphemes(beforeWeekIndex: 0)
-            guard let targetGrapheme = target.skill.graphemePhoneme?.grapheme else {
+            guard let targetGrapheme = target.grapheme else {
                 bootError =
                     "Target skill \(target.skill.code.rawValue) has no grapheme/phoneme mapping"
                 return
