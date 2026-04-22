@@ -8,13 +8,28 @@ struct DownloadView: View {
         VStack(spacing: 16) {
             Text(model.displayName).font(.headline)
             Text(String(format: "Approx %.1f GB download", model.approxSizeGB))
-                .font(.caption)
-                .foregroundStyle(.secondary)
+                .font(.caption).foregroundStyle(.secondary)
+
             ProgressView(statusLabel)
-            Button("Load") { Task { await runner.load(model) } }
-                .buttonStyle(.borderedProminent)
+
+            if case .ready = runner.status, runner.loadedModel?.id == model.id {
+                NavigationLink("Run benchmark", value: RunDestination.single(model))
+                    .buttonStyle(.borderedProminent)
+            } else {
+                Button("Load") { Task { await runner.load(model) } }
+                    .buttonStyle(.borderedProminent)
+            }
         }
         .padding()
+        .navigationDestination(for: RunDestination.self) { dest in
+            switch dest {
+            case .single(let m): SingleRunView(model: m)
+            }
+        }
+    }
+
+    enum RunDestination: Hashable {
+        case single(BenchModel)
     }
 
     private var statusLabel: String {
