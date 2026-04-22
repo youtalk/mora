@@ -134,6 +134,7 @@ final class LLMRunner: ObservableObject {
             }
             thermal.stop()
             self.lastResult = result
+            ResultStore.shared.append(result)
             self.status = .done(finalOutput)
         } catch {
             thermal.stop()

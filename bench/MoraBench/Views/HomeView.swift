@@ -16,6 +16,11 @@ struct HomeView: View {
                 }
             }
             .navigationTitle("Mora Bench")
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    NavigationLink("Results", destination: ResultsView())
+                }
+            }
         } detail: {
             Text("Pick a model")
         }
