@@ -7,6 +7,17 @@ options:
 settings:
   base:
     SWIFT_VERSION: "5.9"
+packages:
+  MoraCore:
+    path: Packages/MoraCore
+  MoraEngines:
+    path: Packages/MoraEngines
+  MoraUI:
+    path: Packages/MoraUI
+  MoraTesting:
+    path: Packages/MoraTesting
+  MoraMLX:
+    path: Packages/MoraMLX
 targets:
   Mora:
     type: application
@@ -16,6 +27,12 @@ targets:
       - path: Mora
     resources:
       - path: Mora/Assets.xcassets
+    dependencies:
+      - package: MoraCore
+      - package: MoraEngines
+      - package: MoraUI
+      - package: MoraTesting
+      - package: MoraMLX
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.yutaka.mora.Mora
