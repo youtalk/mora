@@ -9,7 +9,11 @@ struct CompletionView: View {
     let persistSummary: (SessionSummary) -> Void
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var ctx
-    @Query private var streaks: [DailyStreak]
+    // Sort so that if duplicate rows ever land in the store (migration bug,
+    // test seed leakage) the freshest one wins deterministically. HomeView
+    // uses the same sort; both views agree on which row is "the" streak.
+    @Query(sort: \DailyStreak.lastCompletedOn, order: .reverse)
+    private var streaks: [DailyStreak]
     @State private var didPersist = false
 
     var body: some View {

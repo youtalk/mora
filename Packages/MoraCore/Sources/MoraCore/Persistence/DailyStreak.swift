@@ -23,7 +23,9 @@ public final class DailyStreak {
     /// Record that a session completed on the given day. Increments
     /// `currentCount` when `date` is exactly one day after the previous
     /// completion, resets to 1 on a longer gap, no-ops on the same day.
-    /// `longestCount` is pulled up to match `currentCount` on every call.
+    /// `longestCount` is bumped whenever `currentCount` changes; same-day
+    /// calls skip the update since `currentCount` doesn't change and the
+    /// previous call already recorded the max.
     public func recordCompletion(
         on date: Date,
         calendar: Calendar = .init(identifier: .gregorian)

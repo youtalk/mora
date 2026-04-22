@@ -21,6 +21,7 @@ struct ShortSentencesView: View {
 
     @State private var micState: SentenceMicUIState = .idle
     @State private var shakeAmount: CGFloat = 0
+    @State private var shakeResetTask: Task<Void, Never>?
 
     var body: some View {
         VStack(spacing: MoraTheme.Space.lg) {
@@ -58,9 +59,13 @@ struct ShortSentencesView: View {
         }
         .onChange(of: feedback) { _, new in
             if new == .wrong {
+                // Cancel any in-flight reset so back-to-back .wrong events
+                // don't race.
+                shakeResetTask?.cancel()
                 withAnimation(.linear(duration: 0.6)) { shakeAmount = 1 }
-                Task { @MainActor in
+                shakeResetTask = Task { @MainActor in
                     try? await Task.sleep(nanoseconds: 600_000_000)
+                    guard !Task.isCancelled else { return }
                     shakeAmount = 0
                 }
             }
