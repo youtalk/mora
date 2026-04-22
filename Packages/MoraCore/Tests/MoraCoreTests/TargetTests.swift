@@ -3,8 +3,9 @@ import XCTest
 
 final class TargetTests: XCTestCase {
     func test_interestCategory_rememberKeyDisplayName() {
-        let c = InterestCategory(key: "animals", displayName: "Animals",
-                                 parentAuthored: false)
+        let c = InterestCategory(
+            key: "animals", displayName: "Animals",
+            parentAuthored: false)
         XCTAssertEqual(c.key, "animals")
         XCTAssertFalse(c.parentAuthored)
     }
@@ -22,7 +23,7 @@ final class TargetTests: XCTestCase {
                 phoneme: .init(ipa: "ʃ")
             )
         )
-        let date = Date(timeIntervalSince1970: 1_713_974_400) // 2024-04-24
+        let date = Date(timeIntervalSince1970: 1_713_974_400)  // 2024-04-24
         let target = Target(weekStart: date, skill: skill)
         XCTAssertEqual(target.skill.code, "sh_onset")
         XCTAssertEqual(target.weekStart, date)

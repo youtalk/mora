@@ -44,12 +44,12 @@ public struct JapaneseL1Profile: L1Profile {
     ]
 
     public let interestCategories: [InterestCategory] = [
-        InterestCategory(key: "animals",   displayName: "Animals"),
+        InterestCategory(key: "animals", displayName: "Animals"),
         InterestCategory(key: "dinosaurs", displayName: "Dinosaurs"),
-        InterestCategory(key: "vehicles",  displayName: "Vehicles"),
-        InterestCategory(key: "space",     displayName: "Space"),
-        InterestCategory(key: "sports",    displayName: "Sports"),
-        InterestCategory(key: "robots",    displayName: "Robots"),
+        InterestCategory(key: "vehicles", displayName: "Vehicles"),
+        InterestCategory(key: "space", displayName: "Space"),
+        InterestCategory(key: "sports", displayName: "Sports"),
+        InterestCategory(key: "robots", displayName: "Robots"),
     ]
 
     public init() {}
