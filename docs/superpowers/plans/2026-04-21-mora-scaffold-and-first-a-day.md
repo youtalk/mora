@@ -8,6 +8,12 @@
 
 **Tech Stack:** Swift 5.9+, SwiftUI, SwiftData, Foundation; XCTest; Xcode 15.3+; XcodeGen 2.45+ (for CLI-driven project generation); iPadOS 17.0 deployment minimum.
 
+**Shell conventions:** All shell commands in this plan reference `$REPO_ROOT` as the repository root. Run this once per shell session before working on any task:
+
+```bash
+export REPO_ROOT="$(git rev-parse --show-toplevel)"
+```
+
 **Scope boundary — what this plan does NOT build:**
 - C-day (Reading Adventure) flow or StoryLibrary
 - Real on-device ASR (SFSpeechRecognizer) — fake only, exposes a UI-driven "I heard X" scripted result
@@ -168,7 +174,7 @@ Expected: `Version: 2.45.3` (or newer). If missing, install with `brew install x
 # project.yml
 name: Mora
 options:
-  bundleIdPrefix: com.yutaka.mora
+  bundleIdPrefix: tech.reenable
   deploymentTarget:
     iOS: "17.0"
   developmentLanguage: en
@@ -186,7 +192,7 @@ targets:
       - path: Mora/Assets.xcassets
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.yutaka.mora.Mora
+        PRODUCT_BUNDLE_IDENTIFIER: tech.reenable.Mora
         TARGETED_DEVICE_FAMILY: "2"        # iPad only (enforced here, not via supportedDestinations)
         INFOPLIST_KEY_UILaunchScreen_Generation: "YES"
         INFOPLIST_KEY_UIApplicationSceneManifest_Generation: "YES"
@@ -264,14 +270,14 @@ Create `Mora/Assets.xcassets/AppIcon.appiconset/Contents.json`:
 - [ ] **Step 4: Generate the Xcode project.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora && xcodegen generate
+cd $REPO_ROOT && xcodegen generate
 ```
 Expected: `Generated project successfully` and `Mora.xcodeproj/` is created at the repo root.
 
 - [ ] **Step 5: Verify build.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora && xcodebuild -project Mora.xcodeproj -scheme Mora -destination 'platform=iOS Simulator,name=iPad (10th generation),OS=17.4' build
+cd $REPO_ROOT && xcodebuild -project Mora.xcodeproj -scheme Mora -destination 'platform=iOS Simulator,name=iPad (10th generation),OS=17.4' build
 ```
 Expected: `BUILD SUCCEEDED`.
 
@@ -308,8 +314,8 @@ git commit -m "feat: scaffold XcodeGen-driven app target for iPadOS 17"
 - [ ] **Step 1: Scaffold MoraCore.**
 
 ```bash
-mkdir -p /Users/yutaka.kondo/src/mora/Packages/MoraCore/Sources/MoraCore
-mkdir -p /Users/yutaka.kondo/src/mora/Packages/MoraCore/Tests/MoraCoreTests
+mkdir -p $REPO_ROOT/Packages/MoraCore/Sources/MoraCore
+mkdir -p $REPO_ROOT/Packages/MoraCore/Tests/MoraCoreTests
 ```
 
 Write `Packages/MoraCore/Package.swift`:
@@ -359,15 +365,15 @@ final class MoraCoreSmokeTests: XCTestCase {
 - [ ] **Step 3: Run MoraCore tests.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora/Packages/MoraCore && swift test
+cd $REPO_ROOT/Packages/MoraCore && swift test
 ```
 Expected: `Test Suite 'All tests' passed`.
 
 - [ ] **Step 4: Scaffold MoraEngines.**
 
 ```bash
-mkdir -p /Users/yutaka.kondo/src/mora/Packages/MoraEngines/Sources/MoraEngines
-mkdir -p /Users/yutaka.kondo/src/mora/Packages/MoraEngines/Tests/MoraEnginesTests
+mkdir -p $REPO_ROOT/Packages/MoraEngines/Sources/MoraEngines
+mkdir -p $REPO_ROOT/Packages/MoraEngines/Tests/MoraEnginesTests
 ```
 
 Write `Packages/MoraEngines/Package.swift`:
@@ -417,7 +423,7 @@ final class MoraEnginesSmokeTests: XCTestCase {
 - [ ] **Step 5: Run MoraEngines tests.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora/Packages/MoraEngines && swift test
+cd $REPO_ROOT/Packages/MoraEngines && swift test
 ```
 Expected: pass.
 
@@ -441,8 +447,8 @@ git commit -m "feat: scaffold MoraCore and MoraEngines SPM packages"
 - [ ] **Step 1: Scaffold MoraUI.**
 
 ```bash
-mkdir -p /Users/yutaka.kondo/src/mora/Packages/MoraUI/Sources/MoraUI
-mkdir -p /Users/yutaka.kondo/src/mora/Packages/MoraUI/Tests/MoraUITests
+mkdir -p $REPO_ROOT/Packages/MoraUI/Sources/MoraUI
+mkdir -p $REPO_ROOT/Packages/MoraUI/Tests/MoraUITests
 ```
 
 ```swift
@@ -493,8 +499,8 @@ final class MoraUISmokeTests: XCTestCase {
 - [ ] **Step 2: Scaffold MoraTesting.**
 
 ```bash
-mkdir -p /Users/yutaka.kondo/src/mora/Packages/MoraTesting/Sources/MoraTesting
-mkdir -p /Users/yutaka.kondo/src/mora/Packages/MoraTesting/Tests/MoraTestingTests
+mkdir -p $REPO_ROOT/Packages/MoraTesting/Sources/MoraTesting
+mkdir -p $REPO_ROOT/Packages/MoraTesting/Tests/MoraTestingTests
 ```
 
 ```swift
@@ -545,7 +551,7 @@ final class MoraTestingSmokeTests: XCTestCase {
 - [ ] **Step 3: Scaffold MoraMLX (empty, reserved for v1.5).**
 
 ```bash
-mkdir -p /Users/yutaka.kondo/src/mora/Packages/MoraMLX/Sources/MoraMLX
+mkdir -p $REPO_ROOT/Packages/MoraMLX/Sources/MoraMLX
 ```
 
 ```swift
@@ -583,7 +589,7 @@ public enum MoraMLX {
 ```bash
 for pkg in MoraCore MoraEngines MoraUI MoraTesting MoraMLX; do
   echo "--- $pkg ---"
-  (cd /Users/yutaka.kondo/src/mora/Packages/$pkg && swift build) || exit 1
+  (cd $REPO_ROOT/Packages/$pkg && swift build) || exit 1
 done
 ```
 Expected: `Build complete!` for each.
@@ -619,14 +625,14 @@ targets:
 Regenerate:
 
 ```bash
-cd /Users/yutaka.kondo/src/mora && xcodegen generate
+cd $REPO_ROOT && xcodegen generate
 ```
 Expected: `Generated project successfully`.
 
 - [ ] **Step 6: Verify app still builds with packages linked.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora && xcodebuild -project Mora.xcodeproj -scheme Mora -destination 'platform=iOS Simulator,name=iPad (10th generation),OS=17.4' build
+cd $REPO_ROOT && xcodebuild -project Mora.xcodeproj -scheme Mora -destination 'platform=iOS Simulator,name=iPad (10th generation),OS=17.4' build
 ```
 Expected: `BUILD SUCCEEDED`. Each of the five package libraries should appear in the build output.
 
@@ -686,7 +692,7 @@ final class GraphemeTests: XCTestCase {
 - [ ] **Step 2: Run — verify failure.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora/Packages/MoraCore && swift test --filter GraphemeTests
+cd $REPO_ROOT/Packages/MoraCore && swift test --filter GraphemeTests
 ```
 Expected: compilation failure "cannot find 'Grapheme' in scope".
 
@@ -724,7 +730,7 @@ public struct Grapheme: Hashable, Codable, Sendable {
 - [ ] **Step 4: Run tests.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora/Packages/MoraCore && swift test --filter GraphemeTests
+cd $REPO_ROOT/Packages/MoraCore && swift test --filter GraphemeTests
 ```
 Expected: all pass.
 
@@ -775,7 +781,7 @@ final class PhonemeTests: XCTestCase {
 - [ ] **Step 2: Run — verify failure.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora/Packages/MoraCore && swift test --filter PhonemeTests
+cd $REPO_ROOT/Packages/MoraCore && swift test --filter PhonemeTests
 ```
 Expected: "cannot find 'Phoneme' in scope".
 
@@ -865,7 +871,7 @@ final class SkillTests: XCTestCase {
 - [ ] **Step 2: Run — verify failure.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora/Packages/MoraCore && swift test --filter SkillTests
+cd $REPO_ROOT/Packages/MoraCore && swift test --filter SkillTests
 ```
 
 - [ ] **Step 3: Implement.**
@@ -997,7 +1003,7 @@ final class WordDecodabilityTests: XCTestCase {
 - [ ] **Step 2: Run — verify failure.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora/Packages/MoraCore && swift test --filter WordDecodabilityTests
+cd $REPO_ROOT/Packages/MoraCore && swift test --filter WordDecodabilityTests
 ```
 
 - [ ] **Step 3: Implement.**
@@ -1089,7 +1095,7 @@ final class TargetTests: XCTestCase {
 - [ ] **Step 2: Run — verify failure.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora/Packages/MoraCore && swift test --filter TargetTests
+cd $REPO_ROOT/Packages/MoraCore && swift test --filter TargetTests
 ```
 
 - [ ] **Step 3: Implement.**
@@ -1514,7 +1520,7 @@ final class ContentProviderShapeTests: XCTestCase {
 - [ ] **Step 2: Run — verify failure.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora/Packages/MoraEngines && swift test --filter ContentProviderShapeTests
+cd $REPO_ROOT/Packages/MoraEngines && swift test --filter ContentProviderShapeTests
 ```
 
 - [ ] **Step 3: Implement.**
@@ -1785,7 +1791,7 @@ final class TemplateEngineTests: XCTestCase {
 - [ ] **Step 2: Run — verify failure.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora/Packages/MoraEngines && swift test --filter TemplateEngineTests
+cd $REPO_ROOT/Packages/MoraEngines && swift test --filter TemplateEngineTests
 ```
 
 - [ ] **Step 3: Implement.**
@@ -1949,13 +1955,13 @@ final class ScriptedContentProviderTests: XCTestCase {
 - [ ] **Step 2: Run — verify failure.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora/Packages/MoraTesting && swift test --filter ScriptedContentProviderTests
+cd $REPO_ROOT/Packages/MoraTesting && swift test --filter ScriptedContentProviderTests
 ```
 
 - [ ] **Step 3: Write the bundled JSON resource.**
 
 ```bash
-mkdir -p /Users/yutaka.kondo/src/mora/Packages/MoraTesting/Sources/MoraTesting/Resources
+mkdir -p $REPO_ROOT/Packages/MoraTesting/Sources/MoraTesting/Resources
 ```
 
 Write the file at `Packages/MoraTesting/Sources/MoraTesting/Resources/sh_week1.json` with the following exact contents:
@@ -2150,7 +2156,7 @@ private struct SentencePayload: Decodable {
 - [ ] **Step 6: Run tests.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora/Packages/MoraTesting && swift test --filter ScriptedContentProviderTests
+cd $REPO_ROOT/Packages/MoraTesting && swift test --filter ScriptedContentProviderTests
 ```
 Expected: pass.
 
@@ -2243,7 +2249,7 @@ final class AssessmentEngineScoringTests: XCTestCase {
 - [ ] **Step 2: Run — verify failure.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora/Packages/MoraEngines && swift test --filter AssessmentEngineScoringTests
+cd $REPO_ROOT/Packages/MoraEngines && swift test --filter AssessmentEngineScoringTests
 ```
 
 - [ ] **Step 3: Implement.**
@@ -2486,7 +2492,7 @@ Note: the onset-based tagging is a v1 approximation. v1.5 will add a richer phon
 - [ ] **Step 4: Run tests.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora/Packages/MoraEngines && swift test --filter AssessmentEngine
+cd $REPO_ROOT/Packages/MoraEngines && swift test --filter AssessmentEngine
 ```
 Expected: both `AssessmentEngineScoringTests` and `AssessmentEngineL1Tests` pass.
 
@@ -2667,7 +2673,7 @@ final class FakeSpeechEngineTests: XCTestCase {
 - [ ] **Step 2: Run — verify failure.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora/Packages/MoraTesting && swift test --filter FakeSpeechEngineTests
+cd $REPO_ROOT/Packages/MoraTesting && swift test --filter FakeSpeechEngineTests
 ```
 
 - [ ] **Step 3: Implement.**
@@ -2915,13 +2921,13 @@ final class PersistenceTests: XCTestCase {
 - [ ] **Step 2: Run — verify failure.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora/Packages/MoraCore && swift test --filter PersistenceTests
+cd $REPO_ROOT/Packages/MoraCore && swift test --filter PersistenceTests
 ```
 
 - [ ] **Step 3: Implement entities.**
 
 ```bash
-mkdir -p /Users/yutaka.kondo/src/mora/Packages/MoraCore/Sources/MoraCore/Persistence
+mkdir -p $REPO_ROOT/Packages/MoraCore/Sources/MoraCore/Persistence
 ```
 
 ```swift
@@ -3575,7 +3581,7 @@ public extension SessionOrchestrator {
 - [ ] **Step 4: Run tests.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora/Packages/MoraEngines && swift test
+cd $REPO_ROOT/Packages/MoraEngines && swift test
 ```
 Expected: every test under MoraEngines passes.
 
@@ -3805,7 +3811,7 @@ struct CompletionView: View {
 - [ ] **Step 5: Verify build.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora && xcodebuild -project Mora.xcodeproj -scheme Mora -destination 'platform=iOS Simulator,name=iPad (10th generation),OS=17.4' build
+cd $REPO_ROOT && xcodebuild -project Mora.xcodeproj -scheme Mora -destination 'platform=iOS Simulator,name=iPad (10th generation),OS=17.4' build
 ```
 Expected: `BUILD SUCCEEDED`.
 
@@ -4006,7 +4012,7 @@ Delete the `struct WarmupView`, `struct NewRuleView`, and `struct DecodeActivity
 - [ ] **Step 5: Verify build.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora && xcodebuild -project Mora.xcodeproj -scheme Mora -destination 'platform=iOS Simulator,name=iPad (10th generation),OS=17.4' build
+cd $REPO_ROOT && xcodebuild -project Mora.xcodeproj -scheme Mora -destination 'platform=iOS Simulator,name=iPad (10th generation),OS=17.4' build
 ```
 Expected: `BUILD SUCCEEDED`.
 
@@ -4146,7 +4152,7 @@ After this edit, `SessionContainerView.swift` contains only the `SessionContaine
 - [ ] **Step 4: Verify build.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora && xcodebuild -project Mora.xcodeproj -scheme Mora -destination 'platform=iOS Simulator,name=iPad (10th generation),OS=17.4' build
+cd $REPO_ROOT && xcodebuild -project Mora.xcodeproj -scheme Mora -destination 'platform=iOS Simulator,name=iPad (10th generation),OS=17.4' build
 ```
 Expected: `BUILD SUCCEEDED`.
 
@@ -4308,7 +4314,7 @@ final class FullADayIntegrationTests: XCTestCase {
 - [ ] **Step 2: Run the integration tests.**
 
 ```bash
-cd /Users/yutaka.kondo/src/mora/Packages/MoraEngines && swift test --filter FullADayIntegrationTests
+cd $REPO_ROOT/Packages/MoraEngines && swift test --filter FullADayIntegrationTests
 ```
 Expected: both tests pass.
 
@@ -4317,7 +4323,7 @@ Expected: both tests pass.
 ```bash
 for pkg in MoraCore MoraEngines MoraUI MoraTesting; do
   echo "--- $pkg ---"
-  (cd /Users/yutaka.kondo/src/mora/Packages/$pkg && swift test) || exit 1
+  (cd $REPO_ROOT/Packages/$pkg && swift test) || exit 1
 done
 ```
 Expected: all pass.
@@ -4329,11 +4335,11 @@ Boot the simulator and launch the app:
 ```bash
 xcrun simctl boot "iPad (10th generation)" 2>/dev/null || true
 open -a Simulator
-cd /Users/yutaka.kondo/src/mora && xcodebuild -project Mora.xcodeproj -scheme Mora \
+cd $REPO_ROOT && xcodebuild -project Mora.xcodeproj -scheme Mora \
   -destination 'platform=iOS Simulator,name=iPad (10th generation),OS=17.4' \
   -derivedDataPath ./build/DerivedData build
 xcrun simctl install booted ./build/DerivedData/Build/Products/Debug-iphonesimulator/Mora.app
-xcrun simctl launch booted com.yutaka.mora
+xcrun simctl launch booted tech.reenable.Mora
 ```
 
 Manually verify in the simulator:
