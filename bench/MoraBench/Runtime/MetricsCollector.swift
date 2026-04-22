@@ -6,11 +6,12 @@ final class MetricsCollector {
     private var lastSampleClock: DispatchTime?
     private var outputTokens = 0
     private var peakRSS: UInt64 = 0
-    private var minAvailable: UInt64 = .max
+    private var minAvailable: UInt64
     private let availableStart: UInt64
 
     init() {
         self.availableStart = AvailableMemory.current() ?? 0
+        self.minAvailable = availableStart
         sampleMemory()
     }
 

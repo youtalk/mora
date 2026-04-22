@@ -3,6 +3,7 @@ import Foundation
 enum JetsamMarker {
     private static var fileURL: URL {
         let support = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+        try? FileManager.default.createDirectory(at: support, withIntermediateDirectories: true)
         return support.appending(path: "endurance-in-progress.json")
     }
 

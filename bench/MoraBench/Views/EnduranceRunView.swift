@@ -5,6 +5,7 @@ struct EnduranceRunView: View {
     let model: BenchModel
     @State private var selectedPrompt: BenchPrompt = PromptLibrary.all[0]
     @State private var minutes: Double = 20
+    @State private var previousKill: JetsamMarker.Marker?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -32,7 +33,7 @@ struct EnduranceRunView: View {
                 summaryBox(s)
             }
 
-            if let prev = JetsamMarker.detectPreviousKill() {
+            if let prev = previousKill {
                 Text("⚠︎ Previous run was killed at \(prev.startedAt.formatted()) — likely jetsam")
                     .foregroundStyle(.red)
                     .font(.caption)
@@ -40,6 +41,12 @@ struct EnduranceRunView: View {
         }
         .padding()
         .navigationTitle("Endurance")
+        .task {
+            if let m = JetsamMarker.detectPreviousKill(),
+               Date().timeIntervalSince(m.startedAt) > 5 {
+                previousKill = m
+            }
+        }
     }
 
     @ViewBuilder

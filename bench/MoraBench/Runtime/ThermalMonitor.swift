@@ -21,6 +21,7 @@ final class ThermalMonitor: ObservableObject {
     }
 
     func stop() {
+        guard timer != nil else { return }
         timer?.invalidate()
         timer = nil
         record() // final

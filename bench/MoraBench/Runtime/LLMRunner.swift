@@ -120,6 +120,7 @@ final class LLMRunner: ObservableObject {
                         await MainActor.run { [weak self] in self?.liveTokenCount += 1 }
                     }
                 }
+                await MainActor.run { thermal.stop() }
                 let samples = await MainActor.run { thermal.samples }
                 let finalized = collector.finalize(
                     inputTokens: inputTokens,
@@ -132,7 +133,6 @@ final class LLMRunner: ObservableObject {
                 )
                 return (output, finalized)
             }
-            thermal.stop()
             self.lastResult = result
             ResultStore.shared.append(result)
             self.status = .done(finalOutput)

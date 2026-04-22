@@ -7,6 +7,7 @@ final class ResultStore {
 
     init() {
         let support = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+        try? FileManager.default.createDirectory(at: support, withIntermediateDirectories: true)
         self.fileURL = support.appending(path: "bench-results.json")
     }
 

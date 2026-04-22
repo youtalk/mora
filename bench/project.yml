@@ -10,7 +10,7 @@ settings:
 packages:
   MLXSwiftLM:
     url: https://github.com/ml-explore/mlx-swift-lm
-    branch: main
+    from: 3.31.3
   SwiftHuggingFace:
     url: https://github.com/huggingface/swift-huggingface
     from: 0.9.0

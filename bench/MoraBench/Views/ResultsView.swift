@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ResultsView: View {
     @State private var results: [BenchResult] = []
-    @State private var shareURL: URL?
+    @State private var shareTarget: ShareTarget?
 
     var body: some View {
         List {
@@ -24,16 +24,23 @@ struct ResultsView: View {
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button("Export") {
-                    shareURL = ResultStore.shared.exportURL()
+                    if let url = ResultStore.shared.exportURL() {
+                        shareTarget = ShareTarget(url: url)
+                    }
                 }
                 .disabled(results.isEmpty)
             }
         }
         .onAppear { results = ResultStore.shared.loadAll() }
-        .sheet(item: $shareURL) { url in
-            ShareSheet(url: url)
+        .sheet(item: $shareTarget) { target in
+            ShareSheet(url: target.url)
         }
     }
+}
+
+private struct ShareTarget: Identifiable {
+    let id = UUID()
+    let url: URL
 }
 
 private struct ShareSheet: UIViewControllerRepresentable {
@@ -42,8 +49,4 @@ private struct ShareSheet: UIViewControllerRepresentable {
         UIActivityViewController(activityItems: [url], applicationActivities: nil)
     }
     func updateUIViewController(_ controller: UIActivityViewController, context: Context) {}
-}
-
-extension URL: @retroactive Identifiable {
-    public var id: String { absoluteString }
 }
