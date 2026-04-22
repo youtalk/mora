@@ -15,9 +15,13 @@ final class FullADayIntegrationTests: XCTestCase {
         let target = curriculum.currentTarget(forWeekIndex: 0)
         let taught = curriculum.taughtGraphemes(beforeWeekIndex: 0)
         let provider = try ScriptedContentProvider.bundledShWeek1()
+        let targetGrapheme = try XCTUnwrap(
+            target.skill.graphemePhoneme?.grapheme,
+            "Expected week 0 curriculum target to provide a grapheme/phoneme mapping for scripted content."
+        )
 
         let request = ContentRequest(
-            target: target.skill.graphemePhoneme!.grapheme,
+            target: targetGrapheme,
             taughtGraphemes: taught,
             interests: [],
             count: 5
@@ -98,9 +102,13 @@ final class FullADayIntegrationTests: XCTestCase {
         let target = curriculum.currentTarget(forWeekIndex: 0)
         let taught = curriculum.taughtGraphemes(beforeWeekIndex: 0)
         let provider = try ScriptedContentProvider.bundledShWeek1()
+        let targetGrapheme = try XCTUnwrap(
+            target.skill.graphemePhoneme?.grapheme,
+            "Expected week 0 curriculum target to provide a grapheme/phoneme mapping for scripted content."
+        )
         let words = try provider.decodeWords(
             ContentRequest(
-                target: target.skill.graphemePhoneme!.grapheme,
+                target: targetGrapheme,
                 taughtGraphemes: taught,
                 interests: [],
                 count: 5
@@ -108,12 +116,13 @@ final class FullADayIntegrationTests: XCTestCase {
         )
         let sentences = try provider.decodeSentences(
             ContentRequest(
-                target: target.skill.graphemePhoneme!.grapheme,
+                target: targetGrapheme,
                 taughtGraphemes: taught,
                 interests: [],
                 count: 2
             )
         )
+        let missIndex = 2
 
         let orchestrator = SessionOrchestrator(
             target: target,
@@ -129,7 +138,7 @@ final class FullADayIntegrationTests: XCTestCase {
         await orchestrator.handle(.advance)
 
         for (i, w) in words.enumerated() {
-            let correct = i != 2
+            let correct = i != missIndex
             await orchestrator.handle(
                 .answerResult(
                     correct: correct,
@@ -150,6 +159,21 @@ final class FullADayIntegrationTests: XCTestCase {
         }
 
         XCTAssertEqual(orchestrator.phase, .completion)
+
+        // The miss at `missIndex` must have been routed through
+        // `AssessmentEngine`, which classifies an empty transcript as
+        // `.omission` and echoes the transcript into `heard`. Asserting on
+        // `orchestrator.trials` (instead of only the summary) guards against
+        // a regression where the orchestrator stopped invoking the
+        // AssessmentEngine on misses — that regression would still produce a
+        // correct summary count but would silently lose the error taxonomy.
+        XCTAssertEqual(orchestrator.trials.count, words.count + sentences.count)
+        let missedTrial = orchestrator.trials[missIndex]
+        XCTAssertFalse(missedTrial.correct)
+        XCTAssertEqual(missedTrial.errorKind, .omission)
+        XCTAssertEqual(missedTrial.heard, "")
+        XCTAssertEqual(missedTrial.expected.surface, words[missIndex].word.surface)
+
         let summary = orchestrator.sessionSummary(endedAt: Date(timeIntervalSince1970: 600))
         XCTAssertEqual(summary.trialsCorrect, summary.trialsTotal - 1)
         XCTAssertEqual(summary.struggledSkillCodes, [SkillCode("sh_onset")])
