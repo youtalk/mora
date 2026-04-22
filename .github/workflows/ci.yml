@@ -11,33 +11,53 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  ci:
-    name: Lint / Build / Test
+  lint:
+    name: swift-format
     runs-on: macos-14
-    timeout-minutes: 30
+    timeout-minutes: 10
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install tools
+      - name: Install swift-format
         env:
           HOMEBREW_NO_AUTO_UPDATE: "1"
           HOMEBREW_NO_INSTALL_CLEANUP: "1"
-        run: brew install swift-format xcodegen
+        run: brew install swift-format
 
-      - name: Show toolchain
+      - name: Show versions
         run: |
-          xcodebuild -version
           swift --version
           swift-format --version
-          xcodegen --version
-          brew list --versions swift-format xcodegen
+          brew list --versions swift-format
 
       - name: swift-format lint
         # Package.swift is excluded because swift-format's built-in
         # TrailingComma pretty-printer rule conflicts with the repo
         # convention of keeping trailing commas on every element.
         run: swift-format lint --strict --recursive Mora Packages/*/Sources Packages/*/Tests
+
+  build-test:
+    name: Build / Test
+    needs: lint
+    runs-on: macos-14
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install xcodegen
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: "1"
+          HOMEBREW_NO_INSTALL_CLEANUP: "1"
+        run: brew install xcodegen
+
+      - name: Show toolchain
+        run: |
+          xcodebuild -version
+          swift --version
+          xcodegen --version
+          brew list --versions xcodegen
 
       - name: Generate Xcode project
         run: xcodegen generate
