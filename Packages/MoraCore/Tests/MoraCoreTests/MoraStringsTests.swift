@@ -145,12 +145,12 @@ final class MoraStringsTests: XCTestCase {
                 let char = Character(scalar)
                 XCTAssertTrue(
                     JPKanjiLevel.grade1And2.contains(char),
-                    "\(name) contains out-of-budget kanji '\(char)'"
+                    "\(name) contains out-of-budget kanji '\(char)' (U+\(String(scalar.value, radix: 16, uppercase: true)))"
                 )
             } else {
                 XCTAssertTrue(
                     Self.isAllowedNonKanji(scalar),
-                    "\(name) contains disallowed codepoint U+\(String(scalar.value, radix: 16, uppercase: true))"
+                    "\(name) contains disallowed codepoint U+\(String(scalar.value, radix: 16, uppercase: true)) '\(scalar)'"
                 )
             }
         }
