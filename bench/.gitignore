@@ -1,0 +1,6 @@
+# Xcode generated
+*.xcodeproj/
+DerivedData/
+
+# Bench results (local-only; user opts in to commit)
+results/

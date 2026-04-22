@@ -1,0 +1,54 @@
+name: Mora Bench
+options:
+  bundleIdPrefix: tech.reenable
+  deploymentTarget:
+    iOS: "17.0"
+  developmentLanguage: en
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+packages:
+  MLXSwiftExamples:
+    url: https://github.com/ml-explore/mlx-swift-examples
+    exactVersion: 2.25.5
+targets:
+  MoraBench:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: MoraBench
+    resources:
+      - path: MoraBench/Assets.xcassets
+      - path: MoraBench/Prompts/Resources
+    dependencies:
+      - package: MLXSwiftExamples
+        product: MLXLLM
+      - package: MLXSwiftExamples
+        product: MLXLMCommon
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: tech.reenable.MoraBench
+        TARGETED_DEVICE_FAMILY: "2"
+        INFOPLIST_KEY_UILaunchScreen_Generation: "YES"
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: "YES"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        GENERATE_INFOPLIST_FILE: "YES"
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_ENTITLEMENTS: MoraBench/MoraBench.entitlements
+  MoraBenchTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: MoraBenchTests
+    dependencies:
+      - target: MoraBench
+schemes:
+  MoraBench:
+    build:
+      targets:
+        MoraBench: all
+        MoraBenchTests: [test]
+    test:
+      targets:
+        - MoraBenchTests
