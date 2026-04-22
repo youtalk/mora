@@ -138,7 +138,13 @@ jobs:
       - name: Pick iPad simulator
         id: sim
         run: |
-          NAME=$(xcrun simctl list devices available | grep -iE 'iPad' | head -1 | sed -E 's/^[[:space:]]*([^(]+) \(.*/\1/' | sed 's/[[:space:]]*$//')
+          # simctl lines look like: "    iPad Pro 13-inch (M5) (UUID) (Shutdown)"
+          # We want the device name including any generation suffix, so strip
+          # only the UUID paren and the state paren, not inner parens like (M5).
+          NAME=$(xcrun simctl list devices available \
+            | grep -iE 'iPad' \
+            | head -1 \
+            | sed -E 's/^[[:space:]]*(.+) \([0-9A-Fa-f-]{36}\) \([A-Za-z]+\)[[:space:]]*$/\1/')
           echo "name=$NAME" >> "$GITHUB_OUTPUT"
           echo "Selected simulator: $NAME"
 
