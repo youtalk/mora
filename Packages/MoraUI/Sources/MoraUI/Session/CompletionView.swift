@@ -5,28 +5,39 @@ import SwiftUI
 struct CompletionView: View {
     let orchestrator: SessionOrchestrator
     let persistSummary: (SessionSummary) -> Void
+    @Environment(\.dismiss) private var dismiss
     @State private var didPersist = false
 
     var body: some View {
-        VStack(spacing: 28) {
+        VStack(spacing: MoraTheme.Space.lg) {
+            Spacer()
+
             Text("Quest complete!")
                 .font(.system(size: 60, weight: .heavy, design: .rounded))
-            VStack(spacing: 8) {
-                Text("Correct: \(correct) / \(total)")
-                    .font(.title2)
-                Text("Today's target: \(letters)")
-                    .font(.title3)
-                    .foregroundStyle(.secondary)
-            }
+                .foregroundStyle(MoraTheme.Ink.primary)
+
+            Text("\(correct) / \(total)")
+                .font(.system(size: 120, weight: .heavy, design: .rounded))
+                .foregroundStyle(MoraTheme.Accent.teal)
+
+            Text("Today's target: \(letters)")
+                .font(MoraType.heading())
+                .foregroundStyle(MoraTheme.Ink.secondary)
+
+            Spacer()
+
             Text("Come back tomorrow!")
-                .font(.title3)
+                .font(MoraType.bodyReading())
+                .foregroundStyle(MoraTheme.Ink.muted)
+                .padding(.bottom, MoraTheme.Space.xl)
         }
-        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .contentShape(Rectangle())
+        .onTapGesture { dismiss() }
         .onAppear {
             guard !didPersist else { return }
             didPersist = true
-            let summary = orchestrator.sessionSummary(endedAt: Date())
-            persistSummary(summary)
+            persistSummary(orchestrator.sessionSummary(endedAt: Date()))
         }
     }
 
