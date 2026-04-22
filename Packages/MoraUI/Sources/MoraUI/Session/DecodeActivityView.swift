@@ -2,6 +2,10 @@ import MoraCore
 import MoraEngines
 import SwiftUI
 
+#if canImport(UIKit)
+import UIKit
+#endif
+
 private enum MicUIState: Equatable {
     case idle
     case listening(partialText: String)
@@ -16,6 +20,8 @@ struct DecodeActivityView: View {
     let ttsEngine: TTSEngine?
 
     @State private var micState: MicUIState = .idle
+    @State private var shakeAmount: CGFloat = 0
+    @State private var shakeResetTask: Task<Void, Never>?
 
     var body: some View {
         VStack(spacing: MoraTheme.Space.lg) {
@@ -24,6 +30,7 @@ struct DecodeActivityView: View {
                 Text(current.word.surface)
                     .font(MoraType.decodingWord())
                     .foregroundStyle(MoraTheme.Ink.primary)
+                    .shake(amount: shakeAmount)
                     .onLongPressGesture {
                         guard let tts = ttsEngine else { return }
                         Task { await tts.speak(current.word.surface) }
@@ -53,6 +60,26 @@ struct DecodeActivityView: View {
             } else {
                 ProgressView()
             }
+        }
+        .onChange(of: feedback) { _, new in
+            if new == .wrong {
+                // Cancel any in-flight reset so back-to-back .wrong events
+                // don't race (older task would clear shakeAmount mid-shake).
+                shakeResetTask?.cancel()
+                withAnimation(.linear(duration: 0.6)) { shakeAmount = 1 }
+                shakeResetTask = Task { @MainActor in
+                    try? await Task.sleep(nanoseconds: 600_000_000)
+                    guard !Task.isCancelled else { return }
+                    shakeAmount = 0
+                }
+            }
+            #if canImport(UIKit)
+            switch new {
+            case .correct: UINotificationFeedbackGenerator().notificationOccurred(.success)
+            case .wrong: UINotificationFeedbackGenerator().notificationOccurred(.error)
+            case .none: break
+            }
+            #endif
         }
     }
 

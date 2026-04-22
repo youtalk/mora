@@ -1,5 +1,6 @@
 import MoraCore
 import MoraEngines
+import SwiftData
 import SwiftUI
 
 struct CompletionView: View {
@@ -7,6 +8,12 @@ struct CompletionView: View {
     let ttsEngine: TTSEngine?
     let persistSummary: (SessionSummary) -> Void
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var ctx
+    // Sort so that if duplicate rows ever land in the store (migration bug,
+    // test seed leakage) the freshest one wins deterministically. HomeView
+    // uses the same sort; both views agree on which row is "the" streak.
+    @Query(sort: \DailyStreak.lastCompletedOn, order: .reverse)
+    private var streaks: [DailyStreak]
     @State private var didPersist = false
 
     var body: some View {
@@ -42,15 +49,28 @@ struct CompletionView: View {
         .contentShape(Rectangle())
         .onTapGesture { dismiss() }
         .accessibilityAction(named: "Return home") { dismiss() }
-        .onAppear {
-            guard !didPersist else { return }
-            didPersist = true
-            persistSummary(orchestrator.sessionSummary(endedAt: Date()))
-        }
+        .onAppear { persistOnce() }
         .task {
             guard let tts = ttsEngine else { return }
             await tts.speak("Quest complete! You got \(correct) out of \(total).")
         }
+    }
+
+    @MainActor
+    private func persistOnce() {
+        guard !didPersist else { return }
+        didPersist = true
+        persistSummary(orchestrator.sessionSummary(endedAt: Date()))
+
+        let streak: DailyStreak
+        if let existing = streaks.first {
+            streak = existing
+        } else {
+            streak = DailyStreak()
+            ctx.insert(streak)
+        }
+        streak.recordCompletion(on: Date())
+        try? ctx.save()
     }
 
     private var correct: Int { orchestrator.trials.filter(\.correct).count }
