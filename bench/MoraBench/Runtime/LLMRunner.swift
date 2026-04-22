@@ -29,6 +29,8 @@ final class LLMRunner: ObservableObject {
     @Published private(set) var status: Status = .idle
     @Published private(set) var lastResult: BenchResult?
     @Published private(set) var liveTokenCount: Int = 0
+    @Published private(set) var enduranceResults: [BenchResult] = []
+    @Published private(set) var enduranceElapsedSeconds: Double = 0
 
     private var container: ModelContainer?
 
@@ -136,6 +138,69 @@ final class LLMRunner: ObservableObject {
         } catch {
             thermal.stop()
             status = .error("generate failed: \(error.localizedDescription)")
+        }
+    }
+
+    /// Loop-run the prompt until `durationSeconds` elapses. Every completed
+    /// BenchResult is appended to `enduranceResults`; `enduranceElapsedSeconds`
+    /// ticks for the UI progress bar. JetsamMarker arms/disarms around the loop
+    /// so a device kill leaves a breadcrumb for the next launch.
+    func runEndurance(prompt: BenchPrompt, durationSeconds: Double = 1200) async {
+        guard loadedModel != nil else { status = .error("no model loaded"); return }
+        self.enduranceResults = []
+        self.enduranceElapsedSeconds = 0
+        JetsamMarker.arm(
+            modelID: loadedModel?.id ?? "unknown",
+            promptID: prompt.id
+        )
+        let start = DispatchTime.now()
+        while true {
+            let now = DispatchTime.now()
+            let elapsed = Double(now.uptimeNanoseconds &- start.uptimeNanoseconds) / 1_000_000_000
+            self.enduranceElapsedSeconds = elapsed
+            if elapsed >= durationSeconds { break }
+
+            await run(prompt: prompt)
+            if let r = lastResult {
+                self.enduranceResults.append(r)
+            }
+        }
+        JetsamMarker.disarm()
+    }
+
+    func enduranceSummary() -> EnduranceSummary? {
+        guard !enduranceResults.isEmpty else { return nil }
+        let latencies = enduranceResults.map(\.totalGenerationSeconds)
+        let p50 = percentile(latencies, p: 0.5) ?? 0
+        let p95 = percentile(latencies, p: 0.95) ?? 0
+        // Decode rate in first vs last 5 min (by startedAt order).
+        let sorted = enduranceResults.sorted { $0.startedAt < $1.startedAt }
+        let firstStart = sorted.first!.startedAt
+        let firstWindow = sorted.filter { $0.startedAt.timeIntervalSince(firstStart) < 300 }
+        let lastStart = sorted.last!.startedAt
+        let lastWindow = sorted.filter { lastStart.timeIntervalSince($0.startedAt) < 300 }
+        func meanDecode(_ r: [BenchResult]) -> Double {
+            guard !r.isEmpty else { return 0 }
+            return r.map(\.decodeTokensPerSecond).reduce(0, +) / Double(r.count)
+        }
+        return EnduranceSummary(
+            runCount: enduranceResults.count,
+            p50TurnLatency: p50,
+            p95TurnLatency: p95,
+            firstWindowDecodeMean: meanDecode(firstWindow),
+            lastWindowDecodeMean: meanDecode(lastWindow)
+        )
+    }
+
+    struct EnduranceSummary {
+        let runCount: Int
+        let p50TurnLatency: Double
+        let p95TurnLatency: Double
+        let firstWindowDecodeMean: Double
+        let lastWindowDecodeMean: Double
+        var decodeDriftPercent: Double {
+            guard firstWindowDecodeMean > 0 else { return 0 }
+            return (lastWindowDecodeMean - firstWindowDecodeMean) / firstWindowDecodeMean * 100
         }
     }
 }

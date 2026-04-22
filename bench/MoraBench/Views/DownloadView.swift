@@ -13,8 +13,12 @@ struct DownloadView: View {
             ProgressView(statusLabel)
 
             if case .ready = runner.status, runner.loadedModel?.id == model.id {
-                NavigationLink("Run benchmark", value: RunDestination.single(model))
-                    .buttonStyle(.borderedProminent)
+                VStack(spacing: 8) {
+                    NavigationLink("Run single", value: RunDestination.single(model))
+                        .buttonStyle(.borderedProminent)
+                    NavigationLink("Run 20-min endurance", value: RunDestination.endurance(model))
+                        .buttonStyle(.bordered)
+                }
             } else {
                 Button("Load") { Task { await runner.load(model) } }
                     .buttonStyle(.borderedProminent)
@@ -24,12 +28,14 @@ struct DownloadView: View {
         .navigationDestination(for: RunDestination.self) { dest in
             switch dest {
             case .single(let m): SingleRunView(model: m)
+            case .endurance(let m): EnduranceRunView(model: m)
             }
         }
     }
 
     enum RunDestination: Hashable {
         case single(BenchModel)
+        case endurance(BenchModel)
     }
 
     private var statusLabel: String {
