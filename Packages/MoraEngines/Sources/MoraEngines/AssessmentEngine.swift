@@ -62,6 +62,37 @@ public struct AssessmentEngine: Sendable {
         } else {
             kind = .substitution
         }
-        return (kind, nil)  // L1 tagging added in Task 17
+
+        let tag = l1InterferenceTag(
+            expected: expected,
+            heardNormalized: heardNormalized
+        )
+        return (kind, tag)
+    }
+
+    private func l1InterferenceTag(expected: Word, heardNormalized: String) -> String? {
+        guard let expectedOnset = expected.phonemes.first else { return nil }
+        guard let heardOnset = inferHeardOnset(heardNormalized) else { return nil }
+        return l1Profile.matchInterference(expected: expectedOnset, heard: heardOnset)?.tag
+    }
+
+    // For v1, infer the onset phoneme from the first character of the heard word
+    // using a small Latin-to-IPA map that covers the phonemes relevant to the
+    // Japanese L1 profile (r, l, f, h, v, b, s, t). v1.5 will replace this with
+    // a richer phoneme-level alignment using the full segmentation in
+    // Word.phonemes; this narrow coverage is intentional, not a bug.
+    private func inferHeardOnset(_ heard: String) -> Phoneme? {
+        guard let first = heard.first else { return nil }
+        switch first {
+        case "r": return Phoneme(ipa: "r")
+        case "l": return Phoneme(ipa: "l")
+        case "f": return Phoneme(ipa: "f")
+        case "h": return Phoneme(ipa: "h")
+        case "v": return Phoneme(ipa: "v")
+        case "b": return Phoneme(ipa: "b")
+        case "s": return Phoneme(ipa: "s")
+        case "t": return Phoneme(ipa: "t")
+        default: return nil
+        }
     }
 }
