@@ -12,7 +12,11 @@ let package = Package(
         .package(path: "../MoraEngines"),
     ],
     targets: [
-        .target(name: "MoraUI", dependencies: ["MoraCore", "MoraEngines"]),
+        .target(
+            name: "MoraUI",
+            dependencies: ["MoraCore", "MoraEngines"],
+            resources: [.process("Resources")]
+        ),
         .testTarget(name: "MoraUITests", dependencies: ["MoraUI"]),
     ]
 )
