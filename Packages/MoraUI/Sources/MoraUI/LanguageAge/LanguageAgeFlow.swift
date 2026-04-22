@@ -24,8 +24,8 @@ final class LanguageAgeState {
     }
 
     /// Upsert the LearnerProfile with the picked language+age, flip the
-    /// UserDefaults flag. Returns true on success, false on SwiftData save
-    /// failure (leaves flag unflipped so next launch retries).
+    /// UserDefaults flag. Returns true on success, false on bad input or
+    /// SwiftData error (leaves flag unflipped so next launch retries).
     @discardableResult
     func finalize(
         in context: ModelContext,
@@ -33,25 +33,34 @@ final class LanguageAgeState {
         now: Date = Date()
     ) -> Bool {
         guard let age = selectedAge else { return false }
+        let languageID = selectedLanguageID.trimmingCharacters(in: .whitespaces)
+        guard !languageID.isEmpty else { return false }
 
         // Fetch existing profile if any; @Query isn't available in a
-        // non-View context, so we use FetchDescriptor directly.
-        let existing = try? context.fetch(
-            FetchDescriptor<LearnerProfile>(
-                sortBy: [SortDescriptor(\.createdAt, order: .forward)]
+        // non-View context, so we use FetchDescriptor directly. A fetch
+        // error here means SwiftData is in a bad state — bail rather than
+        // risk inserting a duplicate row on top of an unreadable store.
+        let existingProfile: LearnerProfile?
+        do {
+            existingProfile = try context.fetch(
+                FetchDescriptor<LearnerProfile>(
+                    sortBy: [SortDescriptor(\.createdAt, order: .forward)]
+                )
             )
-        )
-        .first
+            .first
+        } catch {
+            return false
+        }
 
         let profile: LearnerProfile
         let isInsert: Bool
-        if let existing {
-            profile = existing
+        if let existingProfile {
+            profile = existingProfile
             isInsert = false
         } else {
             profile = LearnerProfile(
                 displayName: "",
-                l1Identifier: selectedLanguageID,
+                l1Identifier: languageID,
                 ageYears: age,
                 interests: [],
                 preferredFontKey: "openDyslexic",
@@ -60,7 +69,7 @@ final class LanguageAgeState {
             isInsert = true
         }
 
-        profile.l1Identifier = selectedLanguageID
+        profile.l1Identifier = languageID
         profile.ageYears = age
 
         if isInsert { context.insert(profile) }
@@ -87,8 +96,9 @@ public struct LanguageAgeFlow: View {
     }
 
     public var body: some View {
-        // Resolve moraStrings from the picked language so Step 2 renders
-        // in the chosen locale (alpha: always JP).
+        // Alpha only ships JapaneseL1Profile, so Step 2 always renders in
+        // Japanese regardless of `state.selectedLanguageID`. When a second
+        // L1 profile lands, switch on `state.selectedLanguageID` here.
         let strings = JapaneseL1Profile().uiStrings(
             forAgeYears: state.selectedAge ?? 8
         )
