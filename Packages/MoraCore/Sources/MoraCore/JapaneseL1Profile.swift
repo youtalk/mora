@@ -42,6 +42,18 @@ public struct JapaneseL1Profile: L1Profile {
             examples: ["cat/cut", "bag/bug"],
             bidirectional: true
         ),
+        PhonemeConfusionPair(
+            tag: "sh_s_sub",
+            from: Phoneme(ipa: "ʃ"), to: Phoneme(ipa: "s"),
+            examples: ["ship/sip", "shoe/sue", "shell/sell"],
+            bidirectional: false
+        ),
+        PhonemeConfusionPair(
+            tag: "sh_drift_target",
+            from: Phoneme(ipa: "ʃ"), to: Phoneme(ipa: "ʃ"),
+            examples: ["ship", "shop", "fish"],
+            bidirectional: false
+        ),
     ]
 
     public let interestCategories: [InterestCategory] = [

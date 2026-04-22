@@ -30,7 +30,7 @@ extension L1Profile {
 
     public func matchInterference(expected: Phoneme, heard: Phoneme) -> PhonemeConfusionPair? {
         guard expected != heard else { return nil }
-        for pair in interferencePairs {
+        for pair in interferencePairs where pair.from != pair.to {
             if pair.from == expected && pair.to == heard { return pair }
             if pair.bidirectional && pair.from == heard && pair.to == expected {
                 return pair
