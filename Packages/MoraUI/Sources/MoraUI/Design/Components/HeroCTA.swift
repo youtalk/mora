@@ -18,7 +18,6 @@ public struct HeroCTA: View {
                 .padding(.vertical, MoraTheme.Space.md)
                 .frame(minHeight: 88)
                 .background(MoraTheme.Accent.orange, in: .capsule)
-                .shadow(color: MoraTheme.Accent.orangeShadow, radius: 0, x: 0, y: 5)
         }
         .buttonStyle(.plain)
     }

@@ -65,7 +65,6 @@ struct NewRuleView: View {
             .padding(.horizontal, MoraTheme.Space.lg)
             .padding(.vertical, MoraTheme.Space.md)
             .background(Color.white, in: .rect(cornerRadius: MoraTheme.Radius.tile))
-            .shadow(color: MoraTheme.Ink.secondary.opacity(0.15), radius: 3, y: 2)
     }
 
     private var letters: String { orchestrator.target.letters ?? "?" }
