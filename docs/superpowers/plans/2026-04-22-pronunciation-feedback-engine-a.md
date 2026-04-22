@@ -594,7 +594,7 @@ public enum OrchestratorEvent: Sendable {
 }
 ```
 
-- [ ] **Step 4: Fix `SessionOrchestrator` handlers (temporary shape, real integration in Task 15)**
+- [ ] **Step 4: Fix `SessionOrchestrator` handlers (temporary shape, real integration in Task 23)**
 
 In `SessionOrchestrator.swift` change both cases to pull the ASR out of the recording:
 
@@ -610,7 +610,7 @@ case (.shortSentences, .answerHeard(let recording)):
     handleSentenceHeard(asr: recording.asr)
 ```
 
-Do not yet change the private handlers' signatures — Task 15 will. This keeps this task small.
+Do not yet change the private handlers' signatures — Task 23 will. This keeps this task small.
 
 - [ ] **Step 5: Fix UI call sites**
 
