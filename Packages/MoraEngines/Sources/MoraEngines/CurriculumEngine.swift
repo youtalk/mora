@@ -6,12 +6,12 @@ public struct CurriculumEngine: Sendable {
     public let baselineTaughtGraphemes: Set<Grapheme>
 
     public init(skills: [Skill], baselineTaughtGraphemes: Set<Grapheme>) {
+        precondition(!skills.isEmpty, "CurriculumEngine needs at least one skill")
         self.skills = skills
         self.baselineTaughtGraphemes = baselineTaughtGraphemes
     }
 
     public func currentTarget(forWeekIndex week: Int, weekStart: Date = Date()) -> Target {
-        precondition(!skills.isEmpty, "CurriculumEngine needs at least one skill")
         let idx = max(0, min(week, skills.count - 1))
         return Target(weekStart: weekStart, skill: skills[idx])
     }
@@ -20,9 +20,11 @@ public struct CurriculumEngine: Sendable {
     /// week begins — i.e. baseline plus every skill grapheme from
     /// `skills[0..<week]`. Exclusive on the right: at `week == 0` only
     /// the baseline is returned (the week-0 target itself is not yet taught).
+    /// Negative `week` clamps to 0.
     public func taughtGraphemes(beforeWeekIndex week: Int) -> Set<Grapheme> {
         var accumulated = baselineTaughtGraphemes
-        for i in 0..<min(week, skills.count) {
+        let upperBound = min(max(0, week), skills.count)
+        for i in 0..<upperBound {
             if let gp = skills[i].graphemePhoneme {
                 accumulated.insert(gp.grapheme)
             }

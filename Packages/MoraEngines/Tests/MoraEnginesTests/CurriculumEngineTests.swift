@@ -28,4 +28,17 @@ final class CurriculumEngineTests: XCTestCase {
         let target = engine.currentTarget(forWeekIndex: 9999)
         XCTAssertEqual(target.skill.code, engine.skills.last?.code)
     }
+
+    func test_negativeWeekIndex_taughtGraphemesIsBaselineOnly() {
+        let engine = CurriculumEngine.defaultV1Ladder()
+        let taught = engine.taughtGraphemes(beforeWeekIndex: -1)
+        XCTAssertEqual(taught.count, 26)
+        XCTAssertFalse(taught.contains(Grapheme(letters: "sh")))
+    }
+
+    func test_negativeWeekIndex_currentTargetClampsToFirstSkill() {
+        let engine = CurriculumEngine.defaultV1Ladder()
+        let target = engine.currentTarget(forWeekIndex: -5)
+        XCTAssertEqual(target.skill.code, "sh_onset")
+    }
 }
