@@ -1,3 +1,4 @@
+import MoraCore
 import XCTest
 
 @testable import MoraEngines
@@ -13,5 +14,32 @@ final class PronunciationTypesTests: XCTestCase {
     func testAudioClipDurationSeconds() {
         let clip = AudioClip(samples: Array(repeating: 0, count: 16_000), sampleRate: 16_000)
         XCTAssertEqual(clip.durationSeconds, 1.0, accuracy: 0.001)
+    }
+
+    func testPhonemeAssessmentLabelCodable() throws {
+        let cases: [PhonemeAssessmentLabel] = [
+            .matched,
+            .substitutedBy(Phoneme(ipa: "s")),
+            .driftedWithin,
+            .unclear,
+        ]
+        for label in cases {
+            let data = try JSONEncoder().encode(label)
+            let decoded = try JSONDecoder().decode(PhonemeAssessmentLabel.self, from: data)
+            XCTAssertEqual(decoded, label)
+        }
+    }
+
+    func testPhonemeTrialAssessmentCarriesFeatures() {
+        let assessment = PhonemeTrialAssessment(
+            targetPhoneme: Phoneme(ipa: "ʃ"),
+            label: .substitutedBy(Phoneme(ipa: "s")),
+            score: 30,
+            coachingKey: "coaching.sh_sub_s.ja",
+            features: ["spectralCentroidHz": 6100.0],
+            isReliable: true
+        )
+        XCTAssertEqual(assessment.features["spectralCentroidHz"], 6100.0)
+        XCTAssertEqual(assessment.coachingKey, "coaching.sh_sub_s.ja")
     }
 }
