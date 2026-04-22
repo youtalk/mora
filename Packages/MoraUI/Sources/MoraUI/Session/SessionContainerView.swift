@@ -39,7 +39,7 @@ public struct SessionContainerView: View {
             FeedbackOverlay(state: feedback)
         }
         #if os(iOS)
-            .navigationBarHidden(true)
+        .navigationBarHidden(true)
         #endif
     }
 
