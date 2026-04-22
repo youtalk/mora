@@ -13,8 +13,10 @@ public struct PhonemeConfusionPair: Hashable, Codable, Sendable {
     public let examples: [String]
     public let bidirectional: Bool
 
-    public init(tag: String, from: Phoneme, to: Phoneme,
-                examples: [String] = [], bidirectional: Bool = false) {
+    public init(
+        tag: String, from: Phoneme, to: Phoneme,
+        examples: [String] = [], bidirectional: Bool = false
+    ) {
         self.tag = tag
         self.from = from
         self.to = to
