@@ -1,0 +1,6 @@
+import Foundation
+import MoraCore
+
+public enum MoraEngines {
+    public static let version = "0.1.0"
+}
