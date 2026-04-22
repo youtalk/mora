@@ -4,8 +4,19 @@ import SwiftData
 import SwiftUI
 
 public struct HomeView: View {
-    @Query private var profiles: [LearnerProfile]
-    @Query private var streaks: [DailyStreak]
+    // Sort by createdAt so if duplicate rows ever appear (migration bug, test
+    // seed leaking into prod store), the oldest profile wins deterministically.
+    @Query(sort: \LearnerProfile.createdAt, order: .forward)
+    private var profiles: [LearnerProfile]
+
+    // DailyStreak is a singleton; sort by lastCompletedOn so the most recent
+    // one surfaces even if a stale row exists.
+    @Query(sort: \DailyStreak.lastCompletedOn, order: .reverse)
+    private var streaks: [DailyStreak]
+
+    /// Curriculum is process-wide state; building it once per launch avoids
+    /// re-running the ladder builder on every SwiftUI body evaluation.
+    private static let sharedCurriculum = CurriculumEngine.defaultV1Ladder()
 
     public init() {}
 
@@ -82,10 +93,8 @@ public struct HomeView: View {
             .background(MoraTheme.Background.cream, in: .capsule)
     }
 
-    private var curriculum: CurriculumEngine { CurriculumEngine.defaultV1Ladder() }
-
     private var target: Target {
-        curriculum.currentTarget(forWeekIndex: weekIndex)
+        Self.sharedCurriculum.currentTarget(forWeekIndex: weekIndex)
     }
 
     /// Weeks elapsed since the learner's profile was created, clamped into the
