@@ -30,6 +30,9 @@ extension L1Profile {
 
     public func matchInterference(expected: Phoneme, heard: Phoneme) -> PhonemeConfusionPair? {
         guard expected != heard else { return nil }
+        // Skip drift-target sentinels (see `PhonemeConfusionPair` doc): such
+        // entries live in `interferencePairs` for the acoustic evaluator to
+        // consume and must never match as substitutions here.
         for pair in interferencePairs where pair.from != pair.to {
             if pair.from == expected && pair.to == heard { return pair }
             if pair.bidirectional && pair.from == heard && pair.to == expected {

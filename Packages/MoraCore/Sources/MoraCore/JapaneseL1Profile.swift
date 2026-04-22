@@ -48,6 +48,9 @@ public struct JapaneseL1Profile: L1Profile {
             examples: ["ship/sip", "shoe/sue", "shell/sell"],
             bidirectional: false
         ),
+        // Drift-target sentinel (from == to): the acoustic evaluator reads
+        // this to score within-phoneme drift (/ʃ/ articulated with too little
+        // lip rounding, carrying /ɕ/ influence). Never matched as substitution.
         PhonemeConfusionPair(
             tag: "sh_drift_target",
             from: Phoneme(ipa: "ʃ"), to: Phoneme(ipa: "ʃ"),
