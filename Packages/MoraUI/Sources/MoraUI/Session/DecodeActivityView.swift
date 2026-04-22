@@ -2,6 +2,10 @@ import MoraCore
 import MoraEngines
 import SwiftUI
 
+#if canImport(UIKit)
+    import UIKit
+#endif
+
 private enum MicUIState: Equatable {
     case idle
     case listening(partialText: String)
@@ -64,6 +68,13 @@ struct DecodeActivityView: View {
                     shakeAmount = 0
                 }
             }
+            #if canImport(UIKit)
+                switch new {
+                case .correct: UINotificationFeedbackGenerator().notificationOccurred(.success)
+                case .wrong: UINotificationFeedbackGenerator().notificationOccurred(.error)
+                case .none: break
+                }
+            #endif
         }
     }
 

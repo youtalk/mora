@@ -21,6 +21,7 @@ public struct SessionContainerView: View {
     @State private var uiMode: SessionUIMode = .tap
     @State private var speechEngine: SpeechEngine?
     @State private var ttsEngine: TTSEngine?
+    @State private var showCloseConfirm = false
 
     public init() {}
 
@@ -41,14 +42,27 @@ public struct SessionContainerView: View {
 
             FeedbackOverlay(state: feedback)
         }
+        .alert("End today's quest?", isPresented: $showCloseConfirm) {
+            Button("Keep going", role: .cancel) {}
+            Button("End quest", role: .destructive) {
+                // Record a partial summary so progress is not silently dropped.
+                if let orchestrator {
+                    let partial = orchestrator.sessionSummary(endedAt: Date())
+                    persist(summary: partial)
+                }
+                dismiss()
+            }
+        } message: {
+            Text("Your progress so far will be saved.")
+        }
         #if os(iOS)
-        .navigationBarHidden(true)
+            .navigationBarHidden(true)
         #endif
     }
 
     private var topChrome: some View {
         HStack {
-            Button(action: { dismiss() }) {
+            Button(action: { showCloseConfirm = true }) {
                 Image(systemName: "xmark")
                     .font(.system(size: 18, weight: .bold))
                     .foregroundStyle(MoraTheme.Ink.secondary)
@@ -57,7 +71,7 @@ public struct SessionContainerView: View {
             }
             .buttonStyle(.plain)
             .accessibilityLabel("Close session")
-            .accessibilityHint("Returns to the home screen.")
+            .accessibilityHint("Confirms before leaving so you don't lose progress.")
 
             Spacer()
 
