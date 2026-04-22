@@ -1,3 +1,4 @@
+// Packages/MoraCore/Sources/MoraCore/L1Profile.swift
 import Foundation
 
 public protocol L1Profile: Sendable {
@@ -9,6 +10,16 @@ public protocol L1Profile: Sendable {
     /// array when the phoneme is not in the curriculum. Used by TTS (for
     /// "sh, as in ship") and by UI worked-example tiles.
     func exemplars(for phoneme: Phoneme) -> [String]
+
+    /// Pre-authored UI-chrome strings at this learner's age. Implementations
+    /// may bucket ages internally; callers always pass raw years.
+    /// See docs/superpowers/specs/2026-04-22-native-language-and-age-selection-design.md §5.1.
+    func uiStrings(forAgeYears years: Int) -> MoraStrings
+
+    /// Localized display name for an `InterestCategory` key. Separated from
+    /// `uiStrings` so existing seed data on `LearnerProfile.interests` (which
+    /// stores category keys) can be rendered at read time.
+    func interestCategoryDisplayName(key: String, forAgeYears years: Int) -> String
 }
 
 extension L1Profile {
@@ -26,5 +37,13 @@ extension L1Profile {
             }
         }
         return nil
+    }
+
+    /// Default falls back to the category key so a profile that forgets to
+    /// localize a category renders at least something recognizable. Tests
+    /// in `MoraStringsTests` assert `JapaneseL1Profile` overrides every
+    /// seeded key.
+    public func interestCategoryDisplayName(key: String, forAgeYears years: Int) -> String {
+        key
     }
 }
