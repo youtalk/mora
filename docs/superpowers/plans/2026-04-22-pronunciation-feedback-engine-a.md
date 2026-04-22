@@ -287,7 +287,7 @@ final class FakePronunciationEvaluatorTests: XCTestCase {
         )
         let word = Word(
             surface: "ship",
-            graphemes: [Grapheme(glyph: "sh"), Grapheme(glyph: "i"), Grapheme(glyph: "p")],
+            graphemes: [Grapheme(letters: "sh"), Grapheme(letters: "i"), Grapheme(letters: "p")],
             phonemes: [Phoneme(ipa: "ʃ"), Phoneme(ipa: "ɪ"), Phoneme(ipa: "p")]
         )
         XCTAssertTrue(fake.supports(target: Phoneme(ipa: "ʃ"), in: word))
@@ -305,7 +305,7 @@ final class FakePronunciationEvaluatorTests: XCTestCase {
         let fake = FakePronunciationEvaluator()
         let word = Word(
             surface: "cat",
-            graphemes: [Grapheme(glyph: "c"), Grapheme(glyph: "a"), Grapheme(glyph: "t")],
+            graphemes: [Grapheme(letters: "c"), Grapheme(letters: "a"), Grapheme(letters: "t")],
             phonemes: [Phoneme(ipa: "k"), Phoneme(ipa: "æ"), Phoneme(ipa: "t")]
         )
         XCTAssertFalse(fake.supports(target: Phoneme(ipa: "k"), in: word))
@@ -649,7 +649,7 @@ final class WordTargetPhonemeTests: XCTestCase {
     func testTargetPhonemeDefaultsToNil() {
         let w = Word(
             surface: "ship",
-            graphemes: [Grapheme(glyph: "sh"), Grapheme(glyph: "i"), Grapheme(glyph: "p")],
+            graphemes: [Grapheme(letters: "sh"), Grapheme(letters: "i"), Grapheme(letters: "p")],
             phonemes: [Phoneme(ipa: "ʃ"), Phoneme(ipa: "ɪ"), Phoneme(ipa: "p")]
         )
         XCTAssertNil(w.targetPhoneme)
@@ -658,7 +658,7 @@ final class WordTargetPhonemeTests: XCTestCase {
     func testTargetPhonemeSetsExplicitly() {
         let w = Word(
             surface: "ship",
-            graphemes: [Grapheme(glyph: "sh"), Grapheme(glyph: "i"), Grapheme(glyph: "p")],
+            graphemes: [Grapheme(letters: "sh"), Grapheme(letters: "i"), Grapheme(letters: "p")],
             phonemes: [Phoneme(ipa: "ʃ"), Phoneme(ipa: "ɪ"), Phoneme(ipa: "p")],
             targetPhoneme: Phoneme(ipa: "ʃ")
         )
@@ -939,7 +939,7 @@ Append to `Packages/MoraEngines/Tests/MoraEnginesTests/AssessmentEngineScoringTe
     func testTrialAssessmentCarriesOptionalPhonemePayload() {
         let expected = Word(
             surface: "ship",
-            graphemes: [Grapheme(glyph: "sh"), Grapheme(glyph: "i"), Grapheme(glyph: "p")],
+            graphemes: [Grapheme(letters: "sh"), Grapheme(letters: "i"), Grapheme(letters: "p")],
             phonemes: [Phoneme(ipa: "ʃ"), Phoneme(ipa: "ɪ"), Phoneme(ipa: "p")],
             targetPhoneme: Phoneme(ipa: "ʃ")
         )
@@ -1918,7 +1918,7 @@ import MoraCore
 final class PhonemeRegionLocalizerTests: XCTestCase {
     private let word = Word(
         surface: "ship",
-        graphemes: [Grapheme(glyph: "sh"), Grapheme(glyph: "i"), Grapheme(glyph: "p")],
+        graphemes: [Grapheme(letters: "sh"), Grapheme(letters: "i"), Grapheme(letters: "p")],
         phonemes: [Phoneme(ipa: "ʃ"), Phoneme(ipa: "ɪ"), Phoneme(ipa: "p")],
         targetPhoneme: Phoneme(ipa: "ʃ")
     )
@@ -2082,7 +2082,7 @@ final class FeatureBasedEvaluatorTests: XCTestCase {
     private func ship() -> Word {
         Word(
             surface: "ship",
-            graphemes: [Grapheme(glyph: "sh"), Grapheme(glyph: "i"), Grapheme(glyph: "p")],
+            graphemes: [Grapheme(letters: "sh"), Grapheme(letters: "i"), Grapheme(letters: "p")],
             phonemes: [Phoneme(ipa: "ʃ"), Phoneme(ipa: "ɪ"), Phoneme(ipa: "p")],
             targetPhoneme: Phoneme(ipa: "ʃ")
         )
@@ -2557,7 +2557,7 @@ Synthetic-audio tests covering the remaining pairs. The evaluator already handle
     func testFSubstitutedByHReturnsSubstituted() async {
         let word = Word(
             surface: "fun",
-            graphemes: [Grapheme(glyph: "f"), Grapheme(glyph: "u"), Grapheme(glyph: "n")],
+            graphemes: [Grapheme(letters: "f"), Grapheme(letters: "u"), Grapheme(letters: "n")],
             phonemes: [Phoneme(ipa: "f"), Phoneme(ipa: "ʌ"), Phoneme(ipa: "n")],
             targetPhoneme: Phoneme(ipa: "f")
         )
@@ -2581,7 +2581,7 @@ Synthetic-audio tests covering the remaining pairs. The evaluator already handle
     func testThSubstitutedBySReturnsSubstituted() async {
         let word = Word(
             surface: "thin",
-            graphemes: [Grapheme(glyph: "th"), Grapheme(glyph: "i"), Grapheme(glyph: "n")],
+            graphemes: [Grapheme(letters: "th"), Grapheme(letters: "i"), Grapheme(letters: "n")],
             phonemes: [Phoneme(ipa: "θ"), Phoneme(ipa: "ɪ"), Phoneme(ipa: "n")],
             targetPhoneme: Phoneme(ipa: "θ")
         )
@@ -2655,7 +2655,7 @@ final class AssessmentEngineRecordingTests: XCTestCase {
         )
         let word = Word(
             surface: "ship",
-            graphemes: [Grapheme(glyph: "sh"), Grapheme(glyph: "i"), Grapheme(glyph: "p")],
+            graphemes: [Grapheme(letters: "sh"), Grapheme(letters: "i"), Grapheme(letters: "p")],
             phonemes: [Phoneme(ipa: "ʃ"), Phoneme(ipa: "ɪ"), Phoneme(ipa: "p")],
             targetPhoneme: Phoneme(ipa: "ʃ")
         )
@@ -2682,7 +2682,7 @@ final class AssessmentEngineRecordingTests: XCTestCase {
         )
         let word = Word(
             surface: "cat",
-            graphemes: [Grapheme(glyph: "c"), Grapheme(glyph: "a"), Grapheme(glyph: "t")],
+            graphemes: [Grapheme(letters: "c"), Grapheme(letters: "a"), Grapheme(letters: "t")],
             phonemes: [Phoneme(ipa: "k"), Phoneme(ipa: "æ"), Phoneme(ipa: "t")],
             targetPhoneme: Phoneme(ipa: "k")
         )
@@ -2708,7 +2708,7 @@ final class AssessmentEngineRecordingTests: XCTestCase {
         )
         let word = Word(
             surface: "ship",
-            graphemes: [Grapheme(glyph: "sh"), Grapheme(glyph: "i"), Grapheme(glyph: "p")],
+            graphemes: [Grapheme(letters: "sh"), Grapheme(letters: "i"), Grapheme(letters: "p")],
             phonemes: [Phoneme(ipa: "ʃ"), Phoneme(ipa: "ɪ"), Phoneme(ipa: "p")],
             targetPhoneme: nil
         )
@@ -2844,7 +2844,7 @@ final class SessionOrchestratorPronunciationTests: XCTestCase {
         let engine = AssessmentEngine(l1Profile: JapaneseL1Profile(), evaluator: fake)
         let word = Word(
             surface: "ship",
-            graphemes: [Grapheme(glyph: "sh"), Grapheme(glyph: "i"), Grapheme(glyph: "p")],
+            graphemes: [Grapheme(letters: "sh"), Grapheme(letters: "i"), Grapheme(letters: "p")],
             phonemes: [Phoneme(ipa: "ʃ"), Phoneme(ipa: "ɪ"), Phoneme(ipa: "p")],
             targetPhoneme: Phoneme(ipa: "ʃ")
         )
