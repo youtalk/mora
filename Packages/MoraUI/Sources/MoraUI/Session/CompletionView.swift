@@ -29,11 +29,18 @@ struct CompletionView: View {
             Text("Come back tomorrow!")
                 .font(MoraType.bodyReading())
                 .foregroundStyle(MoraTheme.Ink.muted)
+
+            Button("Done") { dismiss() }
+                .font(MoraType.cta())
+                .foregroundStyle(MoraTheme.Accent.teal)
+                .padding(.top, MoraTheme.Space.md)
                 .padding(.bottom, MoraTheme.Space.xl)
+                .accessibilityHint("Returns to the home screen.")
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .contentShape(Rectangle())
         .onTapGesture { dismiss() }
+        .accessibilityAction(named: "Return home") { dismiss() }
         .onAppear {
             guard !didPersist else { return }
             didPersist = true

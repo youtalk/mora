@@ -14,9 +14,6 @@ struct DecodeActivityView: View {
                 Text(current.word.surface)
                     .font(MoraType.decodingWord())
                     .foregroundStyle(MoraTheme.Ink.primary)
-                    .onLongPressGesture {
-                        // TTS word replay wires in PR 6.
-                    }
 
                 if let note = current.note {
                     Text(note)
@@ -30,13 +27,19 @@ struct DecodeActivityView: View {
                 case .tap:
                     tapPair(word: current.word)
                 case .mic:
-                    // PR 5 wires state + action. Until then this renders an
-                    // inert idle button (disabled via action = {}).
+                    // PR 5 wires the real state machine. Until then the button
+                    // is disabled with clear "coming soon" accessibility so
+                    // VoiceOver doesn't promise recording behavior we haven't
+                    // built yet.
                     MicButton(state: .idle, action: {})
+                        .disabled(true)
+                        .allowsHitTesting(false)
+                        .accessibilityLabel("Recording unavailable")
+                        .accessibilityHint("Microphone input lands in a later update.")
                 }
 
                 Text(
-                    "Word \(orchestrator.wordIndex + 1) of \(orchestrator.words.count) · long-press to hear"
+                    "Word \(orchestrator.wordIndex + 1) of \(orchestrator.words.count)"
                 )
                 .font(MoraType.label())
                 .foregroundStyle(MoraTheme.Ink.muted)
@@ -56,7 +59,7 @@ struct DecodeActivityView: View {
         HStack(spacing: MoraTheme.Space.xl) {
             tapButton("Correct", color: MoraTheme.Feedback.correct) {
                 feedback = .correct
-                Task {
+                Task { @MainActor in
                     await orchestrator.handle(
                         .answerResult(
                             correct: true,
@@ -68,7 +71,7 @@ struct DecodeActivityView: View {
             }
             tapButton("Wrong", color: MoraTheme.Feedback.wrong) {
                 feedback = .wrong
-                Task {
+                Task { @MainActor in
                     await orchestrator.handle(
                         .answerResult(
                             correct: false, asr: ASRResult(transcript: "", confidence: 0)

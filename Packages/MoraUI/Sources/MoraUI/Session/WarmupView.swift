@@ -41,16 +41,18 @@ struct WarmupView: View {
             Spacer()
 
             Button(action: {
-                // TTS replay wires in PR 6; no-op stub keeps the layout today.
+                // TTS replay wires in PR 6; button stays disabled until then.
             }) {
                 Label("Listen again", systemImage: "speaker.wave.2.fill")
                     .font(MoraType.label())
-                    .foregroundStyle(MoraTheme.Accent.teal)
+                    .foregroundStyle(MoraTheme.Ink.muted)
                     .padding(.vertical, MoraTheme.Space.md)
                     .padding(.horizontal, MoraTheme.Space.lg)
-                    .background(MoraTheme.Background.mint, in: .capsule)
+                    .background(MoraTheme.Background.cream, in: .capsule)
             }
             .buttonStyle(.plain)
+            .disabled(true)
+            .accessibilityHint("Audio replay lands in a later update.")
             .padding(.bottom, MoraTheme.Space.lg)
         }
     }

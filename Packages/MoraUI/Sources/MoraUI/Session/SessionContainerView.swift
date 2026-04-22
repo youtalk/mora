@@ -53,6 +53,8 @@ public struct SessionContainerView: View {
                     .background(Color.white.opacity(0.6), in: .circle)
             }
             .buttonStyle(.plain)
+            .accessibilityLabel("Close session")
+            .accessibilityHint("Returns to the home screen.")
 
             Spacer()
 

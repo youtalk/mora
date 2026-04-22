@@ -16,9 +16,6 @@ struct ShortSentencesView: View {
                     .foregroundStyle(MoraTheme.Ink.primary)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, MoraTheme.Space.xl)
-                    .onLongPressGesture {
-                        // TTS replay wires in PR 6.
-                    }
 
                 Spacer()
 
@@ -27,10 +24,14 @@ struct ShortSentencesView: View {
                     tapPair(sentence: current)
                 case .mic:
                     MicButton(state: .idle, action: {})
+                        .disabled(true)
+                        .allowsHitTesting(false)
+                        .accessibilityLabel("Recording unavailable")
+                        .accessibilityHint("Microphone input lands in a later update.")
                 }
 
                 Text(
-                    "Sentence \(orchestrator.sentenceIndex + 1) of \(orchestrator.sentences.count) · long-press to hear"
+                    "Sentence \(orchestrator.sentenceIndex + 1) of \(orchestrator.sentences.count)"
                 )
                 .font(MoraType.label())
                 .foregroundStyle(MoraTheme.Ink.muted)
@@ -50,7 +51,7 @@ struct ShortSentencesView: View {
         HStack(spacing: MoraTheme.Space.xl) {
             tapButton("Correct", color: MoraTheme.Feedback.correct) {
                 feedback = .correct
-                Task {
+                Task { @MainActor in
                     await orchestrator.handle(
                         .answerResult(
                             correct: true,
@@ -62,7 +63,7 @@ struct ShortSentencesView: View {
             }
             tapButton("Wrong", color: MoraTheme.Feedback.wrong) {
                 feedback = .wrong
-                Task {
+                Task { @MainActor in
                     await orchestrator.handle(
                         .answerResult(
                             correct: false, asr: ASRResult(transcript: "", confidence: 0)
