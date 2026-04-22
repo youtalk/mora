@@ -99,14 +99,3 @@ public struct SessionContainerView: View {
         try? context.save()
     }
 }
-
-// TEMPORARY stubs — replaced in Task 27.
-struct ShortSentencesView: View {
-    let orchestrator: SessionOrchestrator
-    var body: some View { Text("Sentences placeholder") }
-}
-struct CompletionView: View {
-    let orchestrator: SessionOrchestrator
-    let persistSummary: (SessionSummary) -> Void
-    var body: some View { Text("Completion placeholder") }
-}
