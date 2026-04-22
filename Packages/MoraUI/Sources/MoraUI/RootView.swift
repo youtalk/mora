@@ -1,6 +1,9 @@
 import SwiftUI
 
 public struct RootView: View {
+    @State private var languageAgeOnboarded: Bool = UserDefaults.standard.bool(
+        forKey: LanguageAgeState.onboardedKey
+    )
     @State private var onboarded: Bool = UserDefaults.standard.bool(
         forKey: OnboardingState.onboardedKey
     )
@@ -9,7 +12,15 @@ public struct RootView: View {
 
     public var body: some View {
         Group {
-            if onboarded {
+            if !languageAgeOnboarded {
+                LanguageAgeFlow {
+                    languageAgeOnboarded = true
+                }
+            } else if !onboarded {
+                OnboardingFlow {
+                    onboarded = true
+                }
+            } else {
                 NavigationStack {
                     HomeView()
                         .navigationDestination(for: String.self) { destination in
@@ -18,10 +29,6 @@ public struct RootView: View {
                             default: EmptyView()
                             }
                         }
-                }
-            } else {
-                OnboardingFlow {
-                    onboarded = true
                 }
             }
         }
