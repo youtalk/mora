@@ -5,7 +5,7 @@ let package = Package(
     name: "MoraUI",
     platforms: [.iOS(.v17), .macOS(.v14)],
     products: [
-        .library(name: "MoraUI", targets: ["MoraUI"])
+        .library(name: "MoraUI", targets: ["MoraUI"]),
     ],
     dependencies: [
         .package(path: "../MoraCore"),

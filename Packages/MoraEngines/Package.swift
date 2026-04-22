@@ -5,10 +5,10 @@ let package = Package(
     name: "MoraEngines",
     platforms: [.iOS(.v17), .macOS(.v14)],
     products: [
-        .library(name: "MoraEngines", targets: ["MoraEngines"])
+        .library(name: "MoraEngines", targets: ["MoraEngines"]),
     ],
     dependencies: [
-        .package(path: "../MoraCore")
+        .package(path: "../MoraCore"),
     ],
     targets: [
         .target(name: "MoraEngines", dependencies: ["MoraCore"]),

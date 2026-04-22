@@ -28,7 +28,10 @@ jobs:
         run: brew install swift-format xcodegen
 
       - name: swift-format lint
-        run: swift-format lint --strict --recursive Mora Packages
+        # Package.swift is excluded because swift-format's built-in
+        # TrailingComma pretty-printer rule conflicts with the repo
+        # convention of keeping trailing commas on every element.
+        run: swift-format lint --strict --recursive Mora Packages/*/Sources Packages/*/Tests
 
       - name: Generate Xcode project
         run: xcodegen generate
