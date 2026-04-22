@@ -17,10 +17,11 @@ final class JapaneseL1ProfileTests: XCTestCase {
         let required: Set<String> = [
             "r_l_swap", "f_h_sub", "v_b_sub",
             "th_voiceless_s_sub", "th_voiceless_t_sub",
-            "ae_lax_conflate"
+            "ae_lax_conflate",
         ]
-        XCTAssertTrue(required.isSubset(of: tags),
-                      "missing: \(required.subtracting(tags))")
+        XCTAssertTrue(
+            required.isSubset(of: tags),
+            "missing: \(required.subtracting(tags))")
     }
 
     func test_rLswap_isBidirectional() {
@@ -31,14 +32,18 @@ final class JapaneseL1ProfileTests: XCTestCase {
     func test_interestCategories_includeAtLeastSixBundled() {
         XCTAssertGreaterThanOrEqual(profile.interestCategories.count, 6)
         let keys = Set(profile.interestCategories.map(\.key))
-        XCTAssertTrue(["animals", "dinosaurs", "vehicles",
-                       "space", "sports", "robots"]
-                       .allSatisfy(keys.contains))
+        XCTAssertTrue(
+            [
+                "animals", "dinosaurs", "vehicles",
+                "space", "sports", "robots",
+            ]
+            .allSatisfy(keys.contains))
     }
 
     func test_matchInterference_usesJapanesePairs() {
-        let hit = profile.matchInterference(expected: .init(ipa: "r"),
-                                            heard:    .init(ipa: "l"))
+        let hit = profile.matchInterference(
+            expected: .init(ipa: "r"),
+            heard: .init(ipa: "l"))
         XCTAssertEqual(hit?.tag, "r_l_swap")
     }
 }

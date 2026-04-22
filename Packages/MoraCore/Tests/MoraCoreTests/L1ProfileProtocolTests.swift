@@ -22,8 +22,9 @@ final class L1ProfileProtocolTests: XCTestCase {
     }
 
     func test_characterSystem_hasExpectedCases() {
-        XCTAssertEqual(Set(CharacterSystem.allCases),
-                       Set([.alphabetic, .logographic, .mixed]))
+        XCTAssertEqual(
+            Set(CharacterSystem.allCases),
+            Set([.alphabetic, .logographic, .mixed]))
     }
 
     func test_profile_exposesIdentifierAndEmptyInterference() {
