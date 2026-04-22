@@ -5,7 +5,7 @@ import SwiftData
 import SwiftUI
 
 #if canImport(UIKit)
-    import UIKit
+import UIKit
 #endif
 
 public struct HomeView: View {
@@ -37,7 +37,7 @@ public struct HomeView: View {
             }
         }
         #if os(iOS)
-            .navigationBarHidden(true)
+        .navigationBarHidden(true)
         #endif
     }
 
@@ -139,9 +139,9 @@ public struct HomeView: View {
 
     private func openVoiceSettings() {
         #if canImport(UIKit)
-            if let url = URL(string: UIApplication.openSettingsURLString) {
-                UIApplication.shared.open(url)
-            }
+        if let url = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(url)
+        }
         #endif
     }
 }
