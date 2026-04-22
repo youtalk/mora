@@ -52,6 +52,17 @@ public struct MoraStrings: Sendable {
     public let micAssessing: String
     public let micDeniedBanner: String
 
+    // Pronunciation coaching (per L1 interference pair)
+    public let coachingShSubS: String
+    public let coachingShDrift: String
+    public let coachingRSubL: String
+    public let coachingLSubR: String
+    public let coachingFSubH: String
+    public let coachingVSubB: String
+    public let coachingThVoicelessSubS: String
+    public let coachingThVoicelessSubT: String
+    public let coachingAeSubSchwa: String
+
     // Completion
     public let completionTitle: String
     public let completionScore: @Sendable (Int, Int) -> String
@@ -84,6 +95,15 @@ public struct MoraStrings: Sendable {
         feedbackCorrect: String, feedbackTryAgain: String,
         micIdlePrompt: String, micListening: String,
         micAssessing: String, micDeniedBanner: String,
+        coachingShSubS: String,
+        coachingShDrift: String,
+        coachingRSubL: String,
+        coachingLSubR: String,
+        coachingFSubH: String,
+        coachingVSubB: String,
+        coachingThVoicelessSubS: String,
+        coachingThVoicelessSubT: String,
+        coachingAeSubSchwa: String,
         completionTitle: String,
         completionScore: @escaping @Sendable (Int, Int) -> String,
         completionComeBack: String,
@@ -125,6 +145,15 @@ public struct MoraStrings: Sendable {
         self.micListening = micListening
         self.micAssessing = micAssessing
         self.micDeniedBanner = micDeniedBanner
+        self.coachingShSubS = coachingShSubS
+        self.coachingShDrift = coachingShDrift
+        self.coachingRSubL = coachingRSubL
+        self.coachingLSubR = coachingLSubR
+        self.coachingFSubH = coachingFSubH
+        self.coachingVSubB = coachingVSubB
+        self.coachingThVoicelessSubS = coachingThVoicelessSubS
+        self.coachingThVoicelessSubT = coachingThVoicelessSubT
+        self.coachingAeSubSchwa = coachingAeSubSchwa
         self.completionTitle = completionTitle
         self.completionScore = completionScore
         self.completionComeBack = completionComeBack

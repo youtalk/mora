@@ -139,6 +139,19 @@ final class MoraStringsTests: XCTestCase {
         }
     }
 
+    func testMidCoachingStringsMatchSpec() {
+        let strings = profile.uiStrings(forAgeYears: 8)
+        XCTAssertEqual(strings.coachingShSubS, "くちびるをまるめて、したのおくをもちあげてみよう。「sh」。")
+        XCTAssertEqual(strings.coachingShDrift, "もうすこしくちをまるくして、ながくのばしてみよう。「shhhh」。")
+        XCTAssertEqual(strings.coachingRSubL, "したのさきはどこにもつけないで、おくだけすこし上に。「r」。")
+        XCTAssertEqual(strings.coachingLSubR, "したのさきを上のはのうらにつけて、そのまま「l」。")
+        XCTAssertEqual(strings.coachingFSubH, "上のはでしたくちびるに、かるくふれて「fff」。")
+        XCTAssertEqual(strings.coachingVSubB, "上のはでしたくちびるにふれて、のどをふるわせて「vvv」。")
+        XCTAssertEqual(strings.coachingThVoicelessSubS, "したのさきをはのあいだにそっと出して「thhh」。")
+        XCTAssertEqual(strings.coachingThVoicelessSubT, "したのさきをはのあいだにそっと出して、とめずに「thhh」。")
+        XCTAssertEqual(strings.coachingAeSubSchwa, "口をよこにひろげて、あごを下げて「æ」。")
+    }
+
     private func auditString(_ name: String, _ value: String) {
         for scalar in value.unicodeScalars {
             if isCJKIdeograph(scalar) {
