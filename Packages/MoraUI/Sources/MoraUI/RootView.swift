@@ -40,15 +40,15 @@ public struct RootView: View {
         }
     }
 
-    /// Build the string catalog from the active profile's l1 + age. Before
-    /// onboarding completes, age may be nil — in which case we default to
-    /// 8 (same as MoraStringsKey.defaultValue) so screens still render.
+    /// Build the string catalog from the active profile. Before onboarding
+    /// completes, age may be nil — default to 8 (matches
+    /// `MoraStringsKey.defaultValue`) so screens still render.
+    ///
+    /// Alpha only ships `JapaneseL1Profile`, so every profile renders JP.
+    /// When a second `L1Profile` lands, switch on `profile?.l1Identifier`
+    /// here and return the matching profile's `uiStrings`.
     private var resolvedStrings: MoraStrings {
-        let profile = profiles.first
-        let years = profile?.ageYears ?? 8
-        switch profile?.l1Identifier {
-        case "ja", nil: return JapaneseL1Profile().uiStrings(forAgeYears: years)
-        default: return JapaneseL1Profile().uiStrings(forAgeYears: years)
-        }
+        let years = profiles.first?.ageYears ?? 8
+        return JapaneseL1Profile().uiStrings(forAgeYears: years)
     }
 }
