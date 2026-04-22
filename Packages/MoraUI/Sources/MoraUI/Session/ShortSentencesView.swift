@@ -16,6 +16,7 @@ struct ShortSentencesView: View {
     let ttsEngine: TTSEngine?
 
     @State private var micState: SentenceMicUIState = .idle
+    @State private var shakeAmount: CGFloat = 0
 
     var body: some View {
         VStack(spacing: MoraTheme.Space.lg) {
@@ -26,6 +27,7 @@ struct ShortSentencesView: View {
                     .foregroundStyle(MoraTheme.Ink.primary)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, MoraTheme.Space.xl)
+                    .shake(amount: shakeAmount)
                     .onLongPressGesture {
                         guard let tts = ttsEngine else { return }
                         Task { await tts.speak(current.text) }
@@ -48,6 +50,15 @@ struct ShortSentencesView: View {
                 .padding(.bottom, MoraTheme.Space.lg)
             } else {
                 ProgressView()
+            }
+        }
+        .onChange(of: feedback) { _, new in
+            if new == .wrong {
+                withAnimation(.linear(duration: 0.6)) { shakeAmount = 1 }
+                Task { @MainActor in
+                    try? await Task.sleep(nanoseconds: 600_000_000)
+                    shakeAmount = 0
+                }
             }
         }
     }

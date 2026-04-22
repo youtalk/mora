@@ -35,6 +35,8 @@ public struct SessionContainerView: View {
                 content
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .padding(.horizontal, MoraTheme.Space.xxl)
+                    .animation(.easeInOut(duration: 0.25), value: orchestrator?.phase)
+                    .transition(.move(edge: .leading).combined(with: .opacity))
             }
 
             FeedbackOverlay(state: feedback)

@@ -16,6 +16,7 @@ struct DecodeActivityView: View {
     let ttsEngine: TTSEngine?
 
     @State private var micState: MicUIState = .idle
+    @State private var shakeAmount: CGFloat = 0
 
     var body: some View {
         VStack(spacing: MoraTheme.Space.lg) {
@@ -24,6 +25,7 @@ struct DecodeActivityView: View {
                 Text(current.word.surface)
                     .font(MoraType.decodingWord())
                     .foregroundStyle(MoraTheme.Ink.primary)
+                    .shake(amount: shakeAmount)
                     .onLongPressGesture {
                         guard let tts = ttsEngine else { return }
                         Task { await tts.speak(current.word.surface) }
@@ -52,6 +54,15 @@ struct DecodeActivityView: View {
                 .padding(.bottom, MoraTheme.Space.lg)
             } else {
                 ProgressView()
+            }
+        }
+        .onChange(of: feedback) { _, new in
+            if new == .wrong {
+                withAnimation(.linear(duration: 0.6)) { shakeAmount = 1 }
+                Task { @MainActor in
+                    try? await Task.sleep(nanoseconds: 600_000_000)
+                    shakeAmount = 0
+                }
             }
         }
     }
