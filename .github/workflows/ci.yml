@@ -80,7 +80,12 @@ jobs:
       - name: Cache Xcode DerivedData (Mora app)
         uses: actions/cache@v4
         with:
-          path: ~/Library/Developer/Xcode/DerivedData
+          # Exclude ModuleCache.noindex / SDKStatCaches.noindex to avoid "module file
+          # has been modified" errors from cross-runner SDK mtime drift.
+          path: |
+            ~/Library/Developer/Xcode/DerivedData
+            !~/Library/Developer/Xcode/DerivedData/ModuleCache.noindex
+            !~/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex
           key: xcode-deriveddata-mora-${{ runner.os }}-${{ hashFiles('project.yml', 'Packages/*/Package.swift', 'Mora/**/*.swift', 'Packages/*/Sources/**/*.swift') }}
           restore-keys: |
             xcode-deriveddata-mora-${{ runner.os }}-
@@ -197,10 +202,17 @@ jobs:
       # Biggest single cache win: bench pulls heavy MLX / HuggingFace / swift-transformers
       # SPM packages. Keying on bench/project.yml invalidates on pin bumps; source-only
       # changes fall through to the restore-key and reuse the dependency builds.
+      # ModuleCache.noindex and SDKStatCaches.noindex are excluded because their .pcm
+      # files record SDK-file mtimes that don't match across runner instances; restoring
+      # them causes "module file ... has been modified" errors on C-module dependencies
+      # like swift-nio's CNIO* targets.
       - name: Cache Xcode DerivedData (bench)
         uses: actions/cache@v4
         with:
-          path: ~/Library/Developer/Xcode/DerivedData
+          path: |
+            ~/Library/Developer/Xcode/DerivedData
+            !~/Library/Developer/Xcode/DerivedData/ModuleCache.noindex
+            !~/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex
           key: xcode-deriveddata-bench-${{ runner.os }}-${{ hashFiles('bench/project.yml', 'bench/MoraBench/**/*.swift', 'bench/MoraBenchTests/**/*.swift') }}
           restore-keys: |
             xcode-deriveddata-bench-${{ runner.os }}-
