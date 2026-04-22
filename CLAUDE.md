@@ -26,20 +26,17 @@ Rationale: mora is a personal project and the user wants the Claude Code collabo
 
 ## Build & test commands
 
-The Xcode project is generated from `project.yml` via [XcodeGen](https://github.com/yonaskolb/XcodeGen) and is **not** checked in. Regenerate after any change to `project.yml` or when `Mora.xcodeproj` is missing:
+The Xcode project is generated from `project.yml` via [XcodeGen](https://github.com/yonaskolb/XcodeGen) and is **not** checked in. **After any edit to `project.yml`** (or when `Mora.xcodeproj` is missing) you MUST run `xcodegen generate` to refresh `Mora.xcodeproj`, then run `xcodebuild build` to verify the regenerated project actually picked up the change. Skipping the regenerate step produces a stale `Mora.xcodeproj` that builds cleanly but silently drops new `INFOPLIST_KEY_*` and other build-setting changes — the failure only surfaces at runtime (e.g. a TCC crash because a usage-description key never made it into `Info.plist`).
 
 ```sh
 xcodegen generate
-```
-
-Build the iOS app (matches CI — no code signing, generic simulator destination):
-
-```sh
 xcodebuild build \
   -project Mora.xcodeproj -scheme Mora \
   -destination 'generic/platform=iOS Simulator' \
   -configuration Debug CODE_SIGNING_ALLOWED=NO
 ```
+
+The `xcodebuild` invocation above also matches CI (no code signing, generic simulator destination) and is the standalone command for a plain rebuild when `project.yml` has not changed.
 
 Run package tests (each SPM package is tested independently; the app target has no test bundle):
 
