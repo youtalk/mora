@@ -59,6 +59,8 @@ struct LanguagePickerView: View {
                 }
                 .buttonStyle(.plain)
                 .disabled(selectedLanguageID.isEmpty)
+                .accessibilityLabel("Continue")
+                .accessibilityHint("Go to the age picker")
                 .padding(.bottom, MoraTheme.Space.xxl)
             }
         }

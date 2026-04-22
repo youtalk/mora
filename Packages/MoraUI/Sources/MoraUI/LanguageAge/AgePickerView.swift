@@ -83,5 +83,6 @@ struct AgePickerView: View {
                 )
         }
         .buttonStyle(.plain)
+        .accessibilityAddTraits(selected ? .isSelected : [])
     }
 }
