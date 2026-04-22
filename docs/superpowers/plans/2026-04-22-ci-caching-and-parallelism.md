@@ -699,7 +699,7 @@ Fill this in as tasks execute. Times are wall-clock minutes (Started → Complet
 |---|---|---|---|---|
 | Baseline (main, no bench changes) | 0.3 | 3.9 | skipped | Run ID: 24794759855 |
 | Baseline (historical, bench ran) | 0.3 | 3.0 | 14.1 | Run ID: 24765928314 (PR #15) |
-| Bundle, cold cache | | | | |
+| Bundle, cold cache | 0.4 | 5.8 | 17.0 | Run ID: 24795735049 (PR #29 seed run; cache saves add ~1 min overhead on miss) |
 | Bundle, warm cache | | | | |
 | Typical PR (MoraUI single-file touch) | | | | partial restore |
 
