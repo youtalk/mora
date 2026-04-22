@@ -135,6 +135,18 @@ jobs:
             -skipMacroValidation \
             CODE_SIGNING_ALLOWED=NO
 
+      - name: Build MoraBench (Mac Catalyst)
+        working-directory: bench
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project 'Mora Bench.xcodeproj' \
+            -scheme MoraBench \
+            -destination 'platform=macOS,variant=Mac Catalyst' \
+            -configuration Debug \
+            -skipMacroValidation \
+            CODE_SIGNING_ALLOWED=NO
+
       - name: Pick iPad simulator
         id: sim
         run: |
