@@ -81,12 +81,7 @@ final class SessionOrchestratorFullTests: XCTestCase {
         await o.handle(.advance)  // newRule → decoding
         XCTAssertEqual(o.phase, .decoding)
         for _ in 0..<3 {
-            await o.handle(
-                .answerResult(
-                    correct: true,
-                    asr: ASRResult(transcript: "x", confidence: 1)
-                )
-            )
+            await o.handle(.answerManual(correct: true))
         }
         XCTAssertEqual(o.phase, .shortSentences)
         XCTAssertEqual(o.trials.count, 3)
@@ -97,14 +92,12 @@ final class SessionOrchestratorFullTests: XCTestCase {
         await o.start()
         await o.handle(.warmupTap(.init(letters: "sh")))
         await o.handle(.advance)
-        // First word is "ship"; simulate a miss with transcript "sip".
-        // This miss's L1 tagging is covered by AssessmentEngine tests;
-        // the orchestrator's job here is just to record the trial.
+        // First word is "ship"; feed "sip" with confidence below the .newWord
+        // lenient-accept floor (0.25). Edit distance is 1, so without the
+        // confidence gate this would be scored correct — the low confidence
+        // is what keeps it a miss, which is exactly what this test cares about.
         await o.handle(
-            .answerResult(
-                correct: false,
-                asr: ASRResult(transcript: "sip", confidence: 0.5)
-            )
+            .answerHeard(ASRResult(transcript: "sip", confidence: 0.1))
         )
         XCTAssertEqual(o.trials.count, 1)
         XCTAssertEqual(o.trials.first?.correct, false)
@@ -117,21 +110,11 @@ final class SessionOrchestratorFullTests: XCTestCase {
         await o.handle(.warmupTap(.init(letters: "sh")))
         await o.handle(.advance)
         for _ in 0..<3 {
-            await o.handle(
-                .answerResult(
-                    correct: true,
-                    asr: ASRResult(transcript: "x", confidence: 1)
-                )
-            )
+            await o.handle(.answerManual(correct: true))
         }
         XCTAssertEqual(o.phase, .shortSentences)
         for _ in 0..<2 {
-            await o.handle(
-                .answerResult(
-                    correct: true,
-                    asr: ASRResult(transcript: "x", confidence: 1)
-                )
-            )
+            await o.handle(.answerManual(correct: true))
         }
         XCTAssertEqual(o.phase, .completion)
     }
@@ -142,20 +125,10 @@ final class SessionOrchestratorFullTests: XCTestCase {
         await o.handle(.warmupTap(.init(letters: "sh")))
         await o.handle(.advance)
         for i in 0..<3 {
-            await o.handle(
-                .answerResult(
-                    correct: i != 1,  // one miss
-                    asr: ASRResult(transcript: "x", confidence: 1)
-                )
-            )
+            await o.handle(.answerManual(correct: i != 1))  // one miss
         }
         for _ in 0..<2 {
-            await o.handle(
-                .answerResult(
-                    correct: true,
-                    asr: ASRResult(transcript: "x", confidence: 1)
-                )
-            )
+            await o.handle(.answerManual(correct: true))
         }
         XCTAssertEqual(o.phase, .completion)
         let summary = o.sessionSummary(endedAt: Date(timeIntervalSince1970: 900))

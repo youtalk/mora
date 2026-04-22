@@ -60,11 +60,7 @@ struct DecodeActivityView: View {
             tapButton("Correct", color: MoraTheme.Feedback.correct) {
                 feedback = .correct
                 Task { @MainActor in
-                    await orchestrator.handle(
-                        .answerResult(
-                            correct: true,
-                            asr: ASRResult(transcript: word.surface, confidence: 1.0)
-                        ))
+                    await orchestrator.handle(.answerManual(correct: true))
                     try? await Task.sleep(nanoseconds: 450_000_000)
                     feedback = .none
                 }
@@ -72,10 +68,7 @@ struct DecodeActivityView: View {
             tapButton("Wrong", color: MoraTheme.Feedback.wrong) {
                 feedback = .wrong
                 Task { @MainActor in
-                    await orchestrator.handle(
-                        .answerResult(
-                            correct: false, asr: ASRResult(transcript: "", confidence: 0)
-                        ))
+                    await orchestrator.handle(.answerManual(correct: false))
                     try? await Task.sleep(nanoseconds: 650_000_000)
                     feedback = .none
                 }
