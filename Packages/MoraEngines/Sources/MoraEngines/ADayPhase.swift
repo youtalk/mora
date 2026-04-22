@@ -12,6 +12,7 @@ public enum ADayPhase: String, Hashable, Codable, Sendable, CaseIterable {
 
 public enum OrchestratorEvent: Sendable {
     case warmupTap(Grapheme)
-    case answerResult(correct: Bool, asr: ASRResult?)
     case advance
+    case answerHeard(ASRResult)
+    case answerManual(correct: Bool)
 }

@@ -57,11 +57,15 @@ public final class SessionOrchestrator {
         case (.newRule, .advance):
             transitionTo(.decoding)
 
-        case (.decoding, .answerResult(let correct, let asr)):
-            handleDecodingAnswer(correct: correct, asr: asr)
+        case (.decoding, .answerHeard(let asr)):
+            handleDecodingHeard(asr: asr)
+        case (.decoding, .answerManual(let correct)):
+            handleDecodingManual(correct: correct)
 
-        case (.shortSentences, .answerResult(let correct, let asr)):
-            handleSentenceAnswer(correct: correct, asr: asr)
+        case (.shortSentences, .answerHeard(let asr)):
+            handleSentenceHeard(asr: asr)
+        case (.shortSentences, .answerManual(let correct)):
+            handleSentenceManual(correct: correct)
 
         default:
             // Other (phase, event) pairs — including .advance outside .newRule
@@ -86,27 +90,35 @@ public final class SessionOrchestrator {
         }
     }
 
-    private func handleDecodingAnswer(correct: Bool, asr: ASRResult?) {
+    private func handleDecodingHeard(asr: ASRResult) {
         guard wordIndex < words.count else {
             transitionTo(.shortSentences)
             return
         }
         let expected = words[wordIndex].word
-        trials.append(makeTrial(expected: expected, correct: correct, asr: asr))
+        let trial = assessment.assess(expected: expected, asr: asr, leniency: .newWord)
+        trials.append(trial)
         wordIndex += 1
         if wordIndex >= words.count { transitionTo(.shortSentences) }
     }
 
-    private func handleSentenceAnswer(correct: Bool, asr: ASRResult?) {
+    private func handleDecodingManual(correct: Bool) {
+        guard wordIndex < words.count else {
+            transitionTo(.shortSentences)
+            return
+        }
+        let expected = words[wordIndex].word
+        trials.append(manualTrial(expected: expected, correct: correct))
+        wordIndex += 1
+        if wordIndex >= words.count { transitionTo(.shortSentences) }
+    }
+
+    private func handleSentenceHeard(asr: ASRResult) {
         guard sentenceIndex < sentences.count else {
             transitionTo(.completion)
             return
         }
         let sentence = sentences[sentenceIndex]
-        // Pick the first word that contains the target grapheme; fall back to
-        // the sentence's first word. If the sentence has no words at all
-        // (malformed content), skip it without recording a trial rather than
-        // force-unwrapping into a crash.
         let targetGrapheme = target.skill.graphemePhoneme?.grapheme
         let expected =
             sentence.words.first { w in
@@ -114,31 +126,45 @@ public final class SessionOrchestrator {
                 return w.graphemes.contains(g)
             } ?? sentence.words.first
         if let expected {
-            trials.append(makeTrial(expected: expected, correct: correct, asr: asr))
+            let trial = assessment.assess(expected: expected, asr: asr, leniency: .newWord)
+            trials.append(trial)
         }
         sentenceIndex += 1
         if sentenceIndex >= sentences.count { transitionTo(.completion) }
     }
 
-    /// The dev-mode "Correct"/"Wrong" buttons treat the `correct` flag as the
-    /// source of truth — when correct, we record a clean pass with `heard`
-    /// pinned to `expected.surface` (the supplied ASR transcript may be
-    /// stale or empty in dev mode and would otherwise produce inconsistent
-    /// rows like correct=true / heard="x"). On a miss we hand off to
-    /// AssessmentEngine so error kind and L1 interference tagging stay
-    /// accurate against the actual transcript.
-    private func makeTrial(expected: Word, correct: Bool, asr: ASRResult?) -> TrialAssessment {
-        if correct {
-            return TrialAssessment(
-                expected: expected,
-                heard: expected.surface,
-                correct: true,
-                errorKind: .none,
-                l1InterferenceTag: nil
-            )
+    private func handleSentenceManual(correct: Bool) {
+        guard sentenceIndex < sentences.count else {
+            transitionTo(.completion)
+            return
         }
-        let effectiveAsr = asr ?? ASRResult(transcript: "", confidence: 0)
-        return assessment.assess(expected: expected, asr: effectiveAsr)
+        let sentence = sentences[sentenceIndex]
+        let targetGrapheme = target.skill.graphemePhoneme?.grapheme
+        let expected =
+            sentence.words.first { w in
+                guard let g = targetGrapheme else { return true }
+                return w.graphemes.contains(g)
+            } ?? sentence.words.first
+        if let expected {
+            trials.append(manualTrial(expected: expected, correct: correct))
+        }
+        sentenceIndex += 1
+        if sentenceIndex >= sentences.count { transitionTo(.completion) }
+    }
+
+    /// Manual Correct/Wrong taps bypass ASR entirely and record a trial
+    /// that mirrors `correct == true` → clean pass, `correct == false` →
+    /// `.omission` with empty heard transcript. This keeps the summary
+    /// consistent when dev-mode tap mode is used, independent of whatever
+    /// (if any) ASR transcript was active on screen.
+    private func manualTrial(expected: Word, correct: Bool) -> TrialAssessment {
+        TrialAssessment(
+            expected: expected,
+            heard: correct ? expected.surface : "",
+            correct: correct,
+            errorKind: correct ? .none : .omission,
+            l1InterferenceTag: nil
+        )
     }
 }
 
