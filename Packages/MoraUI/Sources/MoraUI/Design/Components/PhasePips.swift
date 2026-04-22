@@ -18,8 +18,10 @@ public struct PhasePips: View {
     }
 
     /// Exposed for testing so the phase → pip mapping is verifiable without
-    /// rendering the view.
-    public static func pipIndex(for phase: ADayPhase) -> Int {
+    /// rendering the view. Internal access is enough — tests reach it via
+    /// `@testable import MoraUI`, so the module's published surface stays
+    /// limited to the two initializers.
+    static func pipIndex(for phase: ADayPhase) -> Int {
         switch phase {
         case .notStarted: return -1
         case .warmup: return 0
@@ -42,7 +44,9 @@ public struct PhasePips: View {
         .accessibilityLabel(accessibilityLabel)
     }
 
-    public var accessibilityLabel: String {
+    /// Accessible-equivalent of the pip row. Internal for the same reason as
+    /// `pipIndex(for:)` — tests use `@testable import MoraUI`.
+    var accessibilityLabel: String {
         guard currentIndex >= 0 else { return "Session not started" }
         return "Phase \(currentIndex + 1) of \(totalCount)"
     }

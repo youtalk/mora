@@ -41,8 +41,10 @@ public actor AppleTTSEngine: TTSEngine {
     }
 
     /// Builds the "sh, as in ship." lead phrase spoken by `speak(phoneme:)`.
-    /// Extracted as a pure function so it can be unit-tested without audio.
-    public nonisolated static func phoneticLeadPhrase(
+    /// Extracted as a pure function so it can be unit-tested without audio
+    /// (tests reach it via `@testable import MoraEngines`); kept internal so
+    /// this helper isn't part of the module's published API surface.
+    nonisolated static func phoneticLeadPhrase(
         for phoneme: Phoneme, using profile: any L1Profile
     ) -> String {
         let lead: String

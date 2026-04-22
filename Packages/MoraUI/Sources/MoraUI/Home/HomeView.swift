@@ -18,10 +18,13 @@ public struct HomeView: View {
     @Query(sort: \DailyStreak.lastCompletedOn, order: .reverse)
     private var streaks: [DailyStreak]
 
-    // `needsEnhancedVoice` walks the installed-voice list; keeping it in @State
-    // means the scan runs once per view identity instead of on every body
-    // invalidation (which fires on every @Query update).
+    // `needsEnhancedVoice` walks the installed-voice list; keep the result in
+    // @State so the scan runs at most once per appearance / scene activation
+    // rather than on every body invalidation (which fires on every @Query
+    // update). Recomputed on scenePhase → .active so returning from Settings
+    // after downloading a premium voice flips the prompt off immediately.
     @State private var needsBetterVoice: Bool = AppleTTSEngine.needsEnhancedVoice
+    @Environment(\.scenePhase) private var scenePhase
 
     public init() {}
 
@@ -34,6 +37,12 @@ public struct HomeView: View {
                 Spacer()
                 hero
                 Spacer()
+            }
+        }
+        .onAppear { needsBetterVoice = AppleTTSEngine.needsEnhancedVoice }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active {
+                needsBetterVoice = AppleTTSEngine.needsEnhancedVoice
             }
         }
         #if os(iOS)
