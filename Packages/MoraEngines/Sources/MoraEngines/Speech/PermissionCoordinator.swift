@@ -15,9 +15,9 @@ public final class PermissionCoordinator {
     }
 
     #if os(iOS)
-        public convenience init() {
-            self.init(source: ApplePermissionSource())
-        }
+    public convenience init() {
+        self.init(source: ApplePermissionSource())
+    }
     #endif
 
     public func current() -> PermissionStatus {

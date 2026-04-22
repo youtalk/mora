@@ -113,25 +113,25 @@ public struct SessionContainerView: View {
     @MainActor
     private func bootstrap() async {
         #if os(iOS)
-            // Decide mic vs tap before building the engine — if the user
-            // denied either permission, skip engine construction entirely.
-            let coord = PermissionCoordinator()
-            switch coord.current() {
-            case .allGranted:
-                do {
-                    speechEngine = try AppleSpeechEngine()
-                    uiMode = .mic
-                } catch {
-                    speechLog.error(
-                        "AppleSpeechEngine init failed, falling back to tap: \(String(describing: error))"
-                    )
-                    uiMode = .tap
-                }
-            case .partial, .notDetermined:
+        // Decide mic vs tap before building the engine — if the user
+        // denied either permission, skip engine construction entirely.
+        let coord = PermissionCoordinator()
+        switch coord.current() {
+        case .allGranted:
+            do {
+                speechEngine = try AppleSpeechEngine()
+                uiMode = .mic
+            } catch {
+                speechLog.error(
+                    "AppleSpeechEngine init failed, falling back to tap: \(String(describing: error))"
+                )
                 uiMode = .tap
             }
-        #else
+        case .partial, .notDetermined:
             uiMode = .tap
+        }
+        #else
+        uiMode = .tap
         #endif
 
         do {
