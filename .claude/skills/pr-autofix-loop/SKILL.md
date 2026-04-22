@@ -1,6 +1,6 @@
 ---
 name: pr-autofix-loop
-description: After a pull request is opened or updated, enter a monitoring-and-auto-fix loop — watch every triggered GitHub Actions run via `gh run watch`, pull Copilot / human review comments via `gh api`, diagnose failures, apply fixes locally, run local build/test verification, commit, push, and repeat until CI is green and reviews are addressed. Use this skill whenever the user says "PR 作成後に監視して直して", "CI 通るまで自動で直して", "watch and autofix", "babysit the PR", "この PR のレビュー対応と CI 監視", or anything asking Claude to take a PR from red/reviewed to green/addressed without manual polling in between. Also trigger when the user hands off a just-pushed branch and expects Claude to drive it to a merge-ready state.
+description: After a pull request is opened or updated, enter a monitoring-and-auto-fix loop — watch every triggered GitHub Actions run via `gh run watch`, pull Copilot / human review comments via `gh api`, diagnose failures, apply fixes locally, run local build/test verification, commit, push, and repeat until CI is green and reviews are addressed. Use this skill whenever the user says "monitor and fix it after opening the PR", "keep auto-fixing until CI passes", "watch and autofix", "babysit the PR", "handle review feedback and monitor CI for this PR", or anything asking Claude to take a PR from red/reviewed to green/addressed without manual polling in between. Also trigger when the user hands off a just-pushed branch and expects Claude to drive it to a merge-ready state.
 ---
 
 # PR Autofix Loop
@@ -21,9 +21,9 @@ Keep going until CI is green and there are no unaddressed review threads, then s
 
 Trigger on any of:
 
-- The user just ran `gh pr create` (or asked you to) and said something like "監視して直して", "watch it", "babysit", "keep pushing until green".
-- The user posted a link to a specific failing Actions run or review on the current PR and says "直して" / "fix this".
-- A previous iteration of this loop ran and the user said "続けて" / "keep going".
+- The user just ran `gh pr create` (or asked you to) and said something like "watch it", "babysit", "monitor and fix", "keep pushing until green".
+- The user posted a link to a specific failing Actions run or review on the current PR and says "fix this".
+- A previous iteration of this loop ran and the user said "keep going" / "continue".
 
 Don't invoke for unrelated tasks like "run the tests" one-off or generic debugging — this skill is specifically for the **push → watch → diagnose → fix → push** cycle.
 
@@ -46,17 +46,30 @@ The most important discipline: **always reproduce locally and verify the fix bef
 
 ## Commands cheatsheet
 
-Finding the current run for a branch:
+Finding the run triggered by *this* push — always filter by the head commit SHA, not just the branch, because `--branch` on its own will happily include stale runs from earlier commits:
 ```bash
-gh run list --branch <branch> --limit 5 \
+HEAD_SHA=$(git rev-parse HEAD)
+gh run list --branch <branch> --commit "$HEAD_SHA" --limit 5 \
   --json databaseId,status,conclusion,headSha,workflowName,createdAt
 ```
+If the PR is open against a fork or the head branch isn't your local one, substitute the SHA / branch from `gh pr view <N> --json headRefOid,headRefName`.
 
 Blocking wait for a run:
 ```bash
 gh run watch <run-id> --exit-status
 ```
 `--exit-status` makes the command exit non-zero on failure so you can branch cleanly.
+
+### Watching in the background
+
+CI runs often take 2–10 minutes. Blocking the session for that long wastes the user's time and burns your context on idle output. Instead, run the watch in the background and let the harness notify you when it finishes:
+
+- In Claude Code, start the watch with `Bash(..., run_in_background=true)`. You will be notified when the shell exits, with the exit code. Exit 0 → green → go to review handling. Non-zero → fetch `gh run view <id> --log-failed` and diagnose.
+- While the watch runs in the background, do productive work the user has queued up, or hand control back and let them keep typing. Don't sit in a `sleep` loop polling; the harness is already watching the PID for you.
+- If the user wants a clean hand-off and no further Claude involvement until CI finishes, `gh run watch <id> --exit-status &` in a detached shell with `nohup` and log to a file, then tell the user how to check on it themselves.
+- For the common case of "push and wait", `gh pr checks <N> --watch` is an alternative that waits on *all* required checks for the PR (not just one run) and exits when every check settles. Use it when the workflow emits multiple jobs / multiple workflows you care about.
+
+Avoid the anti-pattern of `sleep 300 && gh run view` — you lose the prompt cache past the 5-min window and you don't get signal any earlier than the real completion event.
 
 Getting failure logs (only the failed steps — much shorter than `--log`):
 ```bash
@@ -93,7 +106,7 @@ Run the formatter locally (`swift-format format -i`, `prettier --write`, `ruff f
 Reproduce the exact command from the log (often pasted verbatim in the step). If it reproduces, fix the code. If it doesn't, the environment differs — check tool versions (`xcodebuild -version`, `swift --version`, `node --version`) between runner and local. The Xcode-15-vs-16 / project-format-77 case is a classic example: the fix was `runs-on: macos-14 → macos-15`, not a code change.
 
 ### Test failures
-Re-run just the failing test locally first (`swift test --filter`, `pytest -k`, `cargo test --test`). If it reproduces, fix the code or the test — whichever is actually wrong. If it doesn't reproduce locally, suspect flakiness or environment drift; gather evidence (rerun the job, check timing/order) before assuming the test is flaky and disabling it. **Never** disable or `skip` a test just to get CI green — if a test is genuinely flaky, mark it `@Disabled` with a TODO and a linked issue, and tell the user explicitly that you did so.
+Re-run just the failing test locally first (`swift test --filter`, `pytest -k`, `cargo test --test`). If it reproduces, fix the code or the test — whichever is actually wrong. If it doesn't reproduce locally, suspect flakiness or environment drift; gather evidence (rerun the job, check timing/order) before assuming the test is flaky and disabling it. **Never** disable or `skip` a test just to get CI green — if a test is genuinely flaky, use the test framework's own skip mechanism with a TODO and a linked issue (XCTest: `throw XCTSkip("...")`; Swift Testing / JUnit / pytest each have their own equivalent), and tell the user explicitly that you did so.
 
 ### Base branch advanced during the loop
 If the log mentions missing files the PR branch doesn't have, or the PR page shows "out of date", `git fetch origin main && git merge origin/main` (or `git rebase` if that's the repo convention). Resolve conflicts normally — don't `--strategy-option=ours` your way out. Then re-run local verification on the merged tree; new files from main may introduce their own formatter/build issues that need fixing in the same push.
@@ -104,7 +117,12 @@ List reviews + inline comments, filter to those newer than your last address cyc
 
 - **Copilot / bot reviews with `suggestion` blocks**: treat the suggestion as a starting hypothesis, not truth. Evaluate whether the reasoning is correct before applying. If you apply, credit the change in the commit message ("Address PR review: ..."). If you disagree, say so in a reply and explain — blind deference to review bots is worse than honest disagreement.
 - **Human reviews with code change requests**: apply the change, run local verification, push.
-- **Questions / discussion**: post a reply with `gh pr comment` or `gh api` on the review thread. Don't silently ignore questions.
+- **Questions / discussion**: reply in the right place. Use `gh pr comment <N> --body "..."` only for the top-level PR conversation. For an inline review comment/thread, that command won't attach to the thread — use the review-comment reply endpoint so the response is threaded:
+  ```bash
+  gh api -X POST "repos/<owner>/<repo>/pulls/<N>/comments/<comment-id>/replies" \
+    -f body="your reply"
+  ```
+  Don't silently ignore questions.
 
 Batch related review fixes into one commit when they're logically connected; split them if they're independent. Always mention "PR review" in the commit subject so the history is scannable.
 
