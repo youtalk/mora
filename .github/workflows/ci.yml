@@ -100,6 +100,10 @@ jobs:
             -configuration Debug \
             CODE_SIGNING_ALLOWED=NO
 
+      # SPM .build caches per local package. hashFiles includes the package's own
+      # sources and those of every package it depends on, so any upstream source
+      # change invalidates the cache. Prefix restore-keys let near-miss PRs still
+      # pick up the closest match and let Swift's incremental build fill the delta.
       - name: Cache SwiftPM .build (MoraCore)
         uses: actions/cache@v4
         with:
