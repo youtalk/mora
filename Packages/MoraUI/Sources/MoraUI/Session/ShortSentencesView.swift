@@ -161,7 +161,7 @@ struct ShortSentencesView: View {
                     case .final(let recording):
                         micState = .assessing
                         try? await Task.sleep(nanoseconds: 120_000_000)
-                        await orchestrator.handle(.answerHeard(recording.asr))
+                        await orchestrator.handle(.answerHeard(recording))
                         let wasCorrect = orchestrator.trials.last?.correct ?? false
                         feedback = wasCorrect ? .correct : .wrong
                         if !wasCorrect, let tts = ttsEngine {
