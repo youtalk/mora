@@ -77,4 +77,21 @@ final class LanguageAgeFlowTests: XCTestCase {
         XCTAssertFalse(ok)
         XCTAssertFalse(defaults.bool(forKey: LanguageAgeState.onboardedKey))
     }
+
+    func test_finalize_failsWhenLanguageIDEmpty() throws {
+        let container = try MoraModelContainer.inMemory()
+        let state = LanguageAgeState()
+        state.selectedLanguageID = "   "  // whitespace trims to empty
+        state.selectedAge = 8
+        let defaults = UserDefaults(suiteName: "test-\(UUID().uuidString)")!
+
+        let ok = state.finalize(in: container.mainContext, defaults: defaults)
+
+        XCTAssertFalse(ok)
+        XCTAssertFalse(defaults.bool(forKey: LanguageAgeState.onboardedKey))
+        let profiles = try container.mainContext.fetch(
+            FetchDescriptor<LearnerProfile>()
+        )
+        XCTAssertTrue(profiles.isEmpty)
+    }
 }
