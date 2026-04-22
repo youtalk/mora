@@ -20,6 +20,7 @@ public struct SessionContainerView: View {
     @State private var feedback: FeedbackState = .none
     @State private var uiMode: SessionUIMode = .tap
     @State private var speechEngine: SpeechEngine?
+    @State private var ttsEngine: TTSEngine?
 
     public init() {}
 
@@ -79,24 +80,26 @@ public struct SessionContainerView: View {
                 ProgressView("Preparing…")
                     .task { await orchestrator.start() }
             case .warmup:
-                WarmupView(orchestrator: orchestrator)
+                WarmupView(orchestrator: orchestrator, ttsEngine: ttsEngine)
             case .newRule:
-                NewRuleView(orchestrator: orchestrator)
+                NewRuleView(orchestrator: orchestrator, ttsEngine: ttsEngine)
             case .decoding:
                 DecodeActivityView(
                     orchestrator: orchestrator, uiMode: uiMode,
                     feedback: $feedback,
-                    speechEngine: uiMode == .mic ? speechEngine : nil
+                    speechEngine: uiMode == .mic ? speechEngine : nil,
+                    ttsEngine: ttsEngine
                 )
             case .shortSentences:
                 ShortSentencesView(
                     orchestrator: orchestrator, uiMode: uiMode,
                     feedback: $feedback,
-                    speechEngine: uiMode == .mic ? speechEngine : nil
+                    speechEngine: uiMode == .mic ? speechEngine : nil,
+                    ttsEngine: ttsEngine
                 )
             case .completion:
                 CompletionView(
-                    orchestrator: orchestrator,
+                    orchestrator: orchestrator, ttsEngine: ttsEngine,
                     persistSummary: { summary in persist(summary: summary) }
                 )
             }
@@ -130,6 +133,7 @@ public struct SessionContainerView: View {
         case .partial, .notDetermined:
             uiMode = .tap
         }
+        ttsEngine = AppleTTSEngine(l1Profile: JapaneseL1Profile())
         #else
         uiMode = .tap
         #endif

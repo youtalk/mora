@@ -4,6 +4,7 @@ import SwiftUI
 
 struct CompletionView: View {
     let orchestrator: SessionOrchestrator
+    let ttsEngine: TTSEngine?
     let persistSummary: (SessionSummary) -> Void
     @Environment(\.dismiss) private var dismiss
     @State private var didPersist = false
@@ -45,6 +46,10 @@ struct CompletionView: View {
             guard !didPersist else { return }
             didPersist = true
             persistSummary(orchestrator.sessionSummary(endedAt: Date()))
+        }
+        .task {
+            guard let tts = ttsEngine else { return }
+            await tts.speak("Quest complete! You got \(correct) out of \(total).")
         }
     }
 

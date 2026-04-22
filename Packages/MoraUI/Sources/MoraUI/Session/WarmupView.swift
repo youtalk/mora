@@ -4,6 +4,7 @@ import SwiftUI
 
 struct WarmupView: View {
     let orchestrator: SessionOrchestrator
+    let ttsEngine: TTSEngine?
 
     var body: some View {
         VStack(spacing: MoraTheme.Space.xl) {
@@ -41,20 +42,29 @@ struct WarmupView: View {
             Spacer()
 
             Button(action: {
-                // TTS replay wires in PR 6; button stays disabled until then.
+                playTargetPhoneme()
             }) {
                 Label("Listen again", systemImage: "speaker.wave.2.fill")
                     .font(MoraType.label())
-                    .foregroundStyle(MoraTheme.Ink.muted)
+                    .foregroundStyle(MoraTheme.Accent.teal)
                     .padding(.vertical, MoraTheme.Space.md)
                     .padding(.horizontal, MoraTheme.Space.lg)
-                    .background(MoraTheme.Background.cream, in: .capsule)
+                    .background(MoraTheme.Background.mint, in: .capsule)
             }
             .buttonStyle(.plain)
-            .disabled(true)
-            .accessibilityHint("Audio replay lands in a later update.")
+            .disabled(ttsEngine == nil)
             .padding(.bottom, MoraTheme.Space.lg)
         }
+        .task {
+            playTargetPhoneme()
+        }
+    }
+
+    private func playTargetPhoneme() {
+        guard let tts = ttsEngine,
+            let phoneme = orchestrator.target.skill.graphemePhoneme?.phoneme
+        else { return }
+        Task { await tts.speak(phoneme: phoneme) }
     }
 
     private var targetIPA: String {

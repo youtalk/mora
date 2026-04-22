@@ -4,6 +4,9 @@ import SwiftUI
 
 struct NewRuleView: View {
     let orchestrator: SessionOrchestrator
+    let ttsEngine: TTSEngine?
+
+    @State private var finishedIntro = false
 
     var body: some View {
         VStack(spacing: MoraTheme.Space.lg) {
@@ -32,8 +35,27 @@ struct NewRuleView: View {
             HeroCTA(title: "Got it") {
                 Task { await orchestrator.handle(.advance) }
             }
+            .disabled(!finishedIntro)
+            .opacity(finishedIntro ? 1.0 : 0.4)
             .padding(.bottom, MoraTheme.Space.xl)
         }
+        .task {
+            await playIntro()
+        }
+    }
+
+    @MainActor
+    private func playIntro() async {
+        guard !finishedIntro else { return }
+        guard let tts = ttsEngine else {
+            finishedIntro = true
+            return
+        }
+        await tts.speak("\(letters) says \(ipa). Two letters, one sound.")
+        for word in ["ship", "shop", "fish"] {
+            await tts.speak(word)
+        }
+        finishedIntro = true
     }
 
     private func workedExample(_ s: String) -> some View {

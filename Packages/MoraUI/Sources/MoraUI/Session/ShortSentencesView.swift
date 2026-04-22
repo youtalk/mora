@@ -13,6 +13,7 @@ struct ShortSentencesView: View {
     let uiMode: SessionUIMode
     @Binding var feedback: FeedbackState
     let speechEngine: SpeechEngine?
+    let ttsEngine: TTSEngine?
 
     @State private var micState: SentenceMicUIState = .idle
 
@@ -25,6 +26,10 @@ struct ShortSentencesView: View {
                     .foregroundStyle(MoraTheme.Ink.primary)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, MoraTheme.Space.xl)
+                    .onLongPressGesture {
+                        guard let tts = ttsEngine else { return }
+                        Task { await tts.speak(current.text) }
+                    }
 
                 Spacer()
 
@@ -115,7 +120,7 @@ struct ShortSentencesView: View {
     }
 
     private func startListening(engine: SpeechEngine) {
-        guard currentSentence != nil else { return }
+        guard let expected = currentSentence else { return }
         micState = .listening(partialText: "")
         Task { @MainActor in
             defer {
@@ -139,6 +144,9 @@ struct ShortSentencesView: View {
                         await orchestrator.handle(.answerHeard(asr))
                         let wasCorrect = orchestrator.trials.last?.correct ?? false
                         feedback = wasCorrect ? .correct : .wrong
+                        if !wasCorrect, let tts = ttsEngine {
+                            await tts.speak("Listen: " + expected.text)
+                        }
                         try? await Task.sleep(
                             nanoseconds: wasCorrect ? 450_000_000 : 650_000_000)
                         feedback = .none
