@@ -8,10 +8,16 @@ final class RSSReaderTests: XCTestCase {
         XCTAssertGreaterThan(rss ?? 0, 1_000_000) // > 1 MB
     }
 
-    func testAvailableMemoryIsPositive() {
+    func testAvailableMemoryIsPositive() throws {
+        #if targetEnvironment(simulator)
+        // os_proc_available_memory() returns 0 in non-app process contexts
+        // (Apple os/proc.h). This test is meaningful only on a real device.
+        try XCTSkipIf(true, "AvailableMemory is only meaningful on physical iPad")
+        #else
         let avail = AvailableMemory.current()
         XCTAssertNotNil(avail)
         XCTAssertGreaterThan(avail ?? 0, 1_000_000)
+        #endif
     }
 
     func testRSSReturnsMonotonicAfterAllocation() {
