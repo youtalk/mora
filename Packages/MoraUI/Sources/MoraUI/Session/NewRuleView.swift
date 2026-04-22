@@ -6,37 +6,44 @@ struct NewRuleView: View {
     let orchestrator: SessionOrchestrator
 
     var body: some View {
-        VStack(spacing: 28) {
+        VStack(spacing: MoraTheme.Space.lg) {
+            Spacer()
             Text("New rule")
-                .font(.title3.weight(.semibold))
-                .foregroundStyle(.secondary)
-            Text("\(letters) says /\(ipa)/")
-                .font(.system(size: 80, weight: .heavy, design: .rounded))
+                .font(MoraType.label())
+                .foregroundStyle(MoraTheme.Ink.muted)
+
+            Text("\(letters) → /\(ipa)/")
+                .font(.system(size: 96, weight: .heavy, design: .rounded))
+                .foregroundStyle(MoraTheme.Ink.primary)
+
             Text("Two letters, one sound.")
-                .font(.title3)
-                .foregroundStyle(.secondary)
-            HStack(spacing: 24) {
-                worked("ship")
-                worked("shop")
-                worked("fish")
+                .font(MoraType.heading())
+                .foregroundStyle(MoraTheme.Ink.secondary)
+
+            HStack(spacing: MoraTheme.Space.lg) {
+                workedExample("ship")
+                workedExample("shop")
+                workedExample("fish")
             }
-            Button("Got it") {
+            .padding(.top, MoraTheme.Space.lg)
+
+            Spacer()
+
+            HeroCTA(title: "Got it") {
                 Task { await orchestrator.handle(.advance) }
             }
-            .font(.title3.weight(.semibold))
-            .padding(.horizontal, 32).padding(.vertical, 16)
-            .background(.tint, in: .capsule)
-            .foregroundStyle(.white)
+            .padding(.bottom, MoraTheme.Space.xl)
         }
-        .padding()
     }
 
-    private func worked(_ s: String) -> some View {
+    private func workedExample(_ s: String) -> some View {
         Text(s)
-            .font(.system(size: 44, weight: .bold, design: .rounded))
-            .padding(.horizontal, 24).padding(.vertical, 12)
-            .background(Color.white, in: .rect(cornerRadius: 16))
-            .shadow(radius: 2)
+            .font(.system(size: 48, weight: .bold, design: .rounded))
+            .foregroundStyle(MoraTheme.Ink.primary)
+            .padding(.horizontal, MoraTheme.Space.lg)
+            .padding(.vertical, MoraTheme.Space.md)
+            .background(Color.white, in: .rect(cornerRadius: MoraTheme.Radius.tile))
+            .shadow(color: MoraTheme.Ink.secondary.opacity(0.15), radius: 3, y: 2)
     }
 
     private var letters: String {
