@@ -25,14 +25,15 @@ final class LLMRunner: ObservableObject {
         case error(String)
     }
 
+    @Published private(set) var loadedModel: BenchModel?
     @Published private(set) var status: Status = .idle
 
     private var container: ModelContainer?
 
-    func loadSmoke() async {
-        status = .loading("SmolLM-135M")
+    func load(_ model: BenchModel) async {
+        status = .loading(model.displayName)
         do {
-            let config = LLMRegistry.smolLM_135M_4bit
+            let config = ModelConfiguration(id: model.huggingFaceRepo)
             let container = try await LLMModelFactory.shared.loadContainer(
                 from: #hubDownloader(),
                 using: #huggingFaceTokenizerLoader(),
@@ -40,11 +41,12 @@ final class LLMRunner: ObservableObject {
             ) { progress in
                 Task { @MainActor [weak self] in
                     let pct = Int(progress.fractionCompleted * 100)
-                    self?.status = .loading("SmolLM-135M \(pct)%")
+                    self?.status = .loading("\(model.displayName) \(pct)%")
                 }
             }
             self.container = container
-            status = .ready("SmolLM-135M loaded")
+            self.loadedModel = model
+            status = .ready(model.displayName)
         } catch {
             status = .error("load failed: \(error.localizedDescription)")
         }
