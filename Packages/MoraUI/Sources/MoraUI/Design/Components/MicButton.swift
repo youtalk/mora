@@ -83,9 +83,21 @@ public struct MicButton: View {
         .disabled(state == .assessing)
         .onAppear { pulse = state == .listening }
         .onChange(of: state) { _, new in pulse = new == .listening }
-        .accessibilityLabel(strings.a11yMicButton)
+        .accessibilityLabel(stateA11yLabel)
         .accessibilityHint(state.accessibilityHint)
         .accessibilityAddTraits(state == .assessing ? .isStaticText : [])
+    }
+
+    /// Pick a localized label from `strings` based on the current state so
+    /// VoiceOver announces "listening", "checking", etc. rather than a
+    /// generic "mic" label. Falls back to `a11yMicButton` if a state ever
+    /// lacks a mapping.
+    private var stateA11yLabel: String {
+        switch state {
+        case .idle: return strings.a11yMicButton
+        case .listening: return strings.micListening
+        case .assessing: return strings.micAssessing
+        }
     }
 
     @State private var pulse: Bool = false
