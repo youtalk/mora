@@ -1,11 +1,6 @@
-import MoraCore
-import MoraEngines
-import SwiftData
 import SwiftUI
 
 public struct RootView: View {
-    @Environment(\.modelContext) private var context
-
     public init() {}
 
     public var body: some View {

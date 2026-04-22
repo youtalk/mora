@@ -1,8 +1,10 @@
 import MoraCore
 import MoraEngines
-import MoraTesting
+import OSLog
 import SwiftData
 import SwiftUI
+
+private let persistLog = Logger(subsystem: "tech.reenable.Mora", category: "Persistence")
 
 public struct SessionContainerView: View {
     @Environment(\.modelContext) private var context
@@ -50,10 +52,14 @@ public struct SessionContainerView: View {
             let curriculum = CurriculumEngine.defaultV1Ladder()
             let target = curriculum.currentTarget(forWeekIndex: 0)
             let taught = curriculum.taughtGraphemes(beforeWeekIndex: 0)
-            let provider = try ScriptedContentProvider.bundledShWeek1()
+            guard let targetGrapheme = target.skill.graphemePhoneme?.grapheme else {
+                bootError = "Target skill \(target.skill.code.rawValue) has no grapheme/phoneme mapping"
+                return
+            }
 
+            let provider = try ScriptedContentProvider.bundledShWeek1()
             let request = ContentRequest(
-                target: target.skill.graphemePhoneme!.grapheme,
+                target: targetGrapheme,
                 taughtGraphemes: taught,
                 interests: [],
                 count: 5
@@ -61,7 +67,7 @@ public struct SessionContainerView: View {
             let words = try provider.decodeWords(request)
             let sentences = try provider.decodeSentences(
                 ContentRequest(
-                    target: request.target,
+                    target: targetGrapheme,
                     taughtGraphemes: taught,
                     interests: [], count: 2
                 )
@@ -96,6 +102,14 @@ public struct SessionContainerView: View {
             escalated: summary.escalated
         )
         context.insert(entity)
-        try? context.save()
+        do {
+            try context.save()
+        } catch {
+            // Best-effort: a save failure here means the session log is lost
+            // for this run, but the in-memory orchestrator state still
+            // reflects what the learner just did. Surface to Console so the
+            // failure is debuggable; do not crash the celebration screen.
+            persistLog.error("SessionSummary save failed: \(error)")
+        }
     }
 }
