@@ -3,10 +3,17 @@ import MoraCore
 import MoraEngines
 
 public struct ScriptedContentProvider: ContentProvider {
+    public let target: Grapheme
+    public let taughtGraphemes: Set<Grapheme>
     public let words: [DecodeWord]
     public let sentences: [DecodeSentence]
 
-    public init(words: [DecodeWord], sentences: [DecodeSentence]) {
+    public init(target: Grapheme,
+                taughtGraphemes: Set<Grapheme>,
+                words: [DecodeWord],
+                sentences: [DecodeSentence]) {
+        self.target = target
+        self.taughtGraphemes = taughtGraphemes
         self.words = words
         self.sentences = sentences
     }
@@ -33,11 +40,6 @@ public struct ScriptedContentProvider: ContentProvider {
 
     // MARK: - Bundled "sh" week 1 preset
 
-    public static let l2TaughtSet: Set<Grapheme> = {
-        let letters = "abcdefghijklmnopqrstuvwxyz"
-        return Set(letters.map { Grapheme(letters: String($0)) })
-    }()
-
     public static func bundledShWeek1() throws -> ScriptedContentProvider {
         guard let url = Bundle.module.url(forResource: "sh_week1", withExtension: "json") else {
             throw ScriptedContentError.resourceMissing("sh_week1.json")
@@ -45,6 +47,8 @@ public struct ScriptedContentProvider: ContentProvider {
         let data = try Data(contentsOf: url)
         let payload = try JSONDecoder().decode(ShWeek1Payload.self, from: data)
         return ScriptedContentProvider(
+            target: Grapheme(letters: payload.target.letters),
+            taughtGraphemes: Set(payload.l2_taught_graphemes.map(Grapheme.init(letters:))),
             words: payload.decode_words.map { $0.asDecodeWord() },
             sentences: payload.sentences.map { $0.asDecodeSentence() }
         )

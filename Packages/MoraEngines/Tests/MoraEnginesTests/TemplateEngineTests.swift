@@ -73,6 +73,25 @@ final class TemplateEngineTests: XCTestCase {
         }
     }
 
+    func test_generate_replacesEachSlotOccurrenceIndependently() throws {
+        let repeatedTemplates: [Template] = [
+            Template(skeleton: "The {noun} and the {noun}.",
+                     slotKinds: ["noun": .noun])
+        ]
+        let engine = TemplateEngine(templates: repeatedTemplates, vocabulary: vocab)
+        var rng = SeededRNG(seed: 7)
+        let sentence = try XCTUnwrap(engine.generateSentence(
+            target: Grapheme(letters: "sh"),
+            taughtGraphemes: taughtL2,
+            interests: [],
+            rng: &rng
+        ))
+        // Every {noun} token must have been replaced — none left behind.
+        XCTAssertFalse(sentence.text.contains("{noun}"))
+        // usedWords and the text must agree on arity.
+        XCTAssertEqual(sentence.words.count, 2)
+    }
+
     func test_generate_returnsNilWhenNoDecodableVocab() {
         let engine = TemplateEngine(templates: templates, vocabulary: vocab)
         var rng = SeededRNG(seed: 1)

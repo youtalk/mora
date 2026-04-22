@@ -37,13 +37,13 @@ public struct TemplateEngine: Sendable {
 
         for _ in 0..<maxAttempts {
             let template = templates[rng.nextInt(upperBound: templates.count)]
-            if let filled = (try? fill(
+            if let filled = fill(
                 template: template,
                 target: target,
                 taughtGraphemes: taughtGraphemes,
                 interestKeys: interestKeys,
                 rng: &rng
-            )) ?? nil {
+            ) {
                 return filled
             }
         }
@@ -56,13 +56,15 @@ public struct TemplateEngine: Sendable {
         taughtGraphemes: Set<Grapheme>,
         interestKeys: Set<String>,
         rng: inout SeededRNG
-    ) throws -> DecodeSentence? {
+    ) -> DecodeSentence? {
         var text = template.skeleton
         var usedWords: [Word] = []
 
         for slotName in template.slotNames {
             guard let kind = template.slotKinds[slotName] else {
-                throw TemplateEngineError.slotKindMissing(slotName)
+                preconditionFailure(
+                    "Template '\(template.skeleton)' is missing a slot kind for slot '\(slotName)'."
+                )
             }
             let candidates = vocabulary.filter { item in
                 guard item.slotKinds.contains(kind) else { return false }
@@ -75,14 +77,11 @@ public struct TemplateEngine: Sendable {
             }
             guard !candidates.isEmpty else { return nil }
             let pick = candidates[rng.nextInt(upperBound: candidates.count)]
-            text = text.replacingOccurrences(of: "{\(slotName)}",
-                                             with: pick.word.surface)
+            let token = "{\(slotName)}"
+            guard let tokenRange = text.range(of: token) else { return nil }
+            text.replaceSubrange(tokenRange, with: pick.word.surface)
             usedWords.append(pick.word)
         }
         return DecodeSentence(text: text, words: usedWords)
     }
-}
-
-public enum TemplateEngineError: Error, Equatable {
-    case slotKindMissing(String)
 }
