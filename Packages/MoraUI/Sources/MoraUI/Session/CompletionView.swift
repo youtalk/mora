@@ -4,6 +4,7 @@ import SwiftData
 import SwiftUI
 
 struct CompletionView: View {
+    @Environment(\.moraStrings) private var strings
     let orchestrator: SessionOrchestrator
     let ttsEngine: TTSEngine?
     let persistSummary: (SessionSummary) -> Void
@@ -20,11 +21,11 @@ struct CompletionView: View {
         VStack(spacing: MoraTheme.Space.lg) {
             Spacer()
 
-            Text("Quest complete!")
+            Text(strings.completionTitle)
                 .font(.system(size: 60, weight: .heavy, design: .rounded))
                 .foregroundStyle(MoraTheme.Ink.primary)
 
-            Text("\(correct) / \(total)")
+            Text(strings.completionScore(correct, total))
                 .font(.system(size: 120, weight: .heavy, design: .rounded))
                 .foregroundStyle(MoraTheme.Accent.teal)
 
@@ -34,7 +35,7 @@ struct CompletionView: View {
 
             Spacer()
 
-            Text("Come back tomorrow!")
+            Text(strings.completionComeBack)
                 .font(MoraType.bodyReading())
                 .foregroundStyle(MoraTheme.Ink.muted)
 
