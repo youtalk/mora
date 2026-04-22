@@ -34,6 +34,13 @@ public struct PhasePips: View {
                     .frame(width: 34, height: 6)
             }
         }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(accessibilityLabel)
+    }
+
+    private var accessibilityLabel: String {
+        guard currentIndex >= 0 else { return "Session not started" }
+        return "Phase \(currentIndex + 1) of \(totalCount)"
     }
 
     private func color(for i: Int) -> Color {

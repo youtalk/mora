@@ -42,6 +42,9 @@ public struct MicButton: View {
         .disabled(state == .assessing)
         .onAppear { pulse = state == .listening }
         .onChange(of: state) { _, new in pulse = new == .listening }
+        .accessibilityLabel(accessibilityLabel)
+        .accessibilityHint(accessibilityHint)
+        .accessibilityAddTraits(state == .assessing ? .isStaticText : [])
     }
 
     @State private var pulse: Bool = false
@@ -51,6 +54,22 @@ public struct MicButton: View {
         case .idle: return "mic.fill"
         case .listening: return "waveform"
         case .assessing: return "ellipsis"
+        }
+    }
+
+    private var accessibilityLabel: String {
+        switch state {
+        case .idle: return "Start speaking"
+        case .listening: return "Listening"
+        case .assessing: return "Checking your answer"
+        }
+    }
+
+    private var accessibilityHint: String {
+        switch state {
+        case .idle: return "Tap to start recording"
+        case .listening: return "Tap to stop recording"
+        case .assessing: return ""
         }
     }
 }

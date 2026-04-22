@@ -4,10 +4,15 @@ import Foundation
 import SwiftUI
 
 public enum MoraFontRegistration {
-    /// Registered once per process. Returns true if OpenDyslexic Regular is
-    /// available as a UIFont after the call, false otherwise (the caller should
-    /// fall back to SF Rounded in that case). Idempotent — second call is a
-    /// no-op if the font is already registered.
+    /// PostScript name of the bundled OpenDyslexic Regular font.
+    /// Verified against the OTF's name table — CoreText resolves to this name.
+    public static let postScriptName = "OpenDyslexic-Regular"
+
+    /// Registers the bundled OpenDyslexic-Regular.otf once per process.
+    /// Returns `true` when the font is available for use, `false` when the
+    /// resource is missing or registration fails with an unexpected error.
+    /// Idempotent — returns `true` on subsequent calls when the font is
+    /// already registered.
     @discardableResult
     public static func registerBundledFonts() -> Bool {
         guard
@@ -20,9 +25,14 @@ public enum MoraFontRegistration {
         var error: Unmanaged<CFError>?
         let ok = CTFontManagerRegisterFontsForURL(url as CFURL, .process, &error)
         if !ok, let err = error?.takeRetainedValue() {
-            let nsErr = err as Error as NSError
-            // kCTFontManagerErrorAlreadyRegistered == 105
-            if nsErr.code == 105 { return true }
+            let domain = CFErrorGetDomain(err) as String
+            let code = CFErrorGetCode(err)
+            // kCTFontManagerErrorAlreadyRegistered in kCTFontManagerErrorDomain
+            if domain == kCTFontManagerErrorDomain as String,
+                code == CTFontManagerError.alreadyRegistered.rawValue
+            {
+                return true
+            }
             return false
         }
         return ok
@@ -30,9 +40,13 @@ public enum MoraFontRegistration {
 }
 
 public extension Font {
+    /// Returns the OpenDyslexic font at `size`. Falls back to SF Rounded when
+    /// font registration fails (e.g. missing resource in test bundles).
     static func openDyslexic(size: CGFloat) -> Font {
-        MoraFontRegistration.registerBundledFonts()
-        return Font.custom("OpenDyslexic", size: size)
+        guard MoraFontRegistration.registerBundledFonts() else {
+            return .system(size: size, weight: .regular, design: .rounded)
+        }
+        return Font.custom(MoraFontRegistration.postScriptName, size: size)
     }
 }
 
@@ -44,6 +58,10 @@ public enum MoraType {
     }
     public static func heading() -> Font {
         .system(size: 28, weight: .bold, design: .rounded)
+    }
+    /// Primary call-to-action button label (HeroCTA). Spec §6.4: 18pt text.
+    public static func cta() -> Font {
+        .system(size: 18, weight: .bold, design: .rounded)
     }
     public static func label() -> Font {
         .system(size: 14, weight: .semibold, design: .rounded)

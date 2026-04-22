@@ -6,7 +6,9 @@ public struct StreakChip: View {
 
     public var body: some View {
         HStack(spacing: MoraTheme.Space.xs) {
-            Text("🔥").font(.system(size: 18))
+            Text("🔥")
+                .font(.system(size: 18))
+                .accessibilityHidden(true)
             Text("\(count)")
                 .font(MoraType.pill())
                 .foregroundStyle(MoraTheme.Ink.primary)
@@ -14,5 +16,8 @@ public struct StreakChip: View {
         .padding(.horizontal, MoraTheme.Space.md)
         .padding(.vertical, MoraTheme.Space.sm)
         .background(MoraTheme.Background.mint, in: .capsule)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Streak")
+        .accessibilityValue("\(count) \(count == 1 ? "day" : "days")")
     }
 }

@@ -30,6 +30,7 @@ public struct FeedbackOverlay: View {
             }
         }
         .allowsHitTesting(false)
+        .accessibilityHidden(true)
         .transition(.opacity.animation(.easeInOut(duration: 0.2)))
     }
 }

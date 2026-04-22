@@ -12,7 +12,7 @@ public struct HeroCTA: View {
     public var body: some View {
         Button(action: action) {
             Text(title)
-                .font(MoraType.heading())
+                .font(MoraType.cta())
                 .foregroundStyle(Color.white)
                 .padding(.horizontal, MoraTheme.Space.xl)
                 .padding(.vertical, MoraTheme.Space.md)
