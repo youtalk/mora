@@ -46,6 +46,7 @@ final class AppleTTSEnginePhraseTests: XCTestCase {
             let characterSystem: CharacterSystem = .alphabetic
             let interferencePairs: [PhonemeConfusionPair] = []
             let interestCategories: [InterestCategory] = []
+            func uiStrings(forAgeYears years: Int) -> MoraStrings { JapaneseL1Profile().uiStrings(forAgeYears: years) }
         }
         let phrase = AppleTTSEngine.phoneticLeadPhrase(
             for: Phoneme(ipa: "ʃ"), using: NoExemplarsProfile()
