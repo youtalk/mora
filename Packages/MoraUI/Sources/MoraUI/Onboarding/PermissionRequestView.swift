@@ -41,10 +41,10 @@ struct PermissionRequestView: View {
     private func requestBoth() async {
         requesting = true
         #if os(iOS)
-            _ = await AVAudioApplication.requestRecordPermission()
-            await withCheckedContinuation { (cont: CheckedContinuation<Void, Never>) in
-                SFSpeechRecognizer.requestAuthorization { _ in cont.resume() }
-            }
+        _ = await AVAudioApplication.requestRecordPermission()
+        await withCheckedContinuation { (cont: CheckedContinuation<Void, Never>) in
+            SFSpeechRecognizer.requestAuthorization { _ in cont.resume() }
+        }
         #endif
         requesting = false
         onContinue()
