@@ -31,11 +31,15 @@ final class OnboardingState {
         step = .interests
     }
 
+    /// Persist the profile + streak and flip the onboarded flag. Only flips
+    /// the flag after `context.save()` succeeds so a save failure doesn't
+    /// leave the app in the "onboarded but no profile" hole Copilot flagged.
+    @discardableResult
     func finalize(
         in context: ModelContext,
         defaults: UserDefaults = .standard,
         now: Date = Date()
-    ) {
+    ) -> Bool {
         let profile = LearnerProfile(
             displayName: name,
             l1Identifier: "ja",
@@ -46,8 +50,18 @@ final class OnboardingState {
         let streak = DailyStreak(currentCount: 0, longestCount: 0, lastCompletedOn: nil)
         context.insert(profile)
         context.insert(streak)
-        try? context.save()
+        do {
+            try context.save()
+        } catch {
+            // Save failed — roll back the inserts so we don't leave orphaned
+            // rows behind, and leave the onboarded flag untouched so the
+            // user lands back in onboarding on next launch.
+            context.delete(profile)
+            context.delete(streak)
+            return false
+        }
         defaults.set(true, forKey: Self.onboardedKey)
+        return true
     }
 }
 

@@ -40,5 +40,7 @@ targets:
         INFOPLIST_KEY_UILaunchScreen_Generation: "YES"
         INFOPLIST_KEY_UIApplicationSceneManifest_Generation: "YES"
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_NSMicrophoneUsageDescription: "mora listens when you read aloud during practice."
+        INFOPLIST_KEY_NSSpeechRecognitionUsageDescription: "mora recognizes the words you read so it can score them."
         GENERATE_INFOPLIST_FILE: "YES"
         CODE_SIGN_STYLE: Automatic
