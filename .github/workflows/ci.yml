@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    name: Lint / Build / Test
+    runs-on: macos-14
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show toolchain
+        run: |
+          xcodebuild -version
+          swift --version
+
+      - name: Install tools
+        run: brew install swift-format xcodegen
+
+      - name: swift-format lint
+        run: swift-format lint --strict --recursive Mora Packages
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      - name: Build Mora (iOS Simulator)
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project Mora.xcodeproj \
+            -scheme Mora \
+            -destination 'generic/platform=iOS Simulator' \
+            -configuration Debug \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Test SPM packages
+        run: |
+          set -e
+          for pkg in MoraCore MoraEngines MoraUI MoraTesting; do
+            echo "::group::swift test — $pkg"
+            (cd Packages/$pkg && swift test)
+            echo "::endgroup::"
+          done

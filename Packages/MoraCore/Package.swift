@@ -5,7 +5,7 @@ let package = Package(
     name: "MoraCore",
     platforms: [.iOS(.v17), .macOS(.v14)],
     products: [
-        .library(name: "MoraCore", targets: ["MoraCore"]),
+        .library(name: "MoraCore", targets: ["MoraCore"])
     ],
     targets: [
         .target(name: "MoraCore"),
