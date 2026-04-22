@@ -199,7 +199,9 @@ final class MoraStringsTests: XCTestCase {
         switch scalar.value {
         case 0x3040...0x309F: return true  // Hiragana
         case 0x30A0...0x30FF: return true  // Katakana
-        case 0x0020...0x007E: return true  // ASCII printable (digits, /, etc.)
+        case 0x0020: return true  // ASCII space — needed between tokens
+        case 0x002F: return true  // '/' — used in "\(current)/\(total)" counters
+        case 0x0030...0x0039: return true  // ASCII digits 0-9 for count/score closures
         default: return allowedSymbols.contains(scalar)
         }
     }
