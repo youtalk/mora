@@ -42,7 +42,7 @@ struct WarmupView: View {
             Spacer()
 
             Button(action: {
-                playTargetPhoneme()
+                Task { await playTargetPhoneme() }
             }) {
                 Label("Listen again", systemImage: "speaker.wave.2.fill")
                     .font(MoraType.label())
@@ -56,15 +56,18 @@ struct WarmupView: View {
             .padding(.bottom, MoraTheme.Space.lg)
         }
         .task {
-            playTargetPhoneme()
+            // Await directly so SwiftUI cancels the TTS if the view
+            // disappears before playback finishes. (Previously we spawned
+            // an unstructured Task, which couldn't be cancelled.)
+            await playTargetPhoneme()
         }
     }
 
-    private func playTargetPhoneme() {
+    private func playTargetPhoneme() async {
         guard let tts = ttsEngine,
             let phoneme = orchestrator.target.skill.graphemePhoneme?.phoneme
         else { return }
-        Task { await tts.speak(phoneme: phoneme) }
+        await tts.speak(phoneme: phoneme)
     }
 
     private var targetIPA: String {

@@ -1,4 +1,3 @@
-import AVFoundation
 import MoraCore
 import MoraEngines
 import SwiftData
@@ -47,7 +46,7 @@ public struct HomeView: View {
                 .font(MoraType.heading())
                 .foregroundStyle(MoraTheme.Accent.orange)
             Spacer()
-            if needsEnhancedVoice {
+            if AppleTTSEngine.needsEnhancedVoice {
                 Button(action: openVoiceSettings) {
                     Text("Better voice ›")
                         .font(MoraType.pill())
@@ -126,15 +125,6 @@ public struct HomeView: View {
     private var ipaLine: String {
         guard let gp = target.skill.graphemePhoneme else { return "" }
         return "/\(gp.phoneme.ipa)/ · as in ship, shop, fish"
-    }
-
-    /// `true` when no installed en-US voice is enhanced or premium; HomeView
-    /// surfaces the "Better voice" chip that links into iOS Settings so the
-    /// parent can install a higher-quality voice from Accessibility.
-    private var needsEnhancedVoice: Bool {
-        let voices = AVSpeechSynthesisVoice.speechVoices()
-            .filter { $0.language.hasPrefix("en-US") }
-        return !voices.contains { $0.quality == .enhanced || $0.quality == .premium }
     }
 
     private func openVoiceSettings() {

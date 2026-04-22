@@ -48,9 +48,9 @@ public actor AppleTTSEngine: TTSEngine {
 
     /// `true` when no installed en-US voice is enhanced or premium. Callers
     /// (HomeView) surface a prompt linking into Settings when this is true.
-    /// Nonisolated because it reads process-wide voice metadata; no actor
-    /// state is touched.
-    public nonisolated var needsEnhancedVoice: Bool {
+    /// Static because it reads process-wide voice metadata; keeps the
+    /// HomeView chip and TTS engine reading from one source.
+    public nonisolated static var needsEnhancedVoice: Bool {
         let voices = AVSpeechSynthesisVoice.speechVoices()
             .filter { $0.language.hasPrefix("en-US") }
         return !voices.contains { $0.quality == .enhanced || $0.quality == .premium }
@@ -61,7 +61,7 @@ public actor AppleTTSEngine: TTSEngine {
         utterance.rate = rate
         utterance.voice = pickVoice()
         await withCheckedContinuation { (cont: CheckedContinuation<Void, Never>) in
-            delegateProxy.setOnFinish { cont.resume() }
+            delegateProxy.enqueue { cont.resume() }
             synthesizer.speak(utterance)
         }
     }
@@ -81,37 +81,37 @@ public actor AppleTTSEngine: TTSEngine {
 }
 
 /// AVSpeechSynthesizerDelegate requires an NSObject; this proxy forwards
-/// `didFinish` / `didCancel` into a single-shot continuation so callers can
-/// `await` `speak(_:)`. A fresh continuation is installed per utterance.
+/// `didFinish` / `didCancel` into a FIFO queue of continuation handlers so
+/// overlapping `speak(_:)` calls each get their own completion. A single-slot
+/// handler would race under actor re-entrance (speak A awaits → speak B
+/// overwrites A's handler → only B's continuation resumes, A hangs).
 private final class DelegateProxy: NSObject, AVSpeechSynthesizerDelegate, @unchecked Sendable {
     private let lock = NSLock()
-    private var onFinish: (() -> Void)?
+    private var handlers: [() -> Void] = []
 
-    func setOnFinish(_ handler: @escaping () -> Void) {
+    func enqueue(_ handler: @escaping () -> Void) {
         lock.lock()
         defer { lock.unlock() }
-        onFinish = handler
+        handlers.append(handler)
     }
 
-    private func takeHandler() -> (() -> Void)? {
+    private func takeNext() -> (() -> Void)? {
         lock.lock()
         defer { lock.unlock() }
-        let h = onFinish
-        onFinish = nil
-        return h
+        return handlers.isEmpty ? nil : handlers.removeFirst()
     }
 
     func speechSynthesizer(
         _ synthesizer: AVSpeechSynthesizer,
         didFinish utterance: AVSpeechUtterance
     ) {
-        takeHandler()?()
+        takeNext()?()
     }
 
     func speechSynthesizer(
         _ synthesizer: AVSpeechSynthesizer,
         didCancel utterance: AVSpeechUtterance
     ) {
-        takeHandler()?()
+        takeNext()?()
     }
 }
