@@ -11,12 +11,17 @@ enum PromptLibrary {
     private static let frozen = loadFrozen()
 
     private static func loadFrozen() -> FrozenSnapshot {
-        guard let url = Bundle.main.url(forResource: "templates-frozen", withExtension: "json"),
-              let data = try? Data(contentsOf: url),
-              let decoded = try? JSONDecoder().decode(FrozenSnapshot.self, from: data) else {
+        guard let url = Bundle.main.url(forResource: "templates-frozen", withExtension: "json") else {
+            assertionFailure("templates-frozen.json missing from bundle — check MoraBench target Resources")
             return FrozenSnapshot.empty
         }
-        return decoded
+        do {
+            let data = try Data(contentsOf: url)
+            return try JSONDecoder().decode(FrozenSnapshot.self, from: data)
+        } catch {
+            assertionFailure("templates-frozen.json malformed: \(error)")
+            return FrozenSnapshot.empty
+        }
     }
 
     private static func slotFillShort() -> BenchPrompt {
