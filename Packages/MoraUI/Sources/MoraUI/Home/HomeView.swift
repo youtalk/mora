@@ -3,6 +3,10 @@ import MoraEngines
 import SwiftData
 import SwiftUI
 
+#if canImport(UIKit)
+import UIKit
+#endif
+
 public struct HomeView: View {
     // Sort by createdAt so if duplicate rows ever appear (migration bug, test
     // seed leaking into prod store), the oldest profile wins deterministically.
@@ -42,6 +46,18 @@ public struct HomeView: View {
                 .font(MoraType.heading())
                 .foregroundStyle(MoraTheme.Accent.orange)
             Spacer()
+            if AppleTTSEngine.needsEnhancedVoice {
+                Button(action: openVoiceSettings) {
+                    Text("Better voice ›")
+                        .font(MoraType.pill())
+                        .foregroundStyle(MoraTheme.Ink.secondary)
+                        .padding(.horizontal, MoraTheme.Space.md)
+                        .padding(.vertical, MoraTheme.Space.sm)
+                        .background(MoraTheme.Background.cream, in: .capsule)
+                }
+                .buttonStyle(.plain)
+                .accessibilityHint("Open iOS Settings to download an enhanced voice.")
+            }
             StreakChip(count: streaks.first?.currentCount ?? 0)
         }
         .padding(MoraTheme.Space.md)
@@ -109,5 +125,13 @@ public struct HomeView: View {
     private var ipaLine: String {
         guard let gp = target.skill.graphemePhoneme else { return "" }
         return "/\(gp.phoneme.ipa)/ · as in ship, shop, fish"
+    }
+
+    private func openVoiceSettings() {
+        #if canImport(UIKit)
+        if let url = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(url)
+        }
+        #endif
     }
 }

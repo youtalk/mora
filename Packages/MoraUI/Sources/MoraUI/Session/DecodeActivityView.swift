@@ -13,6 +13,7 @@ struct DecodeActivityView: View {
     let uiMode: SessionUIMode
     @Binding var feedback: FeedbackState
     let speechEngine: SpeechEngine?
+    let ttsEngine: TTSEngine?
 
     @State private var micState: MicUIState = .idle
 
@@ -23,6 +24,10 @@ struct DecodeActivityView: View {
                 Text(current.word.surface)
                     .font(MoraType.decodingWord())
                     .foregroundStyle(MoraTheme.Ink.primary)
+                    .onLongPressGesture {
+                        guard let tts = ttsEngine else { return }
+                        Task { await tts.speak(current.word.surface) }
+                    }
 
                 if let note = current.note {
                     Text(note)
@@ -122,6 +127,7 @@ struct DecodeActivityView: View {
     }
 
     private func startListening(engine: SpeechEngine) {
+        guard let expected = currentWord?.word else { return }
         micState = .listening(partialText: "")
         Task { @MainActor in
             do {
@@ -139,6 +145,9 @@ struct DecodeActivityView: View {
                         await orchestrator.handle(.answerHeard(asr))
                         let wasCorrect = orchestrator.trials.last?.correct ?? false
                         feedback = wasCorrect ? .correct : .wrong
+                        if !wasCorrect, let tts = ttsEngine {
+                            await tts.speak("Listen: " + expected.surface)
+                        }
                         try? await Task.sleep(
                             nanoseconds: wasCorrect ? 450_000_000 : 650_000_000)
                         feedback = .none

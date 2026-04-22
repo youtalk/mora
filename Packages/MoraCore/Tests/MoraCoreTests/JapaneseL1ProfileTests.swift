@@ -46,4 +46,15 @@ final class JapaneseL1ProfileTests: XCTestCase {
             heard: .init(ipa: "l"))
         XCTAssertEqual(hit?.tag, "r_l_swap")
     }
+
+    func test_exemplars_shDigraph() {
+        XCTAssertEqual(
+            profile.exemplars(for: Phoneme(ipa: "ʃ")),
+            ["ship", "shop", "fish"]
+        )
+    }
+
+    func test_exemplars_unknownPhonemeIsEmpty() {
+        XCTAssertTrue(profile.exemplars(for: Phoneme(ipa: "ʒ")).isEmpty)
+    }
 }
