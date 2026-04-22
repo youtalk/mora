@@ -7,6 +7,7 @@ import UIKit
 #endif
 
 struct DecodeActivityView: View {
+    @Environment(\.moraStrings) private var strings
     let orchestrator: SessionOrchestrator
     let uiMode: SessionUIMode
     @Binding var feedback: FeedbackState
@@ -45,9 +46,15 @@ struct DecodeActivityView: View {
                     micStack
                 }
 
-                Text(
-                    "Word \(orchestrator.wordIndex + 1) of \(orchestrator.words.count)"
-                )
+                HStack(spacing: MoraTheme.Space.sm) {
+                    Text(
+                        strings.sessionWordCounter(
+                            orchestrator.wordIndex + 1, orchestrator.words.count
+                        )
+                    )
+                    Text("·")
+                    Text(strings.decodingLongPressHint)
+                }
                 .font(MoraType.label())
                 .foregroundStyle(MoraTheme.Ink.muted)
                 .padding(.bottom, MoraTheme.Space.lg)
@@ -107,7 +114,7 @@ struct DecodeActivityView: View {
 
     private func tapPair(word: Word) -> some View {
         HStack(spacing: MoraTheme.Space.xl) {
-            tapButton("Correct", color: MoraTheme.Feedback.correct) {
+            tapButton(strings.feedbackCorrect, color: MoraTheme.Feedback.correct) {
                 feedback = .correct
                 Task { @MainActor in
                     await orchestrator.handle(.answerManual(correct: true))
@@ -115,7 +122,7 @@ struct DecodeActivityView: View {
                     feedback = .none
                 }
             }
-            tapButton("Wrong", color: MoraTheme.Feedback.wrong) {
+            tapButton(strings.feedbackTryAgain, color: MoraTheme.Feedback.wrong) {
                 feedback = .wrong
                 Task { @MainActor in
                     await orchestrator.handle(.answerManual(correct: false))

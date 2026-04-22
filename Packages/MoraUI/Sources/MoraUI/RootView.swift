@@ -1,3 +1,5 @@
+import MoraCore
+import SwiftData
 import SwiftUI
 
 public struct RootView: View {
@@ -7,6 +9,8 @@ public struct RootView: View {
     @State private var onboarded: Bool = UserDefaults.standard.bool(
         forKey: OnboardingState.onboardedKey
     )
+    @Query(sort: \LearnerProfile.createdAt, order: .forward)
+    private var profiles: [LearnerProfile]
 
     public init() {}
 
@@ -20,6 +24,7 @@ public struct RootView: View {
                 OnboardingFlow {
                     onboarded = true
                 }
+                .environment(\.moraStrings, resolvedStrings)
             } else {
                 NavigationStack {
                     HomeView()
@@ -30,7 +35,20 @@ public struct RootView: View {
                             }
                         }
                 }
+                .environment(\.moraStrings, resolvedStrings)
             }
         }
+    }
+
+    /// Build the string catalog from the active profile. Before onboarding
+    /// completes, age may be nil — default to 8 (matches
+    /// `MoraStringsKey.defaultValue`) so screens still render.
+    ///
+    /// Alpha only ships `JapaneseL1Profile`, so every profile renders JP.
+    /// When a second `L1Profile` lands, switch on `profile?.l1Identifier`
+    /// here and return the matching profile's `uiStrings`.
+    private var resolvedStrings: MoraStrings {
+        let years = profiles.first?.ageYears ?? 8
+        return JapaneseL1Profile().uiStrings(forAgeYears: years)
     }
 }

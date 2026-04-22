@@ -3,6 +3,7 @@ import MoraEngines
 import SwiftUI
 
 struct NewRuleView: View {
+    @Environment(\.moraStrings) private var strings
     let orchestrator: SessionOrchestrator
     let ttsEngine: TTSEngine?
 
@@ -32,7 +33,7 @@ struct NewRuleView: View {
 
             Spacer()
 
-            HeroCTA(title: "Got it") {
+            HeroCTA(title: strings.newRuleGotIt) {
                 Task { await orchestrator.handle(.advance) }
             }
             .disabled(!finishedIntro)

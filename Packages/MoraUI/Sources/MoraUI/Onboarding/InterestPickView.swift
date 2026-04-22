@@ -2,8 +2,10 @@ import MoraCore
 import SwiftUI
 
 struct InterestPickView: View {
+    @Environment(\.moraStrings) private var strings
     @Binding var selectedKeys: Set<String>
     let categories: [InterestCategory]
+    var ageYears: Int = 8
     let onContinue: () -> Void
 
     /// Emoji icons are a UI-layer concern; keeping them here avoids polluting
@@ -27,13 +29,9 @@ struct InterestPickView: View {
         VStack(spacing: MoraTheme.Space.lg) {
             Spacer().frame(height: MoraTheme.Space.xl)
 
-            Text("What do you like?")
+            Text(strings.interestPrompt)
                 .font(MoraType.heading())
                 .foregroundStyle(MoraTheme.Ink.primary)
-
-            Text("Pick 3–5 — we'll use these for your stories.")
-                .font(MoraType.label())
-                .foregroundStyle(MoraTheme.Ink.muted)
 
             LazyVGrid(columns: columns, spacing: MoraTheme.Space.md) {
                 ForEach(categories) { cat in
@@ -45,7 +43,7 @@ struct InterestPickView: View {
 
             Spacer()
 
-            HeroCTA(title: "Next", action: onContinue)
+            HeroCTA(title: strings.interestCTA, action: onContinue)
                 .disabled(!isSelectionValid)
                 .opacity(isSelectionValid ? 1.0 : 0.4)
                 .padding(.bottom, MoraTheme.Space.xl)
@@ -63,9 +61,13 @@ struct InterestPickView: View {
             VStack(spacing: MoraTheme.Space.sm) {
                 Text(Self.emoji[cat.key] ?? "⭐")
                     .font(.system(size: 48))
-                Text(cat.displayName)
-                    .font(MoraType.label())
-                    .foregroundStyle(MoraTheme.Ink.primary)
+                Text(
+                    JapaneseL1Profile().interestCategoryDisplayName(
+                        key: cat.key, forAgeYears: ageYears
+                    )
+                )
+                .font(MoraType.label())
+                .foregroundStyle(MoraTheme.Ink.primary)
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, MoraTheme.Space.lg)
