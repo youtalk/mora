@@ -41,8 +41,10 @@ final class AssessmentEngineScoringTests: XCTestCase {
         XCTAssertEqual(result.errorKind, .omission)
     }
 
-    func test_substitution_ofSingleLetter() {
-        // "sip" → edit distance 1 substitution of "sh" with "s"
+    func test_substitution_ofSingleGrapheme() {
+        // "sip" has the same number of grapheme-sized units as "ship"
+        // (3 vs 3), so the v1 length-diff classifier reports substitution
+        // — the digraph "sh" was decoded as the single letter "s".
         let result = engine().assess(
             expected: ship,
             asr: ASRResult(transcript: "sip", confidence: 0.7)

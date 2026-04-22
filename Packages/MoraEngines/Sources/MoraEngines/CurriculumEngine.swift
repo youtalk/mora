@@ -16,7 +16,11 @@ public struct CurriculumEngine: Sendable {
         return Target(weekStart: weekStart, skill: skills[idx])
     }
 
-    public func taughtGraphemes(upToWeekIndex week: Int) -> Set<Grapheme> {
+    /// Graphemes a learner is assumed to have mastered before the given
+    /// week begins — i.e. baseline plus every skill grapheme from
+    /// `skills[0..<week]`. Exclusive on the right: at `week == 0` only
+    /// the baseline is returned (the week-0 target itself is not yet taught).
+    public func taughtGraphemes(beforeWeekIndex week: Int) -> Set<Grapheme> {
         var accumulated = baselineTaughtGraphemes
         for i in 0..<min(week, skills.count) {
             if let gp = skills[i].graphemePhoneme {

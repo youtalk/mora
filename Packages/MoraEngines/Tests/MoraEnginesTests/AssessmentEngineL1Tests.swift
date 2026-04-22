@@ -9,7 +9,10 @@ final class AssessmentEngineL1Tests: XCTestCase {
         leniency: 0.5
     )
 
-    // "light" misread as "right" → r/l swap
+    // "light" misread as "right" → r/l swap.
+    // Both words have 5 graphemes / 5 chars, so the length-diff classifier
+    // must report substitution; asserting it here guards against accidental
+    // regressions in scoring that would otherwise still leave the L1 tag intact.
     func test_rightForLight_tagsRLSwap() {
         let light = Word(
             surface: "light",
@@ -24,10 +27,11 @@ final class AssessmentEngineL1Tests: XCTestCase {
             asr: ASRResult(transcript: "right", confidence: 0.8)
         )
         XCTAssertFalse(a.correct)
+        XCTAssertEqual(a.errorKind, .substitution)
         XCTAssertEqual(a.l1InterferenceTag, "r_l_swap")
     }
 
-    // "fat" misread as "hat" → f → h
+    // "fat" misread as "hat" → f → h. Same length, so substitution.
     func test_hatForFat_tagsFHSub() {
         let fat = Word(
             surface: "fat",
@@ -38,10 +42,12 @@ final class AssessmentEngineL1Tests: XCTestCase {
             expected: fat,
             asr: ASRResult(transcript: "hat", confidence: 0.7)
         )
+        XCTAssertEqual(a.errorKind, .substitution)
         XCTAssertEqual(a.l1InterferenceTag, "f_h_sub")
     }
 
-    // "hat" misread as "fat" → not tagged (f_h is one-direction)
+    // "hat" misread as "fat" → not tagged (f_h is one-direction).
+    // Still a substitution at the scoring layer; the tag is what changes.
     func test_fatForHat_notTagged() {
         let hat = Word(
             surface: "hat",
@@ -52,6 +58,7 @@ final class AssessmentEngineL1Tests: XCTestCase {
             expected: hat,
             asr: ASRResult(transcript: "fat", confidence: 0.7)
         )
+        XCTAssertEqual(a.errorKind, .substitution)
         XCTAssertNil(a.l1InterferenceTag)
     }
 

@@ -3,6 +3,11 @@ import MoraCore
 
 public struct AssessmentEngine: Sendable {
     public let l1Profile: any L1Profile
+    /// 0.0 = strictest (exact match required), 1.0 = most lenient.
+    /// Reserved for the v1.5 swap to real ASR, where it will gate
+    /// confidence thresholds and edit-distance tolerance. The current
+    /// fake-ASR scoring path treats every transcript as definitive
+    /// and ignores this value.
     public let leniency: Double
 
     public init(l1Profile: any L1Profile, leniency: Double = 0.5) {
@@ -47,11 +52,13 @@ public struct AssessmentEngine: Sendable {
     }
 
     private func classify(expected: Word, heardNormalized: String) -> (TrialErrorKind, String?) {
-        // v1 heuristic: compare expected phoneme count to heard character count.
-        // Each char of free-text ASR output is treated as one phonemic unit; a
-        // digraph like "sh" decoded as "s" then registers as a substitution
-        // (3 phonemes ↔ 3 chars), not an omission of one letter.
-        let expectedUnits = expected.phonemes.count
+        // v1 heuristic: compare expected grapheme count to heard character count.
+        // Each char of free-text ASR output is treated as one grapheme-sized unit,
+        // and Word.graphemes already encodes digraphs like "sh" as a single entry,
+        // so "ship" (3 graphemes) misread as "sip" (3 chars) registers as a
+        // substitution rather than the spurious omission a raw letter-count diff
+        // would produce.
+        let expectedUnits = expected.graphemes.count
         let heardUnits = heardNormalized.count
         let diff = heardUnits - expectedUnits
         let kind: TrialErrorKind

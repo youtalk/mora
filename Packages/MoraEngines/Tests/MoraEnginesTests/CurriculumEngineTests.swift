@@ -4,7 +4,7 @@ import XCTest
 @testable import MoraEngines
 
 final class CurriculumEngineTests: XCTestCase {
-    func test_defaultLadder_firstSkillIsShOnsetForWeek1() {
+    func test_defaultLadder_firstSkillIsShOnsetForWeekZero() {
         let engine = CurriculumEngine.defaultV1Ladder()
         let target = engine.currentTarget(forWeekIndex: 0)
         XCTAssertEqual(target.skill.code, "sh_onset")
@@ -14,9 +14,9 @@ final class CurriculumEngineTests: XCTestCase {
         )
     }
 
-    func test_taughtGraphemes_atWeekZero_isFullL2Alphabet() {
+    func test_taughtGraphemes_beforeWeekZero_isFullL2Alphabet() {
         let engine = CurriculumEngine.defaultV1Ladder()
-        let taught = engine.taughtGraphemes(upToWeekIndex: 0)
+        let taught = engine.taughtGraphemes(beforeWeekIndex: 0)
         // All 26 L2 single letters are "taught" before the sh week begins.
         XCTAssertEqual(taught.count, 26)
         XCTAssertTrue(taught.contains(Grapheme(letters: "a")))
