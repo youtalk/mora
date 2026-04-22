@@ -10,9 +10,10 @@ let package = Package(
     dependencies: [
         .package(path: "../MoraCore"),
         .package(path: "../MoraEngines"),
+        .package(path: "../MoraTesting"),
     ],
     targets: [
-        .target(name: "MoraUI", dependencies: ["MoraCore", "MoraEngines"]),
+        .target(name: "MoraUI", dependencies: ["MoraCore", "MoraEngines", "MoraTesting"]),
         .testTarget(name: "MoraUITests", dependencies: ["MoraUI"]),
     ]
 )
