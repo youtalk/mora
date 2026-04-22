@@ -18,9 +18,13 @@ public struct HomeView: View {
     @Query(sort: \DailyStreak.lastCompletedOn, order: .reverse)
     private var streaks: [DailyStreak]
 
-    /// Curriculum is process-wide state; building it once per launch avoids
-    /// re-running the ladder builder on every SwiftUI body evaluation.
-    private static let sharedCurriculum = CurriculumEngine.defaultV1Ladder()
+    // `needsEnhancedVoice` walks the installed-voice list; keep the result in
+    // @State so the scan runs at most once per appearance / scene activation
+    // rather than on every body invalidation (which fires on every @Query
+    // update). Recomputed on scenePhase → .active so returning from Settings
+    // after downloading a premium voice flips the prompt off immediately.
+    @State private var needsBetterVoice: Bool = AppleTTSEngine.needsEnhancedVoice
+    @Environment(\.scenePhase) private var scenePhase
 
     public init() {}
 
@@ -35,6 +39,12 @@ public struct HomeView: View {
                 Spacer()
             }
         }
+        .onAppear { needsBetterVoice = AppleTTSEngine.needsEnhancedVoice }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active {
+                needsBetterVoice = AppleTTSEngine.needsEnhancedVoice
+            }
+        }
         #if os(iOS)
         .navigationBarHidden(true)
         #endif
@@ -46,7 +56,7 @@ public struct HomeView: View {
                 .font(MoraType.heading())
                 .foregroundStyle(MoraTheme.Accent.orange)
             Spacer()
-            if AppleTTSEngine.needsEnhancedVoice {
+            if needsBetterVoice {
                 Button(action: openVoiceSettings) {
                     Text("Better voice ›")
                         .font(MoraType.pill())
@@ -69,7 +79,7 @@ public struct HomeView: View {
                 .font(MoraType.label())
                 .foregroundStyle(MoraTheme.Ink.muted)
 
-            Text(target.skill.graphemePhoneme?.grapheme.letters ?? "—")
+            Text(target.letters ?? "—")
                 .font(MoraType.hero(180))
                 .foregroundStyle(MoraTheme.Ink.primary)
 
@@ -110,7 +120,7 @@ public struct HomeView: View {
     }
 
     private var target: Target {
-        Self.sharedCurriculum.currentTarget(forWeekIndex: weekIndex)
+        CurriculumEngine.sharedV1.currentTarget(forWeekIndex: weekIndex)
     }
 
     /// Weeks elapsed since the learner's profile was created, clamped into the
@@ -123,8 +133,8 @@ public struct HomeView: View {
     }
 
     private var ipaLine: String {
-        guard let gp = target.skill.graphemePhoneme else { return "" }
-        return "/\(gp.phoneme.ipa)/ · as in ship, shop, fish"
+        guard let ipa = target.ipa else { return "" }
+        return "/\(ipa)/ · as in ship, shop, fish"
     }
 
     private func openVoiceSettings() {

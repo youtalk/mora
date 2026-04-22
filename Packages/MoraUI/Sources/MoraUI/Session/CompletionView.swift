@@ -75,7 +75,5 @@ struct CompletionView: View {
 
     private var correct: Int { orchestrator.trials.filter(\.correct).count }
     private var total: Int { orchestrator.trials.count }
-    private var letters: String {
-        orchestrator.target.skill.graphemePhoneme?.grapheme.letters ?? "?"
-    }
+    private var letters: String { orchestrator.target.letters ?? "?" }
 }
