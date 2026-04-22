@@ -27,6 +27,8 @@ final class LLMRunner: ObservableObject {
 
     @Published private(set) var loadedModel: BenchModel?
     @Published private(set) var status: Status = .idle
+    @Published private(set) var lastResult: BenchResult?
+    @Published private(set) var liveTokenCount: Int = 0
 
     private var container: ModelContainer?
 
@@ -79,6 +81,60 @@ final class LLMRunner: ObservableObject {
             }
             status = .done(result)
         } catch {
+            status = .error("generate failed: \(error.localizedDescription)")
+        }
+    }
+
+    /// Run one generation and capture metrics. Must be called after load().
+    func run(prompt: BenchPrompt, maxTokens: Int = 256, temperature: Float = 0.4) async {
+        guard let container, let model = loadedModel else {
+            status = .error("no model loaded")
+            return
+        }
+        status = .generating
+        liveTokenCount = 0
+
+        let thermal = ThermalMonitor()
+        thermal.start()
+        let collector = MetricsCollector()
+
+        let modelID = model.id
+        let promptID = prompt.id
+        let fullPrompt = prompt.systemPrompt + "\n\n" + prompt.userPrompt
+
+        do {
+            let (finalOutput, result) = try await container.perform { [collector] context -> (String, BenchResult) in
+                let input = try await context.processor.prepare(input: UserInput(prompt: fullPrompt))
+                let inputTokens = input.text.tokens.size
+                let parameters = GenerateParameters(maxTokens: maxTokens, temperature: temperature)
+                var output = ""
+                var sawFirst = false
+                let stream = try MLXLMCommon.generate(input: input, parameters: parameters, context: context)
+                for await event in stream {
+                    if case let .chunk(text) = event {
+                        if !sawFirst { collector.recordFirstToken(); sawFirst = true }
+                        output += text
+                        collector.recordChunk(tokenCount: 1)
+                        await MainActor.run { [weak self] in self?.liveTokenCount += 1 }
+                    }
+                }
+                let samples = await MainActor.run { thermal.samples }
+                let finalized = collector.finalize(
+                    inputTokens: inputTokens,
+                    promptID: promptID,
+                    modelID: modelID,
+                    output: output,
+                    thermalSamples: samples,
+                    coldLoad: nil,
+                    warmLoad: nil
+                )
+                return (output, finalized)
+            }
+            thermal.stop()
+            self.lastResult = result
+            self.status = .done(finalOutput)
+        } catch {
+            thermal.stop()
             status = .error("generate failed: \(error.localizedDescription)")
         }
     }
