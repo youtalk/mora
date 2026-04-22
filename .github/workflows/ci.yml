@@ -19,6 +19,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Cache Homebrew downloads (swift-format)
+        uses: actions/cache@v4
+        with:
+          path: ~/Library/Caches/Homebrew/downloads
+          key: brew-${{ runner.os }}-swift-format-v1
+          restore-keys: |
+            brew-${{ runner.os }}-swift-format-
+
       - name: Install swift-format
         env:
           HOMEBREW_NO_AUTO_UPDATE: "1"
@@ -39,12 +47,19 @@ jobs:
 
   build-test:
     name: Build / Test
-    needs: lint
     runs-on: macos-15
     timeout-minutes: 30
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Cache Homebrew downloads (xcodegen)
+        uses: actions/cache@v4
+        with:
+          path: ~/Library/Caches/Homebrew/downloads
+          key: brew-${{ runner.os }}-xcodegen-v1
+          restore-keys: |
+            brew-${{ runner.os }}-xcodegen-
 
       - name: Install xcodegen
         env:
@@ -62,6 +77,19 @@ jobs:
       - name: Generate Xcode project
         run: xcodegen generate
 
+      - name: Cache Xcode DerivedData (Mora app)
+        uses: actions/cache@v4
+        with:
+          # Exclude ModuleCache.noindex / SDKStatCaches.noindex to avoid "module file
+          # has been modified" errors from cross-runner SDK mtime drift.
+          path: |
+            ~/Library/Developer/Xcode/DerivedData
+            !~/Library/Developer/Xcode/DerivedData/ModuleCache.noindex
+            !~/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex
+          key: xcode-deriveddata-mora-v2-${{ runner.os }}-${{ hashFiles('project.yml', 'Packages/*/Package.swift', 'Mora/**/*.swift', 'Packages/*/Sources/**/*.swift') }}
+          restore-keys: |
+            xcode-deriveddata-mora-v2-${{ runner.os }}-
+
       - name: Build Mora (iOS Simulator)
         run: |
           set -o pipefail
@@ -72,6 +100,42 @@ jobs:
             -configuration Debug \
             CODE_SIGNING_ALLOWED=NO
 
+      # SPM .build caches per local package. hashFiles includes the package's own
+      # sources and those of every package it depends on, so any upstream source
+      # change invalidates the cache. Prefix restore-keys let near-miss PRs still
+      # pick up the closest match and let Swift's incremental build fill the delta.
+      - name: Cache SwiftPM .build (MoraCore)
+        uses: actions/cache@v4
+        with:
+          path: Packages/MoraCore/.build
+          key: spm-MoraCore-${{ runner.os }}-${{ hashFiles('Packages/MoraCore/**/*.swift', 'Packages/MoraCore/Package.swift') }}
+          restore-keys: |
+            spm-MoraCore-${{ runner.os }}-
+
+      - name: Cache SwiftPM .build (MoraEngines)
+        uses: actions/cache@v4
+        with:
+          path: Packages/MoraEngines/.build
+          key: spm-MoraEngines-${{ runner.os }}-${{ hashFiles('Packages/MoraCore/**/*.swift', 'Packages/MoraCore/Package.swift', 'Packages/MoraEngines/**/*.swift', 'Packages/MoraEngines/Package.swift') }}
+          restore-keys: |
+            spm-MoraEngines-${{ runner.os }}-
+
+      - name: Cache SwiftPM .build (MoraUI)
+        uses: actions/cache@v4
+        with:
+          path: Packages/MoraUI/.build
+          key: spm-MoraUI-${{ runner.os }}-${{ hashFiles('Packages/MoraCore/**/*.swift', 'Packages/MoraCore/Package.swift', 'Packages/MoraEngines/**/*.swift', 'Packages/MoraEngines/Package.swift', 'Packages/MoraUI/**/*.swift', 'Packages/MoraUI/Package.swift') }}
+          restore-keys: |
+            spm-MoraUI-${{ runner.os }}-
+
+      - name: Cache SwiftPM .build (MoraTesting)
+        uses: actions/cache@v4
+        with:
+          path: Packages/MoraTesting/.build
+          key: spm-MoraTesting-${{ runner.os }}-${{ hashFiles('Packages/MoraCore/**/*.swift', 'Packages/MoraCore/Package.swift', 'Packages/MoraEngines/**/*.swift', 'Packages/MoraEngines/Package.swift', 'Packages/MoraTesting/**/*.swift', 'Packages/MoraTesting/Package.swift') }}
+          restore-keys: |
+            spm-MoraTesting-${{ runner.os }}-
+
       - name: Test SPM packages
         run: |
           set -e
@@ -80,6 +144,14 @@ jobs:
             (cd Packages/$pkg && swift test)
             echo "::endgroup::"
           done
+
+      - name: Cache SwiftPM .build (MoraMLX)
+        uses: actions/cache@v4
+        with:
+          path: Packages/MoraMLX/.build
+          key: spm-MoraMLX-${{ runner.os }}-${{ hashFiles('Packages/MoraMLX/**/*.swift', 'Packages/MoraMLX/Package.swift') }}
+          restore-keys: |
+            spm-MoraMLX-${{ runner.os }}-
 
       - name: Build MoraMLX (no test target)
         run: |
@@ -105,13 +177,21 @@ jobs:
 
   bench-build:
     name: Bench Build / Test
-    needs: [lint, changes]
+    needs: changes
     if: ${{ needs.changes.outputs.bench == 'true' || github.event_name == 'workflow_dispatch' }}
     runs-on: macos-15
     timeout-minutes: 30
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Cache Homebrew downloads (xcodegen)
+        uses: actions/cache@v4
+        with:
+          path: ~/Library/Caches/Homebrew/downloads
+          key: brew-${{ runner.os }}-xcodegen-v1
+          restore-keys: |
+            brew-${{ runner.os }}-xcodegen-
 
       - name: Install xcodegen
         env:
@@ -122,6 +202,24 @@ jobs:
       - name: Generate bench project
         working-directory: bench
         run: xcodegen generate
+
+      # Biggest single cache win: bench pulls heavy MLX / HuggingFace / swift-transformers
+      # SPM packages. Keying on bench/project.yml invalidates on pin bumps; source-only
+      # changes fall through to the restore-key and reuse the dependency builds.
+      # ModuleCache.noindex and SDKStatCaches.noindex are excluded because their .pcm
+      # files record SDK-file mtimes that don't match across runner instances; restoring
+      # them causes "module file ... has been modified" errors on C-module dependencies
+      # like swift-nio's CNIO* targets.
+      - name: Cache Xcode DerivedData (bench)
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/Library/Developer/Xcode/DerivedData
+            !~/Library/Developer/Xcode/DerivedData/ModuleCache.noindex
+            !~/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex
+          key: xcode-deriveddata-bench-v2-${{ runner.os }}-${{ hashFiles('bench/project.yml', 'bench/MoraBench/**/*.swift', 'bench/MoraBenchTests/**/*.swift') }}
+          restore-keys: |
+            xcode-deriveddata-bench-v2-${{ runner.os }}-
 
       - name: Build MoraBench (iOS Simulator)
         working-directory: bench
