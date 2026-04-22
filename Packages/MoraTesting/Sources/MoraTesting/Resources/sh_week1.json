@@ -1,0 +1,45 @@
+{
+  "target": {
+    "letters": "sh",
+    "phoneme": "ʃ"
+  },
+  "l2_taught_graphemes": [
+    "a","b","c","d","e","f","g","h","i","j","k","l","m",
+    "n","o","p","q","r","s","t","u","v","w","x","y","z"
+  ],
+  "decode_words": [
+    { "surface": "ship",  "graphemes": ["sh","i","p"],  "phonemes": ["ʃ","ɪ","p"], "note": "sh onset" },
+    { "surface": "shop",  "graphemes": ["sh","o","p"],  "phonemes": ["ʃ","ɒ","p"], "note": "sh onset" },
+    { "surface": "shut",  "graphemes": ["sh","u","t"],  "phonemes": ["ʃ","ʌ","t"], "note": "sh onset" },
+    { "surface": "shin",  "graphemes": ["sh","i","n"],  "phonemes": ["ʃ","ɪ","n"], "note": "sh onset" },
+    { "surface": "shed",  "graphemes": ["sh","e","d"],  "phonemes": ["ʃ","ɛ","d"], "note": "sh onset" },
+    { "surface": "dish",  "graphemes": ["d","i","sh"],  "phonemes": ["d","ɪ","ʃ"], "note": "sh coda" },
+    { "surface": "fish",  "graphemes": ["f","i","sh"],  "phonemes": ["f","ɪ","ʃ"], "note": "sh coda" },
+    { "surface": "cash",  "graphemes": ["c","a","sh"],  "phonemes": ["k","æ","ʃ"], "note": "sh coda" },
+    { "surface": "wish",  "graphemes": ["w","i","sh"],  "phonemes": ["w","ɪ","ʃ"], "note": "sh coda" },
+    { "surface": "mash",  "graphemes": ["m","a","sh"],  "phonemes": ["m","æ","ʃ"], "note": "sh coda" }
+  ],
+  "sentences": [
+    { "text": "The ship can hop.",
+      "words": [
+        { "surface": "the",  "graphemes": ["t","h","e"], "phonemes": ["ð","ə"] },
+        { "surface": "ship", "graphemes": ["sh","i","p"],"phonemes": ["ʃ","ɪ","p"] },
+        { "surface": "can",  "graphemes": ["c","a","n"], "phonemes": ["k","æ","n"] },
+        { "surface": "hop",  "graphemes": ["h","o","p"], "phonemes": ["h","ɒ","p"] }
+      ] },
+    { "text": "A fish can wish.",
+      "words": [
+        { "surface": "a",    "graphemes": ["a"],          "phonemes": ["ə"] },
+        { "surface": "fish", "graphemes": ["f","i","sh"], "phonemes": ["f","ɪ","ʃ"] },
+        { "surface": "can",  "graphemes": ["c","a","n"],  "phonemes": ["k","æ","n"] },
+        { "surface": "wish", "graphemes": ["w","i","sh"], "phonemes": ["w","ɪ","ʃ"] }
+      ] },
+    { "text": "The shop is shut.",
+      "words": [
+        { "surface": "the",  "graphemes": ["t","h","e"], "phonemes": ["ð","ə"] },
+        { "surface": "shop", "graphemes": ["sh","o","p"],"phonemes": ["ʃ","ɒ","p"] },
+        { "surface": "is",   "graphemes": ["i","s"],     "phonemes": ["ɪ","z"] },
+        { "surface": "shut", "graphemes": ["sh","u","t"],"phonemes": ["ʃ","ʌ","t"] }
+      ] }
+  ]
+}
