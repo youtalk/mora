@@ -72,3 +72,44 @@ TTS. For the LLM alone, we target:
 If any threshold misses on the primary model, the bench app is the
 place to evaluate fallbacks (smaller quantization, 2B model, or
 deferring slot-fill to the next iPadOS release).
+
+## Device verification checklist
+
+Use this after each build that changes model loading, the metrics
+harness, or the endurance loop.
+
+### On the iPad Air (manual, cannot run in CI)
+
+1. Clean install: delete the app, reboot the device, leave WiFi on.
+2. Launch and pick **Qwen 2.5 3B Instruct** (or the exact Qwen 3.5 4B
+   entry once added).
+3. Let the download complete — record: download time (min), final
+   Application Support size (GB).
+4. Tap **Run single** with **Slot-fill (short)** — record: cold load
+   time, TTFT, prefill tok/s, decode tok/s, peak RSS, thermal.
+5. Tap **Run single** again — record the same metrics as **warm**.
+6. Run three more single prompts: **Slot-fill with history**,
+   **Freeform decodable**, **Vocab expansion** — record their
+   per-prompt metrics.
+7. Switch to **20-min endurance** with **Slot-fill with history**
+   (the closest to Mora's real load). Let it run the full 20 minutes.
+   Plug the iPad in to AC only if the spec's 20-minute claim assumes
+   plugged-in usage; otherwise leave on battery.
+8. After completion, open **Results** → **Export** → AirDrop or Mail
+   the JSON off-device.
+9. Relaunch the app; if a "previous run was killed" banner appears,
+   note that the endurance run was jetsam-terminated.
+
+### Go / no-go
+
+The Mora spec's ≤1.5s median-turn-latency target is viable if, for
+the selected model:
+
+- Slot-fill with history **p50 turn latency** ≤ **1.2 s**
+- Sustained **decode** ≥ **15 tokens/sec**
+- **Peak RSS** ≤ **3.5 GB**
+- **Decode drift** (last-5-min vs first-5-min) within ±15%
+- **No jetsam** during the full 20-minute run
+
+If the primary model misses on any of these, rerun with **Llama 3.2
+3B Instruct** or a smaller quantization before concluding infeasibility.
