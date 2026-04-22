@@ -2,6 +2,8 @@
 
 Minimal iPadOS app that benchmarks on-device LLM inference to validate
 Mora's ≤1.5s median turn-latency target on iPad Air class hardware.
+The same target also builds for **Mac Catalyst** so the harness can be
+smoke-tested on an Apple Silicon Mac before touching the iPad.
 
 This app is intentionally isolated from the main Mora target. It shares
 the repo for co-evolution but builds as its own Xcode project
@@ -13,13 +15,15 @@ main Mora app never links MLX.
 
 - Xcode 16 or later
 - `xcodegen` (`brew install xcodegen`)
-- A paid Apple Developer account (required for the
+- A paid Apple Developer account (required on **iPadOS only** for the
   `increased-memory-limit` and `extended-virtual-addressing`
-  entitlements on iPadOS — free Personal Team will build but crash
-  under jetsam for >~3 GB models)
-- An iPad Air 5 (M1, 8 GB) or later for meaningful numbers
+  entitlements — free Personal Team will build but crash under jetsam
+  for >~3 GB models). Mac Catalyst ignores those entitlements, so an
+  ad-hoc signature is enough for local smoke testing.
+- An iPad Air 5 (M1, 8 GB) or later for the spec-relevant numbers.
+- An Apple Silicon Mac (M1 or later) for Mac Catalyst verification.
 
-## Build
+## Build — iPad
 
 ```bash
 cd bench
@@ -30,6 +34,49 @@ open "Mora Bench.xcodeproj"
 In Xcode, select the `MoraBench` scheme and a connected iPad Air as the
 destination. The first build will take 1-2 minutes to resolve the MLX
 Swift package graph.
+
+## Build — Mac Catalyst (local smoke test)
+
+Mac Catalyst runs the whole app on macOS with UIKit-for-Mac, which lets
+you validate the UI, prompt library, result store, and MLX inference
+path without an iPad in the loop. Numbers from Mac Catalyst are **not**
+comparable to iPad Air (different thermal envelope, no jetsam, unified
+memory) — this destination is for functional verification, not spec
+sign-off.
+
+```bash
+cd bench
+xcodegen generate
+xcodebuild build \
+  -project "Mora Bench.xcodeproj" -scheme MoraBench \
+  -destination 'platform=macOS,variant=Mac Catalyst' \
+  -configuration Debug CODE_SIGNING_ALLOWED=NO -skipMacroValidation
+```
+
+`-skipMacroValidation` is required because `mlx-swift-lm` ships Swift
+macros (`#hubDownloader()` etc.) that Xcode normally prompts the user
+to trust on first build. Opening the project in Xcode and approving
+the macro once also works.
+
+To launch the built app without a paid signing identity, ad-hoc sign
+it first:
+
+```bash
+APP="$HOME/Library/Developer/Xcode/DerivedData/Mora_Bench-"*"/Build/Products/Debug-maccatalyst/MoraBench.app"
+codesign -s - --force --deep --timestamp=none $APP
+open -n $APP
+```
+
+Unit tests also run on Mac Catalyst (the jetsam-sensitive
+`testAvailableMemoryIsPositive` is skipped because macOS doesn't
+enforce iOS-style per-process memory limits):
+
+```bash
+xcodebuild test \
+  -project "Mora Bench.xcodeproj" -scheme MoraBench \
+  -destination 'platform=macOS,variant=Mac Catalyst' \
+  -configuration Debug CODE_SIGNING_ALLOWED=NO -skipMacroValidation
+```
 
 ## First-launch model download
 
@@ -77,6 +124,39 @@ deferring slot-fill to the next iPadOS release).
 
 Use this after each build that changes model loading, the metrics
 harness, or the endurance loop.
+
+### On Mac Catalyst (pre-iPad smoke test)
+
+Use this as a functional gate before shipping the build to an iPad.
+Numbers produced here are **not** the spec sign-off numbers — only
+iPad Air numbers count for that.
+
+1. Build, ad-hoc sign, launch (see the Mac Catalyst build section above).
+2. Sidebar shows the four catalog entries; tapping each one opens
+   the download screen in the detail column.
+3. Pick **SmolLM 135M Instruct (smoke)** and confirm it downloads
+   (~60-100 MB) without network errors.
+4. Tap **Run single** with **Slot-fill (short)** — confirm token
+   count climbs in real time and the result summary renders with
+   finite TTFT, prefill tok/s, and decode tok/s.
+5. Tap **Run single** twice more with different prompts — confirm
+   entries appear in **Results** (toolbar button) and **Export**
+   produces a valid JSON file via the Share Sheet.
+6. Relaunch — confirm cold load reuses the cached weights in
+   `~/Library/Containers/tech.reenable.MoraBench/Data/Library/Application Support`.
+
+Known Mac Catalyst limitations:
+
+- `Peak RSS` and `Avail mem` come from `mach_task_basic_info` /
+  `os_proc_available_memory()`. macOS doesn't enforce iOS-style
+  jetsam limits, so `availableMemoryStartBytes` is typically `0`
+  (i.e., no cap) — that's expected, not a bug.
+- Thermal state reads through the same `ProcessInfo` API but Macs
+  don't throttle the same way iPads do; drift numbers should be
+  interpreted for functional correctness only.
+- The 20-minute endurance loop runs to completion but won't trigger
+  jetsam; the `JetsamMarker` breadcrumb still arms/disarms and can
+  be tested by force-quitting during a run.
 
 ### On the iPad Air (manual, cannot run in CI)
 
