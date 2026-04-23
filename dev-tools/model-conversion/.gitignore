@@ -4,5 +4,6 @@ __pycache__/
 *.pyc
 build/
 out/
+convert.log
 *.mlpackage
 *.mlmodelc

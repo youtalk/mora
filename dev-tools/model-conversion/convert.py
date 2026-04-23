@@ -18,7 +18,8 @@ import tempfile
 
 import numpy as np
 import torch
-from transformers import Wav2Vec2ForCTC, Wav2Vec2Processor
+from huggingface_hub import hf_hub_download
+from transformers import Wav2Vec2ForCTC
 
 import coremltools as ct
 from coremltools.optimize.coreml import (
@@ -46,17 +47,12 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def load_model() -> tuple[Wav2Vec2ForCTC, Wav2Vec2Processor]:
-    processor = Wav2Vec2Processor.from_pretrained(
-        MODEL_ID, revision=MODEL_REVISION
-    )
-    model = Wav2Vec2ForCTC.from_pretrained(
-        MODEL_ID, revision=MODEL_REVISION
-    )
+def load_model() -> Wav2Vec2ForCTC:
+    model = Wav2Vec2ForCTC.from_pretrained(MODEL_ID, revision=MODEL_REVISION)
     # Switch to inference mode; see README for why we use .train(False)
     # instead of the more idiomatic alternative.
     model.train(False)
-    return model, processor
+    return model
 
 
 def trace(model: Wav2Vec2ForCTC) -> torch.jit.ScriptModule:
@@ -124,10 +120,16 @@ def compile_mlmodelc(mlpackage: pathlib.Path, output_dir: pathlib.Path) -> pathl
     return target
 
 
-def dump_phoneme_labels(
-    processor: Wav2Vec2Processor, output_dir: pathlib.Path
-) -> pathlib.Path:
-    vocab = processor.tokenizer.get_vocab()
+def dump_phoneme_labels(output_dir: pathlib.Path) -> pathlib.Path:
+    # Fetch the tokenizer's vocab.json directly instead of instantiating
+    # Wav2Vec2PhonemeCTCTokenizer, which eagerly initializes a phonemizer
+    # backend (espeak-ng) that we never actually use — we only need the
+    # ordered label list.
+    vocab_path = hf_hub_download(
+        repo_id=MODEL_ID, filename="vocab.json", revision=MODEL_REVISION
+    )
+    with open(vocab_path, encoding="utf-8") as fh:
+        vocab: dict[str, int] = json.load(fh)
     ordered = [label for label, _ in sorted(vocab.items(), key=lambda kv: kv[1])]
     path = output_dir / "phoneme-labels.json"
     path.write_text(json.dumps(ordered, ensure_ascii=False, indent=2))
@@ -139,7 +141,7 @@ def main() -> int:
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"Loading {MODEL_ID}@{MODEL_REVISION}...")
-    model, processor = load_model()
+    model = load_model()
     print("Tracing model...")
     traced = trace(model)
     # Write the `.mlpackage` intermediate to a scratch directory so it
@@ -154,7 +156,7 @@ def main() -> int:
         print(f"Compiling .mlmodelc from {pkg.name}...")
         compiled = compile_mlmodelc(pkg, args.output_dir)
         print("Writing phoneme-labels.json...")
-        labels_path = dump_phoneme_labels(processor, args.output_dir)
+        labels_path = dump_phoneme_labels(args.output_dir)
     finally:
         print(f"Cleaning up staging dir {staging_dir}...")
         subprocess.run(["rm", "-rf", str(staging_dir)], check=True)
