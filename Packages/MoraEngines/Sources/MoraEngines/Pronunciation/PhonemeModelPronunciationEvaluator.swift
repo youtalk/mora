@@ -104,10 +104,17 @@ public struct PhonemeModelPronunciationEvaluator: PronunciationEvaluator {
     ) -> PhonemeAlignment? {
         let matches = alignments.enumerated().filter { $0.element.phoneme.ipa == target.ipa }
         if matches.isEmpty { return nil }
-        // Prefer the occurrence whose position matches the word's phoneme
-        // list index of the first target-IPA entry. When targetPhoneme is
-        // set to one of several repeats, the first match is our best guess
-        // without an explicit curriculum-provided index.
+        // Prefer the alignment whose position equals the word's phoneme-list
+        // index of the first target-IPA entry. When the target is set to one
+        // of several repeats, this is the best guess without an explicit
+        // curriculum-provided index. Fall back to the first match if the
+        // target is not in `word.phonemes` (shouldn't happen in practice but
+        // defends against drift between the curriculum and the inventory).
+        if let targetIdx = word.phonemes.firstIndex(of: target),
+            let hit = matches.first(where: { $0.offset == targetIdx })
+        {
+            return hit.element
+        }
         return matches.first?.element
     }
 
@@ -136,13 +143,36 @@ public struct PhonemeModelPronunciationEvaluator: PronunciationEvaluator {
         return CoachingKeyResolver.substitution(target: target.ipa, substitute: substitute) != nil
     }
 
+    /// Distinct numeric codes for each `unreliable` reason, persisted in
+    /// `features["reason"]` so offline shadow-mode analysis can tell failure
+    /// modes apart. Keep the mapping stable — the values are written to the
+    /// SwiftData log and downstream tooling reads them directly.
+    public enum UnreliableReasonCode: Double {
+        case unsupported = 0
+        case providerUnavailable = 1
+        case noAlignment = 2
+        case lowConfidence = 3
+        case inventoryDrift = 4
+    }
+
+    private static func reasonCode(for reason: String) -> Double {
+        switch reason {
+        case "unsupported": return UnreliableReasonCode.unsupported.rawValue
+        case "provider_unavailable": return UnreliableReasonCode.providerUnavailable.rawValue
+        case "no_alignment": return UnreliableReasonCode.noAlignment.rawValue
+        case "low_confidence": return UnreliableReasonCode.lowConfidence.rawValue
+        case "inventory_drift": return UnreliableReasonCode.inventoryDrift.rawValue
+        default: return UnreliableReasonCode.unsupported.rawValue
+        }
+    }
+
     private func unreliable(_ target: Phoneme, reason: String) -> PhonemeTrialAssessment {
         PhonemeTrialAssessment(
             targetPhoneme: target,
             label: .unclear,
             score: nil,
             coachingKey: nil,
-            features: ["reason": reason == "unsupported" ? 0 : 1],
+            features: ["reason": Self.reasonCode(for: reason)],
             isReliable: false
         )
     }
