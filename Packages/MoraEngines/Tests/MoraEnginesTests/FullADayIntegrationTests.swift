@@ -177,4 +177,123 @@ final class FullADayIntegrationTests: XCTestCase {
         XCTAssertEqual(summary.trialsCorrect, summary.trialsTotal - 1)
         XCTAssertEqual(summary.struggledSkillCodes, [SkillCode("sh_onset")])
     }
+
+    /// End-to-end integration with a pronunciation evaluator wired in. Uses a
+    /// scripted evaluator that supports `/ʃ/` and returns `.driftedWithin` for
+    /// every call, then asserts each decoding trial carries a phoneme payload
+    /// — the path `SessionOrchestrator → AssessmentEngine.assess(recording:) →
+    /// evaluator.evaluate(...)` must thread the assessment all the way back
+    /// into `orchestrator.trials`.
+    func testFullADayRecordsPronunciationAssessmentWhenEvaluatorSupportsTarget() async throws {
+        let fake = ScriptedPronunciationEvaluator()
+        fake.supportedTargets = ["ʃ"]
+        fake.responses["ʃ"] = PhonemeTrialAssessment(
+            targetPhoneme: Phoneme(ipa: "ʃ"),
+            label: .driftedWithin,
+            score: 55,
+            coachingKey: "coaching.sh_drift",
+            features: [:],
+            isReliable: true
+        )
+        let engine = AssessmentEngine(l1Profile: JapaneseL1Profile(), evaluator: fake)
+        let orchestrator = try makeOrchestratorForShipSession(engine: engine)
+        await driveThroughSession(orchestrator: orchestrator, words: ["ship", "shop"])
+
+        XCTAssertEqual(orchestrator.trials.compactMap { $0.phoneme?.label }.count, 2)
+        XCTAssertTrue(
+            orchestrator.trials.prefix(2).allSatisfy { $0.phoneme?.label == .driftedWithin },
+            "Both decoding trials should carry the scripted drift label."
+        )
+    }
+
+    // MARK: - Helpers
+
+    /// Builds a full A-day orchestrator wired to the bundled sh_week1 content
+    /// and the supplied assessment engine. Mirrors the fixture used by the
+    /// other tests in this file (curriculum → bundled provider → orchestrator)
+    /// so the pronunciation regression exercises the same path a real session
+    /// would — not a synthetic word list.
+    private func makeOrchestratorForShipSession(engine: AssessmentEngine) throws -> SessionOrchestrator {
+        let curriculum = CurriculumEngine.defaultV1Ladder()
+        let target = curriculum.currentTarget(forWeekIndex: 0)
+        let taught = curriculum.taughtGraphemes(beforeWeekIndex: 0)
+        let provider = try ScriptedContentProvider.bundledShWeek1()
+        let targetGrapheme = try XCTUnwrap(
+            target.skill.graphemePhoneme?.grapheme,
+            "Expected week 0 curriculum target to provide a grapheme/phoneme mapping for scripted content."
+        )
+        let words = try provider.decodeWords(
+            ContentRequest(
+                target: targetGrapheme,
+                taughtGraphemes: taught,
+                interests: [],
+                count: 5
+            )
+        )
+        let sentences = try provider.decodeSentences(
+            ContentRequest(
+                target: targetGrapheme,
+                taughtGraphemes: taught,
+                interests: [],
+                count: 2
+            )
+        )
+        return SessionOrchestrator(
+            target: target,
+            taughtGraphemes: taught,
+            warmupOptions: [
+                Grapheme(letters: "s"),
+                Grapheme(letters: "sh"),
+                Grapheme(letters: "ch"),
+            ],
+            words: words,
+            sentences: sentences,
+            assessment: engine,
+            clock: { Date(timeIntervalSince1970: 0) }
+        )
+    }
+
+    /// Drives the orchestrator through warmup → newRule → decoding, submitting
+    /// `.answerHeard` with a scripted-evaluator-friendly `TrialRecording` for
+    /// each named word in `words` (matched by `Word.surface`), then manually
+    /// completes any remaining decoding slots and all sentences. Any requested
+    /// word missing from `orchestrator.words` fails with a clear message so the
+    /// fixture drift is obvious.
+    private func driveThroughSession(
+        orchestrator: SessionOrchestrator,
+        words: [String]
+    ) async {
+        await orchestrator.start()
+        await orchestrator.handle(.warmupTap(Grapheme(letters: "sh")))
+        await orchestrator.handle(.advance)
+
+        let availableSurfaces = orchestrator.words.map { $0.word.surface }
+        for name in words {
+            guard availableSurfaces.contains(name) else {
+                XCTFail(
+                    "Word '\(name)' not present in bundled sh_week1 content "
+                        + "(available: \(availableSurfaces.joined(separator: ", ")))."
+                )
+                continue
+            }
+            let expected = orchestrator.words[orchestrator.wordIndex].word
+            let recording = TrialRecording(
+                asr: ASRResult(transcript: expected.surface, confidence: 1.0),
+                audio: .empty
+            )
+            await orchestrator.handle(.answerHeard(recording))
+        }
+
+        // Manual-correct the remaining decoding words so the orchestrator can
+        // advance to shortSentences without needing more audio submissions.
+        while orchestrator.phase == .decoding {
+            await orchestrator.handle(.answerManual(correct: true))
+        }
+
+        // Manual-correct every sentence — this regression is about the decoding
+        // phoneme payload, not sentence-phase coverage.
+        while orchestrator.phase == .shortSentences {
+            await orchestrator.handle(.answerManual(correct: true))
+        }
+    }
 }

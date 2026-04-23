@@ -178,6 +178,12 @@ public struct JapaneseL1Profile: L1Profile {
         coachingThVoicelessSubS: "したのさきをはのあいだにそっと出して「thhh」。",
         coachingThVoicelessSubT: "したのさきをはのあいだにそっと出して、とめずに「thhh」。",
         coachingAeSubSchwa: "口をよこにひろげて、あごを下げて「æ」。",
+        categorySubstitutionBanner: { target, substitute in
+            "今の \(target) は \(substitute) に寄ってたよ"
+        },
+        categoryDriftBanner: { target in
+            "もう少し \(target) らしい音に近づけよう"
+        },
         completionTitle: "できた！",
         completionScore: { correct, total in "\(correct)/\(total)" },
         completionComeBack: "明日も またね",

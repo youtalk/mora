@@ -8,13 +8,19 @@ public enum AssessmentLeniency: Sendable {
 
 public struct AssessmentEngine: Sendable {
     public let l1Profile: any L1Profile
+    public let evaluator: any PronunciationEvaluator
     /// 0.0 = strictest, 1.0 = most lenient. Pre-dates the `AssessmentLeniency`
     /// enum; left in place for the current test suite and the future
     /// AdaptivePlanEngine refactor that will consolidate leniency semantics.
     public let leniency: Double
 
-    public init(l1Profile: any L1Profile, leniency: Double = 0.5) {
+    public init(
+        l1Profile: any L1Profile,
+        evaluator: any PronunciationEvaluator = NullPronunciationEvaluator(),
+        leniency: Double = 0.5
+    ) {
         self.l1Profile = l1Profile
+        self.evaluator = evaluator
         self.leniency = leniency
     }
 
@@ -69,6 +75,36 @@ public struct AssessmentEngine: Sendable {
             expected: expected, heard: asr.transcript,
             correct: false, errorKind: errorKind,
             l1InterferenceTag: l1Tag
+        )
+    }
+
+    /// Recording-aware entry point used by the pronunciation-feedback pipeline.
+    /// Builds the transcript-only baseline via the synchronous overload, then
+    /// consults `evaluator` when the word carries a `targetPhoneme` the
+    /// evaluator can score. The returned `TrialAssessment` only gains a
+    /// `phoneme` payload when both conditions are true — otherwise this is a
+    /// pure pass-through of the baseline and preserves existing behavior.
+    public func assess(
+        expected: Word,
+        recording: TrialRecording,
+        leniency: AssessmentLeniency
+    ) async -> TrialAssessment {
+        let baseline = assess(expected: expected, asr: recording.asr, leniency: leniency)
+        guard let target = expected.targetPhoneme else { return baseline }
+        guard evaluator.supports(target: target, in: expected) else { return baseline }
+        let phoneme = await evaluator.evaluate(
+            audio: recording.audio,
+            expected: expected,
+            targetPhoneme: target,
+            asr: recording.asr
+        )
+        return TrialAssessment(
+            expected: baseline.expected,
+            heard: baseline.heard,
+            correct: baseline.correct,
+            errorKind: baseline.errorKind,
+            l1InterferenceTag: baseline.l1InterferenceTag,
+            phoneme: phoneme
         )
     }
 
@@ -149,5 +185,31 @@ public struct AssessmentEngine: Sendable {
             swap(&prev, &curr)
         }
         return prev[bc.count]
+    }
+}
+
+/// Default evaluator used when no pronunciation pipeline is wired. Returns
+/// `supports = false` for every target, so `AssessmentEngine` falls back to
+/// transcript-only assessment — preserving pre-v1.5 behavior for call sites
+/// that have not yet been updated to inject a real evaluator.
+public struct NullPronunciationEvaluator: PronunciationEvaluator {
+    public init() {}
+
+    public func supports(target: Phoneme, in word: Word) -> Bool { false }
+
+    public func evaluate(
+        audio: AudioClip,
+        expected: Word,
+        targetPhoneme: Phoneme,
+        asr: ASRResult
+    ) async -> PhonemeTrialAssessment {
+        PhonemeTrialAssessment(
+            targetPhoneme: targetPhoneme,
+            label: .unclear,
+            score: nil,
+            coachingKey: nil,
+            features: [:],
+            isReliable: false
+        )
     }
 }

@@ -47,11 +47,12 @@ public struct ScriptedContentProvider: ContentProvider {
         }
         let data = try Data(contentsOf: url)
         let payload = try JSONDecoder().decode(ShWeek1Payload.self, from: data)
+        let targetPhoneme = Phoneme(ipa: payload.target.phoneme)
         return ScriptedContentProvider(
             target: Grapheme(letters: payload.target.letters),
             taughtGraphemes: Set(payload.l2TaughtGraphemes.map(Grapheme.init(letters:))),
-            words: payload.decodeWords.map { $0.asDecodeWord() },
-            sentences: payload.sentences.map { $0.asDecodeSentence() }
+            words: payload.decodeWords.map { $0.asDecodeWord(targetPhoneme: targetPhoneme) },
+            sentences: payload.sentences.map { $0.asDecodeSentence(targetPhoneme: targetPhoneme) }
         )
     }
 }
@@ -85,21 +86,23 @@ private struct WordPayload: Decodable {
     let phonemes: [String]
     let note: String?
 
-    func asDecodeWord() -> DecodeWord {
+    func asDecodeWord(targetPhoneme: Phoneme?) -> DecodeWord {
         DecodeWord(
             word: Word(
                 surface: surface,
                 graphemes: graphemes.map(Grapheme.init(letters:)),
-                phonemes: phonemes.map(Phoneme.init(ipa:))),
+                phonemes: phonemes.map(Phoneme.init(ipa:)),
+                targetPhoneme: targetPhoneme),
             note: note
         )
     }
 
-    func asWord() -> Word {
+    func asWord(targetPhoneme: Phoneme?) -> Word {
         Word(
             surface: surface,
             graphemes: graphemes.map(Grapheme.init(letters:)),
-            phonemes: phonemes.map(Phoneme.init(ipa:)))
+            phonemes: phonemes.map(Phoneme.init(ipa:)),
+            targetPhoneme: targetPhoneme)
     }
 }
 
@@ -107,7 +110,7 @@ private struct SentencePayload: Decodable {
     let text: String
     let words: [WordPayload]
 
-    func asDecodeSentence() -> DecodeSentence {
-        DecodeSentence(text: text, words: words.map { $0.asWord() })
+    func asDecodeSentence(targetPhoneme: Phoneme?) -> DecodeSentence {
+        DecodeSentence(text: text, words: words.map { $0.asWord(targetPhoneme: targetPhoneme) })
     }
 }
