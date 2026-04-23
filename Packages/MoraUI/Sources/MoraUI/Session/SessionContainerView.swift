@@ -16,6 +16,7 @@ public struct SessionContainerView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
     @Environment(\.moraStrings) private var strings
+    @Environment(\.shadowEvaluatorFactory) private var shadowEvaluatorFactory
     @Query(sort: \DailyStreak.lastCompletedOn, order: .reverse)
     private var streaks: [DailyStreak]
     @State private var orchestrator: SessionOrchestrator?
@@ -205,7 +206,7 @@ public struct SessionContainerView: View {
                 words: words, sentences: sentences,
                 assessment: AssessmentEngine(
                     l1Profile: JapaneseL1Profile(),
-                    evaluator: FeatureBasedPronunciationEvaluator()
+                    evaluator: shadowEvaluatorFactory.make(context.container)
                 )
             )
         } catch {

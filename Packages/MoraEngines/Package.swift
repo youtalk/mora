@@ -1,4 +1,4 @@
-// swift-tools-version: 5.9
+// swift-tools-version: 6.0
 import PackageDescription
 
 let package = Package(
@@ -9,17 +9,20 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../MoraCore"),
+        .package(path: "../MoraTesting"),
     ],
     targets: [
         .target(
             name: "MoraEngines",
             dependencies: ["MoraCore"],
-            resources: [.process("Resources")]
+            resources: [.process("Resources")],
+            swiftSettings: [.swiftLanguageMode(.v5)]
         ),
         .testTarget(
             name: "MoraEnginesTests",
-            dependencies: ["MoraEngines"],
-            resources: [.copy("Fixtures")]
+            dependencies: ["MoraEngines", "MoraTesting"],
+            resources: [.copy("Fixtures")],
+            swiftSettings: [.swiftLanguageMode(.v5)]
         ),
     ]
 )

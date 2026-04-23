@@ -9,6 +9,7 @@ public enum MoraModelContainer {
         PerformanceEntity.self,
         LearnerProfile.self,
         DailyStreak.self,
+        PronunciationTrialLog.self,
     ])
 
     public static func inMemory() throws -> ModelContainer {
