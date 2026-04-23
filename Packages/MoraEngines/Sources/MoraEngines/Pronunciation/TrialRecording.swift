@@ -1,15 +1,21 @@
 import Foundation
+import MoraCore
 
-/// A finalized speech trial: the ASR transcript plus the raw audio clip the
-/// transcript was produced from. The audio slice covers the recognized
-/// utterance with a short trailing silence (typically 100 ms) so feature
-/// extraction has enough room around word boundaries.
 public struct TrialRecording: Sendable, Hashable, Codable {
     public let asr: ASRResult
     public let audio: AudioClip
+    public let buildAttempts: [BuildAttemptRecord]
+    public let scaffoldLevel: Int
 
-    public init(asr: ASRResult, audio: AudioClip) {
+    public init(
+        asr: ASRResult,
+        audio: AudioClip,
+        buildAttempts: [BuildAttemptRecord] = [],
+        scaffoldLevel: Int = 0
+    ) {
         self.asr = asr
         self.audio = audio
+        self.buildAttempts = buildAttempts
+        self.scaffoldLevel = scaffoldLevel
     }
 }
