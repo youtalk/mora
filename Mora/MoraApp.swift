@@ -73,6 +73,12 @@ struct MoraApp: App {
                     logger: logger,
                     timeout: .milliseconds(1000)
                 )
+            } catch MoraMLXError.modelNotBundled {
+                // Expected in Part 1 of the Engine B rollout: the catalog is
+                // still a stub. Log at `.info` to avoid spamming `.error`
+                // on every session bootstrap.
+                log.info("MLX phoneme evaluator not bundled yet; running Engine A only")
+                return engineA
             } catch {
                 log.error(
                     "MLX phoneme evaluator load failed (\(String(describing: error))); running Engine A only"
