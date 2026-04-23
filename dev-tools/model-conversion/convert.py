@@ -4,13 +4,13 @@ Outputs:
     <output-dir>/wav2vec2-phoneme.mlmodelc/   (compiled CoreML model)
     <output-dir>/phoneme-labels.json          (ordered espeak IPA labels)
 
-Runs locally, never in CI. Reads HF_TOKEN from .env (python-dotenv).
+Runs locally, never in CI. The upstream model is public, so no
+Hugging Face token is required.
 """
 from __future__ import annotations
 
 import argparse
 import json
-import os
 import pathlib
 import subprocess
 import sys
@@ -18,8 +18,8 @@ import tempfile
 
 import numpy as np
 import torch
-from dotenv import load_dotenv
-from transformers import Wav2Vec2ForCTC, Wav2Vec2Processor
+from huggingface_hub import hf_hub_download
+from transformers import Wav2Vec2ForCTC
 
 import coremltools as ct
 from coremltools.optimize.coreml import (
@@ -29,7 +29,9 @@ from coremltools.optimize.coreml import (
 )
 
 MODEL_ID = "facebook/wav2vec2-xlsr-53-espeak-cv-ft"
-MODEL_REVISION = "3693e11"  # pin; see dev-tools/model-conversion/README.md
+# Main-branch SHA as of 2021-12-10; the repo has had no further commits.
+# See dev-tools/model-conversion/README.md for the rationale behind pinning.
+MODEL_REVISION = "2c733782da5604684829819a5eb744c193fe9398"
 EXPECTED_SAMPLE_RATE = 16_000
 EXPORT_DURATION_SECONDS = 2.0
 
@@ -45,17 +47,12 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def load_model(token: str) -> tuple[Wav2Vec2ForCTC, Wav2Vec2Processor]:
-    processor = Wav2Vec2Processor.from_pretrained(
-        MODEL_ID, revision=MODEL_REVISION, token=token
-    )
-    model = Wav2Vec2ForCTC.from_pretrained(
-        MODEL_ID, revision=MODEL_REVISION, token=token
-    )
+def load_model() -> Wav2Vec2ForCTC:
+    model = Wav2Vec2ForCTC.from_pretrained(MODEL_ID, revision=MODEL_REVISION)
     # Switch to inference mode; see README for why we use .train(False)
     # instead of the more idiomatic alternative.
     model.train(False)
-    return model, processor
+    return model
 
 
 def trace(model: Wav2Vec2ForCTC) -> torch.jit.ScriptModule:
@@ -123,10 +120,16 @@ def compile_mlmodelc(mlpackage: pathlib.Path, output_dir: pathlib.Path) -> pathl
     return target
 
 
-def dump_phoneme_labels(
-    processor: Wav2Vec2Processor, output_dir: pathlib.Path
-) -> pathlib.Path:
-    vocab = processor.tokenizer.get_vocab()
+def dump_phoneme_labels(output_dir: pathlib.Path) -> pathlib.Path:
+    # Fetch the tokenizer's vocab.json directly instead of instantiating
+    # Wav2Vec2PhonemeCTCTokenizer, which eagerly initializes a phonemizer
+    # backend (espeak-ng) that we never actually use — we only need the
+    # ordered label list.
+    vocab_path = hf_hub_download(
+        repo_id=MODEL_ID, filename="vocab.json", revision=MODEL_REVISION
+    )
+    with open(vocab_path, encoding="utf-8") as fh:
+        vocab: dict[str, int] = json.load(fh)
     ordered = [label for label, _ in sorted(vocab.items(), key=lambda kv: kv[1])]
     path = output_dir / "phoneme-labels.json"
     path.write_text(json.dumps(ordered, ensure_ascii=False, indent=2))
@@ -135,22 +138,18 @@ def dump_phoneme_labels(
 
 def main() -> int:
     args = parse_args()
-    load_dotenv()
-    token = os.environ.get("HF_TOKEN")
-    if not token:
-        print("HF_TOKEN is not set. Copy .env.example to .env and fill it in.", file=sys.stderr)
-        return 1
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"Loading {MODEL_ID}@{MODEL_REVISION}...")
-    model, processor = load_model(token)
+    model = load_model()
     print("Tracing model...")
     traced = trace(model)
     # Write the `.mlpackage` intermediate to a scratch directory so it
     # cannot leak into `Resources/` (or into the output-dir at all) and
     # accidentally get committed. The compiled `.mlmodelc` is the only
     # artifact we want to keep. `tempfile.mkdtemp()` is cleaned up
-    # unconditionally via `shutil.rmtree` below.
+    # unconditionally via the `subprocess.run(["rm", "-rf", ...])` in
+    # the `finally` block below.
     staging_dir = pathlib.Path(tempfile.mkdtemp(prefix="mora-mlpackage-"))
     try:
         print(f"Exporting to mlprogram + INT8 quantizing (staging in {staging_dir})...")
@@ -158,7 +157,7 @@ def main() -> int:
         print(f"Compiling .mlmodelc from {pkg.name}...")
         compiled = compile_mlmodelc(pkg, args.output_dir)
         print("Writing phoneme-labels.json...")
-        labels_path = dump_phoneme_labels(processor, args.output_dir)
+        labels_path = dump_phoneme_labels(args.output_dir)
     finally:
         print(f"Cleaning up staging dir {staging_dir}...")
         subprocess.run(["rm", "-rf", str(staging_dir)], check=True)
