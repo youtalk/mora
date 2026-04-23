@@ -41,7 +41,8 @@ final class RecorderStoreTests: XCTestCase {
         let pattern = FixtureCatalog.v1Patterns.first { $0.id == "rl-right-correct" }!
 
         // Seed two takes on disk for speaker = adult.
-        let dir = tempDir
+        let dir =
+            tempDir
             .appendingPathComponent("adult")
             .appendingPathComponent(pattern.outputSubdirectory)
         try FileManager.default.createDirectory(
@@ -63,7 +64,8 @@ final class RecorderStoreTests: XCTestCase {
         let pattern = FixtureCatalog.v1Patterns.first { $0.id == "rl-right-correct" }!
 
         // Put a file only under child/.
-        let childDir = tempDir
+        let childDir =
+            tempDir
             .appendingPathComponent("child")
             .appendingPathComponent(pattern.outputSubdirectory)
         try FileManager.default.createDirectory(
@@ -83,7 +85,8 @@ final class RecorderStoreTests: XCTestCase {
         let store = RecorderStore(
             documentsDirectory: tempDir, userDefaults: defaults)
         let pattern = FixtureCatalog.v1Patterns.first { $0.id == "rl-right-correct" }!
-        let dir = tempDir
+        let dir =
+            tempDir
             .appendingPathComponent("adult")
             .appendingPathComponent(pattern.outputSubdirectory)
         try FileManager.default.createDirectory(

@@ -60,17 +60,18 @@ public final class RecorderStore {
     private let recorder: FixtureRecorder
 
     public init(
-        documentsDirectory: URL = RecorderStore.defaultDocumentsDirectory(),
+        documentsDirectory: URL? = nil,
         userDefaults: UserDefaults = .standard,
         fileManager: FileManager = .default,
-        recorder: FixtureRecorder = FixtureRecorder()
+        recorder: FixtureRecorder? = nil
     ) {
-        self.documentsDirectory = documentsDirectory
+        self.documentsDirectory = documentsDirectory ?? RecorderStore.defaultDocumentsDirectory()
         self.userDefaults = userDefaults
         self.fileManager = fileManager
-        self.recorder = recorder
+        self.recorder = recorder ?? FixtureRecorder()
         if let raw = userDefaults.string(forKey: speakerTagUserDefaultsKey),
-           let tag = SpeakerTag(rawValue: raw) {
+            let tag = SpeakerTag(rawValue: raw)
+        {
             self.speakerTag = tag
         } else {
             self.speakerTag = .adult
@@ -91,11 +92,14 @@ public final class RecorderStore {
 
     public func takesOnDisk(for pattern: FixturePattern) -> [URL] {
         let dir = patternDirectory(for: pattern)
-        guard let entries = try? fileManager.contentsOfDirectory(
-            at: dir, includingPropertiesForKeys: nil
-        ) else { return [] }
+        guard
+            let entries = try? fileManager.contentsOfDirectory(
+                at: dir, includingPropertiesForKeys: nil
+            )
+        else { return [] }
         let stemPrefix = "\(pattern.filenameStem)-take"
-        return entries
+        return
+            entries
             .filter { $0.pathExtension == "wav" }
             .filter { $0.deletingPathExtension().lastPathComponent.hasPrefix(stemPrefix) }
             .sorted { $0.lastPathComponent < $1.lastPathComponent }
@@ -167,9 +171,9 @@ public final class RecorderStore {
     public func prepareSpeakerArchive() throws -> URL {
         let dir = speakerDirectory()
         guard fileManager.fileExists(atPath: dir.path),
-              let entries = try? fileManager.contentsOfDirectory(
-                  at: dir, includingPropertiesForKeys: nil),
-              !entries.isEmpty
+            let entries = try? fileManager.contentsOfDirectory(
+                at: dir, includingPropertiesForKeys: nil),
+            !entries.isEmpty
         else {
             throw FixtureExportError.emptyDirectory
         }

@@ -28,10 +28,13 @@ struct BulkShareButton: View {
                 .disabled(store.totalTakesInCurrentSpeaker == 0)
             }
         }
-        .alert("Archive failed", isPresented: Binding(
-            get: { errorMessage != nil },
-            set: { if !$0 { errorMessage = nil } }
-        )) {
+        .alert(
+            "Archive failed",
+            isPresented: Binding(
+                get: { errorMessage != nil },
+                set: { if !$0 { errorMessage = nil } }
+            )
+        ) {
             Button("OK") { errorMessage = nil }
         } message: {
             Text(errorMessage ?? "")
