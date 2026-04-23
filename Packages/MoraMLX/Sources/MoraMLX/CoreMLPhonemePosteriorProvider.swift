@@ -108,27 +108,37 @@ public struct CoreMLPhonemePosteriorProvider: PhonemePosteriorProvider, @uncheck
         default:
             throw MoraMLXError.inferenceFailed("unexpected output shape: \(shape)")
         }
-        guard logProbs.dataType == .float32 else {
-            throw MoraMLXError.inferenceFailed(
-                "unexpected MLMultiArray dataType: \(logProbs.dataType.rawValue) (expected float32)"
-            )
-        }
+        // The iOS 17 mlprogram target emits Float16 outputs on ANE for
+        // efficiency, while older conversions and CPU-only runs produce
+        // Float32. Handle both rather than forcing one via compute-precision
+        // overrides — that would cost ANE acceleration (see the p95 budget
+        // in docs/superpowers/plans/2026-04-23-engine-b-followup-real-model-bundling.md#device-verification).
+        //
         // TODO: handle non-contiguous strides if a future CoreML conversion
         // produces strided output. The current wav2vec2 export is contiguous
         // (stride[last] == 1, stride[t] == phonemeCount), so plain row-major
         // indexing is safe.
+        let totalCount = frameCount * phonemeCount
+        let flat: [Float]
+        switch logProbs.dataType {
+        case .float32:
+            let ptr = logProbs.dataPointer.bindMemory(to: Float.self, capacity: totalCount)
+            flat = Array(UnsafeBufferPointer(start: ptr, count: totalCount))
+        case .float16:
+            let ptr = logProbs.dataPointer.bindMemory(to: Float16.self, capacity: totalCount)
+            flat = (0..<totalCount).map { Float(ptr[$0]) }
+        default:
+            throw MoraMLXError.inferenceFailed(
+                "unsupported MLMultiArray dataType: \(logProbs.dataType.rawValue) "
+                    + "(supported: float32=\(MLMultiArrayDataType.float32.rawValue), "
+                    + "float16=\(MLMultiArrayDataType.float16.rawValue))"
+            )
+        }
         var rows: [[Float]] = []
         rows.reserveCapacity(frameCount)
-        let ptr = logProbs.dataPointer.bindMemory(
-            to: Float.self, capacity: frameCount * phonemeCount
-        )
         for t in 0..<frameCount {
             let base = t * phonemeCount
-            var row = [Float](repeating: 0, count: phonemeCount)
-            for c in 0..<phonemeCount {
-                row[c] = ptr[base + c]
-            }
-            rows.append(row)
+            rows.append(Array(flat[base..<(base + phonemeCount)]))
         }
         return PhonemePosterior(
             framesPerSecond: framesPerSecond,
