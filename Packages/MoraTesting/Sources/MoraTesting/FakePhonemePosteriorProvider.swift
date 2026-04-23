@@ -45,11 +45,22 @@ public final class FakePhonemePosteriorProvider: PhonemePosteriorProvider, @unch
         lock.unlock()
 
         if block {
-            await withCheckedContinuation { (c: CheckedContinuation<Void, Never>) in
-                lock.lock()
-                continuation = c
-                lock.unlock()
-            }
+            await withTaskCancellationHandler(
+                operation: {
+                    await withCheckedContinuation { (c: CheckedContinuation<Void, Never>) in
+                        lock.lock()
+                        continuation = c
+                        lock.unlock()
+                    }
+                },
+                onCancel: { [self] in
+                    lock.lock()
+                    let c = continuation
+                    continuation = nil
+                    lock.unlock()
+                    c?.resume()
+                }
+            )
         }
 
         switch nextResult {
