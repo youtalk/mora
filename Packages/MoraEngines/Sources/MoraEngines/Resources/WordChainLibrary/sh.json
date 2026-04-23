@@ -1,0 +1,33 @@
+{
+  "target": "sh",
+  "warmup": [
+    {
+      "head": { "surface": "cat", "graphemes": ["c", "a", "t"] },
+      "successors": [
+        { "surface": "cut", "graphemes": ["c", "u", "t"] },
+        { "surface": "hut", "graphemes": ["h", "u", "t"] },
+        { "surface": "hat", "graphemes": ["h", "a", "t"] }
+      ]
+    }
+  ],
+  "targetIntro": [
+    {
+      "head": { "surface": "ship", "graphemes": ["sh", "i", "p"] },
+      "successors": [
+        { "surface": "shop", "graphemes": ["sh", "o", "p"] },
+        { "surface": "shot", "graphemes": ["sh", "o", "t"] },
+        { "surface": "shut", "graphemes": ["sh", "u", "t"] }
+      ]
+    }
+  ],
+  "mixedApplication": [
+    {
+      "head": { "surface": "fish", "graphemes": ["f", "i", "sh"] },
+      "successors": [
+        { "surface": "dish", "graphemes": ["d", "i", "sh"] },
+        { "surface": "wish", "graphemes": ["w", "i", "sh"] },
+        { "surface": "wash", "graphemes": ["w", "a", "sh"] }
+      ]
+    }
+  ]
+}
