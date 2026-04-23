@@ -14,8 +14,8 @@ struct MoraApp: App {
 
     init() {
         self.container = Self.makeContainer()
-        Self.cleanupPronunciationTrialLog(container: container)
         self.shadowFactory = Self.makeShadowFactory()
+        Self.scheduleBackgroundCleanup(container: container)
     }
 
     var body: some Scene {
@@ -46,12 +46,18 @@ struct MoraApp: App {
         }
     }
 
-    @MainActor
-    private static func cleanupPronunciationTrialLog(container: ModelContainer) {
-        do {
-            try PronunciationTrialRetentionPolicy.cleanup(container.mainContext)
-        } catch {
-            log.error("PronunciationTrialLog cleanup failed at launch: \(error)")
+    /// Schedules `PronunciationTrialRetentionPolicy.cleanup` on a detached
+    /// background task so app launch is not blocked even if the log grew
+    /// far past the cap (e.g., after a bug or a long-running dev build).
+    /// The policy uses a fresh `ModelContext` internally, so it does not
+    /// contend with the main-actor context used by the UI.
+    private static func scheduleBackgroundCleanup(container: ModelContainer) {
+        Task.detached(priority: .background) {
+            do {
+                try PronunciationTrialRetentionPolicy.cleanup(container)
+            } catch {
+                log.error("PronunciationTrialLog cleanup failed at launch: \(error)")
+            }
         }
     }
 
