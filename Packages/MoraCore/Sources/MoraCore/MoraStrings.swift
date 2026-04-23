@@ -28,7 +28,14 @@ public struct MoraStrings: Sendable {
     public let homeDurationPill: @Sendable (Int) -> String
     public let homeWordsPill: @Sendable (Int) -> String
     public let homeSentencesPill: @Sendable (Int) -> String
-    public let homeBetterVoiceChip: String
+
+    // Voice gate — shown on Home when no `.enhanced` or `.premium` English
+    // voice is installed. Parent-facing setup copy (not in the child kanji
+    // budget because it has to mirror iOS Settings labels verbatim).
+    public let voiceGateTitle: String
+    public let voiceGateBody: String
+    public let voiceGateOpenSettings: String
+    public let voiceGateRecheck: String
 
     // Session chrome
     public let sessionCloseTitle: String
@@ -74,7 +81,8 @@ public struct MoraStrings: Sendable {
         homeDurationPill: @escaping @Sendable (Int) -> String,
         homeWordsPill: @escaping @Sendable (Int) -> String,
         homeSentencesPill: @escaping @Sendable (Int) -> String,
-        homeBetterVoiceChip: String,
+        voiceGateTitle: String, voiceGateBody: String,
+        voiceGateOpenSettings: String, voiceGateRecheck: String,
         sessionCloseTitle: String, sessionCloseMessage: String,
         sessionCloseKeepGoing: String, sessionCloseEnd: String,
         sessionWordCounter: @escaping @Sendable (Int, Int) -> String,
@@ -108,7 +116,10 @@ public struct MoraStrings: Sendable {
         self.homeDurationPill = homeDurationPill
         self.homeWordsPill = homeWordsPill
         self.homeSentencesPill = homeSentencesPill
-        self.homeBetterVoiceChip = homeBetterVoiceChip
+        self.voiceGateTitle = voiceGateTitle
+        self.voiceGateBody = voiceGateBody
+        self.voiceGateOpenSettings = voiceGateOpenSettings
+        self.voiceGateRecheck = voiceGateRecheck
         self.sessionCloseTitle = sessionCloseTitle
         self.sessionCloseMessage = sessionCloseMessage
         self.sessionCloseKeepGoing = sessionCloseKeepGoing

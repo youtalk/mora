@@ -22,8 +22,9 @@ public struct HomeView: View {
     // @State so the scan runs at most once per appearance / scene activation
     // rather than on every body invalidation (which fires on every @Query
     // update). Recomputed on scenePhase → .active so returning from Settings
-    // after downloading a premium voice flips the prompt off immediately.
+    // after downloading a premium voice flips the gate off immediately.
     @State private var needsBetterVoice: Bool = AppleTTSEngine.needsEnhancedVoice
+    @State private var installedVoices: [String] = AppleTTSEngine.installedEnglishVoiceSummaries()
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.moraStrings) private var strings
 
@@ -36,15 +37,17 @@ public struct HomeView: View {
             VStack(spacing: MoraTheme.Space.lg) {
                 header
                 Spacer()
-                hero
+                if needsBetterVoice {
+                    voiceGate
+                } else {
+                    hero
+                }
                 Spacer()
             }
         }
-        .onAppear { needsBetterVoice = AppleTTSEngine.needsEnhancedVoice }
+        .onAppear { refreshVoiceState() }
         .onChange(of: scenePhase) { _, phase in
-            if phase == .active {
-                needsBetterVoice = AppleTTSEngine.needsEnhancedVoice
-            }
+            if phase == .active { refreshVoiceState() }
         }
         #if os(iOS)
         .navigationBarHidden(true)
@@ -57,18 +60,6 @@ public struct HomeView: View {
                 .font(MoraType.heading())
                 .foregroundStyle(MoraTheme.Accent.orange)
             Spacer()
-            if needsBetterVoice {
-                Button(action: openVoiceSettings) {
-                    Text(strings.homeBetterVoiceChip)
-                        .font(MoraType.pill())
-                        .foregroundStyle(MoraTheme.Ink.secondary)
-                        .padding(.horizontal, MoraTheme.Space.md)
-                        .padding(.vertical, MoraTheme.Space.sm)
-                        .background(MoraTheme.Background.cream, in: .capsule)
-                }
-                .buttonStyle(.plain)
-                .accessibilityHint("Open iOS Settings to download an enhanced voice.")
-            }
             StreakChip(count: streaks.first?.currentCount ?? 0)
         }
         .padding(MoraTheme.Space.md)
@@ -81,12 +72,13 @@ public struct HomeView: View {
                 .foregroundStyle(MoraTheme.Ink.muted)
 
             Text(target.letters ?? "—")
-                .font(MoraType.hero(180))
+                .font(MoraType.heroWord())
                 .foregroundStyle(MoraTheme.Ink.primary)
 
             Text(ipaLine)
-                .font(MoraType.label())
+                .font(MoraType.bodyReading())
                 .foregroundStyle(MoraTheme.Ink.secondary)
+                .multilineTextAlignment(.center)
 
             NavigationLink(value: "session") {
                 Text(strings.homeStart)
@@ -106,6 +98,87 @@ public struct HomeView: View {
                 pill(strings.homeSentencesPill(2))
             }
         }
+    }
+
+    /// Blocking setup card shown when no `.enhanced` / `.premium` English
+    /// voice is installed. The system default compact voice at any rate below
+    /// 0.5 turns "ship" into unintelligible noise on device, so we refuse to
+    /// start a session until the parent installs a usable voice. The Recheck
+    /// button re-runs the voice scan immediately after the user returns from
+    /// Settings — scenePhase → .active also triggers a re-scan, but an
+    /// explicit button makes the flow obvious.
+    private var voiceGate: some View {
+        VStack(spacing: MoraTheme.Space.md) {
+            Text(strings.voiceGateTitle)
+                .font(MoraType.heading())
+                .foregroundStyle(MoraTheme.Ink.primary)
+                .multilineTextAlignment(.center)
+
+            Text(strings.voiceGateBody)
+                .font(MoraType.bodyReading())
+                .foregroundStyle(MoraTheme.Ink.secondary)
+                .multilineTextAlignment(.leading)
+                .fixedSize(horizontal: false, vertical: true)
+
+            // List what AVSpeechSynthesizer actually sees on this device —
+            // lets the parent tell at a glance whether their Settings
+            // download produced an Enhanced/Premium entry or left them
+            // stuck on Default (compact).
+            installedVoicesSection
+
+            Button(action: openVoiceSettings) {
+                Text(strings.voiceGateOpenSettings)
+                    .font(MoraType.cta())
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, MoraTheme.Space.xl)
+                    .padding(.vertical, MoraTheme.Space.md)
+                    .frame(minHeight: 72)
+                    .background(MoraTheme.Accent.orange, in: .capsule)
+            }
+            .buttonStyle(.plain)
+            .padding(.top, MoraTheme.Space.sm)
+
+            Button(action: refreshVoiceState) {
+                Text(strings.voiceGateRecheck)
+                    .font(MoraType.label())
+                    .foregroundStyle(MoraTheme.Accent.teal)
+                    .padding(.vertical, MoraTheme.Space.sm)
+                    .padding(.horizontal, MoraTheme.Space.md)
+            }
+            .buttonStyle(.plain)
+        }
+        .padding(MoraTheme.Space.lg)
+        .background(MoraTheme.Background.cream, in: .rect(cornerRadius: MoraTheme.Radius.card))
+        .padding(.horizontal, MoraTheme.Space.xl)
+    }
+
+    private var installedVoicesSection: some View {
+        VStack(alignment: .leading, spacing: MoraTheme.Space.xs) {
+            Text("インストール済みの 英語 voice")
+                .font(MoraType.label())
+                .foregroundStyle(MoraTheme.Ink.muted)
+            if installedVoices.isEmpty {
+                Text("(なし)")
+                    .font(MoraType.label())
+                    .foregroundStyle(MoraTheme.Ink.secondary)
+            } else {
+                ForEach(installedVoices, id: \.self) { row in
+                    Text("• \(row)")
+                        .font(MoraType.label())
+                        .foregroundStyle(MoraTheme.Ink.secondary)
+                        .lineLimit(1)
+                        .truncationMode(.middle)
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(MoraTheme.Space.md)
+        .background(.white, in: .rect(cornerRadius: MoraTheme.Radius.tile))
+    }
+
+    private func refreshVoiceState() {
+        needsBetterVoice = AppleTTSEngine.needsEnhancedVoice
+        installedVoices = AppleTTSEngine.installedEnglishVoiceSummaries()
     }
 
     private func pill(_ text: String) -> some View {

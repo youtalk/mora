@@ -10,35 +10,38 @@ struct NewRuleView: View {
     @State private var finishedIntro = false
 
     var body: some View {
-        VStack(spacing: MoraTheme.Space.lg) {
-            Spacer()
-            Text("New rule")
-                .font(MoraType.label())
-                .foregroundStyle(MoraTheme.Ink.muted)
+        ScrollView {
+            VStack(spacing: MoraTheme.Space.lg) {
+                Text("New rule")
+                    .font(MoraType.label())
+                    .foregroundStyle(MoraTheme.Ink.muted)
 
-            Text("\(letters) → /\(ipa)/")
-                .font(.system(size: 96, weight: .heavy, design: .rounded))
-                .foregroundStyle(MoraTheme.Ink.primary)
+                Text("\(letters) → /\(ipa)/")
+                    .font(MoraType.heroWord(140))
+                    .foregroundStyle(MoraTheme.Ink.primary)
+                    .minimumScaleFactor(0.5)
 
-            Text("Two letters, one sound.")
-                .font(MoraType.heading())
-                .foregroundStyle(MoraTheme.Ink.secondary)
+                Text("Two letters, one sound.")
+                    .font(MoraType.heading())
+                    .foregroundStyle(MoraTheme.Ink.secondary)
+                    .multilineTextAlignment(.center)
+                    .minimumScaleFactor(0.5)
 
-            HStack(spacing: MoraTheme.Space.lg) {
-                workedExample("ship")
-                workedExample("shop")
-                workedExample("fish")
+                HStack(spacing: MoraTheme.Space.lg) {
+                    workedExample("ship")
+                    workedExample("shop")
+                    workedExample("fish")
+                }
+
+                HeroCTA(title: strings.newRuleGotIt) {
+                    Task { await orchestrator.handle(.advance) }
+                }
+                .disabled(!finishedIntro)
+                .opacity(finishedIntro ? 1.0 : 0.4)
+                .padding(.top, MoraTheme.Space.md)
             }
-            .padding(.top, MoraTheme.Space.lg)
-
-            Spacer()
-
-            HeroCTA(title: strings.newRuleGotIt) {
-                Task { await orchestrator.handle(.advance) }
-            }
-            .disabled(!finishedIntro)
-            .opacity(finishedIntro ? 1.0 : 0.4)
-            .padding(.bottom, MoraTheme.Space.xl)
+            .padding(.vertical, MoraTheme.Space.xl)
+            .frame(maxWidth: .infinity)
         }
         .task {
             await playIntro()
@@ -52,20 +55,28 @@ struct NewRuleView: View {
             finishedIntro = true
             return
         }
-        await tts.speak("\(letters) says \(ipa). Two letters, one sound.")
+        // Play the bare phoneme via IPA hint, then ground it in three
+        // exemplars. Avoids speaking the digraph letters in isolation
+        // (TTS spells "sh" out as letters in plain text); the IPA hint is
+        // the documented way to coax a clean /ʃ/ from Premium voices.
+        if let phoneme = orchestrator.target.phoneme {
+            await tts.speak(phoneme: phoneme, pace: .slow)
+        }
+        await tts.speak("Two letters, one sound.", pace: .slow)
         for word in ["ship", "shop", "fish"] {
-            await tts.speak(word)
+            await tts.speak(word, pace: .slow)
         }
         finishedIntro = true
     }
 
     private func workedExample(_ s: String) -> some View {
         Text(s)
-            .font(.system(size: 48, weight: .bold, design: .rounded))
+            .font(MoraType.bodyReading(size: 56))
             .foregroundStyle(MoraTheme.Ink.primary)
             .padding(.horizontal, MoraTheme.Space.lg)
             .padding(.vertical, MoraTheme.Space.md)
             .background(Color.white, in: .rect(cornerRadius: MoraTheme.Radius.tile))
+            .minimumScaleFactor(0.5)
     }
 
     private var letters: String { orchestrator.target.letters ?? "?" }

@@ -121,7 +121,21 @@ public struct JapaneseL1Profile: L1Profile {
         homeDurationPill: { minutes in "\(minutes)分" },
         homeWordsPill: { count in "\(count)文字" },
         homeSentencesPill: { count in "\(count)文" },
-        homeBetterVoiceChip: "もっと きれいな 声 ›",
+        voiceGateTitle: "英語の 声を ダウンロードしてください",
+        voiceGateBody:
+            "Moraで つかう きれいな 声が iPadに 入っていません。\n"
+            + "設定アプリを ひらき、下の 順で ひらいてください:\n\n"
+            + "  設定 (Settings)\n"
+            + "  → アクセシビリティ (Accessibility)\n"
+            + "  → 読み上げ と 発話 (Read & Speak)\n"
+            + "  → 声 (Voices) → 英語 (English)\n\n"
+            + "その中から Premium または Enhanced の 声 (Ava / Samantha / Siri など) を\n"
+            + "ダウンロードしてください。\n"
+            + "(iPadOS 26より 前は Read & Speak の かわりに\n"
+            + " Spoken Content / 読み上げコンテンツ と 表示されます。\n"
+            + " OSの 言語が 英語の 場合は カッコ内の 表記で 表示されます。)",
+        voiceGateOpenSettings: "設定を 開く",
+        voiceGateRecheck: "もう一度 たしかめる",
         sessionCloseTitle: "今日の クエストを おわる？",
         sessionCloseMessage: "ここまでの きろくは のこるよ",
         sessionCloseKeepGoing: "つづける",
