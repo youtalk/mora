@@ -129,6 +129,11 @@ jobs:
             echo "Cloud pronunciation symbol detected in Mora binary"
             exit 1
           fi
+          if nm "$APP/Mora" 2>/dev/null | grep -iE \
+            'FixtureRecorder|FixtureWriter|FixtureMetadata|PronunciationRecorderView|DebugFixtureRecorderEntryModifier'; then
+            echo "Recorder symbol detected in Mora binary; recorder code should live in recorder/MoraFixtureRecorder/ only"
+            exit 1
+          fi
 
       # SPM .build caches per local package. hashFiles includes the package's own
       # sources and those of every package it depends on, so any upstream source
