@@ -5,7 +5,7 @@ import SwiftUI
 struct NewRuleView: View {
     @Environment(\.moraStrings) private var strings
     let orchestrator: SessionOrchestrator
-    let ttsEngine: TTSEngine?
+    let speech: SpeechController?
 
     @State private var finishedIntro = false
 
@@ -48,15 +48,24 @@ struct NewRuleView: View {
     @MainActor
     private func playIntro() async {
         guard !finishedIntro else { return }
-        guard let tts = ttsEngine else {
+        guard let speech else {
             finishedIntro = true
             return
         }
-        await tts.speak("\(letters) says \(ipa). Two letters, one sound.")
+        var prompts: [SpeechPrompt] = [
+            .text("\(letters) says \(ipa). Two letters, one sound.")
+        ]
         for word in ["ship", "shop", "fish"] {
-            await tts.speak(word)
+            prompts.append(.text(word))
         }
-        finishedIntro = true
+        await speech.playAndAwait(prompts)
+        // Only flip the gate when the intro actually finished. A cancelled
+        // run (view disappeared, close button, user-initiated interrupt)
+        // leaves the gate closed so that a re-entering view replays the
+        // full sequence instead of skipping straight to the CTA.
+        if !Task.isCancelled {
+            finishedIntro = true
+        }
     }
 
     private func workedExample(_ s: String) -> some View {

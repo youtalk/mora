@@ -6,7 +6,7 @@ import SwiftUI
 struct CompletionView: View {
     @Environment(\.moraStrings) private var strings
     let orchestrator: SessionOrchestrator
-    let ttsEngine: TTSEngine?
+    let speech: SpeechController?
     let persistSummary: (SessionSummary) -> Void
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var ctx
@@ -39,7 +39,7 @@ struct CompletionView: View {
                 .font(MoraType.bodyReading())
                 .foregroundStyle(MoraTheme.Ink.muted)
 
-            Button("Done") { dismiss() }
+            Button("Done") { dismissSession() }
                 .font(MoraType.cta())
                 .foregroundStyle(MoraTheme.Accent.teal)
                 .padding(.top, MoraTheme.Space.md)
@@ -48,13 +48,27 @@ struct CompletionView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .contentShape(Rectangle())
-        .onTapGesture { dismiss() }
-        .accessibilityAction(named: "Return home") { dismiss() }
+        .onTapGesture { dismissSession() }
+        .accessibilityAction(named: "Return home") { dismissSession() }
         .onAppear { persistOnce() }
         .task {
-            guard let tts = ttsEngine else { return }
-            await tts.speak("Quest complete! You got \(correct) out of \(total).")
+            // Spoken in English (the whole app teaches English phonics to
+            // an L1-Japanese learner) — keeping this literal rather than a
+            // MoraStrings entry since every L1 profile would emit the same
+            // celebratory line in English anyway.
+            speech?.play(
+                [.text("Quest complete! You got \(correct) out of \(total).")]
+            )
         }
+    }
+
+    @MainActor
+    private func dismissSession() {
+        // Cancel the celebration utterance so it doesn't trail onto the
+        // Home screen. The engine's cancellation handler stops the
+        // synthesizer as the inflight task is torn down.
+        speech?.stop()
+        dismiss()
     }
 
     @MainActor
