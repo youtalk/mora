@@ -110,6 +110,22 @@ jobs:
             -configuration Debug \
             CODE_SIGNING_ALLOWED=NO
 
+      - name: Binary gate — no cloud symbols in built binary
+        # No github-context expressions used; only nm over the freshly built
+        # .app. Rejects any symbol whose name suggests the app was linked
+        # against a cloud pronunciation SDK.
+        run: |
+          BIN="$HOME/Library/Developer/Xcode/DerivedData"
+          APP=$(find "$BIN" -type d -name 'Mora.app' -path '*Debug-iphonesimulator*' 2>/dev/null | head -1)
+          if [ -z "$APP" ]; then
+            echo "Mora.app not found in DerivedData"
+            exit 1
+          fi
+          if nm "$APP/Mora" 2>/dev/null | grep -iE 'speechace|azure|speechsuper'; then
+            echo "Cloud pronunciation symbol detected in Mora binary"
+            exit 1
+          fi
+
       # SPM .build caches per local package. hashFiles includes the package's own
       # sources and those of every package it depends on, so any upstream source
       # change invalidates the cache. Prefix restore-keys let near-miss PRs still
