@@ -69,8 +69,13 @@ struct MoraApp: App {
     /// session; subsequent sessions hit the cache instantly regardless.
     /// Any load failure here is swallowed — `ShadowEvaluatorFactory`
     /// re-runs the load on first use and handles the error there.
+    ///
+    /// Runs at `.utility` — higher than `.background` so it actually starts
+    /// promptly on a warm system, but below `.userInitiated` so it cannot
+    /// steal scheduler time from the SwiftUI / Metal work that renders the
+    /// first frame during app launch.
     private static func scheduleMLXWarmup() {
-        Task.detached(priority: .userInitiated) {
+        Task.detached(priority: .utility) {
             _ = try? MoraMLXModelCatalog.loadPhonemeEvaluator()
         }
     }
