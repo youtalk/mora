@@ -8,14 +8,13 @@ public final class SessionOrchestrator {
     public private(set) var phase: ADayPhase = .notStarted
     public private(set) var warmupMissCount: Int = 0
     public private(set) var trials: [TrialAssessment] = []
-    public private(set) var wordIndex: Int = 0
     public private(set) var sentenceIndex: Int = 0
     public private(set) var sessionStartedAt: Date?
 
     public let target: Target
     public let taughtGraphemes: Set<Grapheme>
     public let warmupOptions: [Grapheme]
-    public let words: [DecodeWord]
+    public let chainProvider: any WordChainProvider
     public let sentences: [DecodeSentence]
 
     private let assessment: AssessmentEngine
@@ -25,7 +24,7 @@ public final class SessionOrchestrator {
         target: Target,
         taughtGraphemes: Set<Grapheme>,
         warmupOptions: [Grapheme],
-        words: [DecodeWord],
+        chainProvider: any WordChainProvider,
         sentences: [DecodeSentence],
         assessment: AssessmentEngine,
         clock: @escaping @Sendable () -> Date = Date.init
@@ -33,7 +32,7 @@ public final class SessionOrchestrator {
         self.target = target
         self.taughtGraphemes = taughtGraphemes
         self.warmupOptions = warmupOptions
-        self.words = words
+        self.chainProvider = chainProvider
         self.sentences = sentences
         self.assessment = assessment
         self.clock = clock
@@ -81,7 +80,9 @@ public final class SessionOrchestrator {
     private func transitionTo(_ newPhase: ADayPhase) {
         phase = newPhase
         switch phase {
-        case .decoding where words.isEmpty:
+        case .decoding:
+            // 18b wires the chain-driven decoding. For now, immediately
+            // advance so the orchestrator does not stall.
             transitionTo(.shortSentences)
         case .shortSentences where sentences.isEmpty:
             transitionTo(.completion)
@@ -91,30 +92,11 @@ public final class SessionOrchestrator {
     }
 
     private func handleDecodingHeard(recording: TrialRecording) async {
-        guard wordIndex < words.count else {
-            transitionTo(.shortSentences)
-            return
-        }
-        let expected = words[wordIndex].word
-        let trial = await assessment.assess(
-            expected: expected,
-            recording: recording,
-            leniency: .newWord
-        )
-        trials.append(trial)
-        wordIndex += 1
-        if wordIndex >= words.count { transitionTo(.shortSentences) }
+        // Wired in 18b/18c.
     }
 
     private func handleDecodingManual(correct: Bool) {
-        guard wordIndex < words.count else {
-            transitionTo(.shortSentences)
-            return
-        }
-        let expected = words[wordIndex].word
-        trials.append(manualTrial(expected: expected, correct: correct))
-        wordIndex += 1
-        if wordIndex >= words.count { transitionTo(.shortSentences) }
+        // Wired in 18b/18c.
     }
 
     private func handleSentenceHeard(recording: TrialRecording) async {
