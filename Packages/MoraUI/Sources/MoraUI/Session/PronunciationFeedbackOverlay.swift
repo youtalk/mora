@@ -14,9 +14,10 @@ public struct PronunciationFeedbackViewModel: Sendable {
         self.strings = strings
     }
 
-    /// Short "今の X は Y に寄ってたよ" banner for substitutions, or a drift
-    /// nudge. Uses **kid-friendly** spellings resolved from `coachingKey`
-    /// rather than raw IPA so a child sees "sh" / "s" instead of "ʃ" / "s".
+    /// Short substitution banner (for example, "That X sounded closer to Y"),
+    /// or a drift nudge. Uses **kid-friendly** spellings resolved from
+    /// `coachingKey` rather than raw IPA so a child sees "sh" / "s" instead
+    /// of "ʃ" / "s". The localized template itself lives in `MoraStrings`.
     public var categoryText: String {
         switch assessment.label {
         case .matched, .unclear:
@@ -25,12 +26,12 @@ public struct PronunciationFeedbackViewModel: Sendable {
             guard let pair = Self.letters(forCoachingKey: assessment.coachingKey) else {
                 return ""
             }
-            return "今の \(pair.target) は \(pair.substitute) に寄ってたよ"
+            return strings.categorySubstitutionBanner(pair.target, pair.substitute)
         case .driftedWithin:
             guard let pair = Self.letters(forCoachingKey: assessment.coachingKey) else {
                 return ""
             }
-            return "もう少し \(pair.target) らしい音に近づけよう"
+            return strings.categoryDriftBanner(pair.target)
         }
     }
 

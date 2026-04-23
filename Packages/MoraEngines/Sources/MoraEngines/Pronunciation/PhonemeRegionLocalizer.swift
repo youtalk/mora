@@ -17,12 +17,14 @@ public struct LocalizedRegion: Sendable {
 public enum PhonemeRegionLocalizer {
 
     /// Slices an audio clip to the portion corresponding to a phoneme
-    /// position within a word, using a simple positional heuristic. The
-    /// heuristic is accurate enough for onset and coda phonemes of CVC-style
-    /// short words; medial positions are flagged unreliable.
+    /// position within a word. The current heuristic is based only on clip
+    /// timing and `phonemePosition`; `word` is reserved for future heuristics
+    /// that use lexical/phoneme context. The heuristic is accurate enough for
+    /// onset and coda phonemes of CVC-style short words; medial positions
+    /// are flagged unreliable.
     public static func region(
         clip: AudioClip,
-        word: Word,
+        word _: Word,
         phonemePosition: PhonemePosition
     ) -> LocalizedRegion {
         let totalMs = clip.durationSeconds * 1000.0
