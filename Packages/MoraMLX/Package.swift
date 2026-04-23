@@ -7,7 +7,21 @@ let package = Package(
     products: [
         .library(name: "MoraMLX", targets: ["MoraMLX"]),
     ],
+    dependencies: [
+        .package(path: "../MoraCore"),
+        .package(path: "../MoraEngines"),
+    ],
     targets: [
-        .target(name: "MoraMLX"),
+        .target(
+            name: "MoraMLX",
+            dependencies: [
+                .product(name: "MoraCore", package: "MoraCore"),
+                .product(name: "MoraEngines", package: "MoraEngines"),
+            ]
+        ),
+        .testTarget(
+            name: "MoraMLXTests",
+            dependencies: ["MoraMLX"]
+        ),
     ]
 )
