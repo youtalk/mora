@@ -1,0 +1,167 @@
+import AVFoundation
+import MoraCore
+import XCTest
+@testable import MoraEngines
+
+final class FeatureBasedEvaluatorFixtureTests: XCTestCase {
+
+    private let evaluator = FeatureBasedPronunciationEvaluator()
+
+    // MARK: - r / l
+
+    func testRightCorrectMatchesR() async throws {
+        let assessment = try await evaluate(
+            "rl/right-correct.wav",
+            target: "r", word: "right")
+        XCTAssertEqual(assessment.label, .matched)
+        if let score = assessment.score { XCTAssertGreaterThanOrEqual(score, 70) }
+    }
+
+    func testRightAsLightSubstitutedByL() async throws {
+        let assessment = try await evaluate(
+            "rl/right-as-light.wav",
+            target: "r", word: "right")
+        XCTAssertEqual(assessment.label, .substitutedBy(Phoneme(ipa: "l")))
+        if let score = assessment.score { XCTAssertLessThanOrEqual(score, 40) }
+    }
+
+    func testLightCorrectMatchesL() async throws {
+        let assessment = try await evaluate(
+            "rl/light-correct.wav",
+            target: "l", word: "light")
+        XCTAssertEqual(assessment.label, .matched)
+        if let score = assessment.score { XCTAssertGreaterThanOrEqual(score, 70) }
+    }
+
+    func testLightAsRightSubstitutedByR() async throws {
+        let assessment = try await evaluate(
+            "rl/light-as-right.wav",
+            target: "l", word: "light")
+        XCTAssertEqual(assessment.label, .substitutedBy(Phoneme(ipa: "r")))
+        if let score = assessment.score { XCTAssertLessThanOrEqual(score, 40) }
+    }
+
+    // MARK: - v / b
+
+    func testVeryCorrectMatchesV() async throws {
+        let a = try await evaluate("vb/very-correct.wav", target: "v", word: "very")
+        XCTAssertEqual(a.label, .matched)
+        if let s = a.score { XCTAssertGreaterThanOrEqual(s, 70) }
+    }
+
+    func testVeryAsBerrySubstitutedByB() async throws {
+        let a = try await evaluate("vb/very-as-berry.wav", target: "v", word: "very")
+        XCTAssertEqual(a.label, .substitutedBy(Phoneme(ipa: "b")))
+        if let s = a.score { XCTAssertLessThanOrEqual(s, 40) }
+    }
+
+    func testBerryCorrectMatchesB() async throws {
+        let a = try await evaluate("vb/berry-correct.wav", target: "b", word: "berry")
+        XCTAssertEqual(a.label, .matched)
+        if let s = a.score { XCTAssertGreaterThanOrEqual(s, 70) }
+    }
+
+    func testBerryAsVerySubstitutedByV() async throws {
+        let a = try await evaluate("vb/berry-as-very.wav", target: "b", word: "berry")
+        XCTAssertEqual(a.label, .substitutedBy(Phoneme(ipa: "v")))
+        if let s = a.score { XCTAssertLessThanOrEqual(s, 40) }
+    }
+
+    // MARK: - æ / ʌ
+
+    func testCatCorrectMatchesAe() async throws {
+        let a = try await evaluate("aeuh/cat-correct.wav", target: "æ", word: "cat")
+        XCTAssertEqual(a.label, .matched)
+        if let s = a.score { XCTAssertGreaterThanOrEqual(s, 70) }
+    }
+
+    func testCatAsCutSubstitutedByUh() async throws {
+        let a = try await evaluate("aeuh/cat-as-cut.wav", target: "æ", word: "cat")
+        XCTAssertEqual(a.label, .substitutedBy(Phoneme(ipa: "ʌ")))
+        if let s = a.score { XCTAssertLessThanOrEqual(s, 40) }
+    }
+
+    func testCutCorrectMatchesUh() async throws {
+        let a = try await evaluate("aeuh/cut-correct.wav", target: "ʌ", word: "cut")
+        XCTAssertEqual(a.label, .matched)
+        if let s = a.score { XCTAssertGreaterThanOrEqual(s, 70) }
+    }
+
+    func testCutAsCatSubstitutedByAe() async throws {
+        let a = try await evaluate("aeuh/cut-as-cat.wav", target: "ʌ", word: "cut")
+        XCTAssertEqual(a.label, .substitutedBy(Phoneme(ipa: "æ")))
+        if let s = a.score { XCTAssertLessThanOrEqual(s, 40) }
+    }
+
+    // MARK: - Loader
+
+    private func evaluate(
+        _ relative: String, target ipa: String, word surface: String
+    ) async throws -> PhonemeTrialAssessment {
+        let relNS = relative as NSString
+        let basename = (relNS.deletingPathExtension as NSString).lastPathComponent
+        let subdir = "Fixtures/" + relNS.deletingLastPathComponent
+        guard
+            let url = Bundle.module.url(
+                forResource: basename,
+                withExtension: "wav",
+                subdirectory: subdir
+            )
+        else {
+            throw XCTSkip("fixture not found: \(relative)")
+        }
+
+        let (samples, sampleRate) = try readMono16k(from: url)
+        let audio = AudioClip(samples: samples, sampleRate: sampleRate)
+        let target = Phoneme(ipa: ipa)
+        let word = Word(
+            surface: surface,
+            graphemes: [Grapheme(letters: surface)],
+            phonemes: [target],
+            targetPhoneme: target
+        )
+        return await evaluator.evaluate(
+            audio: audio, expected: word, targetPhoneme: target,
+            asr: ASRResult(transcript: surface, confidence: 0.9)
+        )
+    }
+
+    private func readMono16k(from url: URL) throws -> ([Float], Double) {
+        let file = try AVAudioFile(forReading: url)
+        let hardwareFormat = file.processingFormat
+        guard
+            let targetFormat = AVAudioFormat(
+                commonFormat: .pcmFormatFloat32, sampleRate: 16_000,
+                channels: 1, interleaved: false
+            ), let converter = AVAudioConverter(from: hardwareFormat, to: targetFormat),
+            let inBuf = AVAudioPCMBuffer(
+                pcmFormat: hardwareFormat, frameCapacity: AVAudioFrameCount(file.length)
+            )
+        else { throw NSError(domain: "FixtureLoad", code: 1) }
+
+        try file.read(into: inBuf)
+        let ratio = targetFormat.sampleRate / hardwareFormat.sampleRate
+        let capacity = AVAudioFrameCount(Double(inBuf.frameLength) * ratio) + 16
+        guard
+            let outBuf = AVAudioPCMBuffer(
+                pcmFormat: targetFormat, frameCapacity: capacity
+            )
+        else { throw NSError(domain: "FixtureLoad", code: 2) }
+
+        var done = false
+        var err: NSError?
+        _ = converter.convert(to: outBuf, error: &err) { _, s in
+            if done { s.pointee = .noDataNow; return nil }
+            done = true; s.pointee = .haveData; return inBuf
+        }
+        if let err { throw err }
+        guard let ch = outBuf.floatChannelData else {
+            throw NSError(domain: "FixtureLoad", code: 3)
+        }
+        let samples = Array(
+            UnsafeBufferPointer(
+                start: ch[0],
+                count: Int(outBuf.frameLength)))
+        return (samples, targetFormat.sampleRate)
+    }
+}
