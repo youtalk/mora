@@ -30,10 +30,6 @@ public struct LibraryFirstWordChainProvider: WordChainProvider {
         self.bundle = .module
     }
 
-    internal init(bundle: Bundle) {
-        self.bundle = bundle
-    }
-
     public func generatePhase(target: Grapheme, masteredSet: Set<Grapheme>) throws -> [WordChain] {
         guard
             let url = bundle.url(forResource: target.letters, withExtension: "json")

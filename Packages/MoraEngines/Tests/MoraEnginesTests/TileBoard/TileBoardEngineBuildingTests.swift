@@ -67,4 +67,14 @@ final class TileBoardEngineBuildingTests: XCTestCase {
         engine.apply(.tileDropped(slotIndex: 2, tileID: "p"))
         XCTAssertEqual(engine.state, .completed)
     }
+
+    func testCorrectDropAfterMissClearsLastIntervention() {
+        let engine = primedEngine(pool: [
+            Tile(grapheme: g("sh")), Tile(grapheme: g("ch")), Tile(grapheme: g("i")), Tile(grapheme: g("p")),
+        ])
+        engine.apply(.tileDropped(slotIndex: 0, tileID: "ch"))
+        XCTAssertEqual(engine.lastIntervention, .bounceBack)
+        engine.apply(.tileDropped(slotIndex: 0, tileID: "sh"))
+        XCTAssertNil(engine.lastIntervention)
+    }
 }
