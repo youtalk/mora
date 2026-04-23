@@ -50,6 +50,22 @@
 | 18 | Format sweep | `e6ed0f5` |
 | 19 | Docs progress section | `-` |
 
+**Part 2 complete.** Tasks 20–30 landed on a follow-up PR.
+
+| # | Task | Commit |
+|---|------|--------|
+| 20 | dev-tools/model-conversion scaffolding | `ca6efda` |
+| 21 | convert.py script | `f4e58d7` |
+| 22 | Run conversion + LFS commit | `0455d30` |
+| 23 | MoraMLX Package.swift resources | `1ccffb5` |
+| 24 | CoreMLPhonemePosteriorProvider | `62a8f23` |
+| 25 | MoraMLXModelCatalog real loader | `e830639` |
+| 26 | Smoke test + fixture | `7bf6f0c` |
+| 27 | CI LFS checkout | `e8b384a` |
+| 28 | Format sweep | `-` |
+| 29 | Device-only latency benchmark | `420d4ab` |
+| 30 | Docs cross-link + CLAUDE.md update | `-` |
+
 ---
 
 ## File map
