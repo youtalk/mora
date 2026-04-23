@@ -76,17 +76,18 @@ struct DecodeActivityView: View {
                         let last = orchestrator.trials.last,
                         let phoneme = last.phoneme
                     {
-                        PronunciationFeedbackOverlay(
-                            viewModel: PronunciationFeedbackViewModel(
-                                assessment: phoneme,
-                                strings: strings
-                            ),
-                            onAppearSpeak: { [weak speech] text in
-                                await speech?.playAndAwait([.text(text, .normal)])
-                            }
-                        )
-                        .transition(.opacity.combined(with: .scale))
-                        .padding(.top, MoraTheme.Space.md)
+                        let vm = PronunciationFeedbackViewModel(
+                            assessment: phoneme, strings: strings)
+                        if vm.hasContent {
+                            PronunciationFeedbackOverlay(
+                                viewModel: vm,
+                                onAppearSpeak: { [weak speech] text in
+                                    await speech?.playAndAwait([.text(text, .normal)])
+                                }
+                            )
+                            .transition(.opacity.combined(with: .scale))
+                            .padding(.top, MoraTheme.Space.md)
+                        }
                     }
                 } else {
                     ProgressView()

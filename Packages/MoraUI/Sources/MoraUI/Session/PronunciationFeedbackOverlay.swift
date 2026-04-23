@@ -38,6 +38,13 @@ public struct PronunciationFeedbackViewModel: Sendable {
         assessment.isReliable && assessment.score != nil
     }
 
+    /// True when the overlay would render at least one visible element.
+    /// Callers gate the whole overlay on this so `.unclear` trials (no
+    /// category, no score, no coaching) do not paint an empty card.
+    public var hasContent: Bool {
+        !categoryText.isEmpty || showScore || !coachingText.isEmpty
+    }
+
     public var scoreFraction: Double {
         guard let score = assessment.score else { return 0 }
         return Double(score) / 100.0
