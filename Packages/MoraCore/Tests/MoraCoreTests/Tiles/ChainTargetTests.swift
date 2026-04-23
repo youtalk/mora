@@ -26,8 +26,9 @@ final class ChainTargetTests: XCTestCase {
     }
 
     func testChangeTargetReturnsNilWhenLengthsDiffer() {
+        // "ship" has 3 grapheme slots; "stomp" has 5 — slot counts differ.
         let pred = w("ship", ["sh", "i", "p"])
-        let succ = w("sip", ["s", "i", "p"])
+        let succ = w("stomp", ["s", "t", "o", "m", "p"])
         XCTAssertNil(ChangeTarget(predecessor: pred, successor: succ))
     }
 
