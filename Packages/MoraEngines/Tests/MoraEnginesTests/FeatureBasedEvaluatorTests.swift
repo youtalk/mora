@@ -29,7 +29,10 @@ final class FeatureBasedEvaluatorTests: XCTestCase {
     }
 
     func testEvaluatesCorrectShAsMatched() async {
-        let audio = SyntheticAudio.bandNoise(lowHz: 2_000, highHz: 4_000, durationMs: 500)
+        // Narrow band around the /ʃ/ F2 target (2 kHz) — the original 2–4 kHz band
+        // put most energy above the F2 measurement window (1–2.5 kHz), which let
+        // Task 20's drift path fire on what is meant to be the clean-/ʃ/ fixture.
+        let audio = SyntheticAudio.bandNoise(lowHz: 1_900, highHz: 2_100, durationMs: 500)
         let result = await evaluator.evaluate(
             audio: audio,
             expected: ship(),
