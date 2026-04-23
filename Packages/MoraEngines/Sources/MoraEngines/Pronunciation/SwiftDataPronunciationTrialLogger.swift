@@ -6,8 +6,9 @@ import MoraCore
 
 /// Production `PronunciationTrialLogger` backed by SwiftData. Each call
 /// serializes the entry and inserts one `PronunciationTrialLog` row. Runs
-/// on a `@ModelActor` background actor so the caller's task does not block
-/// on disk writes.
+/// on a dedicated background actor; each `record` call creates a fresh
+/// `ModelContext(container)` so writes do not contend with the main-actor
+/// `ModelContext` used by the UI.
 public actor SwiftDataPronunciationTrialLogger: PronunciationTrialLogger {
     private let container: ModelContainer
     private let log = Logger(subsystem: "tech.reenable.Mora", category: "PronunciationTrialLogger")
