@@ -11,7 +11,7 @@ final class PronunciationTrialRetentionPolicyTests: XCTestCase {
             ctx.insert(row(at: i))
         }
         try ctx.save()
-        try PronunciationTrialRetentionPolicy.cleanup(ctx)
+        try PronunciationTrialRetentionPolicy.cleanup(container)
         let count = try ctx.fetchCount(FetchDescriptor<PronunciationTrialLog>())
         XCTAssertEqual(count, 100)
     }
@@ -23,7 +23,7 @@ final class PronunciationTrialRetentionPolicyTests: XCTestCase {
             ctx.insert(row(at: i))
         }
         try ctx.save()
-        try PronunciationTrialRetentionPolicy.cleanup(ctx)
+        try PronunciationTrialRetentionPolicy.cleanup(container)
         let count = try ctx.fetchCount(FetchDescriptor<PronunciationTrialLog>())
         XCTAssertEqual(count, PronunciationTrialRetentionPolicy.maxRows)
     }
@@ -35,7 +35,7 @@ final class PronunciationTrialRetentionPolicyTests: XCTestCase {
             ctx.insert(row(at: i))
         }
         try ctx.save()
-        try PronunciationTrialRetentionPolicy.cleanup(ctx)
+        try PronunciationTrialRetentionPolicy.cleanup(container)
         var desc = FetchDescriptor<PronunciationTrialLog>(
             sortBy: [SortDescriptor(\.timestamp)]
         )
