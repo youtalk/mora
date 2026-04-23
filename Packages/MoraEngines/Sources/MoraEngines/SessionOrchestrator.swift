@@ -62,6 +62,11 @@ public final class SessionOrchestrator {
     public let chainProvider: any WordChainProvider
     public let sentences: [DecodeSentence]
 
+    /// Callback for tile-board phase events. Wired up by the UI so that
+    /// chain-finished and phase-finished transitions can trigger scene
+    /// transitions without polling state.
+    public var onTileBoardEvent: ((OrchestratorEvent) -> Void)?
+
     private let assessment: AssessmentEngine
     private let clock: @Sendable () -> Date
 
@@ -153,6 +158,43 @@ public final class SessionOrchestrator {
 
     private func handleDecodingManual(correct: Bool) {
         // Wired in 18b/18c.
+    }
+
+    public func consumeTileBoardTrial(_ result: TileBoardTrialResult) {
+        guard let chain = pendingChains.first else { return }
+
+        // Record a TrialAssessment using the actual TrialAssessment shape.
+        let trial = TrialAssessment(
+            expected: result.word,
+            heard: result.word.surface,
+            correct: true,
+            errorKind: .none,
+            l1InterferenceTag: nil
+        )
+        trials.append(trial)
+        phaseMetrics.totalDropMisses += result.buildAttempts.filter { !$0.wasCorrect }.count
+        if result.autoFilled { phaseMetrics.autoFillCount += 1 }
+
+        let assessmentRecording = TrialRecording(
+            asr: ASRResult(transcript: result.word.surface, confidence: 1.0),
+            audio: .empty,
+            buildAttempts: result.buildAttempts,
+            scaffoldLevel: result.scaffoldLevel
+        )
+        onTileBoardEvent?(.tileBoardTrialCompleted(assessmentRecording))
+        completedTrialCount += 1
+        currentTrialInChain += 1
+
+        if currentTrialInChain > chain.successors.count {
+            // Chain finished.
+            onTileBoardEvent?(.chainFinished(chain.role))
+            pendingChains.removeFirst()
+            currentTrialInChain = 0
+            if pendingChains.isEmpty {
+                onTileBoardEvent?(.phaseFinished(phaseMetrics))
+                transitionTo(.shortSentences)
+            }
+        }
     }
 
     private func handleSentenceHeard(recording: TrialRecording) async {

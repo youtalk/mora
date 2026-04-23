@@ -51,7 +51,12 @@ final class SessionOrchestratorPhasesTests: XCTestCase {
     }
 
     func test_newRule_next_advancesToDecoding() async {
-        try XCTSkip("Tile-board decoding wiring lands in 18b")
+        let o = makeOrchestrator()
+        await o.start()
+        await o.handle(.warmupTap(.init(letters: "sh")))
+        XCTAssertEqual(o.phase, .newRule)
+        await o.handle(.advance)
+        XCTAssertEqual(o.phase, .decoding)
     }
 
     func test_advance_outsideNewRule_isIgnored() async {
@@ -63,11 +68,51 @@ final class SessionOrchestratorPhasesTests: XCTestCase {
     }
 
     func test_emptyDecodingQueue_skipsToShortSentences() async {
-        try XCTSkip("Tile-board decoding wiring lands in 18b")
+        // When chain generation fails, the orchestrator skips to shortSentences.
+        let skill = Skill(
+            code: "sh_onset", level: .l3, displayName: "sh",
+            graphemePhoneme: .init(
+                grapheme: .init(letters: "sh"),
+                phoneme: .init(ipa: "ʃ")
+            )
+        )
+        let o = SessionOrchestrator(
+            target: Target(weekStart: Date(), skill: skill),
+            taughtGraphemes: [],
+            warmupOptions: [.init(letters: "s"), .init(letters: "sh"), .init(letters: "ch")],
+            chainProvider: AlwaysFailingWordChainProvider(),
+            sentences: [shipDS],
+            assessment: AssessmentEngine(l1Profile: JapaneseL1Profile()),
+            clock: { Date(timeIntervalSince1970: 0) }
+        )
+        await o.start()
+        await o.handle(.warmupTap(.init(letters: "sh")))
+        await o.handle(.advance)  // newRule → decoding (auto-skipped on error)
+        XCTAssertEqual(o.phase, .shortSentences)
     }
 
     func test_emptyDecodingAndSentenceQueues_skipsToCompletion() async {
-        try XCTSkip("Tile-board decoding wiring lands in 18b")
+        // When chain generation fails and there are no sentences, skips to completion.
+        let skill = Skill(
+            code: "sh_onset", level: .l3, displayName: "sh",
+            graphemePhoneme: .init(
+                grapheme: .init(letters: "sh"),
+                phoneme: .init(ipa: "ʃ")
+            )
+        )
+        let o = SessionOrchestrator(
+            target: Target(weekStart: Date(), skill: skill),
+            taughtGraphemes: [],
+            warmupOptions: [.init(letters: "s"), .init(letters: "sh"), .init(letters: "ch")],
+            chainProvider: AlwaysFailingWordChainProvider(),
+            sentences: [],
+            assessment: AssessmentEngine(l1Profile: JapaneseL1Profile()),
+            clock: { Date(timeIntervalSince1970: 0) }
+        )
+        await o.start()
+        await o.handle(.warmupTap(.init(letters: "sh")))
+        await o.handle(.advance)
+        XCTAssertEqual(o.phase, .completion)
     }
 
     private var shipDS: DecodeSentence {

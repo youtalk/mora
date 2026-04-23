@@ -6,8 +6,11 @@ import XCTest
 @MainActor
 final class SessionOrchestratorPronunciationTests: XCTestCase {
 
-    func testDecodingRecordsPhonemeTrialAssessmentFromEvaluator() async {
-        try XCTSkip("Tile-board decoding wiring lands in 18b")
+    func testDecodingRecordsPhonemeTrialAssessmentFromEvaluator() async throws {
+        try XCTSkip(
+            "Phoneme assessment in tile-board decoding is a future feature; "
+                + "the old ASR-based decoding path has been replaced by consumeTileBoardTrial."
+        )
     }
 }
 
