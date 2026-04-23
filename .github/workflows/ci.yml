@@ -18,6 +18,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          lfs: true
 
       - name: Cache Homebrew downloads (swift-format)
         uses: actions/cache@v4
@@ -62,6 +64,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          lfs: true
 
       - name: Cache Homebrew downloads (xcodegen)
         uses: actions/cache@v4
@@ -193,6 +197,8 @@ jobs:
       bench: ${{ steps.filter.outputs.bench }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          lfs: true
       - uses: dorny/paths-filter@v3
         id: filter
         with:
@@ -210,6 +216,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          lfs: true
 
       - name: Cache Homebrew downloads (xcodegen)
         uses: actions/cache@v4
