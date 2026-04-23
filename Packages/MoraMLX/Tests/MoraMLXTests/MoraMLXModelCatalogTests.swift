@@ -15,34 +15,23 @@ import MoraCore
 /// will fail at runtime — this is the "model absent" state the app's
 /// factory catches to fall back to bare Engine A.
 ///
-/// The tests below therefore accept three outcomes:
-/// 1. A usable evaluator is returned (real model bundled, happy path).
-/// 2. The catalog throws `.modelNotBundled` or `.inferenceFailed` (the
-///    "model absent" states we ship in this branch).
-/// Any other error is a real test failure.
+/// Placeholder detection is *positive* (see `PlaceholderDetection`): the
+/// test inspects the bundled `phoneme-labels.json` and only skips when
+/// the labels file looks like the placeholder (≤1 entry). A real model
+/// with a throwing catalog will fail the test instead of silently
+/// skipping — that regression guard matters once Task 22 lands the
+/// actual artifacts.
 final class MoraMLXModelCatalogTests: XCTestCase {
     func testLoadPhonemeEvaluatorReturnsEvaluatorOrThrowsModelAbsent() throws {
         do {
             let evaluator = try MoraMLXModelCatalog.loadPhonemeEvaluator()
             XCTAssertTrue(evaluator.supports(target: Phoneme(ipa: "ʃ"), in: word()))
-        } catch MoraMLXError.modelNotBundled {
-            // Accepted: the `Bundle.module.url(forResource:withExtension:)`
-            // lookup returned nil (compiled-model directories are typically
-            // loaded via directory URL, not withExtension — this code path
-            // is expected while the placeholder .mlmodelc is in place).
-            throw XCTSkip("MLX model not bundled — catalog threw modelNotBundled (LFS follow-up)")
-        } catch MoraMLXError.inferenceFailed(let reason) {
-            // Accepted: the URL resolved but `MLModel(contentsOf:)` rejected
-            // the placeholder directory because it is not a real compiled
-            // model. The wrapped error string is routed through
-            // `.inferenceFailed` by the catalog.
-            throw XCTSkip("MLX model not bundled — catalog threw inferenceFailed: \(reason)")
+        } catch let error as MoraMLXError {
+            try skipOrRethrowOnPlaceholder(error)
         }
     }
 
     func testSecondLoadIsCachedOrConsistentlyThrows() throws {
-        // Either both calls succeed and share the same inventory size, or
-        // both calls fail with an acceptable "model absent" error.
         do {
             let first = try MoraMLXModelCatalog.loadPhonemeEvaluator()
             let second = try MoraMLXModelCatalog.loadPhonemeEvaluator()
@@ -50,11 +39,21 @@ final class MoraMLXModelCatalogTests: XCTestCase {
                 first.inventory.espeakLabels.count,
                 second.inventory.espeakLabels.count
             )
-        } catch MoraMLXError.modelNotBundled {
-            throw XCTSkip("MLX model not bundled — cache test inapplicable (LFS follow-up)")
-        } catch MoraMLXError.inferenceFailed {
-            throw XCTSkip("MLX model not bundled — cache test inapplicable (LFS follow-up)")
+        } catch let error as MoraMLXError {
+            try skipOrRethrowOnPlaceholder(error)
         }
+    }
+
+    /// Skips when the bundled model is a placeholder; otherwise re-throws
+    /// so the failure is visible.
+    private func skipOrRethrowOnPlaceholder(_ error: MoraMLXError) throws -> Never {
+        if PlaceholderDetection.isPlaceholderModelBundled() {
+            throw XCTSkip(
+                "placeholder model bundled — run dev-tools/model-conversion/convert.py "
+                    + "to enable this test (saw \(error))"
+            )
+        }
+        throw error
     }
 
     private func word() -> Word {

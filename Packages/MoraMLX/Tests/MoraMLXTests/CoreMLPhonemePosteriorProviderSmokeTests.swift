@@ -11,17 +11,24 @@ import MoraEngines
 /// This test is adaptive because both the model and the fixture are
 /// deferred: the model is bundled via Git LFS in a follow-up manual step
 /// (see `dev-tools/model-conversion/convert.py`) and the fixture WAV is
-/// created the same way. Until both are present the test calls
-/// `XCTSkip` — CI records it as skipped, not failing.
+/// created the same way. Until the model is present,
+/// `PlaceholderDetection.isPlaceholderModelBundled()` returns true and
+/// the test `XCTSkip`s on any `MoraMLXError`; once the real model is
+/// bundled, a throwing catalog will FAIL the test (no more blanket skip
+/// on `.inferenceFailed`).
 final class CoreMLPhonemePosteriorProviderSmokeTests: XCTestCase {
     func testPosteriorHasFramesAndPhonemes() async throws {
         let evaluator: PhonemeModelPronunciationEvaluator
         do {
             evaluator = try MoraMLXModelCatalog.loadPhonemeEvaluator()
-        } catch MoraMLXError.modelNotBundled {
-            throw XCTSkip("MLX model not bundled — skipping smoke test (LFS follow-up)")
-        } catch MoraMLXError.inferenceFailed {
-            throw XCTSkip("MLX model not bundled — skipping smoke test (LFS follow-up)")
+        } catch let error as MoraMLXError {
+            if PlaceholderDetection.isPlaceholderModelBundled() {
+                throw XCTSkip(
+                    "placeholder model bundled — run dev-tools/model-conversion/convert.py "
+                        + "to enable this test (saw \(error))"
+                )
+            }
+            throw error
         }
         let audio = try Self.loadFixture(name: "short-sh-clip")
         let posterior = try await evaluator.provider.posterior(for: audio)
