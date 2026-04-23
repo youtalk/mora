@@ -42,6 +42,21 @@ public struct JapaneseL1Profile: L1Profile {
             examples: ["cat/cut", "bag/bug"],
             bidirectional: true
         ),
+        PhonemeConfusionPair(
+            tag: "sh_s_sub",
+            from: Phoneme(ipa: "ʃ"), to: Phoneme(ipa: "s"),
+            examples: ["ship/sip", "shoe/sue", "shell/sell"],
+            bidirectional: false
+        ),
+        // Drift-target sentinel (from == to): the acoustic evaluator reads
+        // this to score within-phoneme drift (/ʃ/ articulated with too little
+        // lip rounding, carrying /ɕ/ influence). Never matched as substitution.
+        PhonemeConfusionPair(
+            tag: "sh_drift_target",
+            from: Phoneme(ipa: "ʃ"), to: Phoneme(ipa: "ʃ"),
+            examples: ["ship", "shop", "fish"],
+            bidirectional: false
+        ),
     ]
 
     public let interestCategories: [InterestCategory] = [
@@ -154,6 +169,15 @@ public struct JapaneseL1Profile: L1Profile {
         micListening: "聞いてるよ…",
         micAssessing: "チェック中…",
         micDeniedBanner: "マイクが つかえないので ボタンで 答えてね",
+        coachingShSubS: "くちびるをまるめて、したのおくをもちあげてみよう。「sh」。",
+        coachingShDrift: "もうすこしくちをまるくして、ながくのばしてみよう。「shhhh」。",
+        coachingRSubL: "したのさきはどこにもつけないで、おくだけすこし上に。「r」。",
+        coachingLSubR: "したのさきを上のはのうらにつけて、そのまま「l」。",
+        coachingFSubH: "上のはでしたくちびるに、かるくふれて「fff」。",
+        coachingVSubB: "上のはでしたくちびるにふれて、のどをふるわせて「vvv」。",
+        coachingThVoicelessSubS: "したのさきをはのあいだにそっと出して「thhh」。",
+        coachingThVoicelessSubT: "したのさきをはのあいだにそっと出して、とめずに「thhh」。",
+        coachingAeSubSchwa: "口をよこにひろげて、あごを下げて「æ」。",
         completionTitle: "できた！",
         completionScore: { correct, total in "\(correct)/\(total)" },
         completionComeBack: "明日も またね",

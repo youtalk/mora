@@ -188,13 +188,13 @@ struct ShortSentencesView: View {
                         if case .listening = micState {
                             micState = .listening(partialText: text)
                         }
-                    case .final(let asr):
+                    case .final(let recording):
                         let priorIndex = orchestrator.sentenceIndex
                         pinnedSentenceIndex = priorIndex
-                        lastHeard = asr.transcript
+                        lastHeard = recording.asr.transcript
                         micState = .assessing
                         try? await Task.sleep(nanoseconds: 120_000_000)
-                        await orchestrator.handle(.answerHeard(asr))
+                        await orchestrator.handle(.answerHeard(recording))
                         let wasCorrect = orchestrator.trials.last?.correct ?? false
                         feedback = wasCorrect ? .correct : .wrong
                         if !wasCorrect, let speech {

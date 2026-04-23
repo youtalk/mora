@@ -23,5 +23,21 @@ final class AppleSpeechEngineTests: XCTestCase {
             )
         }
     }
+
+    func testPCMRingBufferAppendsAndDrains() {
+        let buffer = PCMRingBuffer(capacitySeconds: 2.0, sampleRate: 16_000)
+        let samples = Array(repeating: Float(0.1), count: 8_000)  // 0.5 s
+        buffer.append(samples)
+        let clip = buffer.drain()
+        XCTAssertEqual(clip.samples.count, 8_000)
+        XCTAssertEqual(clip.sampleRate, 16_000, accuracy: 0.001)
+    }
+
+    func testPCMRingBufferDropsOldestWhenOverCapacity() {
+        let buffer = PCMRingBuffer(capacitySeconds: 1.0, sampleRate: 16_000)
+        buffer.append(Array(repeating: Float(1.0), count: 20_000))  // 1.25 s — 4000 should drop
+        let clip = buffer.drain()
+        XCTAssertEqual(clip.samples.count, 16_000)  // capped at 1 s
+    }
 }
 #endif

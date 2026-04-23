@@ -62,4 +62,29 @@ final class AssessmentEngineScoringTests: XCTestCase {
         XCTAssertFalse(result.correct)
         XCTAssertEqual(result.errorKind, .insertion)
     }
+
+    func testTrialAssessmentCarriesOptionalPhonemePayload() {
+        let expected = Word(
+            surface: "ship",
+            graphemes: [Grapheme(letters: "sh"), Grapheme(letters: "i"), Grapheme(letters: "p")],
+            phonemes: [Phoneme(ipa: "ʃ"), Phoneme(ipa: "ɪ"), Phoneme(ipa: "p")],
+            targetPhoneme: Phoneme(ipa: "ʃ")
+        )
+        let bare = TrialAssessment(
+            expected: expected, heard: "ship",
+            correct: true, errorKind: .none, l1InterferenceTag: nil
+        )
+        XCTAssertNil(bare.phoneme)
+
+        let withPhoneme = TrialAssessment(
+            expected: expected, heard: "ship",
+            correct: true, errorKind: .none, l1InterferenceTag: nil,
+            phoneme: PhonemeTrialAssessment(
+                targetPhoneme: Phoneme(ipa: "ʃ"),
+                label: .matched, score: 90,
+                coachingKey: nil, features: [:], isReliable: true
+            )
+        )
+        XCTAssertEqual(withPhoneme.phoneme?.score, 90)
+    }
 }

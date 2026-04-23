@@ -97,7 +97,9 @@ final class SessionOrchestratorFullTests: XCTestCase {
         // confidence gate this would be scored correct — the low confidence
         // is what keeps it a miss, which is exactly what this test cares about.
         await o.handle(
-            .answerHeard(ASRResult(transcript: "sip", confidence: 0.1))
+            .answerHeard(
+                TrialRecording(asr: ASRResult(transcript: "sip", confidence: 0.1), audio: .empty)
+            )
         )
         XCTAssertEqual(o.trials.count, 1)
         XCTAssertEqual(o.trials.first?.correct, false)
