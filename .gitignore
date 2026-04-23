@@ -80,3 +80,8 @@ bench/DerivedData/
 bench/.spm/
 bench/results/
 
+# pronunciation-bench dev tool (local secrets + build artefacts)
+/dev-tools/pronunciation-bench/.env
+/dev-tools/pronunciation-bench/.build/
+/dev-tools/pronunciation-bench/*.csv
+
