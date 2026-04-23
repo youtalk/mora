@@ -22,5 +22,10 @@ let package = Package(
             ],
             path: "Sources/Bench"
         ),
+        .testTarget(
+            name: "BenchTests",
+            dependencies: ["Bench"],
+            path: "Tests/BenchTests"
+        ),
     ]
 )
