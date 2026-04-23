@@ -27,4 +27,53 @@ final class FeatureBasedEvaluatorTests: XCTestCase {
         XCTAssertFalse(evaluator.supports(target: Phoneme(ipa: "k"), in: ship()))
         XCTAssertFalse(evaluator.supports(target: Phoneme(ipa: "n"), in: ship()))
     }
+
+    func testEvaluatesCorrectShAsMatched() async {
+        let audio = SyntheticAudio.bandNoise(lowHz: 2_000, highHz: 4_000, durationMs: 500)
+        let result = await evaluator.evaluate(
+            audio: audio,
+            expected: ship(),
+            targetPhoneme: Phoneme(ipa: "ʃ"),
+            asr: ASRResult(transcript: "ship", confidence: 0.9)
+        )
+        XCTAssertEqual(result.label, .matched)
+        XCTAssertNotNil(result.score)
+        if let score = result.score {
+            XCTAssertGreaterThanOrEqual(score, 70)
+        }
+        XCTAssertTrue(result.isReliable)
+        XCTAssertEqual(result.coachingKey, nil)
+    }
+
+    func testEvaluatesShHeardAsSAsSubstitution() async {
+        let audio = SyntheticAudio.bandNoise(lowHz: 5_500, highHz: 7_500, durationMs: 500)
+        let result = await evaluator.evaluate(
+            audio: audio,
+            expected: ship(),
+            targetPhoneme: Phoneme(ipa: "ʃ"),
+            asr: ASRResult(transcript: "sip", confidence: 0.9)
+        )
+        if case .substitutedBy(let p) = result.label {
+            XCTAssertEqual(p, Phoneme(ipa: "s"))
+        } else {
+            XCTFail("expected substitutedBy(/s/), got \(result.label)")
+        }
+        XCTAssertNotNil(result.score)
+        if let score = result.score {
+            XCTAssertLessThanOrEqual(score, 40)
+        }
+        XCTAssertEqual(result.coachingKey, "coaching.sh_sub_s")
+    }
+
+    func testBelowNoiseFloorReturnsUnclear() async {
+        let silence = SyntheticAudio.silence(durationMs: 500)
+        let result = await evaluator.evaluate(
+            audio: silence,
+            expected: ship(),
+            targetPhoneme: Phoneme(ipa: "ʃ"),
+            asr: ASRResult(transcript: "", confidence: 0)
+        )
+        XCTAssertEqual(result.label, .unclear)
+        XCTAssertFalse(result.isReliable)
+    }
 }
