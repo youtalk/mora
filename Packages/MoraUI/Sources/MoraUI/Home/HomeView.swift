@@ -64,14 +64,9 @@ public struct HomeView: View {
     }
 
     private var wordmark: some View {
-        let base = Text("Mora")
+        Text("Mora")
             .font(MoraType.heading())
             .foregroundStyle(MoraTheme.Accent.orange)
-        #if DEBUG
-        return base.debugFixtureRecorderEntry()
-        #else
-        return base
-        #endif
     }
 
     private var hero: some View {
