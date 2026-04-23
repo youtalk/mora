@@ -74,4 +74,28 @@ final class FeatureExtractorTests: XCTestCase {
         let gradualSlope = FeatureExtractor.onsetBurstSlope(clip: gradual, windowMs: 60)
         XCTAssertGreaterThan(burstSlope, gradualSlope)
     }
+
+    func testVoicingOnsetTimeIsNearZeroForImmediateTone() {
+        let clip = SyntheticAudio.sineMix(frequencies: [2_000], durationMs: 100)
+        let vot = FeatureExtractor.voicingOnsetTime(clip: clip, threshold: 0.05)
+        XCTAssertEqual(vot, 0, accuracy: 10)  // ms
+    }
+
+    func testVoicingOnsetTimeCountsLeadingSilence() {
+        let clip = SyntheticAudio.concat(
+            SyntheticAudio.silence(durationMs: 40),
+            SyntheticAudio.sineMix(frequencies: [2_000], durationMs: 80)
+        )
+        let vot = FeatureExtractor.voicingOnsetTime(clip: clip, threshold: 0.05)
+        XCTAssertEqual(vot, 40, accuracy: 15)
+    }
+
+    func testSpectralPeakInBandFindsSine() {
+        let clip = SyntheticAudio.sineMix(
+            frequencies: [1_700, 3_500], gains: [0.5, 0.5], durationMs: 200)
+        let peakLow = FeatureExtractor.spectralPeakInBand(clip: clip, lowHz: 1_000, highHz: 2_500)
+        let peakHigh = FeatureExtractor.spectralPeakInBand(clip: clip, lowHz: 2_500, highHz: 5_000)
+        XCTAssertEqual(peakLow, 1_700, accuracy: 250)
+        XCTAssertEqual(peakHigh, 3_500, accuracy: 350)
+    }
 }

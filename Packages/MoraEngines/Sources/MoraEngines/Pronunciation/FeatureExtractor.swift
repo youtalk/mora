@@ -94,6 +94,44 @@ public enum FeatureExtractor {
         return Double(rms2 - rms1) * (1000.0 / Double(windowMs))
     }
 
+    /// Milliseconds from clip start to the first frame whose absolute-value
+    /// RMS rises above `threshold`. Approximates voicing onset; a negative
+    /// return is not produced by this routine (callers who need lead/lag
+    /// should compute their own sign by comparing to a reference onset).
+    public static func voicingOnsetTime(clip: AudioClip, threshold: Float) -> Double {
+        let windowMs = 10
+        let windowSamples = max(8, Int(Double(windowMs) / 1000.0 * clip.sampleRate))
+        var i = 0
+        while i + windowSamples <= clip.samples.count {
+            let window = clip.samples[i..<(i + windowSamples)]
+            let rms = sqrt(window.reduce(0) { $0 + $1 * $1 } / Float(window.count))
+            if rms >= threshold {
+                return Double(i) / clip.sampleRate * 1000.0
+            }
+            i += windowSamples
+        }
+        return Double(clip.samples.count) / clip.sampleRate * 1000.0
+    }
+
+    /// Frequency (Hz) of the strongest FFT bin whose center lies within
+    /// [lowHz, highHz]. Intended as a lightweight stand-in for LPC formant
+    /// tracking — accurate enough for the onset / coda regions we score.
+    public static func spectralPeakInBand(clip: AudioClip, lowHz: Double, highHz: Double) -> Double {
+        guard let spectrum = powerSpectrum(clip: clip) else { return 0 }
+        let binWidth = clip.sampleRate / Double(2 * spectrum.count)
+        var bestBin = -1
+        var bestPower: Float = 0
+        for (i, p) in spectrum.enumerated() {
+            let freq = Double(i) * binWidth
+            if freq < lowHz || freq > highHz { continue }
+            if p > bestPower {
+                bestPower = p
+                bestBin = i
+            }
+        }
+        return bestBin >= 0 ? Double(bestBin) * binWidth : 0
+    }
+
     /// Power spectrum of the windowed FFT, returned as a half-band magnitude
     /// array (DC to Nyquist). Returns nil for empty clips.
     static func powerSpectrum(clip: AudioClip) -> [Float]? {
