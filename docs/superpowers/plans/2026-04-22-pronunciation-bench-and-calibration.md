@@ -777,7 +777,7 @@ public struct DebugFixtureRecorderEntryModifier: ViewModifier {
                 .contentShape(Rectangle())
                 .onTapGesture { registerTap() }
             if isActivated {
-                NavigationLink("🎙 Fixture Recorder") {
+                NavigationLink("Fixture Recorder") {
                     PronunciationRecorderView()
                 }
                 .font(.footnote)
