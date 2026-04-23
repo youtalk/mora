@@ -226,6 +226,15 @@ final class MoraStringsTests: XCTestCase {
             ("a11yCloseSession", s.a11yCloseSession),
             ("a11yMicButton", s.a11yMicButton),
             ("a11yStreakChip(5)", s.a11yStreakChip(5)),
+            ("coachingShSubS", s.coachingShSubS),
+            ("coachingShDrift", s.coachingShDrift),
+            ("coachingRSubL", s.coachingRSubL),
+            ("coachingLSubR", s.coachingLSubR),
+            ("coachingFSubH", s.coachingFSubH),
+            ("coachingVSubB", s.coachingVSubB),
+            ("coachingThVoicelessSubS", s.coachingThVoicelessSubS),
+            ("coachingThVoicelessSubT", s.coachingThVoicelessSubT),
+            ("coachingAeSubSchwa", s.coachingAeSubSchwa),
         ]
     }
 
@@ -242,7 +251,9 @@ final class MoraStringsTests: XCTestCase {
     /// Non-kanji characters that the alpha JP strings are allowed to use:
     /// hiragana, katakana, ASCII digits + punctuation + letters (rare,
     /// e.g. '3' in a numeral), the allowlisted Japanese punctuation marks,
-    /// spaces, and a small set of UI symbols (arrow / speaker / play).
+    /// spaces, a small set of UI symbols (arrow / speaker / play), Japanese
+    /// corner quotes used in coaching strings, ASCII lowercase letters used
+    /// in phoneme exemplars (e.g. "sh", "fff"), and the IPA symbol æ.
     private static func isAllowedNonKanji(_ scalar: Unicode.Scalar) -> Bool {
         let allowedSymbols: Set<Unicode.Scalar> = [
             Unicode.Scalar(0x3000)!,  // ideographic space
@@ -254,6 +265,9 @@ final class MoraStringsTests: XCTestCase {
             Unicode.Scalar(0x203A)!,  // ›
             Unicode.Scalar(0x25B6)!,  // ▶
             Unicode.Scalar(0x1F50A)!,  // 🔊
+            Unicode.Scalar(0x300C)!,  // 「 — coaching exemplar open bracket
+            Unicode.Scalar(0x300D)!,  // 」 — coaching exemplar close bracket
+            Unicode.Scalar(0x00E6)!,  // æ — IPA vowel in coachingAeSubSchwa
         ]
         switch scalar.value {
         case 0x3040...0x309F: return true  // Hiragana
@@ -261,6 +275,7 @@ final class MoraStringsTests: XCTestCase {
         case 0x0020: return true  // ASCII space — needed between tokens
         case 0x002F: return true  // '/' — used in "\(current)/\(total)" counters
         case 0x0030...0x0039: return true  // ASCII digits 0-9 for count/score closures
+        case 0x0061...0x007A: return true  // ASCII lowercase a-z — phoneme exemplars in coaching strings
         default: return allowedSymbols.contains(scalar)
         }
     }
