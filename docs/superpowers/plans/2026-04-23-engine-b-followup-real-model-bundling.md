@@ -12,14 +12,16 @@
 
 ## Blockers preventing the real model from landing
 
-1. **`HF_TOKEN`** — the agentic session had no access to a Hugging Face access token. Generating one requires the human to (a) log in at huggingface.co, (b) agree to the gated-model license for `facebook/wav2vec2-xlsr-53-espeak-cv-ft`, and (c) issue a Read token at https://huggingface.co/settings/tokens.
-2. **Local compute** — `convert.py` takes ~10 min on an M2 MacBook Pro, produces a ~150 MB `.mlmodelc`. Agentic sessions with restricted network/disk can't run it end-to-end.
+1. **Local compute** — `convert.py` takes ~10 min on an M2 MacBook Pro, produces a ~150 MB `.mlmodelc`. Agentic sessions with restricted network/disk can't run it end-to-end.
+2. **CoreML compile tool** — the script calls `xcrun coremlcompiler`, so the conversion must run on macOS with Xcode Command Line Tools. Linux / Docker are not viable hosts.
+
+The upstream model `facebook/wav2vec2-xlsr-53-espeak-cv-ft` is **public** (HF API `gated: False`), so no Hugging Face access token is required.
 
 ## Remaining work
 
 ### 1. Bundle the real model (Task 22 Steps 2–5)
 
-**Prereq**: HF_TOKEN with Read access to `facebook/wav2vec2-xlsr-53-espeak-cv-ft`, revision `3693e11`.
+**Prereqs**: macOS with Xcode Command Line Tools and [`uv`](https://github.com/astral-sh/uv) (`brew install uv`). The upstream model is public — no Hugging Face token is needed.
 
 ```sh
 : "${REPO_ROOT:?Set REPO_ROOT to the Mora repo root before running this task.}"
@@ -27,11 +29,9 @@ cd "$REPO_ROOT"
 git checkout -b followup/engine-b-real-model main
 
 cd "$REPO_ROOT/dev-tools/model-conversion"
-python3.11 -m venv .venv
+uv venv --python 3.11
+uv pip install -r requirements.txt
 source .venv/bin/activate
-pip install -r requirements.txt
-cp .env.example .env
-# Edit .env: HF_TOKEN=hf_xxxxxxxx...
 
 python convert.py --output-dir ../../Packages/MoraMLX/Sources/MoraMLX/Resources
 cd "$REPO_ROOT"
@@ -158,7 +158,6 @@ Out of scope here — will be a separate plan file when ready.
 
 Pre-merge gates for the real-model PR:
 
-- [ ] `HF_TOKEN` obtained and `.env` populated (local only, never committed).
 - [ ] `python convert.py --output-dir ../../Packages/MoraMLX/Sources/MoraMLX/Resources` succeeded; `phoneme-labels.json` has ~390 entries; `.mlmodelc/` contains `coremldata.bin` and supporting files.
 - [ ] `git lfs ls-files | grep wav2vec2-phoneme` shows the model directory contents.
 - [ ] `(cd Packages/MoraMLX && swift test)` — 3/3 PASS, 0 skipped.
