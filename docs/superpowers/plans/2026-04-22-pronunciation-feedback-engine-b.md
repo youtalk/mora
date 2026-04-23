@@ -50,6 +50,38 @@
 | 18 | Format sweep | `e6ed0f5` |
 | 19 | Docs progress section | `-` |
 
+**Part 2 landed with the real-model step deferred.** Tasks 20, 21, and
+23–30 shipped on the Part 2 PR using a placeholder `.mlmodelc` so the
+packaging, app wiring, CI LFS checkout, and smoke-test paths are all in
+place. Task 22 Steps 2–5 (run `convert.py` locally with `HF_TOKEN`, then
+commit the real `.mlmodelc` via Git LFS) is tracked as a manual
+follow-up.
+
+| # | Task | Commit |
+|---|------|--------|
+| 20 | dev-tools/model-conversion scaffolding | `ca6efda` |
+| 21 | convert.py script | `f4e58d7` |
+| 22 | Run conversion + LFS commit | deferred — human follow-up |
+| 23 | MoraMLX Package.swift resources | `1ccffb5` |
+| 24 | CoreMLPhonemePosteriorProvider | `62a8f23` |
+| 25 | MoraMLXModelCatalog real loader | `e830639` |
+| 26 | Smoke test + fixture | `7bf6f0c` |
+| 27 | CI LFS checkout | `e8b384a` |
+| 28 | Format sweep | `-` |
+| 29 | Device-only latency benchmark | `420d4ab` |
+| 30 | Docs cross-link + CLAUDE.md update | `-` |
+
+> **Note — Task 22 deferred.** Steps 2–5 of Task 22 (running `convert.py`
+> with a valid `HF_TOKEN` and committing the resulting
+> `wav2vec2-phoneme.mlmodelc` + `phoneme-labels.json` via Git LFS) are a
+> manual follow-up outside this PR. Tasks 23–26 ship with a placeholder
+> `.mlmodelc` so the bundling, `MoraMLXModelCatalog` load path, and
+> `CoreMLPhonemePosteriorProvider` wiring are exercised by CI; tests use
+> positive placeholder detection (`PlaceholderDetection.isPlaceholderModelBundled`)
+> to `XCTSkip` while the placeholder is in place and FAIL once the real
+> model is bundled. Shadow-mode inference on device starts working after
+> the deferred follow-up lands.
+
 ---
 
 ## File map
