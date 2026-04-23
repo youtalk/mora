@@ -45,6 +45,16 @@ jobs:
         # convention of keeping trailing commas on every element.
         run: swift-format lint --strict --recursive Mora Packages/*/Sources Packages/*/Tests
 
+      - name: Source gate — no cloud pronunciation SDK
+        # No github-context expressions used; only a static grep over tracked
+        # source. Scoped to the shipped tree (Mora, Packages) so dev-tools and
+        # docs are free to discuss these vendors.
+        run: |
+          if git grep -nIE 'speechace|azure\.cognitive|pronunciation-assessment|speechsuper' -- Mora Packages; then
+            echo "Cloud pronunciation reference detected in shipped source tree"
+            exit 1
+          fi
+
   build-test:
     name: Build / Test
     runs-on: macos-15
