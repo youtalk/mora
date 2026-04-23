@@ -16,13 +16,14 @@ public final class FakeTileBoardEngine {
     }
 
     public var result: TileBoardTrialResult {
-        preprogrammedResult ?? TileBoardTrialResult(
-            word: Word(surface: "", graphemes: [], phonemes: []),
-            buildAttempts: [],
-            scaffoldLevel: 0,
-            ttsHintIssued: false,
-            poolReducedToTwo: false,
-            autoFilled: false
-        )
+        preprogrammedResult
+            ?? TileBoardTrialResult(
+                word: Word(surface: "", graphemes: [], phonemes: []),
+                buildAttempts: [],
+                scaffoldLevel: 0,
+                ttsHintIssued: false,
+                poolReducedToTwo: false,
+                autoFilled: false
+            )
     }
 }

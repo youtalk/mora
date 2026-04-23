@@ -25,9 +25,13 @@ public final class SessionOrchestrator {
         let done = completedTrialCount
         let activeIndex = done  // the pip currently being trialed
         for i in 0..<12 {
-            if i < done { states.append(.done) }
-            else if i == activeIndex { states.append(.active) }
-            else { states.append(.pending) }
+            if i < done {
+                states.append(ChainPipStateOrchestratorValue.done)
+            } else if i == activeIndex {
+                states.append(ChainPipStateOrchestratorValue.active)
+            } else {
+                states.append(ChainPipStateOrchestratorValue.pending)
+            }
         }
         return states
     }
@@ -45,7 +49,8 @@ public final class SessionOrchestrator {
         } else {
             let change = chain.successors[trialIndex - 1]
             let lockedSlots = change.predecessor.graphemes
-            let pool = TilePoolPolicy
+            let pool =
+                TilePoolPolicy
                 .changeSlot(
                     correct: change.newGrapheme,
                     kind: TileKind(grapheme: change.newGrapheme),
