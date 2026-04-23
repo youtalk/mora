@@ -5,7 +5,7 @@ import SwiftUI
 struct NewRuleView: View {
     @Environment(\.moraStrings) private var strings
     let orchestrator: SessionOrchestrator
-    let ttsEngine: TTSEngine?
+    let speech: SpeechController?
 
     @State private var finishedIntro = false
 
@@ -51,7 +51,7 @@ struct NewRuleView: View {
     @MainActor
     private func playIntro() async {
         guard !finishedIntro else { return }
-        guard let tts = ttsEngine else {
+        guard let speech else {
             finishedIntro = true
             return
         }
@@ -59,14 +59,22 @@ struct NewRuleView: View {
         // exemplars. Avoids speaking the digraph letters in isolation
         // (TTS spells "sh" out as letters in plain text); the IPA hint is
         // the documented way to coax a clean /ʃ/ from Premium voices.
+        var prompts: [SpeechPrompt] = []
         if let phoneme = orchestrator.target.phoneme {
-            await tts.speak(phoneme: phoneme, pace: .slow)
+            prompts.append(.phoneme(phoneme, .slow))
         }
-        await tts.speak("Two letters, one sound.", pace: .slow)
+        prompts.append(.text("Two letters, one sound.", .slow))
         for word in ["ship", "shop", "fish"] {
-            await tts.speak(word, pace: .slow)
+            prompts.append(.text(word, .slow))
         }
-        finishedIntro = true
+        await speech.playAndAwait(prompts)
+        // Only flip the gate when the intro actually finished. A cancelled
+        // run (view disappeared, close button, user-initiated interrupt)
+        // leaves the gate closed so that a re-entering view replays the
+        // full sequence instead of skipping straight to the CTA.
+        if !Task.isCancelled {
+            finishedIntro = true
+        }
     }
 
     private func workedExample(_ s: String) -> some View {

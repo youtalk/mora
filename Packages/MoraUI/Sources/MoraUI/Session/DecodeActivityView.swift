@@ -12,7 +12,7 @@ struct DecodeActivityView: View {
     let uiMode: SessionUIMode
     @Binding var feedback: FeedbackState
     let speechEngine: SpeechEngine?
-    let ttsEngine: TTSEngine?
+    let speech: SpeechController?
 
     @State private var micState: MicUIState = .idle
     @State private var shakeAmount: CGFloat = 0
@@ -40,8 +40,7 @@ struct DecodeActivityView: View {
                         .minimumScaleFactor(0.4)
                         .shake(amount: shakeAmount)
                         .onLongPressGesture {
-                            guard let tts = ttsEngine else { return }
-                            Task { await tts.speak(current.word.surface, pace: .slow) }
+                            speech?.play([.text(current.word.surface, .slow)])
                         }
 
                     if let note = current.note {
@@ -214,8 +213,15 @@ struct DecodeActivityView: View {
                         await orchestrator.handle(.answerHeard(asr))
                         let wasCorrect = orchestrator.trials.last?.correct ?? false
                         feedback = wasCorrect ? .correct : .wrong
-                        if !wasCorrect, let tts = ttsEngine {
-                            await tts.speak("Listen: " + expected.surface, pace: .slow)
+                        if !wasCorrect, let speech {
+                            // Awaiting the corrective utterance keeps the
+                            // word pinned for the full playback. The
+                            // underlying controller cancels this sequence if
+                            // the session advances phase or the close button
+                            // fires mid-utterance.
+                            await speech.playAndAwait(
+                                [.text("Listen: " + expected.surface, .slow)]
+                            )
                         }
                         try? await Task.sleep(
                             nanoseconds: wasCorrect ? 450_000_000 : 650_000_000)

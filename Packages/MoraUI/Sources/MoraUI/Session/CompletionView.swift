@@ -6,7 +6,7 @@ import SwiftUI
 struct CompletionView: View {
     @Environment(\.moraStrings) private var strings
     let orchestrator: SessionOrchestrator
-    let ttsEngine: TTSEngine?
+    let speech: SpeechController?
     let persistSummary: (SessionSummary) -> Void
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var ctx
@@ -52,25 +52,28 @@ struct CompletionView: View {
         .accessibilityAction(named: "Return home") { dismissSession() }
         .onAppear { persistOnce() }
         .task {
-            guard let tts = ttsEngine else { return }
-            await tts.speak("Quest complete! You got \(correct) out of \(total).")
+            // Spoken in English (the whole app teaches English phonics to
+            // an L1-Japanese learner) — keeping this literal rather than a
+            // MoraStrings entry since every L1 profile would emit the same
+            // celebratory line in English anyway.
+            speech?.play(
+                [.text("Quest complete! You got \(correct) out of \(total).", .normal)]
+            )
         }
     }
 
     @MainActor
     private func dismissSession() {
-        // Silence the celebration utterance if it's still playing — otherwise
-        // the "Quest complete!" line trails onto the Home screen. Await the
-        // stop before dismissing so the guarantee actually holds; a detached
-        // `Task { tts.stop() }` followed by an immediate `dismiss()` races
-        // against the synthesizer draining and lets audio leak to the next
-        // screen.
-        guard let tts = ttsEngine else {
+        // Silence the celebration utterance and wait for it to stop before
+        // dismissing. A detached stop followed by an immediate dismiss
+        // races against the synthesizer draining and lets audio leak onto
+        // the Home screen.
+        guard let speech else {
             dismiss()
             return
         }
         Task { @MainActor in
-            await tts.stop()
+            await speech.stop()
             dismiss()
         }
     }

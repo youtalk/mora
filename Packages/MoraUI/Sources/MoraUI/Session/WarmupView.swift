@@ -5,7 +5,7 @@ import SwiftUI
 struct WarmupView: View {
     @Environment(\.moraStrings) private var strings
     let orchestrator: SessionOrchestrator
-    let ttsEngine: TTSEngine?
+    let speech: SpeechController?
 
     var body: some View {
         ScrollView {
@@ -47,9 +47,7 @@ struct WarmupView: View {
                         .minimumScaleFactor(0.5)
                 }
 
-                Button(action: {
-                    Task { await playTargetPhoneme() }
-                }) {
+                Button(action: playTargetPhoneme) {
                     Text(strings.warmupListenAgain)
                         .font(MoraType.cta())
                         .foregroundStyle(MoraTheme.Accent.teal)
@@ -59,21 +57,19 @@ struct WarmupView: View {
                         .minimumScaleFactor(0.5)
                 }
                 .buttonStyle(.plain)
-                .disabled(ttsEngine == nil)
+                .disabled(speech == nil)
             }
             .padding(.vertical, MoraTheme.Space.xl)
             .frame(maxWidth: .infinity)
         }
         .task {
-            // Await directly so SwiftUI cancels the TTS if the view
-            // disappears before playback finishes.
-            await playTargetPhoneme()
+            playTargetPhoneme()
         }
     }
 
-    private func playTargetPhoneme() async {
-        guard let tts = ttsEngine, let phoneme = orchestrator.target.phoneme else { return }
-        await tts.speak(phoneme: phoneme)
+    private func playTargetPhoneme() {
+        guard let speech, let phoneme = orchestrator.target.phoneme else { return }
+        speech.play([.phoneme(phoneme, .slow)])
     }
 
     private var targetIPA: String {
