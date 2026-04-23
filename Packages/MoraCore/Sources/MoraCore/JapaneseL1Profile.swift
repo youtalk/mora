@@ -162,6 +162,8 @@ public struct JapaneseL1Profile: L1Profile {
         warmupListenAgain: "🔊 もういちど",
         newRuleGotIt: "分かった",
         decodingLongPressHint: "ながおしで もういちど 聞けるよ",
+        decodingBuildPrompt: "よく きいて ならべよう",
+        decodingListenAgain: "🔊 もういちど",
         sentencesLongPressHint: "ながおしで もういちど 聞けるよ",
         feedbackCorrect: "せいかい！",
         feedbackTryAgain: "もう一回",
