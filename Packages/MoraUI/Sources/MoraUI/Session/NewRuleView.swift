@@ -10,35 +10,38 @@ struct NewRuleView: View {
     @State private var finishedIntro = false
 
     var body: some View {
-        VStack(spacing: MoraTheme.Space.lg) {
-            Spacer()
-            Text("New rule")
-                .font(MoraType.label())
-                .foregroundStyle(MoraTheme.Ink.muted)
+        ScrollView {
+            VStack(spacing: MoraTheme.Space.lg) {
+                Text("New rule")
+                    .font(MoraType.label())
+                    .foregroundStyle(MoraTheme.Ink.muted)
 
-            Text("\(letters) → /\(ipa)/")
-                .font(.system(size: 96, weight: .heavy, design: .rounded))
-                .foregroundStyle(MoraTheme.Ink.primary)
+                Text("\(letters) → /\(ipa)/")
+                    .font(MoraType.heroWord(140))
+                    .foregroundStyle(MoraTheme.Ink.primary)
+                    .minimumScaleFactor(0.5)
 
-            Text("Two letters, one sound.")
-                .font(MoraType.heading())
-                .foregroundStyle(MoraTheme.Ink.secondary)
+                Text("Two letters, one sound.")
+                    .font(MoraType.heading())
+                    .foregroundStyle(MoraTheme.Ink.secondary)
+                    .multilineTextAlignment(.center)
+                    .minimumScaleFactor(0.5)
 
-            HStack(spacing: MoraTheme.Space.lg) {
-                workedExample("ship")
-                workedExample("shop")
-                workedExample("fish")
+                HStack(spacing: MoraTheme.Space.lg) {
+                    workedExample("ship")
+                    workedExample("shop")
+                    workedExample("fish")
+                }
+
+                HeroCTA(title: strings.newRuleGotIt) {
+                    Task { await orchestrator.handle(.advance) }
+                }
+                .disabled(!finishedIntro)
+                .opacity(finishedIntro ? 1.0 : 0.4)
+                .padding(.top, MoraTheme.Space.md)
             }
-            .padding(.top, MoraTheme.Space.lg)
-
-            Spacer()
-
-            HeroCTA(title: strings.newRuleGotIt) {
-                Task { await orchestrator.handle(.advance) }
-            }
-            .disabled(!finishedIntro)
-            .opacity(finishedIntro ? 1.0 : 0.4)
-            .padding(.bottom, MoraTheme.Space.xl)
+            .padding(.vertical, MoraTheme.Space.xl)
+            .frame(maxWidth: .infinity)
         }
         .task {
             await playIntro()
@@ -52,11 +55,17 @@ struct NewRuleView: View {
             finishedIntro = true
             return
         }
-        var prompts: [SpeechPrompt] = [
-            .text("\(letters) says \(ipa). Two letters, one sound.")
-        ]
+        // Play the bare phoneme via IPA hint, then ground it in three
+        // exemplars. Avoids speaking the digraph letters in isolation
+        // (TTS spells "sh" out as letters in plain text); the IPA hint is
+        // the documented way to coax a clean /ʃ/ from Premium voices.
+        var prompts: [SpeechPrompt] = []
+        if let phoneme = orchestrator.target.phoneme {
+            prompts.append(.phoneme(phoneme, .slow))
+        }
+        prompts.append(.text("Two letters, one sound.", .slow))
         for word in ["ship", "shop", "fish"] {
-            prompts.append(.text(word))
+            prompts.append(.text(word, .slow))
         }
         await speech.playAndAwait(prompts)
         // Only flip the gate when the intro actually finished. A cancelled
@@ -70,11 +79,12 @@ struct NewRuleView: View {
 
     private func workedExample(_ s: String) -> some View {
         Text(s)
-            .font(.system(size: 48, weight: .bold, design: .rounded))
+            .font(MoraType.bodyReading(size: 56))
             .foregroundStyle(MoraTheme.Ink.primary)
             .padding(.horizontal, MoraTheme.Space.lg)
             .padding(.vertical, MoraTheme.Space.md)
             .background(Color.white, in: .rect(cornerRadius: MoraTheme.Radius.tile))
+            .minimumScaleFactor(0.5)
     }
 
     private var letters: String { orchestrator.target.letters ?? "?" }

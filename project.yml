@@ -36,6 +36,8 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: tech.reenable.Mora
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
         TARGETED_DEVICE_FAMILY: "2"
         INFOPLIST_KEY_CFBundleDisplayName: "mora"
         INFOPLIST_KEY_UILaunchScreen_Generation: "YES"

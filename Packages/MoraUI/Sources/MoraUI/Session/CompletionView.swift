@@ -57,18 +57,25 @@ struct CompletionView: View {
             // MoraStrings entry since every L1 profile would emit the same
             // celebratory line in English anyway.
             speech?.play(
-                [.text("Quest complete! You got \(correct) out of \(total).")]
+                [.text("Quest complete! You got \(correct) out of \(total).", .normal)]
             )
         }
     }
 
     @MainActor
     private func dismissSession() {
-        // Cancel the celebration utterance so it doesn't trail onto the
-        // Home screen. The engine's cancellation handler stops the
-        // synthesizer as the inflight task is torn down.
-        speech?.stop()
-        dismiss()
+        // Silence the celebration utterance and wait for it to stop before
+        // dismissing. A detached stop followed by an immediate dismiss
+        // races against the synthesizer draining and lets audio leak onto
+        // the Home screen.
+        guard let speech else {
+            dismiss()
+            return
+        }
+        Task { @MainActor in
+            await speech.stop()
+            dismiss()
+        }
     }
 
     @MainActor

@@ -17,45 +17,55 @@ struct ShortSentencesView: View {
     @State private var micState: MicUIState = .idle
     @State private var shakeAmount: CGFloat = 0
     @State private var shakeResetTask: Task<Void, Never>?
+    /// Pin the on-screen sentence to a specific orchestrator index during
+    /// feedback / corrective audio — same reason as DecodeActivityView:
+    /// without it, `orchestrator.handle(.answerHeard)` advances
+    /// `sentenceIndex` immediately, the body re-renders the next sentence,
+    /// and the "Listen:" audio then names the previous sentence.
+    @State private var pinnedSentenceIndex: Int?
+    @State private var lastHeard: String = ""
 
     var body: some View {
-        VStack(spacing: MoraTheme.Space.lg) {
-            Spacer()
-            if let current = currentSentence {
-                Text(current.text)
-                    .font(MoraType.sentence())
-                    .foregroundStyle(MoraTheme.Ink.primary)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, MoraTheme.Space.xl)
-                    .shake(amount: shakeAmount)
-                    .onLongPressGesture {
-                        speech?.play([.text(current.text)])
+        ScrollView {
+            VStack(spacing: MoraTheme.Space.lg) {
+                if let current = displayedSentence {
+                    Text(current.text)
+                        .font(MoraType.sentence())
+                        .foregroundStyle(MoraTheme.Ink.primary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, MoraTheme.Space.xl)
+                        .minimumScaleFactor(0.5)
+                        .shake(amount: shakeAmount)
+                        .onLongPressGesture {
+                            speech?.play([.text(current.text, .slow)])
+                        }
+
+                    switch uiMode {
+                    case .tap:
+                        tapPair(sentence: current)
+                    case .mic:
+                        micStack
                     }
 
-                Spacer()
-
-                switch uiMode {
-                case .tap:
-                    tapPair(sentence: current)
-                case .mic:
-                    micStack
-                }
-
-                HStack(spacing: MoraTheme.Space.sm) {
-                    Text(
-                        strings.sessionSentenceCounter(
-                            orchestrator.sentenceIndex + 1, orchestrator.sentences.count
+                    VStack(spacing: MoraTheme.Space.xs) {
+                        Text(
+                            strings.sessionSentenceCounter(
+                                (pinnedSentenceIndex ?? orchestrator.sentenceIndex) + 1,
+                                orchestrator.sentences.count
+                            )
                         )
-                    )
-                    Text("·")
-                    Text(strings.sentencesLongPressHint)
+                        Text(strings.sentencesLongPressHint)
+                            .multilineTextAlignment(.center)
+                    }
+                    .font(MoraType.label())
+                    .foregroundStyle(MoraTheme.Ink.muted)
+                    .minimumScaleFactor(0.5)
+                } else {
+                    ProgressView()
                 }
-                .font(MoraType.label())
-                .foregroundStyle(MoraTheme.Ink.muted)
-                .padding(.bottom, MoraTheme.Space.lg)
-            } else {
-                ProgressView()
             }
+            .padding(.vertical, MoraTheme.Space.xl)
+            .frame(maxWidth: .infinity)
         }
         .onChange(of: feedback) { _, new in
             if new == .wrong {
@@ -80,7 +90,7 @@ struct ShortSentencesView: View {
     }
 
     private var micStack: some View {
-        VStack(spacing: MoraTheme.Space.sm) {
+        VStack(spacing: MoraTheme.Space.md) {
             MicButton(state: micState.buttonState) {
                 switch micState {
                 case .idle:
@@ -91,17 +101,31 @@ struct ShortSentencesView: View {
                     break
                 }
             }
-            if case .listening(let text) = micState, !text.isEmpty {
-                Text(text)
-                    .font(MoraType.label())
-                    .foregroundStyle(MoraTheme.Ink.muted)
-            }
+            transcriptLine
         }
     }
 
-    private var currentSentence: DecodeSentence? {
-        guard orchestrator.sentenceIndex < orchestrator.sentences.count else { return nil }
-        return orchestrator.sentences[orchestrator.sentenceIndex]
+    @ViewBuilder
+    private var transcriptLine: some View {
+        if case .listening(let partial) = micState, !partial.isEmpty {
+            Text(partial)
+                .font(MoraType.transcript())
+                .foregroundStyle(MoraTheme.Ink.secondary)
+                .lineLimit(3)
+                .multilineTextAlignment(.center)
+        } else if !lastHeard.isEmpty {
+            Text(lastHeard)
+                .font(MoraType.transcript())
+                .foregroundStyle(MoraTheme.Ink.secondary)
+                .lineLimit(3)
+                .multilineTextAlignment(.center)
+        }
+    }
+
+    private var displayedSentence: DecodeSentence? {
+        let idx = pinnedSentenceIndex ?? orchestrator.sentenceIndex
+        guard idx < orchestrator.sentences.count else { return nil }
+        return orchestrator.sentences[idx]
     }
 
     private func tapPair(sentence: DecodeSentence) -> some View {
@@ -109,17 +133,23 @@ struct ShortSentencesView: View {
             tapButton(strings.feedbackCorrect, color: MoraTheme.Feedback.correct) {
                 feedback = .correct
                 Task { @MainActor in
+                    let priorIndex = orchestrator.sentenceIndex
+                    pinnedSentenceIndex = priorIndex
                     await orchestrator.handle(.answerManual(correct: true))
                     try? await Task.sleep(nanoseconds: 450_000_000)
                     feedback = .none
+                    pinnedSentenceIndex = nil
                 }
             }
             tapButton(strings.feedbackTryAgain, color: MoraTheme.Feedback.wrong) {
                 feedback = .wrong
                 Task { @MainActor in
+                    let priorIndex = orchestrator.sentenceIndex
+                    pinnedSentenceIndex = priorIndex
                     await orchestrator.handle(.answerManual(correct: false))
                     try? await Task.sleep(nanoseconds: 650_000_000)
                     feedback = .none
+                    pinnedSentenceIndex = nil
                 }
             }
         }
@@ -139,7 +169,8 @@ struct ShortSentencesView: View {
     }
 
     private func startListening(engine: SpeechEngine) {
-        guard let expected = currentSentence else { return }
+        guard let expected = displayedSentence else { return }
+        lastHeard = ""
         micState = .listening(partialText: "")
         Task { @MainActor in
             defer {
@@ -158,6 +189,9 @@ struct ShortSentencesView: View {
                             micState = .listening(partialText: text)
                         }
                     case .final(let asr):
+                        let priorIndex = orchestrator.sentenceIndex
+                        pinnedSentenceIndex = priorIndex
+                        lastHeard = asr.transcript
                         micState = .assessing
                         try? await Task.sleep(nanoseconds: 120_000_000)
                         await orchestrator.handle(.answerHeard(asr))
@@ -165,13 +199,15 @@ struct ShortSentencesView: View {
                         feedback = wasCorrect ? .correct : .wrong
                         if !wasCorrect, let speech {
                             await speech.playAndAwait(
-                                [.text("Listen: " + expected.text)]
+                                [.text("Listen: " + expected.text, .slow)]
                             )
                         }
                         try? await Task.sleep(
                             nanoseconds: wasCorrect ? 450_000_000 : 650_000_000)
                         feedback = .none
                         micState = .idle
+                        pinnedSentenceIndex = nil
+                        lastHeard = ""
                     }
                 }
             } catch {

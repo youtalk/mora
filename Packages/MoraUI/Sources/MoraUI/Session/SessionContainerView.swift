@@ -23,7 +23,6 @@ public struct SessionContainerView: View {
     @State private var feedback: FeedbackState = .none
     @State private var uiMode: SessionUIMode = .tap
     @State private var speechEngine: SpeechEngine?
-    @State private var ttsEngine: TTSEngine?
     @State private var speech: SpeechController?
     @State private var showCloseConfirm = false
 
@@ -54,12 +53,19 @@ public struct SessionContainerView: View {
                     let partial = orchestrator.sessionSummary(endedAt: Date())
                     persist(summary: partial)
                 }
-                // Cancel the in-flight speech task so the engine's
-                // cancellation handler drains the synthesizer before the
-                // session unmounts; otherwise the current utterance trails
-                // onto whatever screen the learner lands on next.
-                speech?.stop()
-                dismiss()
+                // Cancel in-flight speech, drain the engine, then dismiss.
+                // Awaiting `speech.stop()` before `dismiss()` is what stops
+                // the tail of the current utterance from riding out onto
+                // whatever screen the learner lands on next — a detached
+                // stop racing against dismiss leaves the audio audible.
+                if let speech {
+                    Task { @MainActor in
+                        await speech.stop()
+                        dismiss()
+                    }
+                } else {
+                    dismiss()
+                }
             }
         } message: {
             Text(strings.sessionCloseMessage)
@@ -70,7 +76,8 @@ public struct SessionContainerView: View {
         // DecodeActivityView would keep playing on ShortSentencesView
         // because that view has no phase-intro `.task` of its own.
         .onChange(of: orchestrator?.phase) { _, _ in
-            speech?.stop()
+            guard let speech else { return }
+            Task { await speech.stop() }
         }
         #if os(iOS)
         .navigationBarHidden(true)
@@ -165,9 +172,7 @@ public struct SessionContainerView: View {
         case .partial, .notDetermined:
             uiMode = .tap
         }
-        let engine = AppleTTSEngine(l1Profile: JapaneseL1Profile())
-        ttsEngine = engine
-        speech = SpeechController(tts: engine)
+        speech = SpeechController(tts: AppleTTSEngine(l1Profile: JapaneseL1Profile()))
         #else
         uiMode = .tap
         #endif

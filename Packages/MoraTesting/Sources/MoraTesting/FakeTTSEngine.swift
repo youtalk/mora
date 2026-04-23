@@ -4,6 +4,7 @@ import MoraEngines
 
 public final class FakeTTSEngine: TTSEngine, @unchecked Sendable {
     private var _uttered: [String] = []
+    private var _stopCount = 0
     private let lock = NSLock()
 
     /// Simulated speak duration. Non-zero values sleep inside `speak`
@@ -21,11 +22,17 @@ public final class FakeTTSEngine: TTSEngine, @unchecked Sendable {
         return _uttered
     }
 
+    public var stopCount: Int {
+        lock.lock()
+        defer { lock.unlock() }
+        return _stopCount
+    }
+
     public init(speakDuration: Duration = .zero) {
         self.speakDuration = speakDuration
     }
 
-    public func speak(_ text: String) async {
+    public func speak(_ text: String, pace: TTSPace) async {
         // Honor cancellation before recording so a caller that checks
         // `Task.isCancelled` after cancelling sees no trace of an abandoned
         // speak in the history.
@@ -36,7 +43,7 @@ public final class FakeTTSEngine: TTSEngine, @unchecked Sendable {
         await simulateSpeakDuration()
     }
 
-    public func speak(phoneme: Phoneme) async {
+    public func speak(phoneme: Phoneme, pace: TTSPace) async {
         if Task.isCancelled { return }
         lock.lock()
         _uttered.append("<phoneme: \(phoneme.ipa)>")
@@ -44,10 +51,17 @@ public final class FakeTTSEngine: TTSEngine, @unchecked Sendable {
         await simulateSpeakDuration()
     }
 
+    public func stop() async {
+        lock.lock()
+        defer { lock.unlock() }
+        _stopCount += 1
+    }
+
     public func reset() {
         lock.lock()
         defer { lock.unlock() }
         _uttered.removeAll()
+        _stopCount = 0
     }
 
     private func simulateSpeakDuration() async {
