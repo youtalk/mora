@@ -75,4 +75,56 @@ public struct CurriculumEngine: Sendable {
 
         return CurriculumEngine(skills: l3Skills, baselineTaughtGraphemes: l2Alphabet)
     }
+
+    // MARK: - Test fixtures (internal; test targets only)
+
+    /// Three ship-week decoding words with targetPhoneme set to /ʃ/.
+    /// Used by tests to exercise the Engine A pipeline end-to-end without
+    /// pulling in a full bundled-content fixture.
+    static func testShipFixtureWords() -> [Word] {
+        [
+            Word(
+                surface: "ship",
+                graphemes: [
+                    Grapheme(letters: "sh"),
+                    Grapheme(letters: "i"),
+                    Grapheme(letters: "p"),
+                ],
+                phonemes: [
+                    Phoneme(ipa: "ʃ"),
+                    Phoneme(ipa: "ɪ"),
+                    Phoneme(ipa: "p"),
+                ],
+                targetPhoneme: Phoneme(ipa: "ʃ")
+            ),
+            Word(
+                surface: "shop",
+                graphemes: [
+                    Grapheme(letters: "sh"),
+                    Grapheme(letters: "o"),
+                    Grapheme(letters: "p"),
+                ],
+                phonemes: [
+                    Phoneme(ipa: "ʃ"),
+                    Phoneme(ipa: "ɒ"),
+                    Phoneme(ipa: "p"),
+                ],
+                targetPhoneme: Phoneme(ipa: "ʃ")
+            ),
+            Word(
+                surface: "fish",
+                graphemes: [
+                    Grapheme(letters: "f"),
+                    Grapheme(letters: "i"),
+                    Grapheme(letters: "sh"),
+                ],
+                phonemes: [
+                    Phoneme(ipa: "f"),
+                    Phoneme(ipa: "ɪ"),
+                    Phoneme(ipa: "ʃ"),
+                ],
+                targetPhoneme: Phoneme(ipa: "ʃ")
+            ),
+        ]
+    }
 }

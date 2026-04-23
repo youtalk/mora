@@ -41,4 +41,12 @@ final class CurriculumEngineTests: XCTestCase {
         let target = engine.currentTarget(forWeekIndex: -5)
         XCTAssertEqual(target.skill.code, "sh_onset")
     }
+
+    func test_emittedWordsCarryTargetPhonemeMatchingSkill() {
+        let words = CurriculumEngine.testShipFixtureWords()
+        XCTAssertFalse(words.isEmpty)
+        for w in words {
+            XCTAssertEqual(w.targetPhoneme, Phoneme(ipa: "ʃ"))
+        }
+    }
 }
