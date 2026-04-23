@@ -38,7 +38,12 @@ final class MoraStringsTests: XCTestCase {
             ("permissionNotNow", s.permissionNotNow),
             ("homeTodayQuest", s.homeTodayQuest),
             ("homeStart", s.homeStart),
-            ("homeBetterVoiceChip", s.homeBetterVoiceChip),
+            ("voiceGateTitle", s.voiceGateTitle),
+            ("voiceGateBody", s.voiceGateBody),
+            ("voiceGateOpenSettings", s.voiceGateOpenSettings),
+            ("voiceGateRecheck", s.voiceGateRecheck),
+            ("voiceGateInstalledVoicesTitle", s.voiceGateInstalledVoicesTitle),
+            ("voiceGateNoVoicesPlaceholder", s.voiceGateNoVoicesPlaceholder),
             ("sessionCloseTitle", s.sessionCloseTitle),
             ("sessionCloseMessage", s.sessionCloseMessage),
             ("sessionCloseKeepGoing", s.sessionCloseKeepGoing),
@@ -181,7 +186,11 @@ final class MoraStringsTests: XCTestCase {
             ("homeDurationPill(16)", s.homeDurationPill(16)),
             ("homeWordsPill(5)", s.homeWordsPill(5)),
             ("homeSentencesPill(2)", s.homeSentencesPill(2)),
-            ("homeBetterVoiceChip", s.homeBetterVoiceChip),
+            // voiceGate* intentionally omitted: those are parent-setup
+            // strings that must match iOS Settings labels verbatim
+            // (English / Settings / Spoken Content) and therefore sit
+            // outside the grade1-2 kanji budget enforced by the kanji /
+            // non-kanji audits.
             ("sessionCloseTitle", s.sessionCloseTitle),
             ("sessionCloseMessage", s.sessionCloseMessage),
             ("sessionCloseKeepGoing", s.sessionCloseKeepGoing),
