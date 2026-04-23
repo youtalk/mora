@@ -86,7 +86,7 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
         let node = engine.inputNode
         let format = node.outputFormat(forBus: 0)
 
-        let ring = PCMRingBuffer(capacitySeconds: 20.0, sampleRate: 16_000)
+        let ring = PCMRingBuffer(capacitySeconds: 5.0, sampleRate: 16_000)
         self.ringBuffer = ring
 
         guard
@@ -105,28 +105,35 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
             throw AppleSpeechEngineError.audioConverterUnavailable
         }
 
-        node.installTap(onBus: 0, bufferSize: 1024, format: format) { buffer, _ in
-            req.append(buffer)
-            let frameCapacity = AVAudioFrameCount(
-                Double(buffer.frameLength) * targetFormat.sampleRate / buffer.format.sampleRate
+        // Pre-allocate a single convert buffer sized for worst-case tap output.
+        // Reusing it avoids a per-callback AVAudioPCMBuffer alloc on the RT thread.
+        let tapBufferSize: AVAudioFrameCount = 1024
+        let convertedBufferCapacity = AVAudioFrameCount(
+            ceil(Double(tapBufferSize) * targetFormat.sampleRate / format.sampleRate)
+        )
+        guard convertedBufferCapacity > 0,
+            let reusableConvertedBuffer = AVAudioPCMBuffer(
+                pcmFormat: targetFormat,
+                frameCapacity: convertedBufferCapacity
             )
-            guard frameCapacity > 0,
-                let convertedBuffer = AVAudioPCMBuffer(
-                    pcmFormat: targetFormat,
-                    frameCapacity: frameCapacity
-                )
-            else {
-                return
-            }
+        else {
+            lock.unlock()
+            throw AppleSpeechEngineError.audioConverterUnavailable
+        }
+
+        node.installTap(onBus: 0, bufferSize: tapBufferSize, format: format) { buffer, _ in
+            req.append(buffer)
+            reusableConvertedBuffer.frameLength = 0
             var error: NSError?
-            let status = converter.convert(to: convertedBuffer, error: &error) { _, outStatus in
+            let status = converter.convert(to: reusableConvertedBuffer, error: &error) {
+                _, outStatus in
                 outStatus.pointee = .haveData
                 return buffer
             }
             if status == .haveData, error == nil,
-                let ch0 = convertedBuffer.floatChannelData?[0]
+                let ch0 = reusableConvertedBuffer.floatChannelData?[0]
             {
-                let frames = Int(convertedBuffer.frameLength)
+                let frames = Int(reusableConvertedBuffer.frameLength)
                 let chunk = Array(UnsafeBufferPointer(start: ch0, count: frames))
                 ring.append(chunk)
             }
@@ -273,40 +280,68 @@ private final class TimestampBox: @unchecked Sendable {
     }
 }
 
-/// Thread-safe fixed-capacity ring buffer for Float32 mono PCM. The audio
-/// tap appends live samples; `drain()` returns a copy of the current contents
-/// as an `AudioClip`. Oldest samples are dropped when capacity is exceeded.
+/// Thread-safe true circular buffer for Float32 mono PCM. The audio tap
+/// appends live samples in O(n-chunk) time; `drain()` returns a copy of the
+/// current contents as an `AudioClip` with leading silence trimmed. Oldest
+/// samples are overwritten when capacity is exceeded — no memmove on the RT
+/// thread.
 final class PCMRingBuffer: @unchecked Sendable {
     private let bufferLock = NSLock()
-    private var samples: [Float] = []
+    private var samples: [Float]
     private let capacity: Int
+    private var head: Int = 0
+    private var count: Int = 0
     let sampleRate: Double
 
     init(capacitySeconds: Double, sampleRate: Double) {
-        self.capacity = Int(capacitySeconds * sampleRate)
+        self.capacity = max(0, Int(capacitySeconds * sampleRate))
+        self.samples = Array(repeating: 0, count: self.capacity)
         self.sampleRate = sampleRate
     }
 
     func append(_ chunk: [Float]) {
         bufferLock.lock()
         defer { bufferLock.unlock() }
-        samples.append(contentsOf: chunk)
-        if samples.count > capacity {
-            samples.removeFirst(samples.count - capacity)
+        guard capacity > 0, !chunk.isEmpty else { return }
+        for sample in chunk {
+            let writeIndex = (head + count) % capacity
+            samples[writeIndex] = sample
+            if count == capacity {
+                head = (head + 1) % capacity
+            } else {
+                count += 1
+            }
         }
     }
 
     func drain() -> AudioClip {
         bufferLock.lock()
         defer { bufferLock.unlock() }
-        let copy = samples
-        samples.removeAll(keepingCapacity: true)
-        return AudioClip(samples: copy, sampleRate: sampleRate)
+        guard count > 0 else {
+            return AudioClip(samples: [], sampleRate: sampleRate)
+        }
+        var copy: [Float] = []
+        copy.reserveCapacity(count)
+        let firstSegmentCount = min(count, capacity - head)
+        copy.append(contentsOf: samples[head..<(head + firstSegmentCount)])
+        let remainingCount = count - firstSegmentCount
+        if remainingCount > 0 {
+            copy.append(contentsOf: samples[0..<remainingCount])
+        }
+        head = 0
+        count = 0
+        // Trim leading silence: drop samples before the first one whose
+        // absolute value exceeds ~−50 dBFS. Runs off the audio thread so
+        // the allocation/scan cost is acceptable.
+        let silenceThreshold: Float = 0.003
+        let speechStart = copy.firstIndex(where: { abs($0) > silenceThreshold }) ?? 0
+        return AudioClip(samples: Array(copy[speechStart...]), sampleRate: sampleRate)
     }
 
     func reset() {
         bufferLock.lock()
         defer { bufferLock.unlock() }
-        samples.removeAll(keepingCapacity: true)
+        head = 0
+        count = 0
     }
 }
