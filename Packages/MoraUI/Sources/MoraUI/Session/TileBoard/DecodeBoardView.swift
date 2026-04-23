@@ -75,7 +75,7 @@ public struct DecodeBoardView: View {
 
     private var listenAgainButton: some View {
         Button(action: speakTarget) {
-            Text(strings.decodeListenAgain)
+            Text(strings.decodingListenAgain)
                 .font(.title3.weight(.semibold))
                 .foregroundStyle(MoraTheme.Accent.teal)
                 .padding(.vertical, 10)
@@ -103,7 +103,7 @@ public struct DecodeBoardView: View {
     }
 
     private var promptText: String {
-        strings.decodeBuildPrompt
+        strings.decodingBuildPrompt
     }
 
     private func speakTarget() {

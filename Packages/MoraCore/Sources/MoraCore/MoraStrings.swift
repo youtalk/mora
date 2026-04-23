@@ -51,8 +51,8 @@ public struct MoraStrings: Sendable {
     public let warmupListenAgain: String
     public let newRuleGotIt: String
     public let decodingLongPressHint: String
-    public let decodeBuildPrompt: String
-    public let decodeListenAgain: String
+    public let decodingBuildPrompt: String
+    public let decodingListenAgain: String
     public let sentencesLongPressHint: String
     public let feedbackCorrect: String
     public let feedbackTryAgain: String
@@ -112,7 +112,7 @@ public struct MoraStrings: Sendable {
         sessionSentenceCounter: @escaping @Sendable (Int, Int) -> String,
         warmupListenAgain: String, newRuleGotIt: String,
         decodingLongPressHint: String,
-        decodeBuildPrompt: String, decodeListenAgain: String,
+        decodingBuildPrompt: String, decodingListenAgain: String,
         sentencesLongPressHint: String,
         feedbackCorrect: String, feedbackTryAgain: String,
         micIdlePrompt: String, micListening: String,
@@ -167,8 +167,8 @@ public struct MoraStrings: Sendable {
         self.warmupListenAgain = warmupListenAgain
         self.newRuleGotIt = newRuleGotIt
         self.decodingLongPressHint = decodingLongPressHint
-        self.decodeBuildPrompt = decodeBuildPrompt
-        self.decodeListenAgain = decodeListenAgain
+        self.decodingBuildPrompt = decodingBuildPrompt
+        self.decodingListenAgain = decodingListenAgain
         self.sentencesLongPressHint = sentencesLongPressHint
         self.feedbackCorrect = feedbackCorrect
         self.feedbackTryAgain = feedbackTryAgain
