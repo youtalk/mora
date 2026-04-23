@@ -101,10 +101,9 @@ Initial WAV fixtures checked into `Packages/MoraEngines/Tests/.../Fixtures/` are
 ## 5. Architecture
 
 ```
-Mora (app target, DEBUG build only)
-  └── Mora/Debug/                                      [NEW — #if DEBUG]
-        ├── DebugEntryPoint.swift                      5-tap gesture on Settings version row
-        └── PronunciationRecorderView.swift            SwiftUI fixture-capture screen
+Packages/MoraUI/Sources/MoraUI/Debug/                  [NEW — #if DEBUG]
+  ├── DebugEntryPoint.swift                            ViewModifier: 5-tap gesture on HomeView header
+  └── PronunciationRecorderView.swift                  SwiftUI fixture-capture screen
 
 Packages/MoraEngines/Sources/MoraEngines/Debug/        [NEW — #if DEBUG]
   ├── FixtureMetadata.swift                            Codable metadata struct
@@ -188,10 +187,10 @@ New file: `Packages/MoraEngines/Sources/MoraEngines/Debug/FixtureWriter.swift`. 
 
 ### 6.4 `PronunciationRecorderView` and `DebugEntryPoint`
 
-New files: `Mora/Debug/PronunciationRecorderView.swift`, `Mora/Debug/DebugEntryPoint.swift`. Both gated on `#if DEBUG`.
+New files: `Packages/MoraUI/Sources/MoraUI/Debug/PronunciationRecorderView.swift`, `Packages/MoraUI/Sources/MoraUI/Debug/DebugEntryPoint.swift`. Both gated on `#if DEBUG`.
 
 - `PronunciationRecorderView` is a SwiftUI form: target-phoneme picker (enumerating the Engine A supported set), expected-label picker with conditional substitute-phoneme picker, word `TextField`, speaker toggle (adult/child), `Record`/`Stop`/`Save` buttons, most-recent-capture row with delete.
-- `DebugEntryPoint` wraps an existing `SettingsView` row (the version-number row is the natural anchor) with a 5-tap `TapGesture`. Five taps within 3 seconds flip a `@State` flag that reveals a `NavigationLink` to `PronunciationRecorderView`.
+- `DebugEntryPoint` is a `ViewModifier` attached to `HomeView`'s top header anchor (`Packages/MoraUI/Sources/MoraUI/Home/HomeView.swift`) with a 5-tap `TapGesture`. Five taps within 3 seconds flip a `@State` flag that reveals a `NavigationLink` to `PronunciationRecorderView`. The recorder lives in `MoraUI` rather than the `Mora/` app target so the hook attaches inside `HomeView` (which lives in MoraUI) without touching `Mora/MoraApp.swift`, which is reserved for Phase 3.
 - No strings go through `MoraStrings`; all copy is hard-coded English in the Debug file. This avoids contaminating the shipped localization catalog with debug-only keys.
 
 ### 6.5 dev-tools/pronunciation-bench
@@ -250,9 +249,10 @@ Each fixture is mono, 16 kHz, 16-bit PCM, under 100 KB. Sidecar JSON files are *
 ### 7.1 Fixture capture (iPad, DEBUG build)
 
 ```
-1. Yutaka opens Mora on an iPad, goes to Settings.
-2. Taps the version-number row five times within 3 s → DebugEntryPoint reveals
-   a "Pronunciation Recorder" NavigationLink.
+1. Yutaka opens Mora on an iPad to HomeView.
+2. Taps the HomeView header anchor five times within 3 s → the
+   `DebugEntryPoint` modifier reveals a "Fixture Recorder" NavigationLink
+   underneath it.
 3. Selects target phoneme (e.g. /r/), expected label (e.g. .substitutedBy(/l/)),
    word ("right"), speaker (adult/child).
 4. Taps Record → FixtureRecorder starts the AVAudioEngine, tap callback
@@ -267,9 +267,16 @@ Each fixture is mono, 16 kHz, 16-bit PCM, under 100 KB. Sidecar JSON files are *
 
 ```
 1. cd dev-tools/pronunciation-bench && swift run bench ~/fixtures/ out.csv
-2. CLI reads SPEECHACE_API_KEY from .env (unless --no-speechace).
+2. CLI reads SPEECHACE_API_KEY from `ProcessInfo.processInfo.environment`
+   (unless --no-speechace). A shell-sourced / exported `.env` is the
+   intended delivery mechanism — the CLI does not parse `.env` files
+   itself. The `.env.example` template ships alongside the package; users
+   copy it to `.env` and `source .env` (or export the variable in their
+   shell profile) before `swift run bench`.
 3. FixtureLoader enumerates (*.wav, *.json) pairs.
-4. For each pair (concurrent, bounded to 4 at a time):
+4. For each pair, sequentially (the v1 CLI processes one fixture at a
+   time; ordering is deterministic, SpeechAce rate-limit pressure stays
+   trivial, and the bench never outruns the user reviewing the CSV):
    a. Load WAV → [Float] @ 16 kHz mono
    b. Build AudioClip, synthesize Word { surface, targetPhoneme } from metadata
    c. If SpeechAce enabled: SpeechAceClient.score(audio, text: wordSurface) → Double?
@@ -318,7 +325,7 @@ CSV files are git-ignored at the `dev-tools/pronunciation-bench/` level. Results
 
 ### 9.1 Release-build invariants preserved
 
-- `#if DEBUG` wrapping on every new type in `Mora/Debug/` and `Packages/MoraEngines/Sources/MoraEngines/Debug/`. Release builds do not compile these files.
+- `#if DEBUG` wrapping on every new type in `Packages/MoraUI/Sources/MoraUI/Debug/` and `Packages/MoraEngines/Sources/MoraEngines/Debug/`. Release builds do not compile these files.
 - CI binary gate (landed in Part 1) continues to assert that the built `Mora.app` contains no SpeechAce or other cloud-assessment symbols. Part 2 adds none.
 - CI source gate (landed in Part 1) already scopes its grep to `-- Mora Packages`, so `dev-tools/pronunciation-bench/` is outside its reach by construction.
 
@@ -403,7 +410,7 @@ Phases are sequential: B requires no file from A, but C needs both (the recorder
 
 1. `Fixtures/` as a test resource bundle — Swift Package Manager `.copy` vs `.process` behavior with WAVs. Default is to use `.copy` to avoid resource processing; Phase C confirms during first run.
 2. Microphone Info.plist usage description is already present for the main session recorder. Debug recorder reuses the same key; no `project.yml` change expected.
-3. If the Debug entry point's 5-tap gesture collides with an existing SwiftUI gesture on the Settings row, fall back to a long-press on the version text.
+3. If the Debug entry point's 5-tap gesture collides with an existing SwiftUI gesture on the HomeView header anchor, fall back to a long-press on the same anchor.
 4. If Phase 3 changes the public signature of `FeatureBasedPronunciationEvaluator.evaluate(…)` while Part 2 is in flight, `EngineARunner` needs a one-line update. The parent spec §6.1 treats the `PronunciationEvaluator` protocol surface as stable; this is unlikely but worth calling out.
 5. Calibration output format revisit: if a second calibration pass becomes necessary within v1.5, Part 2 deliberately left room to add a `PhonemeThresholds` JSON loader without changing the Swift API. That is a follow-up PR, not a Part 2 task.
 

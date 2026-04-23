@@ -53,7 +53,7 @@ Touching any of them in a Part 2 commit is a planning bug — stop and re-plan.
 | `Packages/MoraUI/Sources/MoraUI/Debug/PronunciationRecorderView.swift` | SwiftUI form with phoneme + label + word pickers, Record/Stop/Save buttons, saved-file row. `#if DEBUG`. |
 | `Packages/MoraUI/Sources/MoraUI/Debug/DebugEntryPoint.swift` | `ViewModifier` that attaches a hidden 5-tap gesture revealing a `NavigationLink` to `PronunciationRecorderView`. `#if DEBUG`. |
 
-Deviation from spec §6.4: recorder UI moves from `Mora/Debug/` to `Packages/MoraUI/Sources/MoraUI/Debug/` so the 5-tap hook attaches to `HomeView` (which lives in MoraUI) without touching `Mora/MoraApp.swift` (reserved for Phase 3, see boundary table above). Release-binary gating is identical: `#if DEBUG` around the entire file.
+The recorder UI lives in `Packages/MoraUI/Sources/MoraUI/Debug/` (matching spec §6.4) so the 5-tap hook can attach to `HomeView` — which lives in MoraUI — without touching `Mora/MoraApp.swift` (reserved for Phase 3, see boundary table above). Release-binary gating is identical to anywhere else: `#if DEBUG` wraps the entire file.
 
 **New files (tests):**
 
@@ -759,9 +759,14 @@ Five taps within a 3-second window reveal the NavigationLink. The modifier is se
 #if DEBUG
 import SwiftUI
 
-/// Attaches a hidden 5-tap gesture to any view. After 5 taps within
-/// `window` seconds, a NavigationLink to `PronunciationRecorderView`
-/// is revealed in an overlay below the view. Tapping elsewhere resets.
+/// Attaches a hidden 5-tap gesture to any view. Every tap on the
+/// attached content is timestamped; taps older than `window` seconds
+/// are discarded, and once `threshold` fresh taps have accumulated,
+/// a NavigationLink to `PronunciationRecorderView` is revealed in an
+/// overlay below the content. Activation is sticky — once the link is
+/// shown it stays visible for the lifetime of the view; there is no
+/// deactivation path. Taps outside the attached content are not seen
+/// by this modifier and therefore have no effect on the counter.
 public struct DebugFixtureRecorderEntryModifier: ViewModifier {
 
     @State private var taps: [Date] = []
@@ -941,14 +946,20 @@ out of the production build graph.
 
 ## Usage
 
-1. Copy `.env.example` to `.env` and fill in `SPEECHACE_API_KEY`.
+1. Copy `.env.example` to `.env` and fill in `SPEECHACE_API_KEY`. The
+   CLI reads the key from `ProcessInfo.processInfo.environment`, not
+   from `.env` directly, so the file has to be loaded into your shell
+   before running the bench — e.g. `source .env`, or export the
+   variable in your shell profile. (Pass `--no-speechace` to skip this
+   step entirely and run Engine A only.)
 2. Export fixtures (WAV + sidecar JSON) from an iPad running a DEBUG
-   build of mora. See the DEBUG fixture recorder under Settings
-   (hidden 5-tap gesture on the HomeView header).
+   build of mora via the DEBUG fixture recorder — revealed by a hidden
+   5-tap gesture on the HomeView header anchor.
 3. Run:
 
 ```sh
 cd dev-tools/pronunciation-bench
+source .env   # or: export SPEECHACE_API_KEY=...
 swift run bench ~/path/to/fixtures/ out.csv
 ```
 
