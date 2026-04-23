@@ -44,10 +44,19 @@ public struct PronunciationRecorderView: View {
                     "Phoneme sequence (space-separated IPA, optional)",
                     text: $phonemeSequenceRaw
                 )
+                .onChange(of: phonemeSequenceRaw) { _, _ in
+                    // SwiftUI doesn't auto-clamp @State Int values when a
+                    // bound range shrinks. Re-clamp explicitly whenever the
+                    // user edits the raw sequence so the stored index never
+                    // exceeds the live sequence length.
+                    let upper = max(0, parsedPhonemeSequence.count - 1)
+                    targetPhonemeIndex = min(targetPhonemeIndex, upper)
+                }
                 if !parsedPhonemeSequence.isEmpty {
                     Stepper(
                         "Target index: \(targetPhonemeIndex)",
-                        value: $targetPhonemeIndex, in: 0...10
+                        value: $targetPhonemeIndex,
+                        in: 0...max(0, parsedPhonemeSequence.count - 1)
                     )
                 }
                 Picker("Speaker", selection: $speakerTag) {

@@ -134,9 +134,21 @@ final class FeatureBasedEvaluatorFixtureTests: XCTestCase {
         let (samples, sampleRate) = try readMono16k(from: url)
         let audio = AudioClip(samples: samples, sampleRate: sampleRate)
         let target = Phoneme(ipa: ipa)
-        let phonemeList: [Phoneme] =
-            phonemes.map { $0.map { Phoneme(ipa: $0) } } ?? [target]
-        let idx = targetIndex ?? 0
+        // Mirror EngineARunner.evaluate's defensive fallback: only honour a
+        // caller-supplied sequence when it's non-empty and the provided index
+        // is in-range. Any other shape (nil, empty, out-of-range) silently
+        // falls back to `[target]` so array subscripts below never trap.
+        let phonemeList: [Phoneme]
+        let idx: Int
+        if let phonemes, !phonemes.isEmpty,
+            let targetIndex, targetIndex >= 0, targetIndex < phonemes.count
+        {
+            phonemeList = phonemes.map { Phoneme(ipa: $0) }
+            idx = targetIndex
+        } else {
+            phonemeList = [target]
+            idx = 0
+        }
         let word = Word(
             surface: surface,
             graphemes: [Grapheme(letters: surface)],
