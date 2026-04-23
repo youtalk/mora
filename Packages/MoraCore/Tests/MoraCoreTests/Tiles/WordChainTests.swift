@@ -63,4 +63,18 @@ final class WordChainTests: XCTestCase {
         )
         XCTAssertNotNil(chain)
     }
+
+    func testRejectsDigraphToSingleLetterReplacement() {
+        // Spec §8.3: digraphs swap with digraphs, single letters with single
+        // letters. `sh` (digraph) → `s` (single) is not a valid delta even
+        // though both graphemes are in the inventory.
+        let inv = Set(["sh", "s", "i", "p"].map { Grapheme(letters: $0) })
+        let chain = WordChain(
+            role: .mixedApplication,
+            head: BuildTarget(word: w("ship", ["sh", "i", "p"])),
+            successorWords: [w("sip", ["s", "i", "p"])],
+            inventory: inv
+        )
+        XCTAssertNil(chain)
+    }
 }

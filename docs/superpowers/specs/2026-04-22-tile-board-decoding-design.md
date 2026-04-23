@@ -105,7 +105,7 @@ Dropping a tile on a slot that does not accept it increments `slotMissCount` for
 |---|---|---|
 | 1 | Tile bounces back to pool with 0.25 s shake (amplitude 8 pt). Soft haptic. Slot flashes hint color for 180 ms. | `slotMissCount++` |
 | 2 | TTS repeats the target phoneme in isolation (e.g., "/ʃ/ — find /ʃ/"). Correct tile in pool pulses at 1 Hz. | `ttsHintIssued = true` |
-| 3 | Pool reduces to the correct tile plus one distractor. Other tiles fade out over 300 ms and are not reachable. | `poolReducedTo2 = true` |
+| 3 | Pool reduces to the correct tile plus one distractor. Other tiles fade out over 300 ms and are not reachable. | `poolReducedToTwo = true` |
 | 4 | Slot auto-fills with the correct tile. Tile animates into place from the pool. Auto-fill tiles are visually distinguishable (dashed outline) so the child can see which tiles they did not place themselves. | `autoFilled = true`, trial `scaffoldLevel = 4` |
 
 `scaffoldLevel` is the maximum of the per-slot intervention levels reached during the trial, where each ladder step maps 1→1. `scaffoldLevel = 0` means the trial was first-try perfect.
@@ -139,7 +139,7 @@ The change respects the one-way dependency direction `Core ← Engines ← UI`, 
 
 New value types (all `Sendable`, all in `Sources/MoraCore/`):
 
-- `TileKind` — enum: `consonant`, `vowel`, `digraph`, `blend`, `trigraph`. Derived from `Grapheme` attributes, not declared on the tile.
+- `TileKind` — enum: `consonant`, `vowel`, `multigrapheme`. Derived from `Grapheme` attributes, not declared on the tile. Digraphs, blends, and trigraphs are all represented by the public `multigrapheme` case; any finer distinction remains derivable from the underlying `Grapheme`.
 - `Tile` — a `Grapheme` plus display metadata (`kind`, rendered string). Identity is the grapheme.
 - `BuildTarget` — `{ word: Word, slots: [Grapheme] }`. The canonical spelling of a Build head.
 - `ChangeTarget` — `{ predecessor: Word, successor: Word, changedIndex: Int }`. Invariant: exactly one position differs.
