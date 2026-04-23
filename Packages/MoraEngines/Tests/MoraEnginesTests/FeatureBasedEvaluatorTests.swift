@@ -106,4 +106,60 @@ final class FeatureBasedEvaluatorTests: XCTestCase {
         // FFT bin alignment, but the coaching key must not be sub.
         XCTAssertNotEqual(result.coachingKey, "coaching.sh_sub_s")
     }
+
+    // --- f/h ---
+    func testFSubstitutedByHReturnsSubstituted() async {
+        let word = Word(
+            surface: "fun",
+            graphemes: [Grapheme(letters: "f"), Grapheme(letters: "u"), Grapheme(letters: "n")],
+            phonemes: [Phoneme(ipa: "f"), Phoneme(ipa: "ʌ"), Phoneme(ipa: "n")],
+            targetPhoneme: Phoneme(ipa: "f")
+        )
+        // /h/ substitution: broad low-band noise (weak high-band friction).
+        let audio = SyntheticAudio.bandNoise(lowHz: 300, highHz: 1_200, durationMs: 500)
+        let result = await evaluator.evaluate(
+            audio: audio,
+            expected: word,
+            targetPhoneme: Phoneme(ipa: "f"),
+            asr: ASRResult(transcript: "hun", confidence: 0.7)
+        )
+        if case .substitutedBy(let p) = result.label {
+            XCTAssertEqual(p, Phoneme(ipa: "h"))
+        } else {
+            XCTFail("expected /h/ substitute, got \(result.label)")
+        }
+        XCTAssertEqual(result.coachingKey, "coaching.f_sub_h")
+    }
+
+    // --- θ / s ---
+    func testThSubstitutedBySReturnsSubstituted() async {
+        let word = Word(
+            surface: "thin",
+            graphemes: [Grapheme(letters: "th"), Grapheme(letters: "i"), Grapheme(letters: "n")],
+            phonemes: [Phoneme(ipa: "θ"), Phoneme(ipa: "ɪ"), Phoneme(ipa: "n")],
+            targetPhoneme: Phoneme(ipa: "θ")
+        )
+        // /s/ substitution: narrow high-band noise.
+        let audio = SyntheticAudio.bandNoise(lowHz: 5_800, highHz: 7_200, durationMs: 500)
+        let result = await evaluator.evaluate(
+            audio: audio,
+            expected: word,
+            targetPhoneme: Phoneme(ipa: "θ"),
+            asr: ASRResult(transcript: "sin", confidence: 0.85)
+        )
+        if case .substitutedBy(let p) = result.label {
+            XCTAssertEqual(p, Phoneme(ipa: "s"))
+        } else {
+            XCTFail("expected /s/ substitute, got \(result.label)")
+        }
+        XCTAssertEqual(result.coachingKey, "coaching.th_voiceless_sub_s")
+    }
+
+    // MARK: - Skipped substitution pairs
+    // Synthetic audio is not reliable for these pairs; each needs a recorded
+    // fixture to exercise the measurement path in a meaningful way.
+    // - /r/ vs /l/  — TODO(post-alpha): needs recorded fixture (F3 formant)
+    // - /v/ vs /b/  — TODO(post-alpha): needs recorded fixture (voicing onset time)
+    // - /æ/ vs /ʌ/ — TODO(post-alpha): needs recorded fixture (F1 formant)
+    // - /θ/ vs /t/ — TODO(post-alpha): needs recorded fixture (onset burst slope)
 }
