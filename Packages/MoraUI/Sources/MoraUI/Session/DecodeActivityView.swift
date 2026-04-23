@@ -17,50 +17,67 @@ struct DecodeActivityView: View {
     @State private var micState: MicUIState = .idle
     @State private var shakeAmount: CGFloat = 0
     @State private var shakeResetTask: Task<Void, Never>?
+    /// Pin the word shown on screen to a specific orchestrator index during
+    /// the feedback / corrective-audio window. Without this, the orchestrator
+    /// advances `wordIndex` the instant `.answerHeard` is handled and the
+    /// body re-renders the NEXT word — while the TTS "Listen: ship" is still
+    /// playing. Learners then see "shop" while hearing "ship", and stay one
+    /// word off-screen for the rest of the session. `nil` = follow the
+    /// orchestrator's live index.
+    @State private var pinnedWordIndex: Int?
+    /// ASR transcript to keep visible after `.final` so the learner (and the
+    /// parent watching) can see what was heard, not just green/red feedback.
+    @State private var lastHeard: String = ""
 
     var body: some View {
-        VStack(spacing: MoraTheme.Space.lg) {
-            Spacer()
-            if let current = currentWord {
-                Text(current.word.surface)
-                    .font(MoraType.decodingWord())
-                    .foregroundStyle(MoraTheme.Ink.primary)
-                    .shake(amount: shakeAmount)
-                    .onLongPressGesture {
-                        guard let tts = ttsEngine else { return }
-                        Task { await tts.speak(current.word.surface) }
+        ScrollView {
+            VStack(spacing: MoraTheme.Space.lg) {
+                if let current = displayedWord {
+                    Text(current.word.surface)
+                        .font(MoraType.decodingWord())
+                        .foregroundStyle(MoraTheme.Ink.primary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.4)
+                        .shake(amount: shakeAmount)
+                        .onLongPressGesture {
+                            guard let tts = ttsEngine else { return }
+                            Task { await tts.speak(current.word.surface, pace: .slow) }
+                        }
+
+                    if let note = current.note {
+                        Text(note)
+                            .font(MoraType.label())
+                            .foregroundStyle(MoraTheme.Ink.muted)
+                            .multilineTextAlignment(.center)
+                            .minimumScaleFactor(0.5)
                     }
 
-                if let note = current.note {
-                    Text(note)
-                        .font(MoraType.label())
-                        .foregroundStyle(MoraTheme.Ink.muted)
-                }
+                    switch uiMode {
+                    case .tap:
+                        tapPair(word: current.word)
+                    case .mic:
+                        micStack
+                    }
 
-                Spacer()
-
-                switch uiMode {
-                case .tap:
-                    tapPair(word: current.word)
-                case .mic:
-                    micStack
-                }
-
-                HStack(spacing: MoraTheme.Space.sm) {
-                    Text(
-                        strings.sessionWordCounter(
-                            orchestrator.wordIndex + 1, orchestrator.words.count
+                    VStack(spacing: MoraTheme.Space.xs) {
+                        Text(
+                            strings.sessionWordCounter(
+                                (pinnedWordIndex ?? orchestrator.wordIndex) + 1,
+                                orchestrator.words.count
+                            )
                         )
-                    )
-                    Text("·")
-                    Text(strings.decodingLongPressHint)
+                        Text(strings.decodingLongPressHint)
+                            .multilineTextAlignment(.center)
+                    }
+                    .font(MoraType.label())
+                    .foregroundStyle(MoraTheme.Ink.muted)
+                    .minimumScaleFactor(0.5)
+                } else {
+                    ProgressView()
                 }
-                .font(MoraType.label())
-                .foregroundStyle(MoraTheme.Ink.muted)
-                .padding(.bottom, MoraTheme.Space.lg)
-            } else {
-                ProgressView()
             }
+            .padding(.vertical, MoraTheme.Space.xl)
+            .frame(maxWidth: .infinity)
         }
         .onChange(of: feedback) { _, new in
             if new == .wrong {
@@ -85,7 +102,7 @@ struct DecodeActivityView: View {
     }
 
     private var micStack: some View {
-        VStack(spacing: MoraTheme.Space.sm) {
+        VStack(spacing: MoraTheme.Space.md) {
             MicButton(state: micState.buttonState) {
                 switch micState {
                 case .idle:
@@ -99,17 +116,35 @@ struct DecodeActivityView: View {
                     break
                 }
             }
-            if case .listening(let text) = micState, !text.isEmpty {
-                Text(text)
-                    .font(MoraType.label())
-                    .foregroundStyle(MoraTheme.Ink.muted)
-            }
+            transcriptLine
         }
     }
 
-    private var currentWord: DecodeWord? {
-        guard orchestrator.wordIndex < orchestrator.words.count else { return nil }
-        return orchestrator.words[orchestrator.wordIndex]
+    /// Shows the ASR transcript at a readable size whenever there is a
+    /// partial or final transcript worth displaying. Keeps the heard word
+    /// visible through the assessing / feedback window so the learner can
+    /// compare expected vs. heard without squinting at 14-pt chrome.
+    @ViewBuilder
+    private var transcriptLine: some View {
+        if case .listening(let partial) = micState, !partial.isEmpty {
+            Text(partial)
+                .font(MoraType.transcript())
+                .foregroundStyle(MoraTheme.Ink.secondary)
+                .lineLimit(2)
+                .multilineTextAlignment(.center)
+        } else if !lastHeard.isEmpty {
+            Text(lastHeard)
+                .font(MoraType.transcript())
+                .foregroundStyle(MoraTheme.Ink.secondary)
+                .lineLimit(2)
+                .multilineTextAlignment(.center)
+        }
+    }
+
+    private var displayedWord: DecodeWord? {
+        let idx = pinnedWordIndex ?? orchestrator.wordIndex
+        guard idx < orchestrator.words.count else { return nil }
+        return orchestrator.words[idx]
     }
 
     private func tapPair(word: Word) -> some View {
@@ -117,17 +152,23 @@ struct DecodeActivityView: View {
             tapButton(strings.feedbackCorrect, color: MoraTheme.Feedback.correct) {
                 feedback = .correct
                 Task { @MainActor in
+                    let priorIndex = orchestrator.wordIndex
+                    pinnedWordIndex = priorIndex
                     await orchestrator.handle(.answerManual(correct: true))
                     try? await Task.sleep(nanoseconds: 450_000_000)
                     feedback = .none
+                    pinnedWordIndex = nil
                 }
             }
             tapButton(strings.feedbackTryAgain, color: MoraTheme.Feedback.wrong) {
                 feedback = .wrong
                 Task { @MainActor in
+                    let priorIndex = orchestrator.wordIndex
+                    pinnedWordIndex = priorIndex
                     await orchestrator.handle(.answerManual(correct: false))
                     try? await Task.sleep(nanoseconds: 650_000_000)
                     feedback = .none
+                    pinnedWordIndex = nil
                 }
             }
         }
@@ -147,7 +188,8 @@ struct DecodeActivityView: View {
     }
 
     private func startListening(engine: SpeechEngine) {
-        guard let expected = currentWord?.word else { return }
+        guard let expected = displayedWord?.word else { return }
+        lastHeard = ""
         micState = .listening(partialText: "")
         Task { @MainActor in
             do {
@@ -160,18 +202,29 @@ struct DecodeActivityView: View {
                             micState = .listening(partialText: text)
                         }
                     case .final(let asr):
+                        // Pin the on-screen word to the trial we're judging
+                        // BEFORE calling `orchestrator.handle`, so the
+                        // orchestrator's index bump doesn't re-render the
+                        // next word while corrective audio is still playing.
+                        let priorIndex = orchestrator.wordIndex
+                        pinnedWordIndex = priorIndex
+                        lastHeard = asr.transcript
                         micState = .assessing
                         try? await Task.sleep(nanoseconds: 120_000_000)
                         await orchestrator.handle(.answerHeard(asr))
                         let wasCorrect = orchestrator.trials.last?.correct ?? false
                         feedback = wasCorrect ? .correct : .wrong
                         if !wasCorrect, let tts = ttsEngine {
-                            await tts.speak("Listen: " + expected.surface)
+                            await tts.speak("Listen: " + expected.surface, pace: .slow)
                         }
                         try? await Task.sleep(
                             nanoseconds: wasCorrect ? 450_000_000 : 650_000_000)
                         feedback = .none
                         micState = .idle
+                        // Release the pin *after* the feedback window, so the
+                        // next word only appears when we're ready for it.
+                        pinnedWordIndex = nil
+                        lastHeard = ""
                     }
                 }
             } catch {

@@ -23,4 +23,22 @@ final class FakeTTSEngineTests: XCTestCase {
         tts.reset()
         XCTAssertTrue(tts.uttered.isEmpty)
     }
+
+    func test_stop_incrementsStopCount() async {
+        let tts = FakeTTSEngine()
+        XCTAssertEqual(tts.stopCount, 0)
+        await tts.stop()
+        XCTAssertEqual(tts.stopCount, 1)
+        await tts.stop()
+        XCTAssertEqual(tts.stopCount, 2)
+    }
+
+    func test_reset_clearsStopCount() async {
+        let tts = FakeTTSEngine()
+        await tts.stop()
+        await tts.stop()
+        XCTAssertEqual(tts.stopCount, 2)
+        tts.reset()
+        XCTAssertEqual(tts.stopCount, 0)
+    }
 }
