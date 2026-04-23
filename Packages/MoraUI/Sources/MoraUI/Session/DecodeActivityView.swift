@@ -72,7 +72,8 @@ struct DecodeActivityView: View {
                     .foregroundStyle(MoraTheme.Ink.muted)
                     .minimumScaleFactor(0.5)
 
-                    if let last = orchestrator.trials.last,
+                    if !lastHeard.isEmpty,
+                        let last = orchestrator.trials.last,
                         let phoneme = last.phoneme
                     {
                         PronunciationFeedbackOverlay(
