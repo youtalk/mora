@@ -45,4 +45,33 @@ final class FeatureExtractorTests: XCTestCase {
         let flatness = FeatureExtractor.spectralFlatness(clip: clip)
         XCTAssertGreaterThan(flatness, 0.2)
     }
+
+    func testZeroCrossingVarianceOfSteadyToneIsLow() {
+        let clip = SyntheticAudio.sineMix(frequencies: [1_000], durationMs: 200)
+        let variance = FeatureExtractor.zeroCrossingRateVariance(clip: clip, windowMs: 20)
+        XCTAssertLessThan(variance, 0.005)
+    }
+
+    func testZeroCrossingVarianceAcrossSilenceAndToneIsHigh() {
+        let mix = SyntheticAudio.concat(
+            SyntheticAudio.silence(durationMs: 100),
+            SyntheticAudio.sineMix(frequencies: [1_000], durationMs: 100)
+        )
+        let variance = FeatureExtractor.zeroCrossingRateVariance(clip: mix, windowMs: 20)
+        // Half the windows are silent (ZCR≈0), half are 1 kHz sine (ZCR≈0.125);
+        // analytic variance ≈ 0.0039. Threshold is set well below that.
+        XCTAssertGreaterThan(variance, 0.003)
+    }
+
+    func testOnsetBurstSlopeOfAbruptToneIsSteeper() {
+        // windowMs: 60 → firstHalf covers the 30 ms silence, secondHalf the onset.
+        let burst = SyntheticAudio.concat(
+            SyntheticAudio.silence(durationMs: 30),
+            SyntheticAudio.sineMix(frequencies: [2_000], durationMs: 50)
+        )
+        let gradual = SyntheticAudio.sineMix(frequencies: [2_000], durationMs: 80)
+        let burstSlope = FeatureExtractor.onsetBurstSlope(clip: burst, windowMs: 60)
+        let gradualSlope = FeatureExtractor.onsetBurstSlope(clip: gradual, windowMs: 60)
+        XCTAssertGreaterThan(burstSlope, gradualSlope)
+    }
 }

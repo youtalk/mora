@@ -56,6 +56,44 @@ public enum FeatureExtractor {
         return arithmetic > 0 ? min(1.0, geometric / arithmetic) : 0
     }
 
+    /// Variance of the per-window zero-crossing rate across the clip.
+    /// Low variance → sustained-voiced signals; high variance → boundary-heavy
+    /// signals such as /b/ bursts or abrupt onsets.
+    public static func zeroCrossingRateVariance(clip: AudioClip, windowMs: Int) -> Double {
+        let samplesPerWindow = max(8, Int(Double(windowMs) / 1000.0 * clip.sampleRate))
+        guard clip.samples.count >= samplesPerWindow * 2 else { return 0 }
+        var rates = [Double]()
+        var i = 0
+        while i + samplesPerWindow <= clip.samples.count {
+            let window = clip.samples[i..<(i + samplesPerWindow)]
+            var crossings = 0
+            var prev = window.first ?? 0
+            for s in window.dropFirst() {
+                if (prev < 0) != (s < 0) { crossings += 1 }
+                prev = s
+            }
+            rates.append(Double(crossings) / Double(samplesPerWindow))
+            i += samplesPerWindow
+        }
+        guard rates.count > 1 else { return 0 }
+        let mean = rates.reduce(0, +) / Double(rates.count)
+        let variance = rates.reduce(0) { $0 + ($1 - mean) * ($1 - mean) } / Double(rates.count)
+        return variance
+    }
+
+    /// Slope of the RMS envelope over the first `windowMs`. Larger values
+    /// indicate a sharper onset (burst phonemes like /t/, /b/); smaller
+    /// values indicate gradual onsets (fricatives that ramp in).
+    public static func onsetBurstSlope(clip: AudioClip, windowMs: Int) -> Double {
+        let windowSamples = Int(Double(windowMs) / 1000.0 * clip.sampleRate)
+        guard clip.samples.count >= windowSamples, windowSamples >= 16 else { return 0 }
+        let firstHalf = clip.samples.prefix(windowSamples / 2)
+        let secondHalf = clip.samples[(windowSamples / 2)..<windowSamples]
+        let rms1 = sqrt(firstHalf.reduce(0) { $0 + $1 * $1 } / Float(firstHalf.count))
+        let rms2 = sqrt(secondHalf.reduce(0) { $0 + $1 * $1 } / Float(secondHalf.count))
+        return Double(rms2 - rms1) * (1000.0 / Double(windowMs))
+    }
+
     /// Power spectrum of the windowed FFT, returned as a half-band magnitude
     /// array (DC to Nyquist). Returns nil for empty clips.
     static func powerSpectrum(clip: AudioClip) -> [Float]? {
