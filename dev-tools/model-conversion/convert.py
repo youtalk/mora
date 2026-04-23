@@ -14,6 +14,7 @@ import os
 import pathlib
 import subprocess
 import sys
+import tempfile
 
 import numpy as np
 import torch
@@ -76,8 +77,16 @@ def trace(model: Wav2Vec2ForCTC) -> torch.jit.ScriptModule:
 
 
 def export_mlprogram(
-    traced: torch.jit.ScriptModule, output_dir: pathlib.Path
+    traced: torch.jit.ScriptModule, staging_dir: pathlib.Path
 ) -> pathlib.Path:
+    """Export + INT8-quantize the traced model into ``staging_dir``.
+
+    The ``.mlpackage`` is the CoreML intermediate; we compile it into
+    ``.mlmodelc`` in :func:`compile_mlmodelc` and discard the intermediate.
+    Writing it to a caller-owned staging directory (typically a tempdir
+    from :mod:`tempfile`) keeps it from leaking into the bundled
+    ``Resources/`` tree.
+    """
     sample_len = int(EXPORT_DURATION_SECONDS * EXPECTED_SAMPLE_RATE)
     mlmodel = ct.convert(
         traced,
@@ -96,7 +105,7 @@ def export_mlprogram(
         global_config=OpLinearQuantizerConfig(mode="linear_symmetric", weight_threshold=512)
     )
     mlmodel = linear_quantize_weights(mlmodel, config=config)
-    out_package = output_dir / "wav2vec2-phoneme.mlpackage"
+    out_package = staging_dir / "wav2vec2-phoneme.mlpackage"
     if out_package.exists():
         subprocess.run(["rm", "-rf", str(out_package)], check=True)
     mlmodel.save(str(out_package))
@@ -137,12 +146,22 @@ def main() -> int:
     model, processor = load_model(token)
     print("Tracing model...")
     traced = trace(model)
-    print("Exporting to mlprogram + INT8 quantizing...")
-    pkg = export_mlprogram(traced, args.output_dir)
-    print(f"Compiling .mlmodelc from {pkg.name}...")
-    compiled = compile_mlmodelc(pkg, args.output_dir)
-    print("Writing phoneme-labels.json...")
-    labels_path = dump_phoneme_labels(processor, args.output_dir)
+    # Write the `.mlpackage` intermediate to a scratch directory so it
+    # cannot leak into `Resources/` (or into the output-dir at all) and
+    # accidentally get committed. The compiled `.mlmodelc` is the only
+    # artifact we want to keep. `tempfile.mkdtemp()` is cleaned up
+    # unconditionally via `shutil.rmtree` below.
+    staging_dir = pathlib.Path(tempfile.mkdtemp(prefix="mora-mlpackage-"))
+    try:
+        print(f"Exporting to mlprogram + INT8 quantizing (staging in {staging_dir})...")
+        pkg = export_mlprogram(traced, staging_dir)
+        print(f"Compiling .mlmodelc from {pkg.name}...")
+        compiled = compile_mlmodelc(pkg, args.output_dir)
+        print("Writing phoneme-labels.json...")
+        labels_path = dump_phoneme_labels(processor, args.output_dir)
+    finally:
+        print(f"Cleaning up staging dir {staging_dir}...")
+        subprocess.run(["rm", "-rf", str(staging_dir)], check=True)
     print("Done:")
     print(f"  {compiled}")
     print(f"  {labels_path}")
