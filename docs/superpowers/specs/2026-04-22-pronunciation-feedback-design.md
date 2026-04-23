@@ -92,7 +92,7 @@ The `from == to` sentinel is a deliberate compromise: it keeps the existing `Pho
 
 ### 4.5 Scoring honesty constraint
 
-The author's product requirement, captured verbatim: "Cはスコアリングがそれなりに正確にできるなら付けたい". Scores must not be performative. The spec enforces this by:
+The author's product requirement: "Grade C should be awarded only if the scoring is reasonably accurate." Scores must not be performative. The spec enforces this by:
 
 - Using linear interpolation between literature-derived feature centroids, not a learned or inferred score.
 - Gating score display behind `isReliable`.
