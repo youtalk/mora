@@ -2,18 +2,6 @@ import MoraCore
 import MoraEngines
 import SwiftUI
 
-private func previewSkill() -> Skill {
-    Skill(
-        code: "sh_onset",
-        level: .l3,
-        displayName: "sh",
-        graphemePhoneme: .init(
-            grapheme: .init(letters: "sh"),
-            phoneme: .init(ipa: "ʃ")
-        )
-    )
-}
-
 #Preview("Build trial") {
     let word = Word(
         surface: "ship",
@@ -31,7 +19,6 @@ private func previewSkill() -> Skill {
     )
     return DecodeBoardView(
         engine: TileBoardEngine(trial: trial),
-        target: Target(weekStart: .now, skill: previewSkill()),
         chainPipStates: Array(repeating: .pending, count: 12),
         incomingRole: .targetIntro
     )
@@ -60,7 +47,6 @@ private func previewSkill() -> Skill {
     )
     return DecodeBoardView(
         engine: TileBoardEngine(trial: trial),
-        target: Target(weekStart: .now, skill: previewSkill()),
         chainPipStates: Array(repeating: .done, count: 5) + [.active]
             + Array(repeating: .pending, count: 6),
         incomingRole: .targetIntro

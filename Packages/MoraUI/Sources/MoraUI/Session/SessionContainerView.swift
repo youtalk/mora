@@ -73,8 +73,8 @@ public struct SessionContainerView: View {
         // Every phase transition cancels whatever the prior phase was
         // speaking. The new phase view owns the next utterance via its
         // own `.task`. Without this, a long-press speak left over from
-        // DecodeActivityView would keep playing on ShortSentencesView
-        // because that view has no phase-intro `.task` of its own.
+        // a prior phase-intro view would keep playing into the next
+        // phase if that view has no `.task` of its own.
         .onChange(of: orchestrator?.phase) { _, _ in
             guard let speech else { return }
             Task { await speech.stop() }
@@ -126,7 +126,6 @@ public struct SessionContainerView: View {
                 if let engine = orchestrator.currentTileBoardEngine {
                     DecodeBoardView(
                         engine: engine,
-                        target: orchestrator.target,
                         chainPipStates: orchestrator.chainPipStates.map(ChainPipState.init),
                         incomingRole: orchestrator.currentChainRole,
                         isFirstTrialOfPhase: orchestrator.isFirstTrialOfPhase,

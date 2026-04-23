@@ -5,24 +5,22 @@ import SwiftUI
 public struct DecodeBoardView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Bindable public var engine: TileBoardEngine
-    public let target: Target
     public let chainPipStates: [ChainPipState]
     public let incomingRole: ChainRole
     public let isFirstTrialOfPhase: Bool
     public var onTrialComplete: (TileBoardTrialResult) -> Void = { _ in }
 
     @State private var betaOverlayVisible: Bool = false
+    @State private var betaTask: Task<Void, Never>?
 
     public init(
         engine: TileBoardEngine,
-        target: Target,
         chainPipStates: [ChainPipState],
         incomingRole: ChainRole,
         isFirstTrialOfPhase: Bool = false,
         onTrialComplete: @escaping (TileBoardTrialResult) -> Void = { _ in }
     ) {
         self.engine = engine
-        self.target = target
         self.chainPipStates = chainPipStates
         self.incomingRole = incomingRole
         self.isFirstTrialOfPhase = isFirstTrialOfPhase
@@ -40,7 +38,7 @@ public struct DecodeBoardView: View {
                 pool
             }
             .padding(.horizontal, 24)
-            .onChange(of: engine.state) { oldValue, newValue in
+            .onChange(of: engine.state) { _, newValue in
                 if newValue == .completed {
                     onTrialComplete(engine.result)
                 }
@@ -61,20 +59,23 @@ public struct DecodeBoardView: View {
         .onAppear {
             if isFirstTrialOfPhase {
                 betaOverlayVisible = true
-                Task {
+                betaTask = Task { @MainActor in
                     try? await Task.sleep(nanoseconds: 600_000_000)
-                    await MainActor.run {
-                        withAnimation(reduceMotion ? .linear(duration: 0.12) : .easeOut(duration: 0.35)) {
-                            betaOverlayVisible = false
-                        }
-                        engine.apply(.preparationFinished)
-                        engine.apply(.promptFinished)
+                    if Task.isCancelled { return }
+                    withAnimation(reduceMotion ? .linear(duration: 0.12) : .easeOut(duration: 0.35)) {
+                        betaOverlayVisible = false
                     }
+                    engine.apply(.preparationFinished)
+                    engine.apply(.promptFinished)
                 }
             } else {
                 engine.apply(.preparationFinished)
                 engine.apply(.promptFinished)
             }
+        }
+        .onDisappear {
+            betaTask?.cancel()
+            betaTask = nil
         }
     }
 
@@ -105,7 +106,7 @@ public struct DecodeBoardView: View {
     private func slotState(at index: Int, expected: Grapheme) -> SlotState {
         if let filled = engine.filled[index] {
             let tile = Tile(grapheme: filled)
-            if engine.autoFilled { return .autoFilled(tile) }
+            if engine.autoFilledSlots.contains(index) { return .autoFilled(tile) }
             if case .change = engine.trial, index != engine.trial.activeSlotIndex { return .locked(tile) }
             return .filled(tile)
         }

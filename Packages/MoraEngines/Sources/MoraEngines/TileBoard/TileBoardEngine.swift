@@ -13,6 +13,11 @@ public final class TileBoardEngine {
     public private(set) var ttsHintIssued: Bool = false
     public private(set) var poolReducedToTwo: Bool = false
     public private(set) var autoFilled: Bool = false
+    /// Indices of slots filled by the auto-fill scaffold rather than by the
+    /// learner. The view uses this to render the dashed-outline auto-fill
+    /// chrome only on the rescued slot, leaving learner-placed tiles styled
+    /// as `.filled`.
+    public private(set) var autoFilledSlots: Set<Int> = []
     public private(set) var lastIntervention: ScaffoldStep?
     public private(set) var pool: [Tile]
 
@@ -106,6 +111,7 @@ public final class TileBoardEngine {
             pool = [Tile(grapheme: correct), Tile(grapheme: distractor)]
         case .autoFill:
             autoFilled = true
+            autoFilledSlots.insert(slotIndex)
             filled[slotIndex] = expected
             if filled.allSatisfy({ $0 != nil }) { state = .completed }
         }

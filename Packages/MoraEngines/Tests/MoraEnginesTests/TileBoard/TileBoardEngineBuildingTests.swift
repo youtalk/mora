@@ -58,6 +58,41 @@ final class TileBoardEngineBuildingTests: XCTestCase {
         XCTAssertEqual(engine.filled[0], g("sh"))
         XCTAssertTrue(engine.autoFilled)
         XCTAssertEqual(engine.scaffoldLevel, 4)
+        XCTAssertEqual(engine.autoFilledSlots, [0])
+    }
+
+    func testAutoFillRecordsOnlyTheRescuedSlotIndex() {
+        // Slot 0 is rescued by auto-fill; slots 1 and 2 are placed correctly
+        // by the learner. The view layer should only show the dashed
+        // auto-fill chrome on slot 0.
+        let engine = primedEngine(pool: [
+            Tile(grapheme: g("sh")), Tile(grapheme: g("ch")), Tile(grapheme: g("t")),
+            Tile(grapheme: g("k")), Tile(grapheme: g("i")), Tile(grapheme: g("p")),
+        ])
+        for bad in ["ch", "t", "k", "ch"] {
+            engine.apply(.tileDropped(slotIndex: 0, tileID: bad))
+        }
+        engine.apply(.tileDropped(slotIndex: 1, tileID: "i"))
+        engine.apply(.tileDropped(slotIndex: 2, tileID: "p"))
+        XCTAssertEqual(engine.autoFilledSlots, [0])
+        XCTAssertEqual(engine.state, .completed)
+    }
+
+    func testAutoFillCompletionMatchesNormalDropCompletion() {
+        // Auto-fill of the last empty slot must transition to .completed
+        // exactly the same way a correct drop on the last slot does.
+        let engine = primedEngine(pool: [
+            Tile(grapheme: g("sh")), Tile(grapheme: g("i")), Tile(grapheme: g("p")),
+            Tile(grapheme: g("ch")), Tile(grapheme: g("t")), Tile(grapheme: g("k")),
+        ])
+        engine.apply(.tileDropped(slotIndex: 0, tileID: "sh"))
+        engine.apply(.tileDropped(slotIndex: 1, tileID: "i"))
+        for bad in ["ch", "t", "k", "ch"] {
+            engine.apply(.tileDropped(slotIndex: 2, tileID: bad))
+        }
+        XCTAssertEqual(engine.filled[2], g("p"))
+        XCTAssertEqual(engine.state, .completed)
+        XCTAssertEqual(engine.autoFilledSlots, [2])
     }
 
     func testCompletingAllSlotsAdvancesToCompleted() {
