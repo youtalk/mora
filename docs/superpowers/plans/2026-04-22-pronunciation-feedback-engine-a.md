@@ -17,6 +17,66 @@
 
 ---
 
+## Current progress (2026-04-22)
+
+**Status: 16 of 32 tasks completed on `worktree-polished-wobbling-shore`.** Tasks 1–16 are merged in a standalone PR; Tasks 17–32 will land in a follow-up branch so this plan can be picked up in a fresh session.
+
+### Completed
+
+| # | Task | Commit |
+|---|------|--------|
+| 1 | AudioClip value type | `0094728` |
+| 2 | PhonemeAssessmentLabel + PhonemeTrialAssessment | `13fc30d` |
+| 3 | PronunciationEvaluator protocol + fake | `b578b19` |
+| 4 | SpeechEvent.final → TrialRecording | `2a70150` |
+| 5 | OrchestratorEvent.answerHeard → TrialRecording | `1485cb4` |
+| 6 | Word.targetPhoneme | `d4654a2` |
+| 7 | JapaneseL1Profile sh_s_sub + sh_drift_target pairs | `222c9fe` |
+| 7b | Doc comments for PhonemeConfusionPair drift sentinel | `8283279` |
+| 8 | 9 coaching strings in MoraStrings (mid bucket) | `7b9634b` |
+| 9 | TrialAssessment.phoneme optional field | `e769368` |
+| 10 | AppleSpeechEngine PCM ring buffer | `2fa1d7a` |
+| 10b | PCM capture lifecycle hardening (C1 / C2 / I1 fixes) | `9129301` |
+| 11 | SyntheticAudio test helper | `4895aa2` |
+| 12 | FeatureExtractor.spectralCentroid | `b68564a` |
+| 13 | highLowBandEnergyRatio + spectralFlatness | `2657438` |
+| 14 | zeroCrossingRateVariance + onsetBurstSlope | `bd344ba` |
+| 15 | voicingOnsetTime + spectralPeakInBand | `0d73830` |
+| 16 | PhonemeThresholds literature table | `7f662c5` |
+
+Plan-fix commits applied during execution: `87eb36e` (`Grapheme(glyph:)` → `Grapheme(letters:)`) and `1030b96` (stale "Task 15" forward references → "Task 23").
+
+All four package test suites green at the checkpoint:
+
+```
+MoraCore      72 tests, 0 failures
+MoraEngines   77 tests, 0 failures
+MoraUI        27 tests, 0 failures
+MoraTesting   13 tests, 0 failures
+              ----
+              189 tests, 0 failures
+```
+
+### Remaining
+
+Resume at **Task 17** below. The instructions for Tasks 17–32 are unchanged from the original plan.
+
+- Task 17: `PhonemeRegionLocalizer`
+- Tasks 18–21: `FeatureBasedPronunciationEvaluator` (skeleton + supports / substitution path / drift path / remaining pairs) — **largest block in the plan**
+- Task 22: `AssessmentEngine.assess(expected:recording:leniency:) async` overload
+- Task 23: `SessionOrchestrator` consumes `TrialRecording` end-to-end (async)
+- Task 24: `CurriculumEngine` sets `Word.targetPhoneme`
+- Task 25: `PronunciationFeedbackOverlay` SwiftUI view + view model
+- Task 26: Wire overlay into `DecodeActivityView`
+- Task 27: Wire overlay into `ShortSentencesView`
+- Task 28: App startup injects `FeatureBasedPronunciationEvaluator`
+- Task 29: CI source gate (reject cloud pronunciation SDK references in shipped source)
+- Task 30: CI binary gate (reject cloud pronunciation symbols in the built app binary)
+- Task 31: Full A-day regression test exercising the pronunciation evaluator
+- Task 32: Docs cross-link between this plan and the spec
+
+---
+
 ## File map
 
 New files:
