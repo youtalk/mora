@@ -72,6 +72,12 @@ public struct MoraStrings: Sendable {
     public let coachingThVoicelessSubT: String
     public let coachingAeSubSchwa: String
 
+    // Pronunciation feedback category banner. Closures so the overlay can
+    // substitute kid-friendly letter pairs (e.g. "sh"/"s") at render time
+    // without embedding the per-locale template inside MoraUI source.
+    public let categorySubstitutionBanner: @Sendable (String, String) -> String
+    public let categoryDriftBanner: @Sendable (String) -> String
+
     // Completion
     public let completionTitle: String
     public let completionScore: @Sendable (Int, Int) -> String
@@ -116,6 +122,8 @@ public struct MoraStrings: Sendable {
         coachingThVoicelessSubS: String,
         coachingThVoicelessSubT: String,
         coachingAeSubSchwa: String,
+        categorySubstitutionBanner: @escaping @Sendable (String, String) -> String,
+        categoryDriftBanner: @escaping @Sendable (String) -> String,
         completionTitle: String,
         completionScore: @escaping @Sendable (Int, Int) -> String,
         completionComeBack: String,
@@ -171,6 +179,8 @@ public struct MoraStrings: Sendable {
         self.coachingThVoicelessSubS = coachingThVoicelessSubS
         self.coachingThVoicelessSubT = coachingThVoicelessSubT
         self.coachingAeSubSchwa = coachingAeSubSchwa
+        self.categorySubstitutionBanner = categorySubstitutionBanner
+        self.categoryDriftBanner = categoryDriftBanner
         self.completionTitle = completionTitle
         self.completionScore = completionScore
         self.completionComeBack = completionComeBack

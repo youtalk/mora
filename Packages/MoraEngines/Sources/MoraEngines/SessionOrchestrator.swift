@@ -58,12 +58,12 @@ public final class SessionOrchestrator {
             transitionTo(.decoding)
 
         case (.decoding, .answerHeard(let recording)):
-            handleDecodingHeard(asr: recording.asr)
+            await handleDecodingHeard(recording: recording)
         case (.decoding, .answerManual(let correct)):
             handleDecodingManual(correct: correct)
 
         case (.shortSentences, .answerHeard(let recording)):
-            handleSentenceHeard(asr: recording.asr)
+            await handleSentenceHeard(recording: recording)
         case (.shortSentences, .answerManual(let correct)):
             handleSentenceManual(correct: correct)
 
@@ -90,13 +90,17 @@ public final class SessionOrchestrator {
         }
     }
 
-    private func handleDecodingHeard(asr: ASRResult) {
+    private func handleDecodingHeard(recording: TrialRecording) async {
         guard wordIndex < words.count else {
             transitionTo(.shortSentences)
             return
         }
         let expected = words[wordIndex].word
-        let trial = assessment.assess(expected: expected, asr: asr, leniency: .newWord)
+        let trial = await assessment.assess(
+            expected: expected,
+            recording: recording,
+            leniency: .newWord
+        )
         trials.append(trial)
         wordIndex += 1
         if wordIndex >= words.count { transitionTo(.shortSentences) }
@@ -113,7 +117,7 @@ public final class SessionOrchestrator {
         if wordIndex >= words.count { transitionTo(.shortSentences) }
     }
 
-    private func handleSentenceHeard(asr: ASRResult) {
+    private func handleSentenceHeard(recording: TrialRecording) async {
         guard sentenceIndex < sentences.count else {
             transitionTo(.completion)
             return
@@ -126,7 +130,11 @@ public final class SessionOrchestrator {
                 return w.graphemes.contains(g)
             } ?? sentence.words.first
         if let expected {
-            let trial = assessment.assess(expected: expected, asr: asr, leniency: .newWord)
+            let trial = await assessment.assess(
+                expected: expected,
+                recording: recording,
+                leniency: .newWord
+            )
             trials.append(trial)
         }
         sentenceIndex += 1

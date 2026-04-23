@@ -49,4 +49,18 @@ final class ScriptedContentProviderTests: XCTestCase {
             }
         }
     }
+
+    func test_bundledShWeek1_wordsCarryTargetPhoneme() throws {
+        let provider = try ScriptedContentProvider.bundledShWeek1()
+        XCTAssertFalse(provider.words.isEmpty)
+        for dw in provider.words {
+            XCTAssertEqual(dw.word.targetPhoneme, Phoneme(ipa: "ʃ"))
+        }
+        XCTAssertFalse(provider.sentences.isEmpty)
+        for sentence in provider.sentences {
+            for w in sentence.words {
+                XCTAssertEqual(w.targetPhoneme, Phoneme(ipa: "ʃ"))
+            }
+        }
+    }
 }

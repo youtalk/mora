@@ -203,7 +203,10 @@ public struct SessionContainerView: View {
                     Grapheme(letters: "ch"),
                 ],
                 words: words, sentences: sentences,
-                assessment: AssessmentEngine(l1Profile: JapaneseL1Profile())
+                assessment: AssessmentEngine(
+                    l1Profile: JapaneseL1Profile(),
+                    evaluator: FeatureBasedPronunciationEvaluator()
+                )
             )
         } catch {
             bootError = String(describing: error)

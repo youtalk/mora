@@ -60,6 +60,24 @@ struct ShortSentencesView: View {
                     .font(MoraType.label())
                     .foregroundStyle(MoraTheme.Ink.muted)
                     .minimumScaleFactor(0.5)
+
+                    if !lastHeard.isEmpty,
+                        let last = orchestrator.trials.last,
+                        let phoneme = last.phoneme
+                    {
+                        let vm = PronunciationFeedbackViewModel(
+                            assessment: phoneme, strings: strings)
+                        if vm.hasContent {
+                            PronunciationFeedbackOverlay(
+                                viewModel: vm,
+                                onAppearSpeak: { [weak speech] text in
+                                    await speech?.playAndAwait([.text(text, .normal)])
+                                }
+                            )
+                            .transition(.opacity.combined(with: .scale))
+                            .padding(.top, MoraTheme.Space.md)
+                        }
+                    }
                 } else {
                     ProgressView()
                 }
