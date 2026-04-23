@@ -99,7 +99,7 @@ Inherit the originals from `2026-04-22-pronunciation-bench-and-calibration.md` �
 - Commit messages follow `area: short description`; include `Co-Authored-By: Claude <noreply@anthropic.com>` (repo opts in, per CLAUDE.md).
 - Use a HEREDOC for commit messages so the trailer stays on its own line.
 - Do not touch files in the Phase 3 conflict boundary table — Engine B has landed and the files are live code now, but the principle of scope isolation still applies here.
-- `xcodegen generate` requires the `DEVELOPMENT_TEAM: 7BT28X9TQ9` injection-revert trick in `project.yml` (see memory: `feedback_mora_xcodegen_team_injection`).
+- `xcodegen generate` requires a temporary `project.yml` edit: add `DEVELOPMENT_TEAM: 7BT28X9TQ9` under the repo's `settings.base` (or equivalent — see the inline snippet in Task A1 Step 1 below), run `xcodegen generate`, then restore `project.yml` so the team ID is never committed.
 
 ---
 
@@ -114,7 +114,8 @@ These tasks cannot be automated; they require a physical iPad + quiet room + a h
 - [ ] **Step 1:** Rebuild and install the Mora DEBUG build on iPad.
 
 ```bash
-cd /Users/yutaka.kondo/src/mora
+: "${REPO_ROOT:?Set REPO_ROOT to the Mora repo root before running this task.}"
+cd "$REPO_ROOT"
 # inject team, generate, revert
 python3 -c "
 import re
@@ -124,7 +125,7 @@ if 'DEVELOPMENT_TEAM' not in p:
     with open('project.yml', 'w') as f: f.write(p2)
 "
 xcodegen generate
-git checkout project.yml
+git restore --source=HEAD -- project.yml
 xcodebuild -project Mora.xcodeproj -scheme Mora -configuration Debug \
   -destination 'generic/platform=iOS' build
 ```
@@ -153,25 +154,23 @@ Install via Xcode → the physical iPad target.
 - [ ] **Step 4:** Sanity-run the bench with `--no-speechace`:
 
 ```bash
-cd /Users/yutaka.kondo/src/mora/dev-tools/pronunciation-bench
+cd "$REPO_ROOT/dev-tools/pronunciation-bench"
 swift run bench ~/mora-fixtures/ ~/mora-fixtures/out.csv --no-speechace
 ```
 
 Scan the CSV. If any `-correct.wav` labels as `.substitutedBy(...)` or any `-as-X.wav` labels as `.matched`, re-record — the fixture is noisy or mispronounced. Do **not** widen the test assertion bounds to compensate.
 
-- [ ] **Step 5:** Trim each WAV to ≤ 100 KB (i.e. ≤ ~1.5 s at 16 kHz 16-bit mono):
+- [ ] **Step 5:** Trim each WAV to keep clips ≤ 2 s per the original plan's guidance (16 kHz × 16-bit × mono ≈ 32 KB/s, so 2 s ≈ 65 KB + header, well under the 100 KB ceiling):
 
 ```bash
 # brew install sox  # once
-sox in.wav -r 16000 -b 16 -c 1 out.wav trim 0 1.5
+sox in.wav -r 16000 -b 16 -c 1 out.wav trim 0 2.0
 ```
 
-- [ ] **Step 6:** Rename per the filename table and check in. Drop the sidecar JSONs — the engine tests read labels from the filename.
+- [ ] **Step 6:** Rename per the filename table and check in. Keep the sidecar JSONs alongside the WAVs — the engine tests read labels from the filename, but `dev-tools/pronunciation-bench/FixtureLoader.enumerate` requires a matching `.json` for each `.wav`, so the committed fixtures stay re-bench-able without re-recording.
 
 ```bash
 cp -a ~/mora-fixtures-trimmed/{rl,vb,aeuh} Packages/MoraEngines/Tests/MoraEnginesTests/Fixtures/
-# remove any .json that tagged along
-find Packages/MoraEngines/Tests/MoraEnginesTests/Fixtures -name '*.json' -delete
 # remove the .gitkeep placeholders now that real WAVs are present
 rm -f Packages/MoraEngines/Tests/MoraEnginesTests/Fixtures/{rl,vb,aeuh}/.gitkeep
 ls -l Packages/MoraEngines/Tests/MoraEnginesTests/Fixtures/{rl,vb,aeuh}/*.wav

@@ -22,10 +22,11 @@
 **Prereq**: HF_TOKEN with Read access to `facebook/wav2vec2-xlsr-53-espeak-cv-ft`, revision `3693e11`.
 
 ```sh
-cd /Users/yutaka.kondo/src/mora
+: "${REPO_ROOT:?Set REPO_ROOT to the Mora repo root before running this task.}"
+cd "$REPO_ROOT"
 git checkout -b followup/engine-b-real-model main
 
-cd dev-tools/model-conversion
+cd "$REPO_ROOT/dev-tools/model-conversion"
 python3.11 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -33,7 +34,7 @@ cp .env.example .env
 # Edit .env: HF_TOKEN=hf_xxxxxxxx...
 
 python convert.py --output-dir ../../Packages/MoraMLX/Sources/MoraMLX/Resources
-cd -
+cd "$REPO_ROOT"
 
 # convert.py writes `.mlpackage` to a tempfile and cleans it up; only `.mlmodelc`
 # and `phoneme-labels.json` end up in Resources/.
