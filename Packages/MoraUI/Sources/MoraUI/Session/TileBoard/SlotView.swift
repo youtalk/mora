@@ -77,7 +77,8 @@ public struct SlotView: View {
                 .fill(TilePalette.fill(for: tile.kind).opacity(0.8))
                 .overlay(
                     RoundedRectangle(cornerRadius: 16)
-                        .strokeBorder(TilePalette.border(for: tile.kind), style: StrokeStyle(lineWidth: 2, dash: [4, 4]))
+                        .strokeBorder(
+                            TilePalette.border(for: tile.kind), style: StrokeStyle(lineWidth: 2, dash: [4, 4]))
                 )
         }
     }
