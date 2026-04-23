@@ -12,6 +12,8 @@ public struct PronunciationRecorderView: View {
     @State private var substitutePhonemeIPA: String = "s"
     @State private var wordSurface: String = "ship"
     @State private var speakerTag: SpeakerTag = .adult
+    @State private var phonemeSequenceRaw: String = ""
+    @State private var targetPhonemeIndex: Int = 0
     @State private var lastSaveURL: URL?
     @State private var errorMessage: String?
 
@@ -38,6 +40,16 @@ public struct PronunciationRecorderView: View {
                     }
                 }
                 TextField("Word", text: $wordSurface)
+                TextField(
+                    "Phoneme sequence (space-separated IPA, optional)",
+                    text: $phonemeSequenceRaw
+                )
+                if !parsedPhonemeSequence.isEmpty {
+                    Stepper(
+                        "Target index: \(targetPhonemeIndex)",
+                        value: $targetPhonemeIndex, in: 0...10
+                    )
+                }
                 Picker("Speaker", selection: $speakerTag) {
                     Text("adult").tag(SpeakerTag.adult)
                     Text("child").tag(SpeakerTag.child)
@@ -78,9 +90,22 @@ public struct PronunciationRecorderView: View {
         .navigationTitle("Fixture Recorder")
     }
 
+    /// Trimmed, whitespace-split phoneme sequence derived from
+    /// `phonemeSequenceRaw`. Empty when the user has not typed a sequence
+    /// — the Stepper and sidecar fields stay hidden / nil in that case.
+    private var parsedPhonemeSequence: [String] {
+        phonemeSequenceRaw
+            .split(whereSeparator: { $0.isWhitespace })
+            .map(String.init)
+            .filter { !$0.isEmpty }
+    }
+
     private func save() {
         let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let sub = (expectedLabel == .substitutedBy) ? substitutePhonemeIPA : nil
+        let sequence = parsedPhonemeSequence
+        let sequenceOrNil: [String]? = sequence.isEmpty ? nil : sequence
+        let indexOrNil: Int? = sequenceOrNil == nil ? nil : targetPhonemeIndex
         let meta = FixtureMetadata(
             capturedAt: Date(),
             targetPhonemeIPA: targetPhonemeIPA,
@@ -89,7 +114,9 @@ public struct PronunciationRecorderView: View {
             wordSurface: wordSurface,
             sampleRate: recorder.targetSampleRate,
             durationSeconds: Double(capturedSamples.count) / recorder.targetSampleRate,
-            speakerTag: speakerTag
+            speakerTag: speakerTag,
+            phonemeSequenceIPA: sequenceOrNil,
+            targetPhonemeIndex: indexOrNil
         )
         do {
             let out = try FixtureWriter.write(

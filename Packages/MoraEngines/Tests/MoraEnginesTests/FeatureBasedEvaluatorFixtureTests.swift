@@ -70,25 +70,41 @@ final class FeatureBasedEvaluatorFixtureTests: XCTestCase {
     // MARK: - æ / ʌ
 
     func testCatCorrectMatchesAe() async throws {
-        let a = try await evaluate("aeuh/cat-correct.wav", target: "æ", word: "cat")
+        let a = try await evaluate(
+            "aeuh/cat-correct.wav",
+            target: "æ", word: "cat",
+            phonemes: ["k", "æ", "t"], targetIndex: 1
+        )
         XCTAssertEqual(a.label, .matched)
         if let s = a.score { XCTAssertGreaterThanOrEqual(s, 70) }
     }
 
     func testCatAsCutSubstitutedByUh() async throws {
-        let a = try await evaluate("aeuh/cat-as-cut.wav", target: "æ", word: "cat")
+        let a = try await evaluate(
+            "aeuh/cat-as-cut.wav",
+            target: "æ", word: "cat",
+            phonemes: ["k", "æ", "t"], targetIndex: 1
+        )
         XCTAssertEqual(a.label, .substitutedBy(Phoneme(ipa: "ʌ")))
         if let s = a.score { XCTAssertLessThanOrEqual(s, 40) }
     }
 
     func testCutCorrectMatchesUh() async throws {
-        let a = try await evaluate("aeuh/cut-correct.wav", target: "ʌ", word: "cut")
+        let a = try await evaluate(
+            "aeuh/cut-correct.wav",
+            target: "ʌ", word: "cut",
+            phonemes: ["k", "ʌ", "t"], targetIndex: 1
+        )
         XCTAssertEqual(a.label, .matched)
         if let s = a.score { XCTAssertGreaterThanOrEqual(s, 70) }
     }
 
     func testCutAsCatSubstitutedByAe() async throws {
-        let a = try await evaluate("aeuh/cut-as-cat.wav", target: "ʌ", word: "cut")
+        let a = try await evaluate(
+            "aeuh/cut-as-cat.wav",
+            target: "ʌ", word: "cut",
+            phonemes: ["k", "ʌ", "t"], targetIndex: 1
+        )
         XCTAssertEqual(a.label, .substitutedBy(Phoneme(ipa: "æ")))
         if let s = a.score { XCTAssertLessThanOrEqual(s, 40) }
     }
@@ -96,7 +112,11 @@ final class FeatureBasedEvaluatorFixtureTests: XCTestCase {
     // MARK: - Loader
 
     private func evaluate(
-        _ relative: String, target ipa: String, word surface: String
+        _ relative: String,
+        target ipa: String,
+        word surface: String,
+        phonemes: [String]? = nil,
+        targetIndex: Int? = nil
     ) async throws -> PhonemeTrialAssessment {
         let relNS = relative as NSString
         let basename = (relNS.deletingPathExtension as NSString).lastPathComponent
@@ -114,11 +134,14 @@ final class FeatureBasedEvaluatorFixtureTests: XCTestCase {
         let (samples, sampleRate) = try readMono16k(from: url)
         let audio = AudioClip(samples: samples, sampleRate: sampleRate)
         let target = Phoneme(ipa: ipa)
+        let phonemeList: [Phoneme] =
+            phonemes.map { $0.map { Phoneme(ipa: $0) } } ?? [target]
+        let idx = targetIndex ?? 0
         let word = Word(
             surface: surface,
             graphemes: [Grapheme(letters: surface)],
-            phonemes: [target],
-            targetPhoneme: target
+            phonemes: phonemeList,
+            targetPhoneme: phonemeList[idx]
         )
         return await evaluator.evaluate(
             audio: audio, expected: word, targetPhoneme: target,

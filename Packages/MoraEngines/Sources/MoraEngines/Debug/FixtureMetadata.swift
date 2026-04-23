@@ -30,6 +30,13 @@ public struct FixtureMetadata: Codable, Sendable, Hashable {
     public let sampleRate: Double
     public let durationSeconds: Double
     public let speakerTag: SpeakerTag
+    /// Full phoneme sequence for the word, in the same order as
+    /// `Word.phonemes`. `nil` on legacy sidecar files recorded before
+    /// 2026-04-23 — callers must fall back to `phonemes: [target]`.
+    public let phonemeSequenceIPA: [String]?
+    /// Index of the target phoneme within `phonemeSequenceIPA`. `nil`
+    /// on legacy sidecar files; must be in-bounds when non-nil.
+    public let targetPhonemeIndex: Int?
 
     public init(
         capturedAt: Date,
@@ -39,7 +46,9 @@ public struct FixtureMetadata: Codable, Sendable, Hashable {
         wordSurface: String,
         sampleRate: Double,
         durationSeconds: Double,
-        speakerTag: SpeakerTag
+        speakerTag: SpeakerTag,
+        phonemeSequenceIPA: [String]? = nil,
+        targetPhonemeIndex: Int? = nil
     ) {
         self.capturedAt = capturedAt
         self.targetPhonemeIPA = targetPhonemeIPA
@@ -49,6 +58,8 @@ public struct FixtureMetadata: Codable, Sendable, Hashable {
         self.sampleRate = sampleRate
         self.durationSeconds = durationSeconds
         self.speakerTag = speakerTag
+        self.phonemeSequenceIPA = phonemeSequenceIPA
+        self.targetPhonemeIndex = targetPhonemeIndex
     }
 }
 #endif
