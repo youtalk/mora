@@ -4,13 +4,13 @@ Outputs:
     <output-dir>/wav2vec2-phoneme.mlmodelc/   (compiled CoreML model)
     <output-dir>/phoneme-labels.json          (ordered espeak IPA labels)
 
-Runs locally, never in CI. Reads HF_TOKEN from .env (python-dotenv).
+Runs locally, never in CI. The upstream model is public, so no
+Hugging Face token is required.
 """
 from __future__ import annotations
 
 import argparse
 import json
-import os
 import pathlib
 import subprocess
 import sys
@@ -18,7 +18,6 @@ import tempfile
 
 import numpy as np
 import torch
-from dotenv import load_dotenv
 from transformers import Wav2Vec2ForCTC, Wav2Vec2Processor
 
 import coremltools as ct
@@ -29,7 +28,9 @@ from coremltools.optimize.coreml import (
 )
 
 MODEL_ID = "facebook/wav2vec2-xlsr-53-espeak-cv-ft"
-MODEL_REVISION = "3693e11"  # pin; see dev-tools/model-conversion/README.md
+# Main-branch SHA as of 2021-12-10; the repo has had no further commits.
+# See dev-tools/model-conversion/README.md for the rationale behind pinning.
+MODEL_REVISION = "2c733782da5604684829819a5eb744c193fe9398"
 EXPECTED_SAMPLE_RATE = 16_000
 EXPORT_DURATION_SECONDS = 2.0
 
@@ -45,12 +46,12 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def load_model(token: str) -> tuple[Wav2Vec2ForCTC, Wav2Vec2Processor]:
+def load_model() -> tuple[Wav2Vec2ForCTC, Wav2Vec2Processor]:
     processor = Wav2Vec2Processor.from_pretrained(
-        MODEL_ID, revision=MODEL_REVISION, token=token
+        MODEL_ID, revision=MODEL_REVISION
     )
     model = Wav2Vec2ForCTC.from_pretrained(
-        MODEL_ID, revision=MODEL_REVISION, token=token
+        MODEL_ID, revision=MODEL_REVISION
     )
     # Switch to inference mode; see README for why we use .train(False)
     # instead of the more idiomatic alternative.
@@ -135,15 +136,10 @@ def dump_phoneme_labels(
 
 def main() -> int:
     args = parse_args()
-    load_dotenv()
-    token = os.environ.get("HF_TOKEN")
-    if not token:
-        print("HF_TOKEN is not set. Copy .env.example to .env and fill it in.", file=sys.stderr)
-        return 1
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"Loading {MODEL_ID}@{MODEL_REVISION}...")
-    model, processor = load_model(token)
+    model, processor = load_model()
     print("Tracing model...")
     traced = trace(model)
     # Write the `.mlpackage` intermediate to a scratch directory so it
