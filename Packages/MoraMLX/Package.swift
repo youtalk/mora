@@ -18,11 +18,18 @@ let package = Package(
                 .product(name: "MoraCore", package: "MoraCore"),
                 .product(name: "MoraEngines", package: "MoraEngines"),
             ],
+            resources: [
+                .copy("Resources/wav2vec2-phoneme.mlmodelc"),
+                .process("Resources/phoneme-labels.json"),
+            ],
             swiftSettings: [.swiftLanguageMode(.v5)]
         ),
         .testTarget(
             name: "MoraMLXTests",
             dependencies: ["MoraMLX"],
+            resources: [
+                .process("Fixtures"),
+            ],
             swiftSettings: [.swiftLanguageMode(.v5)]
         ),
     ]
