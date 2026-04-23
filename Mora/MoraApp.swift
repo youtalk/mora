@@ -16,6 +16,7 @@ struct MoraApp: App {
         self.container = Self.makeContainer()
         self.shadowFactory = Self.makeShadowFactory()
         Self.scheduleBackgroundCleanup(container: container)
+        Self.scheduleMLXWarmup()
     }
 
     var body: some Scene {
@@ -58,6 +59,19 @@ struct MoraApp: App {
             } catch {
                 log.error("PronunciationTrialLog cleanup failed at launch: \(error)")
             }
+        }
+    }
+
+    /// Pre-loads the bundled wav2vec2 CoreML model on a background task so
+    /// the first session-start does not block the main actor for ~10 s on
+    /// `MLModel(contentsOf:)`. `MoraMLXModelCatalog` caches the loaded
+    /// model for the process lifetime, so this warm-up benefits the first
+    /// session; subsequent sessions hit the cache instantly regardless.
+    /// Any load failure here is swallowed — `ShadowEvaluatorFactory`
+    /// re-runs the load on first use and handles the error there.
+    private static func scheduleMLXWarmup() {
+        Task.detached(priority: .userInitiated) {
+            _ = try? MoraMLXModelCatalog.loadPhonemeEvaluator()
         }
     }
 
