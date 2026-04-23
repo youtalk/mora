@@ -148,7 +148,8 @@ def main() -> int:
     # cannot leak into `Resources/` (or into the output-dir at all) and
     # accidentally get committed. The compiled `.mlmodelc` is the only
     # artifact we want to keep. `tempfile.mkdtemp()` is cleaned up
-    # unconditionally via `shutil.rmtree` below.
+    # unconditionally via the `subprocess.run(["rm", "-rf", ...])` in
+    # the `finally` block below.
     staging_dir = pathlib.Path(tempfile.mkdtemp(prefix="mora-mlpackage-"))
     try:
         print(f"Exporting to mlprogram + INT8 quantizing (staging in {staging_dir})...")

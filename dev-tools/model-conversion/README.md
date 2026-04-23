@@ -51,8 +51,10 @@ From this directory:
 
 The script downloads the model, quantizes to INT8, exports `.mlpackage`
 into a tempdir, compiles it to `.mlmodelc`, and writes
-`phoneme-labels.json`. Expected output size ~150 MB. Runtime ~10 minutes
-on an M2 MacBook Pro.
+`phoneme-labels.json`. Expected output size ~303 MB (weights ~317 MB
+INT8-packed plus ~1 MB metadata; the base wav2vec2-xlsr-53 model has
+~317 M parameters, which sets the INT8 floor). Runtime ~10 minutes on
+an M2 MacBook Pro.
 
 ## Pinned model revision
 

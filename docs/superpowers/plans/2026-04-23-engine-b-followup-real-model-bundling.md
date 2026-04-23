@@ -12,7 +12,7 @@
 
 ## Blockers preventing the real model from landing
 
-1. **Local compute** — `convert.py` takes ~10 min on an M2 MacBook Pro, produces a ~150 MB `.mlmodelc`. Agentic sessions with restricted network/disk can't run it end-to-end.
+1. **Local compute** — `convert.py` takes ~10 min on an M2 MacBook Pro, produces a ~303 MB `.mlmodelc` (weights ~317 MB INT8-packed; xlsr-53 has ~317 M parameters, which sets the INT8 floor). Agentic sessions with restricted network/disk can't run it end-to-end.
 2. **CoreML compile tool** — the script calls `xcrun coremlcompiler`, so the conversion must run on macOS with Xcode Command Line Tools. Linux / Docker are not viable hosts.
 
 The upstream model `facebook/wav2vec2-xlsr-53-espeak-cv-ft` is **public** (HF API `gated: False`), so no Hugging Face access token is required.
