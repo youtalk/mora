@@ -25,15 +25,18 @@ public struct TrialAssessment: Hashable, Codable, Sendable {
     public let correct: Bool
     public let errorKind: TrialErrorKind
     public let l1InterferenceTag: String?
+    public let phoneme: PhonemeTrialAssessment?
 
     public init(
         expected: Word, heard: String?, correct: Bool,
-        errorKind: TrialErrorKind, l1InterferenceTag: String?
+        errorKind: TrialErrorKind, l1InterferenceTag: String?,
+        phoneme: PhonemeTrialAssessment? = nil
     ) {
         self.expected = expected
         self.heard = heard
         self.correct = correct
         self.errorKind = errorKind
         self.l1InterferenceTag = l1InterferenceTag
+        self.phoneme = phoneme
     }
 }

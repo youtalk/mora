@@ -67,7 +67,12 @@ final class FullADayIntegrationTests: XCTestCase {
 
         for w in words {
             await orchestrator.handle(
-                .answerHeard(ASRResult(transcript: w.word.surface, confidence: 1.0))
+                .answerHeard(
+                    TrialRecording(
+                        asr: ASRResult(transcript: w.word.surface, confidence: 1.0),
+                        audio: .empty
+                    )
+                )
             )
         }
         XCTAssertEqual(orchestrator.phase, .shortSentences)
@@ -137,7 +142,12 @@ final class FullADayIntegrationTests: XCTestCase {
             let correct = i != missIndex
             if correct {
                 await orchestrator.handle(
-                    .answerHeard(ASRResult(transcript: w.word.surface, confidence: 1.0))
+                    .answerHeard(
+                        TrialRecording(
+                            asr: ASRResult(transcript: w.word.surface, confidence: 1.0),
+                            audio: .empty
+                        )
+                    )
                 )
             } else {
                 await orchestrator.handle(.answerManual(correct: false))

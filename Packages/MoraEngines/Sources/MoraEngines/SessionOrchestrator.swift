@@ -57,13 +57,13 @@ public final class SessionOrchestrator {
         case (.newRule, .advance):
             transitionTo(.decoding)
 
-        case (.decoding, .answerHeard(let asr)):
-            handleDecodingHeard(asr: asr)
+        case (.decoding, .answerHeard(let recording)):
+            handleDecodingHeard(asr: recording.asr)
         case (.decoding, .answerManual(let correct)):
             handleDecodingManual(correct: correct)
 
-        case (.shortSentences, .answerHeard(let asr)):
-            handleSentenceHeard(asr: asr)
+        case (.shortSentences, .answerHeard(let recording)):
+            handleSentenceHeard(asr: recording.asr)
         case (.shortSentences, .answerManual(let correct)):
             handleSentenceManual(correct: correct)
 
