@@ -38,7 +38,8 @@ public actor SwiftDataPronunciationTrialLogger: PronunciationTrialLogger {
         } else {
             engineALabelJSON = "{}"
         }
-        let engineAFeaturesJSON = (entry.engineA.flatMap { try? Self.encodeFeatures($0.features) })
+        let engineAFeaturesJSON =
+            (entry.engineA.flatMap { try? Self.encodeFeatures($0.features) })
             ?? "{}"
 
         let state: String

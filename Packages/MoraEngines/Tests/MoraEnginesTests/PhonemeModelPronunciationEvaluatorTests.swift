@@ -39,12 +39,14 @@ final class PhonemeModelPronunciationEvaluatorTests: XCTestCase {
         shFrames: Int, iFrames: Int, pFrames: Int,
         substituteSForSh: Bool = false
     ) -> PhonemePosterior {
-        let shRow: [Float] = substituteSForSh
+        let shRow: [Float] =
+            substituteSForSh
             ? [Float(log(0.2)), Float(log(0.75)), Float(log(0.025)), Float(log(0.025))]
             : [Float(log(0.9)), Float(log(0.05)), Float(log(0.025)), Float(log(0.025))]
         let iRow: [Float] = [Float(log(0.025)), Float(log(0.025)), Float(log(0.9)), Float(log(0.05))]
         let pRow: [Float] = [Float(log(0.025)), Float(log(0.025)), Float(log(0.05)), Float(log(0.9))]
-        let rows = Array(repeating: shRow, count: shFrames)
+        let rows =
+            Array(repeating: shRow, count: shFrames)
             + Array(repeating: iRow, count: iFrames)
             + Array(repeating: pRow, count: pFrames)
         return PhonemePosterior(

@@ -36,13 +36,13 @@ public struct ForcedAligner: Sendable {
         phonemes: [Phoneme]
     ) -> [PhonemeAlignment] {
         if phonemes.isEmpty { return [] }
-        let T = posterior.frameCount
-        let N = phonemes.count
-        guard T > 0 else {
+        let frameCount = posterior.frameCount
+        let stateCount = phonemes.count
+        guard frameCount > 0 else {
             return positionalFallback(frameCount: 0, phonemes: phonemes)
         }
-        if T < N {
-            return positionalFallback(frameCount: T, phonemes: phonemes)
+        if frameCount < stateCount {
+            return positionalFallback(frameCount: frameCount, phonemes: phonemes)
         }
 
         // Column lookups per phoneme. Nil means "unknown — penalize".
@@ -51,8 +51,8 @@ public struct ForcedAligner: Sendable {
 
         // Viterbi: dp[t][n] = best log-prob to reach state n at frame t.
         let negInf = -Float.greatestFiniteMagnitude
-        var dp = Array(repeating: Array(repeating: negInf, count: N), count: T)
-        var back = Array(repeating: Array(repeating: 0, count: N), count: T)
+        var dp = Array(repeating: Array(repeating: negInf, count: stateCount), count: frameCount)
+        var back = Array(repeating: Array(repeating: 0, count: stateCount), count: frameCount)
 
         func emit(_ t: Int, _ n: Int) -> Float {
             if let c = cols[n] {
@@ -62,8 +62,8 @@ public struct ForcedAligner: Sendable {
         }
 
         dp[0][0] = emit(0, 0)
-        for t in 1..<T {
-            for n in 0..<N {
+        for t in 1..<frameCount {
+            for n in 0..<stateCount {
                 // Stay in state n (self-loop) or advance from state n-1.
                 let stay = dp[t - 1][n]
                 let advance = n > 0 ? dp[t - 1][n - 1] : negInf
@@ -81,12 +81,12 @@ public struct ForcedAligner: Sendable {
             }
         }
 
-        // Backtrack from (T-1, N-1).
-        var boundaries = Array(repeating: 0, count: N + 1)
-        boundaries[N] = T
-        var state = N - 1
-        var t = T - 1
-        var path = Array(repeating: 0, count: T)
+        // Backtrack from (frameCount-1, stateCount-1).
+        var boundaries = Array(repeating: 0, count: stateCount + 1)
+        boundaries[stateCount] = frameCount
+        var state = stateCount - 1
+        var t = frameCount - 1
+        var path = Array(repeating: 0, count: frameCount)
         while t >= 0 {
             path[t] = state
             if t == 0 { break }
@@ -95,7 +95,7 @@ public struct ForcedAligner: Sendable {
         }
         // Derive boundaries from the path.
         var currentState = path[0]
-        for i in 1..<T {
+        for i in 1..<frameCount {
             if path[i] != currentState {
                 boundaries[path[i]] = i
                 currentState = path[i]
@@ -104,8 +104,8 @@ public struct ForcedAligner: Sendable {
 
         // Emit alignments with per-range averaged log-prob.
         var out: [PhonemeAlignment] = []
-        out.reserveCapacity(N)
-        for n in 0..<N {
+        out.reserveCapacity(stateCount)
+        for n in 0..<stateCount {
             let startFrame = boundaries[n]
             let endFrame = boundaries[n + 1]
             let avg: Float
@@ -136,12 +136,12 @@ public struct ForcedAligner: Sendable {
         frameCount: Int,
         phonemes: [Phoneme]
     ) -> [PhonemeAlignment] {
-        let N = phonemes.count
+        let stateCount = phonemes.count
         var out: [PhonemeAlignment] = []
-        out.reserveCapacity(N)
-        for n in 0..<N {
-            let start = frameCount * n / N
-            let end = frameCount * (n + 1) / N
+        out.reserveCapacity(stateCount)
+        for n in 0..<stateCount {
+            let start = frameCount * n / stateCount
+            let end = frameCount * (n + 1) / stateCount
             out.append(
                 PhonemeAlignment(
                     phoneme: phonemes[n],
