@@ -1,4 +1,4 @@
-// swift-tools-version: 5.9
+// swift-tools-version: 6.0
 import PackageDescription
 
 let package = Package(
@@ -8,7 +8,14 @@ let package = Package(
         .library(name: "MoraCore", targets: ["MoraCore"]),
     ],
     targets: [
-        .target(name: "MoraCore"),
-        .testTarget(name: "MoraCoreTests", dependencies: ["MoraCore"]),
+        .target(
+            name: "MoraCore",
+            swiftSettings: [.swiftLanguageMode(.v5)]
+        ),
+        .testTarget(
+            name: "MoraCoreTests",
+            dependencies: ["MoraCore"],
+            swiftSettings: [.swiftLanguageMode(.v5)]
+        ),
     ]
 )

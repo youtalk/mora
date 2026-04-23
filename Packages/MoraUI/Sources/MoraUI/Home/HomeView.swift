@@ -56,13 +56,22 @@ public struct HomeView: View {
 
     private var header: some View {
         HStack {
-            Text("Mora")
-                .font(MoraType.heading())
-                .foregroundStyle(MoraTheme.Accent.orange)
+            wordmark
             Spacer()
             StreakChip(count: streaks.first?.currentCount ?? 0)
         }
         .padding(MoraTheme.Space.md)
+    }
+
+    private var wordmark: some View {
+        let base = Text("Mora")
+            .font(MoraType.heading())
+            .foregroundStyle(MoraTheme.Accent.orange)
+        #if DEBUG
+        return base.debugFixtureRecorderEntry()
+        #else
+        return base
+        #endif
     }
 
     private var hero: some View {

@@ -150,10 +150,7 @@ public struct FeatureBasedPronunciationEvaluator: PronunciationEvaluator {
     }
 
     private func driftCoachingKey(target: String) -> String? {
-        switch target {
-        case "ʃ": return "coaching.sh_drift"
-        default: return nil
-        }
+        CoachingKeyResolver.drift(target: target)
     }
 
     private func matched(
@@ -228,16 +225,6 @@ public struct FeatureBasedPronunciationEvaluator: PronunciationEvaluator {
     }
 
     private func coachingKey(target: String, substitute: String) -> String? {
-        switch (target, substitute) {
-        case ("ʃ", "s"): return "coaching.sh_sub_s"
-        case ("r", "l"): return "coaching.r_sub_l"
-        case ("l", "r"): return "coaching.l_sub_r"
-        case ("f", "h"): return "coaching.f_sub_h"
-        case ("v", "b"): return "coaching.v_sub_b"
-        case ("θ", "s"): return "coaching.th_voiceless_sub_s"
-        case ("θ", "t"): return "coaching.th_voiceless_sub_t"
-        case ("æ", "ʌ"), ("ʌ", "æ"): return "coaching.ae_sub_schwa"
-        default: return nil
-        }
+        CoachingKeyResolver.substitution(target: target, substitute: substitute)
     }
 }
