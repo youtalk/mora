@@ -35,6 +35,10 @@ public final class SessionOrchestrator {
         }
     }
 
+    public var isFirstTrialOfPhase: Bool {
+        pendingChains.count == 3 && completedTrialCount == 0
+    }
+
     /// Returns the engine driving the current trial, or `nil` if no chain is
     /// active. The instance is cached and survives view re-renders so trial
     /// state (`@Observable` properties, drop attempts, scaffold misses) is

@@ -123,12 +123,21 @@ public struct SessionContainerView: View {
             case .newRule:
                 NewRuleView(orchestrator: orchestrator, speech: speech)
             case .decoding:
-                DecodeActivityView(
-                    orchestrator: orchestrator, uiMode: uiMode,
-                    feedback: $feedback,
-                    speechEngine: uiMode == .mic ? speechEngine : nil,
-                    speech: speech
-                )
+                if let engine = orchestrator.currentTileBoardEngine {
+                    DecodeBoardView(
+                        engine: engine,
+                        target: orchestrator.target,
+                        chainPipStates: orchestrator.chainPipStates.map(ChainPipState.init),
+                        incomingRole: orchestrator.currentChainRole,
+                        isFirstTrialOfPhase: orchestrator.isFirstTrialOfPhase,
+                        onTrialComplete: { result in
+                            orchestrator.consumeTileBoardTrial(result)
+                        }
+                    )
+                    .id(orchestrator.completedTrialCount)
+                } else {
+                    Color.clear
+                }
             case .shortSentences:
                 ShortSentencesView(
                     orchestrator: orchestrator, uiMode: uiMode,
