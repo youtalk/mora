@@ -93,7 +93,7 @@ public enum FixtureWriter {
 
         for f in samples {
             let clamped = max(-1, min(1, f))
-            let i = Int16(clamped * Float(Int16.max))
+            let i: Int16 = clamped == -1 ? .min : Int16(clamped * Float(Int16.max))
             data.append(contentsOf: i.littleEndianBytes)
         }
         return data

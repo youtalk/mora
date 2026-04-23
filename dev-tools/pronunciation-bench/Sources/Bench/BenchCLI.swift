@@ -59,10 +59,18 @@ struct BenchCLI: AsyncParsableCommand {
             var speechaceScore: String = ""
             var speechaceRaw: String = ""
             if let client {
-                let wavData = (try? Data(contentsOf: pair.wavURL)) ?? Data()
-                let r = await client.score(audio: wavData, text: loaded.metadata.wordSurface)
-                if let s = r.score { speechaceScore = String(s) }
-                speechaceRaw = r.rawJSON ?? ""
+                do {
+                    let wavData = try Data(contentsOf: pair.wavURL)
+                    let r = await client.score(
+                        audio: wavData, text: loaded.metadata.wordSurface
+                    )
+                    if let s = r.score { speechaceScore = String(s) }
+                    speechaceRaw = r.rawJSON ?? ""
+                } catch {
+                    FileHandle.standardError.write(Data(
+                        "skip SpeechAce for \(pair.basename): failed to read WAV: \(error)\n".utf8
+                    ))
+                }
             }
 
             let labelJSON = (try? String(

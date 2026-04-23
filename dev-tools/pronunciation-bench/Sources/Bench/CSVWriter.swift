@@ -17,7 +17,16 @@ public struct CSVWriter {
     }
 
     public static func create(at url: URL) throws -> CSVWriter {
-        FileManager.default.createFile(atPath: url.path, contents: nil)
+        let fm = FileManager.default
+        if fm.fileExists(atPath: url.path) {
+            try fm.removeItem(at: url)
+        }
+        guard fm.createFile(atPath: url.path, contents: nil) else {
+            throw NSError(
+                domain: "CSVWriter", code: 1,
+                userInfo: [NSLocalizedDescriptionKey: "could not create \(url.path)"]
+            )
+        }
         let handle = try FileHandle(forWritingTo: url)
         let writer = CSVWriter(output: handle)
         try writer.writeLine(Self.row(cells: Self.header))
@@ -40,7 +49,13 @@ public struct CSVWriter {
     }
 
     public static func escape(_ s: String) -> String {
-        let needsQuotes = s.contains(",") || s.contains("\"") || s.contains("\n")
+        // Check at the scalar level because Swift normalizes "\r\n" into a
+        // single Character (grapheme cluster), so String.contains("\r") on
+        // a CRLF-terminated line returns false — missing the RFC 4180
+        // quoting obligation.
+        let needsQuotes = s.unicodeScalars.contains { scalar in
+            scalar == "," || scalar == "\"" || scalar == "\n" || scalar == "\r"
+        }
         guard needsQuotes else { return s }
         let escaped = s.replacingOccurrences(of: "\"", with: "\"\"")
         return "\"\(escaped)\""

@@ -18,11 +18,32 @@ final class CSVWriterTests: XCTestCase {
         XCTAssertEqual(CSVWriter.escape("a,b"), "\"a,b\"")
         XCTAssertEqual(CSVWriter.escape("a\"b"), "\"a\"\"b\"")
         XCTAssertEqual(CSVWriter.escape("a\nb"), "\"a\nb\"")
+        XCTAssertEqual(CSVWriter.escape("a\rb"), "\"a\rb\"")
+        XCTAssertEqual(CSVWriter.escape("a\r\nb"), "\"a\r\nb\"")
         XCTAssertEqual(CSVWriter.escape(""), "")
     }
 
     func testRowJoinsEscapedCellsWithCommas() {
         let row = CSVWriter.row(cells: ["a", "b,c", "d\"e", ""])
         XCTAssertEqual(row, "a,\"b,c\",\"d\"\"e\",")
+    }
+
+    func testCreateTruncatesPreexistingFile() throws {
+        let tempDir = FileManager.default.temporaryDirectory
+            .appendingPathComponent(UUID().uuidString)
+        try FileManager.default.createDirectory(at: tempDir, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: tempDir) }
+        let url = tempDir.appendingPathComponent("out.csv")
+
+        let old = String(repeating: "stale,leftover,junk\n", count: 200)
+        try old.write(to: url, atomically: true, encoding: .utf8)
+
+        let writer = try CSVWriter.create(at: url)
+        try writer.write(row: Array(repeating: "v", count: CSVWriter.header.count))
+        writer.close()
+
+        let written = try String(contentsOf: url, encoding: .utf8)
+        XCTAssertFalse(written.contains("stale"))
+        XCTAssertTrue(written.hasPrefix("fixture,captured_at,"))
     }
 }

@@ -20,7 +20,12 @@ public final class FixtureRecorder {
     private let engine = AVAudioEngine()
     private var converter: AVAudioConverter?
     private var isRecording = false
-    private(set) public var buffer: [Float] = []
+    // Incremented on every start() and stop(). The tap callback captures the
+    // value active at install time; a Task hopping to the main actor will
+    // only append if the generation still matches, so samples delivered
+    // after stop() cannot end up in a subsequent session's buffer.
+    private var sessionGeneration: UInt64 = 0
+    public private(set) var buffer: [Float] = []
     public let targetSampleRate: Double = 16_000
 
     public init() {}
@@ -50,12 +55,15 @@ public final class FixtureRecorder {
         self.converter = converter
 
         buffer.removeAll(keepingCapacity: true)
+        sessionGeneration &+= 1
+        let capturedGeneration = sessionGeneration
 
         inputNode.installTap(
             onBus: 0, bufferSize: 4_096, format: hardwareFormat
         ) { [weak self] inBuffer, _ in
             guard let self else { return }
             Task { @MainActor in
+                guard self.sessionGeneration == capturedGeneration else { return }
                 self.append(convert: inBuffer, with: converter, to: targetFormat)
             }
         }
@@ -75,6 +83,10 @@ public final class FixtureRecorder {
         engine.inputNode.removeTap(onBus: 0)
         engine.stop()
         isRecording = false
+        // Any tap callback that already scheduled a Task before the tap
+        // was removed will still run; advancing the generation makes those
+        // late Tasks drop their samples instead of racing drain().
+        sessionGeneration &+= 1
     }
 
     /// Returns captured samples and clears the internal buffer.
