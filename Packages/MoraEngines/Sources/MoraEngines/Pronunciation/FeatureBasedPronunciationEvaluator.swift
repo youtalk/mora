@@ -54,8 +54,12 @@ public struct FeatureBasedPronunciationEvaluator: PronunciationEvaluator {
             return judgment
         }
 
-        // 4. No substitute matched — check drift for targets that support it.
-        // (Task 20 fills in the drift path.)
+        // 4. Drift check for targets that support it.
+        if Self.driftTargets.contains(targetPhoneme.ipa) {
+            if let drift = judgeDrift(region: region, target: targetPhoneme) {
+                return drift
+            }
+        }
 
         return matched(target: targetPhoneme, region: region, features: [:])
     }
@@ -118,6 +122,38 @@ public struct FeatureBasedPronunciationEvaluator: PronunciationEvaluator {
             }
         }
         return nil
+    }
+
+    private func judgeDrift(
+        region: LocalizedRegion,
+        target: Phoneme
+    ) -> PhonemeTrialAssessment? {
+        guard let thresholds = PhonemeThresholds.drift(for: target.ipa) else { return nil }
+        let measured = measure(feature: thresholds.feature, in: region.clip)
+        if measured < thresholds.minReliable {
+            // Feature is in a region where drift cannot be scored reliably.
+            return nil
+        }
+        let distance = abs(measured - thresholds.targetCentroid)
+        let threshold = thresholds.targetCentroid * 0.1  // 10% tolerance around center
+        guard distance > threshold else { return nil }  // well inside target
+        let score = max(0, min(100, 100 - Int(distance / thresholds.targetCentroid * 100)))
+        let key = driftCoachingKey(target: target.ipa)
+        return PhonemeTrialAssessment(
+            targetPhoneme: target,
+            label: .driftedWithin,
+            score: region.isReliable ? score : nil,
+            coachingKey: key,
+            features: [thresholds.feature.key: measured],
+            isReliable: region.isReliable
+        )
+    }
+
+    private func driftCoachingKey(target: String) -> String? {
+        switch target {
+        case "ʃ": return "coaching.sh_drift"
+        default: return nil
+        }
     }
 
     private func matched(

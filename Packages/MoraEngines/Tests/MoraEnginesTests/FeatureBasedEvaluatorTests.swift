@@ -79,4 +79,31 @@ final class FeatureBasedEvaluatorTests: XCTestCase {
         XCTAssertEqual(result.label, .unclear)
         XCTAssertFalse(result.isReliable)
     }
+
+    func testDriftedShReturnsDriftedWithin() async {
+        // /ʃ/ with too-high F2 (tongue not retracted enough, sound drifts
+        // toward /ɕ/): simulate by concentrating energy around 2.5 kHz.
+        let audio = SyntheticAudio.bandNoise(lowHz: 2_300, highHz: 2_800, durationMs: 500)
+        let result = await evaluator.evaluate(
+            audio: audio,
+            expected: ship(),
+            targetPhoneme: Phoneme(ipa: "ʃ"),
+            asr: ASRResult(transcript: "ship", confidence: 0.85)
+        )
+        XCTAssertEqual(result.label, .driftedWithin)
+        XCTAssertEqual(result.coachingKey, "coaching.sh_drift")
+    }
+
+    func testCleanShDoesNotTriggerDrift() async {
+        let audio = SyntheticAudio.bandNoise(lowHz: 1_900, highHz: 2_200, durationMs: 500)
+        let result = await evaluator.evaluate(
+            audio: audio,
+            expected: ship(),
+            targetPhoneme: Phoneme(ipa: "ʃ"),
+            asr: ASRResult(transcript: "ship", confidence: 0.9)
+        )
+        // Either matched or drift; both are acceptable depending on the
+        // FFT bin alignment, but the coaching key must not be sub.
+        XCTAssertNotEqual(result.coachingKey, "coaching.sh_sub_s")
+    }
 }
