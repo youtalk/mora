@@ -24,6 +24,32 @@
 - Parent-mode export of shadow logs.
 - Engine B phoneme coverage expansion beyond the MVP ~36 phoneme IPA set enumerated in `PhonemeInventory.v15SupportedPhonemeIPA`.
 
+## Current progress
+
+**Part 1 complete.** Tasks 1–19 landed on a standalone PR; Part 2 (Tasks 20–30) picks up in a follow-up branch.
+
+| # | Task | Commit |
+|---|------|--------|
+| 1 | PhonemePosterior value type | `0e6c8fe` |
+| 2 | PhonemePosteriorProvider + fake | `3137902` |
+| 3 | PhonemeInventory | `8472ed3` |
+| 4 | ForcedAligner | `7310ccb` |
+| 5 | GOPScorer | `99ce26f` |
+| 6 | CoachingKeyResolver refactor | `ce77353` |
+| 7 | withTimeout helper | `7683158` |
+| 8 | PhonemeModelPronunciationEvaluator | `f991ff9` |
+| 9 | PronunciationTrialLog entity + schema | `b4ab1d8` |
+| 10 | PronunciationTrialRetentionPolicy | `af812b3` |
+| 11 | PronunciationTrialLogger protocol | `f81b7dc` |
+| 12 | SwiftDataPronunciationTrialLogger | `dd0cc7c` |
+| 13 | InMemoryPronunciationTrialLogger | `fa96c86` |
+| 14 | ShadowLoggingPronunciationEvaluator | `31f843f` |
+| 15 | Orchestrator shadow integration test | `6cc1c13` |
+| 16 | MoraMLX stub + catalog | `94495e0` |
+| 17 | App-level shadow wiring | `be3edc9` |
+| 18 | Format sweep | `e6ed0f5` |
+| 19 | Docs progress section | `-` |
+
 ---
 
 ## File map
