@@ -36,6 +36,8 @@ public struct MoraStrings: Sendable {
     public let voiceGateBody: String
     public let voiceGateOpenSettings: String
     public let voiceGateRecheck: String
+    public let voiceGateInstalledVoicesTitle: String
+    public let voiceGateNoVoicesPlaceholder: String
 
     // Session chrome
     public let sessionCloseTitle: String
@@ -83,6 +85,8 @@ public struct MoraStrings: Sendable {
         homeSentencesPill: @escaping @Sendable (Int) -> String,
         voiceGateTitle: String, voiceGateBody: String,
         voiceGateOpenSettings: String, voiceGateRecheck: String,
+        voiceGateInstalledVoicesTitle: String,
+        voiceGateNoVoicesPlaceholder: String,
         sessionCloseTitle: String, sessionCloseMessage: String,
         sessionCloseKeepGoing: String, sessionCloseEnd: String,
         sessionWordCounter: @escaping @Sendable (Int, Int) -> String,
@@ -120,6 +124,8 @@ public struct MoraStrings: Sendable {
         self.voiceGateBody = voiceGateBody
         self.voiceGateOpenSettings = voiceGateOpenSettings
         self.voiceGateRecheck = voiceGateRecheck
+        self.voiceGateInstalledVoicesTitle = voiceGateInstalledVoicesTitle
+        self.voiceGateNoVoicesPlaceholder = voiceGateNoVoicesPlaceholder
         self.sessionCloseTitle = sessionCloseTitle
         self.sessionCloseMessage = sessionCloseMessage
         self.sessionCloseKeepGoing = sessionCloseKeepGoing

@@ -62,7 +62,8 @@ struct DecodeActivityView: View {
                     VStack(spacing: MoraTheme.Space.xs) {
                         Text(
                             strings.sessionWordCounter(
-                                orchestrator.wordIndex + 1, orchestrator.words.count
+                                (pinnedWordIndex ?? orchestrator.wordIndex) + 1,
+                                orchestrator.words.count
                             )
                         )
                         Text(strings.decodingLongPressHint)
@@ -119,10 +120,10 @@ struct DecodeActivityView: View {
         }
     }
 
-    /// Shows a large "聞こえた: <text>" line whenever ASR has a partial or
-    /// final transcript worth displaying. Keeps the heard word visible
-    /// through the assessing / feedback window so the learner can compare
-    /// expected vs. heard without squinting at 14-pt chrome.
+    /// Shows the ASR transcript at a readable size whenever there is a
+    /// partial or final transcript worth displaying. Keeps the heard word
+    /// visible through the assessing / feedback window so the learner can
+    /// compare expected vs. heard without squinting at 14-pt chrome.
     @ViewBuilder
     private var transcriptLine: some View {
         if case .listening(let partial) = micState, !partial.isEmpty {

@@ -23,7 +23,8 @@ public actor AppleTTSEngine: TTSEngine {
     /// are audibly separable. These only apply when a `.enhanced` or `.premium`
     /// voice is installed — compact voices (`quality == .default`) use the
     /// system default rate because their formant synthesizer falls apart
-    /// below 0.5 (children heard "ship" as "シクショー" on device).
+    /// below 0.5 (children heard "ship" as garbled, unintelligible noise
+    /// on device).
     public init(
         l1Profile: any L1Profile,
         preferredVoiceIdentifier: String? = nil,
@@ -72,13 +73,16 @@ public actor AppleTTSEngine: TTSEngine {
         synthesizer.stopSpeaking(at: .immediate)
     }
 
-    /// `true` when no installed en-US voice is enhanced or premium. Callers
+    /// `true` when no installed English voice is enhanced or premium. Callers
     /// (HomeView) surface a prompt linking into Settings when this is true.
     /// Static because it reads process-wide voice metadata; keeps the
-    /// HomeView chip and TTS engine reading from one source.
+    /// HomeView chip and TTS engine reading from one source. Scans the same
+    /// `en*` set `resolveVoice` considers so the gate matches actual playback
+    /// capability — a device with only an Enhanced/Premium en-GB voice
+    /// installed is fine, because `resolveVoice` will pick it.
     public nonisolated static var needsEnhancedVoice: Bool {
         let voices = AVSpeechSynthesisVoice.speechVoices()
-            .filter { $0.language.hasPrefix("en-US") }
+            .filter { $0.language.hasPrefix("en") }
         return !voices.contains { $0.quality == .enhanced || $0.quality == .premium }
     }
 

@@ -51,7 +51,8 @@ struct ShortSentencesView: View {
                     VStack(spacing: MoraTheme.Space.xs) {
                         Text(
                             strings.sessionSentenceCounter(
-                                orchestrator.sentenceIndex + 1, orchestrator.sentences.count
+                                (pinnedSentenceIndex ?? orchestrator.sentenceIndex) + 1,
+                                orchestrator.sentences.count
                             )
                         )
                         Text(strings.sentencesLongPressHint)

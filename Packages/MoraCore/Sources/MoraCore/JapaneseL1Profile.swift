@@ -136,6 +136,8 @@ public struct JapaneseL1Profile: L1Profile {
             + " OSの 言語が 英語の 場合は カッコ内の 表記で 表示されます。)",
         voiceGateOpenSettings: "設定を 開く",
         voiceGateRecheck: "もう一度 たしかめる",
+        voiceGateInstalledVoicesTitle: "インストール済みの 英語 voice",
+        voiceGateNoVoicesPlaceholder: "(なし)",
         sessionCloseTitle: "今日の クエストを おわる？",
         sessionCloseMessage: "ここまでの きろくは のこるよ",
         sessionCloseKeepGoing: "つづける",

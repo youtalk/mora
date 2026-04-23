@@ -53,12 +53,17 @@ public struct SessionContainerView: View {
                     let partial = orchestrator.sessionSummary(endedAt: Date())
                     persist(summary: partial)
                 }
-                // Silence any utterance still playing — otherwise the audio
+                // Silence any utterance still playing and wait for it to
+                // actually stop before dismissing — otherwise the audio
                 // trails into whatever screen the learner lands on next.
                 if let tts = ttsEngine {
-                    Task { await tts.stop() }
+                    Task { @MainActor in
+                        await tts.stop()
+                        dismiss()
+                    }
+                } else {
+                    dismiss()
                 }
-                dismiss()
             }
         } message: {
             Text(strings.sessionCloseMessage)

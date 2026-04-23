@@ -49,7 +49,7 @@ struct CompletionView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .contentShape(Rectangle())
         .onTapGesture { dismissSession() }
-        .accessibilityAction(named: "Return home") { dismiss() }
+        .accessibilityAction(named: "Return home") { dismissSession() }
         .onAppear { persistOnce() }
         .task {
             guard let tts = ttsEngine else { return }
@@ -60,11 +60,19 @@ struct CompletionView: View {
     @MainActor
     private func dismissSession() {
         // Silence the celebration utterance if it's still playing — otherwise
-        // the "Quest complete!" line trails onto the Home screen.
-        if let tts = ttsEngine {
-            Task { await tts.stop() }
+        // the "Quest complete!" line trails onto the Home screen. Await the
+        // stop before dismissing so the guarantee actually holds; a detached
+        // `Task { tts.stop() }` followed by an immediate `dismiss()` races
+        // against the synthesizer draining and lets audio leak to the next
+        // screen.
+        guard let tts = ttsEngine else {
+            dismiss()
+            return
         }
-        dismiss()
+        Task { @MainActor in
+            await tts.stop()
+            dismiss()
+        }
     }
 
     @MainActor

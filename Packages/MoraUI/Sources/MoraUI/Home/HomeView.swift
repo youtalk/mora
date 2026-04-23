@@ -154,11 +154,11 @@ public struct HomeView: View {
 
     private var installedVoicesSection: some View {
         VStack(alignment: .leading, spacing: MoraTheme.Space.xs) {
-            Text("インストール済みの 英語 voice")
+            Text(strings.voiceGateInstalledVoicesTitle)
                 .font(MoraType.label())
                 .foregroundStyle(MoraTheme.Ink.muted)
             if installedVoices.isEmpty {
-                Text("(なし)")
+                Text(strings.voiceGateNoVoicesPlaceholder)
                     .font(MoraType.label())
                     .foregroundStyle(MoraTheme.Ink.secondary)
             } else {
