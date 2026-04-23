@@ -1,0 +1,132 @@
+// Packages/MoraEngines/Sources/MoraEngines/Pronunciation/ShadowLoggingPronunciationEvaluator.swift
+import Foundation
+import MoraCore
+
+/// The composite decorator `AssessmentEngine` receives in shadow mode.
+/// Runs the primary evaluator (Engine A) synchronously, returns its result
+/// to the caller, and fires the shadow evaluator (Engine B) in a detached
+/// background task. Both results are written to the logger.
+///
+/// Invariants (see `docs/superpowers/specs/2026-04-22-pronunciation-feedback-engine-b-design.md` §6.8):
+/// - UI path is never blocked by the shadow evaluator.
+/// - `supports(target:in:)` returns true if either evaluator supports the
+///   target; the `AssessmentEngine` then routes through `evaluate`, and
+///   the decorator is responsible for producing a useful UI result and
+///   a log row.
+/// - The `PronunciationEvaluator` protocol is non-throwing, so any Engine
+///   B internal failure (model load error, provider throw, low-confidence
+///   alignment) surfaces as a `.unclear` assessment with a diagnostic
+///   `features` dict. The composite logs that as `.completed` and does
+///   **not** synthesize a `.failed` log variant.
+public struct ShadowLoggingPronunciationEvaluator: PronunciationEvaluator {
+    public let primary: any PronunciationEvaluator
+    public let shadow: any PronunciationEvaluator
+    public let logger: any PronunciationTrialLogger
+    public let timeout: Duration
+
+    public init(
+        primary: any PronunciationEvaluator,
+        shadow: any PronunciationEvaluator,
+        logger: any PronunciationTrialLogger,
+        timeout: Duration = .milliseconds(1000)
+    ) {
+        self.primary = primary
+        self.shadow = shadow
+        self.logger = logger
+        self.timeout = timeout
+    }
+
+    public func supports(target: Phoneme, in word: Word) -> Bool {
+        primary.supports(target: target, in: word)
+            || shadow.supports(target: target, in: word)
+    }
+
+    public func evaluate(
+        audio: AudioClip,
+        expected: Word,
+        targetPhoneme: Phoneme,
+        asr: ASRResult
+    ) async -> PhonemeTrialAssessment {
+        let primarySupports = primary.supports(target: targetPhoneme, in: expected)
+        let shadowSupports = shadow.supports(target: targetPhoneme, in: expected)
+
+        // Neither evaluator can produce useful data — there's nothing to
+        // correlate, so skip the log row entirely and don't consume FIFO
+        // slots in the retention cap.
+        if !primarySupports && !shadowSupports {
+            return Self.placeholder(target: targetPhoneme)
+        }
+
+        let uiResult: PhonemeTrialAssessment
+        let engineAForLog: PhonemeTrialAssessment?
+        if primarySupports {
+            let a = await primary.evaluate(
+                audio: audio, expected: expected,
+                targetPhoneme: targetPhoneme, asr: asr
+            )
+            uiResult = a
+            engineAForLog = a
+        } else {
+            uiResult = Self.placeholder(target: targetPhoneme)
+            engineAForLog = nil
+        }
+
+        // Fire shadow + logger on a detached background task so the caller's
+        // path never waits on it. `shadow.evaluate(...)` is non-throwing by
+        // protocol contract (any internal provider failure surfaces as an
+        // `.unclear` PhonemeTrialAssessment with a diagnostic features
+        // dict), so the composite can only observe "got a value within the
+        // timeout" (log as .completed) or "timed out" (log as .timedOut).
+        let shadow = self.shadow
+        let logger = self.logger
+        let timeout = self.timeout
+        Task.detached(priority: .background) {
+            let start = ContinuousClock.now
+            let engineB: EngineBLogResult
+            if !shadowSupports {
+                engineB = .unsupported
+            } else {
+                let captured = await withTimeout(timeout) { () async throws -> PhonemeTrialAssessment in
+                    await shadow.evaluate(
+                        audio: audio, expected: expected,
+                        targetPhoneme: targetPhoneme, asr: asr
+                    )
+                }
+                let elapsed = start.duration(to: .now)
+                let ms = Self.millis(elapsed)
+                if let b = captured {
+                    engineB = .completed(b, latencyMs: ms)
+                } else {
+                    engineB = .timedOut(latencyMs: ms)
+                }
+            }
+            let entry = PronunciationTrialLogEntry(
+                timestamp: Date(),
+                word: expected,
+                targetPhoneme: targetPhoneme,
+                engineA: engineAForLog,
+                engineB: engineB
+            )
+            await logger.record(entry)
+        }
+
+        return uiResult
+    }
+
+    private static func placeholder(target: Phoneme) -> PhonemeTrialAssessment {
+        PhonemeTrialAssessment(
+            targetPhoneme: target,
+            label: .unclear,
+            score: nil,
+            coachingKey: nil,
+            features: [:],
+            isReliable: false
+        )
+    }
+
+    private static func millis(_ duration: Duration) -> Int {
+        let (s, attos) = duration.components
+        let msPart = attos / 1_000_000_000_000_000
+        return Int(s) * 1000 + Int(msPart)
+    }
+}
