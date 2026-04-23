@@ -18,10 +18,9 @@ struct ShortSentencesView: View {
     @State private var shakeAmount: CGFloat = 0
     @State private var shakeResetTask: Task<Void, Never>?
     /// Pin the on-screen sentence to a specific orchestrator index during
-    /// feedback / corrective audio — same reason as DecodeActivityView:
-    /// without it, `orchestrator.handle(.answerHeard)` advances
-    /// `sentenceIndex` immediately, the body re-renders the next sentence,
-    /// and the "Listen:" audio then names the previous sentence.
+    /// feedback / corrective audio. Without it, `orchestrator.handle(.answerHeard)`
+    /// advances `sentenceIndex` immediately, the body re-renders the next
+    /// sentence, and the "Listen:" audio then names the previous sentence.
     @State private var pinnedSentenceIndex: Int?
     @State private var lastHeard: String = ""
 

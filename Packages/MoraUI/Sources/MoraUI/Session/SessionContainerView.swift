@@ -74,9 +74,15 @@ public struct SessionContainerView: View {
         // Every phase transition cancels whatever the prior phase was
         // speaking. The new phase view owns the next utterance via its
         // own `.task`. Without this, a long-press speak left over from
-        // DecodeActivityView would keep playing on ShortSentencesView
-        // because that view has no phase-intro `.task` of its own.
-        .onChange(of: orchestrator?.phase) { _, _ in
+        // a prior phase-intro view would keep playing into the next
+        // phase if that view has no `.task` of its own.
+        //
+        // Skip the entry from `.notStarted` — nothing is playing yet, and
+        // racing a no-op `stop()` against the new phase view's first
+        // `speech.play(...)` can cancel the very first utterance (the
+        // warmup phoneme that introduces the target grapheme).
+        .onChange(of: orchestrator?.phase) { oldValue, _ in
+            guard oldValue != nil, oldValue != .notStarted else { return }
             guard let speech else { return }
             Task { await speech.stop() }
         }
@@ -124,12 +130,20 @@ public struct SessionContainerView: View {
             case .newRule:
                 NewRuleView(orchestrator: orchestrator, speech: speech)
             case .decoding:
-                DecodeActivityView(
-                    orchestrator: orchestrator, uiMode: uiMode,
-                    feedback: $feedback,
-                    speechEngine: uiMode == .mic ? speechEngine : nil,
-                    speech: speech
-                )
+                if let engine = orchestrator.currentTileBoardEngine {
+                    DecodeBoardView(
+                        engine: engine,
+                        chainPipStates: orchestrator.chainPipStates.map(ChainPipState.init),
+                        incomingRole: orchestrator.currentChainRole,
+                        speech: speech,
+                        onTrialComplete: { result in
+                            orchestrator.consumeTileBoardTrial(result)
+                        }
+                    )
+                    .id(orchestrator.completedTrialCount)
+                } else {
+                    Color.clear
+                }
             case .shortSentences:
                 ShortSentencesView(
                     orchestrator: orchestrator, uiMode: uiMode,
@@ -174,6 +188,17 @@ public struct SessionContainerView: View {
             uiMode = .tap
         }
         speech = SpeechController(tts: AppleTTSEngine(l1Profile: JapaneseL1Profile()))
+        // Prime AVSpeechSynthesizer so the warmup phoneme isn't the
+        // utterance that gets eaten by the cold-launch first-utterance
+        // quirk: on a fresh audio session the very first short speak()
+        // sometimes never fires `didFinish`, leaving the queue stalled
+        // and the learner's first prompt silent. A space-only primer
+        // routed through `SpeechController` takes that hit on a no-op
+        // so the real prompt plays cleanly — and because it goes through
+        // the controller's `inflight`, the warmup view's first
+        // `speech.play(...)` cancels it via the same chokepoint as any
+        // other in-flight sequence.
+        speech?.play([.text(" ", .normal)])
         #else
         uiMode = .tap
         #endif
@@ -188,10 +213,6 @@ public struct SessionContainerView: View {
                 return
             }
             let provider = try ScriptedContentProvider.bundledShWeek1()
-            let words = try provider.decodeWords(
-                ContentRequest(
-                    target: targetGrapheme, taughtGraphemes: taught, interests: [], count: 5
-                ))
             let sentences = try provider.decodeSentences(
                 ContentRequest(
                     target: targetGrapheme, taughtGraphemes: taught, interests: [], count: 2
@@ -203,7 +224,8 @@ public struct SessionContainerView: View {
                     Grapheme(letters: "sh"),
                     Grapheme(letters: "ch"),
                 ],
-                words: words, sentences: sentences,
+                chainProvider: LibraryFirstWordChainProvider(),
+                sentences: sentences,
                 assessment: AssessmentEngine(
                     l1Profile: JapaneseL1Profile(),
                     evaluator: shadowEvaluatorFactory.make(context.container)

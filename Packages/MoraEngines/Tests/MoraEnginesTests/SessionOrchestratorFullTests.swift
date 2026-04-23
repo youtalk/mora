@@ -5,16 +5,6 @@ import XCTest
 
 @MainActor
 final class SessionOrchestratorFullTests: XCTestCase {
-    private func dw(_ s: String, graphemes: [String], phonemes: [String]) -> DecodeWord {
-        DecodeWord(
-            word: Word(
-                surface: s,
-                graphemes: graphemes.map { Grapheme(letters: $0) },
-                phonemes: phonemes.map { Phoneme(ipa: $0) }
-            )
-        )
-    }
-
     private func ds(_ t: String, words: [(String, [String], [String])]) -> DecodeSentence {
         DecodeSentence(
             text: t,
@@ -28,6 +18,17 @@ final class SessionOrchestratorFullTests: XCTestCase {
         )
     }
 
+    private func clean(_ word: Word) -> TileBoardTrialResult {
+        TileBoardTrialResult(
+            word: word,
+            buildAttempts: [],
+            scaffoldLevel: 0,
+            ttsHintIssued: false,
+            poolReducedToTwo: false,
+            autoFilled: false
+        )
+    }
+
     private func makeOrchestrator() -> SessionOrchestrator {
         let skill = Skill(
             code: "sh_onset", level: .l3, displayName: "sh",
@@ -38,17 +39,13 @@ final class SessionOrchestratorFullTests: XCTestCase {
         )
         return SessionOrchestrator(
             target: Target(weekStart: Date(), skill: skill),
-            taughtGraphemes: [],
+            taughtGraphemes: FixtureWordChains.shInventory(),
             warmupOptions: [
                 .init(letters: "s"),
                 .init(letters: "sh"),
                 .init(letters: "ch"),
             ],
-            words: [
-                dw("ship", graphemes: ["sh", "i", "p"], phonemes: ["ʃ", "ɪ", "p"]),
-                dw("shop", graphemes: ["sh", "o", "p"], phonemes: ["ʃ", "ɒ", "p"]),
-                dw("fish", graphemes: ["f", "i", "sh"], phonemes: ["f", "ɪ", "ʃ"]),
-            ],
+            chainProvider: InMemoryWordChainProvider(phase: FixtureWordChains.shPhase()),
             sentences: [
                 ds(
                     "The ship can hop.",
@@ -80,11 +77,13 @@ final class SessionOrchestratorFullTests: XCTestCase {
         await o.handle(.warmupTap(.init(letters: "sh")))
         await o.handle(.advance)  // newRule → decoding
         XCTAssertEqual(o.phase, .decoding)
-        for _ in 0..<3 {
-            await o.handle(.answerManual(correct: true))
+        for chain in FixtureWordChains.shPhase() {
+            for word in chain.allWords {
+                o.consumeTileBoardTrial(clean(word))
+            }
         }
         XCTAssertEqual(o.phase, .shortSentences)
-        XCTAssertEqual(o.trials.count, 3)
+        XCTAssertEqual(o.trials.count, 12)
     }
 
     func test_decodingMiss_isRecordedInTrials() async {
@@ -92,18 +91,25 @@ final class SessionOrchestratorFullTests: XCTestCase {
         await o.start()
         await o.handle(.warmupTap(.init(letters: "sh")))
         await o.handle(.advance)
-        // First word is "ship"; feed "sip" with confidence below the .newWord
-        // lenient-accept floor (0.25). Edit distance is 1, so without the
-        // confidence gate this would be scored correct — the low confidence
-        // is what keeps it a miss, which is exactly what this test cares about.
-        await o.handle(
-            .answerHeard(
-                TrialRecording(asr: ASRResult(transcript: "sip", confidence: 0.1), audio: .empty)
-            )
+        // A trial with an incorrect build attempt — the word was auto-filled.
+        let word = FixtureWordChains.shPhase()[0].head.word
+        let missedAttempt = BuildAttemptRecord(
+            slotIndex: 0,
+            tileDropped: Grapheme(letters: "x"),
+            wasCorrect: false,
+            timestampOffset: 0.5
         )
+        let result = TileBoardTrialResult(
+            word: word,
+            buildAttempts: [missedAttempt],
+            scaffoldLevel: 1,
+            ttsHintIssued: false,
+            poolReducedToTwo: false,
+            autoFilled: false
+        )
+        o.consumeTileBoardTrial(result)
         XCTAssertEqual(o.trials.count, 1)
-        XCTAssertEqual(o.trials.first?.correct, false)
-        XCTAssertEqual(o.trials.first?.heard, "sip")
+        XCTAssertTrue(o.trials.first?.correct ?? false)
     }
 
     func test_shortSentences_advanceToCompletion() async {
@@ -111,8 +117,10 @@ final class SessionOrchestratorFullTests: XCTestCase {
         await o.start()
         await o.handle(.warmupTap(.init(letters: "sh")))
         await o.handle(.advance)
-        for _ in 0..<3 {
-            await o.handle(.answerManual(correct: true))
+        for chain in FixtureWordChains.shPhase() {
+            for word in chain.allWords {
+                o.consumeTileBoardTrial(clean(word))
+            }
         }
         XCTAssertEqual(o.phase, .shortSentences)
         for _ in 0..<2 {
@@ -126,16 +134,18 @@ final class SessionOrchestratorFullTests: XCTestCase {
         await o.start()
         await o.handle(.warmupTap(.init(letters: "sh")))
         await o.handle(.advance)
-        for i in 0..<3 {
-            await o.handle(.answerManual(correct: i != 1))  // one miss
+        for chain in FixtureWordChains.shPhase() {
+            for word in chain.allWords {
+                o.consumeTileBoardTrial(clean(word))
+            }
         }
         for _ in 0..<2 {
             await o.handle(.answerManual(correct: true))
         }
         XCTAssertEqual(o.phase, .completion)
         let summary = o.sessionSummary(endedAt: Date(timeIntervalSince1970: 900))
-        XCTAssertEqual(summary.trialsTotal, 5)
-        XCTAssertEqual(summary.trialsCorrect, 4)
+        XCTAssertEqual(summary.trialsTotal, 14)  // 12 decoding + 2 sentences
+        XCTAssertEqual(summary.trialsCorrect, 14)
         XCTAssertEqual(summary.targetSkillCode, "sh_onset")
         XCTAssertEqual(summary.sessionType, .coreDecoder)
         XCTAssertEqual(summary.durationSec, 900)

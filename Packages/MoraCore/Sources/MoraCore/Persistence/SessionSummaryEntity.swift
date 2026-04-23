@@ -11,6 +11,7 @@ public final class SessionSummaryEntity {
     public var trialsTotal: Int
     public var trialsCorrect: Int
     public var escalated: Bool
+    public var tileBoardMetricsJSON: Data?
 
     public init(
         id: UUID = UUID(),
@@ -20,7 +21,8 @@ public final class SessionSummaryEntity {
         durationSec: Int,
         trialsTotal: Int,
         trialsCorrect: Int,
-        escalated: Bool
+        escalated: Bool,
+        tileBoardMetricsJSON: Data? = nil
     ) {
         self.id = id
         self.date = date
@@ -30,5 +32,6 @@ public final class SessionSummaryEntity {
         self.trialsTotal = trialsTotal
         self.trialsCorrect = trialsCorrect
         self.escalated = escalated
+        self.tileBoardMetricsJSON = tileBoardMetricsJSON
     }
 }
