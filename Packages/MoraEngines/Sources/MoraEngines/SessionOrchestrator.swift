@@ -14,31 +14,38 @@ public final class SessionOrchestrator {
     public private(set) var completedTrialCount: Int = 0
     private var currentTrialInChain: Int = 0
     private var phaseMetrics: TileBoardMetrics = TileBoardMetrics()
+    private var phaseTotalTrialCount: Int = 0
+    private var cachedTileBoardEngine: TileBoardEngine?
 
     public var currentChainRole: ChainRole {
         pendingChains.first?.role ?? .mixedApplication
     }
 
+    /// One pip per trial across the loaded phase. Length tracks the actual
+    /// chain configuration, not a hardcoded 12 — chains may be shorter than
+    /// four words when the library is sparse.
     public var chainPipStates: [ChainPipStateOrchestratorValue] {
-        // Returns 12 states, one per trial across the three chains.
-        var states: [ChainPipStateOrchestratorValue] = []
+        let total = phaseTotalTrialCount
+        guard total > 0 else { return [] }
         let done = completedTrialCount
-        let activeIndex = done  // the pip currently being trialed
-        for i in 0..<12 {
-            if i < done {
-                states.append(ChainPipStateOrchestratorValue.done)
-            } else if i == activeIndex {
-                states.append(ChainPipStateOrchestratorValue.active)
-            } else {
-                states.append(ChainPipStateOrchestratorValue.pending)
-            }
+        return (0..<total).map { i in
+            if i < done { return .done }
+            if i == done { return .active }
+            return .pending
         }
-        return states
     }
 
+    /// Returns the engine driving the current trial, or `nil` if no chain is
+    /// active. The instance is cached and survives view re-renders so trial
+    /// state (`@Observable` properties, drop attempts, scaffold misses) is
+    /// preserved between SwiftUI body invocations. The cache is invalidated
+    /// when the trial advances or a new phase begins.
     public var currentTileBoardEngine: TileBoardEngine? {
+        if let cached = cachedTileBoardEngine { return cached }
         guard let chain = pendingChains.first else { return nil }
-        return makeEngine(for: currentTrialInChain, in: chain)
+        let engine = makeEngine(for: currentTrialInChain, in: chain)
+        cachedTileBoardEngine = engine
+        return engine
     }
 
     private func makeEngine(for trialIndex: Int, in chain: WordChain) -> TileBoardEngine {
@@ -111,11 +118,6 @@ public final class SessionOrchestrator {
         case (.newRule, .advance):
             transitionTo(.decoding)
 
-        case (.decoding, .answerHeard(let recording)):
-            await handleDecodingHeard(recording: recording)
-        case (.decoding, .answerManual(let correct)):
-            handleDecodingManual(correct: correct)
-
         case (.shortSentences, .answerHeard(let recording)):
             await handleSentenceHeard(recording: recording)
         case (.shortSentences, .answerManual(let correct)):
@@ -142,12 +144,16 @@ public final class SessionOrchestrator {
                     masteredSet: taughtGraphemes
                 )
                 phaseMetrics = TileBoardMetrics(chainCount: pendingChains.count)
+                phaseTotalTrialCount = pendingChains.reduce(0) { $0 + 1 + $1.successors.count }
                 currentTrialInChain = 0
                 completedTrialCount = 0
+                cachedTileBoardEngine = nil
             } catch {
-                // Content gap: fall through to shortSentences so the session
-                // does not stall. Log via metrics.
-                phaseMetrics.truncatedChainCount = 3
+                // Content gap: surface a phase-finished event so subscribers
+                // get a deterministic signal, then fall through to
+                // shortSentences so the session does not stall.
+                phaseMetrics.truncatedChainCount = phaseMetrics.chainCount
+                onTileBoardEvent?(.phaseFinished(phaseMetrics))
                 transitionTo(.shortSentences)
             }
         case .shortSentences where sentences.isEmpty:
@@ -155,14 +161,6 @@ public final class SessionOrchestrator {
         default:
             break
         }
-    }
-
-    private func handleDecodingHeard(recording: TrialRecording) async {
-        // Wired in 18b/18c.
-    }
-
-    private func handleDecodingManual(correct: Bool) {
-        // Wired in 18b/18c.
     }
 
     public func consumeTileBoardTrial(_ result: TileBoardTrialResult) {
@@ -189,6 +187,7 @@ public final class SessionOrchestrator {
         onTileBoardEvent?(.tileBoardTrialCompleted(assessmentRecording))
         completedTrialCount += 1
         currentTrialInChain += 1
+        cachedTileBoardEngine = nil
 
         if currentTrialInChain > chain.successors.count {
             // Chain finished.
