@@ -12,7 +12,7 @@ struct ShortSentencesView: View {
     let uiMode: SessionUIMode
     @Binding var feedback: FeedbackState
     let speechEngine: SpeechEngine?
-    let ttsEngine: TTSEngine?
+    let speech: SpeechController?
 
     @State private var micState: MicUIState = .idle
     @State private var shakeAmount: CGFloat = 0
@@ -37,8 +37,7 @@ struct ShortSentencesView: View {
                         .minimumScaleFactor(0.5)
                         .shake(amount: shakeAmount)
                         .onLongPressGesture {
-                            guard let tts = ttsEngine else { return }
-                            Task { await tts.speak(current.text, pace: .slow) }
+                            speech?.play([.text(current.text, .slow)])
                         }
 
                     switch uiMode {
@@ -198,8 +197,10 @@ struct ShortSentencesView: View {
                         await orchestrator.handle(.answerHeard(asr))
                         let wasCorrect = orchestrator.trials.last?.correct ?? false
                         feedback = wasCorrect ? .correct : .wrong
-                        if !wasCorrect, let tts = ttsEngine {
-                            await tts.speak("Listen: " + expected.text, pace: .slow)
+                        if !wasCorrect, let speech {
+                            await speech.playAndAwait(
+                                [.text("Listen: " + expected.text, .slow)]
+                            )
                         }
                         try? await Task.sleep(
                             nanoseconds: wasCorrect ? 450_000_000 : 650_000_000)

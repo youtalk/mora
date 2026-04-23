@@ -23,7 +23,7 @@ public struct SessionContainerView: View {
     @State private var feedback: FeedbackState = .none
     @State private var uiMode: SessionUIMode = .tap
     @State private var speechEngine: SpeechEngine?
-    @State private var ttsEngine: TTSEngine?
+    @State private var speech: SpeechController?
     @State private var showCloseConfirm = false
 
     public init() {}
@@ -53,12 +53,14 @@ public struct SessionContainerView: View {
                     let partial = orchestrator.sessionSummary(endedAt: Date())
                     persist(summary: partial)
                 }
-                // Silence any utterance still playing and wait for it to
-                // actually stop before dismissing — otherwise the audio
-                // trails into whatever screen the learner lands on next.
-                if let tts = ttsEngine {
+                // Cancel in-flight speech, drain the engine, then dismiss.
+                // Awaiting `speech.stop()` before `dismiss()` is what stops
+                // the tail of the current utterance from riding out onto
+                // whatever screen the learner lands on next — a detached
+                // stop racing against dismiss leaves the audio audible.
+                if let speech {
                     Task { @MainActor in
-                        await tts.stop()
+                        await speech.stop()
                         dismiss()
                     }
                 } else {
@@ -67,6 +69,15 @@ public struct SessionContainerView: View {
             }
         } message: {
             Text(strings.sessionCloseMessage)
+        }
+        // Every phase transition cancels whatever the prior phase was
+        // speaking. The new phase view owns the next utterance via its
+        // own `.task`. Without this, a long-press speak left over from
+        // DecodeActivityView would keep playing on ShortSentencesView
+        // because that view has no phase-intro `.task` of its own.
+        .onChange(of: orchestrator?.phase) { _, _ in
+            guard let speech else { return }
+            Task { await speech.stop() }
         }
         #if os(iOS)
         .navigationBarHidden(true)
@@ -108,26 +119,26 @@ public struct SessionContainerView: View {
                 ProgressView("Preparing…")
                     .task { await orchestrator.start() }
             case .warmup:
-                WarmupView(orchestrator: orchestrator, ttsEngine: ttsEngine)
+                WarmupView(orchestrator: orchestrator, speech: speech)
             case .newRule:
-                NewRuleView(orchestrator: orchestrator, ttsEngine: ttsEngine)
+                NewRuleView(orchestrator: orchestrator, speech: speech)
             case .decoding:
                 DecodeActivityView(
                     orchestrator: orchestrator, uiMode: uiMode,
                     feedback: $feedback,
                     speechEngine: uiMode == .mic ? speechEngine : nil,
-                    ttsEngine: ttsEngine
+                    speech: speech
                 )
             case .shortSentences:
                 ShortSentencesView(
                     orchestrator: orchestrator, uiMode: uiMode,
                     feedback: $feedback,
                     speechEngine: uiMode == .mic ? speechEngine : nil,
-                    ttsEngine: ttsEngine
+                    speech: speech
                 )
             case .completion:
                 CompletionView(
-                    orchestrator: orchestrator, ttsEngine: ttsEngine,
+                    orchestrator: orchestrator, speech: speech,
                     persistSummary: { summary in persist(summary: summary) }
                 )
             }
@@ -161,7 +172,7 @@ public struct SessionContainerView: View {
         case .partial, .notDetermined:
             uiMode = .tap
         }
-        ttsEngine = AppleTTSEngine(l1Profile: JapaneseL1Profile())
+        speech = SpeechController(tts: AppleTTSEngine(l1Profile: JapaneseL1Profile()))
         #else
         uiMode = .tap
         #endif

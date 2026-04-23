@@ -121,6 +121,13 @@ public actor AppleTTSEngine: TTSEngine {
     private func speakInternal(
         text: String, pace: TTSPace, ipaOverride: String?
     ) async {
+        // Bail before the synthesizer ever sees the utterance if our caller
+        // is already cancelled. Without this, a view whose driving `Task`
+        // was cancelled (view disappeared) would still issue every remaining
+        // prompt in its `for word in ... { await speak }` loop — the prior
+        // screen's audio would then play on the next screen because nothing
+        // in the actor method checks cancellation.
+        if Task.isCancelled { return }
         configurePlaybackSession()
         // Preempt anything still playing or queued from a prior caller —
         // without this, a view transition leaves the outgoing screen's
@@ -143,10 +150,39 @@ public actor AppleTTSEngine: TTSEngine {
         let utterance = utterance(text: text, ipa: ipaOverride)
         utterance.rate = rateFor(pace, voice: voice)
         utterance.voice = voice
-        await withCheckedContinuation { (cont: CheckedContinuation<Void, Never>) in
-            delegateProxy.enqueue { cont.resume() }
-            synthesizer.speak(utterance)
+        // `withTaskCancellationHandler` fires `onCancel` when the enclosing
+        // Swift task is cancelled, including cancel events that arrive
+        // while we're suspended inside `withCheckedContinuation`. The
+        // handler hops back onto the actor to stop the synthesizer, which
+        // triggers `didCancel` on the delegate proxy and resumes the
+        // awaiting continuation — so an aborted speak returns immediately
+        // rather than dragging on through the utterance's full duration.
+        await withTaskCancellationHandler {
+            await withCheckedContinuation { (cont: CheckedContinuation<Void, Never>) in
+                // Re-check cancellation immediately before queuing the
+                // utterance. Closes the tiny race where `onCancel` fires
+                // between the outer `Task.isCancelled` check and this
+                // point — without this, a cancelled caller could still
+                // push an utterance into AVSpeechSynthesizer and we'd
+                // rely on the `onCancel` hop to stop it (audible blip).
+                if Task.isCancelled {
+                    cont.resume()
+                    return
+                }
+                delegateProxy.enqueue { cont.resume() }
+                synthesizer.speak(utterance)
+            }
+        } onCancel: { [weak self] in
+            Task { await self?.cancelCurrentUtterance() }
         }
+    }
+
+    /// Invoked from `onCancel` handlers on a non-actor executor; the `Task`
+    /// wrapper above hops us back onto the actor so the AVSpeechSynthesizer
+    /// call is serialized with the rest of our engine state.
+    private func cancelCurrentUtterance() {
+        guard synthesizer.isSpeaking else { return }
+        synthesizer.stopSpeaking(at: .immediate)
     }
 
     /// Builds an `AVSpeechUtterance`. When `ipa` is non-nil the entire text
