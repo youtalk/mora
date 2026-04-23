@@ -3,10 +3,13 @@ import MoraCore
 import MoraEngines
 
 /// A single utterance passed to `SpeechController.play`. Phoneme prompts
-/// go through the engine's phoneme path; text prompts speak verbatim.
+/// go through the engine's IPA pronunciation path; text prompts speak
+/// the string verbatim. `pace` is chosen by the caller based on
+/// pedagogical context — slow for phoneme drilling / corrective modeling,
+/// normal for connected reading / celebratory prompts.
 public enum SpeechPrompt: Sendable {
-    case text(String)
-    case phoneme(Phoneme)
+    case text(String, TTSPace)
+    case phoneme(Phoneme, TTSPace)
 }
 
 /// Owns the session's TTS playback. Views describe what should be spoken
@@ -40,10 +43,10 @@ public final class SpeechController {
             for prompt in prompts {
                 if Task.isCancelled { return }
                 switch prompt {
-                case .text(let text):
-                    await engine.speak(text)
-                case .phoneme(let phoneme):
-                    await engine.speak(phoneme: phoneme)
+                case .text(let text, let pace):
+                    await engine.speak(text, pace: pace)
+                case .phoneme(let phoneme, let pace):
+                    await engine.speak(phoneme: phoneme, pace: pace)
                 }
             }
         }
@@ -64,13 +67,14 @@ public final class SpeechController {
         }
     }
 
-    /// Cancels the in-flight sequence. The engine's cancellation handler
-    /// stops the synthesizer, so audio falls silent without needing a
-    /// separate drain call here. Safe to call from UI event handlers
-    /// (close button, dismiss) that need to silence audio before
-    /// unmounting the view hierarchy.
-    public func stop() {
+    /// Cancels the in-flight sequence and drains the engine. Awaits the
+    /// engine's `stop()` so callers (close button, dismiss) can sequence
+    /// a navigation step after silence — if we returned before the engine
+    /// finished draining, the last utterance's tail could still ride out
+    /// onto the next screen.
+    public func stop() async {
         inflight?.cancel()
         inflight = nil
+        await tts.stop()
     }
 }

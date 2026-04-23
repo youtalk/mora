@@ -18,7 +18,7 @@ final class SpeechControllerTests: XCTestCase {
         let controller = SpeechController(tts: fake)
 
         let task = controller.play([
-            .text("a"), .text("b"), .text("c"),
+            .text("a", .slow), .text("b", .slow), .text("c", .normal),
         ])
         await task.value
 
@@ -26,21 +26,23 @@ final class SpeechControllerTests: XCTestCase {
     }
 
     func test_play_stopsRemainingPromptsWhenReplaced() async {
-        let fake = FakeTTSEngine(speakDuration: .milliseconds(80))
+        let fake = FakeTTSEngine(speakDuration: .milliseconds(200))
         let controller = SpeechController(tts: fake)
 
         let first = controller.play([
-            .text("first-1"), .text("first-2"), .text("first-3"),
+            .text("first-1", .slow), .text("first-2", .slow), .text("first-3", .slow),
         ])
-        // Give the loop time to enter speak("first-1") but not to advance.
-        try? await Task.sleep(for: .milliseconds(20))
-        let second = controller.play([.text("second-1")])
+        // Wait until the controller's loop has reached "first-1" and
+        // recorded it in the fake, before replacing the sequence. A fixed
+        // sleep here would be flaky on slow CI runners (the Task may not
+        // have scheduled yet); polling lets us tolerate load while still
+        // failing fast if the engine never records anything.
+        let started = await waitUntil { fake.uttered.contains("first-1") }
+        XCTAssertTrue(started, "timed out waiting for first-1 to start")
+        let second = controller.play([.text("second-1", .slow)])
         await first.value
         await second.value
 
-        // `first-1` already recorded (speak ran its entry); `second-1`
-        // ran to completion. `first-2` / `first-3` must NOT be recorded:
-        // the controller's cancel prevented the loop from advancing.
         XCTAssertTrue(fake.uttered.contains("first-1"))
         XCTAssertTrue(fake.uttered.contains("second-1"))
         XCTAssertFalse(
@@ -52,31 +54,34 @@ final class SpeechControllerTests: XCTestCase {
     }
 
     func test_stop_cancelsInflightAndPreventsFurtherPrompts() async {
-        let fake = FakeTTSEngine(speakDuration: .milliseconds(80))
+        let fake = FakeTTSEngine(speakDuration: .milliseconds(200))
         let controller = SpeechController(tts: fake)
 
         let task = controller.play([
-            .text("a"), .text("b"), .text("c"),
+            .text("a", .slow), .text("b", .slow), .text("c", .slow),
         ])
-        try? await Task.sleep(for: .milliseconds(20))
-        controller.stop()
+        let started = await waitUntil { fake.uttered.contains("a") }
+        XCTAssertTrue(started, "timed out waiting for a to start")
+        await controller.stop()
         await task.value
 
-        // `a` got recorded before stop landed; everything after should have
-        // been skipped by the `Task.isCancelled` check in the loop.
         XCTAssertEqual(fake.uttered, ["a"])
+        // `stop()` awaits `tts.stop()`, so the fake's stop counter is
+        // deterministically 1 by the time this line executes.
+        XCTAssertEqual(fake.stopCount, 1)
     }
 
     func test_playAndAwait_propagatesCallerCancellation() async {
-        let fake = FakeTTSEngine(speakDuration: .milliseconds(80))
+        let fake = FakeTTSEngine(speakDuration: .milliseconds(200))
         let controller = SpeechController(tts: fake)
 
         let outer = Task { @MainActor in
             await controller.playAndAwait([
-                .text("x"), .text("y"), .text("z"),
+                .text("x", .slow), .text("y", .slow), .text("z", .slow),
             ])
         }
-        try? await Task.sleep(for: .milliseconds(20))
+        let started = await waitUntil { fake.uttered.contains("x") }
+        XCTAssertTrue(started, "timed out waiting for x to start")
         outer.cancel()
         await outer.value
 
@@ -93,8 +98,25 @@ final class SpeechControllerTests: XCTestCase {
         let controller = SpeechController(tts: fake)
         let phoneme = Phoneme(ipa: "ʃ")
 
-        await controller.play([.phoneme(phoneme)]).value
+        await controller.play([.phoneme(phoneme, .slow)]).value
 
         XCTAssertEqual(fake.uttered, ["<phoneme: ʃ>"])
     }
+}
+
+/// Polls `condition` every 5ms up to `timeout`. Returns whether the
+/// condition became true. Used by tests that need to synchronize on a
+/// background task reaching a known state without baking in a fixed
+/// sleep (which is flaky under CI load).
+@Sendable
+private func waitUntil(
+    timeout: Duration = .seconds(2),
+    _ condition: @Sendable () -> Bool
+) async -> Bool {
+    let deadline = ContinuousClock.now.advanced(by: timeout)
+    while !condition() {
+        if ContinuousClock.now >= deadline { return false }
+        try? await Task.sleep(for: .milliseconds(5))
+    }
+    return true
 }
