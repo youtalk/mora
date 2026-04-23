@@ -158,8 +158,5 @@ final class FeatureBasedEvaluatorTests: XCTestCase {
     // MARK: - Skipped substitution pairs
     // Synthetic audio is not reliable for these pairs; each needs a recorded
     // fixture to exercise the measurement path in a meaningful way.
-    // - /r/ vs /l/  — TODO(post-alpha): needs recorded fixture (F3 formant)
-    // - /v/ vs /b/  — TODO(post-alpha): needs recorded fixture (voicing onset time)
-    // - /æ/ vs /ʌ/ — TODO(post-alpha): needs recorded fixture (F1 formant)
     // - /θ/ vs /t/ — TODO(post-alpha): needs recorded fixture (onset burst slope)
 }

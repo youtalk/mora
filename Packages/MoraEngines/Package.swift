@@ -16,6 +16,10 @@ let package = Package(
             dependencies: ["MoraCore"],
             resources: [.process("Resources")]
         ),
-        .testTarget(name: "MoraEnginesTests", dependencies: ["MoraEngines"]),
+        .testTarget(
+            name: "MoraEnginesTests",
+            dependencies: ["MoraEngines"],
+            resources: [.copy("Fixtures")]
+        ),
     ]
 )
