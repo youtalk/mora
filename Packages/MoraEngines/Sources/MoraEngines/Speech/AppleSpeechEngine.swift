@@ -7,6 +7,7 @@ public enum AppleSpeechEngineError: Error, Equatable {
     case audioEngineStartFailed
     case recognizerUnavailable
     case audioSessionConfigurationFailed
+    case audioConverterUnavailable
 }
 
 public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
@@ -87,17 +88,25 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
 
         let ring = PCMRingBuffer(capacitySeconds: 20.0, sampleRate: 16_000)
         self.ringBuffer = ring
-        let targetFormat = AVAudioFormat(
-            commonFormat: .pcmFormatFloat32,
-            sampleRate: 16_000,
-            channels: 1,
-            interleaved: false
-        )
-        let converter = targetFormat.flatMap { AVAudioConverter(from: format, to: $0) }
+
+        guard
+            let targetFormat = AVAudioFormat(
+                commonFormat: .pcmFormatFloat32,
+                sampleRate: 16_000,
+                channels: 1,
+                interleaved: false
+            )
+        else {
+            lock.unlock()
+            throw AppleSpeechEngineError.audioConverterUnavailable
+        }
+        guard let converter = AVAudioConverter(from: format, to: targetFormat) else {
+            lock.unlock()
+            throw AppleSpeechEngineError.audioConverterUnavailable
+        }
 
         node.installTap(onBus: 0, bufferSize: 1024, format: format) { buffer, _ in
             req.append(buffer)
-            guard let targetFormat, let converter else { return }
             let frameCapacity = AVAudioFrameCount(
                 Double(buffer.frameLength) * targetFormat.sampleRate / buffer.format.sampleRate
             )
@@ -138,7 +147,7 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
         let timestamps = TimestampBox()
         timestamps.reset()
 
-        self.task = recognizer.recognitionTask(with: req) { [weak self] result, err in
+        self.task = recognizer.recognitionTask(with: req) { [weak self, ringRef = ring] result, err in
             guard let self else { return }
             if let err {
                 self.cancel()
@@ -153,9 +162,8 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
                 timestamps.markPartial()
                 return
             }
-            guard !timestamps.isFinalized() else { return }
-            timestamps.markFinalized()
-            let clip = self.ringBuffer?.drain() ?? .empty
+            guard timestamps.tryMarkFinalized() else { return }
+            let clip = ringRef.drain()
             continuation.yield(
                 .final(
                     TrialRecording(
@@ -169,14 +177,14 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
         // Silence + hard-timeout watchdog. Polls twice per second — imprecise
         // but keeps the surface small. A half-second stale read only delays
         // the timeout by one tick.
-        Task.detached { [weak self] in
+        Task.detached { [weak self, ringRef = ring] in
             while let self, !timestamps.isFinalized() {
                 try? await Task.sleep(nanoseconds: 500_000_000)
                 let silence = timestamps.silenceSeconds()
                 let total = timestamps.totalSeconds()
                 if silence >= self.silenceTimeout || total >= self.hardTimeout {
-                    timestamps.markFinalized()
-                    let clip = self.ringBuffer?.drain() ?? .empty
+                    guard timestamps.tryMarkFinalized() else { return }
+                    let clip = ringRef.drain()
                     continuation.yield(
                         .final(
                             TrialRecording(
@@ -234,6 +242,18 @@ private final class TimestampBox: @unchecked Sendable {
         finalized = true
     }
 
+    /// Atomically transitions from not-finalized → finalized. Returns `true`
+    /// only for the single caller that makes the transition; all subsequent
+    /// callers return `false`. Use this instead of `isFinalized()` + `markFinalized()`
+    /// at drain sites to eliminate the mark-and-drain race.
+    func tryMarkFinalized() -> Bool {
+        lock.lock()
+        defer { lock.unlock() }
+        guard !finalized else { return false }
+        finalized = true
+        return true
+    }
+
     func isFinalized() -> Bool {
         lock.lock()
         defer { lock.unlock() }
@@ -256,18 +276,18 @@ private final class TimestampBox: @unchecked Sendable {
 /// Thread-safe fixed-capacity ring buffer for Float32 mono PCM. The audio
 /// tap appends live samples; `drain()` returns a copy of the current contents
 /// as an `AudioClip`. Oldest samples are dropped when capacity is exceeded.
-public final class PCMRingBuffer: @unchecked Sendable {
+final class PCMRingBuffer: @unchecked Sendable {
     private let bufferLock = NSLock()
     private var samples: [Float] = []
     private let capacity: Int
-    public let sampleRate: Double
+    let sampleRate: Double
 
-    public init(capacitySeconds: Double, sampleRate: Double) {
+    init(capacitySeconds: Double, sampleRate: Double) {
         self.capacity = Int(capacitySeconds * sampleRate)
         self.sampleRate = sampleRate
     }
 
-    public func append(_ chunk: [Float]) {
+    func append(_ chunk: [Float]) {
         bufferLock.lock()
         defer { bufferLock.unlock() }
         samples.append(contentsOf: chunk)
@@ -276,7 +296,7 @@ public final class PCMRingBuffer: @unchecked Sendable {
         }
     }
 
-    public func drain() -> AudioClip {
+    func drain() -> AudioClip {
         bufferLock.lock()
         defer { bufferLock.unlock() }
         let copy = samples
@@ -284,7 +304,7 @@ public final class PCMRingBuffer: @unchecked Sendable {
         return AudioClip(samples: copy, sampleRate: sampleRate)
     }
 
-    public func reset() {
+    func reset() {
         bufferLock.lock()
         defer { bufferLock.unlock() }
         samples.removeAll(keepingCapacity: true)
