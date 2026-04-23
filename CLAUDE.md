@@ -82,9 +82,9 @@ mora is an iPad-first, **fully on-device** dyslexia + ESL learning app. The thin
   - `CurriculumEngine`, `ContentProvider` / `ScriptedContentProvider`, `TemplateEngine` — content is generated from a template engine + pre-authored library (bundled as package `Resources`). No network calls.
 - **MoraUI** — SwiftUI only. Depends on Core + Engines. `RootView` → `SessionContainerView` drives the per-phase views (`WarmupView`, `DecodeActivityView`, `ShortSentencesView`, `CompletionView`). Views observe the orchestrator; they never own business logic.
 - **MoraTesting** — Test doubles (`FakeSpeechEngine`, `FakeTTSEngine`) shared by the other packages' test targets. Keep fakes here, not inline in tests.
-- **MoraMLX** — Placeholder for the v1.5 on-device LLM path (MLX + Gemma / Apple Intelligence Foundation Models). Currently empty; do not add runtime dependencies on it from other packages.
+- **MoraMLX** — Host for on-device ML models used at runtime. Depends on `MoraCore` and `MoraEngines`. Exports `MoraMLXModelCatalog` (lazy model loader with in-process cache) and `CoreMLPhonemePosteriorProvider` (conforms to `MoraEngines.PhonemePosteriorProvider`). As of v1.5 it bundles the INT8-quantized wav2vec2-phoneme CoreML model for Engine B pronunciation scoring; later v1.5 work will also host the on-device LLM (Apple Intelligence Foundation Models or MLX + Gemma). Domain packages consume models only through narrow protocols defined in `MoraEngines`; `MoraUI` does not depend on `MoraMLX`.
 
-Dependency direction is one-way: `Core ← Engines ← UI`, with `Testing` depending on Core+Engines and `MLX` standalone. Do not introduce upward or cyclic edges.
+Dependency direction is one-way: `Core ← Engines ← UI`, with `Testing` and `MLX` both depending on `Core` + `Engines`. `MoraUI` does not depend on `MoraMLX`. Do not introduce upward or cyclic edges.
 
 ### Key invariants
 
