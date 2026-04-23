@@ -55,7 +55,7 @@ public enum MoraMLXModelCatalog {
             do {
                 return try MLModel(contentsOf: url)
             } catch {
-                throw MoraMLXError.inferenceFailed(String(describing: error))
+                throw MoraMLXError.modelLoadFailed(String(describing: error))
             }
         }
 

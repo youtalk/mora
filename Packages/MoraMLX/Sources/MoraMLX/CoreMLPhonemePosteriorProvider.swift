@@ -19,6 +19,11 @@ public struct CoreMLPhonemePosteriorProvider: PhonemePosteriorProvider, @uncheck
     /// 20 ms of 16 kHz audio — 50 frames per second.
     public let framesPerSecond: Double
 
+    /// The wav2vec2 model was exported at 16 kHz; any other rate produces
+    /// garbage output because the convolutional frontend assumes that
+    /// fixed sample rate.
+    private static let expectedSampleRate: Double = 16_000
+
     private static let log = Logger(subsystem: "tech.reenable.Mora", category: "CoreMLProvider")
 
     public init(
@@ -35,6 +40,11 @@ public struct CoreMLPhonemePosteriorProvider: PhonemePosteriorProvider, @uncheck
         if audio.samples.isEmpty {
             throw MoraMLXError.inferenceFailed("empty audio")
         }
+        guard audio.sampleRate == Self.expectedSampleRate else {
+            throw MoraMLXError.inferenceFailed(
+                "unexpected sample rate: \(audio.sampleRate) Hz (expected \(Self.expectedSampleRate) Hz)"
+            )
+        }
         let input = try Self.makeInput(audio: audio)
         let output: MLFeatureProvider
         do {
@@ -42,13 +52,21 @@ public struct CoreMLPhonemePosteriorProvider: PhonemePosteriorProvider, @uncheck
         } catch {
             throw MoraMLXError.inferenceFailed(String(describing: error))
         }
-        guard
-            let firstName = output.featureNames.sorted().first,
-            let logProbsArray = output.featureValue(for: firstName)?.multiArrayValue
-        else {
-            throw MoraMLXError.inferenceFailed("no multiArray output")
+        // The exported wav2vec2 model has exactly one output feature — the
+        // log-posterior MLMultiArray. Asserting that explicitly guards
+        // against contract drift if the conversion script changes.
+        guard output.featureNames.count == 1, let featureName = output.featureNames.first else {
+            throw MoraMLXError.inferenceFailed(
+                "expected exactly one output feature, got \(output.featureNames.count): "
+                    + "\(output.featureNames.sorted())"
+            )
         }
-        return Self.convert(
+        guard let logProbsArray = output.featureValue(for: featureName)?.multiArrayValue else {
+            throw MoraMLXError.inferenceFailed(
+                "output feature \(featureName) is not an MLMultiArray"
+            )
+        }
+        return try Self.convert(
             logProbs: logProbsArray,
             labels: inventory.espeakLabels,
             framesPerSecond: framesPerSecond
@@ -76,7 +94,7 @@ public struct CoreMLPhonemePosteriorProvider: PhonemePosteriorProvider, @uncheck
         logProbs: MLMultiArray,
         labels: [String],
         framesPerSecond: Double
-    ) -> PhonemePosterior {
+    ) throws -> PhonemePosterior {
         let shape = logProbs.shape.map { $0.intValue }
         let frameCount: Int
         let phonemeCount: Int
@@ -88,13 +106,17 @@ public struct CoreMLPhonemePosteriorProvider: PhonemePosteriorProvider, @uncheck
             frameCount = shape[1]
             phonemeCount = shape[2]
         default:
-            log.error("unexpected output shape: \(shape)")
-            return PhonemePosterior(
-                framesPerSecond: framesPerSecond,
-                phonemeLabels: labels,
-                logProbabilities: []
+            throw MoraMLXError.inferenceFailed("unexpected output shape: \(shape)")
+        }
+        guard logProbs.dataType == .float32 else {
+            throw MoraMLXError.inferenceFailed(
+                "unexpected MLMultiArray dataType: \(logProbs.dataType.rawValue) (expected float32)"
             )
         }
+        // TODO: handle non-contiguous strides if a future CoreML conversion
+        // produces strided output. The current wav2vec2 export is contiguous
+        // (stride[last] == 1, stride[t] == phonemeCount), so plain row-major
+        // indexing is safe.
         var rows: [[Float]] = []
         rows.reserveCapacity(frameCount)
         let ptr = logProbs.dataPointer.bindMemory(

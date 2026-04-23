@@ -79,6 +79,14 @@ struct MoraApp: App {
                 // on every session bootstrap.
                 log.info("MLX phoneme evaluator not bundled yet; running Engine A only")
                 return engineA
+            } catch MoraMLXError.modelLoadFailed(let reason) {
+                // Once the real model lands a `.modelLoadFailed` means the
+                // compiled bundle is corrupted or truncated — a real error
+                // we want to see in logs.
+                log.error(
+                    "MLX phoneme evaluator model load failed (\(reason)); running Engine A only"
+                )
+                return engineA
             } catch {
                 log.error(
                     "MLX phoneme evaluator load failed (\(String(describing: error))); running Engine A only"
