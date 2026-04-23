@@ -187,10 +187,6 @@ public struct SessionContainerView: View {
                 return
             }
             let provider = try ScriptedContentProvider.bundledShWeek1()
-            let words = try provider.decodeWords(
-                ContentRequest(
-                    target: targetGrapheme, taughtGraphemes: taught, interests: [], count: 5
-                ))
             let sentences = try provider.decodeSentences(
                 ContentRequest(
                     target: targetGrapheme, taughtGraphemes: taught, interests: [], count: 2
@@ -202,7 +198,8 @@ public struct SessionContainerView: View {
                     Grapheme(letters: "sh"),
                     Grapheme(letters: "ch"),
                 ],
-                words: words, sentences: sentences,
+                chainProvider: LibraryFirstWordChainProvider(),
+                sentences: sentences,
                 assessment: AssessmentEngine(
                     l1Profile: JapaneseL1Profile(),
                     evaluator: FeatureBasedPronunciationEvaluator()
