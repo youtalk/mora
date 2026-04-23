@@ -127,7 +127,7 @@ public struct PronunciationFeedbackOverlay: View {
         }
         .padding()
         .background(.thinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .clipShape(RoundedRectangle(cornerRadius: MoraTheme.Radius.card))
         .task {
             if !viewModel.coachingText.isEmpty {
                 await onAppearSpeak(viewModel.coachingText)
