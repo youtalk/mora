@@ -114,31 +114,44 @@ public struct CoreMLPhonemePosteriorProvider: PhonemePosteriorProvider, @uncheck
         // overrides — that would cost ANE acceleration (see the p95 budget
         // in docs/superpowers/plans/2026-04-23-engine-b-followup-real-model-bundling.md#device-verification).
         //
+        // Build rows directly from the MLMultiArray pointer in one pass per
+        // frame. An earlier version materialized a `flat` [Float] upfront
+        // and then sliced it per frame, which doubled allocations per
+        // inference call — a p95-latency hit we don't want on the ~300 MB
+        // model.
+        //
         // TODO: handle non-contiguous strides if a future CoreML conversion
         // produces strided output. The current wav2vec2 export is contiguous
         // (stride[last] == 1, stride[t] == phonemeCount), so plain row-major
         // indexing is safe.
+        var rows: [[Float]] = []
+        rows.reserveCapacity(frameCount)
         let totalCount = frameCount * phonemeCount
-        let flat: [Float]
         switch logProbs.dataType {
         case .float32:
             let ptr = logProbs.dataPointer.bindMemory(to: Float.self, capacity: totalCount)
-            flat = Array(UnsafeBufferPointer(start: ptr, count: totalCount))
+            for t in 0..<frameCount {
+                let base = t * phonemeCount
+                rows.append(
+                    Array(UnsafeBufferPointer(start: ptr + base, count: phonemeCount))
+                )
+            }
         case .float16:
             let ptr = logProbs.dataPointer.bindMemory(to: Float16.self, capacity: totalCount)
-            flat = (0..<totalCount).map { Float(ptr[$0]) }
+            for t in 0..<frameCount {
+                let base = t * phonemeCount
+                var row = [Float](repeating: 0, count: phonemeCount)
+                for c in 0..<phonemeCount {
+                    row[c] = Float(ptr[base + c])
+                }
+                rows.append(row)
+            }
         default:
             throw MoraMLXError.inferenceFailed(
                 "unsupported MLMultiArray dataType: \(logProbs.dataType.rawValue) "
                     + "(supported: float32=\(MLMultiArrayDataType.float32.rawValue), "
                     + "float16=\(MLMultiArrayDataType.float16.rawValue))"
             )
-        }
-        var rows: [[Float]] = []
-        rows.reserveCapacity(frameCount)
-        for t in 0..<frameCount {
-            let base = t * phonemeCount
-            rows.append(Array(flat[base..<(base + phonemeCount)]))
         }
         return PhonemePosterior(
             framesPerSecond: framesPerSecond,
