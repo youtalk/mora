@@ -4,26 +4,27 @@ import SwiftUI
 
 public struct DecodeBoardView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.moraStrings) private var strings
     @Bindable public var engine: TileBoardEngine
     public let chainPipStates: [ChainPipState]
     public let incomingRole: ChainRole
-    public let isFirstTrialOfPhase: Bool
+    public let speech: SpeechController?
     public var onTrialComplete: (TileBoardTrialResult) -> Void = { _ in }
 
-    @State private var betaOverlayVisible: Bool = false
-    @State private var betaTask: Task<Void, Never>?
+    private let tileSize: CGFloat = 128
+    private let slotSize: CGFloat = 168
 
     public init(
         engine: TileBoardEngine,
         chainPipStates: [ChainPipState],
         incomingRole: ChainRole,
-        isFirstTrialOfPhase: Bool = false,
+        speech: SpeechController? = nil,
         onTrialComplete: @escaping (TileBoardTrialResult) -> Void = { _ in }
     ) {
         self.engine = engine
         self.chainPipStates = chainPipStates
         self.incomingRole = incomingRole
-        self.isFirstTrialOfPhase = isFirstTrialOfPhase
+        self.speech = speech
         self.onTrialComplete = onTrialComplete
     }
 
@@ -35,6 +36,7 @@ public struct DecodeBoardView: View {
                 ChainProgressRibbon(states: chainPipStates)
                 prompt
                 slotRow
+                listenAgainButton
                 pool
             }
             .padding(.horizontal, 24)
@@ -43,39 +45,11 @@ public struct DecodeBoardView: View {
                     onTrialComplete(engine.result)
                 }
             }
-            if betaOverlayVisible {
-                Text(engine.trial.word.surface)
-                    .font(.openDyslexic(size: 72))
-                    .foregroundColor(.primary)
-                    .padding(.horizontal, 40)
-                    .padding(.vertical, 20)
-                    .background(
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(.ultraThinMaterial)
-                    )
-                    .transition(.opacity.combined(with: .scale))
-            }
         }
         .onAppear {
-            if isFirstTrialOfPhase {
-                betaOverlayVisible = true
-                betaTask = Task { @MainActor in
-                    try? await Task.sleep(nanoseconds: 600_000_000)
-                    if Task.isCancelled { return }
-                    withAnimation(reduceMotion ? .linear(duration: 0.12) : .easeOut(duration: 0.35)) {
-                        betaOverlayVisible = false
-                    }
-                    engine.apply(.preparationFinished)
-                    engine.apply(.promptFinished)
-                }
-            } else {
-                engine.apply(.preparationFinished)
-                engine.apply(.promptFinished)
-            }
-        }
-        .onDisappear {
-            betaTask?.cancel()
-            betaTask = nil
+            engine.apply(.preparationFinished)
+            engine.apply(.promptFinished)
+            speakTarget()
         }
     }
 
@@ -87,20 +61,29 @@ public struct DecodeBoardView: View {
     }
 
     private var slotRow: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 16) {
             ForEach(Array(engine.trial.expectedSlots.enumerated()), id: \.offset) { index, expected in
-                SlotView(state: slotState(at: index, expected: expected), reduceMotion: reduceMotion)
-                    .onDrop(of: ["public.text"], isTargeted: nil) { providers in
-                        _ = providers.first?.loadObject(ofClass: NSString.self) { (text, _) in
-                            guard let tileID = text as? String else { return }
-                            Task { @MainActor in
-                                engine.apply(.tileDropped(slotIndex: index, tileID: tileID))
-                            }
-                        }
+                SlotView(state: slotState(at: index, expected: expected), size: slotSize, reduceMotion: reduceMotion)
+                    .dropDestination(for: String.self) { items, _ in
+                        guard let tileID = items.first else { return false }
+                        engine.apply(.tileDropped(slotIndex: index, tileID: tileID))
                         return true
                     }
             }
         }
+    }
+
+    private var listenAgainButton: some View {
+        Button(action: speakTarget) {
+            Text(strings.decodeListenAgain)
+                .font(.title3.weight(.semibold))
+                .foregroundStyle(MoraTheme.Accent.teal)
+                .padding(.vertical, 10)
+                .padding(.horizontal, 20)
+                .background(MoraTheme.Background.mint, in: .capsule)
+        }
+        .buttonStyle(.plain)
+        .disabled(speech == nil)
     }
 
     private func slotState(at index: Int, expected: Grapheme) -> SlotState {
@@ -116,14 +99,14 @@ public struct DecodeBoardView: View {
     }
 
     private var pool: some View {
-        TilePoolView(tiles: engine.pool, reduceMotion: reduceMotion)
+        TilePoolView(tiles: engine.pool, tileSize: tileSize, reduceMotion: reduceMotion)
     }
 
     private var promptText: String {
-        switch engine.trial {
-        case .build: return "Listen and build the word"
-        case let .change(target, _, _):
-            return "Change \(target.oldGrapheme.letters) to \(target.newGrapheme.letters)"
-        }
+        strings.decodeBuildPrompt
+    }
+
+    private func speakTarget() {
+        speech?.play([.text(engine.trial.word.surface, .normal)])
     }
 }

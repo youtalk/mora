@@ -69,6 +69,12 @@ struct WarmupView: View {
 
     private func playTargetPhoneme() {
         guard let speech, let phoneme = orchestrator.target.phoneme else { return }
+        // Single utterance, not a multi-prompt sequence: chaining a leading
+        // text prompt before the phoneme regularly silenced the first call on
+        // a cold launch — `AVSpeechSynthesizer` never fires `didFinish` for
+        // the first short utterance, so the queue stalls and the phoneme is
+        // never spoken. The on-screen "Which one says /…/?" copy carries the
+        // verbal frame; the audio just delivers the target sound.
         speech.play([.phoneme(phoneme, .slow)])
     }
 

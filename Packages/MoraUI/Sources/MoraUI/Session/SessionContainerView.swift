@@ -75,7 +75,13 @@ public struct SessionContainerView: View {
         // own `.task`. Without this, a long-press speak left over from
         // a prior phase-intro view would keep playing into the next
         // phase if that view has no `.task` of its own.
-        .onChange(of: orchestrator?.phase) { _, _ in
+        //
+        // Skip the entry from `.notStarted` — nothing is playing yet, and
+        // racing a no-op `stop()` against the new phase view's first
+        // `speech.play(...)` can cancel the very first utterance (the
+        // warmup phoneme that introduces the target grapheme).
+        .onChange(of: orchestrator?.phase) { oldValue, _ in
+            guard oldValue != nil, oldValue != .notStarted else { return }
             guard let speech else { return }
             Task { await speech.stop() }
         }
@@ -128,7 +134,7 @@ public struct SessionContainerView: View {
                         engine: engine,
                         chainPipStates: orchestrator.chainPipStates.map(ChainPipState.init),
                         incomingRole: orchestrator.currentChainRole,
-                        isFirstTrialOfPhase: orchestrator.isFirstTrialOfPhase,
+                        speech: speech,
                         onTrialComplete: { result in
                             orchestrator.consumeTileBoardTrial(result)
                         }
@@ -181,6 +187,17 @@ public struct SessionContainerView: View {
             uiMode = .tap
         }
         speech = SpeechController(tts: AppleTTSEngine(l1Profile: JapaneseL1Profile()))
+        // Prime AVSpeechSynthesizer so the warmup phoneme isn't the
+        // utterance that gets eaten by the cold-launch first-utterance
+        // quirk: on a fresh audio session the very first short speak()
+        // sometimes never fires `didFinish`, leaving the queue stalled
+        // and the learner's first prompt silent. A space-only primer
+        // routed through `SpeechController` takes that hit on a no-op
+        // so the real prompt plays cleanly — and because it goes through
+        // the controller's `inflight`, the warmup view's first
+        // `speech.play(...)` cancels it via the same chokepoint as any
+        // other in-flight sequence.
+        speech?.play([.text(" ", .normal)])
         #else
         uiMode = .tap
         #endif

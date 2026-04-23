@@ -1,25 +1,25 @@
 import MoraCore
 import SwiftUI
-import UniformTypeIdentifiers
 
 public struct TilePoolView: View {
     public let tiles: [Tile]
+    public let tileSize: CGFloat
     public let reduceMotion: Bool
-    public var onLift: (String) -> Void = { _ in }
 
-    public init(tiles: [Tile], reduceMotion: Bool = false, onLift: @escaping (String) -> Void = { _ in }) {
+    public init(
+        tiles: [Tile],
+        tileSize: CGFloat = 128,
+        reduceMotion: Bool = false
+    ) {
         self.tiles = tiles
+        self.tileSize = tileSize
         self.reduceMotion = reduceMotion
-        self.onLift = onLift
     }
 
     public var body: some View {
         WrappingHStack(tiles) { tile in
-            TileView(tile: tile, visual: .idle, reduceMotion: reduceMotion)
-                .onDrag {
-                    onLift(tile.id)
-                    return NSItemProvider(object: tile.id as NSString)
-                }
+            TileView(tile: tile, visual: .idle, size: tileSize, reduceMotion: reduceMotion)
+                .draggable(tile.id)
         }
         .padding(12)
         .background(

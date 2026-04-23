@@ -35,13 +35,6 @@ public final class SessionOrchestrator {
         }
     }
 
-    /// `true` only at the start of a freshly loaded decoding phase, regardless
-    /// of how many chains the provider produced. Used by `DecodeBoardView` to
-    /// decide whether to play the once-per-day β-scaffold orientation glance.
-    public var isFirstTrialOfPhase: Bool {
-        completedTrialCount == 0 && !pendingChains.isEmpty
-    }
-
     /// Returns the engine driving the current trial, or `nil` if no chain is
     /// active. The instance is cached and survives view re-renders so trial
     /// state (`@Observable` properties, drop attempts, scaffold misses) is

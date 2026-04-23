@@ -80,10 +80,25 @@ public actor AppleTTSEngine: TTSEngine {
     /// `en*` set `resolveVoice` considers so the gate matches actual playback
     /// capability — a device with only an Enhanced/Premium en-GB voice
     /// installed is fine, because `resolveVoice` will pick it.
+    ///
+    /// On macOS (native, Mac Catalyst, or "Designed for iPad" running on
+    /// Apple Silicon Mac) we always return `false`: the standard Mac install
+    /// ships only compact voices, so leaving the gate enabled traps the
+    /// learner on the home screen forever. The ProcessInfo flags catch the
+    /// runtime-on-Mac cases that are invisible to `#if os(macOS)` —
+    /// `isiOSAppOnMac` is true for "Designed for iPad" on Apple Silicon Mac
+    /// and `isMacCatalystApp` is true for Mac Catalyst, both of which
+    /// compile as iOS binaries.
     public nonisolated static var needsEnhancedVoice: Bool {
+        #if os(macOS)
+        return false
+        #else
+        let info = ProcessInfo.processInfo
+        if info.isiOSAppOnMac || info.isMacCatalystApp { return false }
         let voices = AVSpeechSynthesisVoice.speechVoices()
             .filter { $0.language.hasPrefix("en") }
         return !voices.contains { $0.quality == .enhanced || $0.quality == .premium }
+        #endif
     }
 
     /// One-line summary per installed English voice — `"Ava · en-US · Premium"`
@@ -245,7 +260,7 @@ public actor AppleTTSEngine: TTSEngine {
         cachedVoice = resolveVoice()
         voiceResolved = true
         if let v = cachedVoice {
-            audioLog.info(
+            audioLog.debug(
                 "AppleTTSEngine: picked voice id=\(v.identifier) lang=\(v.language) quality=\(v.quality.rawValue)"
             )
         } else {
