@@ -75,6 +75,8 @@ This separation has three consequences:
 - The parent spec's `MoraMLX` placement comment (`// Placeholder for v1.5. This package intentionally has no dependencies and no public API in v1`) is lifted: MoraMLX now exports two public symbols, `CoreMLPhonemePosteriorProvider` and `MoraMLXModelCatalog`, and takes on dependencies `MoraCore` and `MoraEngines`. `MoraUI` does not gain a dependency on `MoraMLX` — app startup does the wiring.
 - The same split is reusable for v1.5's Qwen / Gemma LLM work: `MoraMLX` hosts models; domain packages (`MoraEngines`) host business logic, consuming MLX via narrow protocols.
 
+**CLAUDE.md coordination.** The repository's `CLAUDE.md` currently describes `MoraMLX` as "placeholder for v1.5" with an explicit "do not add runtime dependencies" instruction. This spec's Part 2 lifts both constraints — adding deps, public API, and runtime wiring. `CLAUDE.md`'s `MoraMLX` paragraph is updated alongside Part 2's landing so contributors do not follow a stale rule. The update is listed in the plan's Task 30 (docs).
+
 ### 4.2 Composite decorator, always-fire Engine B
 
 Fan-out policy is locked in brainstorming as Option C (always fire B, regardless of Engine A's support status):
@@ -412,7 +414,6 @@ public struct PronunciationTrialLogEntry: Sendable {
 public enum EngineBLogResult: Sendable {
     case completed(PhonemeTrialAssessment, latencyMs: Int)
     case timedOut(latencyMs: Int)
-    case failed(reason: String, latencyMs: Int)
     case unsupported
 }
 ```
@@ -431,7 +432,6 @@ public struct ShadowLoggingPronunciationEvaluator: PronunciationEvaluator {
     public let primary: any PronunciationEvaluator       // Engine A
     public let shadow: any PronunciationEvaluator        // Engine B
     public let logger: any PronunciationTrialLogger
-    public let clock: any Clock<Duration>                // injectable for tests
     public let timeout: Duration                         // default .milliseconds(1000)
 
     public func supports(target: Phoneme, in word: Word) -> Bool {
@@ -448,56 +448,31 @@ public struct ShadowLoggingPronunciationEvaluator: PronunciationEvaluator {
 }
 ```
 
+**Failure handling.** `PronunciationEvaluator.evaluate(...)` is non-throwing by protocol contract. Any Engine B failure — model load failure, `posterior(...)` throwing, inference error — is caught *inside* `PhonemeModelPronunciationEvaluator` (see §6.6) and surfaces as `PhonemeTrialAssessment(label: .unclear, features: ["reason": "..."])`. The composite therefore never observes a thrown error from the shadow path; it can only observe (a) a `PhonemeTrialAssessment` value returned within the timeout, or (b) a timeout. `EngineBLogResult` has no `.failed` variant — diagnostic reasons for `.unclear` outcomes live in the returned assessment's `features` dict and are persisted through `engineAFeaturesJSON`-style encoding on the Engine B side.
+
 Flow:
 
-1. Decide `primarySupport = primary.supports(target:, in:)`.
-2. If `primarySupport`: `let a = await primary.evaluate(audio:, expected:, targetPhoneme:, asr:)`; else `a = nil`.
-3. Enqueue a detached task:
-   - `start = clock.now`
-   - `let b = await withTimeout(timeout) { try? await shadow.evaluate(audio:, expected:, targetPhoneme:, asr:) }`
-   - `elapsed = start.duration(to: clock.now)`
+1. Decide `primarySupports = primary.supports(target:, in:)` and `shadowSupports = shadow.supports(target:, in:)`.
+2. If `primarySupports`: `let a = await primary.evaluate(audio:, expected:, targetPhoneme:, asr:)`; else `a = nil`.
+3. If neither `primarySupports` nor `shadowSupports`, skip logging (there is nothing to correlate) and return the `.unclear` placeholder. Retention math therefore only consumes FIFO slots when at least one evaluator produced or attempted a result.
+4. Otherwise enqueue a detached task:
+   - `start = ContinuousClock.now`
+   - If `shadowSupports`: `let b = await withTimeout(timeout) { await shadow.evaluate(...) }`; else `b = nil` (used below to produce `.unsupported`).
+   - `elapsed = start.duration(to: ContinuousClock.now)`
    - Build `EngineBLogResult`:
-     - `b != nil && !shadow.supports(...)` — never happens because `supports` gates. Drop.
+     - `!shadowSupports` → `.unsupported`
      - `b != nil` → `.completed(b!, latencyMs: Int(elapsed.ms))`
-     - `b == nil && shadow.supports(...)` → `.timedOut(latencyMs: Int(elapsed.ms))` (timeout path)
-     - `!shadow.supports(...)` → `.unsupported`
-   - If `shadow.evaluate` threw (captured via `Result` in the `withTimeout` wrapper) → `.failed(reason: String(describing: error), latencyMs: Int(elapsed.ms))`.
+     - `b == nil && shadowSupports` → `.timedOut(latencyMs: Int(elapsed.ms))`
    - Call `await logger.record(PronunciationTrialLogEntry(timestamp: Date(), word: expected, targetPhoneme: targetPhoneme, engineA: a, engineB: bResult))`.
-4. Return `a` if non-nil, else a synthesized `.unclear` placeholder for `targetPhoneme` so `AssessmentEngine`'s existing null-safety code path is unaffected.
+5. Return `a` if non-nil, else a synthesized `.unclear` placeholder for `targetPhoneme` so `AssessmentEngine`'s existing null-safety code path is unaffected.
 
 Unit-test coverage for §6.8 in `ShadowLoggingPronunciationEvaluatorTests`:
 
 - Primary-supports + shadow-supports: logger sees both; UI sees A.
-- Primary-unsupports + shadow-supports: logger sees B only; UI sees `.unclear` placeholder.
-- Primary-supports + shadow times out: logger sees A + `.timedOut`.
-- Primary-supports + shadow throws: logger sees A + `.failed`.
-- Neither supports: logger not called (no row).
-
-### 6.10 `withTimeout` helper
-
-Both `PhonemeModelPronunciationEvaluator` (§6.6) and `ShadowLoggingPronunciationEvaluator` (§6.8) need to bound an async call to a deadline. Swift's stdlib does not provide a ready-made helper; the spec adds one in `Packages/MoraEngines/Sources/MoraEngines/Pronunciation/Concurrency.swift`:
-
-```swift
-/// Runs `operation` under a timeout. Returns the operation's result if it
-/// completes in time, or nil if the timeout elapses first. The operation's
-/// task is cancelled on timeout.
-public func withTimeout<T: Sendable>(
-    _ duration: Duration,
-    operation: @Sendable @escaping () async throws -> T
-) async -> T? {
-    await withTaskGroup(of: Optional<T>.self) { group in
-        group.addTask { try? await operation() }
-        group.addTask {
-            try? await Task.sleep(for: duration)
-            return nil
-        }
-        defer { group.cancelAll() }
-        return await group.next() ?? nil
-    }
-}
-```
-
-Tests in `ConcurrencyTests` verify: fast operation returns its value; slow operation returns nil; a throwing operation returns nil; cancellation propagates to the operation's task. The helper is `internal` to `MoraEngines` (not exported via `public`) because it is an implementation detail of the evaluators.
+- Primary-unsupports + shadow-supports: logger sees entry with `engineA = nil`, `engineB = .completed(...)`; UI sees `.unclear` placeholder.
+- Primary-supports, shadow-unsupports: logger sees entry with A and `engineB = .unsupported`.
+- Primary-supports, shadow times out: logger sees A and `engineB = .timedOut`.
+- Neither supports: logger is not called; no row is written.
 
 ### 6.9 `PronunciationTrialLog` SwiftData entity and retention
 
@@ -512,11 +487,10 @@ public final class PronunciationTrialLog {
     public var engineAScore: Int?
     public var engineAFeaturesJSON: String              // JSON-encoded [String: Double]
 
-    public var engineBState: String                     // "completed" | "timedOut" | "failed" | "unsupported"
+    public var engineBState: String                     // "completed" | "timedOut" | "unsupported"
     public var engineBLabel: String?                    // nil unless state = "completed"
     public var engineBScore: Int?
     public var engineBLatencyMs: Int?
-    public var engineBFailureReason: String?
 
     public init(...)
 }
@@ -536,6 +510,34 @@ public enum PronunciationTrialRetentionPolicy {
 `cleanup` fetches the count (`FetchDescriptor<PronunciationTrialLog>` with `fetchLimit = nil`, sort by `timestamp` ascending), and if `count > maxRows` deletes the oldest `count − maxRows` rows. Called once at app startup (`MoraApp.init`). O(1) when under the cap; O(excess) when over it, which is small.
 
 Logger-side: `SwiftDataPronunciationTrialLogger.record` does not enforce the cap itself to avoid per-trial database traffic. The cap is a startup-sweep only. Worst case: within a single session a learner produces >1000 trials (very unlikely — a session is tens of trials). If that ever becomes relevant, move cleanup into the logger.
+
+### 6.10 `withTimeout` helper
+
+Both `PhonemeModelPronunciationEvaluator` (§6.6) and `ShadowLoggingPronunciationEvaluator` (§6.8) need to bound an async call to a deadline. Swift's stdlib does not provide a ready-made helper; the spec adds one in `Packages/MoraEngines/Sources/MoraEngines/Pronunciation/Concurrency.swift`:
+
+```swift
+/// Runs `operation` under a timeout. Returns the operation's result if it
+/// completes in time, or nil if the timeout elapses first. The operation's
+/// task is cancelled on timeout.
+func withTimeout<T: Sendable>(
+    _ duration: Duration,
+    operation: @Sendable @escaping () async throws -> T
+) async -> T? {
+    await withTaskGroup(of: Optional<T>.self) { group in
+        group.addTask { try? await operation() }
+        group.addTask {
+            try? await Task.sleep(for: duration)
+            return nil
+        }
+        defer { group.cancelAll() }
+        return await group.next() ?? nil
+    }
+}
+```
+
+Tests in `ConcurrencyTests` verify: fast operation returns its value; slow operation returns nil; a throwing operation returns nil; cancellation propagates to the operation's task. The helper is `internal` to `MoraEngines` (not exported via `public`) because it is an implementation detail of the evaluators.
+
+Note that because the helper swallows thrown errors into `nil`, it cannot distinguish timeout from error at the composite's call site. That is intentional: `ShadowLoggingPronunciationEvaluator` only ever wraps a non-throwing `PronunciationEvaluator.evaluate(...)` call (see §6.8 "Failure handling"), so `nil` unambiguously means "timed out" at that boundary. `PhonemeModelPronunciationEvaluator` uses the helper to wrap the throwing `PhonemePosteriorProvider.posterior(...)`; there, a nil return is handled by returning `.unclear` without distinguishing timeout from provider error — both are user-facing equivalent.
 
 ## 7. Data Flow — Single Trial in Shadow Mode
 
@@ -638,7 +640,6 @@ struct MoraApp: App {
                 primary: engineA,
                 shadow: engineB,
                 logger: logger,
-                clock: ContinuousClock(),
                 timeout: .milliseconds(1000)
             )
         } else {
@@ -659,10 +660,11 @@ struct MoraApp: App {
 | Condition | Behavior |
 |---|---|
 | MLX model file missing from bundle at launch | `MoraMLXModelCatalog.loadPhonemeEvaluator()` throws; `MoraApp` installs bare Engine A; `os_log` records the failure; no shadow rows. |
-| MLX model load succeeds but first inference throws | Provider's async call throws; `ShadowLoggingPronunciationEvaluator` logs `.failed(reason:)`. Subsequent trials continue to invoke the provider (the model is loaded). |
-| Provider call times out (>1000 ms) | `withTimeout` returns nil; entry logged as `.timedOut(latencyMs: 1000)`. |
+| MLX model load succeeds but inference throws | `PhonemeModelPronunciationEvaluator` catches the throw, returns `.unclear` with `features["reason"]` set. `ShadowLoggingPronunciationEvaluator` logs this as `.completed(assessment, latencyMs:)`; the `.unclear` label plus the features dict carry the diagnostic. Subsequent trials keep invoking the provider (model stays loaded). |
+| Provider call times out (>1000 ms) inside Engine B | `withTimeout` returns nil; `PhonemeModelPronunciationEvaluator` returns `.unclear`. The outer composite still measures its own wall-clock for logging and records `.completed` — the inner timeout is not distinguishable from inference error at the composite boundary. |
+| Composite-level timeout on `shadow.evaluate(...)` (>1000 ms) | `ShadowLoggingPronunciationEvaluator`'s `withTimeout` returns nil; entry logged as `.timedOut(latencyMs: ~1000)`. |
 | Alignment `averageLogProb < reliabilityThreshold` | `evaluate` returns `.unclear` with `isReliable = false` and `score = nil`. Still logged. |
-| Target phoneme not in `PhonemeInventory.supportedPhonemeIPA` | Evaluator returns without calling the provider: `supports` was false. Composite logs entry with `engineBState = "unsupported"`. |
+| Target phoneme not in `PhonemeInventory.supportedPhonemeIPA` | Engine B's `supports` returns false; composite either skips logging (if Engine A also unsupported) or logs entry with `engineBState = "unsupported"` (if Engine A supports). |
 | SwiftData save in logger throws | Caught in logger; `os_log` records; entry dropped. Next startup cleanup is unaffected. |
 | Retention cleanup throws | Caught in `MoraApp.init`; `os_log` records. App still launches. |
 
@@ -717,10 +719,9 @@ The model file itself is derived from `facebook/wav2vec2-xlsr-53-espeak-cv-ft`, 
 
 - Both supported: logger sees one entry with both fields populated; UI sees A.
 - A unsupported, B supported: logger sees entry with `engineA == nil`, `engineB = .completed(...)`; composite returns `.unclear` placeholder.
-- B times out (fake B awaits indefinitely): logger entry has `engineBState = "timedOut"`, `engineBLatencyMs ≈ timeout`.
-- B throws: logger entry has `engineBState = "failed"`, reason captured.
+- A supported, B unsupported: logger sees entry with A and `engineB = .unsupported`.
+- B times out (fake B awaits indefinitely): logger entry has `engineBState = "timedOut"`, `engineBLatencyMs ≈ timeout`. Wall-clock is used; the timeout is coarse enough (~30 ms in tests against a 1000 ms production budget) that wall-clock flakiness is not a problem.
 - Neither supports: logger not called.
-- Clock injection: tests use a `ControlledClock` to assert deterministic latencies without wall-clock flakiness.
 
 ### 11.6 Unit — SwiftData entity + retention
 
@@ -831,7 +832,7 @@ Decoding is on-demand. `PronunciationTrialLog` exposes computed properties (`dec
 
 1. **CoreML model size on M-series iPads vs A-series.** INT8 quantization yields ~150 MB; the conversion may ship larger or smaller depending on coremltools version and `mlprogram` vs `neuralnetwork` target. Validated at convert-time and recorded in the PR description. If the final size exceeds ~200 MB, revisit on-demand resource strategy per parent spec §14 Q5.
 2. **Inventory coverage.** The v1.5 MVP inventory is ~36 phonemes. Post-v1.5, expansion is a data-only change; the split between "in MVP" and "outside MVP" is reviewed after the first month of shadow-log data shows which phonemes the curriculum actually exercises.
-3. **Clock and timeout test determinism.** `ContinuousClock` is injected into `ShadowLoggingPronunciationEvaluator`. A `ControlledClock` is added to `MoraTesting` for tests. Verify that `withTimeout(_:operation:)` accepts the injected clock; if not, use `Task.sleep(for:)` patterns that honor it.
+3. **Clock and timeout test determinism.** The composite uses `ContinuousClock` directly (no injection). Tests set a small production-like timeout (e.g. 30 ms) and assert `latencyMs >= timeout` rather than an exact value, which is stable under wall-clock jitter. If post-v1.5 telemetry surfaces flaky assertions here, introduce a `Clock` injection at that time rather than carry the abstraction cost up front.
 4. **GOP sigmoid review cadence.** Defaults ship; calibration happens in `pronunciation-bench/`'s separate session. Parent spec §6.3's promotion gate (Spearman ρ ≥ 0.80 vs SpeechAce, Cohen's κ ≥ 0.70 vs Engine A) is the promotion trigger, not the sigmoid-tuning trigger. Sigmoid tuning happens any time between them.
 5. **Shadow log privacy walk-back.** If at any point in v1.5's lifetime Yutaka decides per-trial detail is too sensitive to persist even locally, the entity is removed in a single migration and the composite becomes a pass-through of A. Keep the logger implementation small enough that this remains a tractable one-PR change.
 6. **`ForcedAligner` without frame-level timing from wav2vec2.** The model emits 50 Hz posteriors; Apple Speech's word-level timing is not used by Engine B (spec §6.3 says forced alignment replaces it). If a future correlation study shows alignment errors dominate GOP noise, reintroducing Apple Speech's coarse word timing as a Viterbi prior is a post-v1.5 tuning step.

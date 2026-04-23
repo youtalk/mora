@@ -1546,8 +1546,7 @@ final class PronunciationTrialLogTests: XCTestCase {
             engineBState: "completed",
             engineBLabel: "{\"label\":\"matched\"}",
             engineBScore: 91,
-            engineBLatencyMs: 240,
-            engineBFailureReason: nil
+            engineBLatencyMs: 240
         )
         ctx.insert(row)
         try ctx.save()
@@ -1577,8 +1576,7 @@ final class PronunciationTrialLogTests: XCTestCase {
             engineBState: "timedOut",
             engineBLabel: nil,
             engineBScore: nil,
-            engineBLatencyMs: 1000,
-            engineBFailureReason: nil
+            engineBLatencyMs: 1000
         )
         ctx.insert(row)
         try ctx.save()
@@ -1626,7 +1624,6 @@ public final class PronunciationTrialLog {
     public var engineBLabel: String?
     public var engineBScore: Int?
     public var engineBLatencyMs: Int?
-    public var engineBFailureReason: String?
 
     public init(
         timestamp: Date,
@@ -1638,8 +1635,7 @@ public final class PronunciationTrialLog {
         engineBState: String,
         engineBLabel: String?,
         engineBScore: Int?,
-        engineBLatencyMs: Int?,
-        engineBFailureReason: String?
+        engineBLatencyMs: Int?
     ) {
         self.timestamp = timestamp
         self.wordSurface = wordSurface
@@ -1651,7 +1647,6 @@ public final class PronunciationTrialLog {
         self.engineBLabel = engineBLabel
         self.engineBScore = engineBScore
         self.engineBLatencyMs = engineBLatencyMs
-        self.engineBFailureReason = engineBFailureReason
     }
 }
 ```
@@ -1758,8 +1753,7 @@ final class PronunciationTrialRetentionPolicyTests: XCTestCase {
             engineBState: "unsupported",
             engineBLabel: nil,
             engineBScore: nil,
-            engineBLatencyMs: nil,
-            engineBFailureReason: nil
+            engineBLatencyMs: nil
         )
     }
 }
@@ -1838,13 +1832,13 @@ import MoraCore
 /// in `PronunciationTrialLog.engineBState` and its adjacent fields.
 public enum EngineBLogResult: Sendable, Hashable {
     /// Engine B finished within the timeout. Carries both the result and
-    /// the elapsed-time measurement.
+    /// the elapsed-time measurement. `.unclear` assessments (from model
+    /// load failure, inference error, or low-confidence alignment) land
+    /// here too — the `PhonemeTrialAssessment.features` dict carries the
+    /// diagnostic reason. See design spec §6.8 "Failure handling".
     case completed(PhonemeTrialAssessment, latencyMs: Int)
     /// Engine B did not finish before the shadow-mode timeout elapsed.
     case timedOut(latencyMs: Int)
-    /// Engine B threw. `reason` is `String(describing:)` of the error for
-    /// diagnostic purposes only; it is not parsed downstream.
-    case failed(reason: String, latencyMs: Int)
     /// Engine B does not support the target phoneme (its inventory set
     /// does not contain the target IPA). No provider call was made.
     case unsupported
@@ -1959,7 +1953,6 @@ final class PronunciationTrialLoggerTests: XCTestCase {
         XCTAssertEqual(rows[0].engineBState, "completed")
         XCTAssertEqual(rows[0].engineBScore, 91)
         XCTAssertEqual(rows[0].engineBLatencyMs, 220)
-        XCTAssertNil(rows[0].engineBFailureReason)
     }
 
     func testTimedOutResultWritesRowWithoutScore() async throws {
@@ -1981,21 +1974,34 @@ final class PronunciationTrialLoggerTests: XCTestCase {
         XCTAssertEqual(rows[0].engineBLatencyMs, 1000)
     }
 
-    func testFailedResultCapturesReason() async throws {
+    func testUnclearEngineBLogsAsCompleted() async throws {
+        // Engine B surfaces internal failures (model load error, inference
+        // throw, low-confidence alignment) as `.unclear` with a diagnostic
+        // features dict. The composite wraps it in `.completed(...)`.
+        // This test guards that contract.
         let container = try MoraModelContainer.inMemory()
         let logger = SwiftDataPronunciationTrialLogger(container: container)
+        let unclear = PhonemeTrialAssessment(
+            targetPhoneme: Phoneme(ipa: "ʃ"),
+            label: .unclear,
+            score: nil,
+            coachingKey: nil,
+            features: ["gop": -5.0],
+            isReliable: false
+        )
         await logger.record(
             PronunciationTrialLogEntry(
                 timestamp: Date(),
                 word: word(),
                 targetPhoneme: Phoneme(ipa: "ʃ"),
                 engineA: assessment(label: .matched, score: 88),
-                engineB: .failed(reason: "model load failed", latencyMs: 15)
+                engineB: .completed(unclear, latencyMs: 250)
             )
         )
         let rows = try container.mainContext.fetch(FetchDescriptor<PronunciationTrialLog>())
-        XCTAssertEqual(rows[0].engineBState, "failed")
-        XCTAssertEqual(rows[0].engineBFailureReason, "model load failed")
+        XCTAssertEqual(rows[0].engineBState, "completed")
+        XCTAssertNil(rows[0].engineBScore)
+        XCTAssertEqual(rows[0].engineBLatencyMs, 250)
     }
 
     func testUnsupportedResultOmitsEngineBFields() async throws {
@@ -2092,7 +2098,6 @@ public actor SwiftDataPronunciationTrialLogger: PronunciationTrialLogger {
         var engineBLabelJSON: String?
         var engineBScore: Int?
         var engineBLatency: Int?
-        var engineBFailure: String?
 
         switch entry.engineB {
         case .completed(let assessment, let latencyMs):
@@ -2102,10 +2107,6 @@ public actor SwiftDataPronunciationTrialLogger: PronunciationTrialLogger {
             engineBLatency = latencyMs
         case .timedOut(let latencyMs):
             state = "timedOut"
-            engineBLatency = latencyMs
-        case .failed(let reason, let latencyMs):
-            state = "failed"
-            engineBFailure = reason
             engineBLatency = latencyMs
         case .unsupported:
             state = "unsupported"
@@ -2121,8 +2122,7 @@ public actor SwiftDataPronunciationTrialLogger: PronunciationTrialLogger {
             engineBState: state,
             engineBLabel: engineBLabelJSON,
             engineBScore: engineBScore,
-            engineBLatencyMs: engineBLatency,
-            engineBFailureReason: engineBFailure
+            engineBLatencyMs: engineBLatency
         )
     }
 
@@ -2392,14 +2392,23 @@ final class ShadowLoggingPronunciationEvaluatorTests: XCTestCase {
         shadow.release()
     }
 
-    func testShadowErrorLoggedAsFailed() async throws {
+    func testShadowUnclearLogsAsCompleted() async throws {
+        // Engine B surfaces internal failures (model load error, inference
+        // throw, low confidence) as `.unclear` from its own evaluator, and
+        // the composite logs that as `.completed` — there is no `.failed`
+        // variant because the PronunciationEvaluator protocol is
+        // non-throwing. Diagnostic reason lives in `features`.
         let primary = FakePronunciationEvaluator()
         primary.supportedTargets = ["ʃ"]
         primary.responses["ʃ"] = assessment(label: .matched, score: 88)
 
-        let shadow = ThrowingPronunciationEvaluator(
-            supported: ["ʃ"],
-            reason: "provider exploded"
+        let shadow = FakePronunciationEvaluator()
+        shadow.supportedTargets = ["ʃ"]
+        shadow.responses["ʃ"] = PhonemeTrialAssessment(
+            targetPhoneme: Phoneme(ipa: "ʃ"),
+            label: .unclear, score: nil, coachingKey: nil,
+            features: ["reason": 1],
+            isReliable: false
         )
 
         let logger = InMemoryPronunciationTrialLogger()
@@ -2416,14 +2425,45 @@ final class ShadowLoggingPronunciationEvaluatorTests: XCTestCase {
             asr: asr()
         )
         let entries = try await waitForLogger(logger, count: 1)
-        if case .failed(let reason, _) = entries[0].engineB {
-            XCTAssertTrue(reason.contains("provider exploded"))
+        if case .completed(let b, _) = entries[0].engineB {
+            XCTAssertEqual(b.label, .unclear)
         } else {
-            XCTFail("expected failed, got \(entries[0].engineB)")
+            XCTFail("expected completed, got \(entries[0].engineB)")
         }
     }
 
-    func testNeitherSupportsEmitsUnsupportedRow() async throws {
+    func testPrimarySupportsShadowUnsupports() async throws {
+        let primary = FakePronunciationEvaluator()
+        primary.supportedTargets = ["ʃ"]
+        primary.responses["ʃ"] = assessment(label: .matched, score: 88)
+
+        let shadow = FakePronunciationEvaluator()
+        shadow.supportedTargets = []
+
+        let logger = InMemoryPronunciationTrialLogger()
+        let composite = ShadowLoggingPronunciationEvaluator(
+            primary: primary,
+            shadow: shadow,
+            logger: logger,
+            timeout: .milliseconds(500)
+        )
+        let out = await composite.evaluate(
+            audio: AudioClip(samples: [0.1], sampleRate: 16_000),
+            expected: word(),
+            targetPhoneme: Phoneme(ipa: "ʃ"),
+            asr: asr()
+        )
+        XCTAssertEqual(out.score, 88)
+        let entries = try await waitForLogger(logger, count: 1)
+        XCTAssertNotNil(entries[0].engineA)
+        if case .unsupported = entries[0].engineB {
+            // ok
+        } else {
+            XCTFail("expected unsupported, got \(entries[0].engineB)")
+        }
+    }
+
+    func testNeitherSupportsSkipsLogger() async throws {
         let primary = FakePronunciationEvaluator()
         primary.supportedTargets = []
         let shadow = FakePronunciationEvaluator()
@@ -2439,12 +2479,10 @@ final class ShadowLoggingPronunciationEvaluatorTests: XCTestCase {
             asr: asr()
         )
         XCTAssertEqual(out.label, .unclear)
-        let entries = try await waitForLogger(logger, count: 1)
-        if case .unsupported = entries[0].engineB {
-            // ok
-        } else {
-            XCTFail("expected unsupported, got \(entries[0].engineB)")
-        }
+        // Give any detached work time to run; no log row should appear.
+        try await Task.sleep(for: .milliseconds(100))
+        let entries = await logger.entries
+        XCTAssertTrue(entries.isEmpty)
     }
 }
 
@@ -2479,79 +2517,7 @@ private final class BlockingPronunciationEvaluator: PronunciationEvaluator, @unc
     }
 }
 
-private struct ThrowingPronunciationEvaluator: PronunciationEvaluator {
-    struct Boom: Error, CustomStringConvertible {
-        let message: String
-        var description: String { message }
-    }
-    let supported: Set<String>
-    let reason: String
-    func supports(target: Phoneme, in word: Word) -> Bool {
-        supported.contains(target.ipa)
-    }
-    func evaluate(
-        audio: AudioClip, expected: Word,
-        targetPhoneme: Phoneme, asr: ASRResult
-    ) async -> PhonemeTrialAssessment {
-        // The fake evaluator cannot throw through the protocol, so we
-        // signal failure by returning a sentinel that
-        // ShadowLoggingPronunciationEvaluator treats as an error. The
-        // real implementation uses a throwing `PhonemePosteriorProvider`
-        // under the hood; here we simulate by relying on
-        // ShadowLoggingPronunciationEvaluator's detection of a caller-
-        // provided `failureReason` in the features dict.
-        PhonemeTrialAssessment(
-            targetPhoneme: targetPhoneme,
-            label: .unclear, score: nil, coachingKey: nil,
-            features: ["_shadow_failure_reason_": Double.nan],
-            isReliable: false
-        )
-    }
-}
 ```
-
-Before moving to Step 2, note that the `ThrowingPronunciationEvaluator` above is a stub. Because `PronunciationEvaluator.evaluate(...)` is non-throwing by contract, the `ShadowLoggingPronunciationEvaluator` cannot observe thrown errors from the shadow evaluator in the current protocol shape. We therefore drop the `failed` branch from the Shadow evaluator's implementation and treat "shadow returned `.unclear` with features `_shadow_failure_reason_`" as the error signal. This keeps the fan-out honest without widening the protocol surface solely for tests.
-
-Rewrite the `testShadowErrorLoggedAsFailed` test body accordingly — replace the private `ThrowingPronunciationEvaluator` with a simpler fake that returns a sentinel and assert on `.failed`:
-
-```swift
-    func testShadowErrorLoggedAsFailed() async throws {
-        let primary = FakePronunciationEvaluator()
-        primary.supportedTargets = ["ʃ"]
-        primary.responses["ʃ"] = assessment(label: .matched, score: 88)
-
-        let shadow = FakePronunciationEvaluator()
-        shadow.supportedTargets = ["ʃ"]
-        shadow.responses["ʃ"] = PhonemeTrialAssessment(
-            targetPhoneme: Phoneme(ipa: "ʃ"),
-            label: .unclear, score: nil, coachingKey: nil,
-            features: ["_shadow_failure_reason_": 1],
-            isReliable: false
-        )
-
-        let logger = InMemoryPronunciationTrialLogger()
-        let composite = ShadowLoggingPronunciationEvaluator(
-            primary: primary,
-            shadow: shadow,
-            logger: logger,
-            timeout: .milliseconds(500)
-        )
-        _ = await composite.evaluate(
-            audio: AudioClip(samples: [0.1], sampleRate: 16_000),
-            expected: word(),
-            targetPhoneme: Phoneme(ipa: "ʃ"),
-            asr: asr()
-        )
-        let entries = try await waitForLogger(logger, count: 1)
-        if case .failed(let reason, _) = entries[0].engineB {
-            XCTAssertTrue(reason.contains("shadow_failure_sentinel"))
-        } else {
-            XCTFail("expected failed, got \(entries[0].engineB)")
-        }
-    }
-```
-
-And remove the `ThrowingPronunciationEvaluator` class.
 
 - [ ] **Step 2: Run to verify failure**
 
@@ -2576,10 +2542,11 @@ import MoraCore
 ///   target; the `AssessmentEngine` then routes through `evaluate`, and
 ///   the decorator is responsible for producing a useful UI result and
 ///   a log row.
-/// - Shadow `.unclear` with `features["_shadow_failure_reason_"]` set is
-///   treated as a `.failed` log outcome. See the spec for the rationale
-///   behind this sentinel — the `PronunciationEvaluator` protocol is
-///   non-throwing.
+/// - The `PronunciationEvaluator` protocol is non-throwing, so any Engine
+///   B internal failure (model load error, provider throw, low-confidence
+///   alignment) surfaces as a `.unclear` assessment with a diagnostic
+///   `features` dict. The composite logs that as `.completed` and does
+///   **not** synthesize a `.failed` log variant.
 public struct ShadowLoggingPronunciationEvaluator: PronunciationEvaluator {
     public let primary: any PronunciationEvaluator
     public let shadow: any PronunciationEvaluator
@@ -2612,6 +2579,13 @@ public struct ShadowLoggingPronunciationEvaluator: PronunciationEvaluator {
         let primarySupports = primary.supports(target: targetPhoneme, in: expected)
         let shadowSupports = shadow.supports(target: targetPhoneme, in: expected)
 
+        // Neither evaluator can produce useful data — there's nothing to
+        // correlate, so skip the log row entirely and don't consume FIFO
+        // slots in the retention cap.
+        if !primarySupports && !shadowSupports {
+            return Self.placeholder(target: targetPhoneme)
+        }
+
         let uiResult: PhonemeTrialAssessment
         let engineAForLog: PhonemeTrialAssessment?
         if primarySupports {
@@ -2627,7 +2601,11 @@ public struct ShadowLoggingPronunciationEvaluator: PronunciationEvaluator {
         }
 
         // Fire shadow + logger on a detached background task so the caller's
-        // path never waits on it.
+        // path never waits on it. `shadow.evaluate(...)` is non-throwing by
+        // protocol contract (any internal provider failure surfaces as an
+        // `.unclear` PhonemeTrialAssessment with a diagnostic features
+        // dict), so the composite can only observe "got a value within the
+        // timeout" (log as .completed) or "timed out" (log as .timedOut).
         let shadow = self.shadow
         let logger = self.logger
         let timeout = self.timeout
@@ -2646,11 +2624,7 @@ public struct ShadowLoggingPronunciationEvaluator: PronunciationEvaluator {
                 let elapsed = start.duration(to: .now)
                 let ms = Self.millis(elapsed)
                 if let b = captured {
-                    if b.features["_shadow_failure_reason_"] != nil {
-                        engineB = .failed(reason: "shadow_failure_sentinel", latencyMs: ms)
-                    } else {
-                        engineB = .completed(b, latencyMs: ms)
-                    }
+                    engineB = .completed(b, latencyMs: ms)
                 } else {
                     engineB = .timedOut(latencyMs: ms)
                 }
@@ -2690,7 +2664,7 @@ public struct ShadowLoggingPronunciationEvaluator: PronunciationEvaluator {
 - [ ] **Step 4: Run to verify passes**
 
 Run: `(cd Packages/MoraEngines && swift test --filter ShadowLoggingPronunciationEvaluatorTests)`
-Expected: PASS, 5 tests.
+Expected: PASS, 6 tests.
 
 - [ ] **Step 5: Commit**
 
@@ -4269,10 +4243,11 @@ EOF
 
 ---
 
-### Task 30: Docs — cross-link spec ↔ plan and Part 2 progress section
+### Task 30: Docs — cross-link spec ↔ plan, update CLAUDE.md, Part 2 progress section
 
 **Files:**
 - Modify: `docs/superpowers/specs/2026-04-22-pronunciation-feedback-design.md` — add a plan-cross-link line under the header.
+- Modify: `CLAUDE.md` — update the `MoraMLX` paragraph under `## Architecture` to reflect the package's new role (CoreML model host for Engine B) and that it now has public API and dependencies on `MoraCore` / `MoraEngines`.
 - Modify: `docs/superpowers/plans/2026-04-22-pronunciation-feedback-engine-b.md` — update the `Current progress` section to cover Part 2.
 
 - [ ] **Step 1: Update the parent spec header**
@@ -4283,7 +4258,15 @@ Find the header block (between `---` markers at the top of `2026-04-22-pronuncia
 - **Implementation plan (Phase 3):** `docs/superpowers/plans/2026-04-22-pronunciation-feedback-engine-b.md`
 ```
 
-- [ ] **Step 2: Extend the plan's progress section**
+- [ ] **Step 2: Update `CLAUDE.md`**
+
+Locate the `MoraMLX` paragraph in `CLAUDE.md` (under `## Architecture`, currently describing it as "placeholder for the v1.5 on-device LLM path" with "do not add runtime dependencies on it from other packages"). Replace with:
+
+```markdown
+- **MoraMLX** — Host for on-device ML models used at runtime. Depends on `MoraCore` and `MoraEngines`. Exports `MoraMLXModelCatalog` (lazy model loader with in-process cache) and `CoreMLPhonemePosteriorProvider` (conforms to `MoraEngines.PhonemePosteriorProvider`). As of v1.5 it bundles the INT8-quantized wav2vec2-phoneme CoreML model for Engine B pronunciation scoring; later v1.5 work will also host the on-device LLM (Apple Intelligence Foundation Models or MLX + Gemma). Domain packages consume models only through narrow protocols defined in `MoraEngines`; `MoraUI` does not depend on `MoraMLX`.
+```
+
+- [ ] **Step 3: Extend the plan's progress section**
 
 Append to the `Current progress` section added in Task 19:
 
@@ -4302,16 +4285,17 @@ Append to the `Current progress` section added in Task 19:
 | 27 | CI LFS checkout | `<hash>` |
 | 28 | Format sweep | `<hash>` |
 | 29 | Device-only latency benchmark | `<hash>` |
-| 30 | Docs cross-link | `<hash>` |
+| 30 | Docs cross-link + CLAUDE.md update | `<hash>` |
 ```
 
-- [ ] **Step 3: Commit**
+- [ ] **Step 4: Commit**
 
 ```bash
 git add docs/superpowers/specs/2026-04-22-pronunciation-feedback-design.md \
-        docs/superpowers/plans/2026-04-22-pronunciation-feedback-engine-b.md
+        docs/superpowers/plans/2026-04-22-pronunciation-feedback-engine-b.md \
+        CLAUDE.md
 git commit -m "$(cat <<'EOF'
-docs: cross-link pronunciation-feedback spec and Engine B plan
+docs: cross-link pronunciation-feedback spec and Engine B plan; update CLAUDE.md for MoraMLX
 
 Co-Authored-By: Claude <noreply@anthropic.com>
 EOF
