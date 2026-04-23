@@ -16,8 +16,13 @@ let package = Package(
         .target(
             name: "MoraUI",
             dependencies: ["MoraCore", "MoraEngines"],
-            resources: [.process("Resources")]
+            resources: [.process("Resources")],
+            swiftSettings: [.swiftLanguageMode(.v5)]
         ),
-        .testTarget(name: "MoraUITests", dependencies: ["MoraUI", "MoraTesting"]),
+        .testTarget(
+            name: "MoraUITests",
+            dependencies: ["MoraUI", "MoraTesting"],
+            swiftSettings: [.swiftLanguageMode(.v5)]
+        ),
     ]
 )

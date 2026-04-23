@@ -17,11 +17,13 @@ let package = Package(
             dependencies: [
                 .product(name: "MoraCore", package: "MoraCore"),
                 .product(name: "MoraEngines", package: "MoraEngines"),
-            ]
+            ],
+            swiftSettings: [.swiftLanguageMode(.v5)]
         ),
         .testTarget(
             name: "MoraMLXTests",
-            dependencies: ["MoraMLX"]
+            dependencies: ["MoraMLX"],
+            swiftSettings: [.swiftLanguageMode(.v5)]
         ),
     ]
 )
