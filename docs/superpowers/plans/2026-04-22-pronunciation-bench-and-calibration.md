@@ -2,13 +2,13 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build the calibration loop for Engine A — a DEBUG-only in-app fixture recorder, a repo-root `dev-tools/pronunciation-bench/` Swift Package that compares Engine A against SpeechAce via CSV, recorded WAV fixtures replacing three TODO'd synthetic tests (`r/l`, `v/b`, `æ/ʌ`), and one child-speaker calibration pass that tunes `PhonemeThresholds` numerically.
+**Goal:** Build the calibration loop for Engine A — a DEBUG-only in-app fixture recorder, a repo-root `dev-tools/pronunciation-bench/` Swift Package that compares Engine A against SpeechAce via CSV, recorded WAV fixtures replacing three of the four TODO'd synthetic tests in `FeatureBasedEvaluatorTests` (`r/l`, `v/b`, `æ/ʌ`; the fourth, `θ/t`, is intentionally out of scope — see "Not in scope" below), and one child-speaker calibration pass that tunes `PhonemeThresholds` numerically.
 
 **Architecture:** iPad records labeled WAV + sidecar JSON via a DEBUG-only SwiftUI screen reachable from HomeView by a hidden 5-tap gesture. Files surface to Files.app, get AirDropped to a Mac, and feed `swift run bench <fixtures-dir>`. The bench links Engine A via `path:` reference, posts audio to SpeechAce, and emits a 13-column CSV. No shipped runtime code path changes except the numeric table in `PhonemeThresholds` at the end of Phase D.
 
 **Tech Stack:** Swift 5.9, SwiftUI, AVFoundation (`AVAudioEngine`, `AVAudioConverter`, `AVAudioFile`), swift-argument-parser for the CLI, URLSession for SpeechAce. XCTest throughout.
 
-**Scope:** Phases A–D of `docs/superpowers/specs/2026-04-22-pronunciation-bench-and-calibration-design.md`.
+**Scope:** Phases A–D of `docs/superpowers/specs/2026-04-22-pronunciation-bench-and-calibration-design.md`. This plan is independent of the parent spec `docs/superpowers/specs/2026-04-22-pronunciation-feedback-design.md` Phase 1/2/3 numbering — Engine A (Phase 1/2) is already shipped, Engine B / shadow mode (Phase 3) lives in a separate plan (`2026-04-22-pronunciation-feedback-engine-b.md`). Whenever this plan says "Phase 3" without further qualification it means Engine B.
 
 **Not in scope of this plan:**
 
@@ -17,27 +17,28 @@
 - `PronunciationTrialLog` SwiftData entity (belongs to Phase 3).
 - Any CoreML model conversion or MoraMLX activation (Phase 3).
 - CI integration for `dev-tools/`. The bench's tests run only on Yutaka's laptop.
+- The fourth TODO'd synthetic stub in `FeatureBasedEvaluatorTests`, `θ/t` (onset burst slope). Engine A's coaching map is asymmetric for this pair — only `(θ, t)` produces a coaching key, `(t, θ)` does not — so the symmetric four-fixture pattern used for `r/l`, `v/b`, `æ/ʌ` (correct + cross-substituted on both sides) does not fit. Leaving it for a follow-up that decides whether to record the asymmetric two-fixture pair only or to extend Engine A's coverage first.
 
 ---
 
 ## Phase 3 conflict boundary
 
-**Never modify these files in Part 2.** Phase 3 (Engine B) is in flight on a separate worktree and will conflict:
+**Never modify these files in this plan.** Phase 3 (Engine B) is in flight on a separate worktree and will conflict:
 
-| Path | Reserved for Phase 3 |
-|---|---|
-| `Packages/MoraEngines/Sources/MoraEngines/AssessmentEngine.swift` | shadow-mode parallel evaluator fanout |
-| `Packages/MoraEngines/Sources/MoraEngines/SessionOrchestrator.swift` | shadow-mode orchestration |
-| `Packages/MoraEngines/Sources/MoraEngines/Speech/AppleSpeechEngine.swift` | shadow-mode PCM sink |
-| `Packages/MoraEngines/Sources/MoraEngines/Speech/SpeechEvent.swift` | Phase 3 event surface |
-| `Packages/MoraEngines/Sources/MoraEngines/Pronunciation/PronunciationEvaluator.swift` | protocol (Engine B conformer) |
-| `Packages/MoraMLX/**` | Engine B home |
-| `Packages/MoraCore/Sources/MoraCore/Persistence/**` | `PronunciationTrialLog` |
-| `.github/workflows/**` | Phase 3 may add MLX build steps |
-| `project.yml` | Phase 3 may add MLX target wiring |
-| `Mora/MoraApp.swift` | Phase 3 may register MLX container |
+| Path | Reserved for Phase 3 | Status in current Engine B plan |
+|---|---|---|
+| `Packages/MoraEngines/Sources/MoraEngines/AssessmentEngine.swift` | shadow-mode parallel evaluator fanout | not edited by current Engine B plan; reserved as a safety margin in case the design grows the fanout layer |
+| `Packages/MoraEngines/Sources/MoraEngines/SessionOrchestrator.swift` | shadow-mode orchestration | not edited by current Engine B plan; same safety margin |
+| `Packages/MoraEngines/Sources/MoraEngines/Speech/AppleSpeechEngine.swift` | shadow-mode PCM sink | not edited by current Engine B plan; same safety margin |
+| `Packages/MoraEngines/Sources/MoraEngines/Speech/SpeechEvent.swift` | Phase 3 event surface | not edited by current Engine B plan; same safety margin |
+| `Packages/MoraEngines/Sources/MoraEngines/Pronunciation/PronunciationEvaluator.swift` | protocol (Engine B conformer) | not edited by current Engine B plan; reserved because new conformers may force a protocol tweak |
+| `Packages/MoraMLX/**` | Engine B home | edited by Engine B plan (Tasks 16, 23–25) |
+| `Packages/MoraCore/Sources/MoraCore/Persistence/**` | `PronunciationTrialLog` + retention policy | edited by Engine B plan (Tasks 9, 10) |
+| `.github/workflows/**` | Phase 3 LFS opt-in | edited by Engine B plan (Task 27) |
+| `project.yml` | future MLX target wiring | not edited by current Engine B plan (`MoraMLX` is already a declared package + dependency); reserved in case Part 2 needs to add build settings |
+| `Mora/MoraApp.swift` | shadow factory + retention cleanup | edited by Engine B plan (Task 17) |
 
-Touching any of them in a Part 2 commit is a planning bug — stop and re-plan.
+Touching any of them in a commit produced by this plan is a planning bug — stop and re-plan. The "Status" column reflects the Engine B plan as of `2026-04-22-pronunciation-feedback-engine-b.md`; if Engine B's plan changes, the boundary remains the conservative superset.
 
 ---
 
@@ -87,7 +88,7 @@ The recorder UI lives in `Packages/MoraUI/Sources/MoraUI/Debug/` (matching spec 
 |---|---|
 | `Packages/MoraEngines/Package.swift` | Add `resources: [.copy("Fixtures")]` to the `MoraEnginesTests` test target. |
 | `Packages/MoraUI/Sources/MoraUI/Home/HomeView.swift` | Attach `DebugEntryPoint` modifier under `#if DEBUG`. |
-| `Packages/MoraEngines/Tests/MoraEnginesTests/FeatureBasedEvaluatorTests.swift` | Delete three `// TODO(post-alpha): needs recorded fixture` comment blocks whose coverage migrates into `FeatureBasedEvaluatorFixtureTests`. |
+| `Packages/MoraEngines/Tests/MoraEnginesTests/FeatureBasedEvaluatorTests.swift` | Inside the single `// MARK: - Skipped substitution pairs` block, delete the three TODO bullet lines for `r/l`, `v/b`, `æ/ʌ`; coverage migrates into `FeatureBasedEvaluatorFixtureTests`. The fourth bullet (`θ/t`) and the surrounding MARK + explanatory prose are left untouched (see "Not in scope"). |
 | `Packages/MoraEngines/Sources/MoraEngines/Pronunciation/PhonemeThresholds.swift` | **Phase D only:** update numeric centroids/boundaries if child-speaker fixtures warrant it. |
 | `.gitignore` | Add `dev-tools/pronunciation-bench/.env` and `dev-tools/pronunciation-bench/.build/`. |
 
@@ -100,7 +101,7 @@ The recorder UI lives in `Packages/MoraUI/Sources/MoraUI/Debug/` (matching spec 
 - **#if DEBUG wrapping:** every file in `Debug/` directories begins with `#if DEBUG` and ends with `#endif`. Tests that exercise those files do the same.
 - **XCTest** style: `import XCTest; final class XxxTests: XCTestCase`. `@MainActor` only where the view or orchestrator requires it.
 - **swift-format** runs `--strict` in CI: 4-space indent, trailing commas on every list element, braces on same line. `Package.swift` files are excluded.
-- **Commit after every task.** Messages follow `area: short description`. No `Co-Authored-By: Claude` lines (current project CLAUDE.md allows them, but the local harness strips them; if the harness is reconfigured, add them back).
+- **Commit after every task.** Messages follow `area: short description`. Project CLAUDE.md opts in to `Co-Authored-By: Claude <noreply@anthropic.com>` at commit-message end; include it (matching the Engine A and Engine B plans). Use a HEREDOC so the trailer stays on its own line.
 - **No Release-binary changes** until Phase D, and then only `PhonemeThresholds` numeric constants.
 
 ---
@@ -236,7 +237,12 @@ Expected: PASS.
 ```bash
 git add Packages/MoraEngines/Sources/MoraEngines/Debug/FixtureMetadata.swift \
         Packages/MoraEngines/Tests/MoraEnginesTests/Debug/FixtureMetadataTests.swift
-git commit -m "engines: add FixtureMetadata for DEBUG fixture recorder"
+git commit -m "$(cat <<'EOF'
+engines: add FixtureMetadata for DEBUG fixture recorder
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+EOF
+)"
 ```
 
 ---
@@ -465,7 +471,12 @@ Expected: PASS.
 ```bash
 git add Packages/MoraEngines/Sources/MoraEngines/Debug/FixtureWriter.swift \
         Packages/MoraEngines/Tests/MoraEnginesTests/Debug/FixtureWriterTests.swift
-git commit -m "engines: add FixtureWriter (WAV + sidecar JSON + filename slug)"
+git commit -m "$(cat <<'EOF'
+engines: add FixtureWriter (WAV + sidecar JSON + filename slug)
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+EOF
+)"
 ```
 
 ---
@@ -607,7 +618,12 @@ Expected: PASS (no new tests yet; construction test lives in Task 4's view).
 
 ```bash
 git add Packages/MoraEngines/Sources/MoraEngines/Debug/FixtureRecorder.swift
-git commit -m "engines: add FixtureRecorder (AVAudioEngine tap + 16kHz resample)"
+git commit -m "$(cat <<'EOF'
+engines: add FixtureRecorder (AVAudioEngine tap + 16kHz resample)
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+EOF
+)"
 ```
 
 ---
@@ -739,7 +755,12 @@ Expected: PASS.
 
 ```bash
 git add Packages/MoraUI/Sources/MoraUI/Debug/PronunciationRecorderView.swift
-git commit -m "ui: add PronunciationRecorderView DEBUG-only fixture form"
+git commit -m "$(cat <<'EOF'
+ui: add PronunciationRecorderView DEBUG-only fixture form
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+EOF
+)"
 ```
 
 ---
@@ -864,7 +885,12 @@ Expected: no symbol matches. The `#if DEBUG` wrap excludes them from Release com
 ```bash
 git add Packages/MoraUI/Sources/MoraUI/Debug/DebugEntryPoint.swift \
         Packages/MoraUI/Sources/MoraUI/Home/HomeView.swift
-git commit -m "ui: add 5-tap DEBUG entry point for fixture recorder"
+git commit -m "$(cat <<'EOF'
+ui: add 5-tap DEBUG entry point for fixture recorder
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+EOF
+)"
 ```
 
 ---
@@ -1017,7 +1043,12 @@ Expected: compiles cleanly. First run fetches swift-argument-parser and resolves
 
 ```bash
 git add dev-tools/pronunciation-bench/ .gitignore
-git commit -m "dev-tools: scaffold pronunciation-bench Swift Package"
+git commit -m "$(cat <<'EOF'
+dev-tools: scaffold pronunciation-bench Swift Package
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+EOF
+)"
 ```
 
 ---
@@ -1186,7 +1217,12 @@ Expected: PASS.
 ```bash
 git add dev-tools/pronunciation-bench/Sources/Bench/FixtureLoader.swift \
         dev-tools/pronunciation-bench/Tests/BenchTests/FixtureLoaderTests.swift
-git commit -m "dev-tools: add FixtureLoader for bench input"
+git commit -m "$(cat <<'EOF'
+dev-tools: add FixtureLoader for bench input
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+EOF
+)"
 ```
 
 ---
@@ -1238,7 +1274,12 @@ Expected: PASS.
 
 ```bash
 git add dev-tools/pronunciation-bench/Sources/Bench/EngineARunner.swift
-git commit -m "dev-tools: add EngineARunner adapter"
+git commit -m "$(cat <<'EOF'
+dev-tools: add EngineARunner adapter
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+EOF
+)"
 ```
 
 ---
@@ -1387,7 +1428,12 @@ Expected: PASS.
 ```bash
 git add dev-tools/pronunciation-bench/Sources/Bench/SpeechAceClient.swift \
         dev-tools/pronunciation-bench/Tests/BenchTests/SpeechAceClientTests.swift
-git commit -m "dev-tools: add SpeechAceClient for bench oracle calls"
+git commit -m "$(cat <<'EOF'
+dev-tools: add SpeechAceClient for bench oracle calls
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+EOF
+)"
 ```
 
 ---
@@ -1500,7 +1546,12 @@ Expected: PASS.
 ```bash
 git add dev-tools/pronunciation-bench/Sources/Bench/CSVWriter.swift \
         dev-tools/pronunciation-bench/Tests/BenchTests/CSVWriterTests.swift
-git commit -m "dev-tools: add CSVWriter with RFC 4180 escaping"
+git commit -m "$(cat <<'EOF'
+dev-tools: add CSVWriter with RFC 4180 escaping
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+EOF
+)"
 ```
 
 ---
@@ -1646,14 +1697,19 @@ Expected: PASS (FixtureLoader, SpeechAceClient, CSVWriter tests all green).
 
 ```bash
 git add dev-tools/pronunciation-bench/Sources/Bench/main.swift
-git commit -m "dev-tools: wire BenchCLI end to end"
+git commit -m "$(cat <<'EOF'
+dev-tools: wire BenchCLI end to end
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+EOF
+)"
 ```
 
 ---
 
 ## Phase C — Fixture collection and test adoption
 
-Phase C records the adult-proxy WAV fixtures, checks them in, and replaces the three TODO'd synthetic stubs in `FeatureBasedEvaluatorTests` with real-audio behavioral tests.
+Phase C records the adult-proxy WAV fixtures, checks them in, and replaces three of the four TODO'd synthetic stubs in `FeatureBasedEvaluatorTests` (`r/l`, `v/b`, `æ/ʌ`) with real-audio behavioral tests. The fourth TODO bullet (`θ/t`) is intentionally left in place — see the top-level "Not in scope" note for the rationale.
 
 ### Task 12: Declare fixtures as a test resource
 
@@ -1697,7 +1753,12 @@ Expected: PASS. The empty Fixtures directory is harmless.
 ```bash
 git add Packages/MoraEngines/Package.swift \
         Packages/MoraEngines/Tests/MoraEnginesTests/Fixtures/
-git commit -m "engines: declare Fixtures as a test resource"
+git commit -m "$(cat <<'EOF'
+engines: declare Fixtures as a test resource
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+EOF
+)"
 ```
 
 ---
@@ -1778,7 +1839,12 @@ Each file should be under 100 KB.
 
 ```bash
 git add Packages/MoraEngines/Tests/MoraEnginesTests/Fixtures/
-git commit -m "engines: add adult-proxy recorded fixtures for r/l, v/b, ae/uh"
+git commit -m "$(cat <<'EOF'
+engines: add adult-proxy recorded fixtures for r/l, v/b, ae/uh
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+EOF
+)"
 ```
 
 ---
@@ -1951,13 +2017,30 @@ final class FeatureBasedEvaluatorFixtureTests: XCTestCase {
 }
 ```
 
-- [ ] **Step 2: Delete the three TODO'd synthetic stubs**
+- [ ] **Step 2: Delete the three TODO bullets covered by fixtures**
 
-Open `Packages/MoraEngines/Tests/MoraEnginesTests/FeatureBasedEvaluatorTests.swift`. Locate each `// TODO(post-alpha): needs recorded fixture` comment block and the three pair comments (`// --- r / l ---`, `// --- v / b ---`, `// --- æ / ʌ ---`) that contain only the TODO marker and no real test code. Delete each entire TODO block including surrounding blank lines.
+Open `Packages/MoraEngines/Tests/MoraEnginesTests/FeatureBasedEvaluatorTests.swift`. The four `TODO(post-alpha): needs recorded fixture` markers live as four bullet lines inside one `// MARK: - Skipped substitution pairs` block near the bottom of the file (currently around lines 158–164). The block looks like:
 
-Do NOT delete the existing `f/h` and `θ/s` behavioral tests that Task 21 of the Part 1 plan added — those are real synthetic-audio tests and remain valid.
+```swift
+    // MARK: - Skipped substitution pairs
+    // Synthetic audio is not reliable for these pairs; each needs a recorded
+    // fixture to exercise the measurement path in a meaningful way.
+    // - /r/ vs /l/  — TODO(post-alpha): needs recorded fixture (F3 formant)
+    // - /v/ vs /b/  — TODO(post-alpha): needs recorded fixture (voicing onset time)
+    // - /æ/ vs /ʌ/ — TODO(post-alpha): needs recorded fixture (F1 formant)
+    // - /θ/ vs /t/ — TODO(post-alpha): needs recorded fixture (onset burst slope)
+```
 
-After deletion, the three pair-header comments should either be removed entirely or retained only if they sit above remaining (non-TODO) tests.
+Delete only the three bullet lines that this plan covers (`r/l`, `v/b`, `æ/ʌ`). Keep the `// MARK:` header, the two prose lines that follow it, and the `θ/t` bullet — `θ/t` is intentionally out of scope per the top-level "Not in scope" note. After the edit the block should read:
+
+```swift
+    // MARK: - Skipped substitution pairs
+    // Synthetic audio is not reliable for these pairs; each needs a recorded
+    // fixture to exercise the measurement path in a meaningful way.
+    // - /θ/ vs /t/ — TODO(post-alpha): needs recorded fixture (onset burst slope)
+```
+
+Do NOT touch the existing `f/h` and `θ/s` behavioral tests (in the `// --- f/h ---` and `// --- θ / s ---` sections higher up, currently around lines 110 and 134) — those are real synthetic-audio tests and remain valid. Do NOT remove their section-header comments either.
 
 - [ ] **Step 3: Run all engine tests**
 
@@ -1971,7 +2054,12 @@ If any `-correct` test fails with `.substitutedBy(...)` or any `-as-X` test fail
 ```bash
 git add Packages/MoraEngines/Tests/MoraEnginesTests/FeatureBasedEvaluatorFixtureTests.swift \
         Packages/MoraEngines/Tests/MoraEnginesTests/FeatureBasedEvaluatorTests.swift
-git commit -m "engines: replace TODO'd synthetic stubs with fixture-based tests"
+git commit -m "$(cat <<'EOF'
+engines: replace TODO'd synthetic stubs with fixture-based tests
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+EOF
+)"
 ```
 
 ---
@@ -2078,7 +2166,12 @@ Same command as Task 16, step 2. Compare the new Engine A numbers. Expected: the
 ```bash
 git add Packages/MoraEngines/Sources/MoraEngines/Pronunciation/PhonemeThresholds.swift \
         Packages/MoraEngines/Tests/MoraEnginesTests/FeatureBasedEvaluatorFixtureTests.swift
-git commit -m "engines: calibrate /r/ F3 centroid for child speakers (+10%)"
+git commit -m "$(cat <<'EOF'
+engines: calibrate /r/ F3 centroid for child speakers (+10%)
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+EOF
+)"
 ```
 
 (Commit message names the specific phoneme and shift. Repeat Task 17 once per threshold; each commit is scoped to one phoneme.)
