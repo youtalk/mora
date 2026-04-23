@@ -8,57 +8,65 @@ struct WarmupView: View {
     let ttsEngine: TTSEngine?
 
     var body: some View {
-        VStack(spacing: MoraTheme.Space.xl) {
-            Spacer()
-            Text("Which one says /\(targetIPA)/?")
-                .font(MoraType.heading())
-                .foregroundStyle(MoraTheme.Ink.primary)
-            Text("Listen and tap.")
-                .font(MoraType.label())
-                .foregroundStyle(MoraTheme.Ink.muted)
+        ScrollView {
+            VStack(spacing: MoraTheme.Space.lg) {
+                Text("Which one says /\(targetIPA)/?")
+                    .font(MoraType.heading())
+                    .foregroundStyle(MoraTheme.Ink.primary)
+                    .multilineTextAlignment(.center)
+                    .minimumScaleFactor(0.5)
 
-            HStack(spacing: MoraTheme.Space.xl) {
-                ForEach(orchestrator.warmupOptions, id: \.letters) { g in
-                    Button(action: {
-                        Task { await orchestrator.handle(.warmupTap(g)) }
-                    }) {
-                        Text(g.letters)
-                            .font(.system(size: 84, weight: .heavy, design: .rounded))
-                            .foregroundStyle(MoraTheme.Ink.primary)
-                            .frame(width: 140, height: 140)
-                            .background(Color.white, in: .rect(cornerRadius: MoraTheme.Radius.card))
+                Text("Listen and tap.")
+                    .font(MoraType.label())
+                    .foregroundStyle(MoraTheme.Ink.muted)
+                    .minimumScaleFactor(0.5)
+
+                HStack(spacing: MoraTheme.Space.lg) {
+                    ForEach(orchestrator.warmupOptions, id: \.letters) { g in
+                        Button(action: {
+                            Task { await orchestrator.handle(.warmupTap(g)) }
+                        }) {
+                            Text(g.letters)
+                                .font(MoraType.heroWord(120))
+                                .foregroundStyle(MoraTheme.Ink.primary)
+                                .frame(width: 180, height: 180)
+                                .background(
+                                    Color.white,
+                                    in: .rect(cornerRadius: MoraTheme.Radius.card)
+                                )
+                                .minimumScaleFactor(0.5)
+                        }
+                        .buttonStyle(.plain)
                     }
-                    .buttonStyle(.plain)
                 }
-            }
-            .padding(.top, MoraTheme.Space.lg)
 
-            if orchestrator.warmupMissCount > 0 {
-                Text("Let's try again — listen.")
-                    .font(MoraType.label())
-                    .foregroundStyle(MoraTheme.Accent.orange)
-            }
+                if orchestrator.warmupMissCount > 0 {
+                    Text("Let's try again — listen.")
+                        .font(MoraType.label())
+                        .foregroundStyle(MoraTheme.Accent.orange)
+                        .minimumScaleFactor(0.5)
+                }
 
-            Spacer()
-
-            Button(action: {
-                Task { await playTargetPhoneme() }
-            }) {
-                Text(strings.warmupListenAgain)
-                    .font(MoraType.label())
-                    .foregroundStyle(MoraTheme.Accent.teal)
-                    .padding(.vertical, MoraTheme.Space.md)
-                    .padding(.horizontal, MoraTheme.Space.lg)
-                    .background(MoraTheme.Background.mint, in: .capsule)
+                Button(action: {
+                    Task { await playTargetPhoneme() }
+                }) {
+                    Text(strings.warmupListenAgain)
+                        .font(MoraType.cta())
+                        .foregroundStyle(MoraTheme.Accent.teal)
+                        .padding(.vertical, MoraTheme.Space.md)
+                        .padding(.horizontal, MoraTheme.Space.xl)
+                        .background(MoraTheme.Background.mint, in: .capsule)
+                        .minimumScaleFactor(0.5)
+                }
+                .buttonStyle(.plain)
+                .disabled(ttsEngine == nil)
             }
-            .buttonStyle(.plain)
-            .disabled(ttsEngine == nil)
-            .padding(.bottom, MoraTheme.Space.lg)
+            .padding(.vertical, MoraTheme.Space.xl)
+            .frame(maxWidth: .infinity)
         }
         .task {
             // Await directly so SwiftUI cancels the TTS if the view
-            // disappears before playback finishes. (Previously we spawned
-            // an unstructured Task, which couldn't be cancelled.)
+            // disappears before playback finishes.
             await playTargetPhoneme()
         }
     }

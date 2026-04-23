@@ -8,13 +8,14 @@ public enum MoraFontRegistration {
     /// Verified against the OTF's name table — CoreText resolves to this name.
     public static let postScriptName = "OpenDyslexic-Regular"
 
-    /// Registers the bundled OpenDyslexic-Regular.otf once per process.
-    /// Returns `true` when the font is available for use, `false` when the
-    /// resource is missing or registration fails with an unexpected error.
-    /// Idempotent — returns `true` on subsequent calls when the font is
-    /// already registered.
-    @discardableResult
-    public static func registerBundledFonts() -> Bool {
+    /// Registers the bundled OpenDyslexic-Regular.otf once per process and
+    /// caches the outcome. Every `Font.openDyslexic(size:)` call funnels
+    /// through here; without the cache, each scroll / body invalidation
+    /// re-invoked `CTFontManagerRegisterFontsForURL`, which logs
+    /// "GSFont: file already registered" to Console for every repeated call
+    /// and floods sysdiagnose during real device runs. Swift's lazy static
+    /// gives us a thread-safe dispatch_once semantics without extra code.
+    public static let isRegistered: Bool = {
         guard
             let url = Bundle.module.url(
                 forResource: "OpenDyslexic-Regular", withExtension: "otf"
@@ -24,19 +25,26 @@ public enum MoraFontRegistration {
         }
         var error: Unmanaged<CFError>?
         let ok = CTFontManagerRegisterFontsForURL(url as CFURL, .process, &error)
-        if !ok, let err = error?.takeRetainedValue() {
+        if ok { return true }
+        if let err = error?.takeRetainedValue() {
             let domain = CFErrorGetDomain(err) as String
             let code = CFErrorGetCode(err)
-            // kCTFontManagerErrorAlreadyRegistered in kCTFontManagerErrorDomain
+            // The font may already be registered by a prior process-owner
+            // (e.g. a test harness that loaded it before the app target).
+            // Treat that as success so callers get the font.
             if domain == kCTFontManagerErrorDomain as String,
                 code == CTFontManagerError.alreadyRegistered.rawValue
             {
                 return true
             }
-            return false
         }
-        return ok
-    }
+        return false
+    }()
+
+    /// Idempotent façade so existing callers keep compiling. Reads the cached
+    /// lazy-static; the actual CoreText call only fires the first time.
+    @discardableResult
+    public static func registerBundledFonts() -> Bool { isRegistered }
 }
 
 public extension Font {
@@ -50,37 +58,61 @@ public extension Font {
     }
 }
 
+/// Typography policy
+/// -----------------
+/// **Every text role uses OpenDyslexic**, including chrome (buttons, pills,
+/// headings) and large display roles (hero, decoding word). The earlier
+/// design split SF Pro Rounded (chrome) and OpenDyslexic (body reading), but
+/// the visual hand-off looked broken to the learner — they'd see the home
+/// target in OpenDyslexic, then jump into a session and find buttons,
+/// pills, and even worked-example tiles in a different typeface. Unifying
+/// on OpenDyslexic keeps every glyph the learner reads consistent.
+///
+/// Japanese characters are not in OpenDyslexic, so SwiftUI's per-glyph
+/// font fallback renders them in the system Japanese font (Hiragino).
+/// Latin characters and digits stay in OpenDyslexic.
+///
+/// Sizes are tuned for iPad — large enough to read across a kitchen table
+/// but conservative enough that portrait layout still fits without
+/// horizontal clipping. Per-call `size:` overrides exist for the few places
+/// (worked-example tiles, NewRule mapping card) that need bigger glyphs.
 public enum MoraType {
-    /// Hero grapheme / numerals. Uses SF Pro Rounded Heavy via SwiftUI's
-    /// system font with `.rounded` design.
-    public static func hero(_ size: CGFloat = 180) -> Font {
-        .system(size: size, weight: .heavy, design: .rounded)
-    }
-    public static func heading() -> Font {
-        .system(size: 28, weight: .bold, design: .rounded)
-    }
-    /// Primary call-to-action button label (HeroCTA). Spec §6.4: 18pt text.
-    public static func cta() -> Font {
-        .system(size: 18, weight: .bold, design: .rounded)
-    }
-    public static func label() -> Font {
-        .system(size: 14, weight: .semibold, design: .rounded)
-    }
-    public static func pill() -> Font {
-        .system(size: 12, weight: .semibold, design: .rounded)
-    }
-    /// Body reading font. v1 uses OpenDyslexic; a future Settings screen will
-    /// let the user switch to SF Rounded via `LearnerProfile.preferredFontKey`.
-    public static func bodyReading(size: CGFloat = 22) -> Font {
+    /// Display-size numerals / symbols (age picker, completion score).
+    public static func hero(_ size: CGFloat = 200) -> Font {
         .openDyslexic(size: size)
     }
-    /// Large on-screen word (decoding). Uses SF Rounded so OpenDyslexic's
-    /// low x-height does not crush the hero typography.
-    public static func decodingWord(size: CGFloat = 96) -> Font {
-        .system(size: size, weight: .heavy, design: .rounded)
+    /// Display-size English word / grapheme (home target card).
+    public static func heroWord(_ size: CGFloat = 180) -> Font {
+        .openDyslexic(size: size)
     }
-    /// Short sentence. Same family as decoding word but lighter weight.
-    public static func sentence(size: CGFloat = 52) -> Font {
-        .system(size: size, weight: .semibold, design: .rounded)
+    public static func heading() -> Font {
+        .openDyslexic(size: 44)
+    }
+    /// Primary call-to-action button label.
+    public static func cta() -> Font {
+        .openDyslexic(size: 38)
+    }
+    public static func label() -> Font {
+        .openDyslexic(size: 30)
+    }
+    public static func pill() -> Font {
+        .openDyslexic(size: 24)
+    }
+    /// Long-form English body text, also used for spoken-phrase captions
+    /// shown alongside TTS playback so the parent has a written reference.
+    public static func bodyReading(size: CGFloat = 36) -> Font {
+        .openDyslexic(size: size)
+    }
+    /// Single word the learner is decoding in the session.
+    public static func decodingWord(size: CGFloat = 144) -> Font {
+        .openDyslexic(size: size)
+    }
+    /// Short sentence the learner is decoding.
+    public static func sentence(size: CGFloat = 80) -> Font {
+        .openDyslexic(size: size)
+    }
+    /// Displayed ASR transcript (live partial + post-trial record).
+    public static func transcript(size: CGFloat = 48) -> Font {
+        .openDyslexic(size: size)
     }
 }

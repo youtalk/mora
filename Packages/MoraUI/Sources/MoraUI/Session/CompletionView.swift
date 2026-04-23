@@ -39,7 +39,7 @@ struct CompletionView: View {
                 .font(MoraType.bodyReading())
                 .foregroundStyle(MoraTheme.Ink.muted)
 
-            Button("Done") { dismiss() }
+            Button("Done") { dismissSession() }
                 .font(MoraType.cta())
                 .foregroundStyle(MoraTheme.Accent.teal)
                 .padding(.top, MoraTheme.Space.md)
@@ -48,12 +48,30 @@ struct CompletionView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .contentShape(Rectangle())
-        .onTapGesture { dismiss() }
-        .accessibilityAction(named: "Return home") { dismiss() }
+        .onTapGesture { dismissSession() }
+        .accessibilityAction(named: "Return home") { dismissSession() }
         .onAppear { persistOnce() }
         .task {
             guard let tts = ttsEngine else { return }
             await tts.speak("Quest complete! You got \(correct) out of \(total).")
+        }
+    }
+
+    @MainActor
+    private func dismissSession() {
+        // Silence the celebration utterance if it's still playing — otherwise
+        // the "Quest complete!" line trails onto the Home screen. Await the
+        // stop before dismissing so the guarantee actually holds; a detached
+        // `Task { tts.stop() }` followed by an immediate `dismiss()` races
+        // against the synthesizer draining and lets audio leak to the next
+        // screen.
+        guard let tts = ttsEngine else {
+            dismiss()
+            return
+        }
+        Task { @MainActor in
+            await tts.stop()
+            dismiss()
         }
     }
 
