@@ -10,6 +10,51 @@ public final class SessionOrchestrator {
     public private(set) var trials: [TrialAssessment] = []
     public private(set) var sentenceIndex: Int = 0
     public private(set) var sessionStartedAt: Date?
+    public private(set) var pendingChains: [WordChain] = []
+    public private(set) var completedTrialCount: Int = 0
+    private var currentTrialInChain: Int = 0
+    private var phaseMetrics: TileBoardMetrics = TileBoardMetrics()
+
+    public var currentChainRole: ChainRole {
+        pendingChains.first?.role ?? .mixedApplication
+    }
+
+    public var chainPipStates: [ChainPipStateOrchestratorValue] {
+        // Returns 12 states, one per trial across the three chains.
+        var states: [ChainPipStateOrchestratorValue] = []
+        let done = completedTrialCount
+        let activeIndex = done  // the pip currently being trialed
+        for i in 0..<12 {
+            if i < done { states.append(.done) }
+            else if i == activeIndex { states.append(.active) }
+            else { states.append(.pending) }
+        }
+        return states
+    }
+
+    public var currentTileBoardEngine: TileBoardEngine? {
+        guard let chain = pendingChains.first else { return nil }
+        return makeEngine(for: currentTrialInChain, in: chain)
+    }
+
+    private func makeEngine(for trialIndex: Int, in chain: WordChain) -> TileBoardEngine {
+        if trialIndex == 0 {
+            let pool = TilePoolPolicy.buildFromWord(word: chain.head.word, extraDistractors: 2)
+                .resolve(distractorsPool: taughtGraphemes)
+            return TileBoardEngine(trial: .build(target: chain.head, pool: pool))
+        } else {
+            let change = chain.successors[trialIndex - 1]
+            let lockedSlots = change.predecessor.graphemes
+            let pool = TilePoolPolicy
+                .changeSlot(
+                    correct: change.newGrapheme,
+                    kind: TileKind(grapheme: change.newGrapheme),
+                    extraDistractors: 3
+                )
+                .resolve(distractorsPool: taughtGraphemes)
+            return TileBoardEngine(trial: .change(target: change, lockedSlots: lockedSlots, pool: pool))
+        }
+    }
 
     public let target: Target
     public let taughtGraphemes: Set<Grapheme>
@@ -81,9 +126,20 @@ public final class SessionOrchestrator {
         phase = newPhase
         switch phase {
         case .decoding:
-            // 18b wires the chain-driven decoding. For now, immediately
-            // advance so the orchestrator does not stall.
-            transitionTo(.shortSentences)
+            do {
+                pendingChains = try chainProvider.generatePhase(
+                    target: target.grapheme ?? Grapheme(letters: ""),
+                    masteredSet: taughtGraphemes
+                )
+                phaseMetrics = TileBoardMetrics(chainCount: pendingChains.count)
+                currentTrialInChain = 0
+                completedTrialCount = 0
+            } catch {
+                // Content gap: fall through to shortSentences so the session
+                // does not stall. Log via metrics.
+                phaseMetrics.truncatedChainCount = 3
+                transitionTo(.shortSentences)
+            }
         case .shortSentences where sentences.isEmpty:
             transitionTo(.completion)
         default:
