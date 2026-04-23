@@ -17,6 +17,7 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
     private var audioEngine: AVAudioEngine?
     private var request: SFSpeechAudioBufferRecognitionRequest?
     private var task: SFSpeechRecognitionTask?
+    private var ringBuffer: PCMRingBuffer?
     private let lock = NSLock()
 
     public init(
@@ -83,8 +84,43 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
 
         let node = engine.inputNode
         let format = node.outputFormat(forBus: 0)
+
+        let ring = PCMRingBuffer(capacitySeconds: 20.0, sampleRate: 16_000)
+        self.ringBuffer = ring
+        let targetFormat = AVAudioFormat(
+            commonFormat: .pcmFormatFloat32,
+            sampleRate: 16_000,
+            channels: 1,
+            interleaved: false
+        )
+        let converter = targetFormat.flatMap { AVAudioConverter(from: format, to: $0) }
+
         node.installTap(onBus: 0, bufferSize: 1024, format: format) { buffer, _ in
             req.append(buffer)
+            guard let targetFormat, let converter else { return }
+            let frameCapacity = AVAudioFrameCount(
+                Double(buffer.frameLength) * targetFormat.sampleRate / buffer.format.sampleRate
+            )
+            guard frameCapacity > 0,
+                let convertedBuffer = AVAudioPCMBuffer(
+                    pcmFormat: targetFormat,
+                    frameCapacity: frameCapacity
+                )
+            else {
+                return
+            }
+            var error: NSError?
+            let status = converter.convert(to: convertedBuffer, error: &error) { _, outStatus in
+                outStatus.pointee = .haveData
+                return buffer
+            }
+            if status == .haveData, error == nil,
+                let ch0 = convertedBuffer.floatChannelData?[0]
+            {
+                let frames = Int(convertedBuffer.frameLength)
+                let chunk = Array(UnsafeBufferPointer(start: ch0, count: frames))
+                ring.append(chunk)
+            }
         }
         engine.prepare()
         lock.unlock()
@@ -119,11 +155,12 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
             }
             guard !timestamps.isFinalized() else { return }
             timestamps.markFinalized()
+            let clip = self.ringBuffer?.drain() ?? .empty
             continuation.yield(
                 .final(
                     TrialRecording(
                         asr: ASRResult(transcript: transcript, confidence: confidence),
-                        audio: .empty
+                        audio: clip
                     )))
             continuation.finish()
             self.cancel()
@@ -139,11 +176,12 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
                 let total = timestamps.totalSeconds()
                 if silence >= self.silenceTimeout || total >= self.hardTimeout {
                     timestamps.markFinalized()
+                    let clip = self.ringBuffer?.drain() ?? .empty
                     continuation.yield(
                         .final(
                             TrialRecording(
                                 asr: ASRResult(transcript: "", confidence: 0),
-                                audio: .empty
+                                audio: clip
                             )))
                     continuation.finish()
                     self.cancel()
@@ -162,6 +200,8 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
         request = nil
         task = nil
         audioEngine = nil
+        ringBuffer?.reset()
+        ringBuffer = nil
     }
 }
 
@@ -210,5 +250,43 @@ private final class TimestampBox: @unchecked Sendable {
         lock.lock()
         defer { lock.unlock() }
         return Date().timeIntervalSince(start)
+    }
+}
+
+/// Thread-safe fixed-capacity ring buffer for Float32 mono PCM. The audio
+/// tap appends live samples; `drain()` returns a copy of the current contents
+/// as an `AudioClip`. Oldest samples are dropped when capacity is exceeded.
+public final class PCMRingBuffer: @unchecked Sendable {
+    private let bufferLock = NSLock()
+    private var samples: [Float] = []
+    private let capacity: Int
+    public let sampleRate: Double
+
+    public init(capacitySeconds: Double, sampleRate: Double) {
+        self.capacity = Int(capacitySeconds * sampleRate)
+        self.sampleRate = sampleRate
+    }
+
+    public func append(_ chunk: [Float]) {
+        bufferLock.lock()
+        defer { bufferLock.unlock() }
+        samples.append(contentsOf: chunk)
+        if samples.count > capacity {
+            samples.removeFirst(samples.count - capacity)
+        }
+    }
+
+    public func drain() -> AudioClip {
+        bufferLock.lock()
+        defer { bufferLock.unlock() }
+        let copy = samples
+        samples.removeAll(keepingCapacity: true)
+        return AudioClip(samples: copy, sampleRate: sampleRate)
+    }
+
+    public func reset() {
+        bufferLock.lock()
+        defer { bufferLock.unlock() }
+        samples.removeAll(keepingCapacity: true)
     }
 }
