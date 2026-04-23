@@ -44,9 +44,26 @@ public final class TileBoardEngine {
             state = .building
         case (.building, let .tileDropped(slotIndex, tileID)):
             handleDrop(slotIndex: slotIndex, tileID: tileID)
+        case (.completed, .completionAnimationFinished):
+            state = .speaking
+        case (.speaking, .utteranceRecorded):
+            state = .feedback
+        case (.feedback, .feedbackDismissed):
+            state = .transitioning
         default:
             break
         }
+    }
+
+    public var result: TileBoardTrialResult {
+        TileBoardTrialResult(
+            word: trial.word,
+            buildAttempts: buildAttempts,
+            scaffoldLevel: scaffoldLevel,
+            ttsHintIssued: ttsHintIssued,
+            poolReducedToTwo: poolReducedToTwo,
+            autoFilled: autoFilled
+        )
     }
 
     private func handleDrop(slotIndex: Int, tileID: String) {
