@@ -73,12 +73,13 @@ public final class TileBoardEngine {
         let dropped = Grapheme(letters: tileID)
         let offset = clock().timeIntervalSince(start)
         let correct = dropped == expected
-        buildAttempts.append(BuildAttemptRecord(
-            slotIndex: slotIndex,
-            tileDropped: dropped,
-            wasCorrect: correct,
-            timestampOffset: offset
-        ))
+        buildAttempts.append(
+            BuildAttemptRecord(
+                slotIndex: slotIndex,
+                tileDropped: dropped,
+                wasCorrect: correct,
+                timestampOffset: offset
+            ))
         if correct {
             filled[slotIndex] = expected
             lastIntervention = nil

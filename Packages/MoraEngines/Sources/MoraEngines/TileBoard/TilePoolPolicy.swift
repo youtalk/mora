@@ -18,7 +18,8 @@ public enum TilePoolPolicy: Hashable, Sendable {
             let chosen = Array(pool.sorted { $0.letters < $1.letters }.prefix(extra))
             return (Array(required) + chosen).map(Tile.init)
         case let .changeSlot(correct, kind, extra):
-            var candidates = distractorsPool
+            var candidates =
+                distractorsPool
                 .filter { TileKind(grapheme: $0) == kind && $0 != correct }
                 .sorted { $0.letters < $1.letters }
             candidates = Array(candidates.prefix(extra))

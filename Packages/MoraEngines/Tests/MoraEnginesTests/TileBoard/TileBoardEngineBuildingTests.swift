@@ -26,7 +26,9 @@ final class TileBoardEngineBuildingTests: XCTestCase {
     }
 
     func testWrongDropLeavesSlotEmptyAndRecordsMiss() {
-        let engine = primedEngine(pool: [Tile(grapheme: g("sh")), Tile(grapheme: g("ch")), Tile(grapheme: g("i")), Tile(grapheme: g("p"))])
+        let engine = primedEngine(pool: [
+            Tile(grapheme: g("sh")), Tile(grapheme: g("ch")), Tile(grapheme: g("i")), Tile(grapheme: g("p")),
+        ])
         engine.apply(.tileDropped(slotIndex: 0, tileID: "ch"))
         XCTAssertNil(engine.filled[0])
         XCTAssertEqual(engine.buildAttempts.last?.wasCorrect, false)
@@ -35,7 +37,10 @@ final class TileBoardEngineBuildingTests: XCTestCase {
     }
 
     func testSecondMissOnSameSlotRaisesTTSHint() {
-        let engine = primedEngine(pool: [Tile(grapheme: g("sh")), Tile(grapheme: g("ch")), Tile(grapheme: g("t")), Tile(grapheme: g("i")), Tile(grapheme: g("p"))])
+        let engine = primedEngine(pool: [
+            Tile(grapheme: g("sh")), Tile(grapheme: g("ch")), Tile(grapheme: g("t")), Tile(grapheme: g("i")),
+            Tile(grapheme: g("p")),
+        ])
         engine.apply(.tileDropped(slotIndex: 0, tileID: "ch"))
         engine.apply(.tileDropped(slotIndex: 0, tileID: "t"))
         XCTAssertEqual(engine.lastIntervention, .ttsHint)

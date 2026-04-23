@@ -11,9 +11,11 @@ final class TileBoardEnginePreparingListeningTests: XCTestCase {
     }
 
     func testEngineStartsInPreparingForBuildTrial() {
-        let trial = TileBoardTrial.build(target: BuildTarget(word: ship()), pool: [
-            Tile(grapheme: g("sh")), Tile(grapheme: g("i")), Tile(grapheme: g("p")),
-        ])
+        let trial = TileBoardTrial.build(
+            target: BuildTarget(word: ship()),
+            pool: [
+                Tile(grapheme: g("sh")), Tile(grapheme: g("i")), Tile(grapheme: g("p")),
+            ])
         let engine = TileBoardEngine(trial: trial)
         XCTAssertEqual(engine.state, .preparing)
     }

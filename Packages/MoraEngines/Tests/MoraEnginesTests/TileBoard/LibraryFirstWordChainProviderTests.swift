@@ -6,7 +6,8 @@ final class LibraryFirstWordChainProviderTests: XCTestCase {
     private func g(_ s: String) -> Grapheme { Grapheme(letters: s) }
 
     func testGenerateShPhaseFromBundledLibrary() throws {
-        let inv = Set(["c", "a", "t", "u", "h", "sh", "i", "o", "p", "f", "d", "w", "m", "s"].map { Grapheme(letters: $0) })
+        let inv = Set(
+            ["c", "a", "t", "u", "h", "sh", "i", "o", "p", "f", "d", "w", "m", "s"].map { Grapheme(letters: $0) })
         let provider = LibraryFirstWordChainProvider()
         let phase = try provider.generatePhase(target: g("sh"), masteredSet: inv)
         XCTAssertEqual(phase.count, 3)
@@ -20,9 +21,10 @@ final class LibraryFirstWordChainProviderTests: XCTestCase {
 
     func testMissingLibraryThrows() {
         let provider = LibraryFirstWordChainProvider()
-        XCTAssertThrowsError(try provider.generatePhase(
-            target: g("zz"),
-            masteredSet: [g("zz")]
-        ))
+        XCTAssertThrowsError(
+            try provider.generatePhase(
+                target: g("zz"),
+                masteredSet: [g("zz")]
+            ))
     }
 }
