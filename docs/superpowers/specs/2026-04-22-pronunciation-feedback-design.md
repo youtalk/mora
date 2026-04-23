@@ -6,6 +6,7 @@
 - **Release target:** v1.5 (alongside MoraMLX activation)
 - **Extends:** `2026-04-21-mora-dyslexia-esl-design.md` §11 Assessment Pipeline (phoneme-level edit distance promise) and §5 L1 interference pairs. Does not supersede any existing spec.
 - **Relates to:** `2026-04-22-mora-ipad-ux-speech-alpha-design.md` §10 (Speech Engine reshape) — the alpha lands first with transcript-only assessment; this spec later reshapes `SpeechEvent` and `OrchestratorEvent` to carry raw audio.
+- **Implementation plan (Phase 1 + 2):** `docs/superpowers/plans/2026-04-22-pronunciation-feedback-engine-a.md`
 
 ---
 
