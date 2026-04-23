@@ -137,7 +137,11 @@ final class FeatureBasedEvaluatorFixtureTests: XCTestCase {
             let inBuf = AVAudioPCMBuffer(
                 pcmFormat: hardwareFormat, frameCapacity: AVAudioFrameCount(file.length)
             )
-        else { throw NSError(domain: "FixtureLoad", code: 1) }
+        else {
+            throw fixtureLoadError(
+                reason: "could not prepare 16 kHz mono Float32 decode stack", url: url
+            )
+        }
 
         try file.read(into: inBuf)
         let ratio = targetFormat.sampleRate / hardwareFormat.sampleRate
@@ -146,7 +150,11 @@ final class FeatureBasedEvaluatorFixtureTests: XCTestCase {
             let outBuf = AVAudioPCMBuffer(
                 pcmFormat: targetFormat, frameCapacity: capacity
             )
-        else { throw NSError(domain: "FixtureLoad", code: 2) }
+        else {
+            throw fixtureLoadError(
+                reason: "could not allocate \(capacity)-frame output buffer", url: url
+            )
+        }
 
         var done = false
         var err: NSError?
@@ -156,12 +164,21 @@ final class FeatureBasedEvaluatorFixtureTests: XCTestCase {
         }
         if let err { throw err }
         guard let ch = outBuf.floatChannelData else {
-            throw NSError(domain: "FixtureLoad", code: 3)
+            throw fixtureLoadError(
+                reason: "floatChannelData unavailable after convert", url: url
+            )
         }
         let samples = Array(
             UnsafeBufferPointer(
                 start: ch[0],
                 count: Int(outBuf.frameLength)))
         return (samples, targetFormat.sampleRate)
+    }
+
+    private func fixtureLoadError(reason: String, url: URL) -> NSError {
+        NSError(
+            domain: "FixtureLoad", code: 1,
+            userInfo: [NSLocalizedDescriptionKey: "\(reason): \(url.lastPathComponent)"]
+        )
     }
 }
