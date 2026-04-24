@@ -13,26 +13,28 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
 def master(src: pathlib.Path, dst: pathlib.Path) -> None:
-    # Trim leading + trailing silence on the raw signal, then loudnorm
-    # to -16 LUFS, resample to 22050 Hz mono, encode AAC.
+    # Trim leading silence only, then loudnorm to -16 LUFS, resample
+    # to 22050 Hz mono, encode AAC. The trailing region is kept
+    # verbatim so the natural decay of the last phoneme and whatever
+    # tail silence fish-speech produced both survive.
     #
-    # Filter order matters. An earlier version ran loudnorm first and
-    # then silenceremove with a -40 dB threshold, which dropped quiet
-    # fricatives (notably the /ʃ/ in "ship") whose peaks sit near
-    # -40 dB after loudnorm's gain — the fricative was classified as
-    # silence and the word was cut to ~150 ms. Trimming before
-    # loudnorm keeps the threshold on the known raw level, and the
-    # -50 dB threshold leaves headroom for low-energy phonemes.
+    # An earlier revision trimmed trailing silence too via the
+    # `silenceremove, areverse, silenceremove, areverse` idiom at a
+    # -50 dB threshold. That cut into the decay of low-energy
+    # phonemes (fricatives /f/ /ʃ/, short vowels fading into
+    # creaky-voice) — 39 of 40 clips ended mid-sound with the last
+    # 100 ms sitting at -15 to -35 dB instead of a silent tail. For
+    # short voice cues in the app we'd rather keep ~100-300 ms of
+    # fish-speech's natural tail than clip the final consonant.
     #
-    # The silenceremove chain uses the canonical "trim head, reverse,
-    # trim head again, reverse back" idiom so only the true leading
-    # and trailing silence is removed — inter-word pauses are kept.
-    trim = (
+    # Leading silence trim stays: playback still wants to start
+    # immediately on the first phoneme, not after a padded gap.
+    trim_leading = (
         "silenceremove=start_periods=1:start_duration=0.1:start_threshold=-50dB"
     )
     cmd = [
         "ffmpeg", "-y", "-i", str(src),
-        "-af", f"{trim},areverse,{trim},areverse,loudnorm=I=-16:TP=-1.5:LRA=11",
+        "-af", f"{trim_leading},loudnorm=I=-16:TP=-1.5:LRA=11",
         "-ar", "22050", "-ac", "1",
         "-c:a", "aac", "-b:a", "96k",
         str(dst),
