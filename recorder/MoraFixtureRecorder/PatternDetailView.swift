@@ -35,6 +35,7 @@ struct PatternDetailView: View {
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                 }
+                VerdictPanel(pattern: pattern, pending: store.pendingVerdict)
             }
 
             Section("Takes") {
