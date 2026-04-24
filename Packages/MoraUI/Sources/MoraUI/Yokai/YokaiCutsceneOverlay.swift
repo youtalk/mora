@@ -54,7 +54,7 @@ public struct YokaiCutsceneOverlay: View {
 
                 if fridayPhase >= 3 {
                     Text(yokai.voice.clips[.fridayAcknowledge] ?? "")
-                        .font(.title3.weight(.semibold))
+                        .font(MoraType.bodyReading(size: 32))
                         .multilineTextAlignment(.center)
                         .foregroundStyle(.white)
                         .padding(.horizontal, 40)
@@ -123,7 +123,7 @@ public struct YokaiCutsceneOverlay: View {
             YokaiPortraitCorner(yokai: yokai)
                 .frame(width: 240, height: 240)
             Text(subtitleText(for: orchestrator.activeCutscene, yokai: yokai))
-                .font(.title3.weight(.semibold))
+                .font(MoraType.bodyReading(size: 32))
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.white)
                 .padding(.horizontal, 40)
