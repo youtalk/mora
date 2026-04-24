@@ -1,0 +1,5 @@
+# fetch-models.sh manifest. Columns:
+#   <destination_path>  <release_tag>  <asset_filename>  <sha256>
+# destination_path is the directory the asset extracts INTO (parent of the bundle).
+# When present and SHA-matching (sidecar marker), the entry is skipped.
+Packages/MoraMLX/Sources/MoraMLX/Resources/wav2vec2-phoneme.mlmodelc models/wav2vec2-phoneme-int8-v1 wav2vec2-phoneme.mlmodelc.tar.gz 609fd9105a1ad715f284a248e678da2376df8c6e5aa5f7ae8e493db03dc7c45c
