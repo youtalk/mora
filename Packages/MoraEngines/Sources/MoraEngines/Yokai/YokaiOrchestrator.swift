@@ -28,7 +28,9 @@ public final class YokaiOrchestrator {
     public func dismissCutscene() { activeCutscene = nil }
 
     public func startWeek(yokaiID: String, weekStart: Date) throws {
-        guard let yokai = store.catalog().first(where: { $0.id == yokaiID }) else { return }
+        guard let yokai = store.catalog().first(where: { $0.id == yokaiID }) else {
+            throw YokaiOrchestratorError.unknownYokai(yokaiID)
+        }
         currentYokai = yokai
         let encounter = YokaiEncounterEntity(
             yokaiID: yokaiID,
@@ -53,6 +55,7 @@ public final class YokaiOrchestrator {
         encounter.friendshipPercent = result.percent
         dayGainSoFar = result.dayGain
         if correct { encounter.correctReadCount += 1 }
+        try? modelContext.save()
     }
 
     public func beginDay() {
@@ -68,6 +71,7 @@ public final class YokaiOrchestrator {
         encounter.friendshipPercent = result.percent
         dayGainSoFar = result.dayGain
         encounter.sessionCompletionCount += 1
+        try? modelContext.save()
     }
 
     private var fridayTrialsRemaining: Int = 0

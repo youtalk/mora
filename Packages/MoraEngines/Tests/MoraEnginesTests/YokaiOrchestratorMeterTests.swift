@@ -43,4 +43,15 @@ final class YokaiOrchestratorMeterTests: XCTestCase {
         let percent = try XCTUnwrap(orch.currentEncounter?.friendshipPercent)
         XCTAssertEqual(percent, 0.35, accuracy: 1e-9)
     }
+
+    func test_startWeekThrowsForUnknownYokai() throws {
+        let container = try MoraModelContainer.inMemory()
+        let ctx = ModelContext(container)
+        let orch = YokaiOrchestrator(store: FakeYokaiStore(), modelContext: ctx)
+        XCTAssertThrowsError(try orch.startWeek(yokaiID: "nope", weekStart: Date())) { error in
+            XCTAssertEqual(error as? YokaiOrchestratorError, .unknownYokai("nope"))
+        }
+        XCTAssertNil(orch.currentEncounter)
+        XCTAssertNil(orch.currentYokai)
+    }
 }
