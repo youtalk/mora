@@ -31,6 +31,12 @@ commands (run manually on the workstation).
 4. Curate; copy the chosen PNG into mora repo at `Packages/MoraCore/Sources/MoraCore/Resources/Yokai/<id>/portrait.png`.
 5. Run `scripts/synthesize_voices.py --yokai sh` for voice clips.
 6. Master via `scripts/master_audio.py`; copy outputs into mora repo.
+7. QC-audit the bundled m4a via `scripts/audit_voices.py`. It transcribes
+   every clip with Whisper (`small.en` first, escalating to `medium.en`
+   on miss), fuzzy-matches against `voice.clips.*` in `YokaiCatalog.json`,
+   and surfaces truncated tails / hallucinated filler text / dropped
+   phonemes without listening to every clip by hand. `--strict` exits
+   non-zero on any FAIL so it can gate CI or pre-merge checks.
 
 Binary assets ship as plain Git blobs (LFS was removed from the repo in
 PR #62).

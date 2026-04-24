@@ -13,10 +13,26 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
 def master(src: pathlib.Path, dst: pathlib.Path) -> None:
-    # ffmpeg loudnorm + resample + AAC encode.
+    # Loudnorm to -16 LUFS, resample to 22050 Hz mono, encode AAC —
+    # no silence trimming on either end. fish-speech output is used
+    # verbatim in the time domain.
+    #
+    # An earlier revision ran `silenceremove ... start_duration=0.1
+    # ... start_threshold=-50dB` at the head to drop leading silence.
+    # The `start_duration` parameter in silenceremove means the
+    # amount of non-silence that must be sustained before the filter
+    # STOPS trimming — not the minimum silence window to trim. For
+    # fricatives like /ʃ/, /f/, /θ/ whose onset ramps up gradually
+    # through -50 dB, the filter kept trimming through the onset
+    # because it never saw 100 ms of continuous non-silence at the
+    # start. sh/example_3 "shell" lost ~100 ms of the /ʃ/ ramp and
+    # became hard to recognize. Dropping the trim preserves the
+    # natural fricative onset at the cost of whatever leading
+    # silence fish-speech produced, which in practice is ≤ 50 ms of
+    # low-level noise across all 40 clips and inaudible in playback.
     cmd = [
         "ffmpeg", "-y", "-i", str(src),
-        "-af", "loudnorm=I=-16:TP=-1.5:LRA=11,silenceremove=start_periods=1:start_silence=0.05:start_threshold=-40dB:stop_periods=1:stop_silence=0.05:stop_threshold=-40dB",
+        "-af", "loudnorm=I=-16:TP=-1.5:LRA=11",
         "-ar", "22050", "-ac", "1",
         "-c:a", "aac", "-b:a", "96k",
         str(dst),
