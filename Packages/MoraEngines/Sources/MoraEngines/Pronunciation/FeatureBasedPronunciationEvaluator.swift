@@ -196,13 +196,23 @@ public struct FeatureBasedPronunciationEvaluator: PronunciationEvaluator {
         case .spectralFlatness:
             return FeatureExtractor.spectralFlatness(clip: clip)
         case .formantF1Hz:
-            let suppress = clip.durationSeconds < 0.2
+            // Suppress pitch harmonics on short-to-medium windows (< 500 ms).
+            // Typical CVC medial vowel regions land at 300–450 ms, longer
+            // than the original 200 ms gate — widening here gates
+            // suppression on for natural recordings where pitch harmonics
+            // still mask F1/F2 due to the FFT bin width at those lengths.
+            let suppress = clip.durationSeconds < 0.5
             return FeatureExtractor.spectralPeakInBand(
                 clip: clip, lowHz: 200, highHz: 1_000,
                 suppressPitchHarmonics: suppress
             )
         case .formantF2Hz:
-            let suppress = clip.durationSeconds < 0.2
+            // Suppress pitch harmonics on short-to-medium windows (< 500 ms).
+            // Typical CVC medial vowel regions land at 300–450 ms, longer
+            // than the original 200 ms gate — widening here gates
+            // suppression on for natural recordings where pitch harmonics
+            // still mask F1/F2 due to the FFT bin width at those lengths.
+            let suppress = clip.durationSeconds < 0.5
             return FeatureExtractor.spectralPeakInBand(
                 clip: clip, lowHz: 1_000, highHz: 2_500,
                 suppressPitchHarmonics: suppress
