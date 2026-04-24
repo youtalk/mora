@@ -16,31 +16,46 @@ public struct LocalizedRegion: Sendable {
 
 public enum PhonemeRegionLocalizer {
 
+    private static let liquidIPAs: Set<String> = ["r", "l"]
+
+    private static func onsetWindowMs(for word: Word, defaultMs: Double, fractionMs: Double) -> Double {
+        // Word.targetPhoneme is optional (nil = transcript-only path, no
+        // acoustic evaluation). When it's nil, fall back to the default
+        // window — the localizer is still called via the non-targeted
+        // codepaths and we don't have phoneme info to specialize on.
+        if let target = word.targetPhoneme?.ipa, liquidIPAs.contains(target) {
+            // Liquids' acoustically-stable region is ~60 ms before the following
+            // vowel's formants begin. The 150 ms default catches that vowel.
+            return min(60, fractionMs)
+        }
+        return min(defaultMs, fractionMs)
+    }
+
     /// Slices an audio clip to the portion corresponding to a phoneme
-    /// position within a word. The current heuristic is based only on clip
-    /// timing and `phonemePosition`; `word` is reserved for future heuristics
-    /// that use lexical/phoneme context. Onset and coda use a fixed 150 ms
-    /// (or 25 % of the clip, whichever is smaller) window. Medial positions
-    /// use the same equal-segment idea, dividing the clip into `count` equal
-    /// units and selecting the `position`-th unit; this is accurate enough
-    /// for short CVC words like `cat`/`cut` where the medial vowel sits in
-    /// the middle third of the clip. A `position` outside `0..<count` is
-    /// treated as malformed input and falls back to the full clip flagged
-    /// unreliable.
+    /// position within a word. Onset and coda use a fixed 150 ms (or 25 % of
+    /// the clip, whichever is smaller) window; liquid onsets (/r/, /l/) use a
+    /// shorter 60 ms window that captures only the acoustically-stable region
+    /// before the following vowel's formant transition. Medial positions
+    /// divide the clip into `count` equal units and select the `position`-th
+    /// unit; this is accurate enough for short CVC words like `cat`/`cut`
+    /// where the medial vowel sits in the middle third of the clip. A
+    /// `position` outside `0..<count` is treated as malformed input and falls
+    /// back to the full clip flagged unreliable.
     public static func region(
         clip: AudioClip,
-        word _: Word,
+        word: Word,
         phonemePosition: PhonemePosition
     ) -> LocalizedRegion {
         let totalMs = clip.durationSeconds * 1000.0
         let fixedMs = 150.0
         let fractionMs = totalMs * 0.25
-        let sliceMs = min(fixedMs, fractionMs)
 
         switch phonemePosition {
         case .onset:
-            return slice(clip: clip, startMs: 0, durationMs: sliceMs, reliable: true)
+            let onsetMs = onsetWindowMs(for: word, defaultMs: fixedMs, fractionMs: fractionMs)
+            return slice(clip: clip, startMs: 0, durationMs: onsetMs, reliable: true)
         case .coda:
+            let sliceMs = min(fixedMs, fractionMs)
             return slice(clip: clip, startMs: totalMs - sliceMs, durationMs: sliceMs, reliable: true)
         case .medial(let position, let count):
             guard count > 0, position >= 0, position < count else {

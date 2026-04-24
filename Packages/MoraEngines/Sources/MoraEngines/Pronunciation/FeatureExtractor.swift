@@ -113,23 +113,155 @@ public enum FeatureExtractor {
         return Double(clip.samples.count) / clip.sampleRate * 1000.0
     }
 
+    /// Relative voicing onset time (ms): the difference between the time
+    /// of the strongest amplitude-derivative spike (the "burst") and the
+    /// time periodic voicing first becomes detectable. Negative values
+    /// mean voicing precedes the burst (voiced fricatives, voiced stops
+    /// with prevoicing); positive values mean voicing follows the burst
+    /// (voiceless stops, large for aspirated /p/, /t/, /k/).
+    ///
+    /// `burstThreshold` is the per-window dRMS that counts as a burst.
+    /// `voicingThreshold` is the RMS level that counts as voicing.
+    /// Returns -100 in all degenerate cases (clip too short for two RMS
+    /// windows, no voicing detected, or no burst detected) so the caller's
+    /// substitution boundary keeps classifying the signal as voiced
+    /// regardless of which specific failure mode was hit.
+    public static func voicingOnsetTimeRelative(
+        clip: AudioClip,
+        burstThreshold: Float,
+        voicingThreshold: Float
+    ) -> Double {
+        let windowMs = 5
+        let windowSamples = max(8, Int(Double(windowMs) / 1000.0 * clip.sampleRate))
+        guard clip.samples.count >= windowSamples * 2 else { return -100 }
+
+        // Per-window RMS, then per-step delta.
+        var rms = [Float]()
+        var i = 0
+        while i + windowSamples <= clip.samples.count {
+            let window = clip.samples[i..<(i + windowSamples)]
+            let r = sqrt(window.reduce(0) { $0 + $1 * $1 } / Float(window.count))
+            rms.append(r)
+            i += windowSamples
+        }
+        guard rms.count >= 2 else { return -100 }
+
+        // Burst = window with the largest positive delta.
+        var burstWindow = -1
+        var burstDelta: Float = burstThreshold
+        for k in 1..<rms.count {
+            let delta = rms[k] - rms[k - 1]
+            if delta > burstDelta {
+                burstDelta = delta
+                burstWindow = k
+            }
+        }
+        // Voicing onset = first window with RMS >= voicingThreshold.
+        var voicingWindow = -1
+        for (k, r) in rms.enumerated() where r >= voicingThreshold {
+            voicingWindow = k
+            break
+        }
+        guard voicingWindow >= 0 else { return -100 }
+        if burstWindow < 0 {
+            // No burst → signal is steady; treat as fully voiced.
+            return -100
+        }
+        let burstMs = Double(burstWindow) * Double(windowMs)
+        if voicingWindow < burstWindow {
+            // Voicing precedes burst → voiced fricative or prevoiced stop.
+            // Return the signed difference directly (negative).
+            let voicingMs = Double(voicingWindow) * Double(windowMs)
+            return voicingMs - burstMs
+        }
+        // Voicing is at or after the burst. The burst window itself is
+        // energetic enough to clear voicingThreshold; search for the first
+        // *sustained* voicing window that starts AFTER the burst so that
+        // we measure the vowel onset, not the burst click itself.
+        var postBurstVoicingWindow = -1
+        for k in (burstWindow + 1)..<rms.count where rms[k] >= voicingThreshold {
+            postBurstVoicingWindow = k
+            break
+        }
+        guard postBurstVoicingWindow >= 0 else { return -100 }
+        let postBurstVoicingMs = Double(postBurstVoicingWindow) * Double(windowMs)
+        return postBurstVoicingMs - burstMs
+    }
+
     /// Frequency (Hz) of the strongest FFT bin whose center lies within
-    /// [lowHz, highHz]. Intended as a lightweight stand-in for LPC formant
-    /// tracking — accurate enough for the onset / coda regions we score.
-    public static func spectralPeakInBand(clip: AudioClip, lowHz: Double, highHz: Double) -> Double {
+    /// [lowHz, highHz]. When `suppressPitchHarmonics` is true, the
+    /// extractor first estimates the speaker's pitch (50–400 Hz peak in
+    /// the autocorrelation) and excludes any band-peak within ±20 Hz of
+    /// an integer multiple of that pitch. Use suppression on short
+    /// windows (< 200 ms) where pitch harmonics regularly mask the true
+    /// F1 / F2.
+    public static func spectralPeakInBand(
+        clip: AudioClip,
+        lowHz: Double,
+        highHz: Double,
+        suppressPitchHarmonics: Bool = false
+    ) -> Double {
         guard let spectrum = powerSpectrum(clip: clip) else { return 0 }
         let binWidth = clip.sampleRate / Double(2 * spectrum.count)
+
+        let pitchHz: Double? = suppressPitchHarmonics ? dominantPitchHz(clip: clip) : nil
+        let suppressionTolerance = 20.0
+
         var bestBin = -1
         var bestPower: Float = 0
         for (i, p) in spectrum.enumerated() {
             let freq = Double(i) * binWidth
             if freq < lowHz || freq > highHz { continue }
+            if let f0 = pitchHz, f0 > 0 {
+                // Reject bins within tolerance of any harmonic of f0.
+                let nearestHarmonic = (freq / f0).rounded() * f0
+                if abs(freq - nearestHarmonic) < suppressionTolerance {
+                    continue
+                }
+            }
             if p > bestPower {
                 bestPower = p
                 bestBin = i
             }
         }
         return bestBin >= 0 ? Double(bestBin) * binWidth : 0
+    }
+
+    /// Estimate the dominant pitch (50–400 Hz) by autocorrelation.
+    /// Returns 0 when no clear periodic structure is present — the best
+    /// lag's correlation must be at least `clarityThreshold` of the
+    /// corresponding per-lag energy, otherwise the candidate is treated
+    /// as aperiodic content (noise, silence, transients) and rejected so
+    /// `spectralPeakInBand` does not suppress spurious "harmonics" of a
+    /// phantom fundamental.
+    static func dominantPitchHz(clip: AudioClip) -> Double {
+        let sr = clip.sampleRate
+        let minLag = Int(sr / 400.0)  // 400 Hz max
+        let maxLag = Int(sr / 50.0)  // 50 Hz min
+        let samples = clip.samples
+        guard samples.count > maxLag * 2 else { return 0 }
+
+        var bestLag = -1
+        var bestNormalizedCorr: Double = 0
+        for lag in minLag...maxLag {
+            var corr: Double = 0
+            var energy: Double = 0
+            let n = samples.count - lag
+            for i in 0..<n {
+                let s = Double(samples[i])
+                corr += s * Double(samples[i + lag])
+                energy += s * s
+            }
+            guard energy > 0 else { continue }
+            let normalized = corr / energy
+            if normalized > bestNormalizedCorr {
+                bestNormalizedCorr = normalized
+                bestLag = lag
+            }
+        }
+        let clarityThreshold = 0.3
+        guard bestLag > 0, bestNormalizedCorr >= clarityThreshold else { return 0 }
+        return sr / Double(bestLag)
     }
 
     /// Power spectrum of the windowed FFT, returned as a half-band magnitude
