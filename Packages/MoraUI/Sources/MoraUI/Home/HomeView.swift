@@ -8,8 +8,6 @@ import UIKit
 #endif
 
 public struct HomeView: View {
-    @Environment(\.modelContext) private var modelContext
-
     // Sort by createdAt so if duplicate rows ever appear (migration bug, test
     // seed leaking into prod store), the oldest profile wins deterministically.
     @Query(sort: \LearnerProfile.createdAt, order: .forward)
@@ -23,6 +21,11 @@ public struct HomeView: View {
     // Open encounters (active or carryover) — the hero reads the latest one
     // so the home screen shows the yokai the learner is currently working
     // with rather than a fixed week-0 fallback.
+    //
+    // Raw strings are used directly because `#Predicate` cannot form a key
+    // path into an enum case (`\.active`), so `YokaiEncounterState.active`
+    // .rawValue doesn't compile inside the macro. `YokaiEncounterStateRawValuesTests`
+    // pins these strings to the enum cases so a rename breaks CI, not prod.
     @Query(
         filter: #Predicate<YokaiEncounterEntity> {
             $0.stateRaw == "active" || $0.stateRaw == "carryover"
@@ -234,7 +237,7 @@ public struct HomeView: View {
         {
             return Target(weekStart: enc.weekStart, skill: skill)
         }
-        return ladder.currentTarget(forWeekIndex: 0)
+        return ladder.currentTarget(forWeekIndex: weekIndex)
     }
 
     /// Weeks elapsed since the learner's profile was created, clamped into the
