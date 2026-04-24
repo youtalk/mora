@@ -1,5 +1,6 @@
 outputs/
 refs/
+logs/
 tools/ComfyUI/
 venv/
 __pycache__/
