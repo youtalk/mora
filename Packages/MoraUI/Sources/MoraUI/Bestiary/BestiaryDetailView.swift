@@ -42,6 +42,7 @@ public struct BestiaryDetailView: View {
         .onAppear {
             if store == nil { store = try? BundledYokaiStore() }
         }
+        .onDisappear { synthesizer.stopSpeaking(at: .immediate) }
     }
 
     private func play(clip: YokaiClipKey) {
