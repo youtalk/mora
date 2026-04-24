@@ -15,7 +15,10 @@ public final class BundledYokaiStore: YokaiStore {
     public func catalog() -> [YokaiDefinition] { definitions }
 
     public func portraitURL(for id: String) -> URL? {
-        resourceBundle.url(forResource: "portrait", withExtension: "png", subdirectory: "Yokai/\(id)")
+        if let url = resourceBundle.url(forResource: "portrait", withExtension: "png", subdirectory: "Yokai/\(id)") {
+            return url
+        }
+        return resourceBundle.url(forResource: "portrait", withExtension: "png", subdirectory: "_placeholder")
     }
 
     public func voiceClipURL(for id: String, clip: YokaiClipKey) -> URL? {
