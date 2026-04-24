@@ -55,6 +55,9 @@ public struct HomeView: View {
     @State private var installedVoices: [String] = AppleTTSEngine.installedEnglishVoiceSummaries()
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.moraStrings) private var strings
+    #if DEBUG
+    @Environment(\.modelContext) private var debugContext
+    #endif
 
     public init() {}
 
@@ -71,6 +74,9 @@ public struct HomeView: View {
                     hero
                 }
                 Spacer()
+                #if DEBUG
+                debugTimeTravelBar
+                #endif
             }
         }
         .onAppear { refreshVoiceState() }
@@ -329,4 +335,52 @@ public struct HomeView: View {
         }
         #endif
     }
+
+    #if DEBUG
+    private var debugTimeTravelBar: some View {
+        HStack(spacing: MoraTheme.Space.sm) {
+            Button("DEBUG: +1 Day") { shiftClock(byDays: 1) }
+                .buttonStyle(.bordered)
+                .tint(.orange)
+            Button("DEBUG: +1 Week") { shiftClock(byDays: 7) }
+                .buttonStyle(.bordered)
+                .tint(.orange)
+        }
+        .padding(.bottom, MoraTheme.Space.sm)
+    }
+
+    /// Simulates `days` of elapsed time by back-dating profile, streak, and
+    /// open-encounter timestamps. Affects `weekIndex`, streak day math, and
+    /// anything keyed off `weekStart`; does not change the real system clock.
+    ///
+    /// Uses `Calendar.date(byAdding:)` rather than a flat 24h*`days` offset
+    /// so the shift lines up with `DailyStreak.recordCompletion`, which
+    /// computes gaps via `Calendar.dateComponents([.day], ...)`. A naive
+    /// TimeInterval offset lands 23h or 25h off across a DST transition
+    /// and can cause the streak to see 0 or 2 day-gaps where the button
+    /// label says 1.
+    private func shiftClock(byDays days: Int) {
+        let calendar = Calendar.current
+        if let profile = profiles.first,
+            let shifted = calendar.date(byAdding: .day, value: -days, to: profile.createdAt)
+        {
+            profile.createdAt = shifted
+        }
+        if let streak = streaks.first, let last = streak.lastCompletedOn,
+            let shifted = calendar.date(byAdding: .day, value: -days, to: last)
+        {
+            streak.lastCompletedOn = shifted
+        }
+        for encounter in openEncounters {
+            if let shifted = calendar.date(byAdding: .day, value: -days, to: encounter.weekStart) {
+                encounter.weekStart = shifted
+            }
+        }
+        do {
+            try debugContext.save()
+        } catch {
+            assertionFailure("Failed to persist debug time shift: \(error)")
+        }
+    }
+    #endif
 }
