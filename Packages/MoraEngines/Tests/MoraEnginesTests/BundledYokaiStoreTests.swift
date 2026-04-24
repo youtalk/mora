@@ -19,7 +19,7 @@ final class BundledYokaiStoreTests: XCTestCase {
     func test_voiceClipURL_resolvesForAllBundledYokaiAndClipKeys() throws {
         let store = try BundledYokaiStore()
         let yokai = store.catalog()
-        XCTAssertEqual(yokai.count, 5)
+        XCTAssertFalse(yokai.isEmpty, "catalog() returned no yokai — bundle may be missing")
 
         var resolvedCount = 0
         for y in yokai {
@@ -32,16 +32,23 @@ final class BundledYokaiStoreTests: XCTestCase {
                     FileManager.default.fileExists(atPath: url.path),
                     "File not found on disk for yokai '\(y.id)' clip '\(key.rawValue)': \(url.path)"
                 )
-                XCTAssertTrue(
-                    url.lastPathComponent.hasSuffix(".m4a"),
+                XCTAssertEqual(
+                    url.pathExtension,
+                    "m4a",
                     "Expected .m4a extension for yokai '\(y.id)' clip '\(key.rawValue)': \(url.lastPathComponent)"
                 )
                 resolvedCount += 1
             }
         }
-        // 5 yokai × 8 clip keys = 40 voice clips — matches the self-review checklist
-        // in docs/superpowers/plans/2026-04-24-rpg-yokai-voice-follow-up.md
-        XCTAssertEqual(resolvedCount, 40)
+        // At the time of writing: 5 yokai × 8 clip keys = 40, matching the
+        // self-review checklist in docs/superpowers/plans/2026-04-24-rpg-yokai-voice-follow-up.md.
+        // The dynamic product keeps the assertion honest if the roster or clip-key set grows.
+        let expectedCount = yokai.count * YokaiClipKey.allCases.count
+        XCTAssertEqual(
+            resolvedCount,
+            expectedCount,
+            "Expected \(yokai.count) yokai × \(YokaiClipKey.allCases.count) clip keys = \(expectedCount) URLs, got \(resolvedCount)"
+        )
     }
 
     func test_voiceClipURL_returnsNilForUnknownYokaiID() throws {
