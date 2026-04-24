@@ -73,6 +73,7 @@ public final class SessionOrchestrator {
     public let warmupOptions: [Grapheme]
     public let chainProvider: any WordChainProvider
     public let sentences: [DecodeSentence]
+    public let yokai: YokaiOrchestrator?
 
     /// Callback for tile-board phase events. Wired up by the UI so that
     /// chain-finished and phase-finished transitions can trigger scene
@@ -89,7 +90,8 @@ public final class SessionOrchestrator {
         chainProvider: any WordChainProvider,
         sentences: [DecodeSentence],
         assessment: AssessmentEngine,
-        clock: @escaping @Sendable () -> Date = Date.init
+        clock: @escaping @Sendable () -> Date = Date.init,
+        yokai: YokaiOrchestrator? = nil
     ) {
         self.target = target
         self.taughtGraphemes = taughtGraphemes
@@ -98,6 +100,7 @@ public final class SessionOrchestrator {
         self.sentences = sentences
         self.assessment = assessment
         self.clock = clock
+        self.yokai = yokai
     }
 
     public func start() async {
@@ -175,6 +178,7 @@ public final class SessionOrchestrator {
             l1InterferenceTag: nil
         )
         trials.append(trial)
+        yokai?.recordTrialOutcome(correct: trial.correct)
         phaseMetrics.totalDropMisses += result.buildAttempts.filter { !$0.wasCorrect }.count
         if result.autoFilled { phaseMetrics.autoFillCount += 1 }
 
@@ -220,6 +224,7 @@ public final class SessionOrchestrator {
                 leniency: .newWord
             )
             trials.append(trial)
+            yokai?.recordTrialOutcome(correct: trial.correct)
         }
         sentenceIndex += 1
         if sentenceIndex >= sentences.count { transitionTo(.completion) }
@@ -239,6 +244,7 @@ public final class SessionOrchestrator {
             } ?? sentence.words.first
         if let expected {
             trials.append(manualTrial(expected: expected, correct: correct))
+            yokai?.recordTrialOutcome(correct: correct)
         }
         sentenceIndex += 1
         if sentenceIndex >= sentences.count { transitionTo(.completion) }
