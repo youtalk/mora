@@ -155,6 +155,23 @@ final class FeatureBasedEvaluatorTests: XCTestCase {
         XCTAssertEqual(result.coachingKey, "coaching.th_voiceless_sub_s")
     }
 
+    // MARK: - Whole-word duration
+
+    func testWholeWordClipPassesAudioSanity() async {
+        // 1.5 s — a natural recorder-app take of a two-syllable English word
+        // ("berry", "very") lands here. Pre-fix, maxDurationMs = 600 ms
+        // rejected this and forced .unclear from the audio sanity gate.
+        let audio = SyntheticAudio.bandNoise(lowHz: 1_900, highHz: 2_100, durationMs: 1_500)
+        let result = await evaluator.evaluate(
+            audio: audio,
+            expected: ship(),
+            targetPhoneme: Phoneme(ipa: "ʃ"),
+            asr: ASRResult(transcript: "ship", confidence: 0.9)
+        )
+        XCTAssertNotEqual(result.label, .unclear)
+        XCTAssertTrue(result.isReliable)
+    }
+
     // MARK: - Skipped substitution pairs
     // Synthetic audio is not reliable for these pairs; each needs a recorded
     // fixture to exercise the measurement path in a meaningful way.

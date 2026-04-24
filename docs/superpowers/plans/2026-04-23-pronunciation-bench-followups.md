@@ -4,6 +4,8 @@
 
 **Status on 2026-04-23:** Phase A + Phase B + Phase C-code of `2026-04-22-pronunciation-bench-and-calibration.md` shipped via [#41](https://github.com/youtalk/mora/pull/41) and [#42](https://github.com/youtalk/mora/pull/42). Engine B Part 1 + Part 2 landed via [#43](https://github.com/youtalk/mora/pull/43) / [#45](https://github.com/youtalk/mora/pull/45). This document captures the work that was explicitly deferred from those PRs plus a handful of code-quality items raised in Copilot review.
 
+**Update on 2026-04-24:** Engine A whole-word + medial-vowel prerequisites landed via `docs/superpowers/plans/2026-04-24-engine-a-whole-word-and-medial-vowel.md` (`maxDurationMs` raised to 2000 ms; `PhonemeRegionLocalizer` medial slice now flagged reliable). Task A1 can proceed against the existing `~/mora-fixtures-adult/` recordings without the previously-required hard cap.
+
 **Goal:** Close the calibration loop so the `FeatureBasedEvaluatorFixtureTests` suite stops skipping, then tune `PhonemeThresholds` for child-speaker audio.
 
 ---
@@ -402,11 +404,7 @@ XCTAssertGreaterThanOrEqual(score, 70)
 
 and the symmetric change for `.substitutedBy(...)` tests (`XCTAssertLessThanOrEqual(score, 40)`).
 
-- [ ] **Step 2:** For `æ/ʌ` tests — reliability depends on Phase D tuning. Either:
-  - Keep the conditional form with a TODO comment linking to Task A4, OR
-  - If Task A4 has already shifted thresholds and the vowel tests are stable, promote them too.
-
-Make the choice based on what Task A4 landed; don't promote speculatively.
+- [ ] **Step 2:** For `æ/ʌ` tests — `PhonemeRegionLocalizer` now flags medial slices as reliable (landed in `2026-04-24-engine-a-whole-word-and-medial-vowel.md`). Apply the same unconditional `XCTAssertTrue(isReliable)` + `XCTUnwrap(score)` pattern as the onset cases. Numeric bounds may still need Task A4 calibration to land within tight ranges; widen by ≤ 5 points per Task A4's rule rather than dropping to a conditional.
 
 - [ ] **Step 3:** Run:
 
