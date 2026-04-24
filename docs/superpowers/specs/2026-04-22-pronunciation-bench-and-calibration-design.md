@@ -9,6 +9,8 @@
 
 ---
 
+> **Superseded (recorder portion):** See `docs/superpowers/specs/2026-04-23-fixture-recorder-app-design.md`. The following sections of this spec are overridden: §4.1 (DEBUG-only in-app recorder), §4.4 (Part 2 stays out of Phase 3's file set — no longer relevant for recorder-side), §6.1–§6.4 (FixtureMetadata, FixtureRecorder, FixtureWriter, PronunciationRecorderView + DebugEntryPoint now live outside main Mora), §7.1 (fixture capture flow), §9.1 (release-build invariants for recorder — restated with relaxed privacy stance in the new spec). Bench-side sections (§4.2, §5, §6.5, §6.6, §7.2–§7.3, §8–§12) stay in force; only the consumer type imports swap from `MoraEngines` to `MoraFixtures`.
+
 ## 1. Overview
 
 Part 1 shipped Engine A as the v1.5 primary evaluator: `FeatureBasedPronunciationEvaluator` with literature-derived thresholds in `PhonemeThresholds`, wired end to end from `AppleSpeechEngine` through the orchestrator to a `PronunciationFeedbackOverlay` in the UI. What it does not yet have is empirical validation. The thresholds are taken from adult-speaker acoustic phonetics (Kent & Read, Ladefoged, Fujimura) and the only regression coverage against those thresholds comes from synthetic PCM. For several pairs — `/r/` vs `/l/`, `/v/` vs `/b/`, `/æ/` vs `/ʌ/` — Part 1 explicitly skipped the behavioral tests with a `// TODO(post-alpha): needs recorded fixture` marker because synthetic audio cannot express the joint-formant and temporal-feature structure those pairs rely on.
