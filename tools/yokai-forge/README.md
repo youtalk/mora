@@ -12,6 +12,11 @@ commands (run manually on the workstation).
 
 - `prompts/style_layer.txt` — Layer-1 constant prompt, feeds every portrait.
 - `prompts/yokai_*.json` — Per-yokai JSON spec following the schema in design spec §7.
+- `refs/<yokai_id>_reference.wav` — user-curated 5–30 s reference clip of the
+  voice timbre (e.g. ElevenLabs v3 free-tier export of the yokai's
+  `voice.character_description`).
+- `refs/<yokai_id>_reference.txt` — verbatim transcription of the reference clip.
+  Fish Speech S2 Pro requires paired audio + text for voice cloning.
 
 ## Outputs
 
