@@ -57,7 +57,7 @@ final class ShadowLoggingPronunciationEvaluatorTests: XCTestCase {
         let logger = InMemoryPronunciationTrialLogger()
         let composite = ShadowLoggingPronunciationEvaluator(
             primary: primary,
-            shadow: shadow,
+            shadowResolver: { shadow },
             logger: logger,
             timeout: .milliseconds(500)
         )
@@ -88,7 +88,7 @@ final class ShadowLoggingPronunciationEvaluatorTests: XCTestCase {
         let logger = InMemoryPronunciationTrialLogger()
         let composite = ShadowLoggingPronunciationEvaluator(
             primary: primary,
-            shadow: shadow,
+            shadowResolver: { shadow },
             logger: logger,
             timeout: .milliseconds(500)
         )
@@ -119,7 +119,7 @@ final class ShadowLoggingPronunciationEvaluatorTests: XCTestCase {
         let logger = InMemoryPronunciationTrialLogger()
         let composite = ShadowLoggingPronunciationEvaluator(
             primary: primary,
-            shadow: shadow,
+            shadowResolver: { shadow },
             logger: logger,
             timeout: .milliseconds(30)
         )
@@ -160,7 +160,7 @@ final class ShadowLoggingPronunciationEvaluatorTests: XCTestCase {
         let logger = InMemoryPronunciationTrialLogger()
         let composite = ShadowLoggingPronunciationEvaluator(
             primary: primary,
-            shadow: shadow,
+            shadowResolver: { shadow },
             logger: logger,
             timeout: .milliseconds(500)
         )
@@ -189,7 +189,7 @@ final class ShadowLoggingPronunciationEvaluatorTests: XCTestCase {
         let logger = InMemoryPronunciationTrialLogger()
         let composite = ShadowLoggingPronunciationEvaluator(
             primary: primary,
-            shadow: shadow,
+            shadowResolver: { shadow },
             logger: logger,
             timeout: .milliseconds(500)
         )
@@ -209,6 +209,84 @@ final class ShadowLoggingPronunciationEvaluatorTests: XCTestCase {
         }
     }
 
+    func testShadowResolverNilLogsAsNotReady() async throws {
+        // Simulates the first-install path: wav2vec2 ANE compile hasn't
+        // finished so the resolver returns `nil`. Engine A still runs
+        // (primary supports ʃ) and the trial is logged with B=.notReady
+        // so the dev can tell "warmup pending" from "shadow doesn't
+        // support this phoneme".
+        let primary = FakePronunciationEvaluator()
+        primary.supportedTargets = ["ʃ"]
+        primary.responses["ʃ"] = assessment(label: .matched, score: 88)
+
+        let logger = InMemoryPronunciationTrialLogger()
+        let composite = ShadowLoggingPronunciationEvaluator(
+            primary: primary,
+            shadowResolver: { nil },
+            logger: logger,
+            timeout: .milliseconds(500)
+        )
+        let out = await composite.evaluate(
+            audio: AudioClip(samples: [0.1], sampleRate: 16_000),
+            expected: word(),
+            targetPhoneme: Phoneme(ipa: "ʃ"),
+            asr: asr()
+        )
+        XCTAssertEqual(out.score, 88)
+        let entries = try await waitForLogger(logger, count: 1)
+        XCTAssertNotNil(entries[0].engineA)
+        if case .notReady = entries[0].engineB {
+            // ok
+        } else {
+            XCTFail("expected notReady, got \(entries[0].engineB)")
+        }
+    }
+
+    func testShadowResolverPromotesToEngineBOnceWarmupCompletes() async throws {
+        // Mimics the dynamic-resolver semantics: on the first trial the
+        // resolver hasn't finished warmup (returns nil → .notReady); on
+        // the second trial the cache is populated and Engine B gets
+        // logged as .completed without changing evaluator wiring.
+        let primary = FakePronunciationEvaluator()
+        primary.supportedTargets = ["ʃ"]
+        primary.responses["ʃ"] = assessment(label: .matched, score: 88)
+
+        let shadow = FakePronunciationEvaluator()
+        shadow.supportedTargets = ["ʃ"]
+        shadow.responses["ʃ"] = assessment(label: .matched, score: 91)
+
+        let resolveCount = ResolveCounter()
+        let logger = InMemoryPronunciationTrialLogger()
+        let composite = ShadowLoggingPronunciationEvaluator(
+            primary: primary,
+            shadowResolver: {
+                resolveCount.increment() == 0 ? nil : shadow
+            },
+            logger: logger,
+            timeout: .milliseconds(500)
+        )
+        _ = await composite.evaluate(
+            audio: AudioClip(samples: [0.1], sampleRate: 16_000),
+            expected: word(),
+            targetPhoneme: Phoneme(ipa: "ʃ"), asr: asr()
+        )
+        _ = await composite.evaluate(
+            audio: AudioClip(samples: [0.1], sampleRate: 16_000),
+            expected: word(),
+            targetPhoneme: Phoneme(ipa: "ʃ"), asr: asr()
+        )
+        let entries = try await waitForLogger(logger, count: 2)
+        if case .notReady = entries[0].engineB { /* ok */
+        } else {
+            XCTFail("trial 1 expected notReady, got \(entries[0].engineB)")
+        }
+        if case .completed(let b, _) = entries[1].engineB {
+            XCTAssertEqual(b.score, 91)
+        } else {
+            XCTFail("trial 2 expected completed, got \(entries[1].engineB)")
+        }
+    }
+
     func testNeitherSupportsSkipsLogger() async throws {
         let primary = FakePronunciationEvaluator()
         primary.supportedTargets = []
@@ -216,7 +294,7 @@ final class ShadowLoggingPronunciationEvaluatorTests: XCTestCase {
         shadow.supportedTargets = []
         let logger = InMemoryPronunciationTrialLogger()
         let composite = ShadowLoggingPronunciationEvaluator(
-            primary: primary, shadow: shadow, logger: logger, timeout: .milliseconds(500)
+            primary: primary, shadowResolver: { shadow }, logger: logger, timeout: .milliseconds(500)
         )
         let out = await composite.evaluate(
             audio: AudioClip(samples: [0.1], sampleRate: 16_000),
@@ -229,6 +307,18 @@ final class ShadowLoggingPronunciationEvaluatorTests: XCTestCase {
         try await Task.sleep(for: .milliseconds(100))
         let entries = await logger.entries
         XCTAssertTrue(entries.isEmpty)
+    }
+}
+
+private final class ResolveCounter: @unchecked Sendable {
+    private let lock = NSLock()
+    private var count: Int = 0
+    func increment() -> Int {
+        lock.lock()
+        defer { lock.unlock() }
+        let current = count
+        count += 1
+        return current
     }
 }
 

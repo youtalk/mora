@@ -1,6 +1,9 @@
 import Foundation
 import MoraCore
 import Observation
+import OSLog
+
+private let sessionLog = Logger(subsystem: "tech.reenable.Mora", category: "Session")
 
 @Observable
 @MainActor
@@ -223,11 +226,61 @@ public final class SessionOrchestrator {
                 recording: recording,
                 leniency: .newWord
             )
+            Self.logSentenceTrial(expected: expected, trial: trial)
             trials.append(trial)
             yokai?.recordTrialOutcome(correct: trial.correct)
         }
         sentenceIndex += 1
         if sentenceIndex >= sentences.count { transitionTo(.completion) }
+    }
+
+    /// Orchestrator-level per-trial log. Fires regardless of which
+    /// evaluator the `AssessmentEngine` is wired to, so Engine-A-only
+    /// sessions (first install before warmup completes) still emit one
+    /// line per ShortSentences trial. Complements — but is independent
+    /// of — the cross-engine `ShadowLoggingPronunciationEvaluator` log:
+    /// this one captures the user-level "what was asked, what was heard,
+    /// was it accepted" view; the other captures the model-level "what
+    /// did A and B each predict" view.
+    private static func logSentenceTrial(
+        expected: Word, trial: TrialAssessment
+    ) {
+        let heard = trial.heard ?? ""
+        let err = String(describing: trial.errorKind)
+        let phonemePart = Self.formatPhoneme(trial.phoneme)
+        #if DEBUG
+        sessionLog.info(
+            """
+            sentence-trial: expected="\(expected.surface, privacy: .public)" \
+            heard="\(heard, privacy: .public)" \
+            correct=\(trial.correct, privacy: .public) \
+            err=\(err, privacy: .public)\
+            \(phonemePart, privacy: .public)
+            """
+        )
+        #else
+        sessionLog.info(
+            """
+            sentence-trial: expected="\(expected.surface)" \
+            heard="\(heard)" correct=\(trial.correct) \
+            err=\(err)\(phonemePart)
+            """
+        )
+        #endif
+    }
+
+    private static func formatPhoneme(_ p: PhonemeTrialAssessment?) -> String {
+        guard let p else { return "" }
+        let score = p.score.map { String($0) } ?? "-"
+        let reliability = p.isReliable ? "" : "(unreliable)"
+        let label: String
+        switch p.label {
+        case .matched: label = "matched"
+        case .substitutedBy(let s): label = "sub(\(s.ipa))"
+        case .driftedWithin: label = "drifted"
+        case .unclear: label = "unclear"
+        }
+        return " phoneme=\(label):\(score)\(reliability)"
     }
 
     private func handleSentenceManual(correct: Bool) {
@@ -264,6 +317,26 @@ public final class SessionOrchestrator {
             l1InterferenceTag: nil
         )
     }
+
+    #if DEBUG
+    /// Dev-only: abandons any remaining tile-board chains and jumps
+    /// straight to the ShortSentences phase so Engine A/B paths can be
+    /// reached in a handful of taps during on-device iteration. Emits a
+    /// `phaseFinished` event with the chain count marked truncated so the
+    /// summary stays internally consistent. Never exposed in Release
+    /// builds — see the `#if DEBUG` guard at the declaration.
+    public func debugSkipDecoding() {
+        guard phase == .decoding else { return }
+        // Count only the chains we're actually abandoning — the user may
+        // have completed some chains already, so `phaseMetrics.chainCount`
+        // (the original total at phase entry) would over-report truncation.
+        let abandonedChainCount = pendingChains.count
+        phaseMetrics.truncatedChainCount += abandonedChainCount
+        pendingChains.removeAll()
+        onTileBoardEvent?(.phaseFinished(phaseMetrics))
+        transitionTo(.shortSentences)
+    }
+    #endif
 }
 
 public struct SessionSummary: Hashable, Sendable {

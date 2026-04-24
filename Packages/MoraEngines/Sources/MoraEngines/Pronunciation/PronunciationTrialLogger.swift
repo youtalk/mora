@@ -16,6 +16,11 @@ public enum EngineBLogResult: Sendable, Hashable {
     /// Engine B does not support the target phoneme (its inventory set
     /// does not contain the target IPA). No provider call was made.
     case unsupported
+    /// Engine B has not finished its background warmup yet. The dynamic
+    /// `shadowResolver` returned `nil` at the time of this trial; subsequent
+    /// trials in the same session will pick Engine B up once the CoreML
+    /// model has compiled for the Neural Engine (first install, ~100 s).
+    case notReady
 }
 
 /// The composite decorator passes this to the logger after both evaluators

@@ -44,6 +44,30 @@ final class MoraMLXModelCatalogTests: XCTestCase {
         }
     }
 
+    /// `cachedPhonemeEvaluator()` is the non-blocking path
+    /// `ShadowEvaluatorFactory` uses at session start: it must return the
+    /// loaded evaluator once the blocking loader has populated the cache,
+    /// so the session gets Engine B instead of falling through to the
+    /// Engine-A-only path. Doesn't exercise the "before first load"
+    /// nil case — the process-wide static cache is shared across tests
+    /// and may already be warmed by a sibling test in the same run.
+    func testCachedPhonemeEvaluatorMirrorsLoadedEvaluator() throws {
+        do {
+            let loaded = try MoraMLXModelCatalog.loadPhonemeEvaluator()
+            guard let cached = MoraMLXModelCatalog.cachedPhonemeEvaluator() else {
+                XCTFail("cachedPhonemeEvaluator() returned nil after a successful load")
+                return
+            }
+            XCTAssertEqual(
+                cached.inventory.espeakLabels.count,
+                loaded.inventory.espeakLabels.count
+            )
+            XCTAssertTrue(cached.supports(target: Phoneme(ipa: "ʃ"), in: word()))
+        } catch let error as MoraMLXError {
+            try skipOrRethrowOnPlaceholder(error)
+        }
+    }
+
     /// Skips when the bundled model is a placeholder; otherwise re-throws
     /// so the failure is visible.
     private func skipOrRethrowOnPlaceholder(_ error: MoraMLXError) throws -> Never {

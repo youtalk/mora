@@ -161,6 +161,7 @@ public struct JapaneseL1Profile: L1Profile {
         sessionSentenceCounter: { current, total in "\(current)/\(total)" },
         warmupListenAgain: "🔊 もういちど",
         newRuleGotIt: "分かった",
+        newRuleListenAgain: "🔊 もういちど",
         decodingLongPressHint: "ながおしで もういちど 聞けるよ",
         decodingBuildPrompt: "よく きいて ならべよう",
         decodingListenAgain: "🔊 もういちど",
@@ -192,7 +193,6 @@ public struct JapaneseL1Profile: L1Profile {
         completionComeBack: "明日も またね",
         a11yCloseSession: "クエストを おわる",
         a11yMicButton: "マイク",
-        a11yStreakChip: { days in "\(days)日 れんぞく" },
-        a11yHomeStartLoading: "じゅんびちゅう"
+        a11yStreakChip: { days in "\(days)日 れんぞく" }
     )
 }

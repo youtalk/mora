@@ -33,6 +33,18 @@ struct NewRuleView: View {
                     workedExample("fish")
                 }
 
+                Button(action: replayIntro) {
+                    Text(strings.newRuleListenAgain)
+                        .font(MoraType.cta())
+                        .foregroundStyle(MoraTheme.Accent.teal)
+                        .padding(.vertical, MoraTheme.Space.md)
+                        .padding(.horizontal, MoraTheme.Space.xl)
+                        .background(MoraTheme.Background.mint, in: .capsule)
+                        .minimumScaleFactor(0.5)
+                }
+                .buttonStyle(.plain)
+                .disabled(speech == nil)
+
                 HeroCTA(title: strings.newRuleGotIt) {
                     Task { await orchestrator.handle(.advance) }
                 }
@@ -55,19 +67,7 @@ struct NewRuleView: View {
             finishedIntro = true
             return
         }
-        // Play the bare phoneme via IPA hint, then ground it in three
-        // exemplars. Avoids speaking the digraph letters in isolation
-        // (TTS spells "sh" out as letters in plain text); the IPA hint is
-        // the documented way to coax a clean /ʃ/ from Premium voices.
-        var prompts: [SpeechPrompt] = []
-        if let phoneme = orchestrator.target.phoneme {
-            prompts.append(.phoneme(phoneme, .slow))
-        }
-        prompts.append(.text("Two letters, one sound.", .slow))
-        for word in ["ship", "shop", "fish"] {
-            prompts.append(.text(word, .slow))
-        }
-        await speech.playAndAwait(prompts)
+        await speech.playAndAwait(introPrompts(includePhoneme: true))
         // Only flip the gate when the intro actually finished. A cancelled
         // run (view disappeared, close button, user-initiated interrupt)
         // leaves the gate closed so that a re-entering view replays the
@@ -75,6 +75,41 @@ struct NewRuleView: View {
         if !Task.isCancelled {
             finishedIntro = true
         }
+    }
+
+    /// Re-plays the phrase + exemplars without the lead-in phoneme. The
+    /// learner already heard the bare /ʃ/ on first entry; replaying it
+    /// on every tap of the listen-again button feels repetitive. The CTA
+    /// stays active so the learner can advance whenever they're ready.
+    ///
+    /// `introPrompts()` reads `orchestrator.target` and the resulting
+    /// playback routes through `SpeechController`, both of which are
+    /// `@MainActor`-isolated. Building the prompt list *inside* the
+    /// `Task { @MainActor in ... }` keeps every orchestrator / speech
+    /// access on the same actor under Swift's strict concurrency
+    /// checking.
+    private func replayIntro() {
+        guard let speech else { return }
+        Task { @MainActor in
+            let prompts = introPrompts(includePhoneme: false)
+            await speech.playAndAwait(prompts)
+        }
+    }
+
+    /// Build an optional lead-in phoneme + "Two letters, one sound." +
+    /// three exemplar words. Avoids speaking the digraph letters in
+    /// isolation (TTS spells "sh" out as letters in plain text); the IPA
+    /// hint is the documented way to coax a clean /ʃ/ from Premium voices.
+    private func introPrompts(includePhoneme: Bool) -> [SpeechPrompt] {
+        var prompts: [SpeechPrompt] = []
+        if includePhoneme, let phoneme = orchestrator.target.phoneme {
+            prompts.append(.phoneme(phoneme, .slow))
+        }
+        prompts.append(.text("Two letters, one sound.", .slow))
+        for word in ["ship", "shop", "fish"] {
+            prompts.append(.text(word, .slow))
+        }
+        return prompts
     }
 
     private func workedExample(_ s: String) -> some View {

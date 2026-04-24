@@ -31,7 +31,7 @@ This repository **opts out** of the global rule in `~/.claude/CLAUDE.md` that st
 - PR descriptions may end with `🤖 Generated with [Claude Code](https://claude.com/claude-code)`
 - GitHub issues filed by Claude may include similar attribution
 
-Rationale: mora is a personal project and the user wants the Claude Code collaboration history preserved.
+Rationale: Mora is a personal project and the user wants the Claude Code collaboration history preserved.
 
 ## Build & test commands
 
@@ -73,7 +73,7 @@ swift-format format --in-place --recursive Mora Packages/*/Sources Packages/*/Te
 
 ## Architecture
 
-mora is an iPad-first, **fully on-device** dyslexia + ESL learning app. The thin iOS app target under `Mora/` wires SwiftData and presents `RootView`; all real logic lives in five local SPM packages under `Packages/`, layered strictly:
+Mora is an iPad-first, **fully on-device** dyslexia + ESL learning app. The thin iOS app target under `Mora/` wires SwiftData and presents `RootView`; all real logic lives in five local SPM packages under `Packages/`, layered strictly:
 
 - **MoraCore** — Domain model + SwiftData persistence. Value types (`Grapheme`, `Phoneme`, `Word`, `Target`, `Skill`, `SessionType`), `L1Profile` protocol with `JapaneseL1Profile` as the v1 implementation, and `@Model` entities under `Persistence/`. `MoraModelContainer` exposes `onDisk()` / `inMemory()` / `seedIfEmpty()` — `MoraApp` falls back from disk → memory on container init failure so the app always launches. No dependencies on other Mora packages.
 - **MoraEngines** — All learning-loop logic. Depends on MoraCore. Key pieces:
