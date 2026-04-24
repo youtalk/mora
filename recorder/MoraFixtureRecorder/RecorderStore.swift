@@ -222,6 +222,25 @@ public final class RecorderStore {
         }
     }
 
+    public func evaluateSavedTake(url: URL, pattern: FixturePattern) async {
+        if savedVerdicts[url] != nil { return }
+        let sampleRate = recorder.targetSampleRate
+        let runner = self.runner
+        let assessment = await Task.detached {
+            () -> PhonemeTrialAssessment? in
+            guard let samples = try? FixtureRecorder.decode(from: url) else { return nil }
+            return await runner.evaluate(
+                samples: samples,
+                sampleRate: sampleRate,
+                wordSurface: pattern.wordSurface,
+                targetPhonemeIPA: pattern.targetPhonemeIPA,
+                phonemeSequenceIPA: pattern.phonemeSequenceIPA,
+                targetPhonemeIndex: pattern.targetPhonemeIndex
+            )
+        }.value
+        if let assessment { savedVerdicts[url] = assessment }
+    }
+
     public func save(pattern: FixturePattern) {
         guard case let .captured(snapshot) = recordingState else { return }
         recordingState = .saving

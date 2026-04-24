@@ -350,4 +350,87 @@ final class RecorderStoreTests: XCTestCase {
         store.deleteTake(url: wav)
         XCTAssertNil(store.savedVerdicts[wav])
     }
+
+    func writeSyntheticWav(
+        for pattern: FixturePattern,
+        takeNumber: Int,
+        speaker: SpeakerTag,
+        durationSeconds: Double
+    ) throws -> URL {
+        let sampleRate = 16_000.0
+        let frames = Int(durationSeconds * sampleRate)
+        let dir = tempDir
+            .appendingPathComponent(speaker.rawValue)
+            .appendingPathComponent(pattern.outputSubdirectory)
+        try FileManager.default.createDirectory(
+            at: dir, withIntermediateDirectories: true)
+        let url = dir.appendingPathComponent(
+            "\(pattern.filenameStem)-take\(takeNumber).wav"
+        )
+        guard let fmt = AVAudioFormat(
+            commonFormat: .pcmFormatFloat32,
+            sampleRate: sampleRate, channels: 1, interleaved: false
+        ) else { throw NSError(domain: "writeSyntheticWav", code: 1) }
+        func writeAudio() throws {
+            let file = try AVAudioFile(forWriting: url, settings: fmt.settings)
+            guard let buffer = AVAudioPCMBuffer(
+                pcmFormat: fmt, frameCapacity: AVAudioFrameCount(frames)
+            ) else { throw NSError(domain: "writeSyntheticWav", code: 2) }
+            buffer.frameLength = AVAudioFrameCount(frames)
+            for i in 0..<frames {
+                buffer.floatChannelData![0][i] = Float(
+                    0.4 * sin(2 * .pi * 440 * Double(i) / sampleRate)
+                )
+            }
+            try file.write(from: buffer)
+        }
+        try writeAudio()
+        return url
+    }
+
+    func testEvaluateSavedTakeCachesFirstCallOnly() async throws {
+        let fake = FakeRunner()
+        let expected = PhonemeTrialAssessment(
+            targetPhoneme: Phoneme(ipa: "r"), label: .matched,
+            score: 100, coachingKey: nil, features: [:], isReliable: true
+        )
+        await fake.setNextResult(expected)
+
+        let pattern = FixtureCatalog.v1Patterns.first { $0.id == "rl-right-correct" }!
+        let wav = try writeSyntheticWav(
+            for: pattern,
+            takeNumber: 1,
+            speaker: .adult,
+            durationSeconds: 0.5
+        )
+        let store = RecorderStore(
+            documentsDirectory: tempDir, userDefaults: defaults,
+            runner: fake
+        )
+        store.speakerTag = .adult
+
+        await store.evaluateSavedTake(url: wav, pattern: pattern)
+        XCTAssertEqual(store.savedVerdicts[wav], expected)
+        let firstCallCount = await fake.callCount
+        XCTAssertEqual(firstCallCount, 1)
+
+        await store.evaluateSavedTake(url: wav, pattern: pattern)
+        let secondCallCount = await fake.callCount
+        XCTAssertEqual(secondCallCount, 1, "idempotent: cache hit skips evaluator")
+    }
+
+    func testEvaluateSavedTakeNoopOnDecodeFailure() async throws {
+        let fake = FakeRunner()
+        let pattern = FixtureCatalog.v1Patterns.first { $0.id == "rl-right-correct" }!
+        let bogus = tempDir.appendingPathComponent("does-not-exist.wav")
+        let store = RecorderStore(
+            documentsDirectory: tempDir, userDefaults: defaults,
+            runner: fake
+        )
+
+        await store.evaluateSavedTake(url: bogus, pattern: pattern)
+        XCTAssertNil(store.savedVerdicts[bogus])
+        let calls = await fake.callCount
+        XCTAssertEqual(calls, 0)
+    }
 }
