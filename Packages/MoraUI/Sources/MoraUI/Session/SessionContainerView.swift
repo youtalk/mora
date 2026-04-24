@@ -216,10 +216,11 @@ public struct SessionContainerView: View {
                     ladder: ladder
                 )
             else {
-                // All five yokai befriended. PR 2 replaces this with a proper
-                // curriculum-complete navigation; for PR 1 we surface a plain
-                // message so the session does not crash.
-                bootError = "Curriculum complete — all five yokai befriended."
+                // All five yokai befriended. HomeView's CTA has already
+                // routed to the curriculum-complete terminal screen; if a
+                // session somehow still starts (e.g. a stale deep link)
+                // just bounce straight back to the caller.
+                dismiss()
                 return
             }
             let skill = resolution.skill

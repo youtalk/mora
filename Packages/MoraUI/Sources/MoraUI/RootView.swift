@@ -34,6 +34,9 @@ public struct RootView: View {
                             case "bestiary":
                                 BestiaryView()
                                     .environment(\.moraStrings, resolvedStrings)
+                            case "curriculumComplete":
+                                CurriculumCompleteView()
+                                    .environment(\.moraStrings, resolvedStrings)
                             default: EmptyView()
                             }
                         }

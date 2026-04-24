@@ -35,6 +35,11 @@ public struct HomeView: View {
     )
     private var openEncounters: [YokaiEncounterEntity]
 
+    // Bestiary entries unlock as each yokai is befriended. Once all five
+    // are in the register and no open encounters remain, the home CTA
+    // flips to the curriculum-complete terminal screen.
+    @Query private var bestiary: [BestiaryEntryEntity]
+
     // `needsEnhancedVoice` walks the installed-voice list; keep the result in
     // @State so the scan runs at most once per appearance / scene activation
     // rather than on every body invalidation (which fires on every @Query
@@ -87,21 +92,31 @@ public struct HomeView: View {
             .foregroundStyle(MoraTheme.Accent.orange)
     }
 
-    private var hero: some View {
-        VStack(spacing: MoraTheme.Space.md) {
-            Text(strings.homeTodayQuest)
-                .font(MoraType.label())
-                .foregroundStyle(MoraTheme.Ink.muted)
+    /// True once every yokai has an entry in the bestiary and no open
+    /// encounters remain. Drives the home CTA to the terminal screen.
+    private var isCurriculumComplete: Bool {
+        openEncounters.isEmpty && bestiary.count >= 5
+    }
 
-            Text(target.letters ?? "—")
-                .font(MoraType.heroWord())
-                .foregroundStyle(MoraTheme.Ink.primary)
-
-            Text(ipaLine)
-                .font(MoraType.bodyReading())
-                .foregroundStyle(MoraTheme.Ink.secondary)
-                .multilineTextAlignment(.center)
-
+    /// Primary home CTA. Branches to the curriculum-complete destination
+    /// once the learner has befriended all five yokai; otherwise renders
+    /// the regular session-start button (preserving PR #71's MLX warmup
+    /// gating).
+    @ViewBuilder
+    private var startCTA: some View {
+        if isCurriculumComplete {
+            NavigationLink(value: "curriculumComplete") {
+                Text("All befriended — view your Register")
+                    .font(MoraType.cta())
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, MoraTheme.Space.xl)
+                    .padding(.vertical, MoraTheme.Space.md)
+                    .frame(minHeight: 88)
+                    .background(MoraTheme.Accent.orange, in: .capsule)
+            }
+            .buttonStyle(.plain)
+            .padding(.top, MoraTheme.Space.md)
+        } else {
             NavigationLink(value: "session") {
                 ZStack {
                     Text(strings.homeStart)
@@ -126,6 +141,25 @@ public struct HomeView: View {
             .disabled(!isStartEnabled)
             .accessibilityLabel(Text(strings.homeStart))
             .accessibilityValue(isStartEnabled ? Text("") : Text(strings.a11yHomeStartLoading))
+        }
+    }
+
+    private var hero: some View {
+        VStack(spacing: MoraTheme.Space.md) {
+            Text(strings.homeTodayQuest)
+                .font(MoraType.label())
+                .foregroundStyle(MoraTheme.Ink.muted)
+
+            Text(target.letters ?? "—")
+                .font(MoraType.heroWord())
+                .foregroundStyle(MoraTheme.Ink.primary)
+
+            Text(ipaLine)
+                .font(MoraType.bodyReading())
+                .foregroundStyle(MoraTheme.Ink.secondary)
+                .multilineTextAlignment(.center)
+
+            startCTA
 
             if let enc = openEncounters.first,
                 let store = try? BundledYokaiStore(),
