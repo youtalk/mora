@@ -1,6 +1,9 @@
 // Packages/MoraEngines/Sources/MoraEngines/Pronunciation/ShadowLoggingPronunciationEvaluator.swift
 import Foundation
 import MoraCore
+import OSLog
+
+private let trialLog = Logger(subsystem: "tech.reenable.Mora", category: "Pronunciation")
 
 /// The composite decorator `AssessmentEngine` receives in shadow mode.
 /// Runs the primary evaluator (Engine A) synchronously, returns its result
@@ -107,10 +110,52 @@ public struct ShadowLoggingPronunciationEvaluator: PronunciationEvaluator {
                 engineA: engineAForLog,
                 engineB: engineB
             )
+            Self.logTrial(entry)
             await logger.record(entry)
         }
 
         return uiResult
+    }
+
+    /// Emits one line per trial to `Logger(subsystem: "tech.reenable.Mora",
+    /// category: "Pronunciation")` so on-device testing (Xcode console,
+    /// Console.app) can see both evaluators' decisions side by side. The
+    /// SwiftData row remains the authoritative log; this is a live signal
+    /// for the operator.
+    private static func logTrial(_ entry: PronunciationTrialLogEntry) {
+        let word = entry.word.surface
+        let ipa = entry.targetPhoneme.ipa
+        let a = formatEngineA(entry.engineA)
+        let b = formatEngineB(entry.engineB)
+        trialLog.info("trial \"\(word, privacy: .public)\" /\(ipa, privacy: .public)/  A=\(a, privacy: .public)  B=\(b, privacy: .public)")
+    }
+
+    private static func formatEngineA(_ a: PhonemeTrialAssessment?) -> String {
+        guard let a else { return "unsupported" }
+        let score = a.score.map { String($0) } ?? "-"
+        let reliable = a.isReliable ? "" : " unreliable"
+        return "\(formatLabel(a.label)):\(score)\(reliable)"
+    }
+
+    private static func formatEngineB(_ b: EngineBLogResult) -> String {
+        switch b {
+        case .completed(let assessment, let latencyMs):
+            let score = assessment.score.map { String($0) } ?? "-"
+            return "\(formatLabel(assessment.label)):\(score) \(latencyMs)ms"
+        case .timedOut(let latencyMs):
+            return "timedOut \(latencyMs)ms"
+        case .unsupported:
+            return "unsupported"
+        }
+    }
+
+    private static func formatLabel(_ label: PhonemeAssessmentLabel) -> String {
+        switch label {
+        case .matched: return "matched"
+        case .substitutedBy(let p): return "sub(\(p.ipa))"
+        case .driftedWithin: return "drifted"
+        case .unclear: return "unclear"
+        }
     }
 
     private static func placeholder(target: Phoneme) -> PhonemeTrialAssessment {
