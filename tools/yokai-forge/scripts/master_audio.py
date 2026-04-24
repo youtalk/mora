@@ -29,9 +29,14 @@ def main() -> None:
     ap.add_argument("--yokai", required=True)
     args = ap.parse_args()
     src_dir = ROOT / "outputs" / "voice" / args.yokai
-    dst_dir = ROOT / "outputs" / "voice" / args.yokai / "mastered"
+    if not src_dir.is_dir():
+        raise SystemExit(f"source dir missing: {src_dir}")
+    wavs = sorted(src_dir.glob("*.wav"))
+    if not wavs:
+        raise SystemExit(f"no *.wav found in {src_dir}")
+    dst_dir = src_dir / "mastered"
     dst_dir.mkdir(parents=True, exist_ok=True)
-    for wav in sorted(src_dir.glob("*.wav")):
+    for wav in wavs:
         dst = dst_dir / (wav.stem + ".m4a")
         master(wav, dst)
         print(f"mastered {dst}")

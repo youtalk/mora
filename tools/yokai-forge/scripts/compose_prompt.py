@@ -1,20 +1,29 @@
 # tools/yokai-forge/scripts/compose_prompt.py
 """Compose a Flux prompt from a yokai JSON spec + the Layer-1 style lock."""
 from __future__ import annotations
+import functools
 import json
 import pathlib
 import argparse
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-STYLE = (ROOT / "prompts" / "style_layer.txt").read_text().strip()
-NEG = (ROOT / "prompts" / "negative.txt").read_text().strip()
+
+
+@functools.lru_cache(maxsize=1)
+def _style() -> str:
+    return (ROOT / "prompts" / "style_layer.txt").read_text().strip()
+
+
+@functools.lru_cache(maxsize=1)
+def _negative() -> str:
+    return (ROOT / "prompts" / "negative.txt").read_text().strip()
 
 
 def compose_positive(spec: dict) -> str:
     decor = spec["word_decor"]
     palette = ", ".join(spec["palette"])
     return (
-        f"{STYLE}, "
+        f"{_style()}, "
         f"a {spec['personality']}, "
         f"{spec['sound_gesture']}, "
         f"wearing {decor[0]}, with {decor[1]}, and {decor[2]}, "
@@ -23,7 +32,7 @@ def compose_positive(spec: dict) -> str:
 
 
 def compose_negative() -> str:
-    return NEG
+    return _negative()
 
 
 def load_spec(path: pathlib.Path) -> dict:

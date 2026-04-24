@@ -14,7 +14,6 @@ import pathlib as _pathlib
 sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parent))
 import argparse
 import pathlib
-import itertools
 import random
 
 import torch
@@ -39,11 +38,13 @@ def main() -> None:
         torch_dtype=torch.bfloat16,
     ).to("cuda")
 
-    specs = sorted((ROOT / "prompts").glob("yokai_*.json"))
-    variants = list(itertools.cycle([load_spec(p) for p in specs]))
+    spec_paths = sorted((ROOT / "prompts").glob("yokai_*.json"))
+    if not spec_paths:
+        raise SystemExit(f"no yokai_*.json specs found under {ROOT / 'prompts'}")
+    specs = [load_spec(p) for p in spec_paths]
 
     for i in range(args.count):
-        spec = variants[i]
+        spec = specs[i % len(specs)]
         prompt = compose_positive(spec)
         neg = compose_negative()
         seed = random.randint(0, 2**31 - 1)
