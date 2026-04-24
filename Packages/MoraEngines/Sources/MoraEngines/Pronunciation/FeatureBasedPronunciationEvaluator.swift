@@ -188,30 +188,38 @@ public struct FeatureBasedPronunciationEvaluator: PronunciationEvaluator {
         case .zeroCrossingRateVariance:
             return FeatureExtractor.zeroCrossingRateVariance(clip: clip, windowMs: 20)
         case .voicingOnsetTimeMs:
-            // Engine A uses a signed convention: negative = voicing leads.
-            // `voicingOnsetTime` returns a non-negative ms-from-start; we
-            // flip the sign when the clip has meaningful leading energy.
-            let vot = FeatureExtractor.voicingOnsetTime(clip: clip, threshold: 0.05)
-            let leadingRms = leadingRMS(clip: clip, windowMs: 10)
-            return leadingRms > 0.01 ? -vot : vot
+            return FeatureExtractor.voicingOnsetTimeRelative(
+                clip: clip, burstThreshold: 0.2, voicingThreshold: 0.02
+            )
         case .onsetBurstSlope:
             return FeatureExtractor.onsetBurstSlope(clip: clip, windowMs: 30)
         case .spectralFlatness:
             return FeatureExtractor.spectralFlatness(clip: clip)
         case .formantF1Hz:
-            return FeatureExtractor.spectralPeakInBand(clip: clip, lowHz: 200, highHz: 1_000)
+            // Suppress pitch harmonics on short-to-medium windows (< 500 ms).
+            // Typical CVC medial vowel regions land at 300–450 ms, longer
+            // than the original 200 ms gate — widening here gates
+            // suppression on for natural recordings where pitch harmonics
+            // still mask F1/F2 due to the FFT bin width at those lengths.
+            let suppress = clip.durationSeconds < 0.5
+            return FeatureExtractor.spectralPeakInBand(
+                clip: clip, lowHz: 200, highHz: 1_000,
+                suppressPitchHarmonics: suppress
+            )
         case .formantF2Hz:
-            return FeatureExtractor.spectralPeakInBand(clip: clip, lowHz: 1_000, highHz: 2_500)
+            // Suppress pitch harmonics on short-to-medium windows (< 500 ms).
+            // Typical CVC medial vowel regions land at 300–450 ms, longer
+            // than the original 200 ms gate — widening here gates
+            // suppression on for natural recordings where pitch harmonics
+            // still mask F1/F2 due to the FFT bin width at those lengths.
+            let suppress = clip.durationSeconds < 0.5
+            return FeatureExtractor.spectralPeakInBand(
+                clip: clip, lowHz: 1_000, highHz: 2_500,
+                suppressPitchHarmonics: suppress
+            )
         case .formantF3Hz:
             return FeatureExtractor.spectralPeakInBand(clip: clip, lowHz: 1_500, highHz: 3_500)
         }
-    }
-
-    private func leadingRMS(clip: AudioClip, windowMs: Int) -> Float {
-        let n = min(clip.samples.count, Int(Double(windowMs) / 1000.0 * clip.sampleRate))
-        guard n > 0 else { return 0 }
-        let window = clip.samples.prefix(n)
-        return sqrt(window.reduce(0) { $0 + $1 * $1 } / Float(n))
     }
 
     /// 0–100 score: linear distance from boundary toward target.
