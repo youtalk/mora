@@ -146,9 +146,13 @@ public struct YokaiCutsceneOverlay: View {
     private func play(clip: YokaiClipKey, yokai: YokaiDefinition) {
         player?.stop()
         if let store, let url = store.voiceClipURL(for: yokai.id, clip: clip) {
-            speech?.play([])
-            player = try? AVAudioPlayer(contentsOf: url)
-            player?.play()
+            // Drain any in-flight TTS before starting the bundled clip so the two
+            // sources don't briefly overlap on a cold cut from speech to audio file.
+            Task { @MainActor in
+                await speech?.stop()
+                player = try? AVAudioPlayer(contentsOf: url)
+                player?.play()
+            }
         } else if let text = yokai.voice.clips[clip] {
             player = nil
             speech?.play([.text(text, .normal)])
@@ -156,7 +160,7 @@ public struct YokaiCutsceneOverlay: View {
     }
 
     private func stopAudio() {
-        speech?.play([])
+        Task { @MainActor in await speech?.stop() }
         player?.stop()
     }
 }
