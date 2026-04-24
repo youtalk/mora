@@ -236,6 +236,50 @@ public struct SessionContainerView: View {
                 ContentRequest(
                     target: targetGrapheme, taughtGraphemes: taught, interests: [], count: 2
                 ))
+
+            let progression = ClosureYokaiProgressionSource { currentID in
+                ladder.skills
+                    .first(where: { $0.yokaiID == currentID })
+                    .flatMap { ladder.nextSkill(after: $0.code) }
+                    .flatMap { $0.yokaiID }
+            }
+            let yokaiOrchestrator: YokaiOrchestrator?
+            do {
+                let store = try BundledYokaiStore()
+                let orch = YokaiOrchestrator(
+                    store: store,
+                    modelContext: context,
+                    progressionSource: progression
+                )
+                if resolution.isNewEncounter {
+                    try orch.startWeek(
+                        yokaiID: resolution.encounter.yokaiID,
+                        weekStart: resolution.encounter.weekStart
+                    )
+                    // startWeek inserts its own encounter; WeekRotation already
+                    // inserted one. Delete ours to keep the orchestrator-owned
+                    // one as the single source of truth for cutscene state.
+                    context.delete(resolution.encounter)
+                    try context.save()
+                } else {
+                    orch.resume(encounter: resolution.encounter)
+                    if resolution.encounter.sessionCompletionCount == 4 {
+                        // trialsPlanned matches the total trial budget for a
+                        // session: tile-board phase emits one trial per chain
+                        // link (up to 12), sentences phase emits up to
+                        // `sentences.count` trials (2 here). Use an upper bound
+                        // so floor math always reaches 100%.
+                        orch.beginFridaySession(trialsPlanned: 14)
+                    }
+                }
+                yokaiOrchestrator = orch
+            } catch {
+                speechLog.error(
+                    "YokaiOrchestrator init failed: \(String(describing: error))"
+                )
+                yokaiOrchestrator = nil
+            }
+
             self.orchestrator = SessionOrchestrator(
                 target: target,
                 taughtGraphemes: taught,
@@ -245,7 +289,8 @@ public struct SessionContainerView: View {
                 assessment: AssessmentEngine(
                     l1Profile: JapaneseL1Profile(),
                     evaluator: shadowEvaluatorFactory.make(context.container)
-                )
+                ),
+                yokai: yokaiOrchestrator
             )
         } catch {
             bootError = String(describing: error)
