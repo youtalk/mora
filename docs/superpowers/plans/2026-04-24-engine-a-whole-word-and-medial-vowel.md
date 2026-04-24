@@ -18,7 +18,7 @@ While walking through Task A1 with all 12 adult-proxy WAVs recorded via the fixt
 
 Both predate the fixture-recorder spec and were latent: Engine A's existing in-package tests use synthetic short clips that fit under 600 ms, and the 12 `FeatureBasedEvaluatorFixtureTests` are still `XCTSkip`ed pending the fixtures this plan unblocks. The mismatch surfaced only when real recordings + the bench were combined for the first time.
 
-## Reproduction (today, 2026-04-23 main)
+## Reproduction (main @ 96f6e04, captured 2026-04-23)
 
 ```sh
 # Recorder app: record all 12 patterns at adult, AirDrop the bulk zip,
