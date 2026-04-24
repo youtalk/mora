@@ -10,6 +10,10 @@ settings:
 packages:
   MoraFixtures:
     path: ../Packages/MoraFixtures
+  MoraCore:
+    path: ../Packages/MoraCore
+  MoraEngines:
+    path: ../Packages/MoraEngines
 targets:
   MoraFixtureRecorder:
     type: application
@@ -21,6 +25,8 @@ targets:
       - path: MoraFixtureRecorder/Assets.xcassets
     dependencies:
       - package: MoraFixtures
+      - package: MoraCore
+      - package: MoraEngines
     info:
       path: MoraFixtureRecorder/Info.plist
       properties:
