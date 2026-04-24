@@ -25,6 +25,26 @@ final class PhonemeThresholdsTests: XCTestCase {
         XCTAssertEqual(d.minReliable, 1_700, accuracy: 1)
     }
 
+    func testThTOnsetBurstThresholds() {
+        // θ → t direction: meant voiceless-th, said t. Onset burst is sharper
+        // than expected (substitute centroid 1.5 > boundary 0.8 > target 0.4).
+        let thT = PhonemeThresholds.primary(for: "θ", against: "t")!
+        XCTAssertEqual(thT.feature, .onsetBurstSlope)
+        XCTAssertEqual(thT.targetCentroid, 0.4, accuracy: 0.001)
+        XCTAssertEqual(thT.substituteCentroid, 1.5, accuracy: 0.001)
+        XCTAssertEqual(thT.boundary, 0.8, accuracy: 0.001)
+
+        // t → θ direction: same boundary, target/substitute centroids swapped
+        // — the decision line is a categorical property of the pair, not of
+        // the direction (mirrors the (r, l) ↔ (l, r) and (æ, ʌ) ↔ (ʌ, æ)
+        // conventions).
+        let tTh = PhonemeThresholds.primary(for: "t", against: "θ")!
+        XCTAssertEqual(tTh.feature, .onsetBurstSlope)
+        XCTAssertEqual(tTh.targetCentroid, 1.5, accuracy: 0.001)
+        XCTAssertEqual(tTh.substituteCentroid, 0.4, accuracy: 0.001)
+        XCTAssertEqual(tTh.boundary, 0.8, accuracy: 0.001)
+    }
+
     func testAeUhFormantThresholds() {
         // æ → ʌ direction. Boundary lowered from the original literature
         // 640 Hz to 590 Hz (7.8 % shift, within Plan A4's ±15 % rule) so
