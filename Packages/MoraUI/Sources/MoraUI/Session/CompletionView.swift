@@ -84,6 +84,17 @@ struct CompletionView: View {
         didPersist = true
         persistSummary(orchestrator.sessionSummary(endedAt: Date()))
 
+        // For normal (non-Friday) sessions, advance the yokai's
+        // sessionCompletionCount + apply the +5% session bonus. Friday
+        // sessions auto-finalize through finalizeFridayIfNeeded when the
+        // last trial lands, so calling recordSessionCompletion here would
+        // double-count. Friday completion flips the state off `.active`
+        // (to `.befriended` or `.carryover`), so gating on `.active`
+        // filters them out.
+        if orchestrator.yokai?.currentEncounter?.state == .active {
+            orchestrator.yokai?.recordSessionCompletion()
+        }
+
         let streak: DailyStreak
         if let existing = streaks.first {
             streak = existing

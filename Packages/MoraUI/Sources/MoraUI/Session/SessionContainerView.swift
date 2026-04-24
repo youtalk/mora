@@ -216,10 +216,11 @@ public struct SessionContainerView: View {
                     ladder: ladder
                 )
             else {
-                // All five yokai befriended. PR 2 replaces this with a proper
-                // curriculum-complete navigation; for PR 1 we surface a plain
-                // message so the session does not crash.
-                bootError = "Curriculum complete — all five yokai befriended."
+                // All five yokai befriended. HomeView's CTA has already
+                // routed to the curriculum-complete terminal screen; if a
+                // session somehow still starts (e.g. a stale deep link)
+                // just bounce straight back to the caller.
+                dismiss()
                 return
             }
             let skill = resolution.skill
@@ -236,6 +237,61 @@ public struct SessionContainerView: View {
                 ContentRequest(
                     target: targetGrapheme, taughtGraphemes: taught, interests: [], count: 2
                 ))
+
+            let progression = ClosureYokaiProgressionSource { currentID in
+                ladder.skills
+                    .first(where: { $0.yokaiID == currentID })
+                    .flatMap { ladder.nextSkill(after: $0.code) }
+                    .flatMap { $0.yokaiID }
+            }
+            let yokaiOrchestrator: YokaiOrchestrator?
+            do {
+                let store = try BundledYokaiStore()
+                let orch = YokaiOrchestrator(
+                    store: store,
+                    modelContext: context,
+                    progressionSource: progression
+                )
+                // An encounter inserted by the Friday handoff (after a
+                // prior yokai befriended) has sessionCompletionCount == 0
+                // and friendshipPercent == 0 — the learner hasn't entered
+                // its Monday yet. Treat it as a fresh week so the Monday
+                // intro cutscene and the 10% seed from startWeek both
+                // fire; otherwise resume() would silently skip them.
+                let enc = resolution.encounter
+                let isUnstartedHandoff =
+                    enc.sessionCompletionCount == 0 && enc.friendshipPercent == 0
+                if resolution.isNewEncounter || isUnstartedHandoff {
+                    try orch.startWeek(
+                        yokaiID: enc.yokaiID,
+                        weekStart: enc.weekStart
+                    )
+                    // startWeek inserts its own encounter; the existing one
+                    // (either WeekRotation's fresh insert or the handoff's
+                    // zero-state row) is superseded. Delete it so the store
+                    // has exactly one active encounter for this yokai and
+                    // the orchestrator-owned one drives cutscene state.
+                    context.delete(enc)
+                    try context.save()
+                } else {
+                    orch.resume(encounter: enc)
+                    if enc.sessionCompletionCount == 4 {
+                        // trialsPlanned matches the total trial budget for a
+                        // session: tile-board phase emits one trial per chain
+                        // link (up to 12), sentences phase emits up to
+                        // `sentences.count` trials (2 here). Use an upper bound
+                        // so floor math always reaches 100%.
+                        orch.beginFridaySession(trialsPlanned: 14)
+                    }
+                }
+                yokaiOrchestrator = orch
+            } catch {
+                speechLog.error(
+                    "YokaiOrchestrator init failed: \(String(describing: error))"
+                )
+                yokaiOrchestrator = nil
+            }
+
             self.orchestrator = SessionOrchestrator(
                 target: target,
                 taughtGraphemes: taught,
@@ -245,7 +301,8 @@ public struct SessionContainerView: View {
                 assessment: AssessmentEngine(
                     l1Profile: JapaneseL1Profile(),
                     evaluator: shadowEvaluatorFactory.make(context.container)
-                )
+                ),
+                yokai: yokaiOrchestrator
             )
         } catch {
             bootError = String(describing: error)
