@@ -28,3 +28,30 @@ commands (run manually on the workstation).
 6. Master via `scripts/master_audio.py`; copy outputs into mora repo.
 
 Binary assets ship via Git LFS.
+
+## Licensing — commercial release requires swap-outs
+
+This pipeline is **non-commercial only** as wired up in the MVP. Every generated
+portrait / voice clip inherits the most restrictive license in the chain that
+produced it. Before any commercial release (paid App Store tier, in-app
+purchase, or ad-supported distribution) the following dependencies must be
+replaced or re-licensed:
+
+| Dependency | License | Commercial use? |
+|---|---|---|
+| Flux.1 dev (`black-forest-labs/FLUX.1-dev`) | FLUX.1 [dev] Non-Commercial License | ❌ — swap to FLUX.1 [schnell] (Apache 2.0) or FLUX.1 [pro] (paid commercial API) |
+| Fish Speech S2 Pro | CC-BY-NC-SA-4.0 for model weights | ❌ — swap to a commercially-licensed TTS (e.g. ElevenLabs commercial tier, or record real voice actors) |
+| Bark (Suno) | MIT (weights + code) | ✅ |
+| Ostris AI Toolkit | Apache 2.0 | ✅ — training wrapper only; LoRA output inherits the base model's license |
+| diffusers / transformers / accelerate | Apache 2.0 | ✅ |
+
+The repo-level license (`PolyForm Noncommercial 1.0.0`) already blocks
+commercial distribution, so there is no immediate license conflict; the
+constraint is that *even if* the repo license changes later, the bundled
+portraits and voice clips under `Packages/MoraCore/Sources/MoraCore/Resources/Yokai/`
+would still be NC-only unless they are **regenerated from commercially-cleared
+models** with the same prompts/refs. Re-running the whole forge with
+schnell + a cleared TTS is the cleanest path.
+
+See design spec §10 for the rationale and the planned commercial-swap
+checklist.

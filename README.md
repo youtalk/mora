@@ -46,3 +46,5 @@ du -h Packages/MoraMLX/Sources/MoraMLX/Resources/wav2vec2-phoneme.mlmodelc/weigh
 ## License
 
 [PolyForm Noncommercial License 1.0.0](./LICENSE). Source-available; not OSI-approved open source.
+
+Note: the yokai asset forge under `tools/yokai-forge/` depends on **non-commercial** upstream models (FLUX.1-dev, Fish Speech S2 Pro). Any generated portrait or voice clip inherits that restriction, so a future commercial release would require regenerating those assets with commercially-cleared models. See `tools/yokai-forge/README.md` § "Licensing — commercial release requires swap-outs" and the project `CLAUDE.md` for the swap-out checklist.
