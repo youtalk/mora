@@ -183,7 +183,7 @@ public enum FeatureExtractor {
             postBurstVoicingWindow = k
             break
         }
-        guard postBurstVoicingWindow >= 0 else { return 0 }
+        guard postBurstVoicingWindow >= 0 else { return -100 }
         let postBurstVoicingMs = Double(postBurstVoicingWindow) * Double(windowMs)
         return postBurstVoicingMs - burstMs
     }
@@ -228,8 +228,12 @@ public enum FeatureExtractor {
     }
 
     /// Estimate the dominant pitch (50–400 Hz) by autocorrelation.
-    /// Returns 0 when no clear period is found. Used internally by
-    /// `spectralPeakInBand` for harmonic suppression on short windows.
+    /// Returns 0 when no clear periodic structure is present — the best
+    /// lag's correlation must be at least `clarityThreshold` of the
+    /// corresponding per-lag energy, otherwise the candidate is treated
+    /// as aperiodic content (noise, silence, transients) and rejected so
+    /// `spectralPeakInBand` does not suppress spurious "harmonics" of a
+    /// phantom fundamental.
     static func dominantPitchHz(clip: AudioClip) -> Double {
         let sr = clip.sampleRate
         let minLag = Int(sr / 400.0)  // 400 Hz max
@@ -238,20 +242,26 @@ public enum FeatureExtractor {
         guard samples.count > maxLag * 2 else { return 0 }
 
         var bestLag = -1
-        var bestCorr: Double = 0
+        var bestNormalizedCorr: Double = 0
         for lag in minLag...maxLag {
             var corr: Double = 0
+            var energy: Double = 0
             let n = samples.count - lag
             for i in 0..<n {
-                corr += Double(samples[i]) * Double(samples[i + lag])
+                let s = Double(samples[i])
+                corr += s * Double(samples[i + lag])
+                energy += s * s
             }
-            corr /= Double(n)
-            if corr > bestCorr {
-                bestCorr = corr
+            guard energy > 0 else { continue }
+            let normalized = corr / energy
+            if normalized > bestNormalizedCorr {
+                bestNormalizedCorr = normalized
                 bestLag = lag
             }
         }
-        return bestLag > 0 ? sr / Double(bestLag) : 0
+        let clarityThreshold = 0.3
+        guard bestLag > 0, bestNormalizedCorr >= clarityThreshold else { return 0 }
+        return sr / Double(bestLag)
     }
 
     /// Power spectrum of the windowed FFT, returned as a half-band magnitude

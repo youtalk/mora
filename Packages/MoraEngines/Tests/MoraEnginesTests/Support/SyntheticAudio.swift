@@ -72,6 +72,10 @@ enum SyntheticAudio {
     /// constrained because the relative-VOT extractor only inspects RMS
     /// envelope and burst/voicing transitions, not band content.
     static func voicedFricative(durationMs: Int, burstStartMs: Int) -> AudioClip {
+        precondition(
+            durationMs > 0 && (0...durationMs).contains(burstStartMs),
+            "voicedFricative: burstStartMs must be within [0, durationMs]"
+        )
         let sr = sampleRate
         let totalSamples = Int(Double(durationMs) / 1000.0 * sr)
         let burstSamples = Int(Double(burstStartMs) / 1000.0 * sr)
@@ -104,6 +108,13 @@ enum SyntheticAudio {
         burstStartMs: Int,
         vowelStartMs: Int
     ) -> AudioClip {
+        precondition(
+            durationMs > 0
+                && burstStartMs >= 0
+                && vowelStartMs >= burstStartMs
+                && vowelStartMs <= durationMs,
+            "voicedStop: expect 0 <= burstStartMs <= vowelStartMs <= durationMs"
+        )
         let sr = sampleRate
         let totalSamples = Int(Double(durationMs) / 1000.0 * sr)
         let preVoicingSamples = max(0, Int(Double(burstStartMs) / 1000.0 * sr) - 80)
