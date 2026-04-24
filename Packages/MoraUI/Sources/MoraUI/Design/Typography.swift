@@ -94,9 +94,9 @@ public enum MoraType {
     }
     /// Supporting "how to play" line under a hero word/prompt
     /// (e.g. "Listen and tap.", "Two letters, one sound.",
-    /// "ながおしで もういちど 聞けるよ"). Sized so it reads as a clear
-    /// second tier under the hero glyph at iPad viewing distance,
-    /// rather than disappearing like a footnote.
+    /// "Press and hold to hear it again."). Sized so it reads as
+    /// a clear second tier under the hero glyph at iPad viewing
+    /// distance, rather than disappearing like a footnote.
     public static func subtitle() -> Font {
         .openDyslexic(size: 40)
     }

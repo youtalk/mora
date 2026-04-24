@@ -142,10 +142,8 @@ struct ShortSentencesView: View {
                 alignment: .top
             )
             .animation(.easeInOut(duration: 0.15), value: activeTranscript)
-            .accessibilityLabel(
-                activeTranscript.isEmpty
-                    ? Text("") : Text("You said: \(activeTranscript)")
-            )
+            .accessibilityHidden(activeTranscript.isEmpty)
+            .accessibilityLabel(Text("You said: \(activeTranscript)"))
     }
 
     /// Reserves two lines at 48pt transcript size — enough for the
