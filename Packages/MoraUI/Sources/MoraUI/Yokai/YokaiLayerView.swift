@@ -3,6 +3,7 @@ import MoraEngines
 
 public struct YokaiLayerView: View {
     @Bindable var orchestrator: YokaiOrchestrator
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(orchestrator: YokaiOrchestrator) {
         self.orchestrator = orchestrator
@@ -31,7 +32,7 @@ public struct YokaiLayerView: View {
 
                 if orchestrator.activeCutscene != nil {
                     YokaiCutsceneOverlay(orchestrator: orchestrator)
-                        .transition(.opacity)
+                        .transition(reduceMotion ? .identity : .opacity)
                 }
             }
         }

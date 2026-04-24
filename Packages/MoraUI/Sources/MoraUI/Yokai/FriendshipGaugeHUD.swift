@@ -2,6 +2,7 @@ import SwiftUI
 
 public struct FriendshipGaugeHUD: View {
     let percent: Double
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(percent: Double) { self.percent = percent }
 
@@ -19,7 +20,7 @@ public struct FriendshipGaugeHUD: View {
                             startPoint: .leading, endPoint: .trailing)
                     )
                     .frame(width: geo.size.width * percent)
-                    .animation(.easeOut(duration: 0.35), value: percent)
+                    .animation(reduceMotion ? nil : .easeOut(duration: 0.35), value: percent)
             }
             .overlay(
                 Text("\(Int(round(percent * 100)))%")

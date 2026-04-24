@@ -9,12 +9,21 @@ import UIKit
 public struct YokaiPortraitCorner: View {
     let yokai: YokaiDefinition
     @State private var pulse: Bool = false
+    @State private var store: BundledYokaiStore?
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(yokai: YokaiDefinition) { self.yokai = yokai }
 
     public var body: some View {
+        content.onAppear {
+            if store == nil { store = try? BundledYokaiStore() }
+        }
+    }
+
+    @ViewBuilder
+    private var content: some View {
         #if canImport(UIKit)
-        if let store = try? BundledYokaiStore(),
+        if let store,
             let url = store.portraitURL(for: yokai.id),
             let uiImage = UIImage(contentsOfFile: url.path)
         {
@@ -22,11 +31,12 @@ public struct YokaiPortraitCorner: View {
                 .resizable()
                 .scaledToFit()
                 .clipShape(Circle())
-                .scaleEffect(pulse ? 1.02 : 1.0)
+                .scaleEffect(reduceMotion ? 1.0 : (pulse ? 1.02 : 1.0))
                 .animation(
-                    .easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: pulse
+                    reduceMotion ? nil : .easeInOut(duration: 2.0).repeatForever(autoreverses: true),
+                    value: pulse
                 )
-                .onAppear { pulse = true }
+                .onAppear { if !reduceMotion { pulse = true } }
                 .accessibilityLabel(Text("\(yokai.grapheme) yokai"))
         } else {
             fallback
