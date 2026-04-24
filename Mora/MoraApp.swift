@@ -70,8 +70,8 @@ struct MoraApp: App {
     /// `MLModel(contentsOf:)`. `MoraMLXModelCatalog` caches the loaded
     /// model for the process lifetime, so this warm-up benefits the first
     /// session; subsequent sessions hit the cache instantly regardless.
-    /// `state` is updated on the main actor so SwiftUI views (Home's
-    /// "はじめる" CTA) can gate tapping until the load resolves —
+    /// `state` is updated on the main actor so SwiftUI views (the Home
+    /// start-session CTA) can gate tapping until the load resolves —
     /// `ShadowEvaluatorFactory` re-runs the load on first use if it fails.
     ///
     /// Runs at `.utility` — higher than `.background` so it actually starts

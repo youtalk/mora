@@ -7,10 +7,12 @@ struct WarmupView: View {
     let orchestrator: SessionOrchestrator
     let speech: SpeechController?
 
+    private static let promptPrefix = "Which one says"
+
     var body: some View {
         ScrollView {
             VStack(spacing: MoraTheme.Space.lg) {
-                Text("Which one says /\(targetIPA)/?")
+                Text("\(Self.promptPrefix) /\(targetIPA)/?")
                     .font(MoraType.heading())
                     .foregroundStyle(MoraTheme.Ink.primary)
                     .multilineTextAlignment(.center)
@@ -70,7 +72,7 @@ struct WarmupView: View {
     private func playTargetPhoneme() {
         guard let speech, let phoneme = orchestrator.target.phoneme else { return }
         speech.play([
-            .text("Which one says", .normal),
+            .text(Self.promptPrefix, .normal),
             .phoneme(phoneme, .slow),
         ])
     }

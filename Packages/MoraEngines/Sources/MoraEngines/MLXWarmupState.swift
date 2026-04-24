@@ -3,9 +3,10 @@ import Observation
 
 /// Tracks progress of the background load that pulls the bundled wav2vec2
 /// CoreML model into memory via `MoraMLXModelCatalog`. The app target drives
-/// the transitions; views observe `phase` to gate CTAs (e.g. Home's
-/// "はじめる" button) until the model is ready, so the first session does
-/// not stall on a synchronous `MLModel(contentsOf:)` when the child taps.
+/// the transitions; views observe `phase` to gate CTAs (e.g. the Home
+/// start-session button) until the model is ready, so the first session
+/// does not stall on a synchronous `MLModel(contentsOf:)` when the child
+/// taps.
 ///
 /// `.failed` is treated as "proceed without Engine B" at the callsite —
 /// Engine A works standalone — so a load failure must not permanently
