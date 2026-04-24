@@ -4,6 +4,7 @@ public struct SparkleOverlay: View {
     let trigger: AnyHashable
     @State private var visible = false
     @State private var offsets: [(CGFloat, CGFloat)] = SparkleOverlay.makeOffsets()
+    @State private var task: Task<Void, Never>?
 
     public init(trigger: AnyHashable) { self.trigger = trigger }
 
@@ -19,12 +20,17 @@ public struct SparkleOverlay: View {
             }
         }
         .onChange(of: trigger) { _, _ in
+            task?.cancel()
             offsets = SparkleOverlay.makeOffsets()
             visible = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+            task = Task { @MainActor in
+                // Hold visibility long enough for every staggered circle to reach opacity 1.
+                try? await Task.sleep(for: .milliseconds(300))
+                guard !Task.isCancelled else { return }
                 visible = false
             }
         }
+        .onDisappear { task?.cancel() }
         .accessibilityHidden(true)
     }
 
