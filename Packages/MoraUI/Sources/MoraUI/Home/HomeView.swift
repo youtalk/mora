@@ -18,6 +18,23 @@ public struct HomeView: View {
     @Query(sort: \DailyStreak.lastCompletedOn, order: .reverse)
     private var streaks: [DailyStreak]
 
+    // Open encounters (active or carryover) — the hero reads the latest one
+    // so the home screen shows the yokai the learner is currently working
+    // with rather than a fixed week-0 fallback.
+    //
+    // Raw strings are used directly because `#Predicate` cannot form a key
+    // path into an enum case (`\.active`), so `YokaiEncounterState.active`
+    // .rawValue doesn't compile inside the macro. `YokaiEncounterStateRawValuesTests`
+    // pins these strings to the enum cases so a rename breaks CI, not prod.
+    @Query(
+        filter: #Predicate<YokaiEncounterEntity> {
+            $0.stateRaw == "active" || $0.stateRaw == "carryover"
+        },
+        sort: \YokaiEncounterEntity.weekStart,
+        order: .reverse
+    )
+    private var openEncounters: [YokaiEncounterEntity]
+
     // `needsEnhancedVoice` walks the installed-voice list; keep the result in
     // @State so the scan runs at most once per appearance / scene activation
     // rather than on every body invalidation (which fires on every @Query
@@ -214,7 +231,13 @@ public struct HomeView: View {
     }
 
     private var target: Target {
-        CurriculumEngine.sharedV1.currentTarget(forWeekIndex: weekIndex)
+        let ladder = CurriculumEngine.sharedV1
+        if let enc = openEncounters.first,
+            let skill = ladder.skills.first(where: { $0.yokaiID == enc.yokaiID })
+        {
+            return Target(weekStart: enc.weekStart, skill: skill)
+        }
+        return ladder.currentTarget(forWeekIndex: weekIndex)
     }
 
     /// Weeks elapsed since the learner's profile was created, clamped into the

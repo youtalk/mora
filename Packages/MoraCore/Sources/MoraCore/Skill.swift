@@ -30,16 +30,22 @@ public struct Skill: Hashable, Codable, Sendable, Identifiable {
     public let level: OGLevel
     public let displayName: String
     public let graphemePhoneme: GraphemePhoneme?
+    public let warmupCandidates: [Grapheme]
+    public let yokaiID: String?
 
     public init(
         code: SkillCode,
         level: OGLevel,
         displayName: String,
-        graphemePhoneme: GraphemePhoneme? = nil
+        graphemePhoneme: GraphemePhoneme? = nil,
+        warmupCandidates: [Grapheme] = [],
+        yokaiID: String? = nil
     ) {
         self.code = code
         self.level = level
         self.displayName = displayName
         self.graphemePhoneme = graphemePhoneme
+        self.warmupCandidates = warmupCandidates
+        self.yokaiID = yokaiID
     }
 }
