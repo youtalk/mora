@@ -11,7 +11,7 @@ let package = Package(
         .target(
             name: "MoraCore",
             resources: [
-                .process("Resources"),
+                .copy("Resources/Yokai"),
                 .copy("Yokai/YokaiCatalog.json"),
                 .copy("Yokai/_placeholder"),
             ],
