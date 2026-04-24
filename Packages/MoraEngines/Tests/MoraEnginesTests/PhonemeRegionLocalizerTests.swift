@@ -56,4 +56,31 @@ final class PhonemeRegionLocalizerTests: XCTestCase {
         )
         XCTAssertFalse(region.isReliable)
     }
+
+    func testLiquidOnsetUsesShorterWindow() {
+        // 1 s clip at 16 kHz = 16_000 samples. /l/ onset → 60 ms = 960 samples.
+        let lightWord = Word(
+            surface: "light",
+            graphemes: [Grapheme(letters: "l"), Grapheme(letters: "i"), Grapheme(letters: "ght")],
+            phonemes: [Phoneme(ipa: "l"), Phoneme(ipa: "aɪ"), Phoneme(ipa: "t")],
+            targetPhoneme: Phoneme(ipa: "l")
+        )
+        let clip = AudioClip(samples: Array(repeating: Float(0), count: 16_000), sampleRate: 16_000)
+        let region = PhonemeRegionLocalizer.region(
+            clip: clip, word: lightWord, phonemePosition: .onset
+        )
+        XCTAssertEqual(region.clip.samples.count, 960)
+        XCTAssertEqual(region.durationMs, 60, accuracy: 0.01)
+        XCTAssertTrue(region.isReliable)
+    }
+
+    func testNonLiquidOnsetKeepsExistingWindow() {
+        // Regression guard: /ʃ/ onset stays at the existing 150 ms / 25%-of-clip rule.
+        let clip = AudioClip(samples: Array(repeating: Float(0), count: 16_000), sampleRate: 16_000)
+        let region = PhonemeRegionLocalizer.region(
+            clip: clip, word: word, phonemePosition: .onset
+        )
+        XCTAssertEqual(region.clip.samples.count, 2_400)  // 150 ms of 1 s = 2_400 samples
+        XCTAssertEqual(region.durationMs, 150, accuracy: 0.01)
+    }
 }
