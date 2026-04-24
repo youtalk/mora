@@ -6,7 +6,14 @@
 
 **Architecture:** Additive SwiftUI overlay driven by a new `YokaiOrchestrator` in MoraEngines that subscribes to the existing `SessionOrchestrator`. New SwiftData entities under MoraCore track encounter state, bestiary, and SRS cameos. Asset generation happens off-device on a Linux RTX 5090 workstation; the app bundles pre-baked portraits and voice clips via Git LFS.
 
-**Tech Stack:** Swift 6 (language mode .v5), SwiftUI, SwiftData, iOS 17 / macOS 14, XcodeGen, ComfyUI + Flux.1 dev + Style LoRA (remote), Fish Speech S2 Pro + Bark (remote), Git LFS.
+**Tech Stack:** Swift 6 (language mode .v5), SwiftUI, SwiftData, iOS 17 / macOS 14, XcodeGen, ComfyUI + Flux.1 dev + Style LoRA (Ubuntu RTX 5090 session), Fish Speech S2 Pro + Bark (Ubuntu RTX 5090 session), Git LFS.
+
+**Execution topology:** Two Claude Code sessions collaborate via Git.
+
+- **Mac session** (this worktree at `.claude/worktrees/peaceful-crunching-pancake`) owns the Swift / SwiftUI / Xcode work (phases R1, R2, R5) and opens the corresponding PRs.
+- **Ubuntu session** — started directly on `youtalk-desktop` (not SSH) — owns the asset forge (phases R3 and R4). The Ubuntu host has its own clone of the repo so it can commit and push asset files on its own feature branches; the Mac session pulls those commits to run Xcode smoke tests and open PRs that include them.
+
+There is no SSH or SCP in this plan; all cross-machine coordination is `git push` / `git pull` through the remote.
 
 **Spec:** `docs/superpowers/specs/2026-04-23-rpg-shell-yokai-design.md` (committed at `981a375`).
 
@@ -14,13 +21,13 @@
 
 ## Phases and PRs
 
-| Phase | PR title | Pre-reqs | Effort |
-|---|---|---|---|
-| R1 | `feat(rpg): yokai core engine and SwiftData persistence` | — | 4–6 d |
-| R2 | `feat(rpg): yokai UI overlay and bestiary view (placeholder assets)` | R1 merged | 2–3 d |
-| R3 | `tools(yokai-forge): prompt library and ComfyUI workflows` | — (parallel with R1/R2) | 2–3 d |
-| R4 | `assets(yokai): bundle first five yokai (portraits + voice via LFS)` | R3 complete | 2–3 d |
-| R5 | `feat(rpg): cutscene polish, accessibility, haptics, carryover` | R2 + R4 merged | 2–3 d |
+| Phase | PR title | Runs in | Pre-reqs | Effort |
+|---|---|---|---|---|
+| R1 | `feat(rpg): yokai core engine and SwiftData persistence` | Mac session | — | 4–6 d |
+| R2 | `feat(rpg): yokai UI overlay and bestiary view (placeholder assets)` | Mac session | R1 merged | 2–3 d |
+| R3 | `tools(yokai-forge): prompt library and ComfyUI workflows` | Ubuntu session | — (parallel with R1/R2) | 2–3 d |
+| R4 | `assets(yokai): bundle first five yokai (portraits + voice via LFS)` | Ubuntu session (commit/push) + Mac session (smoke test, PR) | R3 complete | 2–3 d |
+| R5 | `feat(rpg): cutscene polish, accessibility, haptics, carryover` | Mac session | R2 + R4 merged | 2–3 d |
 
 All five PRs combine into an end-to-end first ship of the RPG shell.
 
@@ -3134,55 +3141,66 @@ git commit -m "chore: track yokai portraits and voice clips via LFS"
 
 ### Task R4.2: Generate, curate, bundle assets (user-driven)
 
+All generation, curation, and asset-file commits happen in the **Ubuntu session**. The Ubuntu host has a clone of the mora repo at `~/mora` (from Appendix A.3); generation outputs land under `~/mora/tools/yokai-forge/outputs/` and picked finals are copied into the Resources directory of the same clone. The Ubuntu session commits and pushes those files on its working branch. The **Mac session** pulls and runs the Xcode smoke test before opening the PR.
+
 For each yokai in [sh, th, f, r, short_a]:
 
-- [ ] **Step 1 (remote): Generate candidates**
+- [ ] **Step 1 (Ubuntu session): Generate portrait candidates**
 
 ```sh
-ssh youtalk@youtalk-desktop.local
-cd ~/mora-forge-work/tools/yokai-forge
-source venv/bin/activate
+cd ~/mora/tools/yokai-forge
+source ~/mora-forge-work/venv/bin/activate
 python scripts/render_portraits.py --yokai sh --count 24 --lora outputs/lora/moraforge_style_lora.safetensors
 ```
 
-- [ ] **Step 2 (local): Pick the best**
+- [ ] **Step 2 (Ubuntu session): Pick the best and place in the repo**
 
-Download the full candidate folder, inspect, choose one PNG, rename to `portrait.png`.
+Open `outputs/portraits/sh/` in a file manager / image viewer, hand-pick one candidate, then copy it into the Resources tree of the same repo clone:
 
 ```sh
-scp 'youtalk@youtalk-desktop.local:~/mora-forge-work/tools/yokai-forge/outputs/portraits/sh/*.png' /tmp/candidates_sh/
-# Hand-pick, copy to:
-mkdir -p Packages/MoraCore/Sources/MoraCore/Resources/Yokai/sh
-cp /tmp/candidates_sh/<chosen>.png Packages/MoraCore/Sources/MoraCore/Resources/Yokai/sh/portrait.png
+mkdir -p ~/mora/Packages/MoraCore/Sources/MoraCore/Resources/Yokai/sh
+cp outputs/portraits/sh/<chosen>.png ~/mora/Packages/MoraCore/Sources/MoraCore/Resources/Yokai/sh/portrait.png
 ```
 
-- [ ] **Step 3 (remote): Generate voice**
+- [ ] **Step 3 (Ubuntu session): Generate voice clips**
 
-Pre-requisite: a 30-second reference clip of the voice character has been saved at `refs/sh_reference.wav` on the workstation (e.g., from an ElevenLabs v3 free-tier export of the `character_description` string).
+Pre-requisite: a 30-second reference clip of the voice character has been saved at `refs/sh_reference.wav` under `~/mora/tools/yokai-forge/` (e.g., from an ElevenLabs v3 free-tier export of the `character_description` string).
 
 ```sh
 python scripts/synthesize_voices.py --yokai sh
 python scripts/master_audio.py --yokai sh
 ```
 
-- [ ] **Step 4 (local): Bundle mastered clips**
+- [ ] **Step 4 (Ubuntu session): Bundle mastered clips**
 
 ```sh
-mkdir -p Packages/MoraCore/Sources/MoraCore/Resources/Yokai/sh/voice
-scp 'youtalk@youtalk-desktop.local:~/mora-forge-work/tools/yokai-forge/outputs/voice/sh/mastered/*.m4a' \
-    Packages/MoraCore/Sources/MoraCore/Resources/Yokai/sh/voice/
+mkdir -p ~/mora/Packages/MoraCore/Sources/MoraCore/Resources/Yokai/sh/voice
+cp outputs/voice/sh/mastered/*.m4a ~/mora/Packages/MoraCore/Sources/MoraCore/Resources/Yokai/sh/voice/
 ```
 
-- [ ] **Step 5 (local): Verify via placeholder-replaced run**
+- [ ] **Step 5 (Ubuntu session): Commit and push**
 
 ```sh
-xcodegen generate
-xcodebuild build -project Mora.xcodeproj -scheme Mora -destination 'generic/platform=iOS Simulator' -configuration Debug CODE_SIGNING_ALLOWED=NO
+cd ~/mora
+git add Packages/MoraCore/Sources/MoraCore/Resources/Yokai/sh/
+git commit -m "assets(yokai): bundle sh portrait + voice clips"
+git push origin <branch>
+```
+
+- [ ] **Step 6 (Mac session): Pull and smoke-test Xcode**
+
+```sh
+git pull
+xcodegen generate   # with the repo's team-inject/revert wrapper
+xcodebuild build \
+  -project Mora.xcodeproj -scheme Mora \
+  -destination 'generic/platform=iOS Simulator' \
+  -configuration Debug CODE_SIGNING_ALLOWED=NO
 ```
 
 Expected: BUILD SUCCEEDED.
 
-- [ ] **Step 6: Repeat for th, f, r, short_a**
+- [ ] **Step 7: Repeat steps 1–6 for th, f, r, short_a**
 
 ### Task R4.3: Finalize catalog JSON
 
@@ -3484,7 +3502,7 @@ Body:
 
 ## Appendix A: Ubuntu bootstrap commands (manual, run by user)
 
-Run these on `youtalk-desktop.local` via SSH. Each block is a small, reviewable chunk.
+Run these inside a Claude Code session started directly on `youtalk-desktop` (not via SSH from the Mac). Each block is a small, reviewable chunk that you can paste into the Ubuntu session interactively and approve step by step.
 
 ### A.1 Workspace + venv
 
@@ -3515,13 +3533,23 @@ print('matmul OK, norm:', float((x @ x.T).norm()))
 
 Expected: prints `NVIDIA GeForce RTX 5090` and a reasonable norm value.
 
-### A.3 yokai-forge checkout
+### A.3 mora repo clone (the Ubuntu-side working copy)
 
 ```sh
-git clone <mora repo URL> ~/mora-forge-work/mora
-cp -r ~/mora-forge-work/mora/tools/yokai-forge ~/mora-forge-work/
-cd ~/mora-forge-work/yokai-forge
-pip install -r requirements.txt
+# Clone the repo at ~/mora so asset commits can happen from this machine.
+git clone <mora repo URL> ~/mora
+
+# Install the forge's Python deps into the workstation venv created in A.1.
+source ~/mora-forge-work/venv/bin/activate
+pip install -r ~/mora/tools/yokai-forge/requirements.txt
+```
+
+Switch to the branch the Mac session is working on (or a dedicated asset branch):
+
+```sh
+cd ~/mora
+git fetch origin
+git switch <branch-name>   # e.g. worktree-peaceful-crunching-pancake, or asset/yokai-first-five
 ```
 
 ### A.4 Flux.1 dev weights

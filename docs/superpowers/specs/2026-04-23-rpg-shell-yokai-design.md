@@ -269,7 +269,7 @@ For the `friday_acknowledge` clip specifically, ElevenLabs v3 may be used in pla
 
 ## 11. Asset Generation Workflow
 
-Performed entirely on the user's RTX 5090 Ubuntu workstation via SSH.
+Performed entirely on the user's RTX 5090 Ubuntu workstation inside a Claude Code session started directly on that machine (no SSH). The Ubuntu host keeps its own clone of the mora repo; asset commits push up through the shared Git remote and the Mac session pulls them in to run the Xcode smoke test and open PRs.
 
 ### Workspace layout
 
