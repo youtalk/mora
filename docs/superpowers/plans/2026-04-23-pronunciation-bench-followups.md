@@ -312,147 +312,16 @@ These do not depend on Phase A recordings, but Task B2's tighter assertions are 
 
 ### Task B1: Extend `FixtureMetadata` with phoneme sequence + target index
 
-**Why:** In both the bench (`EngineARunner.evaluate`) and the in-engine tests (`FeatureBasedEvaluatorFixtureTests.evaluate`), the `Word` is built with `phonemes: [target]`. `PhonemeRegionLocalizer.position(of:in:)` then returns `.onset` because the target sits at index 0 of a 1-element array. This is correct for onset consonants (`r`, `l`, `v`, `b` in `right`, `light`, `very`, `berry`) but wrong for medial vowels (`æ`, `ʌ` in `cat`, `cut`) — the localizer either slices the initial `/k/` or falls back to the whole clip, depending on downstream logic. Engine A still evaluates *something*, but not the intended region.
+The schema extension (`phonemeSequenceIPA` + `targetPhonemeIndex` on `FixtureMetadata`) and the `EngineARunner` call-site update are **absorbed into `docs/superpowers/plans/2026-04-23-fixture-recorder-app.md` (Steps A and B respectively)**. What remains here is only the in-engine test helper extension so the medial-vowel (`æ/ʌ`) fixture tests localize correctly when fixtures land.
 
-Copilot flagged this on both #41 (EngineARunner) and #42 (FeatureBasedEvaluatorFixtureTests). The fix is a schema extension, not a one-line tweak.
+**Why:** `FeatureBasedEvaluatorFixtureTests.evaluate(...)` currently builds the `Word` with `phonemes: [target]`, which `PhonemeRegionLocalizer` interprets as onset. For the 4 `aeuh/` fixtures (`cat-correct`, `cat-as-cut`, `cut-correct`, `cut-as-cat`) the target vowel is medial and this interpretation is wrong. The test helper needs to accept optional `phonemes` + `targetIndex` and pass them through.
 
 **Files:**
-- Modify: `Packages/MoraEngines/Sources/MoraEngines/Debug/FixtureMetadata.swift`
-- Modify: `Packages/MoraUI/Sources/MoraUI/Debug/PronunciationRecorderView.swift`
-- Modify: `dev-tools/pronunciation-bench/Sources/Bench/EngineARunner.swift`
-- Modify: `Packages/MoraEngines/Tests/MoraEnginesTests/Debug/FixtureMetadataTests.swift`
 - Modify: `Packages/MoraEngines/Tests/MoraEnginesTests/FeatureBasedEvaluatorFixtureTests.swift`
 
-#### Step 1 (TDD): Write the failing Codable round-trip test
+**Recommended landing**: This change lands **in the same commit as Task A1 Step 6's fixture check-in**. Landing it sooner breaks nothing (the helper default still runs as `[target]`), but the medial-vowel tests only exercise it after fixtures are present, so coupling the two minimizes noise.
 
-Add to `FixtureMetadataTests`:
-
-```swift
-func testRoundTripsPhonemeSequenceAndIndex() throws {
-    let meta = FixtureMetadata(
-        capturedAt: Date(timeIntervalSince1970: 1_714_000_000),
-        targetPhonemeIPA: "æ",
-        expectedLabel: .matched,
-        substitutePhonemeIPA: nil,
-        wordSurface: "cat",
-        sampleRate: 16_000,
-        durationSeconds: 0.6,
-        speakerTag: .adult,
-        phonemeSequenceIPA: ["k", "æ", "t"],
-        targetPhonemeIndex: 1
-    )
-    let encoder = JSONEncoder()
-    encoder.dateEncodingStrategy = .iso8601
-    let data = try encoder.encode(meta)
-    let decoder = JSONDecoder()
-    decoder.dateDecodingStrategy = .iso8601
-    let decoded = try decoder.decode(FixtureMetadata.self, from: data)
-    XCTAssertEqual(decoded.phonemeSequenceIPA, ["k", "æ", "t"])
-    XCTAssertEqual(decoded.targetPhonemeIndex, 1)
-}
-
-func testDecodesLegacyPayloadWithoutPhonemeSequence() throws {
-    // Sidecar files recorded before B1 won't have the new fields;
-    // decode must still succeed with nil defaults so old fixtures load.
-    let legacy = #"""
-    {
-        "capturedAt" : "2026-04-22T10:00:00Z",
-        "targetPhonemeIPA" : "r",
-        "expectedLabel" : "matched",
-        "wordSurface" : "right",
-        "sampleRate" : 16000,
-        "durationSeconds" : 0.5,
-        "speakerTag" : "adult"
-    }
-    """#.data(using: .utf8)!
-    let decoder = JSONDecoder()
-    decoder.dateDecodingStrategy = .iso8601
-    let decoded = try decoder.decode(FixtureMetadata.self, from: legacy)
-    XCTAssertNil(decoded.phonemeSequenceIPA)
-    XCTAssertNil(decoded.targetPhonemeIndex)
-}
-```
-
-Run and confirm FAIL.
-
-#### Step 2: Add the fields to `FixtureMetadata`
-
-```swift
-public struct FixtureMetadata: Codable, Sendable, Hashable {
-    public let capturedAt: Date
-    public let targetPhonemeIPA: String
-    public let expectedLabel: ExpectedLabel
-    public let substitutePhonemeIPA: String?
-    public let wordSurface: String
-    public let sampleRate: Double
-    public let durationSeconds: Double
-    public let speakerTag: SpeakerTag
-    // Optional: full phoneme sequence and the index of the target within it.
-    // nil on legacy sidecar files recorded before 2026-04-23 — callers must
-    // fall back to `phonemes: [target]` when either is nil.
-    public let phonemeSequenceIPA: [String]?
-    public let targetPhonemeIndex: Int?
-
-    public init(
-        capturedAt: Date,
-        targetPhonemeIPA: String,
-        expectedLabel: ExpectedLabel,
-        substitutePhonemeIPA: String?,
-        wordSurface: String,
-        sampleRate: Double,
-        durationSeconds: Double,
-        speakerTag: SpeakerTag,
-        phonemeSequenceIPA: [String]? = nil,
-        targetPhonemeIndex: Int? = nil
-    ) {
-        // ... assign all ...
-    }
-}
-```
-
-Default-nil parameters keep the call sites inside #41's view + tests compiling unchanged.
-
-#### Step 3: Add phoneme sequence + index UI to `PronunciationRecorderView`
-
-Two extra form rows:
-
-- `TextField("Phoneme sequence (space-separated IPA, optional)", text: $phonemeSequenceRaw)` — split on whitespace when non-empty.
-- `Stepper("Target index: \(targetPhonemeIndex)", value: $targetPhonemeIndex, in: 0...10)` — visible only when phoneme sequence is non-empty.
-
-Wire them into the `FixtureMetadata` init inside `save()`. Keep the fields empty by default so the recorder stays usable for onset-only cases without the extra step.
-
-#### Step 4: Update `EngineARunner.evaluate`
-
-```swift
-public func evaluate(_ loaded: LoadedFixture) async -> PhonemeTrialAssessment {
-    let evaluator = FeatureBasedPronunciationEvaluator()
-    let target = Phoneme(ipa: loaded.metadata.targetPhonemeIPA)
-
-    let phonemes: [Phoneme]
-    let targetIndex: Int
-    if let seq = loaded.metadata.phonemeSequenceIPA,
-       let idx = loaded.metadata.targetPhonemeIndex,
-       idx < seq.count {
-        phonemes = seq.map { Phoneme(ipa: $0) }
-        targetIndex = idx
-    } else {
-        phonemes = [target]
-        targetIndex = 0
-    }
-
-    let word = Word(
-        surface: loaded.metadata.wordSurface,
-        graphemes: [Grapheme(letters: loaded.metadata.wordSurface)],
-        phonemes: phonemes,
-        targetPhoneme: phonemes[targetIndex]
-    )
-    // ... rest unchanged ...
-}
-```
-
-#### Step 5: Apply the same upgrade to `FeatureBasedEvaluatorFixtureTests.evaluate`
-
-The test helper currently takes `target ipa: String, word surface: String`. Extend it:
+- [ ] **Step 1:** Extend the helper signature in `FeatureBasedEvaluatorFixtureTests.swift`:
 
 ```swift
 private func evaluate(
@@ -462,7 +331,7 @@ private func evaluate(
     phonemes: [String]? = nil,
     targetIndex: Int? = nil
 ) async throws -> PhonemeTrialAssessment {
-    // ... load WAV ...
+    // ... load WAV unchanged ...
     let targetPhoneme = Phoneme(ipa: ipa)
     let phonemeList = phonemes.map { $0.map { Phoneme(ipa: $0) } } ?? [targetPhoneme]
     let idx = targetIndex ?? 0
@@ -472,11 +341,15 @@ private func evaluate(
         phonemes: phonemeList,
         targetPhoneme: phonemeList[idx]
     )
-    // ... evaluator.evaluate ...
+    return await evaluator.evaluate(
+        audio: audio, expected: word,
+        targetPhoneme: phonemeList[idx],
+        asr: ASRResult(transcript: surface, confidence: 0.9)
+    )
 }
 ```
 
-Then update the medial-vowel call sites:
+- [ ] **Step 2:** Update the four `aeuh/` call sites:
 
 ```swift
 func testCatCorrectMatchesAe() async throws {
@@ -485,40 +358,25 @@ func testCatCorrectMatchesAe() async throws {
         target: "æ", word: "cat",
         phonemes: ["k", "æ", "t"], targetIndex: 1
     )
-    // ...
+    // assertions unchanged
 }
-// repeat for the three other aeuh tests
+
+// repeat the pattern for cat-as-cut (phonemes/index same, target/assertions match),
+// cut-correct (phonemes: ["k", "ʌ", "t"], targetIndex: 1),
+// cut-as-cat (same sequence, substitute æ).
 ```
 
-Leave the consonant tests (`r/l`, `v/b`) on the default `[target]` path since they're onset-positioned.
+Leave the r/l and v/b call sites on the default `[target]` path — they are onset-positioned and the existing tests are correct.
 
-#### Step 6: Verify
+- [ ] **Step 3:** Verify:
 
 ```bash
 (cd Packages/MoraEngines && swift test)
-(cd dev-tools/pronunciation-bench && swift test)
-swift-format lint --strict --recursive Mora Packages/*/Sources Packages/*/Tests
 ```
 
-All green.
+Expected: once fixtures have landed (Task A1 Step 7 here), all 109 tests pass with zero skips. Before fixtures land, this change is an inert refactor — tests remain skipped but the helper signature compiles.
 
-#### Step 7: Commit
-
-```bash
-git commit -m "$(cat <<'EOF'
-engines: extend FixtureMetadata with optional phoneme sequence + target index
-
-Address PR #41 / #42 Copilot review: Word built with phonemes: [target]
-forces PhonemeRegionLocalizer to pick .onset even when the target is
-medial. Optional phonemeSequenceIPA + targetPhonemeIndex let callers
-(EngineARunner, FeatureBasedEvaluatorFixtureTests) pass the full
-sequence so localization matches the intended position. nil on
-legacy sidecars — callers fall back to [target].
-
-Co-Authored-By: Claude <noreply@anthropic.com>
-EOF
-)"
-```
+- [ ] **Step 4:** Landing: keep the helper change and the fixture check-in on a single commit. Example message: `engines: add phoneme-sequence fixture fixtures + tests for r/l, v/b, ae/uh`.
 
 ---
 
