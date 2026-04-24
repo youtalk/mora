@@ -5,9 +5,9 @@
     "ipa": "/ʃ/",
     "personality": "mischievous whisper spirit",
     "sound_gesture": "index finger pursed to lips in a shushing pose, one eye winking",
-    "word_decor": ["paper sailor hat shaped like a small ship", "pointed seashell ears", "fluffy fin-like tail"],
+    "word_decor": ["paper sailor hat shaped like a small ship", "curved seashell headpieces jutting like horns", "fluffy fin-like tail"],
     "palette": ["teal", "cream", "foam-white"],
-    "expression": "playful smirk, large round sparkling eyes",
+    "expression": "kiss-pucker lips and winking eye, mischievous mood",
     "voice": {
       "character_description": "young mischievous whispery boy, softly spoken with playful cadence, subtle wind-like breath",
       "clips": {
@@ -28,7 +28,7 @@
     "ipa": "/θ/",
     "personality": "tongue-showing prankster yokai",
     "sound_gesture": "tongue poked out between front teeth, puffing air",
-    "word_decor": ["small lightning-bolt ear tufts", "thumb-up paw held forward", "thorny leaf cape"],
+    "word_decor": ["small lightning-bolt antennae on the head", "thorny leaf cape"],
     "palette": ["violet", "mustard", "cream"],
     "expression": "cheeky grin with visible tongue tip",
     "voice": {
@@ -51,7 +51,7 @@
     "ipa": "/f/",
     "personality": "windy breath spirit",
     "sound_gesture": "upper teeth resting on lower lip, blowing a soft breeze",
-    "word_decor": ["koi-fish tail fin", "round paper fan in one paw", "soft feather on one ear"],
+    "word_decor": ["koi-fish tail fin", "round paper fan in one paw", "soft feather tucked at the crown of the head"],
     "palette": ["sky-blue", "white", "peach"],
     "expression": "calm soft smile, closed eyes like meditating",
     "voice": {
@@ -72,7 +72,7 @@
     "id": "r",
     "grapheme": "r",
     "ipa": "/r/",
-    "personality": "tiger-cub rumble yokai",
+    "personality": "rumbling rock-spirit yokai",
     "sound_gesture": "tongue curled back, low growl pose, fists on hips",
     "word_decor": ["rabbit-ear hood with one bent tip", "rainbow scarf", "tiny rocket-fin boots"],
     "palette": ["crimson", "saffron", "cobalt"],
