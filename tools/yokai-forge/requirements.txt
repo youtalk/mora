@@ -1,0 +1,17 @@
+torch
+torchvision
+torchaudio
+diffusers>=0.30
+transformers>=4.45
+huggingface_hub>=0.25
+accelerate
+safetensors
+Pillow
+numpy
+scipy
+librosa
+soundfile
+hf_transfer
+omegaconf
+einops
+ftfy
