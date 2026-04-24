@@ -46,6 +46,18 @@ public final class YokaiOrchestrator {
         dayGainSoFar = 0
     }
 
+    /// Re-attach the orchestrator to an existing encounter without creating
+    /// a new one. Used by bootstrap after the first session of a week has
+    /// already happened (`sessionCompletionCount >= 1`). Preserves the stored
+    /// friendship percent, session count, and all other encounter fields;
+    /// clears transient per-day state.
+    public func resume(encounter: YokaiEncounterEntity) {
+        currentEncounter = encounter
+        currentYokai = store.catalog().first(where: { $0.id == encounter.yokaiID })
+        activeCutscene = nil
+        dayGainSoFar = 0
+    }
+
     public func recordTrialOutcome(correct: Bool) {
         guard let encounter = currentEncounter else { return }
         let result = FriendshipMeterMath.applyTrialOutcome(
