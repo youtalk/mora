@@ -172,6 +172,54 @@ final class FeatureBasedEvaluatorTests: XCTestCase {
         XCTAssertTrue(result.isReliable)
     }
 
+    // MARK: - Integration: feature-extractor reliability
+
+    func testVoicedFricativeOnsetEvaluatesAsMatched() async {
+        let veryWord = Word(
+            surface: "very",
+            graphemes: [Grapheme(letters: "v"), Grapheme(letters: "e"), Grapheme(letters: "ry")],
+            phonemes: [Phoneme(ipa: "v"), Phoneme(ipa: "ɛ"), Phoneme(ipa: "r"), Phoneme(ipa: "i")],
+            targetPhoneme: Phoneme(ipa: "v")
+        )
+        // Voiced fricative onset → vowel. Should evaluate as matched, not
+        // substituted-by-/b/, because the relative-VOT extractor (Task 3)
+        // returns a strongly-negative value.
+        let audio = SyntheticAudio.voicedFricative(durationMs: 200, burstStartMs: 80)
+        let result = await evaluator.evaluate(
+            audio: audio, expected: veryWord,
+            targetPhoneme: Phoneme(ipa: "v"),
+            asr: ASRResult(transcript: "very", confidence: 0.9)
+        )
+        XCTAssertEqual(result.label, .matched)
+        XCTAssertTrue(result.isReliable)
+    }
+
+    func testLiquidOnsetWithDiphthongVowelDoesNotMislabelLAsR() async {
+        let lightWord = Word(
+            surface: "light",
+            graphemes: [Grapheme(letters: "l"), Grapheme(letters: "i"), Grapheme(letters: "ght")],
+            phonemes: [Phoneme(ipa: "l"), Phoneme(ipa: "aɪ"), Phoneme(ipa: "t")],
+            targetPhoneme: Phoneme(ipa: "l")
+        )
+        // /l/ formant region (clean F3 ≈ 3000 Hz, lasting 60 ms) followed
+        // by a diphthong region with low F3. Without the liquid-onset
+        // shortening (Task 1) the 150 ms onset slice catches the diphthong
+        // and engine mislabels /l/ as /r/.
+        let lOnset = SyntheticAudio.bandNoise(lowHz: 2_900, highHz: 3_100, durationMs: 60)
+        let diphthong = SyntheticAudio.bandNoise(lowHz: 1_400, highHz: 1_700, durationMs: 240)
+        let audio = SyntheticAudio.concat(lOnset, diphthong)
+        let result = await evaluator.evaluate(
+            audio: audio, expected: lightWord,
+            targetPhoneme: Phoneme(ipa: "l"),
+            asr: ASRResult(transcript: "light", confidence: 0.9)
+        )
+        XCTAssertNotEqual(
+            result.label,
+            .substitutedBy(Phoneme(ipa: "r")),
+            "with shortened liquid onset window the diphthong should not pull /l/ into /r/ territory"
+        )
+    }
+
     // MARK: - Skipped substitution pairs
     // Synthetic audio is not reliable for these pairs; each needs a recorded
     // fixture to exercise the measurement path in a meaningful way.
