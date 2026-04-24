@@ -17,17 +17,22 @@ public struct SparkleOverlay: View {
                     .frame(width: 6, height: 6)
                     .offset(x: offsets[i].0, y: offsets[i].1)
                     .opacity(visible ? 1 : 0)
-                    .animation(.easeOut(duration: 0.6).delay(Double(i) * 0.05), value: visible)
+                    .animation(
+                        reduceMotion
+                            ? .easeInOut(duration: 0.2)
+                            : .easeOut(duration: 0.6).delay(Double(i) * 0.05),
+                        value: visible
+                    )
             }
         }
         .onChange(of: trigger) { _, _ in
-            guard !reduceMotion else { return }
             task?.cancel()
             offsets = SparkleOverlay.makeOffsets()
             visible = true
             task = Task { @MainActor in
-                // Hold visibility long enough for every staggered circle to reach opacity 1.
-                try? await Task.sleep(for: .milliseconds(300))
+                // Under reduce motion: short hold + 0.2s fade. Otherwise: hold for stagger.
+                let holdMs = reduceMotion ? 100 : 300
+                try? await Task.sleep(for: .milliseconds(holdMs))
                 guard !Task.isCancelled else { return }
                 visible = false
             }

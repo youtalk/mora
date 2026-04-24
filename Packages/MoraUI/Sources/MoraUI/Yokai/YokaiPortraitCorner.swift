@@ -24,7 +24,7 @@ public struct YokaiPortraitCorner: View {
     public var body: some View {
         content
             .overlay {
-                if let sparkleTrigger, !reduceMotion {
+                if let sparkleTrigger {
                     SparkleOverlay(trigger: sparkleTrigger).allowsHitTesting(false)
                 }
             }
