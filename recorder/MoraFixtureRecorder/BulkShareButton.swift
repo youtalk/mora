@@ -44,6 +44,12 @@ struct BulkShareButton: View {
             // archive. Force-rebuild on next tap.
             archiveURL = nil
         }
+        .onChange(of: store.takesRevision) { _, _ in
+            // A take was saved or deleted — the on-disk set differs from
+            // what the cached zip captured. Invalidate so the next tap
+            // rebuilds.
+            archiveURL = nil
+        }
     }
 
     private func prepare() {

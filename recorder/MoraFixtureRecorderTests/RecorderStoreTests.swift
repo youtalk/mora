@@ -103,4 +103,56 @@ final class RecorderStoreTests: XCTestCase {
         store.speakerTag = .adult
         XCTAssertEqual(store.nextTakeNumber(for: pattern), 5)
     }
+
+    func testTakesOnDiskSortedByTakeNumberNotLexically() async throws {
+        let store = RecorderStore(
+            documentsDirectory: tempDir, userDefaults: defaults)
+        let pattern = FixtureCatalog.v1Patterns.first { $0.id == "rl-right-correct" }!
+        let dir =
+            tempDir
+            .appendingPathComponent("adult")
+            .appendingPathComponent(pattern.outputSubdirectory)
+        try FileManager.default.createDirectory(
+            at: dir, withIntermediateDirectories: true)
+        // Seed take1, take2, take10, take11 — lexical sort puts take10 before
+        // take2, numeric sort must not.
+        for n in [1, 2, 10, 11] {
+            try Data().write(
+                to: dir.appendingPathComponent(
+                    "\(pattern.filenameStem)-take\(n).wav"))
+        }
+        store.speakerTag = .adult
+        let names = store.takesOnDisk(for: pattern).map { $0.lastPathComponent }
+        XCTAssertEqual(
+            names,
+            [
+                "\(pattern.filenameStem)-take1.wav",
+                "\(pattern.filenameStem)-take2.wav",
+                "\(pattern.filenameStem)-take10.wav",
+                "\(pattern.filenameStem)-take11.wav",
+            ])
+    }
+
+    func testDeleteTakeBumpsTakesRevision() async throws {
+        let store = RecorderStore(
+            documentsDirectory: tempDir, userDefaults: defaults)
+        let pattern = FixtureCatalog.v1Patterns.first { $0.id == "rl-right-correct" }!
+        let dir =
+            tempDir
+            .appendingPathComponent("adult")
+            .appendingPathComponent(pattern.outputSubdirectory)
+        try FileManager.default.createDirectory(
+            at: dir, withIntermediateDirectories: true)
+        let wav = dir.appendingPathComponent("\(pattern.filenameStem)-take1.wav")
+        let json = dir.appendingPathComponent("\(pattern.filenameStem)-take1.json")
+        try Data().write(to: wav)
+        try Data().write(to: json)
+        store.speakerTag = .adult
+
+        let before = store.takesRevision
+        store.deleteTake(url: wav)
+        XCTAssertEqual(store.takesRevision, before &+ 1)
+        XCTAssertFalse(FileManager.default.fileExists(atPath: wav.path))
+        XCTAssertFalse(FileManager.default.fileExists(atPath: json.path))
+    }
 }

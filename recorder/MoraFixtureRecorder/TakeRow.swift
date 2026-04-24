@@ -26,11 +26,10 @@ struct TakeRow: View {
     }
 
     private var label: String {
-        let basename = wavURL.deletingPathExtension().lastPathComponent
-        let takeSuffix =
-            basename
-            .split(separator: "-take")
-            .last.map(String.init) ?? "?"
-        return "take \(takeSuffix)"
+        let stemPrefix = "\(pattern.filenameStem)-take"
+        if let n = RecorderStore.takeNumber(from: wavURL, stemPrefix: stemPrefix) {
+            return "take \(n)"
+        }
+        return "take ?"
     }
 }

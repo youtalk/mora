@@ -42,15 +42,34 @@ final class SpeakerArchiveTests: XCTestCase {
         let dir = store.patternDirectory(for: pattern)
         try FileManager.default.createDirectory(
             at: dir, withIntermediateDirectories: true)
+        let wavName = "\(pattern.filenameStem)-take1.wav"
+        let jsonName = "\(pattern.filenameStem)-take1.json"
         try Data(repeating: 0, count: 16)
-            .write(
-                to: dir.appendingPathComponent(
-                    "\(pattern.filenameStem)-take1.wav"))
+            .write(to: dir.appendingPathComponent(wavName))
+        try Data(#"{"stub": true}"#.utf8)
+            .write(to: dir.appendingPathComponent(jsonName))
 
         let zipURL = try store.prepareSpeakerArchive()
         XCTAssertTrue(zipURL.path.hasPrefix(FileManager.default.temporaryDirectory.path))
         XCTAssertEqual(zipURL.pathExtension, "zip")
         XCTAssertTrue(zipURL.lastPathComponent.contains("adult"))
         XCTAssertTrue(FileManager.default.fileExists(atPath: zipURL.path))
+
+        // Verify the zip payload actually contains the seeded take under
+        // the expected <speaker>/<outputSubdir>/ path. iOS test targets
+        // don't have `Process`, so we scan the zip bytes for the relative
+        // path strings that a ZIP local file header stores in plain UTF-8.
+        // This catches the failure mode where the coordinator produces a
+        // zip that's syntactically valid but missing entries.
+        let zipData = try Data(contentsOf: zipURL)
+        let relativeDir = "\(store.speakerTag.rawValue)/\(pattern.outputSubdirectory)"
+        let wavPath = "\(relativeDir)/\(wavName)"
+        let jsonPath = "\(relativeDir)/\(jsonName)"
+        XCTAssertNotNil(
+            zipData.range(of: Data(wavPath.utf8)),
+            "zip payload does not contain expected path \(wavPath)")
+        XCTAssertNotNil(
+            zipData.range(of: Data(jsonPath.utf8)),
+            "zip payload does not contain expected path \(jsonPath)")
     }
 }

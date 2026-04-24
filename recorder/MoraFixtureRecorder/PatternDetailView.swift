@@ -11,7 +11,7 @@ struct PatternDetailView: View {
             Section("Pattern") {
                 LabeledContent("Word", value: pattern.wordSurface)
                 LabeledContent("Target", value: "/\(pattern.targetPhonemeIPA)/")
-                LabeledContent("Expected", value: pattern.expectedLabel.rawValue)
+                LabeledContent("Expected", value: pattern.expectedLabel.humanText)
                 if let sub = pattern.substitutePhonemeIPA {
                     LabeledContent("Substitute", value: "/\(sub)/")
                 }
@@ -30,8 +30,8 @@ struct PatternDetailView: View {
                     store.save(pattern: pattern)
                 }
                 .disabled(!store.hasCapturedSamples)
-                if case let .captured(_, duration) = store.recordingState {
-                    Text(String(format: "Captured: %.2fs", duration))
+                if case let .captured(snapshot) = store.recordingState {
+                    Text(String(format: "Captured: %.2fs", snapshot.durationSeconds))
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                 }
