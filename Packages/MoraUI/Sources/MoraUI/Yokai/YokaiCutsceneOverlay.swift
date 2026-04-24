@@ -10,6 +10,7 @@ public struct YokaiCutsceneOverlay: View {
     @State private var fridayPhase: Int = 0
     @State private var washiProgress: Double = 0
     @State private var choreographyTask: Task<Void, Never>?
+    @State private var didHapticFriday = false
 
     // Audio playback
     @State private var player: AVAudioPlayer?
@@ -72,6 +73,10 @@ public struct YokaiCutsceneOverlay: View {
             if store == nil { store = try? BundledYokaiStore() }
             fridayPhase = 0
             washiProgress = 0
+            if !didHapticFriday {
+                didHapticFriday = true
+                YokaiHaptics.fridaySuccess()
+            }
             if reduceMotion {
                 choreographyTask = Task { @MainActor in
                     withAnimation(.easeInOut(duration: 0.2)) {
@@ -107,6 +112,7 @@ public struct YokaiCutsceneOverlay: View {
         .onDisappear {
             choreographyTask?.cancel()
             choreographyTask = nil
+            didHapticFriday = false
             stopAudio()
         }
     }
