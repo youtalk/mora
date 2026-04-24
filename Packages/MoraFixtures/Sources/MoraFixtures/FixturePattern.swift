@@ -40,11 +40,11 @@ public struct FixturePattern: Sendable, Hashable, Identifiable {
     }
 
     /// Human-readable label the catalog list row displays. Format:
-    /// "<word> — /<target>/ <expectedLabel>[ by /<substitute>/]".
+    /// "<word> — /<target>/ <expectedLabelText>[ /<substitute>/]".
     public var displayLabel: String {
-        let base = "\(wordSurface) — /\(targetPhonemeIPA)/ \(expectedLabel.rawValue)"
+        let base = "\(wordSurface) — /\(targetPhonemeIPA)/ \(expectedLabel.humanText)"
         if let sub = substitutePhonemeIPA {
-            return "\(base) by /\(sub)/"
+            return "\(base) /\(sub)/"
         }
         return base
     }

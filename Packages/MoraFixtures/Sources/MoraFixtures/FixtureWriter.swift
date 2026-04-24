@@ -1,9 +1,5 @@
 import Foundation
 
-public enum FixtureWriterError: Error, Sendable {
-    case directoryUnavailable(URL)
-}
-
 public enum FixtureWriter {
 
     public struct Output: Equatable, Sendable {
