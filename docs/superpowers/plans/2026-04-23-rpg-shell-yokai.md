@@ -3589,6 +3589,8 @@ pip install -e .
 # Download S2 Pro checkpoint per upstream README.
 ```
 
+Fish Speech v2's in-context voice cloning requires **paired** reference inputs for each yokai: `tools/yokai-forge/refs/<id>_reference.wav` (5–30 s clean clip) plus `tools/yokai-forge/refs/<id>_reference.txt` (verbatim transcription). `scripts/synthesize_voices.py` fails fast if either file is missing; generating the `.wav` alone degrades the cloned timbre substantially.
+
 ### A.7 Bark
 
 ```sh
