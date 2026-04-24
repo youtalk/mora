@@ -4,7 +4,7 @@
 
 **Goal:** Ship Engine B (`PhonemeModelPronunciationEvaluator`) as a second `PronunciationEvaluator` running in parallel with Engine A. Engine A keeps driving the UI; Engine B is invisible at runtime and writes its per-trial result to a new SwiftData entity `PronunciationTrialLog` for correlation analysis.
 
-**Architecture:** A new `PhonemePosteriorProvider` protocol in MoraEngines abstracts the CoreML model. `MoraMLX` hosts `CoreMLPhonemePosteriorProvider`; `MoraEngines` hosts alignment (`ForcedAligner` — Viterbi over log-posteriors), GOP scoring, the evaluator itself, and a composite decorator (`ShadowLoggingPronunciationEvaluator`) that always fires Engine B regardless of Engine A's support set. Engine B's result is persisted through a `PronunciationTrialLogger` in a detached background task so the UI path is never blocked. The CoreML model (~150 MB, wav2vec2-xlsr-53-espeak-cv-ft INT8) is produced by `dev-tools/model-conversion/convert.py` and tracked by Git LFS under `Packages/MoraMLX/Sources/MoraMLX/Resources/`.
+**Architecture:** A new `PhonemePosteriorProvider` protocol in MoraEngines abstracts the CoreML model. `MoraMLX` hosts `CoreMLPhonemePosteriorProvider`; `MoraEngines` hosts alignment (`ForcedAligner` — Viterbi over log-posteriors), GOP scoring, the evaluator itself, and a composite decorator (`ShadowLoggingPronunciationEvaluator`) that always fires Engine B regardless of Engine A's support set. Engine B's result is persisted through a `PronunciationTrialLogger` in a detached background task so the UI path is never blocked. The CoreML model (~303 MB unpacked, wav2vec2-xlsr-53-espeak-cv-ft INT8) is produced by `dev-tools/model-conversion/convert.py` and hosted as the `wav2vec2-phoneme.mlmodelc.tar.gz` asset on the `models/wav2vec2-phoneme-int8-v1` GitHub Release. `tools/fetch-models.sh` extracts it into `Packages/MoraMLX/Sources/MoraMLX/Resources/wav2vec2-phoneme.mlmodelc/` at build time. (Earlier revisions of this plan used Git LFS; superseded by `docs/superpowers/plans/2026-04-24-ci-lfs-to-releases.md`.)
 
 **Tech Stack:** Swift 5.9, SwiftData (persistence), CoreML (model inference), Swift Concurrency (detached tasks, timeouts via `withTaskGroup`), XCTest. Conversion tooling: Python 3.11, `coremltools>=7.2`, `transformers>=4.40`.
 
@@ -13,7 +13,7 @@
 **Scope:** Phase 3 of `docs/superpowers/specs/2026-04-22-pronunciation-feedback-design.md`, implemented in two PRs:
 
 - **Part 1 (Tasks 1–19)** — Evaluator logic, SwiftData entity, composite decorator, retention cleanup, MoraMLX stub, app-level wiring. All unit-tested with a `FakePhonemePosteriorProvider`; the real model is not touched. Shipped behavior is unchanged because the MoraMLX stub always throws and the app falls back to bare Engine A.
-- **Part 2 (Tasks 20–30)** — `dev-tools/model-conversion/` toolchain, real model bundled via Git LFS, `CoreMLPhonemePosteriorProvider`, real `MoraMLXModelCatalog`, smoke test, CI LFS fetch, docs. At Part 2 end, shadow mode is live on device.
+- **Part 2 (Tasks 20–30)** — `dev-tools/model-conversion/` toolchain, real model bundled (initially via Git LFS, later migrated to a GitHub Release asset fetched by `tools/fetch-models.sh` — see `docs/superpowers/plans/2026-04-24-ci-lfs-to-releases.md`), `CoreMLPhonemePosteriorProvider`, real `MoraMLXModelCatalog`, smoke test, CI fetch step, docs. At Part 2 end, shadow mode is live on device.
 
 **Not in scope of this plan:**
 
@@ -50,37 +50,41 @@
 | 18 | Format sweep | `e6ed0f5` |
 | 19 | Docs progress section | `-` |
 
-**Part 2 landed with the real-model step deferred.** Tasks 20, 21, and
-23–30 shipped on the Part 2 PR using a placeholder `.mlmodelc` so the
-packaging, app wiring, CI LFS checkout, and smoke-test paths are all in
-place. Task 22 Steps 2–5 (run `convert.py` locally with `HF_TOKEN`, then
-commit the real `.mlmodelc` via Git LFS) is tracked as a manual
-follow-up.
+**Part 2 is fully landed.** Tasks 20, 21, and 23–30 shipped on the Part 2 PR;
+Task 22 (real-model conversion + packaging) was deferred to a manual follow-up
+and subsequently landed via the LFS→Release migration in PR #62 (see
+`docs/superpowers/plans/2026-04-24-ci-lfs-to-releases.md`). The real
+INT8-quantized wav2vec2-phoneme model is hosted on the
+`models/wav2vec2-phoneme-int8-v1` GitHub Release and fetched into
+`Packages/MoraMLX/Sources/MoraMLX/Resources/wav2vec2-phoneme.mlmodelc/` by
+`tools/fetch-models.sh` (called from the Mora target's preBuildScript and CI).
 
 | # | Task | Commit |
 |---|------|--------|
 | 20 | dev-tools/model-conversion scaffolding | `ca6efda` |
 | 21 | convert.py script | `f4e58d7` |
-| 22 | Run conversion + LFS commit | deferred — human follow-up |
+| 22 | Run conversion + bundle model | landed — Release `models/wav2vec2-phoneme-int8-v1` (migrated from LFS in #62) |
 | 23 | MoraMLX Package.swift resources | `1ccffb5` |
 | 24 | CoreMLPhonemePosteriorProvider | `62a8f23` |
 | 25 | MoraMLXModelCatalog real loader | `e830639` |
 | 26 | Smoke test + fixture | `7bf6f0c` |
-| 27 | CI LFS checkout | `e8b384a` |
+| 27 | CI model bootstrap (originally LFS checkout; replaced by `tools/fetch-models.sh` + `actions/cache` in #62) | `e8b384a` → #62 |
 | 28 | Format sweep | `-` |
 | 29 | Device-only latency benchmark | `420d4ab` |
 | 30 | Docs cross-link + CLAUDE.md update | `-` |
 
-> **Note — Task 22 deferred.** Steps 2–5 of Task 22 (running `convert.py`
-> with a valid `HF_TOKEN` and committing the resulting
-> `wav2vec2-phoneme.mlmodelc` + `phoneme-labels.json` via Git LFS) are a
-> manual follow-up outside this PR. Tasks 23–26 ship with a placeholder
-> `.mlmodelc` so the bundling, `MoraMLXModelCatalog` load path, and
-> `CoreMLPhonemePosteriorProvider` wiring are exercised by CI; tests use
-> positive placeholder detection (`PlaceholderDetection.isPlaceholderModelBundled`)
-> to `XCTSkip` while the placeholder is in place and FAIL once the real
-> model is bundled. Shadow-mode inference on device starts working after
-> the deferred follow-up lands.
+> **Note — Task 22 landed post-hoc.** The real `.mlmodelc` and its
+> `phoneme-labels.json` (~392 entries) are produced by
+> `dev-tools/model-conversion/convert.py` and packaged as the
+> `wav2vec2-phoneme.mlmodelc.tar.gz` asset on the
+> `models/wav2vec2-phoneme-int8-v1` GitHub Release. `tools/fetch-models.sh`
+> extracts the bundle into
+> `Packages/MoraMLX/Sources/MoraMLX/Resources/wav2vec2-phoneme.mlmodelc/`,
+> which is now gitignored. The positive placeholder detection
+> (`PlaceholderDetection.isPlaceholderModelBundled`) returns false in the
+> real bundle because `phoneme-labels.json` has >1 entry; the smoke test
+> therefore runs (not skips) and asserts posterior frame count and phoneme
+> count against the live model. Shadow-mode inference is live on device.
 
 ---
 
@@ -118,7 +122,7 @@ New files:
 | `Packages/MoraMLX/Sources/MoraMLX/MoraMLXError.swift` | `MoraMLXError` enum. | Part 1 (stub), Part 2 (full) |
 | `Packages/MoraMLX/Sources/MoraMLX/MoraMLXModelCatalog.swift` | Loader. Part 1 = stub throwing `.modelNotBundled`; Part 2 = real CoreML load. | Part 1 (stub), Part 2 (full) |
 | `Packages/MoraMLX/Sources/MoraMLX/CoreMLPhonemePosteriorProvider.swift` | Production provider. | Part 2 |
-| `Packages/MoraMLX/Sources/MoraMLX/Resources/wav2vec2-phoneme.mlmodelc/` | CoreML model (Git LFS). | Part 2 |
+| `Packages/MoraMLX/Sources/MoraMLX/Resources/wav2vec2-phoneme.mlmodelc/` | CoreML model. Originally Git LFS in Part 2; post-#62 hosted as a GitHub Release asset and fetched by `tools/fetch-models.sh` (directory is gitignored). | Part 2 |
 | `Packages/MoraMLX/Sources/MoraMLX/Resources/phoneme-labels.json` | espeak label list (plain git). | Part 2 |
 | `Packages/MoraMLX/Tests/MoraMLXTests/CoreMLPhonemePosteriorProviderSmokeTests.swift` | Real-model smoke test. | Part 2 |
 | `Packages/MoraMLX/Tests/MoraMLXTests/Fixtures/short-sh-clip.wav` | Small 16 kHz fixture clip. | Part 2 |
@@ -127,7 +131,7 @@ New files:
 | `dev-tools/model-conversion/requirements.txt` | Python deps. | Part 2 |
 | `dev-tools/model-conversion/.env.example` | HF token placeholder. | Part 2 |
 | `dev-tools/model-conversion/.gitignore` | Ignore env + local artifacts. | Part 2 |
-| `.gitattributes` | Git LFS patterns. | Part 2 |
+| `.gitattributes` | Git LFS patterns. Part 2. Removed in PR #62 when the model moved to a GitHub Release asset. |
 
 Modified files:
 
@@ -140,7 +144,7 @@ Modified files:
 | `Packages/MoraMLX/Sources/MoraMLX/MoraMLXPlaceholder.swift` | Deleted in Part 2. | Part 2 |
 | `Packages/MoraUI/Sources/MoraUI/Session/SessionContainerView.swift` | Swap `FeatureBasedPronunciationEvaluator()` for composite when the shadow evaluator is available. | Part 1 |
 | `Mora/MoraApp.swift` | Call `PronunciationTrialRetentionPolicy.cleanup` once at launch. Provide a `ShadowEvaluatorFactory` environment value that `SessionContainerView` consumes. | Part 1 |
-| `.github/workflows/ci.yml` | `actions/checkout` → `with: lfs: true`. | Part 2 |
+| `.github/workflows/ci.yml` | Initially `actions/checkout` → `with: lfs: true` (Part 2). Replaced in PR #62 by `lfs: false` + `actions/cache@v4` keyed on `tools/models.manifest` + a `bash tools/fetch-models.sh` step on cache miss. | Part 2 → #62 |
 | `docs/superpowers/specs/2026-04-22-pronunciation-feedback-design.md` | Append `Implementation plan (Phase 3)` header line pointing to this plan. | Part 2 |
 
 ---
@@ -156,7 +160,7 @@ Modified files:
 - **No cloud pronunciation SDKs.** The binary gate and source gate landed by Engine A's Task 29/30 continue to run. This plan adds nothing that would match those patterns.
 - **Test file naming** — one test class per file; filenames end with `Tests.swift`.
 - **`@Model` migrations** — adding `PronunciationTrialLog` is an additive SwiftData change, handled by lightweight migration; no explicit migration code.
-- **Git LFS** — Part 2 introduces LFS. Developers run `git lfs install` once locally; CI opts in via `lfs: true` on `actions/checkout`.
+- **Model distribution** — Part 2 initially introduced Git LFS. In PR #62 (`docs/superpowers/plans/2026-04-24-ci-lfs-to-releases.md`) the model was migrated off LFS onto the `models/wav2vec2-phoneme-int8-v1` GitHub Release; `tools/fetch-models.sh` + `tools/models.manifest` now bootstrap it, and `.gitattributes` was deleted. Developers clone without LFS and the Mora target's preBuildScript materializes the bundle on first build; CI caches by manifest hash via `actions/cache@v4`.
 
 ---
 
@@ -3553,6 +3557,14 @@ EOF
 
 ### Task 22: Run `convert.py` locally and commit `.mlmodelc` + `phoneme-labels.json` via Git LFS
 
+> **Historical.** Task 22 as written here landed with the LFS-based recipe.
+> PR #62 (`docs/superpowers/plans/2026-04-24-ci-lfs-to-releases.md`) then
+> migrated the model off LFS onto the `models/wav2vec2-phoneme-int8-v1`
+> GitHub Release: `.gitattributes` was deleted, `wav2vec2-phoneme.mlmodelc/`
+> is gitignored, and the artifact is fetched by `tools/fetch-models.sh` at
+> build time. For the current flow see that plan; the procedure below is
+> preserved as the original Part 2 implementation record.
+
 This is a one-time local step. An agentic worker should stop at Step 1 and surface the command so the human can run it.
 
 **Files:**
@@ -4074,6 +4086,14 @@ EOF
 ---
 
 ### Task 27: CI — enable Git LFS on checkout
+
+> **Historical.** Landed as described below with `lfs: true` on every
+> `actions/checkout`. PR #62 reversed that: all jobs now use `lfs: false`
+> and the model-needing jobs (`build-test`, `bench-build`) gain an
+> `actions/cache@v4` keyed on `tools/models.manifest` plus a
+> `bash tools/fetch-models.sh` step on cache miss. See
+> `docs/superpowers/plans/2026-04-24-ci-lfs-to-releases.md` Task 5 for the
+> current configuration.
 
 **Files:**
 - Modify: `.github/workflows/ci.yml`
