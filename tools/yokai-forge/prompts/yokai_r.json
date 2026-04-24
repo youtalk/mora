@@ -2,11 +2,13 @@
   "id": "r",
   "grapheme": "r",
   "ipa": "/r/",
-  "personality": "tiger-cub rumble yokai",
-  "sound_gesture": "tongue curled back, low growl pose, fists on hips",
-  "word_decor": ["rabbit-ear hood with one bent tip", "rainbow scarf", "tiny rocket-fin boots"],
+  "personality": "rumbling rock-spirit yokai",
+  "body_shape": "round volcanic boulder-shaped body with cracked rocky texture and glowing ember highlights, short stumpy arms, tiny rocket-fin boots",
+  "mouth_pose": "mouth open wide in a tall vertical oval shape, tongue tip curled sharply up and back toward the roof of the mouth like a breaking wave, underside of the curled tongue visible, small fangs flanking the corners, /r/ retroflex articulation",
+  "sound_gesture": "low growl stance, fists planted on the sides of the body, chest puffed out",
+  "word_decor": ["a rabbit-ear costume hood with one bent tip on the head", "rainbow scarf around the neck"],
   "palette": ["crimson", "saffron", "cobalt"],
-  "expression": "confident grin baring small fangs",
+  "expression": "confident flashing eyes, eyebrows furrowed bold",
   "voice": {
     "character_description": "raspy bright child voice with rolled r, energetic, slightly barky",
     "clips": {

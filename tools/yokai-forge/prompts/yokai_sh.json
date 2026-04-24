@@ -2,11 +2,13 @@
   "id": "sh",
   "grapheme": "sh",
   "ipa": "/ʃ/",
-  "personality": "mischievous whisper spirit",
-  "sound_gesture": "index finger pursed to lips in a shushing pose, one eye winking",
-  "word_decor": ["paper sailor hat shaped like a small ship", "pointed seashell ears", "fluffy fin-like tail"],
+  "personality": "mischievous whisper-spirit yokai",
+  "body_shape": "round seashell-shaped body like a smooth clam with a pearly belly, slender human-proportioned arms long enough to bring the hand up beside the face, a long fin-like tail curling behind",
+  "mouth_pose": "soft plump human-like lips pursed forward in a gentle kissing pucker as if blowing a slow kiss, clearly visible upper and lower lip edges outlined in bold ink, lips drawn in a warm pink hue, a tiny round opening at the very center, no teeth and no tongue visible, absolutely not a beak not a snout not a muzzle, classic /ʃ/ shushing kiss-face",
+  "sound_gesture": "one long human-proportioned arm bent at the elbow and raised across the chest so the hand is directly in front of the face at mouth level, a single slender index finger pointing vertically upward with its fingertip right next to the closed lips almost touching them, the classic be-quiet shushing sign where the finger is pressed against or beside the mouth, other arm hanging relaxed at the side, one eye winking",
+  "word_decor": ["paper sailor hat shaped like a small ship on top of the head", "curved seashell headpieces jutting like horns"],
   "palette": ["teal", "cream", "foam-white"],
-  "expression": "playful smirk, large round sparkling eyes",
+  "expression": "playful sparkling eyes, mischievous mood",
   "voice": {
     "character_description": "young mischievous whispery boy, softly spoken with playful cadence, subtle wind-like breath",
     "clips": {

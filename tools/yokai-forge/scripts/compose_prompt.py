@@ -22,11 +22,14 @@ def _negative() -> str:
 def compose_positive(spec: dict) -> str:
     decor = spec["word_decor"]
     palette = ", ".join(spec["palette"])
+    decor_joined = ", ".join(decor)
     return (
         f"{_style()}, "
         f"a {spec['personality']}, "
+        f"{spec['body_shape']}, "
+        f"{spec['mouth_pose']}, "
         f"{spec['sound_gesture']}, "
-        f"wearing {decor[0]}, with {decor[1]}, and {decor[2]}, "
+        f"wearing {decor_joined}, "
         f"{palette} color scheme, {spec['expression']}"
     )
 
