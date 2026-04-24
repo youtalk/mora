@@ -127,6 +127,15 @@ public struct HomeView: View {
             .accessibilityLabel(Text(strings.homeStart))
             .accessibilityValue(isStartEnabled ? Text("") : Text(strings.a11yHomeStartLoading))
 
+            if let enc = openEncounters.first,
+                let store = try? BundledYokaiStore(),
+                let yokai = store.catalog().first(where: { $0.id == enc.yokaiID })
+            {
+                YokaiPortraitCorner(yokai: yokai, sparkleTrigger: nil)
+                    .frame(width: 96, height: 96)
+                    .accessibilityLabel("This week's sound-friend: \(enc.yokaiID)")
+            }
+
             HStack(spacing: MoraTheme.Space.sm) {
                 pill(strings.homeDurationPill(16))
                 pill(strings.homeWordsPill(5))
