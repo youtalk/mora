@@ -58,4 +58,15 @@ public final class YokaiOrchestrator {
     public func beginDay() {
         dayGainSoFar = 0
     }
+
+    public func recordSessionCompletion() {
+        guard let encounter = currentEncounter else { return }
+        let result = FriendshipMeterMath.applySessionCompletion(
+            percent: encounter.friendshipPercent,
+            dayGainSoFar: dayGainSoFar
+        )
+        encounter.friendshipPercent = result.percent
+        dayGainSoFar = result.dayGain
+        encounter.sessionCompletionCount += 1
+    }
 }
