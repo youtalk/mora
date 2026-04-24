@@ -1,0 +1,7 @@
+outputs/
+refs/
+tools/ComfyUI/
+venv/
+__pycache__/
+*.safetensors
+*.ckpt

@@ -1,0 +1,23 @@
+{
+  "id": "sh",
+  "grapheme": "sh",
+  "ipa": "/ʃ/",
+  "personality": "mischievous whisper spirit",
+  "sound_gesture": "index finger pursed to lips in a shushing pose, one eye winking",
+  "word_decor": ["paper sailor hat shaped like a small ship", "pointed seashell ears", "fluffy fin-like tail"],
+  "palette": ["teal", "cream", "foam-white"],
+  "expression": "playful smirk, large round sparkling eyes",
+  "voice": {
+    "character_description": "young mischievous whispery boy, softly spoken with playful cadence, subtle wind-like breath",
+    "clips": {
+      "phoneme": "Shhh /ʃ/",
+      "example_1": "ship",
+      "example_2": "shop",
+      "example_3": "shell",
+      "greet": "Shhh! You made it. Can you hear my sound?",
+      "encourage": "That's it! Hear it whisper?",
+      "gentle_retry": "So close. Listen once more.",
+      "friday_acknowledge": "You found my sound. Now I am yours to remember."
+    }
+  }
+}

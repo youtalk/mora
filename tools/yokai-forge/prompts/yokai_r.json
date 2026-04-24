@@ -1,0 +1,23 @@
+{
+  "id": "r",
+  "grapheme": "r",
+  "ipa": "/r/",
+  "personality": "tiger-cub rumble yokai",
+  "sound_gesture": "tongue curled back, low growl pose, fists on hips",
+  "word_decor": ["rabbit-ear hood with one bent tip", "rainbow scarf", "tiny rocket-fin boots"],
+  "palette": ["crimson", "saffron", "cobalt"],
+  "expression": "confident grin baring small fangs",
+  "voice": {
+    "character_description": "raspy bright child voice with rolled r, energetic, slightly barky",
+    "clips": {
+      "phoneme": "Rrrr /r/",
+      "example_1": "rabbit",
+      "example_2": "rainbow",
+      "example_3": "rocket",
+      "greet": "Rrrr! Are you brave enough to roar my sound?",
+      "encourage": "Roar! That was real!",
+      "gentle_retry": "Curl your tongue up and back. One more.",
+      "friday_acknowledge": "You earned my roar. Carry it proudly."
+    }
+  }
+}

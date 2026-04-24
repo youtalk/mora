@@ -1,0 +1,23 @@
+{
+  "id": "short_a",
+  "grapheme": "a",
+  "ipa": "/æ/",
+  "personality": "wide-mouth surprise yokai",
+  "sound_gesture": "mouth dropped wide open, eyes big, hands up as if astonished",
+  "word_decor": ["apple-shaped hat with a leaf", "ant-antenna headband", "tiny wooden axe prop"],
+  "palette": ["apple-red", "leaf-green", "cream"],
+  "expression": "surprised wonder, mouth wide, eyebrows up",
+  "voice": {
+    "character_description": "expressive exclamatory child voice, drawn-out vowels, always sounding amazed",
+    "clips": {
+      "phoneme": "Aaah /æ/",
+      "example_1": "apple",
+      "example_2": "ant",
+      "example_3": "axe",
+      "greet": "Aaah! What a strong voice! Can you say my sound?",
+      "encourage": "Aaamazing! Open wide!",
+      "gentle_retry": "Drop your jaw. Big open mouth.",
+      "friday_acknowledge": "Aaah! You mastered me. I am yours!"
+    }
+  }
+}
