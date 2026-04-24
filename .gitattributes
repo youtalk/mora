@@ -1,2 +1,4 @@
 Packages/MoraMLX/Sources/MoraMLX/Resources/wav2vec2-phoneme.mlmodelc/** filter=lfs diff=lfs merge=lfs -text
 Packages/MoraMLX/Sources/MoraMLX/Resources/wav2vec2-phoneme.mlpackage/** filter=lfs diff=lfs merge=lfs -text
+Packages/MoraCore/Sources/MoraCore/Resources/Yokai/**/*.png filter=lfs diff=lfs merge=lfs -text
+Packages/MoraCore/Sources/MoraCore/Resources/Yokai/**/*.m4a filter=lfs diff=lfs merge=lfs -text
