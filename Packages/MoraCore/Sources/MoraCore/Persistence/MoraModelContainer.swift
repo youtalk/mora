@@ -10,6 +10,7 @@ public enum MoraModelContainer {
         LearnerProfile.self,
         DailyStreak.self,
         PronunciationTrialLog.self,
+        YokaiEncounterEntity.self,
     ])
 
     public static func inMemory() throws -> ModelContainer {
