@@ -46,17 +46,19 @@ struct ShortSentencesView: View {
                         micStack
                     }
 
-                    VStack(spacing: MoraTheme.Space.xs) {
+                    VStack(spacing: MoraTheme.Space.sm) {
                         Text(
                             strings.sessionSentenceCounter(
                                 (pinnedSentenceIndex ?? orchestrator.sentenceIndex) + 1,
                                 orchestrator.sentences.count
                             )
                         )
+                        .font(MoraType.label())
+
                         Text(strings.sentencesLongPressHint)
+                            .font(MoraType.subtitle())
                             .multilineTextAlignment(.center)
                     }
-                    .font(MoraType.label())
                     .foregroundStyle(MoraTheme.Ink.muted)
                     .minimumScaleFactor(0.5)
 
@@ -118,25 +120,44 @@ struct ShortSentencesView: View {
                     break
                 }
             }
-            transcriptLine
+            transcriptSlot
         }
     }
 
-    @ViewBuilder
-    private var transcriptLine: some View {
+    /// Fixed-height plate for the ASR read-out. The slot is always laid
+    /// out at `Self.transcriptSlotHeight` whether or not a partial / final
+    /// transcript is present, so the mic button and the counter/hint row
+    /// below it keep a constant baseline — previously the transcript text
+    /// appeared on the first partial and shoved every subsequent row
+    /// down by one line height, which reads as a jump to the learner.
+    private var transcriptSlot: some View {
+        Text(activeTranscript)
+            .font(MoraType.transcript())
+            .foregroundStyle(MoraTheme.Ink.secondary)
+            .lineLimit(2)
+            .multilineTextAlignment(.center)
+            .frame(
+                maxWidth: .infinity,
+                minHeight: Self.transcriptSlotHeight,
+                alignment: .top
+            )
+            .animation(.easeInOut(duration: 0.15), value: activeTranscript)
+            .accessibilityHidden(activeTranscript.isEmpty)
+            .accessibilityLabel(Text("You said: \(activeTranscript)"))
+    }
+
+    /// Reserves two lines at 48pt transcript size — enough for the
+    /// longest A-day sentence without growing past two lines on iPad.
+    private static let transcriptSlotHeight: CGFloat = 120
+
+    /// Current text to render in the transcript slot, or "" when idle.
+    /// Hoisted out of the ViewBuilder so the slot can always exist in
+    /// the layout tree (even when no transcript is available yet).
+    private var activeTranscript: String {
         if case .listening(let partial) = micState, !partial.isEmpty {
-            Text(partial)
-                .font(MoraType.transcript())
-                .foregroundStyle(MoraTheme.Ink.secondary)
-                .lineLimit(3)
-                .multilineTextAlignment(.center)
-        } else if !lastHeard.isEmpty {
-            Text(lastHeard)
-                .font(MoraType.transcript())
-                .foregroundStyle(MoraTheme.Ink.secondary)
-                .lineLimit(3)
-                .multilineTextAlignment(.center)
+            return partial
         }
+        return lastHeard
     }
 
     private var displayedSentence: DecodeSentence? {

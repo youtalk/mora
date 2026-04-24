@@ -55,8 +55,10 @@ public struct DecodeBoardView: View {
 
     private var prompt: some View {
         Text(promptText)
-            .font(.headline)
-            .foregroundColor(.secondary)
+            .font(MoraType.subtitle())
+            .foregroundStyle(MoraTheme.Ink.secondary)
+            .multilineTextAlignment(.center)
+            .minimumScaleFactor(0.6)
             .accessibilityLabel(promptText)
     }
 

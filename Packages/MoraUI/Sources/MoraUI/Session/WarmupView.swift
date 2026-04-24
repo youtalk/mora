@@ -19,7 +19,7 @@ struct WarmupView: View {
                     .minimumScaleFactor(0.5)
 
                 Text("Listen and tap.")
-                    .font(MoraType.label())
+                    .font(MoraType.subtitle())
                     .foregroundStyle(MoraTheme.Ink.muted)
                     .minimumScaleFactor(0.5)
 

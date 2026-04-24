@@ -25,7 +25,7 @@ public struct YokaiLayerView: View {
                     HStack {
                         Spacer()
                         YokaiPortraitCorner(yokai: yokai, sparkleTrigger: orchestrator.lastCorrectTrialID)
-                            .frame(width: 80, height: 80)
+                            .frame(width: 140, height: 140)
                             .padding(.trailing, 24)
                             .padding(.bottom, 24)
                     }

@@ -36,7 +36,7 @@ struct CompletionView: View {
             Spacer()
 
             Text(strings.completionComeBack)
-                .font(MoraType.bodyReading())
+                .font(MoraType.subtitle())
                 .foregroundStyle(MoraTheme.Ink.muted)
 
             Button("Done") { dismissSession() }
