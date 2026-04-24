@@ -1,0 +1,54 @@
+{
+  "target": {
+    "letters": "a",
+    "phoneme": "æ"
+  },
+  "l2_taught_graphemes": [
+    "a","b","c","d","e","f","g","h","i","j","k","l","m",
+    "n","o","p","q","r","s","t","u","v","w","x","y","z","sh","th"
+  ],
+  "decode_words": [
+    { "surface": "cat",  "graphemes": ["c","a","t"],  "phonemes": ["k","æ","t"], "note": "short a medial" },
+    { "surface": "bat",  "graphemes": ["b","a","t"],  "phonemes": ["b","æ","t"], "note": "short a medial" },
+    { "surface": "rat",  "graphemes": ["r","a","t"],  "phonemes": ["r","æ","t"], "note": "short a medial" },
+    { "surface": "fan",  "graphemes": ["f","a","n"],  "phonemes": ["f","æ","n"], "note": "short a medial" },
+    { "surface": "ran",  "graphemes": ["r","a","n"],  "phonemes": ["r","æ","n"], "note": "short a medial" },
+    { "surface": "map",  "graphemes": ["m","a","p"],  "phonemes": ["m","æ","p"], "note": "short a medial" },
+    { "surface": "mad",  "graphemes": ["m","a","d"],  "phonemes": ["m","æ","d"], "note": "short a medial" },
+    { "surface": "bad",  "graphemes": ["b","a","d"],  "phonemes": ["b","æ","d"], "note": "short a medial" },
+    { "surface": "pat",  "graphemes": ["p","a","t"],  "phonemes": ["p","æ","t"], "note": "short a medial" },
+    { "surface": "sat",  "graphemes": ["s","a","t"],  "phonemes": ["s","æ","t"], "note": "short a medial" }
+  ],
+  "sentences": [
+    {
+      "text": "A cat ran.",
+      "words": [
+        { "surface": "a",   "graphemes": ["a"],          "phonemes": ["ə"] },
+        { "surface": "cat", "graphemes": ["c","a","t"],  "phonemes": ["k","æ","t"] },
+        { "surface": "ran", "graphemes": ["r","a","n"],  "phonemes": ["r","æ","n"] }
+      ]
+    },
+    {
+      "text": "The fat rat sat on a map.",
+      "words": [
+        { "surface": "the", "graphemes": ["t","h","e"],  "phonemes": ["ð","ə"] },
+        { "surface": "fat", "graphemes": ["f","a","t"],  "phonemes": ["f","æ","t"] },
+        { "surface": "rat", "graphemes": ["r","a","t"],  "phonemes": ["r","æ","t"] },
+        { "surface": "sat", "graphemes": ["s","a","t"],  "phonemes": ["s","æ","t"] },
+        { "surface": "on",  "graphemes": ["o","n"],      "phonemes": ["ɒ","n"] },
+        { "surface": "a",   "graphemes": ["a"],          "phonemes": ["ə"] },
+        { "surface": "map", "graphemes": ["m","a","p"],  "phonemes": ["m","æ","p"] }
+      ]
+    },
+    {
+      "text": "A bad bat is mad.",
+      "words": [
+        { "surface": "a",   "graphemes": ["a"],          "phonemes": ["ə"] },
+        { "surface": "bad", "graphemes": ["b","a","d"],  "phonemes": ["b","æ","d"] },
+        { "surface": "bat", "graphemes": ["b","a","t"],  "phonemes": ["b","æ","t"] },
+        { "surface": "is",  "graphemes": ["i","s"],      "phonemes": ["ɪ","z"] },
+        { "surface": "mad", "graphemes": ["m","a","d"],  "phonemes": ["m","æ","d"] }
+      ]
+    }
+  ]
+}
