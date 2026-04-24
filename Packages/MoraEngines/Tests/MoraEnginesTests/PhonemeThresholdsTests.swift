@@ -24,4 +24,25 @@ final class PhonemeThresholdsTests: XCTestCase {
         XCTAssertEqual(d.targetCentroid, 2_000, accuracy: 1)
         XCTAssertEqual(d.minReliable, 1_700, accuracy: 1)
     }
+
+    func testAeUhFormantThresholds() {
+        // æ → ʌ direction. Boundary lowered from the original literature
+        // 640 Hz to 590 Hz (7.8 % shift, within Plan A4's ±15 % rule) so
+        // adult-speaker /æ/ measurements landing in the 590-640 Hz band
+        // classify as matched rather than substituted-by-/ʌ/.
+        let aeUh = PhonemeThresholds.primary(for: "æ", against: "ʌ")!
+        XCTAssertEqual(aeUh.feature, .formantF1Hz)
+        XCTAssertEqual(aeUh.targetCentroid, 700, accuracy: 1)
+        XCTAssertEqual(aeUh.substituteCentroid, 580, accuracy: 1)
+        XCTAssertEqual(aeUh.boundary, 590, accuracy: 1)
+
+        // ʌ → æ direction shares the same boundary (the table is
+        // symmetric by construction), with target/substitute centroids
+        // swapped.
+        let uhAe = PhonemeThresholds.primary(for: "ʌ", against: "æ")!
+        XCTAssertEqual(uhAe.feature, .formantF1Hz)
+        XCTAssertEqual(uhAe.targetCentroid, 580, accuracy: 1)
+        XCTAssertEqual(uhAe.substituteCentroid, 700, accuracy: 1)
+        XCTAssertEqual(uhAe.boundary, 590, accuracy: 1)
+    }
 }

@@ -22,7 +22,7 @@ Re-bench of all 12 adult-proxy fixtures against `main` HEAD `d88bf51` (post-PR #
 
 The threshold-tuning lever cannot fix any of v/b or r/l: the measured values are not just slightly off-boundary — they are in the wrong feature-space region entirely. Two extractor fixes (better VOT estimation, liquid-onset-aware localization) plus one short-window F1 robustness fix are required before bench-followups Task A1 can land all 12 fixtures.
 
-This plan does not block on the æ/ʌ boundary calibration (handled by `2026-04-24-engine-a-feature-extractor-reliability.md` is a sibling, not a prerequisite); the three tasks here are independent of that one-line change.
+This plan does not block on the æ/ʌ boundary calibration (640 Hz → 590 Hz, landed in the same PR as this plan via the one-line `PhonemeThresholds.swift` change). The tasks here cover only the deeper feature-extractor work; threshold tuning is independent.
 
 ## Scope
 
@@ -120,8 +120,11 @@ Edit `PhonemeRegionLocalizer.swift`. Add this private helper before `region(clip
 private static let liquidIPAs: Set<String> = ["r", "l"]
 
 private static func onsetWindowMs(for word: Word, defaultMs: Double, fractionMs: Double) -> Double {
-    let target = word.targetPhoneme.ipa
-    if liquidIPAs.contains(target) {
+    // Word.targetPhoneme is optional (nil = transcript-only path, no
+    // acoustic evaluation). When it's nil, fall back to the default
+    // window — the localizer is still called via the non-targeted
+    // codepaths and we don't have phoneme info to specialize on.
+    if let target = word.targetPhoneme?.ipa, liquidIPAs.contains(target) {
         // Liquids' acoustically-stable region is ~60 ms before the following
         // vowel's formants begin. The 150 ms default catches that vowel.
         return min(60, fractionMs)
@@ -219,13 +222,14 @@ func testVoicedFricativeHasContinuousVoicingThenVowel() {
 }
 
 func testVoicedStopHasSilencePauseBeforeBurst() {
-    // 200 ms total: 60 ms voicing + 30 ms silence + burst at 90 ms + vowel.
-    // RMS at 70 ms (mid-silence) should be near zero.
+    // 200 ms total. The synth lays down 80 samples (= 5 ms at 16 kHz) of
+    // closure right before the burst at burstStartMs. With burstStartMs=90
+    // the closure window is 85..90 ms.
     let clip = SyntheticAudio.voicedStop(durationMs: 200, burstStartMs: 90, vowelStartMs: 95)
     XCTAssertEqual(clip.samples.count, 3_200)
 
-    // Window the silence region: samples 1_120..1_440 = 70..90 ms.
-    let silenceWindow = clip.samples[1_120..<1_440]
+    // Window the silence region: samples 1_360..1_440 = 85..90 ms.
+    let silenceWindow = clip.samples[1_360..<1_440]
     let rmsSilence = sqrt(silenceWindow.reduce(0) { $0 + $1 * $1 } / Float(silenceWindow.count))
     XCTAssertLessThan(rmsSilence, 0.005)
 }
@@ -244,18 +248,20 @@ Expected: compile error, `voicedFricative` not defined.
 Add to `SyntheticAudio.swift` (after `silence(durationMs:)`):
 
 ```swift
-    /// Voiced fricative: low-amplitude band-limited noise (200–800 Hz)
-    /// continuous from t=0 to `burstStartMs`, then a sustained voiced
-    /// vowel (sine at 220 Hz) from `burstStartMs` onward. Both regions
-    /// share an envelope with RMS ≈ 0.05 so the seam is acoustically
-    /// continuous — the signature expected from /v/, /z/, /ð/.
+    /// Voiced fricative: low-amplitude full-band uniform noise continuous
+    /// from t=0 to `burstStartMs`, then a sustained voiced vowel (sine at
+    /// 220 Hz) from `burstStartMs` onward. Both regions share an envelope
+    /// with RMS ≈ 0.05 so the seam is acoustically continuous — the
+    /// signature expected from /v/, /z/, /ð/. Spectral shape is not
+    /// constrained because the relative-VOT extractor only inspects RMS
+    /// envelope and burst/voicing transitions, not band content.
     static func voicedFricative(durationMs: Int, burstStartMs: Int) -> AudioClip {
         let sr = sampleRate
         let totalSamples = Int(Double(durationMs) / 1000.0 * sr)
         let burstSamples = Int(Double(burstStartMs) / 1000.0 * sr)
 
         var samples = [Float](repeating: 0, count: totalSamples)
-        // Fricative half: low-band noise, gain 0.05.
+        // Fricative half: full-band uniform noise, gain 0.05.
         var rng = SeededGenerator(seed: 0xFEED5)
         for i in 0..<burstSamples {
             samples[i] = Float.random(in: -1...1, using: &rng) * 0.05
