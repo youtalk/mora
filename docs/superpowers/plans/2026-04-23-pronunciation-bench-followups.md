@@ -111,12 +111,11 @@ These tasks cannot be automated; they require a physical iPad + quiet room + a h
 
 **Prerequisites:** iPad with Mora DEBUG build installed. macOS with AirDrop to iPad.
 
-- [ ] **Step 1:** Rebuild and install the Mora DEBUG build on iPad.
+- [ ] **Step 1:** Rebuild and install the recorder app on iPad.
 
 ```bash
 : "${REPO_ROOT:?Set REPO_ROOT to the Mora repo root before running this task.}"
-cd "$REPO_ROOT"
-# inject team, generate, revert
+cd "$REPO_ROOT/recorder"
 python3 -c "
 import re
 with open('project.yml') as f: p = f.read()
@@ -126,54 +125,71 @@ if 'DEVELOPMENT_TEAM' not in p:
 "
 xcodegen generate
 git restore --source=HEAD -- project.yml
-xcodebuild -project Mora.xcodeproj -scheme Mora -configuration Debug \
-  -destination 'generic/platform=iOS' build
+cd "$REPO_ROOT"
 ```
 
-Install via Xcode → the physical iPad target.
+In Xcode, open `recorder/Mora Fixture Recorder.xcodeproj`, select the `MoraFixtureRecorder` scheme and the connected iPad, and run (Cmd-R). Grant microphone permission on the iPad.
 
-- [ ] **Step 2:** 5-tap the Mora wordmark on HomeView → navigate to `Fixture Recorder` → record the 12 rows below with speaker tag `adult`. For every `substitutedBy` row, deliberately pronounce the word with the substitute phoneme.
+- [ ] **Step 2:** On the iPad, confirm the speaker toggle is set to **Adult** at the top of the list. Work through the 12 rows below in order. For each row, tap the pattern, tap Record, say the listed word (deliberately pronouncing `-as-X` rows with the substitute phoneme), tap Stop, tap Save. The take count on the list row should increment from 0 to 1.
 
-| # | Target | Expected | Substitute | Word | Output filename after trim |
-|---|---|---|---|---|---|
-| 1 | r | matched | — | right | `rl/right-correct.wav` |
-| 2 | r | substitutedBy | l | right | `rl/right-as-light.wav` |
-| 3 | l | matched | — | light | `rl/light-correct.wav` |
-| 4 | l | substitutedBy | r | light | `rl/light-as-right.wav` |
-| 5 | v | matched | — | very | `vb/very-correct.wav` |
-| 6 | v | substitutedBy | b | very | `vb/very-as-berry.wav` |
-| 7 | b | matched | — | berry | `vb/berry-correct.wav` |
-| 8 | b | substitutedBy | v | berry | `vb/berry-as-very.wav` |
-| 9 | æ | matched | — | cat | `aeuh/cat-correct.wav` |
-| 10 | æ | substitutedBy | ʌ | cat | `aeuh/cat-as-cut.wav` |
-| 11 | ʌ | matched | — | cut | `aeuh/cut-correct.wav` |
-| 12 | ʌ | substitutedBy | æ | cut | `aeuh/cut-as-cat.wav` |
+| # | Pattern row displayed in the list | Output filename the recorder writes |
+|---|---|---|
+| 1 | right — /r/ matched | `adult/rl/right-correct-take1.wav` + `.json` |
+| 2 | right — /r/ substitutedBy by /l/ | `adult/rl/right-as-light-take1.wav` + `.json` |
+| 3 | light — /l/ matched | `adult/rl/light-correct-take1.wav` + `.json` |
+| 4 | light — /l/ substitutedBy by /r/ | `adult/rl/light-as-right-take1.wav` + `.json` |
+| 5 | very — /v/ matched | `adult/vb/very-correct-take1.wav` + `.json` |
+| 6 | very — /v/ substitutedBy by /b/ | `adult/vb/very-as-berry-take1.wav` + `.json` |
+| 7 | berry — /b/ matched | `adult/vb/berry-correct-take1.wav` + `.json` |
+| 8 | berry — /b/ substitutedBy by /v/ | `adult/vb/berry-as-very-take1.wav` + `.json` |
+| 9 | cat — /æ/ matched | `adult/aeuh/cat-correct-take1.wav` + `.json` |
+| 10 | cat — /æ/ substitutedBy by /ʌ/ | `adult/aeuh/cat-as-cut-take1.wav` + `.json` |
+| 11 | cut — /ʌ/ matched | `adult/aeuh/cut-correct-take1.wav` + `.json` |
+| 12 | cut — /ʌ/ substitutedBy by /æ/ | `adult/aeuh/cut-as-cat-take1.wav` + `.json` |
 
-- [ ] **Step 3:** AirDrop `/On My iPad/Mora/` → `~/mora-fixtures/` on the Mac.
+If a take came out noisy or mispronounced, delete it from the takes list (trash icon) and re-record; do not tap Save until you are satisfied.
 
-- [ ] **Step 4:** Sanity-run the bench with `--no-speechace`:
+- [ ] **Step 3:** Back on the list screen, tap the toolbar **Share adult takes (12)** button. The zip builds, then the iOS Share Sheet appears. Pick AirDrop → your Mac. The Mac receives `~/Downloads/adult-<timestamp>.zip`.
+
+```bash
+cd ~/Downloads
+unzip -q adult-*.zip -d ~/mora-fixtures-adult/
+ls ~/mora-fixtures-adult/
+# Expect: rl/ vb/ aeuh/
+```
+
+- [ ] **Step 4:** Sanity-run the bench with `--no-speechace` so Engine A's output can be eyeballed:
 
 ```bash
 cd "$REPO_ROOT/dev-tools/pronunciation-bench"
-swift run bench ~/mora-fixtures/ ~/mora-fixtures/out.csv --no-speechace
+swift run bench ~/mora-fixtures-adult/ ~/mora-fixtures-adult/out.csv --no-speechace
 ```
 
-Scan the CSV. If any `-correct.wav` labels as `.substitutedBy(...)` or any `-as-X.wav` labels as `.matched`, re-record — the fixture is noisy or mispronounced. Do **not** widen the test assertion bounds to compensate.
+Scan the CSV. For each `-correct` row the `engine_a_label` column should read `matched`; for each `-as-X` row it should read `substitutedBy(<X>)`. Any mismatch means the fixture is bad — re-record that take through the recorder app, AirDrop the one take, replace the file in `~/mora-fixtures-adult/`, and re-run.
 
-- [ ] **Step 5:** Trim each WAV to keep clips ≤ 2 s per the original plan's guidance (16 kHz × 16-bit × mono ≈ 32 KB/s, so 2 s ≈ 65 KB + header, well under the 100 KB ceiling):
+- [ ] **Step 5:** Trim each WAV to ≤ 2 s and **rename the `-take1` suffix off** — the engine-side fixture tests expect `right-correct.wav` etc., not `right-correct-take1.wav`:
 
 ```bash
 # brew install sox  # once
-sox in.wav -r 16000 -b 16 -c 1 out.wav trim 0 2.0
+for subdir in rl vb aeuh; do
+    for wav in ~/mora-fixtures-adult/$subdir/*.wav; do
+        stem=$(basename "$wav" -take1.wav)
+        sox "$wav" -r 16000 -b 16 -c 1 \
+            ~/mora-fixtures-adult-trimmed/"$subdir"/"$stem".wav \
+            trim 0 2.0
+    done
+done
 ```
 
-- [ ] **Step 6:** Rename per the filename table and check in. Keep the sidecar JSONs alongside the WAVs — the engine tests read labels from the filename, but `dev-tools/pronunciation-bench/FixtureLoader.enumerate` requires a matching `.json` for each `.wav`, so the committed fixtures stay re-bench-able without re-recording.
+(Sidecar JSONs stay alongside the trimmed wavs — copy them with the same rename.)
+
+- [ ] **Step 6:** Copy into the repo test fixtures directory and verify filesize ceiling:
 
 ```bash
-cp -a ~/mora-fixtures-trimmed/{rl,vb,aeuh} Packages/MoraEngines/Tests/MoraEnginesTests/Fixtures/
-# remove the .gitkeep placeholders now that real WAVs are present
-rm -f Packages/MoraEngines/Tests/MoraEnginesTests/Fixtures/{rl,vb,aeuh}/.gitkeep
-ls -l Packages/MoraEngines/Tests/MoraEnginesTests/Fixtures/{rl,vb,aeuh}/*.wav
+cp -a ~/mora-fixtures-adult-trimmed/{rl,vb,aeuh} \
+      "$REPO_ROOT/Packages/MoraEngines/Tests/MoraEnginesTests/Fixtures/"
+rm -f "$REPO_ROOT/Packages/MoraEngines/Tests/MoraEnginesTests/Fixtures"/{rl,vb,aeuh}/.gitkeep
+ls -l "$REPO_ROOT/Packages/MoraEngines/Tests/MoraEnginesTests/Fixtures"/{rl,vb,aeuh}/*.wav
 ```
 
 Every file should be < 100 KB.
