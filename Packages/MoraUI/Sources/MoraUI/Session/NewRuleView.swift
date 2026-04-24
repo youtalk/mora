@@ -67,7 +67,7 @@ struct NewRuleView: View {
             finishedIntro = true
             return
         }
-        await speech.playAndAwait(introPrompts())
+        await speech.playAndAwait(introPrompts(includePhoneme: true))
         // Only flip the gate when the intro actually finished. A cancelled
         // run (view disappeared, close button, user-initiated interrupt)
         // leaves the gate closed so that a re-entering view replays the
@@ -77,24 +77,25 @@ struct NewRuleView: View {
         }
     }
 
-    /// Re-plays the same sequence used by `playIntro` without regating
-    /// `finishedIntro`, so the CTA stays active and the learner can keep
-    /// tapping "分かった" whenever they've heard enough.
+    /// Re-plays the phrase + exemplars without the lead-in phoneme. The
+    /// learner already heard the bare /ʃ/ on first entry; replaying it
+    /// on every tap of the listen-again button feels repetitive. The CTA
+    /// stays active so the learner can advance whenever they're ready.
     private func replayIntro() {
         guard let speech else { return }
-        let prompts = introPrompts()
+        let prompts = introPrompts(includePhoneme: false)
         Task { @MainActor in
             await speech.playAndAwait(prompts)
         }
     }
 
-    /// Build the target phoneme + "Two letters, one sound." + three
-    /// exemplar words. Avoids speaking the digraph letters in isolation
-    /// (TTS spells "sh" out as letters in plain text); the IPA hint is
-    /// the documented way to coax a clean /ʃ/ from Premium voices.
-    private func introPrompts() -> [SpeechPrompt] {
+    /// Build an optional lead-in phoneme + "Two letters, one sound." +
+    /// three exemplar words. Avoids speaking the digraph letters in
+    /// isolation (TTS spells "sh" out as letters in plain text); the IPA
+    /// hint is the documented way to coax a clean /ʃ/ from Premium voices.
+    private func introPrompts(includePhoneme: Bool) -> [SpeechPrompt] {
         var prompts: [SpeechPrompt] = []
-        if let phoneme = orchestrator.target.phoneme {
+        if includePhoneme, let phoneme = orchestrator.target.phoneme {
             prompts.append(.phoneme(phoneme, .slow))
         }
         prompts.append(.text("Two letters, one sound.", .slow))
