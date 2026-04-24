@@ -189,22 +189,69 @@ public enum FeatureExtractor {
     }
 
     /// Frequency (Hz) of the strongest FFT bin whose center lies within
-    /// [lowHz, highHz]. Intended as a lightweight stand-in for LPC formant
-    /// tracking — accurate enough for the onset / coda regions we score.
-    public static func spectralPeakInBand(clip: AudioClip, lowHz: Double, highHz: Double) -> Double {
+    /// [lowHz, highHz]. When `suppressPitchHarmonics` is true, the
+    /// extractor first estimates the speaker's pitch (50–400 Hz peak in
+    /// the autocorrelation) and excludes any band-peak within ±20 Hz of
+    /// an integer multiple of that pitch. Use suppression on short
+    /// windows (< 200 ms) where pitch harmonics regularly mask the true
+    /// F1 / F2.
+    public static func spectralPeakInBand(
+        clip: AudioClip,
+        lowHz: Double,
+        highHz: Double,
+        suppressPitchHarmonics: Bool = false
+    ) -> Double {
         guard let spectrum = powerSpectrum(clip: clip) else { return 0 }
         let binWidth = clip.sampleRate / Double(2 * spectrum.count)
+
+        let pitchHz: Double? = suppressPitchHarmonics ? dominantPitchHz(clip: clip) : nil
+        let suppressionTolerance = 20.0
+
         var bestBin = -1
         var bestPower: Float = 0
         for (i, p) in spectrum.enumerated() {
             let freq = Double(i) * binWidth
             if freq < lowHz || freq > highHz { continue }
+            if let f0 = pitchHz, f0 > 0 {
+                // Reject bins within tolerance of any harmonic of f0.
+                let nearestHarmonic = (freq / f0).rounded() * f0
+                if abs(freq - nearestHarmonic) < suppressionTolerance {
+                    continue
+                }
+            }
             if p > bestPower {
                 bestPower = p
                 bestBin = i
             }
         }
         return bestBin >= 0 ? Double(bestBin) * binWidth : 0
+    }
+
+    /// Estimate the dominant pitch (50–400 Hz) by autocorrelation.
+    /// Returns 0 when no clear period is found. Used internally by
+    /// `spectralPeakInBand` for harmonic suppression on short windows.
+    static func dominantPitchHz(clip: AudioClip) -> Double {
+        let sr = clip.sampleRate
+        let minLag = Int(sr / 400.0)  // 400 Hz max
+        let maxLag = Int(sr / 50.0)  // 50 Hz min
+        let samples = clip.samples
+        guard samples.count > maxLag * 2 else { return 0 }
+
+        var bestLag = -1
+        var bestCorr: Double = 0
+        for lag in minLag...maxLag {
+            var corr: Double = 0
+            let n = samples.count - lag
+            for i in 0..<n {
+                corr += Double(samples[i]) * Double(samples[i + lag])
+            }
+            corr /= Double(n)
+            if corr > bestCorr {
+                bestCorr = corr
+                bestLag = lag
+            }
+        }
+        return bestLag > 0 ? sr / Double(bestLag) : 0
     }
 
     /// Power spectrum of the windowed FFT, returned as a half-band magnitude

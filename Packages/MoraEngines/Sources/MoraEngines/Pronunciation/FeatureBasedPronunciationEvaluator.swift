@@ -196,9 +196,17 @@ public struct FeatureBasedPronunciationEvaluator: PronunciationEvaluator {
         case .spectralFlatness:
             return FeatureExtractor.spectralFlatness(clip: clip)
         case .formantF1Hz:
-            return FeatureExtractor.spectralPeakInBand(clip: clip, lowHz: 200, highHz: 1_000)
+            let suppress = clip.durationSeconds < 0.2
+            return FeatureExtractor.spectralPeakInBand(
+                clip: clip, lowHz: 200, highHz: 1_000,
+                suppressPitchHarmonics: suppress
+            )
         case .formantF2Hz:
-            return FeatureExtractor.spectralPeakInBand(clip: clip, lowHz: 1_000, highHz: 2_500)
+            let suppress = clip.durationSeconds < 0.2
+            return FeatureExtractor.spectralPeakInBand(
+                clip: clip, lowHz: 1_000, highHz: 2_500,
+                suppressPitchHarmonics: suppress
+            )
         case .formantF3Hz:
             return FeatureExtractor.spectralPeakInBand(clip: clip, lowHz: 1_500, highHz: 3_500)
         }

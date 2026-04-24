@@ -133,4 +133,27 @@ final class FeatureExtractorTests: XCTestCase {
         )
         XCTAssertGreaterThan(vot, 30)
     }
+
+    func testF1SuppressesPitchHarmonic() {
+        // 100 ms clip with a strong 220 Hz pitch (3rd harmonic at 660 Hz),
+        // a true F1 at 800 Hz with lower amplitude. Without suppression the
+        // 660 Hz harmonic wins; with suppression the 800 Hz peak should be
+        // selected. The search band starts at 500 Hz to exclude the 220 Hz
+        // fundamental itself from the comparison window.
+        let clip = SyntheticAudio.sineMix(
+            frequencies: [220, 660, 800],
+            gains: [1.0, 1.0, 0.6],
+            durationMs: 100
+        )
+
+        let withoutSuppress = FeatureExtractor.spectralPeakInBand(
+            clip: clip, lowHz: 500, highHz: 1_000
+        )
+        XCTAssertEqual(withoutSuppress, 660, accuracy: 80, "harmonic dominates without suppression")
+
+        let withSuppress = FeatureExtractor.spectralPeakInBand(
+            clip: clip, lowHz: 500, highHz: 1_000, suppressPitchHarmonics: true
+        )
+        XCTAssertEqual(withSuppress, 800, accuracy: 80, "true F1 selected with suppression")
+    }
 }
