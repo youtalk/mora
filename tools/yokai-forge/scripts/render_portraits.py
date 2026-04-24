@@ -36,9 +36,10 @@ def main() -> None:
 
     pipe = FluxPipeline.from_pretrained(
         "black-forest-labs/FLUX.1-dev", torch_dtype=torch.bfloat16
-    ).to("cuda")
+    )
     pipe.load_lora_weights(args.lora, adapter_name="style")
     pipe.set_adapters(["style"], adapter_weights=[args.lora_strength])
+    pipe.enable_model_cpu_offload()
 
     prompt = compose_positive(spec) + ", moraforge-kawaii-yokai-style"
     neg = compose_negative()

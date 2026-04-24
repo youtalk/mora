@@ -36,7 +36,8 @@ def main() -> None:
     pipe = FluxPipeline.from_pretrained(
         "black-forest-labs/FLUX.1-dev",
         torch_dtype=torch.bfloat16,
-    ).to("cuda")
+    )
+    pipe.enable_model_cpu_offload()
 
     spec_paths = sorted((ROOT / "prompts").glob("yokai_*.json"))
     if not spec_paths:
