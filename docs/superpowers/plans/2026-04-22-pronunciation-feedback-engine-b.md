@@ -144,7 +144,7 @@ Modified files:
 | `Packages/MoraMLX/Sources/MoraMLX/MoraMLXPlaceholder.swift` | Deleted in Part 2. | Part 2 |
 | `Packages/MoraUI/Sources/MoraUI/Session/SessionContainerView.swift` | Swap `FeatureBasedPronunciationEvaluator()` for composite when the shadow evaluator is available. | Part 1 |
 | `Mora/MoraApp.swift` | Call `PronunciationTrialRetentionPolicy.cleanup` once at launch. Provide a `ShadowEvaluatorFactory` environment value that `SessionContainerView` consumes. | Part 1 |
-| `.github/workflows/ci.yml` | `actions/checkout` → `with: lfs: true`. | Part 2 |
+| `.github/workflows/ci.yml` | Initially `actions/checkout` → `with: lfs: true` (Part 2). Replaced in PR #62 by `lfs: false` + `actions/cache@v4` keyed on `tools/models.manifest` + a `bash tools/fetch-models.sh` step on cache miss. | Part 2 → #62 |
 | `docs/superpowers/specs/2026-04-22-pronunciation-feedback-design.md` | Append `Implementation plan (Phase 3)` header line pointing to this plan. | Part 2 |
 
 ---
@@ -3557,6 +3557,14 @@ EOF
 
 ### Task 22: Run `convert.py` locally and commit `.mlmodelc` + `phoneme-labels.json` via Git LFS
 
+> **Historical.** Task 22 as written here landed with the LFS-based recipe.
+> PR #62 (`docs/superpowers/plans/2026-04-24-ci-lfs-to-releases.md`) then
+> migrated the model off LFS onto the `models/wav2vec2-phoneme-int8-v1`
+> GitHub Release: `.gitattributes` was deleted, `wav2vec2-phoneme.mlmodelc/`
+> is gitignored, and the artifact is fetched by `tools/fetch-models.sh` at
+> build time. For the current flow see that plan; the procedure below is
+> preserved as the original Part 2 implementation record.
+
 This is a one-time local step. An agentic worker should stop at Step 1 and surface the command so the human can run it.
 
 **Files:**
@@ -4078,6 +4086,14 @@ EOF
 ---
 
 ### Task 27: CI — enable Git LFS on checkout
+
+> **Historical.** Landed as described below with `lfs: true` on every
+> `actions/checkout`. PR #62 reversed that: all jobs now use `lfs: false`
+> and the model-needing jobs (`build-test`, `bench-build`) gain an
+> `actions/cache@v4` keyed on `tools/models.manifest` plus a
+> `bash tools/fetch-models.sh` step on cache miss. See
+> `docs/superpowers/plans/2026-04-24-ci-lfs-to-releases.md` Task 5 for the
+> current configuration.
 
 **Files:**
 - Modify: `.github/workflows/ci.yml`

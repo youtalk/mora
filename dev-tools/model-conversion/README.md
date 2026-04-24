@@ -8,7 +8,12 @@ CoreML package ready to ship in `Packages/MoraMLX`. Emits:
   model's final classification head.
 
 This tool runs on the developer's machine, never in CI. Output artifacts
-are checked into the repo via Git LFS (see `.gitattributes` at repo root).
+are packaged into `wav2vec2-phoneme.mlmodelc.tar.gz` and uploaded to the
+`models/wav2vec2-phoneme-int8-v1` GitHub Release; `tools/fetch-models.sh`
+reads `tools/models.manifest` to fetch and verify them at build time.
+(Earlier revisions of this workflow checked the artifacts into Git LFS;
+that was replaced by the Release + fetch-models bootstrap in PR #62 —
+see `docs/superpowers/plans/2026-04-24-ci-lfs-to-releases.md`.)
 
 ## Requirements
 
