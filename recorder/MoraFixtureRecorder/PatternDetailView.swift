@@ -24,7 +24,7 @@ struct PatternDetailView: View {
 
             Section("Capture") {
                 Button(store.isRecording ? "Stop" : "Record") {
-                    store.toggleRecording()
+                    store.toggleRecording(pattern: pattern)
                 }
                 Button("Save") {
                     store.save(pattern: pattern)
@@ -35,6 +35,7 @@ struct PatternDetailView: View {
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                 }
+                VerdictPanel(pattern: pattern, pending: store.pendingVerdict)
             }
 
             Section("Takes") {

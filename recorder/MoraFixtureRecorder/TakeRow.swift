@@ -12,6 +12,11 @@ struct TakeRow: View {
         HStack {
             Text(label)
             Spacer()
+            VerdictBadge(
+                cached: store.savedVerdicts[wavURL],
+                failed: store.failedURLs.contains(wavURL),
+                pattern: pattern
+            )
             ShareLink(items: store.takeArtifacts(for: wavURL)) {
                 Image(systemName: "square.and.arrow.up")
             }
@@ -22,6 +27,9 @@ struct TakeRow: View {
                     .foregroundStyle(.red)
             }
             .buttonStyle(.borderless)
+        }
+        .task(id: wavURL) {
+            await store.evaluateSavedTake(url: wavURL, pattern: pattern)
         }
     }
 
