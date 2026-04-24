@@ -24,7 +24,7 @@ struct PatternDetailView: View {
 
             Section("Capture") {
                 Button(store.isRecording ? "Stop" : "Record") {
-                    store.toggleRecording()
+                    store.toggleRecording(pattern: pattern)
                 }
                 Button("Save") {
                     store.save(pattern: pattern)

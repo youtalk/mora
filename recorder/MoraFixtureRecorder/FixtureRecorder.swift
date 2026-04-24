@@ -11,7 +11,7 @@ public enum FixtureRecorderError: Error, Sendable {
 /// Not thread-safe — intended to be used from the main actor inside a
 /// SwiftUI view.
 @MainActor
-public final class FixtureRecorder {
+open class FixtureRecorder {
 
     private let engine = AVAudioEngine()
     private var converter: AVAudioConverter?
@@ -22,9 +22,9 @@ public final class FixtureRecorder {
 
     public init() {}
 
-    public var isRunning: Bool { isRecording }
+    open var isRunning: Bool { isRecording }
 
-    public func start() throws {
+    open func start() throws {
         guard !isRecording else { return }
 
         let inputNode = engine.inputNode
@@ -70,7 +70,7 @@ public final class FixtureRecorder {
         isRecording = true
     }
 
-    public func stop() {
+    open func stop() {
         guard isRecording else { return }
         engine.inputNode.removeTap(onBus: 0)
         engine.stop()
@@ -78,7 +78,7 @@ public final class FixtureRecorder {
         sessionGeneration &+= 1
     }
 
-    public func drain() -> [Float] {
+    open func drain() -> [Float] {
         let out = buffer
         buffer.removeAll(keepingCapacity: false)
         return out

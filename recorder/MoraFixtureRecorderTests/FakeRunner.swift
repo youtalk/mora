@@ -21,17 +21,20 @@ actor FakeRunner: PronunciationRunning {
     /// they explicitly call `resume()`, modelling the "evaluation still
     /// running when Record is tapped again" race.
     private var pendingCompletion: CheckedContinuation<Void, Never>?
+    /// When true, the next `evaluate()` call suspends itself until `resume()`.
+    private var shouldSuspend = false
 
     func setNextResult(_ r: PhonemeTrialAssessment) {
         nextResult = r
     }
 
-    func waitForNextEvaluateAndSuspend() async {
-        await withCheckedContinuation { (c: CheckedContinuation<Void, Never>) in
-            pendingCompletion = c
-        }
+    /// Arms the fake so the next `evaluate()` call will block until
+    /// `resume()` is called. Returns immediately after setting the flag.
+    func waitForNextEvaluateAndSuspend() {
+        shouldSuspend = true
     }
 
+    /// Releases a blocked `evaluate()` call.
     func resume() {
         pendingCompletion?.resume()
         pendingCompletion = nil
@@ -47,7 +50,8 @@ actor FakeRunner: PronunciationRunning {
     ) async -> PhonemeTrialAssessment {
         callCount += 1
         lastSamples = samples
-        if pendingCompletion != nil {
+        if shouldSuspend {
+            shouldSuspend = false
             await withCheckedContinuation { (c: CheckedContinuation<Void, Never>) in
                 pendingCompletion = c
             }

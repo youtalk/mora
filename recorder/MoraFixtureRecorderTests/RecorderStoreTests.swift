@@ -1,7 +1,24 @@
 import AVFoundation
+import MoraCore
+import MoraEngines
 import MoraFixtures
 import XCTest
 @testable import MoraFixtureRecorder
+
+/// Test stub for `FixtureRecorder` that avoids AVAudioEngine. `drain()`
+/// returns a deterministic 24_000-sample Float32 buffer so the captured
+/// state has non-empty audio for the evaluator.
+@MainActor
+final class StubRecorder: FixtureRecorder {
+    override func start() throws { /* no-op */ }
+    override func stop() { /* no-op */ }
+    override func drain() -> [Float] {
+        // 1.5 s of silence. `FakeRunner` doesn't inspect samples in
+        // production tests — `lastSamples` on the fake still records
+        // what was passed if a test needs it.
+        Array(repeating: 0, count: 24_000)
+    }
+}
 
 @MainActor
 final class RecorderStoreTests: XCTestCase {
@@ -191,5 +208,71 @@ final class RecorderStoreTests: XCTestCase {
         XCTAssertEqual(store.takesRevision, before &+ 1)
         XCTAssertFalse(FileManager.default.fileExists(atPath: wav.path))
         XCTAssertFalse(FileManager.default.fileExists(atPath: json.path))
+    }
+
+    func testToggleRecordingKeepsPendingIdleInitially() async throws {
+        let fake = FakeRunner()
+        let store = RecorderStore(
+            documentsDirectory: tempDir, userDefaults: defaults,
+            runner: fake
+        )
+        XCTAssertEqual(store.pendingVerdict, .idle)
+    }
+
+    func testStopRunsEvaluatorAndPublishesReady() async throws {
+        let fake = FakeRunner()
+        let expected = PhonemeTrialAssessment(
+            targetPhoneme: Phoneme(ipa: "æ"),
+            label: .matched, score: 100,
+            coachingKey: nil, features: ["F1": 720.0],
+            isReliable: true
+        )
+        await fake.setNextResult(expected)
+
+        let pattern = FixtureCatalog.v1Patterns.first { $0.id == "aeuh-cat-correct" }!
+        let fixtureRecorder = StubRecorder()
+        let store = RecorderStore(
+            documentsDirectory: tempDir, userDefaults: defaults,
+            recorder: fixtureRecorder, runner: fake
+        )
+
+        // Start "recording" (StubRecorder no-op) then stop. StubRecorder
+        // returns 24000 deterministic float samples when drained.
+        store.toggleRecording(pattern: pattern)  // → .recording
+        store.toggleRecording(pattern: pattern)  // → .captured + .evaluating
+
+        XCTAssertEqual(store.pendingVerdict, .evaluating)
+
+        // Wait for evaluation task to resolve.
+        await store.waitForPendingVerdict(.ready(expected), timeout: 1.0)
+        XCTAssertEqual(store.pendingVerdict, .ready(expected))
+        let callCount = await fake.callCount
+        XCTAssertEqual(callCount, 1)
+    }
+
+    func testRecordAgainCancelsStaleEvaluation() async throws {
+        let fake = FakeRunner()
+        await fake.waitForNextEvaluateAndSuspend()  // arm suspension
+
+        let pattern = FixtureCatalog.v1Patterns.first { $0.id == "aeuh-cat-correct" }!
+        let fixtureRecorder = StubRecorder()
+        let store = RecorderStore(
+            documentsDirectory: tempDir, userDefaults: defaults,
+            recorder: fixtureRecorder, runner: fake
+        )
+
+        store.toggleRecording(pattern: pattern)  // → .recording
+        store.toggleRecording(pattern: pattern)  // → .captured + kicks evaluate (suspended)
+        XCTAssertEqual(store.pendingVerdict, .evaluating)
+
+        // User taps Record again while evaluation is suspended.
+        store.toggleRecording(pattern: pattern)  // cancels, → .recording
+        XCTAssertEqual(store.pendingVerdict, .idle)
+
+        // Release the suspended evaluator; its late-arriving result must
+        // not flip pendingVerdict back to .ready(…).
+        await fake.resume()
+        try await Task.sleep(nanoseconds: 50_000_000)  // 50 ms MainActor drain
+        XCTAssertEqual(store.pendingVerdict, .idle)
     }
 }

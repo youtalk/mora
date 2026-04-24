@@ -163,9 +163,23 @@ public final class RecorderStore {
         [wavURL, wavURL.deletingPathExtension().appendingPathExtension("json")]
     }
 
-    public func toggleRecording() {
+    /// Test helper: spin on MainActor until `pendingVerdict` reaches
+    /// `target` or `timeout` seconds elapse. Non-production.
+    public func waitForPendingVerdict(
+        _ target: PendingVerdict,
+        timeout: TimeInterval
+    ) async {
+        let deadline = Date().addingTimeInterval(timeout)
+        while pendingVerdict != target && Date() < deadline {
+            try? await Task.sleep(nanoseconds: 5_000_000)  // 5 ms
+        }
+    }
+
+    public func toggleRecording(pattern: FixturePattern) {
         switch recordingState {
         case .idle, .saveFailed, .captured:
+            evaluationTask?.cancel()
+            pendingVerdict = .idle
             do {
                 try recorder.start()
                 recordingState = .recording
@@ -178,8 +192,33 @@ public final class RecorderStore {
             let duration = Double(samples.count) / recorder.targetSampleRate
             recordingState = .captured(
                 CaptureSnapshot(samples: samples, durationSeconds: duration))
+            evaluateCaptured(pattern: pattern)
         case .saving:
             break
+        }
+    }
+
+    private func evaluateCaptured(pattern: FixturePattern) {
+        guard case let .captured(snapshot) = recordingState else { return }
+        pendingVerdict = .evaluating
+        let runner = self.runner
+        let sampleRate = recorder.targetSampleRate
+        evaluationTask = Task.detached { [weak self] in
+            let assessment = await runner.evaluate(
+                samples: snapshot.samples,
+                sampleRate: sampleRate,
+                wordSurface: pattern.wordSurface,
+                targetPhonemeIPA: pattern.targetPhonemeIPA,
+                phonemeSequenceIPA: pattern.phonemeSequenceIPA,
+                targetPhonemeIndex: pattern.targetPhonemeIndex
+            )
+            if Task.isCancelled { return }
+            await MainActor.run {
+                guard let self else { return }
+                if case .evaluating = self.pendingVerdict {
+                    self.pendingVerdict = .ready(assessment)
+                }
+            }
         }
     }
 
