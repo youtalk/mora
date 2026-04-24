@@ -127,7 +127,8 @@ public struct ShadowLoggingPronunciationEvaluator: PronunciationEvaluator {
         let ipa = entry.targetPhoneme.ipa
         let a = formatEngineA(entry.engineA)
         let b = formatEngineB(entry.engineB)
-        trialLog.info("trial \"\(word, privacy: .public)\" /\(ipa, privacy: .public)/  A=\(a, privacy: .public)  B=\(b, privacy: .public)")
+        let line = "trial \"\(word)\" /\(ipa)/  A=\(a)  B=\(b)"
+        trialLog.info("\(line, privacy: .public)")
     }
 
     private static func formatEngineA(_ a: PhonemeTrialAssessment?) -> String {
