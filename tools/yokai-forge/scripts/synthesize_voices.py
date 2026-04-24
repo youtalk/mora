@@ -26,11 +26,13 @@ import pathlib as _pathlib
 sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parent))
 import argparse
 import base64
+import io
 import json
 import os
 import pathlib
 import signal
 import subprocess
+import tempfile
 import time
 import urllib.error
 import urllib.request
@@ -46,10 +48,33 @@ TTS_URL = "http://127.0.0.1:8080/v1/tts"
 SERVER_STARTUP_TIMEOUT_SEC = 300.0
 
 
-def wait_for_server(deadline_sec: float) -> None:
+def _read_log(log: io.IOBase) -> str:
+    try:
+        log.flush()
+        log.seek(0)
+        return log.read() or ""
+    except Exception:
+        return ""
+
+
+def wait_for_server(server: subprocess.Popen, log: io.IOBase, deadline_sec: float) -> None:
+    """Poll /v1/health until the api_server is up or the subprocess dies.
+
+    If `server.poll()` returns a non-None exit code before the health check
+    succeeds, we know the server crashed during startup (bad venv, missing
+    checkpoints, port conflict, etc.) — raise immediately with the captured
+    stdout+stderr tail so the user sees the actual failure instead of a
+    generic "not ready after Ns" timeout.
+    """
     start = time.monotonic()
     last_err: Exception | None = None
     while time.monotonic() - start < deadline_sec:
+        rc = server.poll()
+        if rc is not None:
+            raise SystemExit(
+                f"fish-speech api_server exited with code {rc} during startup.\n"
+                f"---server output---\n{_read_log(log)}"
+            )
         try:
             with urllib.request.urlopen(HEALTH_URL, timeout=2) as r:
                 if r.status == 200:
@@ -58,7 +83,8 @@ def wait_for_server(deadline_sec: float) -> None:
             last_err = exc
         time.sleep(2)
     raise SystemExit(
-        f"fish-speech api_server not ready after {deadline_sec:.0f}s; last error: {last_err!r}"
+        f"fish-speech api_server not ready after {deadline_sec:.0f}s; "
+        f"last error: {last_err!r}\n---server output---\n{_read_log(log)}"
     )
 
 
@@ -103,13 +129,16 @@ def main() -> None:
     ref_audio_b64 = base64.b64encode(ref_wav.read_bytes()).decode("ascii")
     ref_transcription = ref_txt.read_text().strip()
 
+    server_log = tempfile.TemporaryFile(mode="w+")
     server = subprocess.Popen(
         [sys.executable, "tools/api_server.py"],
         cwd=str(FISH_SPEECH),
         start_new_session=True,
+        stdout=server_log,
+        stderr=subprocess.STDOUT,
     )
     try:
-        wait_for_server(SERVER_STARTUP_TIMEOUT_SEC)
+        wait_for_server(server, server_log, SERVER_STARTUP_TIMEOUT_SEC)
         for key, text in spec["voice"]["clips"].items():
             wav = out / f"{key}.wav"
             synth_clip(text, ref_audio_b64, ref_transcription, wav)

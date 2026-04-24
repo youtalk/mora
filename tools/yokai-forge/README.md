@@ -32,7 +32,8 @@ commands (run manually on the workstation).
 5. Run `scripts/synthesize_voices.py --yokai sh` for voice clips.
 6. Master via `scripts/master_audio.py`; copy outputs into mora repo.
 
-Binary assets ship via Git LFS.
+Binary assets ship as plain Git blobs (LFS was removed from the repo in
+PR #62).
 
 ## Licensing — commercial release requires swap-outs
 

@@ -1,8 +1,7 @@
 # RPG Shell Yokai — Voice + Catalog Follow-up (R4 Part B)
 
-Follow-up to the portraits-only R4 PR (branch `rpg-yokai-r4-assets`,
-commit `123afb0 assets(yokai): bundle portraits for sh, th, f, r,
-short_a`). The original R4 plan at
+Follow-up to the portraits-only R4 PR (#63, "assets(yokai): bundle first
+five yokai portraits (R4 part A)"). The original R4 plan at
 `docs/superpowers/plans/2026-04-23-rpg-shell-yokai.md` scoped R4 as
 "five portraits + forty voice clips + catalog finalization"; portraits
 landed first as a self-contained PR and the voice/catalog tail moves
