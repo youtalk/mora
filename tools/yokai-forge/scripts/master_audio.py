@@ -13,10 +13,26 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
 def master(src: pathlib.Path, dst: pathlib.Path) -> None:
-    # ffmpeg loudnorm + resample + AAC encode.
+    # Trim leading + trailing silence on the raw signal, then loudnorm
+    # to -16 LUFS, resample to 22050 Hz mono, encode AAC.
+    #
+    # Filter order matters. An earlier version ran loudnorm first and
+    # then silenceremove with a -40 dB threshold, which dropped quiet
+    # fricatives (notably the /ʃ/ in "ship") whose peaks sit near
+    # -40 dB after loudnorm's gain — the fricative was classified as
+    # silence and the word was cut to ~150 ms. Trimming before
+    # loudnorm keeps the threshold on the known raw level, and the
+    # -50 dB threshold leaves headroom for low-energy phonemes.
+    #
+    # The silenceremove chain uses the canonical "trim head, reverse,
+    # trim head again, reverse back" idiom so only the true leading
+    # and trailing silence is removed — inter-word pauses are kept.
+    trim = (
+        "silenceremove=start_periods=1:start_duration=0.1:start_threshold=-50dB"
+    )
     cmd = [
         "ffmpeg", "-y", "-i", str(src),
-        "-af", "loudnorm=I=-16:TP=-1.5:LRA=11,silenceremove=start_periods=1:start_silence=0.05:start_threshold=-40dB:stop_periods=1:stop_silence=0.05:stop_threshold=-40dB",
+        "-af", f"{trim},areverse,{trim},areverse,loudnorm=I=-16:TP=-1.5:LRA=11",
         "-ar", "22050", "-ac", "1",
         "-c:a", "aac", "-b:a", "96k",
         str(dst),
