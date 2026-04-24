@@ -1,0 +1,23 @@
+{
+  "id": "th",
+  "grapheme": "th",
+  "ipa": "/θ/",
+  "personality": "tongue-showing prankster yokai",
+  "sound_gesture": "tongue poked out between front teeth, puffing air",
+  "word_decor": ["small lightning-bolt ear tufts", "thumb-up paw held forward", "thorny leaf cape"],
+  "palette": ["violet", "mustard", "cream"],
+  "expression": "cheeky grin with visible tongue tip",
+  "voice": {
+    "character_description": "bright playful child voice with slight lisp, mischievous cadence",
+    "clips": {
+      "phoneme": "Thhh /θ/",
+      "example_1": "thumb",
+      "example_2": "thunder",
+      "example_3": "thorn",
+      "greet": "Thhh! Show me if you can make my sound!",
+      "encourage": "Nice! Feel the air on your tongue?",
+      "gentle_retry": "Keep the tongue out. Try again.",
+      "friday_acknowledge": "Perfect! Now I am yours, friend."
+    }
+  }
+}
