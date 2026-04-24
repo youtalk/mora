@@ -225,12 +225,25 @@ EOF
 
 ### Task A2: Record son's child-speaker fixtures (not committed)
 
-Same DEBUG fixture recorder, speaker tag `child`, minimum 3 takes per (target, expectedLabel) row from Task A1's table. Quiet room. No siblings audible.
+Same recorder app, but with the speaker toggle flipped to **Child**. Three or more takes per (pattern, speakerTag = child) row. Quiet room; no siblings audible.
 
-- [ ] **Step 1:** Record. Aim for 36+ clips (3 × 12 rows).
-- [ ] **Step 2:** AirDrop to `~/mora-fixtures-child/`. Do **not** copy into the repo.
-- [ ] **Step 3:** Confirm sidecar JSONs came across (the bench's SpeechAce path needs them).
-- [ ] **Step 4:** No commit — these stay on the laptop per spec §9.3.
+- [ ] **Step 1:** Install the recorder (same `xcodegen generate` + Xcode run flow as Task A1 Step 1) if not already installed.
+- [ ] **Step 2:** Flip the speaker toggle to **Child**.
+- [ ] **Step 3:** Work through the 12 patterns in order. For each, record 3 takes (Record → Stop → Save, three times). The takes list shows take 1, take 2, take 3 after each Save. Adjust microphone distance / re-record any take that came out noisy via its trash icon and a fresh Save.
+
+  Target: 36+ clips (3 × 12 rows).
+
+- [ ] **Step 4:** Single-take share for immediate checks: back on a pattern's detail screen, tap a take row's share icon → Share Sheet → AirDrop → Mac. Useful mid-session to confirm one take before moving on.
+
+- [ ] **Step 5:** End-of-session bulk share: on the list screen, tap toolbar **Share child takes (36)**. AirDrop the `child-<timestamp>.zip` to the Mac. Unzip into `~/mora-fixtures-child/`:
+
+```bash
+cd ~/Downloads && unzip -q child-*.zip -d ~/mora-fixtures-child/
+ls ~/mora-fixtures-child/
+# Expect: rl/ vb/ aeuh/  (each with 12 wav + 12 json files = 3 takes × 4 patterns)
+```
+
+- [ ] **Step 6:** No commit. The child fixtures stay on Yutaka's laptop per spec §9.3.
 
 ---
 
