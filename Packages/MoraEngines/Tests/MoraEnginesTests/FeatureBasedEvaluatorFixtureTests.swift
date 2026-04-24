@@ -134,7 +134,8 @@ final class FeatureBasedEvaluatorFixtureTests: XCTestCase {
         // Mirror EngineARunner.evaluate's defensive fallback: only honour a
         // caller-supplied sequence when it's non-empty and the provided
         // index is in-range. Any other shape (nil, empty, out-of-range)
-        // silently falls back to `[target]` so the Word subscript is safe.
+        // silently falls back to `[target]` so the array subscript
+        // `phonemeList[idx]` is safe.
         let phonemeList: [Phoneme]
         let idx: Int
         if let phonemes, !phonemes.isEmpty,
