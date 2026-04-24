@@ -16,7 +16,7 @@ public struct FeatureBasedPronunciationEvaluator: PronunciationEvaluator {
     /// Audio-sanity thresholds.
     private static let noiseFloorDbFS: Float = -42
     private static let minDurationMs: Double = 40
-    private static let maxDurationMs: Double = 600
+    private static let maxDurationMs: Double = 2_000
 
     public init() {}
 

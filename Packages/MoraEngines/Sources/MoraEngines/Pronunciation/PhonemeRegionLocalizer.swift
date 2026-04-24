@@ -19,9 +19,14 @@ public enum PhonemeRegionLocalizer {
     /// Slices an audio clip to the portion corresponding to a phoneme
     /// position within a word. The current heuristic is based only on clip
     /// timing and `phonemePosition`; `word` is reserved for future heuristics
-    /// that use lexical/phoneme context. The heuristic is accurate enough for
-    /// onset and coda phonemes of CVC-style short words; medial positions
-    /// are flagged unreliable.
+    /// that use lexical/phoneme context. Onset and coda use a fixed 150 ms
+    /// (or 25 % of the clip, whichever is smaller) window. Medial positions
+    /// use the same equal-segment idea, dividing the clip into `count` equal
+    /// units and selecting the `position`-th unit; this is accurate enough
+    /// for short CVC words like `cat`/`cut` where the medial vowel sits in
+    /// the middle third of the clip. A `position` outside `0..<count` is
+    /// treated as malformed input and falls back to the full clip flagged
+    /// unreliable.
     public static func region(
         clip: AudioClip,
         word _: Word,
@@ -38,12 +43,12 @@ public enum PhonemeRegionLocalizer {
         case .coda:
             return slice(clip: clip, startMs: totalMs - sliceMs, durationMs: sliceMs, reliable: true)
         case .medial(let position, let count):
-            guard count > 0 else {
+            guard count > 0, position >= 0, position < count else {
                 return LocalizedRegion(clip: clip, startMs: 0, durationMs: totalMs, isReliable: false)
             }
             let unit = totalMs / Double(count)
             let startMs = Double(position) * unit
-            return slice(clip: clip, startMs: startMs, durationMs: unit, reliable: false)
+            return slice(clip: clip, startMs: startMs, durationMs: unit, reliable: true)
         }
     }
 
