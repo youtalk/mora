@@ -14,7 +14,9 @@ final class FeatureBasedEvaluatorFixtureTests: XCTestCase {
             "rl/right-correct.wav",
             target: "r", word: "right")
         XCTAssertEqual(assessment.label, .matched)
-        if let score = assessment.score { XCTAssertGreaterThanOrEqual(score, 70) }
+        XCTAssertTrue(assessment.isReliable, "onset fixture should be reliable")
+        let score = try XCTUnwrap(assessment.score, "expected non-nil score for reliable assessment")
+        XCTAssertGreaterThanOrEqual(score, 70)
     }
 
     func testRightAsLightSubstitutedByL() async throws {
@@ -22,7 +24,9 @@ final class FeatureBasedEvaluatorFixtureTests: XCTestCase {
             "rl/right-as-light.wav",
             target: "r", word: "right")
         XCTAssertEqual(assessment.label, .substitutedBy(Phoneme(ipa: "l")))
-        if let score = assessment.score { XCTAssertLessThanOrEqual(score, 40) }
+        XCTAssertTrue(assessment.isReliable, "onset fixture should be reliable")
+        let score = try XCTUnwrap(assessment.score, "expected non-nil score for reliable assessment")
+        XCTAssertLessThanOrEqual(score, 40)
     }
 
     func testLightCorrectMatchesL() async throws {
@@ -30,7 +34,9 @@ final class FeatureBasedEvaluatorFixtureTests: XCTestCase {
             "rl/light-correct.wav",
             target: "l", word: "light")
         XCTAssertEqual(assessment.label, .matched)
-        if let score = assessment.score { XCTAssertGreaterThanOrEqual(score, 70) }
+        XCTAssertTrue(assessment.isReliable, "onset fixture should be reliable")
+        let score = try XCTUnwrap(assessment.score, "expected non-nil score for reliable assessment")
+        XCTAssertGreaterThanOrEqual(score, 70)
     }
 
     func testLightAsRightSubstitutedByR() async throws {
@@ -38,7 +44,9 @@ final class FeatureBasedEvaluatorFixtureTests: XCTestCase {
             "rl/light-as-right.wav",
             target: "l", word: "light")
         XCTAssertEqual(assessment.label, .substitutedBy(Phoneme(ipa: "r")))
-        if let score = assessment.score { XCTAssertLessThanOrEqual(score, 40) }
+        XCTAssertTrue(assessment.isReliable, "onset fixture should be reliable")
+        let score = try XCTUnwrap(assessment.score, "expected non-nil score for reliable assessment")
+        XCTAssertLessThanOrEqual(score, 40)
     }
 
     // MARK: - v / b
@@ -46,25 +54,33 @@ final class FeatureBasedEvaluatorFixtureTests: XCTestCase {
     func testVeryCorrectMatchesV() async throws {
         let a = try await evaluate("vb/very-correct.wav", target: "v", word: "very")
         XCTAssertEqual(a.label, .matched)
-        if let s = a.score { XCTAssertGreaterThanOrEqual(s, 70) }
+        XCTAssertTrue(a.isReliable, "onset fixture should be reliable")
+        let s = try XCTUnwrap(a.score, "expected non-nil score for reliable assessment")
+        XCTAssertGreaterThanOrEqual(s, 70)
     }
 
     func testVeryAsBerrySubstitutedByB() async throws {
         let a = try await evaluate("vb/very-as-berry.wav", target: "v", word: "very")
         XCTAssertEqual(a.label, .substitutedBy(Phoneme(ipa: "b")))
-        if let s = a.score { XCTAssertLessThanOrEqual(s, 40) }
+        XCTAssertTrue(a.isReliable, "onset fixture should be reliable")
+        let s = try XCTUnwrap(a.score, "expected non-nil score for reliable assessment")
+        XCTAssertLessThanOrEqual(s, 40)
     }
 
     func testBerryCorrectMatchesB() async throws {
         let a = try await evaluate("vb/berry-correct.wav", target: "b", word: "berry")
         XCTAssertEqual(a.label, .matched)
-        if let s = a.score { XCTAssertGreaterThanOrEqual(s, 70) }
+        XCTAssertTrue(a.isReliable, "onset fixture should be reliable")
+        let s = try XCTUnwrap(a.score, "expected non-nil score for reliable assessment")
+        XCTAssertGreaterThanOrEqual(s, 70)
     }
 
     func testBerryAsVerySubstitutedByV() async throws {
         let a = try await evaluate("vb/berry-as-very.wav", target: "b", word: "berry")
         XCTAssertEqual(a.label, .substitutedBy(Phoneme(ipa: "v")))
-        if let s = a.score { XCTAssertLessThanOrEqual(s, 40) }
+        XCTAssertTrue(a.isReliable, "onset fixture should be reliable")
+        let s = try XCTUnwrap(a.score, "expected non-nil score for reliable assessment")
+        XCTAssertLessThanOrEqual(s, 40)
     }
 
     // MARK: - æ / ʌ
@@ -76,7 +92,9 @@ final class FeatureBasedEvaluatorFixtureTests: XCTestCase {
             phonemes: ["k", "æ", "t"], targetIndex: 1
         )
         XCTAssertEqual(a.label, .matched)
-        if let s = a.score { XCTAssertGreaterThanOrEqual(s, 70) }
+        XCTAssertTrue(a.isReliable, "medial fixture should be reliable")
+        let s = try XCTUnwrap(a.score, "expected non-nil score for reliable assessment")
+        XCTAssertGreaterThanOrEqual(s, 70)
     }
 
     func testCatAsCutSubstitutedByUh() async throws {
@@ -86,7 +104,9 @@ final class FeatureBasedEvaluatorFixtureTests: XCTestCase {
             phonemes: ["k", "æ", "t"], targetIndex: 1
         )
         XCTAssertEqual(a.label, .substitutedBy(Phoneme(ipa: "ʌ")))
-        if let s = a.score { XCTAssertLessThanOrEqual(s, 40) }
+        XCTAssertTrue(a.isReliable, "medial fixture should be reliable")
+        let s = try XCTUnwrap(a.score, "expected non-nil score for reliable assessment")
+        XCTAssertLessThanOrEqual(s, 40)
     }
 
     func testCutCorrectMatchesUh() async throws {
@@ -96,7 +116,9 @@ final class FeatureBasedEvaluatorFixtureTests: XCTestCase {
             phonemes: ["k", "ʌ", "t"], targetIndex: 1
         )
         XCTAssertEqual(a.label, .matched)
-        if let s = a.score { XCTAssertGreaterThanOrEqual(s, 70) }
+        XCTAssertTrue(a.isReliable, "medial fixture should be reliable")
+        let s = try XCTUnwrap(a.score, "expected non-nil score for reliable assessment")
+        XCTAssertGreaterThanOrEqual(s, 70)
     }
 
     func testCutAsCatSubstitutedByAe() async throws {
@@ -106,7 +128,9 @@ final class FeatureBasedEvaluatorFixtureTests: XCTestCase {
             phonemes: ["k", "ʌ", "t"], targetIndex: 1
         )
         XCTAssertEqual(a.label, .substitutedBy(Phoneme(ipa: "æ")))
-        if let s = a.score { XCTAssertLessThanOrEqual(s, 40) }
+        XCTAssertTrue(a.isReliable, "medial fixture should be reliable")
+        let s = try XCTUnwrap(a.score, "expected non-nil score for reliable assessment")
+        XCTAssertLessThanOrEqual(s, 40)
     }
 
     // MARK: - Loader
