@@ -1,0 +1,117 @@
+[
+  {
+    "id": "sh",
+    "grapheme": "sh",
+    "ipa": "/ʃ/",
+    "personality": "mischievous whisper spirit",
+    "sound_gesture": "index finger pursed to lips in a shushing pose, one eye winking",
+    "word_decor": ["paper sailor hat shaped like a small ship", "pointed seashell ears", "fluffy fin-like tail"],
+    "palette": ["teal", "cream", "foam-white"],
+    "expression": "playful smirk, large round sparkling eyes",
+    "voice": {
+      "character_description": "young mischievous whispery boy, softly spoken with playful cadence, subtle wind-like breath",
+      "clips": {
+        "phoneme": "Shhh /ʃ/",
+        "example_1": "ship",
+        "example_2": "shop",
+        "example_3": "shell",
+        "greet": "Shhh! You made it. Can you hear my sound?",
+        "encourage": "That's it! Hear it whisper?",
+        "gentle_retry": "So close. Listen once more.",
+        "friday_acknowledge": "You found my sound. Now I am yours to remember."
+      }
+    }
+  },
+  {
+    "id": "th",
+    "grapheme": "th",
+    "ipa": "/θ/",
+    "personality": "tongue-showing prankster yokai",
+    "sound_gesture": "tongue poked out between front teeth, puffing air",
+    "word_decor": ["small lightning-bolt ear tufts", "thumb-up paw held forward", "thorny leaf cape"],
+    "palette": ["violet", "mustard", "cream"],
+    "expression": "cheeky grin with visible tongue tip",
+    "voice": {
+      "character_description": "bright playful child voice with slight lisp, mischievous cadence",
+      "clips": {
+        "phoneme": "Thhh /θ/",
+        "example_1": "thumb",
+        "example_2": "thunder",
+        "example_3": "thorn",
+        "greet": "Thhh! Show me if you can make my sound!",
+        "encourage": "Nice! Feel the air on your tongue?",
+        "gentle_retry": "Keep the tongue out. Try again.",
+        "friday_acknowledge": "Perfect! Now I am yours, friend."
+      }
+    }
+  },
+  {
+    "id": "f",
+    "grapheme": "f",
+    "ipa": "/f/",
+    "personality": "windy breath spirit",
+    "sound_gesture": "upper teeth resting on lower lip, blowing a soft breeze",
+    "word_decor": ["koi-fish tail fin", "round paper fan in one paw", "soft feather on one ear"],
+    "palette": ["sky-blue", "white", "peach"],
+    "expression": "calm soft smile, closed eyes like meditating",
+    "voice": {
+      "character_description": "gentle airy voice, older wiser than the others, calm cadence",
+      "clips": {
+        "phoneme": "Ffff /f/",
+        "example_1": "fish",
+        "example_2": "fan",
+        "example_3": "feather",
+        "greet": "Ffff. Breathe softly, little one.",
+        "encourage": "Yes. Let the wind out.",
+        "gentle_retry": "Light breath. Feel your top teeth.",
+        "friday_acknowledge": "You carry my breath now. I am with you."
+      }
+    }
+  },
+  {
+    "id": "r",
+    "grapheme": "r",
+    "ipa": "/r/",
+    "personality": "tiger-cub rumble yokai",
+    "sound_gesture": "tongue curled back, low growl pose, fists on hips",
+    "word_decor": ["rabbit-ear hood with one bent tip", "rainbow scarf", "tiny rocket-fin boots"],
+    "palette": ["crimson", "saffron", "cobalt"],
+    "expression": "confident grin baring small fangs",
+    "voice": {
+      "character_description": "raspy bright child voice with rolled r, energetic, slightly barky",
+      "clips": {
+        "phoneme": "Rrrr /r/",
+        "example_1": "rabbit",
+        "example_2": "rainbow",
+        "example_3": "rocket",
+        "greet": "Rrrr! Are you brave enough to roar my sound?",
+        "encourage": "Roar! That was real!",
+        "gentle_retry": "Curl your tongue up and back. One more.",
+        "friday_acknowledge": "You earned my roar. Carry it proudly."
+      }
+    }
+  },
+  {
+    "id": "short_a",
+    "grapheme": "a",
+    "ipa": "/æ/",
+    "personality": "wide-mouth surprise yokai",
+    "sound_gesture": "mouth dropped wide open, eyes big, hands up as if astonished",
+    "word_decor": ["apple-shaped hat with a leaf", "ant-antenna headband", "tiny wooden axe prop"],
+    "palette": ["apple-red", "leaf-green", "cream"],
+    "expression": "surprised wonder, mouth wide, eyebrows up",
+    "voice": {
+      "character_description": "expressive exclamatory child voice, drawn-out vowels, always sounding amazed",
+      "clips": {
+        "phoneme": "Aaah /æ/",
+        "example_1": "apple",
+        "example_2": "ant",
+        "example_3": "axe",
+        "greet": "Aaah! What a strong voice! Can you say my sound?",
+        "encourage": "Aaamazing! Open wide!",
+        "gentle_retry": "Drop your jaw. Big open mouth.",
+        "friday_acknowledge": "Aaah! You mastered me. I am yours!"
+      }
+    }
+  }
+]

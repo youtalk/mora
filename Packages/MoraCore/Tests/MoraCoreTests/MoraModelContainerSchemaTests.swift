@@ -18,6 +18,9 @@ final class MoraModelContainerSchemaTests: XCTestCase {
             "LearnerProfile",
             "DailyStreak",
             "PronunciationTrialLog",
+            "YokaiEncounterEntity",
+            "BestiaryEntryEntity",
+            "YokaiCameoEntity",
         ]
         XCTAssertEqual(registered, expected)
     }
