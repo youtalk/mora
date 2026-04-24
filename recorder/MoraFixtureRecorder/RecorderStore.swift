@@ -234,10 +234,17 @@ public final class RecorderStore {
                 durationSeconds: snapshot.durationSeconds,
                 speakerTag: speakerTag
             )
-            _ = try FixtureWriter.writeTake(
+            let output = try FixtureWriter.writeTake(
                 samples: snapshot.samples, metadata: meta,
                 pattern: pattern, takeNumber: n, into: dir
             )
+            if case let .ready(assessment) = pendingVerdict {
+                savedVerdicts[output.wav] = assessment
+                pendingVerdict = .idle
+            }
+            // If pendingVerdict is .evaluating, leave it as-is — the late
+            // assessment will land on the still-visible captured snapshot
+            // path and a later lazy TakeRow.onAppear will fill savedVerdicts.
             recordingState = .idle
             takesRevision &+= 1
         } catch {
@@ -249,6 +256,7 @@ public final class RecorderStore {
         try? fileManager.removeItem(at: url)
         let sidecar = url.deletingPathExtension().appendingPathExtension("json")
         try? fileManager.removeItem(at: sidecar)
+        savedVerdicts[url] = nil
         takesRevision &+= 1
     }
 

@@ -275,4 +275,79 @@ final class RecorderStoreTests: XCTestCase {
         try await Task.sleep(nanoseconds: 50_000_000)  // 50 ms MainActor drain
         XCTAssertEqual(store.pendingVerdict, .idle)
     }
+
+    func testSaveCachesReadyVerdictInSavedVerdicts() async throws {
+        let fake = FakeRunner()
+        let expected = PhonemeTrialAssessment(
+            targetPhoneme: Phoneme(ipa: "æ"), label: .matched,
+            score: 100, coachingKey: nil,
+            features: ["F1": 720.0], isReliable: true
+        )
+        await fake.setNextResult(expected)
+
+        let pattern = FixtureCatalog.v1Patterns.first { $0.id == "aeuh-cat-correct" }!
+        let store = RecorderStore(
+            documentsDirectory: tempDir, userDefaults: defaults,
+            recorder: StubRecorder(), runner: fake
+        )
+
+        store.toggleRecording(pattern: pattern)
+        store.toggleRecording(pattern: pattern)
+        await store.waitForPendingVerdict(.ready(expected), timeout: 1.0)
+
+        store.save(pattern: pattern)
+
+        let writtenWav = store.takesOnDisk(for: pattern).first!
+        XCTAssertEqual(store.savedVerdicts[writtenWav], expected)
+        XCTAssertEqual(store.pendingVerdict, .idle)
+    }
+
+    func testSaveBeforeReadyDoesNotCacheAndKeepsEvaluating() async throws {
+        let fake = FakeRunner()
+        await fake.waitForNextEvaluateAndSuspend()
+
+        let pattern = FixtureCatalog.v1Patterns.first { $0.id == "aeuh-cat-correct" }!
+        let store = RecorderStore(
+            documentsDirectory: tempDir, userDefaults: defaults,
+            recorder: StubRecorder(), runner: fake
+        )
+
+        store.toggleRecording(pattern: pattern)
+        store.toggleRecording(pattern: pattern)  // → .evaluating, suspended
+        XCTAssertEqual(store.pendingVerdict, .evaluating)
+
+        store.save(pattern: pattern)
+        let writtenWav = store.takesOnDisk(for: pattern).first!
+        XCTAssertNil(store.savedVerdicts[writtenWav])
+        // Save resets recordingState to .idle but leaves pendingVerdict
+        // untouched so the still-running evaluator can post its result.
+        XCTAssertEqual(store.pendingVerdict, .evaluating)
+
+        await fake.resume()
+    }
+
+    func testDeleteTakeClearsSavedVerdictEntry() async throws {
+        let fake = FakeRunner()
+        let expected = PhonemeTrialAssessment(
+            targetPhoneme: Phoneme(ipa: "æ"), label: .matched,
+            score: 100, coachingKey: nil, features: [:], isReliable: true
+        )
+        await fake.setNextResult(expected)
+
+        let pattern = FixtureCatalog.v1Patterns.first { $0.id == "aeuh-cat-correct" }!
+        let store = RecorderStore(
+            documentsDirectory: tempDir, userDefaults: defaults,
+            recorder: StubRecorder(), runner: fake
+        )
+
+        store.toggleRecording(pattern: pattern)
+        store.toggleRecording(pattern: pattern)
+        await store.waitForPendingVerdict(.ready(expected), timeout: 1.0)
+        store.save(pattern: pattern)
+        let wav = store.takesOnDisk(for: pattern).first!
+        XCTAssertNotNil(store.savedVerdicts[wav])
+
+        store.deleteTake(url: wav)
+        XCTAssertNil(store.savedVerdicts[wav])
+    }
 }
