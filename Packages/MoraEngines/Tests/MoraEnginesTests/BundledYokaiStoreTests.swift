@@ -9,9 +9,10 @@ final class BundledYokaiStoreTests: XCTestCase {
         XCTAssertEqual(store.catalog().count, 5)
     }
 
-    func test_portraitURLIsNilWhenAssetMissing_preR4() throws {
+    func test_portraitURLFallsBackToPlaceholderWhenAssetMissing() throws {
         let store = try BundledYokaiStore()
-        // R4 ships portraits; until then URLs are nil and UI falls back to placeholders.
-        XCTAssertNil(store.portraitURL(for: "sh"))
+        let url = try XCTUnwrap(store.portraitURL(for: "__no_such_yokai__"))
+        XCTAssertEqual(url.lastPathComponent, "portrait.png")
+        XCTAssertEqual(url.deletingLastPathComponent().lastPathComponent, "_placeholder")
     }
 }

@@ -13,6 +13,7 @@ let package = Package(
             resources: [
                 .process("Resources"),
                 .copy("Yokai/YokaiCatalog.json"),
+                .copy("Yokai/_placeholder"),
             ],
             swiftSettings: [.swiftLanguageMode(.v5)]
         ),

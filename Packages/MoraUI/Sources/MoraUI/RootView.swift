@@ -31,6 +31,9 @@ public struct RootView: View {
                         .navigationDestination(for: String.self) { destination in
                             switch destination {
                             case "session": SessionContainerView()
+                            case "bestiary":
+                                BestiaryView()
+                                    .environment(\.moraStrings, resolvedStrings)
                             default: EmptyView()
                             }
                         }

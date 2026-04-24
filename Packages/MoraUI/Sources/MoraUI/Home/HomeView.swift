@@ -101,6 +101,11 @@ public struct HomeView: View {
                 pill(strings.homeWordsPill(5))
                 pill(strings.homeSentencesPill(2))
             }
+
+            NavigationLink(value: "bestiary") {
+                Label("Sound-Friend Register", systemImage: "book.closed.fill")
+            }
+            .buttonStyle(.bordered)
         }
     }
 
