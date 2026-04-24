@@ -27,6 +27,7 @@ public struct HomeView: View {
     @State private var installedVoices: [String] = AppleTTSEngine.installedEnglishVoiceSummaries()
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.moraStrings) private var strings
+    @Environment(\.mlxWarmupState) private var warmup
 
     public init() {}
 
@@ -85,16 +86,26 @@ public struct HomeView: View {
                 .multilineTextAlignment(.center)
 
             NavigationLink(value: "session") {
-                Text(strings.homeStart)
-                    .font(MoraType.cta())
-                    .foregroundStyle(.white)
-                    .padding(.horizontal, MoraTheme.Space.xl)
-                    .padding(.vertical, MoraTheme.Space.md)
-                    .frame(minHeight: 88)
-                    .background(MoraTheme.Accent.orange, in: .capsule)
+                ZStack {
+                    Text(strings.homeStart)
+                        .font(MoraType.cta())
+                        .foregroundStyle(.white)
+                        .opacity(isStartEnabled ? 1 : 0)
+                    if !isStartEnabled {
+                        ProgressView()
+                            .progressViewStyle(.circular)
+                            .tint(.white)
+                    }
+                }
+                .padding(.horizontal, MoraTheme.Space.xl)
+                .padding(.vertical, MoraTheme.Space.md)
+                .frame(minHeight: 88)
+                .background(MoraTheme.Accent.orange, in: .capsule)
+                .opacity(isStartEnabled ? 1 : 0.7)
             }
             .buttonStyle(.plain)
             .padding(.top, MoraTheme.Space.md)
+            .disabled(!isStartEnabled)
 
             HStack(spacing: MoraTheme.Space.sm) {
                 pill(strings.homeDurationPill(16))
@@ -215,6 +226,15 @@ public struct HomeView: View {
     private var ipaLine: String {
         guard let ipa = target.ipa else { return "" }
         return "/\(ipa)/ · as in ship, shop, fish"
+    }
+
+    /// `nil` environment means no app-level warmup is wired (previews,
+    /// tests, legacy callsites) — treat as "don't gate". Otherwise unblock
+    /// as soon as the load resolves, whether it succeeded or failed;
+    /// Engine A still runs when Engine B isn't available.
+    private var isStartEnabled: Bool {
+        guard let warmup else { return true }
+        return warmup.isResolved
     }
 
     private func openVoiceSettings() {
