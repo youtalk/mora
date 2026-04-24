@@ -7,10 +7,12 @@ struct WarmupView: View {
     let orchestrator: SessionOrchestrator
     let speech: SpeechController?
 
+    private static let promptPrefix = "Which one says"
+
     var body: some View {
         ScrollView {
             VStack(spacing: MoraTheme.Space.lg) {
-                Text("Which one says /\(targetIPA)/?")
+                Text("\(Self.promptPrefix) /\(targetIPA)/?")
                     .font(MoraType.heading())
                     .foregroundStyle(MoraTheme.Ink.primary)
                     .multilineTextAlignment(.center)
@@ -69,13 +71,10 @@ struct WarmupView: View {
 
     private func playTargetPhoneme() {
         guard let speech, let phoneme = orchestrator.target.phoneme else { return }
-        // Single utterance, not a multi-prompt sequence: chaining a leading
-        // text prompt before the phoneme regularly silenced the first call on
-        // a cold launch — `AVSpeechSynthesizer` never fires `didFinish` for
-        // the first short utterance, so the queue stalls and the phoneme is
-        // never spoken. The on-screen "Which one says /…/?" copy carries the
-        // verbal frame; the audio just delivers the target sound.
-        speech.play([.phoneme(phoneme, .slow)])
+        speech.play([
+            .text(Self.promptPrefix, .normal),
+            .phoneme(phoneme, .slow),
+        ])
     }
 
     private var targetIPA: String {
