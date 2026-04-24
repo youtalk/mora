@@ -1,0 +1,56 @@
+{
+  "target": {
+    "letters": "r",
+    "phoneme": "r"
+  },
+  "l2_taught_graphemes": [
+    "a","b","c","d","e","f","g","h","i","j","k","l","m",
+    "n","o","p","q","r","s","t","u","v","w","x","y","z","sh","th"
+  ],
+  "decode_words": [
+    { "surface": "run", "graphemes": ["r","u","n"], "phonemes": ["r","ʌ","n"], "note": "r onset" },
+    { "surface": "red", "graphemes": ["r","e","d"], "phonemes": ["r","ɛ","d"], "note": "r onset" },
+    { "surface": "rag", "graphemes": ["r","a","g"], "phonemes": ["r","æ","g"], "note": "r onset" },
+    { "surface": "rat", "graphemes": ["r","a","t"], "phonemes": ["r","æ","t"], "note": "r onset" },
+    { "surface": "rib", "graphemes": ["r","i","b"], "phonemes": ["r","ɪ","b"], "note": "r onset" },
+    { "surface": "rot", "graphemes": ["r","o","t"], "phonemes": ["r","ɒ","t"], "note": "r onset" },
+    { "surface": "rub", "graphemes": ["r","u","b"], "phonemes": ["r","ʌ","b"], "note": "r onset" },
+    { "surface": "rip", "graphemes": ["r","i","p"], "phonemes": ["r","ɪ","p"], "note": "r onset" },
+    { "surface": "ram", "graphemes": ["r","a","m"], "phonemes": ["r","æ","m"], "note": "r onset" },
+    { "surface": "rig", "graphemes": ["r","i","g"], "phonemes": ["r","ɪ","g"], "note": "r onset" }
+  ],
+  "sentences": [
+    {
+      "text": "The rat can run.",
+      "words": [
+        { "surface": "the", "graphemes": ["t","h","e"], "phonemes": ["ð","ə"] },
+        { "surface": "rat", "graphemes": ["r","a","t"], "phonemes": ["r","æ","t"] },
+        { "surface": "can", "graphemes": ["c","a","n"], "phonemes": ["k","æ","n"] },
+        { "surface": "run", "graphemes": ["r","u","n"], "phonemes": ["r","ʌ","n"] }
+      ]
+    },
+    {
+      "text": "A red rag is on a rib.",
+      "words": [
+        { "surface": "a",   "graphemes": ["a"],          "phonemes": ["ə"] },
+        { "surface": "red", "graphemes": ["r","e","d"],  "phonemes": ["r","ɛ","d"] },
+        { "surface": "rag", "graphemes": ["r","a","g"],  "phonemes": ["r","æ","g"] },
+        { "surface": "is",  "graphemes": ["i","s"],      "phonemes": ["ɪ","z"] },
+        { "surface": "on",  "graphemes": ["o","n"],      "phonemes": ["ɒ","n"] },
+        { "surface": "a",   "graphemes": ["a"],          "phonemes": ["ə"] },
+        { "surface": "rib", "graphemes": ["r","i","b"],  "phonemes": ["r","ɪ","b"] }
+      ]
+    },
+    {
+      "text": "A ram can rub a rig.",
+      "words": [
+        { "surface": "a",   "graphemes": ["a"],          "phonemes": ["ə"] },
+        { "surface": "ram", "graphemes": ["r","a","m"],  "phonemes": ["r","æ","m"] },
+        { "surface": "can", "graphemes": ["c","a","n"],  "phonemes": ["k","æ","n"] },
+        { "surface": "rub", "graphemes": ["r","u","b"],  "phonemes": ["r","ʌ","b"] },
+        { "surface": "a",   "graphemes": ["a"],          "phonemes": ["ə"] },
+        { "surface": "rig", "graphemes": ["r","i","g"],  "phonemes": ["r","ɪ","g"] }
+      ]
+    }
+  ]
+}
