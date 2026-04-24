@@ -11,6 +11,24 @@ An iPad-first, on-device learning app for children with dyslexia learning Englis
 - [swift-format](https://github.com/apple/swift-format) — `brew install swift-format`
 - [Git LFS](https://git-lfs.com/) — `brew install git-lfs`. Required to fetch the bundled wav2vec2 CoreML model under `Packages/MoraMLX/Sources/MoraMLX/Resources/wav2vec2-phoneme.mlmodelc/`. Without it the working tree checks out LFS pointer files instead of the ~300 MB weights, and Engine B silently falls back to Engine A at runtime (the app still launches — see `MoraApp.makeShadowFactory`).
 
+## First-time setup (clone-fresh)
+
+The wav2vec2-phoneme CoreML model is hosted as a GitHub Release asset
+(see `tools/models.manifest`), not in Git. After cloning:
+
+```sh
+bash tools/fetch-models.sh
+```
+
+This downloads + SHA-verifies the model into
+`Packages/MoraMLX/Sources/MoraMLX/Resources/wav2vec2-phoneme.mlmodelc/`.
+Re-runs are no-ops when nothing has changed. The Mora Xcode target also
+runs `tools/fetch-models.sh` as a preBuildScript so manifest bumps are
+picked up automatically.
+
+CI does the same via `actions/cache` keyed on the manifest hash, so model
+download bandwidth stays at zero on cache hits.
+
 ## Getting started
 
 First-time clone — enable Git LFS once per machine, then ensure the model weights are actually materialized:
