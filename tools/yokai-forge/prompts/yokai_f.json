@@ -2,11 +2,12 @@
   "id": "f",
   "grapheme": "f",
   "ipa": "/f/",
-  "personality": "windy breath spirit",
-  "sound_gesture": "upper teeth resting on lower lip, blowing a soft breeze",
+  "personality": "windy breath-spirit yokai",
+  "mouth_pose": "upper front teeth pressed down on the lower lip with a narrow gap for breath, teeth-on-lip /f/ labiodental articulation, visible tiny puff of air escaping between teeth and lip",
+  "sound_gesture": "blowing a soft breeze forward, one paw raised palm-up as if catching wind, tail curling behind",
   "word_decor": ["koi-fish tail fin", "round paper fan in one paw", "soft feather on one ear"],
   "palette": ["sky-blue", "white", "peach"],
-  "expression": "calm soft smile, closed eyes like meditating",
+  "expression": "serene half-closed meditating eyes, calm mood",
   "voice": {
     "character_description": "gentle airy voice, older wiser than the others, calm cadence",
     "clips": {

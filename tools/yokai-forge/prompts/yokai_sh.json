@@ -2,11 +2,12 @@
   "id": "sh",
   "grapheme": "sh",
   "ipa": "/ʃ/",
-  "personality": "mischievous whisper spirit",
-  "sound_gesture": "index finger pursed to lips in a shushing pose, one eye winking",
+  "personality": "mischievous whisper-spirit yokai",
+  "mouth_pose": "lips rounded into a small O and pushed forward as if shushing, tongue tip raised just behind the upper front teeth, classic /ʃ/ shushing mouth shape clearly showing the lip protrusion",
+  "sound_gesture": "index finger pressed to lips in a shushing pose, one eye winking, other hand on hip",
   "word_decor": ["paper sailor hat shaped like a small ship", "pointed seashell ears", "fluffy fin-like tail"],
   "palette": ["teal", "cream", "foam-white"],
-  "expression": "playful smirk, large round sparkling eyes",
+  "expression": "playful sparkling eyes, mischievous mood",
   "voice": {
     "character_description": "young mischievous whispery boy, softly spoken with playful cadence, subtle wind-like breath",
     "clips": {

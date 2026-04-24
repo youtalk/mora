@@ -25,6 +25,7 @@ def compose_positive(spec: dict) -> str:
     return (
         f"{_style()}, "
         f"a {spec['personality']}, "
+        f"{spec['mouth_pose']}, "
         f"{spec['sound_gesture']}, "
         f"wearing {decor[0]}, with {decor[1]}, and {decor[2]}, "
         f"{palette} color scheme, {spec['expression']}"
