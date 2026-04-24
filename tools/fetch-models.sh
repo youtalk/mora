@@ -21,7 +21,10 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 MANIFEST="$REPO_ROOT/tools/models.manifest"
-REPO_SLUG="youtalk/mora"
+# Repo that hosts the model releases. Override with FETCH_MODELS_REPO_SLUG to
+# pull from a fork that publishes its own assets; the default is correct for
+# plain clones of the upstream repo.
+REPO_SLUG="${FETCH_MODELS_REPO_SLUG:-youtalk/mora}"
 MARKER_NAME=".fetch-models.sha256"
 
 if [[ ! -f "$MANIFEST" ]]; then
