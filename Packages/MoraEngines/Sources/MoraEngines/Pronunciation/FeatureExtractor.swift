@@ -122,8 +122,10 @@ public enum FeatureExtractor {
     ///
     /// `burstThreshold` is the per-window dRMS that counts as a burst.
     /// `voicingThreshold` is the RMS level that counts as voicing.
-    /// Returns -100 if no burst is detected (the signal is steady) so the
-    /// caller's substitution boundary still classifies it as voiced.
+    /// Returns -100 in all degenerate cases (clip too short for two RMS
+    /// windows, no voicing detected, or no burst detected) so the caller's
+    /// substitution boundary keeps classifying the signal as voiced
+    /// regardless of which specific failure mode was hit.
     public static func voicingOnsetTimeRelative(
         clip: AudioClip,
         burstThreshold: Float,
