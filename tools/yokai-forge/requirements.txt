@@ -17,3 +17,4 @@ hf_transfer
 omegaconf
 einops
 ftfy
+openai-whisper  # STT for scripts/audit_voices.py — QC of bundled yokai voice clips
