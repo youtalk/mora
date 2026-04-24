@@ -47,7 +47,7 @@ public struct SessionContainerView: View {
             FeedbackOverlay(state: feedback)
 
             if let yokai = orchestrator?.yokai {
-                YokaiLayerView(orchestrator: yokai)
+                YokaiLayerView(orchestrator: yokai, speech: speech)
                     .ignoresSafeArea()
             }
         }
