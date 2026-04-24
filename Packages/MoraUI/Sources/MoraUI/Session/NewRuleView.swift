@@ -81,10 +81,17 @@ struct NewRuleView: View {
     /// learner already heard the bare /ʃ/ on first entry; replaying it
     /// on every tap of the listen-again button feels repetitive. The CTA
     /// stays active so the learner can advance whenever they're ready.
+    ///
+    /// `introPrompts()` reads `orchestrator.target` and the resulting
+    /// playback routes through `SpeechController`, both of which are
+    /// `@MainActor`-isolated. Building the prompt list *inside* the
+    /// `Task { @MainActor in ... }` keeps every orchestrator / speech
+    /// access on the same actor under Swift's strict concurrency
+    /// checking.
     private func replayIntro() {
         guard let speech else { return }
-        let prompts = introPrompts(includePhoneme: false)
         Task { @MainActor in
+            let prompts = introPrompts(includePhoneme: false)
             await speech.playAndAwait(prompts)
         }
     }

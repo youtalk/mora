@@ -48,7 +48,8 @@ public struct ShadowLoggingPronunciationEvaluator: PronunciationEvaluator {
     public func supports(target: Phoneme, in word: Word) -> Bool {
         if primary.supports(target: target, in: word) { return true }
         if let shadow = shadowResolver(),
-            shadow.supports(target: target, in: word) {
+            shadow.supports(target: target, in: word)
+        {
             return true
         }
         return false

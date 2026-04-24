@@ -276,7 +276,8 @@ final class ShadowLoggingPronunciationEvaluatorTests: XCTestCase {
             targetPhoneme: Phoneme(ipa: "ʃ"), asr: asr()
         )
         let entries = try await waitForLogger(logger, count: 2)
-        if case .notReady = entries[0].engineB { /* ok */ } else {
+        if case .notReady = entries[0].engineB { /* ok */
+        } else {
             XCTFail("trial 1 expected notReady, got \(entries[0].engineB)")
         }
         if case .completed(let b, _) = entries[1].engineB {

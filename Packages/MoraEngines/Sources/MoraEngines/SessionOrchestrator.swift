@@ -327,7 +327,11 @@ public final class SessionOrchestrator {
     /// builds — see the `#if DEBUG` guard at the declaration.
     public func debugSkipDecoding() {
         guard phase == .decoding else { return }
-        phaseMetrics.truncatedChainCount = phaseMetrics.chainCount
+        // Count only the chains we're actually abandoning — the user may
+        // have completed some chains already, so `phaseMetrics.chainCount`
+        // (the original total at phase entry) would over-report truncation.
+        let abandonedChainCount = pendingChains.count
+        phaseMetrics.truncatedChainCount += abandonedChainCount
         pendingChains.removeAll()
         onTileBoardEvent?(.phaseFinished(phaseMetrics))
         transitionTo(.shortSentences)
