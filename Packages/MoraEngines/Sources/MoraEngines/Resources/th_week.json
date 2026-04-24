@@ -1,0 +1,51 @@
+{
+  "target": {
+    "letters": "th",
+    "phoneme": "θ"
+  },
+  "l2_taught_graphemes": [
+    "a","b","c","d","e","f","g","h","i","j","k","l","m",
+    "n","o","p","q","r","s","t","u","v","w","x","y","z","sh"
+  ],
+  "decode_words": [
+    { "surface": "thin",  "graphemes": ["th","i","n"], "phonemes": ["θ","ɪ","n"], "note": "th onset" },
+    { "surface": "thud",  "graphemes": ["th","u","d"], "phonemes": ["θ","ʌ","d"], "note": "th onset" },
+    { "surface": "thump", "graphemes": ["th","u","m","p"], "phonemes": ["θ","ʌ","m","p"], "note": "th onset" },
+    { "surface": "thug",  "graphemes": ["th","u","g"], "phonemes": ["θ","ʌ","g"], "note": "th onset" },
+    { "surface": "thick", "graphemes": ["th","i","c","k"], "phonemes": ["θ","ɪ","k"], "note": "th onset" },
+    { "surface": "moth",  "graphemes": ["m","o","th"], "phonemes": ["m","ɒ","θ"], "note": "th coda" },
+    { "surface": "path",  "graphemes": ["p","a","th"], "phonemes": ["p","æ","θ"], "note": "th coda" },
+    { "surface": "bath",  "graphemes": ["b","a","th"], "phonemes": ["b","æ","θ"], "note": "th coda" },
+    { "surface": "math",  "graphemes": ["m","a","th"], "phonemes": ["m","æ","θ"], "note": "th coda" },
+    { "surface": "with",  "graphemes": ["w","i","th"], "phonemes": ["w","ɪ","θ"], "note": "th coda" }
+  ],
+  "sentences": [
+    {
+      "text": "The moth is thin.",
+      "words": [
+        { "surface": "the",  "graphemes": ["t","h","e"],  "phonemes": ["ð","ə"] },
+        { "surface": "moth", "graphemes": ["m","o","th"], "phonemes": ["m","ɒ","θ"] },
+        { "surface": "is",   "graphemes": ["i","s"],      "phonemes": ["ɪ","z"] },
+        { "surface": "thin", "graphemes": ["th","i","n"], "phonemes": ["θ","ɪ","n"] }
+      ]
+    },
+    {
+      "text": "I sit with a cat.",
+      "words": [
+        { "surface": "i",    "graphemes": ["i"],          "phonemes": ["aɪ"] },
+        { "surface": "sit",  "graphemes": ["s","i","t"],  "phonemes": ["s","ɪ","t"] },
+        { "surface": "with", "graphemes": ["w","i","th"], "phonemes": ["w","ɪ","θ"] },
+        { "surface": "a",    "graphemes": ["a"],          "phonemes": ["ə"] },
+        { "surface": "cat",  "graphemes": ["c","a","t"],  "phonemes": ["k","æ","t"] }
+      ]
+    },
+    {
+      "text": "A thin path.",
+      "words": [
+        { "surface": "a",    "graphemes": ["a"],           "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],  "phonemes": ["θ","ɪ","n"] },
+        { "surface": "path", "graphemes": ["p","a","th"],  "phonemes": ["p","æ","θ"] }
+      ]
+    }
+  ]
+}
