@@ -113,6 +113,79 @@ public enum FeatureExtractor {
         return Double(clip.samples.count) / clip.sampleRate * 1000.0
     }
 
+    /// Relative voicing onset time (ms): the difference between the time
+    /// of the strongest amplitude-derivative spike (the "burst") and the
+    /// time periodic voicing first becomes detectable. Negative values
+    /// mean voicing precedes the burst (voiced fricatives, voiced stops
+    /// with prevoicing); positive values mean voicing follows the burst
+    /// (voiceless stops, large for aspirated /p/, /t/, /k/).
+    ///
+    /// `burstThreshold` is the per-window dRMS that counts as a burst.
+    /// `voicingThreshold` is the RMS level that counts as voicing.
+    /// Returns -100 if no burst is detected (the signal is steady) so the
+    /// caller's substitution boundary still classifies it as voiced.
+    public static func voicingOnsetTimeRelative(
+        clip: AudioClip,
+        burstThreshold: Float,
+        voicingThreshold: Float
+    ) -> Double {
+        let windowMs = 5
+        let windowSamples = max(8, Int(Double(windowMs) / 1000.0 * clip.sampleRate))
+        guard clip.samples.count >= windowSamples * 2 else { return -100 }
+
+        // Per-window RMS, then per-step delta.
+        var rms = [Float]()
+        var i = 0
+        while i + windowSamples <= clip.samples.count {
+            let window = clip.samples[i..<(i + windowSamples)]
+            let r = sqrt(window.reduce(0) { $0 + $1 * $1 } / Float(window.count))
+            rms.append(r)
+            i += windowSamples
+        }
+        guard rms.count >= 2 else { return -100 }
+
+        // Burst = window with the largest positive delta.
+        var burstWindow = -1
+        var burstDelta: Float = burstThreshold
+        for k in 1..<rms.count {
+            let delta = rms[k] - rms[k - 1]
+            if delta > burstDelta {
+                burstDelta = delta
+                burstWindow = k
+            }
+        }
+        // Voicing onset = first window with RMS >= voicingThreshold.
+        var voicingWindow = -1
+        for (k, r) in rms.enumerated() where r >= voicingThreshold {
+            voicingWindow = k
+            break
+        }
+        guard voicingWindow >= 0 else { return -100 }
+        if burstWindow < 0 {
+            // No burst → signal is steady; treat as fully voiced.
+            return -100
+        }
+        let burstMs = Double(burstWindow) * Double(windowMs)
+        if voicingWindow < burstWindow {
+            // Voicing precedes burst → voiced fricative or prevoiced stop.
+            // Return the signed difference directly (negative).
+            let voicingMs = Double(voicingWindow) * Double(windowMs)
+            return voicingMs - burstMs
+        }
+        // Voicing is at or after the burst. The burst window itself is
+        // energetic enough to clear voicingThreshold; search for the first
+        // *sustained* voicing window that starts AFTER the burst so that
+        // we measure the vowel onset, not the burst click itself.
+        var postBurstVoicingWindow = -1
+        for k in (burstWindow + 1)..<rms.count where rms[k] >= voicingThreshold {
+            postBurstVoicingWindow = k
+            break
+        }
+        guard postBurstVoicingWindow >= 0 else { return 0 }
+        let postBurstVoicingMs = Double(postBurstVoicingWindow) * Double(windowMs)
+        return postBurstVoicingMs - burstMs
+    }
+
     /// Frequency (Hz) of the strongest FFT bin whose center lies within
     /// [lowHz, highHz]. Intended as a lightweight stand-in for LPC formant
     /// tracking — accurate enough for the onset / coda regions we score.

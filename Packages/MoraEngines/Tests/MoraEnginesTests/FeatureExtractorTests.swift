@@ -98,4 +98,39 @@ final class FeatureExtractorTests: XCTestCase {
         XCTAssertEqual(peakLow, 1_700, accuracy: 250)
         XCTAssertEqual(peakHigh, 3_500, accuracy: 350)
     }
+
+    func testRelativeVOTNegativeForVoicedFricative() {
+        // Voiced fricative: voicing throughout, no burst → VOT should be
+        // strongly negative (voicing precedes any "burst-like" event by a lot,
+        // or the extractor reports the burst as never-found and falls back to
+        // a sentinel negative value that lands well below the v/b boundary).
+        let clip = SyntheticAudio.voicedFricative(durationMs: 200, burstStartMs: 80)
+        let vot = FeatureExtractor.voicingOnsetTimeRelative(
+            clip: clip, burstThreshold: 0.2, voicingThreshold: 0.02
+        )
+        XCTAssertLessThan(vot, -10, "/v/-like signal should produce VOT well below the v/b boundary (-5)")
+    }
+
+    func testRelativeVOTSmallPositiveForVoicedStop() {
+        // Voiced stop: pre-burst voicing → silence → burst at 90 ms → vowel
+        // at 95 ms. Burst at 90 ms; voicing resumes at 95 ms → VOT ≈ +5 ms.
+        let clip = SyntheticAudio.voicedStop(durationMs: 200, burstStartMs: 90, vowelStartMs: 95)
+        let vot = FeatureExtractor.voicingOnsetTimeRelative(
+            clip: clip, burstThreshold: 0.2, voicingThreshold: 0.02
+        )
+        XCTAssertGreaterThan(vot, 0)
+        XCTAssertLessThan(vot, 30, "/b/-like signal should produce small positive VOT")
+    }
+
+    func testRelativeVOTBoundsForVoicelessStop() {
+        // Voiceless stop: silence → burst at 50 ms → vowel at 100 ms (50 ms
+        // aspiration gap). VOT should be ~50 ms — comfortably positive.
+        let clip = SyntheticAudio.voicedStop(
+            durationMs: 200, burstStartMs: 50, vowelStartMs: 100
+        )
+        let vot = FeatureExtractor.voicingOnsetTimeRelative(
+            clip: clip, burstThreshold: 0.2, voicingThreshold: 0.02
+        )
+        XCTAssertGreaterThan(vot, 30)
+    }
 }

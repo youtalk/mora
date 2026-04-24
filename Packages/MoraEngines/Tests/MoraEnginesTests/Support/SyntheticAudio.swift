@@ -91,10 +91,14 @@ enum SyntheticAudio {
     }
 
     /// Voiced stop: low-amplitude voicing from t=0 to `burstStartMs`,
-    /// then 5 ms silence (closure), then a sharp burst (single-sample
-    /// impulse), then a sustained vowel (sine at 220 Hz) from
-    /// `vowelStartMs`. The signature expected from /b/, /d/, /g/:
+    /// then 5 ms silence (closure), then a 5 ms high-amplitude burst
+    /// centered at `burstStartMs`, then a sustained vowel (sine at 220 Hz)
+    /// from `vowelStartMs`. The signature expected from /b/, /d/, /g/:
     /// pre-burst voicing → pause → burst → voicing resumes.
+    ///
+    /// The burst spans one 5 ms window at amplitude 0.5 so that a
+    /// relative-VOT extractor using 5 ms RMS windows sees a dRMS spike
+    /// well above 0.2 at the burst location.
     static func voicedStop(
         durationMs: Int,
         burstStartMs: Int,
@@ -103,21 +107,27 @@ enum SyntheticAudio {
         let sr = sampleRate
         let totalSamples = Int(Double(durationMs) / 1000.0 * sr)
         let preVoicingSamples = max(0, Int(Double(burstStartMs) / 1000.0 * sr) - 80)
-        let burstSample = Int(Double(burstStartMs) / 1000.0 * sr)
+        let burstStartSample = Int(Double(burstStartMs) / 1000.0 * sr)
+        // Burst spans one full 5 ms window (80 samples) so the RMS delta is
+        // large enough to exceed the burstThreshold used by the VOT extractor.
+        let burstEndSample = min(totalSamples, burstStartSample + 80)
         let vowelStartSample = Int(Double(vowelStartMs) / 1000.0 * sr)
 
         var samples = [Float](repeating: 0, count: totalSamples)
-        // Pre-burst voicing: 220 Hz sine, gain 0.04.
+        // Pre-burst murmur: sub-threshold 220 Hz sine, gain 0.01 (below the
+        // 0.02 voicingThreshold used by voicingOnsetTimeRelative, so the
+        // relative-VOT extractor treats this region as silence).
         for i in 0..<preVoicingSamples {
             let t = Double(i) / sr
-            samples[i] = Float(0.04 * sin(2 * .pi * 220 * t))
+            samples[i] = Float(0.01 * sin(2 * .pi * 220 * t))
         }
-        // Closure (silence): preVoicingSamples..<burstSample stays at 0.
-        // Burst: single-sample impulse at burstSample.
-        if burstSample < totalSamples {
-            samples[burstSample] = 0.5
+        // Closure (silence): preVoicingSamples..<burstStartSample stays at 0.
+        // Burst: 5 ms high-amplitude burst (one full 5 ms window at 0.5) so
+        // that the dRMS spike exceeds burstThreshold 0.2.
+        for i in burstStartSample..<burstEndSample {
+            samples[i] = 0.5
         }
-        // Vowel: 220 Hz sine, gain 0.05.
+        // Vowel: 220 Hz sine, gain 0.05 (above voicingThreshold 0.02).
         for i in vowelStartSample..<totalSamples {
             let t = Double(i) / sr
             samples[i] = Float(0.05 * sin(2 * .pi * 220 * t))
