@@ -8,6 +8,7 @@ public struct BestiaryDetailView: View {
     let entry: BestiaryEntryEntity
     @State private var player: AVAudioPlayer?
     @State private var synthesizer: AVSpeechSynthesizer = AVSpeechSynthesizer()
+    @State private var store: BundledYokaiStore?
 
     public init(yokai: YokaiDefinition, entry: BestiaryEntryEntity) {
         self.yokai = yokai
@@ -38,11 +39,13 @@ public struct BestiaryDetailView: View {
             Spacer()
         }
         .padding()
+        .onAppear {
+            if store == nil { store = try? BundledYokaiStore() }
+        }
     }
 
     private func play(clip: YokaiClipKey) {
-        guard let store = try? BundledYokaiStore() else { return }
-        if let url = store.voiceClipURL(for: yokai.id, clip: clip) {
+        if let store, let url = store.voiceClipURL(for: yokai.id, clip: clip) {
             player = try? AVAudioPlayer(contentsOf: url)
             player?.play()
         } else if let text = yokai.voice.clips[clip] {
