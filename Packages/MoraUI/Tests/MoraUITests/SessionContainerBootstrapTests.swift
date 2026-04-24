@@ -1,7 +1,6 @@
 import MoraCore
 import MoraEngines
 import SwiftData
-import SwiftUI
 import XCTest
 
 @testable import MoraUI

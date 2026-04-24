@@ -64,7 +64,7 @@ public final class YokaiOrchestrator {
 
     public func recordTrialOutcome(correct: Bool) {
         if isFridaySession {
-            recordFridayFinalTrial(correct: correct)
+            applyFridayTrial(correct: correct)
             return
         }
         guard let encounter = currentEncounter else { return }
@@ -80,6 +80,37 @@ public final class YokaiOrchestrator {
             lastCorrectTrialID = UUID()
         }
         try? modelContext.save()
+    }
+
+    /// Per-trial Friday math: distributes the remaining 1.0-friendship
+    /// deficit across `fridayTrialsRemaining` so every trial contributes
+    /// to the ramp rather than the first correct trial alone concentrating
+    /// the full deficit. Finalizes (befriend or carryover) when every
+    /// planned trial has been consumed, OR when the meter reaches 100%
+    /// ahead of schedule — whichever comes first. The explicit final-trial
+    /// concentration behavior still lives on `recordFridayFinalTrial` for
+    /// callers that want it.
+    private func applyFridayTrial(correct: Bool) {
+        guard let encounter = currentEncounter else { return }
+        // Clamp to 1 so a caller who starts Friday mode with 0 planned
+        // trials still produces a sane boost instead of dividing by zero.
+        let remaining = max(1, fridayTrialsRemaining)
+        if correct {
+            let boost = FriendshipMeterMath.floorBoostWeight(
+                currentPercent: encounter.friendshipPercent,
+                trialsRemaining: remaining
+            )
+            let effectiveGain = max(FriendshipMeterMath.correctTrialGain, boost)
+            encounter.friendshipPercent = min(1.0, encounter.friendshipPercent + effectiveGain)
+            encounter.correctReadCount += 1
+            lastCorrectTrialID = UUID()
+        }
+        fridayTrialsRemaining = max(0, fridayTrialsRemaining - 1)
+        try? modelContext.save()
+
+        if fridayTrialsRemaining == 0 || encounter.friendshipPercent >= 1.0 - 1e-9 {
+            finalizeFridayIfNeeded()
+        }
     }
 
     public func beginDay() {

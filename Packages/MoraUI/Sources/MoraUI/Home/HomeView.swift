@@ -40,6 +40,12 @@ public struct HomeView: View {
     // flips to the curriculum-complete terminal screen.
     @Query private var bestiary: [BestiaryEntryEntity]
 
+    // Bundled yokai catalog cached as @State so the portrait-corner doesn't
+    // re-parse the JSON catalog on every body invalidation. `try?` lets the
+    // view still render if the bundle is somehow malformed — the corner just
+    // doesn't appear, which matches the pre-cache behavior.
+    @State private var yokaiStore: BundledYokaiStore? = try? BundledYokaiStore()
+
     // `needsEnhancedVoice` walks the installed-voice list; keep the result in
     // @State so the scan runs at most once per appearance / scene activation
     // rather than on every body invalidation (which fires on every @Query
@@ -94,8 +100,12 @@ public struct HomeView: View {
 
     /// True once every yokai has an entry in the bestiary and no open
     /// encounters remain. Drives the home CTA to the terminal screen.
+    ///
+    /// Counts *distinct* yokaiIDs rather than raw bestiary rows so a
+    /// duplicate entry (from a retry path that didn't dedup) doesn't
+    /// prematurely route to the terminal screen.
     private var isCurriculumComplete: Bool {
-        openEncounters.isEmpty && bestiary.count >= 5
+        openEncounters.isEmpty && Set(bestiary.map(\.yokaiID)).count >= 5
     }
 
     /// Primary home CTA. Branches to the curriculum-complete destination
@@ -162,8 +172,7 @@ public struct HomeView: View {
             startCTA
 
             if let enc = openEncounters.first,
-                let store = try? BundledYokaiStore(),
-                let yokai = store.catalog().first(where: { $0.id == enc.yokaiID })
+                let yokai = yokaiStore?.catalog().first(where: { $0.id == enc.yokaiID })
             {
                 YokaiPortraitCorner(yokai: yokai, sparkleTrigger: nil)
                     .frame(width: 96, height: 96)

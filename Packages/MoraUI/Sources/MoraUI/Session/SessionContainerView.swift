@@ -252,19 +252,30 @@ public struct SessionContainerView: View {
                     modelContext: context,
                     progressionSource: progression
                 )
-                if resolution.isNewEncounter {
+                // An encounter inserted by the Friday handoff (after a
+                // prior yokai befriended) has sessionCompletionCount == 0
+                // and friendshipPercent == 0 — the learner hasn't entered
+                // its Monday yet. Treat it as a fresh week so the Monday
+                // intro cutscene and the 10% seed from startWeek both
+                // fire; otherwise resume() would silently skip them.
+                let enc = resolution.encounter
+                let isUnstartedHandoff =
+                    enc.sessionCompletionCount == 0 && enc.friendshipPercent == 0
+                if resolution.isNewEncounter || isUnstartedHandoff {
                     try orch.startWeek(
-                        yokaiID: resolution.encounter.yokaiID,
-                        weekStart: resolution.encounter.weekStart
+                        yokaiID: enc.yokaiID,
+                        weekStart: enc.weekStart
                     )
-                    // startWeek inserts its own encounter; WeekRotation already
-                    // inserted one. Delete ours to keep the orchestrator-owned
-                    // one as the single source of truth for cutscene state.
-                    context.delete(resolution.encounter)
+                    // startWeek inserts its own encounter; the existing one
+                    // (either WeekRotation's fresh insert or the handoff's
+                    // zero-state row) is superseded. Delete it so the store
+                    // has exactly one active encounter for this yokai and
+                    // the orchestrator-owned one drives cutscene state.
+                    context.delete(enc)
                     try context.save()
                 } else {
-                    orch.resume(encounter: resolution.encounter)
-                    if resolution.encounter.sessionCompletionCount == 4 {
+                    orch.resume(encounter: enc)
+                    if enc.sessionCompletionCount == 4 {
                         // trialsPlanned matches the total trial budget for a
                         // session: tile-board phase emits one trial per chain
                         // link (up to 12), sentences phase emits up to
