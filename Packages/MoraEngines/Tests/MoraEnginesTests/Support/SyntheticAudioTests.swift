@@ -16,7 +16,7 @@ final class SyntheticAudioTests: XCTestCase {
     }
 
     func testVoicedFricativeHasContinuousVoicingThenVowel() {
-        // 200 ms total: 80 ms low-band voiced fricative + 120 ms vowel.
+        // 200 ms total: 80 ms full-band voiced fricative + 120 ms vowel.
         // Both regions should have RMS above the noise floor; no silence gap.
         let clip = SyntheticAudio.voicedFricative(durationMs: 200, burstStartMs: 80)
         XCTAssertEqual(clip.samples.count, 3_200)  // 200 ms at 16 kHz
