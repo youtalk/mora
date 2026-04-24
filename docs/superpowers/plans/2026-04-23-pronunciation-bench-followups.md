@@ -109,7 +109,7 @@ These tasks cannot be automated; they require a physical iPad + quiet room + a h
 
 ### Task A1: Record adult-proxy fixtures and check in
 
-**Prerequisites:** iPad with Mora DEBUG build installed. macOS with AirDrop to iPad.
+**Prerequisites:** iPad with the standalone recorder app installed. macOS with AirDrop to iPad.
 
 - [ ] **Step 1:** Rebuild and install the recorder app on iPad.
 
@@ -135,17 +135,17 @@ In Xcode, open `recorder/Mora Fixture Recorder.xcodeproj`, select the `MoraFixtu
 | # | Pattern row displayed in the list | Output filename the recorder writes |
 |---|---|---|
 | 1 | right — /r/ matched | `adult/rl/right-correct-take1.wav` + `.json` |
-| 2 | right — /r/ substitutedBy by /l/ | `adult/rl/right-as-light-take1.wav` + `.json` |
+| 2 | right — /r/ substituted by /l/ | `adult/rl/right-as-light-take1.wav` + `.json` |
 | 3 | light — /l/ matched | `adult/rl/light-correct-take1.wav` + `.json` |
-| 4 | light — /l/ substitutedBy by /r/ | `adult/rl/light-as-right-take1.wav` + `.json` |
+| 4 | light — /l/ substituted by /r/ | `adult/rl/light-as-right-take1.wav` + `.json` |
 | 5 | very — /v/ matched | `adult/vb/very-correct-take1.wav` + `.json` |
-| 6 | very — /v/ substitutedBy by /b/ | `adult/vb/very-as-berry-take1.wav` + `.json` |
+| 6 | very — /v/ substituted by /b/ | `adult/vb/very-as-berry-take1.wav` + `.json` |
 | 7 | berry — /b/ matched | `adult/vb/berry-correct-take1.wav` + `.json` |
-| 8 | berry — /b/ substitutedBy by /v/ | `adult/vb/berry-as-very-take1.wav` + `.json` |
+| 8 | berry — /b/ substituted by /v/ | `adult/vb/berry-as-very-take1.wav` + `.json` |
 | 9 | cat — /æ/ matched | `adult/aeuh/cat-correct-take1.wav` + `.json` |
-| 10 | cat — /æ/ substitutedBy by /ʌ/ | `adult/aeuh/cat-as-cut-take1.wav` + `.json` |
+| 10 | cat — /æ/ substituted by /ʌ/ | `adult/aeuh/cat-as-cut-take1.wav` + `.json` |
 | 11 | cut — /ʌ/ matched | `adult/aeuh/cut-correct-take1.wav` + `.json` |
-| 12 | cut — /ʌ/ substitutedBy by /æ/ | `adult/aeuh/cut-as-cat-take1.wav` + `.json` |
+| 12 | cut — /ʌ/ substituted by /æ/ | `adult/aeuh/cut-as-cat-take1.wav` + `.json` |
 
 If a take came out noisy or mispronounced, delete it from the takes list (trash icon) and re-record; do not tap Save until you are satisfied.
 
