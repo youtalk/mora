@@ -53,38 +53,42 @@ def _flood_fill(eligible: np.ndarray, seed_mask: np.ndarray) -> np.ndarray:
 def _build_background_mask(rgb: np.ndarray) -> np.ndarray:
     """Return a boolean mask (H, W) where True = background.
 
-    Pass 1 — flood fill from the four corners across near-white pixels. This
-    removes the rendered canvas while leaving interior whites (bellies, the
-    cat's body) intact.
+    A single 4-connected flood fill from the four corners across a
+    combined eligibility set:
 
-    Pass 2 — expand the mask through neutral-grey pixels adjacent to the
-    already-transparent region. This captures the soft drop-shadow ellipses
-    under some characters without touching warm-cream bellies or the white
-    cat body (those are either lighter than SHADOW_MAX or only reachable by
-    crossing character edges).
+    - Near-white pixels (`min(R,G,B) >= WHITE_THRESHOLD`): the rendered
+      canvas.
+    - Neutral-grey pixels (`SHADOW_MIN <= min(R,G,B) <= SHADOW_MAX` and
+      `max - min <= SHADOW_SAT_SPREAD`): the soft drop-shadow ellipse
+      baked under some characters. The grey band overlaps the white
+      threshold so the gradient rim where the shadow fades into the
+      canvas is bridged.
+
+    Unioning the two sets into one fill matters: a white pocket walled
+    off by a shadow ring (e.g. between the rabbit's legs) can only be
+    reached by first traversing the shadow and then resuming through
+    white. Running the passes separately would leave such pockets
+    opaque.
+
+    Interior whites on the character (bellies on short_a / r / sh / th,
+    the white cat body on f) stay opaque because they are walled off by
+    saturated line-art that fails both eligibility predicates.
     """
     h, w, _ = rgb.shape
     rgb_min = rgb.min(axis=2)
     rgb_max = rgb.max(axis=2)
+    spread = rgb_max.astype(np.int16) - rgb_min.astype(np.int16)
 
     near_white = rgb_min >= WHITE_THRESHOLD
+    shadow_like = (
+        (rgb_min >= SHADOW_MIN) & (rgb_min <= SHADOW_MAX) & (spread <= SHADOW_SAT_SPREAD)
+    )
+    eligible = near_white | shadow_like
+
     corner_seeds = np.zeros((h, w), dtype=bool)
     corner_seeds[0, 0] = corner_seeds[0, -1] = True
     corner_seeds[-1, 0] = corner_seeds[-1, -1] = True
-    background = _flood_fill(near_white, corner_seeds)
-
-    shadow_like = (
-        (rgb_min >= SHADOW_MIN)
-        & (rgb_min <= SHADOW_MAX)
-        & ((rgb_max - rgb_min) <= SHADOW_SAT_SPREAD)
-    )
-    # Seed the shadow pass with background pixels that already touch a
-    # shadow-like neighbor. Using the full background as seed is fine: the
-    # flood only advances through `shadow_like`, so unrelated neutral-grey
-    # regions inside the character stay untouched unless reachable.
-    eligible = shadow_like | background
-    background = _flood_fill(eligible, background)
-    return background
+    return _flood_fill(eligible, corner_seeds)
 
 
 def _process(portrait_path: Path, output_path: Path) -> None:
