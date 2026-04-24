@@ -1,6 +1,9 @@
 import AVFoundation
 import Foundation
+import OSLog
 import Speech
+
+private let asrLog = Logger(subsystem: "tech.reenable.Mora", category: "Speech")
 
 public enum AppleSpeechEngineError: Error, Equatable {
     case notSupportedOnDevice
@@ -150,6 +153,9 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
         }
 
         continuation.yield(.started)
+        #if DEBUG
+        asrLog.info("ASR: listening started")
+        #endif
 
         let timestamps = TimestampBox()
         timestamps.reset()
@@ -157,6 +163,9 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
         self.task = recognizer.recognitionTask(with: req) { [weak self, ringRef = ring] result, err in
             guard let self else { return }
             if let err {
+                #if DEBUG
+                asrLog.error("ASR: error \(String(describing: err), privacy: .public)")
+                #endif
                 self.cancel()
                 continuation.finish(throwing: err)
                 return
@@ -167,10 +176,22 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
             if !result.isFinal {
                 continuation.yield(.partial(transcript))
                 timestamps.markPartial()
+                #if DEBUG
+                asrLog.info("ASR partial: \"\(transcript, privacy: .public)\"")
+                #endif
                 return
             }
             guard timestamps.tryMarkFinalized() else { return }
             let clip = ringRef.drain()
+            #if DEBUG
+            asrLog.info(
+                """
+                ASR final: "\(transcript, privacy: .public)" \
+                confidence=\(confidence, privacy: .public) \
+                samples=\(clip.samples.count, privacy: .public)
+                """
+            )
+            #endif
             continuation.yield(
                 .final(
                     TrialRecording(
@@ -192,6 +213,15 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
                 if silence >= self.silenceTimeout || total >= self.hardTimeout {
                     guard timestamps.tryMarkFinalized() else { return }
                     let clip = ringRef.drain()
+                    #if DEBUG
+                    asrLog.info(
+                        """
+                        ASR timeout: silence=\(silence, privacy: .public)s \
+                        total=\(total, privacy: .public)s \
+                        samples=\(clip.samples.count, privacy: .public)
+                        """
+                    )
+                    #endif
                     continuation.yield(
                         .final(
                             TrialRecording(

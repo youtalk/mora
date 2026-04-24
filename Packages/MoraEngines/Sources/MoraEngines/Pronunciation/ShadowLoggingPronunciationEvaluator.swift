@@ -23,25 +23,36 @@ private let trialLog = Logger(subsystem: "tech.reenable.Mora", category: "Pronun
 ///   **not** synthesize a `.failed` log variant.
 public struct ShadowLoggingPronunciationEvaluator: PronunciationEvaluator {
     public let primary: any PronunciationEvaluator
-    public let shadow: any PronunciationEvaluator
+    /// Resolves Engine B on each call. Returning `nil` means the background
+    /// warmup has not yet compiled the CoreML model for the Neural Engine
+    /// (first install can take ~100 s on A-series iPads); the composite
+    /// still runs and logs the trial with `engineB = .notReady`. Once the
+    /// resolver starts returning a non-`nil` evaluator, subsequent trials
+    /// in the same session transparently pick up Engine B.
+    public let shadowResolver: @Sendable () -> (any PronunciationEvaluator)?
     public let logger: any PronunciationTrialLogger
     public let timeout: Duration
 
     public init(
         primary: any PronunciationEvaluator,
-        shadow: any PronunciationEvaluator,
+        shadowResolver: @escaping @Sendable () -> (any PronunciationEvaluator)?,
         logger: any PronunciationTrialLogger,
         timeout: Duration = .milliseconds(1000)
     ) {
         self.primary = primary
-        self.shadow = shadow
+        self.shadowResolver = shadowResolver
         self.logger = logger
         self.timeout = timeout
     }
 
     public func supports(target: Phoneme, in word: Word) -> Bool {
-        primary.supports(target: target, in: word)
-            || shadow.supports(target: target, in: word)
+        if primary.supports(target: target, in: word) { return true }
+        if let shadow = shadowResolver(),
+            shadow.supports(target: target, in: word)
+        {
+            return true
+        }
+        return false
     }
 
     public func evaluate(
@@ -51,11 +62,20 @@ public struct ShadowLoggingPronunciationEvaluator: PronunciationEvaluator {
         asr: ASRResult
     ) async -> PhonemeTrialAssessment {
         let primarySupports = primary.supports(target: targetPhoneme, in: expected)
-        let shadowSupports = shadow.supports(target: targetPhoneme, in: expected)
+        // Snapshot shadow at the start of this trial. Using the same
+        // instance for both the supports-check and the detached evaluate
+        // call keeps the log row consistent if the warmup happens to
+        // finish partway through.
+        let shadowSnapshot = shadowResolver()
+        let shadowSupports =
+            shadowSnapshot?.supports(target: targetPhoneme, in: expected) ?? false
 
         // Neither evaluator can produce useful data — there's nothing to
         // correlate, so skip the log row entirely and don't consume FIFO
-        // slots in the retention cap.
+        // slots in the retention cap. `shadowSupports` is already false
+        // when `shadowSnapshot == nil` (warmup pending), so this single
+        // check covers both "shadow unavailable" and "shadow present but
+        // doesn't know this phoneme".
         if !primarySupports && !shadowSupports {
             return Self.placeholder(target: targetPhoneme)
         }
@@ -79,16 +99,20 @@ public struct ShadowLoggingPronunciationEvaluator: PronunciationEvaluator {
         // protocol contract (any internal provider failure surfaces as an
         // `.unclear` PhonemeTrialAssessment with a diagnostic features
         // dict), so the composite can only observe "got a value within the
-        // timeout" (log as .completed) or "timed out" (log as .timedOut).
-        let shadow = self.shadow
+        // timeout" (log as .completed), "timed out" (log as .timedOut),
+        // "shadow doesn't support this target" (log as .unsupported), or
+        // "warmup still in flight" (log as .notReady).
+        let shadow = shadowSnapshot
         let logger = self.logger
         let timeout = self.timeout
         Task.detached(priority: .background) {
             let start = ContinuousClock.now
             let engineB: EngineBLogResult
-            if !shadowSupports {
+            if shadow == nil {
+                engineB = .notReady
+            } else if !shadowSupports {
                 engineB = .unsupported
-            } else {
+            } else if let shadow {
                 let captured = await withTimeout(timeout) { () async throws -> PhonemeTrialAssessment in
                     await shadow.evaluate(
                         audio: audio, expected: expected,
@@ -102,6 +126,11 @@ public struct ShadowLoggingPronunciationEvaluator: PronunciationEvaluator {
                 } else {
                     engineB = .timedOut(latencyMs: ms)
                 }
+            } else {
+                // Unreachable: the branches above cover every `shadow`
+                // state. This fallback keeps the compiler satisfied
+                // without widening the enum.
+                engineB = .unsupported
             }
             let entry = PronunciationTrialLogEntry(
                 timestamp: Date(),
@@ -120,18 +149,23 @@ public struct ShadowLoggingPronunciationEvaluator: PronunciationEvaluator {
     /// Emits one line per trial to `Logger(subsystem: "tech.reenable.Mora",
     /// category: "Pronunciation")` so on-device testing (Xcode console,
     /// Console.app with an attached debugger) can see both evaluators'
-    /// decisions side by side. `privacy: .private` keeps per-trial details
-    /// out of sysdiagnose / unattached Console.app streams, matching the
-    /// "no per-trial details leave the device" invariant; the attached
-    /// Xcode debug session still resolves the values to the operator. The
-    /// SwiftData row remains the authoritative log.
+    /// decisions side by side. DEBUG builds use `privacy: .public` so the
+    /// body is readable in an unattached `log stream` or Console.app while
+    /// the developer is iterating on-device; Release builds revert to
+    /// `privacy: .private` to uphold the "no per-trial details leave the
+    /// device" invariant (sysdiagnose and TestFlight feedback redact the
+    /// line). The SwiftData row remains the authoritative log either way.
     private static func logTrial(_ entry: PronunciationTrialLogEntry) {
         let word = entry.word.surface
         let ipa = entry.targetPhoneme.ipa
         let a = formatEngineA(entry.engineA)
         let b = formatEngineB(entry.engineB)
         let line = "trial \"\(word)\" /\(ipa)/  A=\(a)  B=\(b)"
+        #if DEBUG
+        trialLog.info("\(line, privacy: .public)")
+        #else
         trialLog.info("\(line, privacy: .private)")
+        #endif
     }
 
     private static func formatEngineA(_ a: PhonemeTrialAssessment?) -> String {
@@ -150,6 +184,8 @@ public struct ShadowLoggingPronunciationEvaluator: PronunciationEvaluator {
             return "timedOut \(latencyMs)ms"
         case .unsupported:
             return "unsupported"
+        case .notReady:
+            return "notReady"
         }
     }
 

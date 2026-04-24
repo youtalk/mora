@@ -1,4 +1,4 @@
-# mora
+# Mora
 
 An iPad-first, on-device learning app for children with dyslexia learning English as a second language.
 
