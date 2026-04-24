@@ -16,6 +16,7 @@ public struct YokaiCutsceneOverlay: View {
     @State private var player: AVAudioPlayer?
     @State private var synthesizer: AVSpeechSynthesizer = AVSpeechSynthesizer()
     @State private var store: BundledYokaiStore?
+    @State private var didPrimeSpeech = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(orchestrator: YokaiOrchestrator) {
@@ -71,6 +72,12 @@ public struct YokaiCutsceneOverlay: View {
         }
         .onAppear {
             if store == nil { store = try? BundledYokaiStore() }
+            if !didPrimeSpeech {
+                didPrimeSpeech = true
+                let primer = AVSpeechUtterance(string: " ")
+                primer.volume = 0
+                synthesizer.speak(primer)
+            }
             fridayPhase = 0
             washiProgress = 0
             if !didHapticFriday {

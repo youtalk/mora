@@ -9,6 +9,7 @@ import UIKit
 public struct YokaiPortraitCorner: View {
     let yokai: YokaiDefinition
     let sparkleTrigger: AnyHashable?
+    let sparkleEnabled: Bool
     @State private var pulse: Bool = false
     @State private var store: BundledYokaiStore?
     #if canImport(UIKit)
@@ -16,15 +17,22 @@ public struct YokaiPortraitCorner: View {
     #endif
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
-    public init(yokai: YokaiDefinition, sparkleTrigger: AnyHashable? = nil) {
+    public init(yokai: YokaiDefinition) {
+        self.yokai = yokai
+        self.sparkleTrigger = nil
+        self.sparkleEnabled = false
+    }
+
+    public init(yokai: YokaiDefinition, sparkleTrigger: AnyHashable?) {
         self.yokai = yokai
         self.sparkleTrigger = sparkleTrigger
+        self.sparkleEnabled = true
     }
 
     public var body: some View {
         content
             .overlay {
-                if let sparkleTrigger {
+                if sparkleEnabled {
                     SparkleOverlay(trigger: sparkleTrigger).allowsHitTesting(false)
                 }
             }
