@@ -13,6 +13,7 @@ public enum CoachingKeyResolver {
         case ("v", "b"): return "coaching.v_sub_b"
         case ("θ", "s"): return "coaching.th_voiceless_sub_s"
         case ("θ", "t"): return "coaching.th_voiceless_sub_t"
+        case ("t", "θ"): return "coaching.t_sub_th_voiceless"
         case ("æ", "ʌ"), ("ʌ", "æ"): return "coaching.ae_sub_schwa"
         default: return nil
         }
