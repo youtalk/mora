@@ -3,9 +3,10 @@
   "grapheme": "a",
   "ipa": "/æ/",
   "personality": "wide-mouth surprise yokai",
+  "body_shape": "round apple-shaped body with a cream belly and red skin, a leaf and stem growing at the top of the head, short stubby arms",
   "mouth_pose": "jaw dropped very wide open, mouth forming a tall round oval, lips stretched taut, tongue lying flat and low along the bottom of the mouth, back of the throat faintly visible, /æ/ low-front vowel articulation",
   "sound_gesture": "both paws raised high and open as if astonished, body leaning slightly back",
-  "word_decor": ["apple-shaped hat with a leaf", "ant-antenna headband", "tiny wooden axe prop"],
+  "word_decor": ["ant-antenna headband with two bobbly tips", "tiny wooden axe prop held in one paw"],
   "palette": ["apple-red", "leaf-green", "cream"],
   "expression": "wide amazed eyes, eyebrows raised high, stunned mood",
   "voice": {

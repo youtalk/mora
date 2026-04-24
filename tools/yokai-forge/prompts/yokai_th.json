@@ -3,9 +3,10 @@
   "grapheme": "th",
   "ipa": "/θ/",
   "personality": "tongue-biting prankster yokai",
-  "mouth_pose": "tongue tip gently gripped between closed front teeth with only a tiny portion of the tongue peeking out between the incisors, upper and lower teeth clamping down on the middle of the tongue, mouth mostly closed, NOT a raspberry tongue-out face, NOT a sticking-out tongue past the teeth",
+  "body_shape": "round thorny chestnut-shaped body with a spiky husk texture, short stubby limbs, a thorny leaf-shaped cape draped behind",
+  "mouth_pose": "tongue tip gently gripped between closed front teeth with only a tiny portion of the tongue peeking out between the incisors, upper and lower teeth clamping down on the middle of the tongue, mouth mostly closed",
   "sound_gesture": "thumbs-up paw held forward, other paw on hip, bouncing playfully",
-  "word_decor": ["small lightning-bolt shaped horns on the head", "thumb-up paw held forward", "thorny leaf cape"],
+  "word_decor": ["small lightning-bolt shaped horns on the head", "thorny leaf cape"],
   "palette": ["violet", "mustard", "cream"],
   "expression": "cheeky bright eyes, eyebrows tilted, mischievous mood",
   "voice": {

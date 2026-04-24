@@ -3,9 +3,10 @@
   "grapheme": "f",
   "ipa": "/f/",
   "personality": "windy breath-spirit yokai",
+  "body_shape": "round cloud-puff shaped body, like a soft stylized cloud with little paws, a long koi-fish tail fin curling behind",
   "mouth_pose": "upper front teeth biting firmly onto the middle of the lower lip, mouth almost fully closed with only a thin airy gap, teeth clearly visible pinning the lip down, no tongue visible, /f/ labiodental articulation",
-  "sound_gesture": "blowing a soft breeze forward, one paw raised palm-up as if catching wind, tail curling behind",
-  "word_decor": ["koi-fish tail fin", "round paper fan in one paw", "soft feather tucked at the crown of the head"],
+  "sound_gesture": "blowing a soft breeze forward, one paw raised palm-up as if catching wind",
+  "word_decor": ["round paper fan held in one paw", "soft feather tucked at the crown of the head"],
   "palette": ["sky-blue", "white", "peach"],
   "expression": "serene half-closed meditating eyes, calm mood",
   "voice": {
