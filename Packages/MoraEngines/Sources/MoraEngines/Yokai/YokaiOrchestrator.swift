@@ -15,15 +15,19 @@ public final class YokaiOrchestrator {
     private let modelContext: ModelContext
     private let calendar: Calendar
     private var dayGainSoFar: Double = 0
+    private let progressionSource: YokaiProgressionSource?
+    private var isFridaySession: Bool = false
 
     public init(
         store: YokaiStore,
         modelContext: ModelContext,
-        calendar: Calendar = .current
+        calendar: Calendar = .current,
+        progressionSource: YokaiProgressionSource? = nil
     ) {
         self.store = store
         self.modelContext = modelContext
         self.calendar = calendar
+        self.progressionSource = progressionSource
     }
 
     public func dismissCutscene() { activeCutscene = nil }
@@ -46,7 +50,23 @@ public final class YokaiOrchestrator {
         dayGainSoFar = 0
     }
 
+    /// Re-attach the orchestrator to an existing encounter without creating
+    /// a new one. Used by bootstrap after the first session of a week has
+    /// already happened (`sessionCompletionCount >= 1`). Preserves the stored
+    /// friendship percent, session count, and all other encounter fields;
+    /// clears transient per-day state.
+    public func resume(encounter: YokaiEncounterEntity) {
+        currentEncounter = encounter
+        currentYokai = store.catalog().first(where: { $0.id == encounter.yokaiID })
+        activeCutscene = nil
+        dayGainSoFar = 0
+    }
+
     public func recordTrialOutcome(correct: Bool) {
+        if isFridaySession {
+            applyFridayTrial(correct: correct)
+            return
+        }
         guard let encounter = currentEncounter else { return }
         let result = FriendshipMeterMath.applyTrialOutcome(
             percent: encounter.friendshipPercent,
@@ -62,8 +82,40 @@ public final class YokaiOrchestrator {
         try? modelContext.save()
     }
 
+    /// Per-trial Friday math: distributes the remaining 1.0-friendship
+    /// deficit across `fridayTrialsRemaining` so every trial contributes
+    /// to the ramp rather than the first correct trial alone concentrating
+    /// the full deficit. Finalizes (befriend or carryover) when every
+    /// planned trial has been consumed, OR when the meter reaches 100%
+    /// ahead of schedule — whichever comes first. The explicit final-trial
+    /// concentration behavior still lives on `recordFridayFinalTrial` for
+    /// callers that want it.
+    private func applyFridayTrial(correct: Bool) {
+        guard let encounter = currentEncounter else { return }
+        // Clamp to 1 so a caller who starts Friday mode with 0 planned
+        // trials still produces a sane boost instead of dividing by zero.
+        let remaining = max(1, fridayTrialsRemaining)
+        if correct {
+            let boost = FriendshipMeterMath.floorBoostWeight(
+                currentPercent: encounter.friendshipPercent,
+                trialsRemaining: remaining
+            )
+            let effectiveGain = max(FriendshipMeterMath.correctTrialGain, boost)
+            encounter.friendshipPercent = min(1.0, encounter.friendshipPercent + effectiveGain)
+            encounter.correctReadCount += 1
+            lastCorrectTrialID = UUID()
+        }
+        fridayTrialsRemaining = max(0, fridayTrialsRemaining - 1)
+        try? modelContext.save()
+
+        if fridayTrialsRemaining == 0 || encounter.friendshipPercent >= 1.0 - 1e-9 {
+            finalizeFridayIfNeeded()
+        }
+    }
+
     public func beginDay() {
         dayGainSoFar = 0
+        isFridaySession = false
     }
 
     public func recordSessionCompletion() {
@@ -83,6 +135,7 @@ public final class YokaiOrchestrator {
     public func beginFridaySession(trialsPlanned: Int) {
         beginDay()
         fridayTrialsRemaining = trialsPlanned
+        isFridaySession = true
     }
 
     public func recordFridayFinalTrial(correct: Bool) {
@@ -131,12 +184,25 @@ public final class YokaiOrchestrator {
             encounter.befriendedAt = when
             let entry = BestiaryEntryEntity(yokaiID: yokai.id, befriendedAt: when)
             modelContext.insert(entry)
+
+            if let nextID = progressionSource?.nextYokaiID(after: yokai.id) {
+                let next = YokaiEncounterEntity(
+                    yokaiID: nextID,
+                    weekStart: when,
+                    state: .active,
+                    friendshipPercent: 0
+                )
+                modelContext.insert(next)
+            }
+
             try? modelContext.save()
             activeCutscene = .fridayClimax(yokaiID: yokai.id)
+            isFridaySession = false
         } else {
             encounter.state = .carryover
             encounter.storedRolloverFlag = true
             try? modelContext.save()
+            isFridaySession = false
         }
     }
 }

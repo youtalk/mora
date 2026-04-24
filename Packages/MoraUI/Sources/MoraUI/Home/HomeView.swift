@@ -35,6 +35,17 @@ public struct HomeView: View {
     )
     private var openEncounters: [YokaiEncounterEntity]
 
+    // Bestiary entries unlock as each yokai is befriended. Once all five
+    // are in the register and no open encounters remain, the home CTA
+    // flips to the curriculum-complete terminal screen.
+    @Query private var bestiary: [BestiaryEntryEntity]
+
+    // Bundled yokai catalog cached as @State so the portrait-corner doesn't
+    // re-parse the JSON catalog on every body invalidation. `try?` lets the
+    // view still render if the bundle is somehow malformed — the corner just
+    // doesn't appear, which matches the pre-cache behavior.
+    @State private var yokaiStore: BundledYokaiStore? = try? BundledYokaiStore()
+
     // `needsEnhancedVoice` walks the installed-voice list; keep the result in
     // @State so the scan runs at most once per appearance / scene activation
     // rather than on every body invalidation (which fires on every @Query
@@ -87,21 +98,35 @@ public struct HomeView: View {
             .foregroundStyle(MoraTheme.Accent.orange)
     }
 
-    private var hero: some View {
-        VStack(spacing: MoraTheme.Space.md) {
-            Text(strings.homeTodayQuest)
-                .font(MoraType.label())
-                .foregroundStyle(MoraTheme.Ink.muted)
+    /// True once every yokai has an entry in the bestiary and no open
+    /// encounters remain. Drives the home CTA to the terminal screen.
+    ///
+    /// Counts *distinct* yokaiIDs rather than raw bestiary rows so a
+    /// duplicate entry (from a retry path that didn't dedup) doesn't
+    /// prematurely route to the terminal screen.
+    private var isCurriculumComplete: Bool {
+        openEncounters.isEmpty && Set(bestiary.map(\.yokaiID)).count >= 5
+    }
 
-            Text(target.letters ?? "—")
-                .font(MoraType.heroWord())
-                .foregroundStyle(MoraTheme.Ink.primary)
-
-            Text(ipaLine)
-                .font(MoraType.bodyReading())
-                .foregroundStyle(MoraTheme.Ink.secondary)
-                .multilineTextAlignment(.center)
-
+    /// Primary home CTA. Branches to the curriculum-complete destination
+    /// once the learner has befriended all five yokai; otherwise renders
+    /// the regular session-start button (preserving PR #71's MLX warmup
+    /// gating).
+    @ViewBuilder
+    private var startCTA: some View {
+        if isCurriculumComplete {
+            NavigationLink(value: "curriculumComplete") {
+                Text("All befriended — view your Register")
+                    .font(MoraType.cta())
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, MoraTheme.Space.xl)
+                    .padding(.vertical, MoraTheme.Space.md)
+                    .frame(minHeight: 88)
+                    .background(MoraTheme.Accent.orange, in: .capsule)
+            }
+            .buttonStyle(.plain)
+            .padding(.top, MoraTheme.Space.md)
+        } else {
             NavigationLink(value: "session") {
                 ZStack {
                     Text(strings.homeStart)
@@ -126,6 +151,33 @@ public struct HomeView: View {
             .disabled(!isStartEnabled)
             .accessibilityLabel(Text(strings.homeStart))
             .accessibilityValue(isStartEnabled ? Text("") : Text(strings.a11yHomeStartLoading))
+        }
+    }
+
+    private var hero: some View {
+        VStack(spacing: MoraTheme.Space.md) {
+            Text(strings.homeTodayQuest)
+                .font(MoraType.label())
+                .foregroundStyle(MoraTheme.Ink.muted)
+
+            Text(target.letters ?? "—")
+                .font(MoraType.heroWord())
+                .foregroundStyle(MoraTheme.Ink.primary)
+
+            Text(ipaLine)
+                .font(MoraType.bodyReading())
+                .foregroundStyle(MoraTheme.Ink.secondary)
+                .multilineTextAlignment(.center)
+
+            startCTA
+
+            if let enc = openEncounters.first,
+                let yokai = yokaiStore?.catalog().first(where: { $0.id == enc.yokaiID })
+            {
+                YokaiPortraitCorner(yokai: yokai, sparkleTrigger: nil)
+                    .frame(width: 96, height: 96)
+                    .accessibilityLabel("This week's sound-friend: \(enc.yokaiID)")
+            }
 
             HStack(spacing: MoraTheme.Space.sm) {
                 pill(strings.homeDurationPill(16))
