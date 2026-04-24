@@ -110,7 +110,7 @@ def main(argv: list[str]) -> int:
     parser.add_argument(
         "yokai_root",
         type=Path,
-        help="Directory containing <slug>/portrait.png subdirectories.",
+        help="Directory containing <slug> subdirectories, each with a portrait.png.",
     )
     parser.add_argument(
         "--output-root",
