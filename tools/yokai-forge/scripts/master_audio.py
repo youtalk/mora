@@ -13,28 +13,26 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
 def master(src: pathlib.Path, dst: pathlib.Path) -> None:
-    # Trim leading silence only, then loudnorm to -16 LUFS, resample
-    # to 22050 Hz mono, encode AAC. The trailing region is kept
-    # verbatim so the natural decay of the last phoneme and whatever
-    # tail silence fish-speech produced both survive.
+    # Loudnorm to -16 LUFS, resample to 22050 Hz mono, encode AAC —
+    # no silence trimming on either end. fish-speech output is used
+    # verbatim in the time domain.
     #
-    # An earlier revision trimmed trailing silence too via the
-    # `silenceremove, areverse, silenceremove, areverse` idiom at a
-    # -50 dB threshold. That cut into the decay of low-energy
-    # phonemes (fricatives /f/ /ʃ/, short vowels fading into
-    # creaky-voice) — 39 of 40 clips ended mid-sound with the last
-    # 100 ms sitting at -15 to -35 dB instead of a silent tail. For
-    # short voice cues in the app we'd rather keep ~100-300 ms of
-    # fish-speech's natural tail than clip the final consonant.
-    #
-    # Leading silence trim stays: playback still wants to start
-    # immediately on the first phoneme, not after a padded gap.
-    trim_leading = (
-        "silenceremove=start_periods=1:start_duration=0.1:start_threshold=-50dB"
-    )
+    # An earlier revision ran `silenceremove ... start_duration=0.1
+    # ... start_threshold=-50dB` at the head to drop leading silence.
+    # The `start_duration` parameter in silenceremove means the
+    # amount of non-silence that must be sustained before the filter
+    # STOPS trimming — not the minimum silence window to trim. For
+    # fricatives like /ʃ/, /f/, /θ/ whose onset ramps up gradually
+    # through -50 dB, the filter kept trimming through the onset
+    # because it never saw 100 ms of continuous non-silence at the
+    # start. sh/example_3 "shell" lost ~100 ms of the /ʃ/ ramp and
+    # became hard to recognize. Dropping the trim preserves the
+    # natural fricative onset at the cost of whatever leading
+    # silence fish-speech produced, which in practice is ≤ 50 ms of
+    # low-level noise across all 40 clips and inaudible in playback.
     cmd = [
         "ffmpeg", "-y", "-i", str(src),
-        "-af", f"{trim_leading},loudnorm=I=-16:TP=-1.5:LRA=11",
+        "-af", "loudnorm=I=-16:TP=-1.5:LRA=11",
         "-ar", "22050", "-ac", "1",
         "-c:a", "aac", "-b:a", "96k",
         str(dst),
