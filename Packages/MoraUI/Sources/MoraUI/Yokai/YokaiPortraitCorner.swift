@@ -8,6 +8,7 @@ import UIKit
 
 public struct YokaiPortraitCorner: View {
     let yokai: YokaiDefinition
+    let sparkleTrigger: AnyHashable?
     @State private var pulse: Bool = false
     @State private var store: BundledYokaiStore?
     #if canImport(UIKit)
@@ -15,19 +16,28 @@ public struct YokaiPortraitCorner: View {
     #endif
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
-    public init(yokai: YokaiDefinition) { self.yokai = yokai }
+    public init(yokai: YokaiDefinition, sparkleTrigger: AnyHashable? = nil) {
+        self.yokai = yokai
+        self.sparkleTrigger = sparkleTrigger
+    }
 
     public var body: some View {
-        content.onAppear {
-            if store == nil { store = try? BundledYokaiStore() }
-            #if canImport(UIKit)
-            if image == nil,
-                let url = store?.portraitURL(for: yokai.id)
-            {
-                image = UIImage(contentsOfFile: url.path)
+        content
+            .overlay {
+                if let sparkleTrigger {
+                    SparkleOverlay(trigger: sparkleTrigger).allowsHitTesting(false)
+                }
             }
-            #endif
-        }
+            .onAppear {
+                if store == nil { store = try? BundledYokaiStore() }
+                #if canImport(UIKit)
+                if image == nil,
+                    let url = store?.portraitURL(for: yokai.id)
+                {
+                    image = UIImage(contentsOfFile: url.path)
+                }
+                #endif
+            }
     }
 
     @ViewBuilder
