@@ -42,38 +42,84 @@ public struct CurriculumEngine: Sendable {
             "abcdefghijklmnopqrstuvwxyz".map { Grapheme(letters: String($0)) }
         )
 
-        let l3Skills: [Skill] = [
+        let skills: [Skill] = [
             Skill(
                 code: "sh_onset", level: .l3, displayName: "sh digraph",
                 graphemePhoneme: .init(
                     grapheme: .init(letters: "sh"),
                     phoneme: .init(ipa: "ʃ")
-                )
-            ),
-            Skill(
-                code: "ch_onset", level: .l3, displayName: "ch digraph",
-                graphemePhoneme: .init(
-                    grapheme: .init(letters: "ch"),
-                    phoneme: .init(ipa: "tʃ")
-                )
+                ),
+                warmupCandidates: [
+                    Grapheme(letters: "s"),
+                    Grapheme(letters: "sh"),
+                    Grapheme(letters: "ch"),
+                ],
+                yokaiID: "sh"
             ),
             Skill(
                 code: "th_voiceless", level: .l3, displayName: "voiceless th",
                 graphemePhoneme: .init(
                     grapheme: .init(letters: "th"),
                     phoneme: .init(ipa: "θ")
-                )
+                ),
+                warmupCandidates: [
+                    Grapheme(letters: "t"),
+                    Grapheme(letters: "th"),
+                    Grapheme(letters: "s"),
+                ],
+                yokaiID: "th"
             ),
             Skill(
-                code: "ck_coda", level: .l3, displayName: "ck digraph",
+                code: "f_onset", level: .l2, displayName: "f sound",
                 graphemePhoneme: .init(
-                    grapheme: .init(letters: "ck"),
-                    phoneme: .init(ipa: "k")
-                )
+                    grapheme: .init(letters: "f"),
+                    phoneme: .init(ipa: "f")
+                ),
+                warmupCandidates: [
+                    Grapheme(letters: "f"),
+                    Grapheme(letters: "h"),
+                    Grapheme(letters: "v"),
+                ],
+                yokaiID: "f"
+            ),
+            Skill(
+                code: "r_onset", level: .l2, displayName: "r sound",
+                graphemePhoneme: .init(
+                    grapheme: .init(letters: "r"),
+                    phoneme: .init(ipa: "r")
+                ),
+                warmupCandidates: [
+                    Grapheme(letters: "r"),
+                    Grapheme(letters: "l"),
+                    Grapheme(letters: "w"),
+                ],
+                yokaiID: "r"
+            ),
+            Skill(
+                code: "short_a", level: .l2, displayName: "short a",
+                graphemePhoneme: .init(
+                    grapheme: .init(letters: "a"),
+                    phoneme: .init(ipa: "æ")
+                ),
+                warmupCandidates: [
+                    Grapheme(letters: "a"),
+                    Grapheme(letters: "u"),
+                    Grapheme(letters: "e"),
+                ],
+                yokaiID: "short_a"
             ),
         ]
 
-        return CurriculumEngine(skills: l3Skills, baselineTaughtGraphemes: l2Alphabet)
+        return CurriculumEngine(skills: skills, baselineTaughtGraphemes: l2Alphabet)
+    }
+
+    public func indexOf(code: SkillCode) -> Int? {
+        skills.firstIndex(where: { $0.code == code })
+    }
+
+    public func nextSkill(after code: SkillCode) -> Skill? {
+        guard let idx = indexOf(code: code), idx + 1 < skills.count else { return nil }
+        return skills[idx + 1]
     }
 
     // MARK: - Test fixtures (internal; test targets only)
