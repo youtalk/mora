@@ -2,6 +2,7 @@ import SwiftUI
 
 public struct WashiCardMorph: View {
     @Binding var progress: Double  // 0.0 ... 1.0
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(progress: Binding<Double>) {
         self._progress = progress
@@ -26,7 +27,7 @@ public struct WashiCardMorph: View {
             )
             .shadow(color: Color.black.opacity(0.25 * clamped), radius: 12, x: 0, y: 6)
             .opacity(clamped)
-            .scaleEffect(0.6 + clamped * 0.4)
+            .scaleEffect(reduceMotion ? 1.0 : (0.6 + clamped * 0.4))
             .accessibilityHidden(true)
     }
 }

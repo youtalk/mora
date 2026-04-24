@@ -15,6 +15,7 @@ public struct YokaiCutsceneOverlay: View {
     @State private var player: AVAudioPlayer?
     @State private var synthesizer: AVSpeechSynthesizer = AVSpeechSynthesizer()
     @State private var store: BundledYokaiStore?
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(orchestrator: YokaiOrchestrator) {
         self.orchestrator = orchestrator
@@ -47,8 +48,8 @@ public struct YokaiCutsceneOverlay: View {
             VStack(spacing: 24) {
                 YokaiPortraitCorner(yokai: yokai)
                     .frame(width: 240, height: 240)
-                    .scaleEffect(fridayPhase >= 2 ? 1.25 : 1.0)
-                    .animation(.easeInOut(duration: 0.8), value: fridayPhase)
+                    .scaleEffect(reduceMotion ? 1.0 : (fridayPhase >= 2 ? 1.25 : 1.0))
+                    .animation(reduceMotion ? nil : .easeInOut(duration: 0.8), value: fridayPhase)
 
                 if fridayPhase >= 3 {
                     Text(yokai.voice.clips[.fridayAcknowledge] ?? "")
@@ -71,25 +72,35 @@ public struct YokaiCutsceneOverlay: View {
             if store == nil { store = try? BundledYokaiStore() }
             fridayPhase = 0
             washiProgress = 0
-            choreographyTask = Task { @MainActor in
-                // Phase 1: deepen bg (0.6s)
-                do { try await Task.sleep(for: .seconds(0.6)) } catch { return }
-                withAnimation(.easeIn(duration: 0.3)) { fridayPhase = 1 }
+            if reduceMotion {
+                choreographyTask = Task { @MainActor in
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        fridayPhase = 4
+                        washiProgress = 1.0
+                    }
+                    play(clip: .fridayAcknowledge, yokai: yokai)
+                }
+            } else {
+                choreographyTask = Task { @MainActor in
+                    // Phase 1: deepen bg (0.6s)
+                    do { try await Task.sleep(for: .seconds(0.6)) } catch { return }
+                    withAnimation(.easeIn(duration: 0.3)) { fridayPhase = 1 }
 
-                // Phase 2: enlarge portrait (0.6s -> 1.4s)
-                do { try await Task.sleep(for: .seconds(0.8)) } catch { return }
-                withAnimation(.easeInOut(duration: 0.8)) { fridayPhase = 2 }
+                    // Phase 2: enlarge portrait (0.6s -> 1.4s)
+                    do { try await Task.sleep(for: .seconds(0.8)) } catch { return }
+                    withAnimation(.easeInOut(duration: 0.8)) { fridayPhase = 2 }
 
-                // Phase 3: show subtitle + play voice (1.4s -> 4.4s)
-                do { try await Task.sleep(for: .seconds(1.0)) } catch { return }
-                withAnimation(.easeIn(duration: 0.4)) { fridayPhase = 3 }
-                play(clip: .fridayAcknowledge, yokai: yokai)
+                    // Phase 3: show subtitle + play voice (1.4s -> 4.4s)
+                    do { try await Task.sleep(for: .seconds(1.0)) } catch { return }
+                    withAnimation(.easeIn(duration: 0.4)) { fridayPhase = 3 }
+                    play(clip: .fridayAcknowledge, yokai: yokai)
 
-                // Phase 4: morph washi card (4.4s -> 7.0s)
-                do { try await Task.sleep(for: .seconds(2.0)) } catch { return }
-                withAnimation(.easeInOut(duration: 2.6)) {
-                    fridayPhase = 4
-                    washiProgress = 1.0
+                    // Phase 4: morph washi card (4.4s -> 7.0s)
+                    do { try await Task.sleep(for: .seconds(2.0)) } catch { return }
+                    withAnimation(.easeInOut(duration: 2.6)) {
+                        fridayPhase = 4
+                        washiProgress = 1.0
+                    }
                 }
             }
         }

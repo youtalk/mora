@@ -5,6 +5,7 @@ public struct SparkleOverlay: View {
     @State private var visible = false
     @State private var offsets: [(CGFloat, CGFloat)] = SparkleOverlay.makeOffsets()
     @State private var task: Task<Void, Never>?
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(trigger: AnyHashable) { self.trigger = trigger }
 
@@ -20,6 +21,7 @@ public struct SparkleOverlay: View {
             }
         }
         .onChange(of: trigger) { _, _ in
+            guard !reduceMotion else { return }
             task?.cancel()
             offsets = SparkleOverlay.makeOffsets()
             visible = true
