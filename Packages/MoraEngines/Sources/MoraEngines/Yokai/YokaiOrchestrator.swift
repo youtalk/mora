@@ -95,6 +95,23 @@ public final class YokaiOrchestrator {
         finalizeFridayIfNeeded()
     }
 
+    public func maybeTriggerCameo(grapheme: String, sessionID: UUID, pronunciationSuccess: Bool) {
+        let descriptor = FetchDescriptor<BestiaryEntryEntity>()
+        guard let entries = try? modelContext.fetch(descriptor) else { return }
+        guard let befriended = entries.first(where: { entry in
+            store.catalog().first(where: { $0.id == entry.yokaiID })?.grapheme == grapheme
+        }) else { return }
+        let cameo = YokaiCameoEntity(
+            yokaiID: befriended.yokaiID,
+            sessionID: sessionID,
+            triggeredAt: Date(),
+            pronunciationSuccess: pronunciationSuccess
+        )
+        modelContext.insert(cameo)
+        try? modelContext.save()
+        activeCutscene = .srsCameo(yokaiID: befriended.yokaiID)
+    }
+
     private func finalizeFridayIfNeeded() {
         guard let encounter = currentEncounter, let yokai = currentYokai else { return }
         if encounter.friendshipPercent >= 1.0 - 1e-9 {
