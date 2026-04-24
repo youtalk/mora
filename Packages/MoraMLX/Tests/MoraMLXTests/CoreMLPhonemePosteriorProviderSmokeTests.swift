@@ -8,14 +8,22 @@ import MoraEngines
 /// `MoraMLXModelCatalog`, decode the bundled fixture WAV into an
 /// `AudioClip`, and run a forward pass through the provider.
 ///
-/// This test is adaptive because both the model and the fixture are
-/// deferred: the model is bundled via Git LFS in a follow-up manual step
-/// (see `dev-tools/model-conversion/convert.py`) and the fixture WAV is
-/// created the same way. Until the model is present,
-/// `PlaceholderDetection.isPlaceholderModelBundled()` returns true and
-/// the test `XCTSkip`s on any `MoraMLXError`; once the real model is
-/// bundled, a throwing catalog will FAIL the test (no more blanket skip
-/// on `.inferenceFailed`).
+/// The real model is hosted on the `models/wav2vec2-phoneme-int8-v1`
+/// GitHub Release and materialized into `Resources/` by
+/// `tools/fetch-models.sh` (see
+/// `docs/superpowers/plans/2026-04-24-ci-lfs-to-releases.md`). The
+/// `short-sh-clip.wav` fixture lives alongside this test target.
+///
+/// The `catch MoraMLXError` branch is a historical guard for the
+/// pre-migration placeholder state and is not expected to trigger on
+/// `main`: `phoneme-labels.json` is committed with the real 392-entry
+/// vocabulary so `PlaceholderDetection.isPlaceholderModelBundled()`
+/// returns `false`, and a throwing catalog FAILs the test instead of
+/// silently skipping on `.inferenceFailed`. On a fresh clone that has
+/// not yet run `bash tools/fetch-models.sh` (or a build that triggers
+/// the Mora target's preBuildScript), the `.mlmodelc/` directory is
+/// missing and the test FAILs with `.modelNotBundled` — the failure is
+/// the intended cue to run the bootstrap.
 final class CoreMLPhonemePosteriorProviderSmokeTests: XCTestCase {
     func testPosteriorHasFramesAndPhonemes() async throws {
         let evaluator: PhonemeModelPronunciationEvaluator
@@ -24,8 +32,8 @@ final class CoreMLPhonemePosteriorProviderSmokeTests: XCTestCase {
         } catch let error as MoraMLXError {
             if PlaceholderDetection.isPlaceholderModelBundled() {
                 throw XCTSkip(
-                    "placeholder model bundled — run dev-tools/model-conversion/convert.py "
-                        + "to enable this test (saw \(error))"
+                    "placeholder model bundled — run bash tools/fetch-models.sh "
+                        + "to materialize the real model from the GitHub Release (saw \(error))"
                 )
             }
             throw error
