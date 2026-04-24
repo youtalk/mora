@@ -69,4 +69,46 @@ public final class YokaiOrchestrator {
         dayGainSoFar = result.dayGain
         encounter.sessionCompletionCount += 1
     }
+
+    private var fridayTrialsRemaining: Int = 0
+
+    public func beginFridaySession(trialsPlanned: Int) {
+        beginDay()
+        fridayTrialsRemaining = trialsPlanned
+    }
+
+    public func recordFridayFinalTrial(correct: Bool) {
+        guard let encounter = currentEncounter else { return }
+        if correct {
+            // This is the final trial: boost is computed with trialsRemaining=1 so the
+            // full deficit is concentrated into this one shot, guaranteeing a befriending
+            // opportunity when the learner answers correctly.
+            let boost = FriendshipMeterMath.floorBoostWeight(
+                currentPercent: encounter.friendshipPercent,
+                trialsRemaining: 1
+            )
+            let effectiveGain = max(FriendshipMeterMath.correctTrialGain, boost)
+            encounter.friendshipPercent = min(1.0, encounter.friendshipPercent + effectiveGain)
+            encounter.correctReadCount += 1
+        }
+        fridayTrialsRemaining = max(0, fridayTrialsRemaining - 1)
+        finalizeFridayIfNeeded()
+    }
+
+    private func finalizeFridayIfNeeded() {
+        guard let encounter = currentEncounter, let yokai = currentYokai else { return }
+        if encounter.friendshipPercent >= 1.0 - 1e-9 {
+            encounter.state = .befriended
+            let when = Date()
+            encounter.befriendedAt = when
+            let entry = BestiaryEntryEntity(yokaiID: yokai.id, befriendedAt: when)
+            modelContext.insert(entry)
+            try? modelContext.save()
+            activeCutscene = .fridayClimax(yokaiID: yokai.id)
+        } else {
+            encounter.state = .carryover
+            encounter.storedRolloverFlag = true
+            try? modelContext.save()
+        }
+    }
 }
