@@ -63,4 +63,42 @@ final class ScriptedContentProviderTests: XCTestCase {
             }
         }
     }
+
+    func test_bundledFor_returnsProviderForEveryV1SkillCode() throws {
+        let codes: [SkillCode] = ["sh_onset", "th_voiceless", "f_onset", "r_onset", "short_a"]
+        for code in codes {
+            let provider = try ScriptedContentProvider.bundled(for: code)
+            XCTAssertFalse(
+                provider.words.isEmpty,
+                "\(code.rawValue) should bundle decode words"
+            )
+            XCTAssertFalse(
+                provider.sentences.isEmpty,
+                "\(code.rawValue) should bundle sentences"
+            )
+        }
+    }
+
+    func test_bundledFor_unknownCode_throws() {
+        XCTAssertThrowsError(try ScriptedContentProvider.bundled(for: "no_such_skill"))
+    }
+
+    func test_bundledFor_thWeek_targetPhonemeIsVoicelessTh() throws {
+        let provider = try ScriptedContentProvider.bundled(for: "th_voiceless")
+        XCTAssertEqual(provider.target, Grapheme(letters: "th"))
+        let request = ContentRequest(
+            target: provider.target,
+            taughtGraphemes: provider.taughtGraphemes,
+            interests: [],
+            count: 10
+        )
+        let words = try provider.decodeWords(request)
+        XCTAssertFalse(words.isEmpty)
+        for w in words {
+            XCTAssertTrue(
+                w.word.phonemes.contains(Phoneme(ipa: "θ")),
+                "\(w.word.surface) expected to contain /θ/"
+            )
+        }
+    }
 }
