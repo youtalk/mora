@@ -1,0 +1,51 @@
+{
+  "target": {
+    "letters": "f",
+    "phoneme": "f"
+  },
+  "l2_taught_graphemes": [
+    "a","b","c","d","e","f","g","h","i","j","k","l","m",
+    "n","o","p","q","r","s","t","u","v","w","x","y","z","sh","th"
+  ],
+  "decode_words": [
+    { "surface": "fan",  "graphemes": ["f","a","n"], "phonemes": ["f","æ","n"], "note": "f onset" },
+    { "surface": "fig",  "graphemes": ["f","i","g"], "phonemes": ["f","ɪ","g"], "note": "f onset" },
+    { "surface": "fog",  "graphemes": ["f","o","g"], "phonemes": ["f","ɒ","g"], "note": "f onset" },
+    { "surface": "fat",  "graphemes": ["f","a","t"], "phonemes": ["f","æ","t"], "note": "f onset" },
+    { "surface": "fit",  "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"], "note": "f onset" },
+    { "surface": "fun",  "graphemes": ["f","u","n"], "phonemes": ["f","ʌ","n"], "note": "f onset" },
+    { "surface": "if",   "graphemes": ["i","f"],     "phonemes": ["ɪ","f"],     "note": "f coda" },
+    { "surface": "off",  "graphemes": ["o","f","f"], "phonemes": ["ɒ","f"],     "note": "f coda (double)" },
+    { "surface": "puff", "graphemes": ["p","u","f","f"], "phonemes": ["p","ʌ","f"], "note": "f coda" },
+    { "surface": "cuff", "graphemes": ["c","u","f","f"], "phonemes": ["k","ʌ","f"], "note": "f coda" }
+  ],
+  "sentences": [
+    {
+      "text": "The fan is on.",
+      "words": [
+        { "surface": "the", "graphemes": ["t","h","e"],  "phonemes": ["ð","ə"] },
+        { "surface": "fan", "graphemes": ["f","a","n"],  "phonemes": ["f","æ","n"] },
+        { "surface": "is",  "graphemes": ["i","s"],      "phonemes": ["ɪ","z"] },
+        { "surface": "on",  "graphemes": ["o","n"],      "phonemes": ["ɒ","n"] }
+      ]
+    },
+    {
+      "text": "A fat fig.",
+      "words": [
+        { "surface": "a",   "graphemes": ["a"],          "phonemes": ["ə"] },
+        { "surface": "fat", "graphemes": ["f","a","t"],  "phonemes": ["f","æ","t"] },
+        { "surface": "fig", "graphemes": ["f","i","g"],  "phonemes": ["f","ɪ","g"] }
+      ]
+    },
+    {
+      "text": "I puff if I run.",
+      "words": [
+        { "surface": "i",    "graphemes": ["i"],             "phonemes": ["aɪ"] },
+        { "surface": "puff", "graphemes": ["p","u","f","f"], "phonemes": ["p","ʌ","f"] },
+        { "surface": "if",   "graphemes": ["i","f"],         "phonemes": ["ɪ","f"] },
+        { "surface": "i",    "graphemes": ["i"],             "phonemes": ["aɪ"] },
+        { "surface": "run",  "graphemes": ["r","u","n"],     "phonemes": ["r","ʌ","n"] }
+      ]
+    }
+  ]
+}
