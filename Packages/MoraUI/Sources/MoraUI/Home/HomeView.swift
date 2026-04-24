@@ -95,6 +95,7 @@ public struct HomeView: View {
                         ProgressView()
                             .progressViewStyle(.circular)
                             .tint(.white)
+                            .accessibilityHidden(true)
                     }
                 }
                 .padding(.horizontal, MoraTheme.Space.xl)
@@ -106,6 +107,8 @@ public struct HomeView: View {
             .buttonStyle(.plain)
             .padding(.top, MoraTheme.Space.md)
             .disabled(!isStartEnabled)
+            .accessibilityLabel(Text(strings.homeStart))
+            .accessibilityValue(isStartEnabled ? Text("") : Text(strings.a11yHomeStartLoading))
 
             HStack(spacing: MoraTheme.Space.sm) {
                 pill(strings.homeDurationPill(16))

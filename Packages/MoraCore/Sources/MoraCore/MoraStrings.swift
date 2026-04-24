@@ -89,6 +89,7 @@ public struct MoraStrings: Sendable {
     public let a11yCloseSession: String
     public let a11yMicButton: String
     public let a11yStreakChip: @Sendable (Int) -> String
+    public let a11yHomeStartLoading: String
 
     public init(
         ageOnboardingPrompt: String,
@@ -132,7 +133,8 @@ public struct MoraStrings: Sendable {
         completionScore: @escaping @Sendable (Int, Int) -> String,
         completionComeBack: String,
         a11yCloseSession: String, a11yMicButton: String,
-        a11yStreakChip: @escaping @Sendable (Int) -> String
+        a11yStreakChip: @escaping @Sendable (Int) -> String,
+        a11yHomeStartLoading: String
     ) {
         self.ageOnboardingPrompt = ageOnboardingPrompt
         self.ageOnboardingCTA = ageOnboardingCTA
@@ -193,5 +195,6 @@ public struct MoraStrings: Sendable {
         self.a11yCloseSession = a11yCloseSession
         self.a11yMicButton = a11yMicButton
         self.a11yStreakChip = a11yStreakChip
+        self.a11yHomeStartLoading = a11yHomeStartLoading
     }
 }

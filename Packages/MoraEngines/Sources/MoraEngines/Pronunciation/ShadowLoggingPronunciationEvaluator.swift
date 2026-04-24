@@ -119,16 +119,19 @@ public struct ShadowLoggingPronunciationEvaluator: PronunciationEvaluator {
 
     /// Emits one line per trial to `Logger(subsystem: "tech.reenable.Mora",
     /// category: "Pronunciation")` so on-device testing (Xcode console,
-    /// Console.app) can see both evaluators' decisions side by side. The
-    /// SwiftData row remains the authoritative log; this is a live signal
-    /// for the operator.
+    /// Console.app with an attached debugger) can see both evaluators'
+    /// decisions side by side. `privacy: .private` keeps per-trial details
+    /// out of sysdiagnose / unattached Console.app streams, matching the
+    /// "no per-trial details leave the device" invariant; the attached
+    /// Xcode debug session still resolves the values to the operator. The
+    /// SwiftData row remains the authoritative log.
     private static func logTrial(_ entry: PronunciationTrialLogEntry) {
         let word = entry.word.surface
         let ipa = entry.targetPhoneme.ipa
         let a = formatEngineA(entry.engineA)
         let b = formatEngineB(entry.engineB)
         let line = "trial \"\(word)\" /\(ipa)/  A=\(a)  B=\(b)"
-        trialLog.info("\(line, privacy: .public)")
+        trialLog.info("\(line, privacy: .private)")
     }
 
     private static func formatEngineA(_ a: PhonemeTrialAssessment?) -> String {
