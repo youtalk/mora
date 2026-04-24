@@ -12,6 +12,7 @@ public enum MoraModelContainer {
         PronunciationTrialLog.self,
         YokaiEncounterEntity.self,
         BestiaryEntryEntity.self,
+        YokaiCameoEntity.self,
     ])
 
     public static func inMemory() throws -> ModelContainer {
