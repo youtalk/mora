@@ -9,6 +9,7 @@ public struct BestiaryDetailView: View {
     @State private var player: AVAudioPlayer?
     @State private var synthesizer: AVSpeechSynthesizer = AVSpeechSynthesizer()
     @State private var store: BundledYokaiStore?
+    @State private var caption: String = ""
 
     public init(yokai: YokaiDefinition, entry: BestiaryEntryEntity) {
         self.yokai = yokai
@@ -34,6 +35,14 @@ public struct BestiaryDetailView: View {
                 Label("Play greeting", systemImage: "speaker.wave.2.fill")
             }
             .buttonStyle(.borderedProminent)
+            if !caption.isEmpty {
+                Text(caption)
+                    .font(MoraType.bodyReading(size: 32))
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.primary)
+                    .padding(.horizontal, 40)
+                    .transition(.opacity)
+            }
             Text(
                 "Befriended: \(entry.befriendedAt.formatted(date: .abbreviated, time: .omitted))"
             )
@@ -61,5 +70,6 @@ public struct BestiaryDetailView: View {
             utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
             synthesizer.speak(utterance)
         }
+        caption = yokai.voice.clips[clip] ?? ""
     }
 }

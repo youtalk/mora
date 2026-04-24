@@ -35,6 +35,9 @@ public struct FriendshipGaugeHUD: View {
             .accessibilityLabel("Friendship")
             .accessibilityValue("\(Int(round(clamped * 100))) percent")
         }
+        .onChange(of: clamped) { old, new in
+            if new > old { YokaiHaptics.meterTick() }
+        }
     }
 }
 

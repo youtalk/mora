@@ -9,6 +9,7 @@ public final class YokaiOrchestrator {
     public private(set) var currentEncounter: YokaiEncounterEntity?
     public private(set) var currentYokai: YokaiDefinition?
     public private(set) var activeCutscene: YokaiCutscene?
+    public private(set) var lastCorrectTrialID: UUID?
 
     private let store: YokaiStore
     private let modelContext: ModelContext
@@ -54,7 +55,10 @@ public final class YokaiOrchestrator {
         )
         encounter.friendshipPercent = result.percent
         dayGainSoFar = result.dayGain
-        if correct { encounter.correctReadCount += 1 }
+        if correct {
+            encounter.correctReadCount += 1
+            lastCorrectTrialID = UUID()
+        }
         try? modelContext.save()
     }
 
@@ -94,6 +98,7 @@ public final class YokaiOrchestrator {
             let effectiveGain = max(FriendshipMeterMath.correctTrialGain, boost)
             encounter.friendshipPercent = min(1.0, encounter.friendshipPercent + effectiveGain)
             encounter.correctReadCount += 1
+            lastCorrectTrialID = UUID()
         }
         fridayTrialsRemaining = max(0, fridayTrialsRemaining - 1)
         finalizeFridayIfNeeded()
