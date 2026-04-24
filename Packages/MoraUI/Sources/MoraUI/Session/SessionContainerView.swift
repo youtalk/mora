@@ -45,6 +45,11 @@ public struct SessionContainerView: View {
             }
 
             FeedbackOverlay(state: feedback)
+
+            if let yokai = orchestrator?.yokai {
+                YokaiLayerView(orchestrator: yokai)
+                    .ignoresSafeArea()
+            }
         }
         .alert(strings.sessionCloseTitle, isPresented: $showCloseConfirm) {
             Button(strings.sessionCloseKeepGoing, role: .cancel) {}
