@@ -98,9 +98,11 @@ public final class YokaiOrchestrator {
     public func maybeTriggerCameo(grapheme: String, sessionID: UUID, pronunciationSuccess: Bool) {
         let descriptor = FetchDescriptor<BestiaryEntryEntity>()
         guard let entries = try? modelContext.fetch(descriptor) else { return }
-        guard let befriended = entries.first(where: { entry in
-            store.catalog().first(where: { $0.id == entry.yokaiID })?.grapheme == grapheme
-        }) else { return }
+        guard
+            let befriended = entries.first(where: { entry in
+                store.catalog().first(where: { $0.id == entry.yokaiID })?.grapheme == grapheme
+            })
+        else { return }
         let cameo = YokaiCameoEntity(
             yokaiID: befriended.yokaiID,
             sessionID: sessionID,
