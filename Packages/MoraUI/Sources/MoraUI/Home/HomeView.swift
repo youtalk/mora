@@ -55,6 +55,9 @@ public struct HomeView: View {
     @State private var installedVoices: [String] = AppleTTSEngine.installedEnglishVoiceSummaries()
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.moraStrings) private var strings
+    #if DEBUG
+    @Environment(\.modelContext) private var debugContext
+    #endif
 
     public init() {}
 
@@ -71,6 +74,9 @@ public struct HomeView: View {
                     hero
                 }
                 Spacer()
+                #if DEBUG
+                debugTimeTravelBar
+                #endif
             }
         }
         .onAppear { refreshVoiceState() }
@@ -302,4 +308,35 @@ public struct HomeView: View {
         }
         #endif
     }
+
+    #if DEBUG
+    private var debugTimeTravelBar: some View {
+        HStack(spacing: MoraTheme.Space.sm) {
+            Button("DEBUG: +1 Day") { shiftClock(byDays: 1) }
+                .buttonStyle(.bordered)
+                .tint(.orange)
+            Button("DEBUG: +1 Week") { shiftClock(byDays: 7) }
+                .buttonStyle(.bordered)
+                .tint(.orange)
+        }
+        .padding(.bottom, MoraTheme.Space.sm)
+    }
+
+    /// Simulates `days` of elapsed time by back-dating profile, streak, and
+    /// open-encounter timestamps. Affects `weekIndex`, streak day math, and
+    /// anything keyed off `weekStart`; does not change the real system clock.
+    private func shiftClock(byDays days: Int) {
+        let offset: TimeInterval = -Double(days) * 24 * 60 * 60
+        if let profile = profiles.first {
+            profile.createdAt = profile.createdAt.addingTimeInterval(offset)
+        }
+        if let streak = streaks.first, let last = streak.lastCompletedOn {
+            streak.lastCompletedOn = last.addingTimeInterval(offset)
+        }
+        for encounter in openEncounters {
+            encounter.weekStart = encounter.weekStart.addingTimeInterval(offset)
+        }
+        try? debugContext.save()
+    }
+    #endif
 }
