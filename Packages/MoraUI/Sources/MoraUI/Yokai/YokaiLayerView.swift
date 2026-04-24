@@ -36,6 +36,7 @@ public struct YokaiLayerView: View {
                 }
             }
         }
-        .allowsHitTesting(orchestrator.activeCutscene != nil)
+        .animation(reduceMotion ? nil : .easeInOut(duration: 0.25), value: orchestrator.activeCutscene)
+        .allowsHitTesting(orchestrator.currentYokai != nil && orchestrator.activeCutscene != nil)
     }
 }

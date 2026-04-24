@@ -13,6 +13,6 @@ final class BundledYokaiStoreTests: XCTestCase {
         let store = try BundledYokaiStore()
         let url = try XCTUnwrap(store.portraitURL(for: "__no_such_yokai__"))
         XCTAssertEqual(url.lastPathComponent, "portrait.png")
-        XCTAssertTrue(url.path.contains("_placeholder"))
+        XCTAssertEqual(url.deletingLastPathComponent().lastPathComponent, "_placeholder")
     }
 }

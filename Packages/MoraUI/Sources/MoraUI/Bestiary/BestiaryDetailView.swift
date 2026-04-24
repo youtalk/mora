@@ -30,8 +30,10 @@ public struct BestiaryDetailView: View {
                     }
                 }
             }
-            Button("🔊 Play greeting") { play(clip: .greet) }
-                .buttonStyle(.borderedProminent)
+            Button(action: { play(clip: .greet) }) {
+                Label("Play greeting", systemImage: "speaker.wave.2.fill")
+            }
+            .buttonStyle(.borderedProminent)
             Text(
                 "Befriended: \(entry.befriendedAt.formatted(date: .abbreviated, time: .omitted))"
             )
@@ -42,10 +44,15 @@ public struct BestiaryDetailView: View {
         .onAppear {
             if store == nil { store = try? BundledYokaiStore() }
         }
-        .onDisappear { synthesizer.stopSpeaking(at: .immediate) }
+        .onDisappear {
+            synthesizer.stopSpeaking(at: .immediate)
+            player?.stop()
+        }
     }
 
     private func play(clip: YokaiClipKey) {
+        synthesizer.stopSpeaking(at: .immediate)
+        player?.stop()
         if let store, let url = store.voiceClipURL(for: yokai.id, clip: clip) {
             player = try? AVAudioPlayer(contentsOf: url)
             player?.play()

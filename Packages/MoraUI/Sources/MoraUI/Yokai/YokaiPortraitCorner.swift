@@ -10,6 +10,9 @@ public struct YokaiPortraitCorner: View {
     let yokai: YokaiDefinition
     @State private var pulse: Bool = false
     @State private var store: BundledYokaiStore?
+    #if canImport(UIKit)
+    @State private var image: UIImage?
+    #endif
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     public init(yokai: YokaiDefinition) { self.yokai = yokai }
@@ -17,16 +20,20 @@ public struct YokaiPortraitCorner: View {
     public var body: some View {
         content.onAppear {
             if store == nil { store = try? BundledYokaiStore() }
+            #if canImport(UIKit)
+            if image == nil,
+                let url = store?.portraitURL(for: yokai.id)
+            {
+                image = UIImage(contentsOfFile: url.path)
+            }
+            #endif
         }
     }
 
     @ViewBuilder
     private var content: some View {
         #if canImport(UIKit)
-        if let store,
-            let url = store.portraitURL(for: yokai.id),
-            let uiImage = UIImage(contentsOfFile: url.path)
-        {
+        if let uiImage = image {
             Image(uiImage: uiImage)
                 .resizable()
                 .scaledToFit()

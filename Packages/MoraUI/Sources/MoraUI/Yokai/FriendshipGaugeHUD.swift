@@ -4,6 +4,8 @@ public struct FriendshipGaugeHUD: View {
     let percent: Double
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
+    private var clamped: Double { min(max(percent, 0), 1) }
+
     public init(percent: Double) { self.percent = percent }
 
     public var body: some View {
@@ -19,11 +21,11 @@ public struct FriendshipGaugeHUD: View {
                             ],
                             startPoint: .leading, endPoint: .trailing)
                     )
-                    .frame(width: geo.size.width * percent)
-                    .animation(reduceMotion ? nil : .easeOut(duration: 0.35), value: percent)
+                    .frame(width: geo.size.width * clamped)
+                    .animation(reduceMotion ? nil : .easeOut(duration: 0.35), value: clamped)
             }
             .overlay(
-                Text("\(Int(round(percent * 100)))%")
+                Text("\(Int(round(clamped * 100)))%")
                     .font(.caption).monospacedDigit()
                     .foregroundStyle(.secondary)
                     .padding(.trailing, 8),
@@ -31,7 +33,7 @@ public struct FriendshipGaugeHUD: View {
             )
             .accessibilityElement()
             .accessibilityLabel("Friendship")
-            .accessibilityValue("\(Int(round(percent * 100))) percent")
+            .accessibilityValue("\(Int(round(clamped * 100))) percent")
         }
     }
 }
