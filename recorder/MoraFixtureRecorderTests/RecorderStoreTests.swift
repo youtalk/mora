@@ -1,3 +1,4 @@
+import AVFoundation
 import MoraFixtures
 import XCTest
 @testable import MoraFixtureRecorder
@@ -131,6 +132,42 @@ final class RecorderStoreTests: XCTestCase {
                 "\(pattern.filenameStem)-take10.wav",
                 "\(pattern.filenameStem)-take11.wav",
             ])
+    }
+
+    func testFixtureRecorderDecodeReturnsMono16kSamples() throws {
+        // Write a synthetic mono 16 kHz WAV to tempDir, decode it, and
+        // verify sample count matches the expected frame count.
+        let url = tempDir.appendingPathComponent("synth.wav")
+        let durationSeconds = 0.25
+        let sampleRate = 16_000.0
+        let expectedFrames = Int(durationSeconds * sampleRate)
+
+        guard let fmt = AVAudioFormat(
+            commonFormat: .pcmFormatFloat32,
+            sampleRate: sampleRate,
+            channels: 1,
+            interleaved: false
+        ) else { return XCTFail("AVAudioFormat init failed") }
+
+        // Scope the writer so it deallocates (and finalizes the RIFF
+        // data-chunk size in the WAV header) before decode reads.
+        do {
+            let file = try AVAudioFile(forWriting: url, settings: fmt.settings)
+            guard let buffer = AVAudioPCMBuffer(
+                pcmFormat: fmt, frameCapacity: AVAudioFrameCount(expectedFrames)
+            ) else { return XCTFail("AVAudioPCMBuffer alloc failed") }
+            buffer.frameLength = AVAudioFrameCount(expectedFrames)
+            for i in 0..<expectedFrames {
+                buffer.floatChannelData![0][i] = Float(
+                    sin(2 * .pi * 440 * Double(i) / sampleRate)
+                )
+            }
+            try file.write(from: buffer)
+        }
+
+        let samples = try FixtureRecorder.decode(from: url)
+        XCTAssertEqual(samples.count, expectedFrames)
+        XCTAssertFalse(samples.allSatisfy { $0 == 0 })
     }
 
     func testDeleteTakeBumpsTakesRevision() async throws {
