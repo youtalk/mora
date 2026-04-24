@@ -325,18 +325,35 @@ public struct HomeView: View {
     /// Simulates `days` of elapsed time by back-dating profile, streak, and
     /// open-encounter timestamps. Affects `weekIndex`, streak day math, and
     /// anything keyed off `weekStart`; does not change the real system clock.
+    ///
+    /// Uses `Calendar.date(byAdding:)` rather than a flat 24h*`days` offset
+    /// so the shift lines up with `DailyStreak.recordCompletion`, which
+    /// computes gaps via `Calendar.dateComponents([.day], ...)`. A naive
+    /// TimeInterval offset lands 23h or 25h off across a DST transition
+    /// and can cause the streak to see 0 or 2 day-gaps where the button
+    /// label says 1.
     private func shiftClock(byDays days: Int) {
-        let offset: TimeInterval = -Double(days) * 24 * 60 * 60
-        if let profile = profiles.first {
-            profile.createdAt = profile.createdAt.addingTimeInterval(offset)
+        let calendar = Calendar.current
+        if let profile = profiles.first,
+            let shifted = calendar.date(byAdding: .day, value: -days, to: profile.createdAt)
+        {
+            profile.createdAt = shifted
         }
-        if let streak = streaks.first, let last = streak.lastCompletedOn {
-            streak.lastCompletedOn = last.addingTimeInterval(offset)
+        if let streak = streaks.first, let last = streak.lastCompletedOn,
+            let shifted = calendar.date(byAdding: .day, value: -days, to: last)
+        {
+            streak.lastCompletedOn = shifted
         }
         for encounter in openEncounters {
-            encounter.weekStart = encounter.weekStart.addingTimeInterval(offset)
+            if let shifted = calendar.date(byAdding: .day, value: -days, to: encounter.weekStart) {
+                encounter.weekStart = shifted
+            }
         }
-        try? debugContext.save()
+        do {
+            try debugContext.save()
+        } catch {
+            assertionFailure("Failed to persist debug time shift: \(error)")
+        }
     }
     #endif
 }
