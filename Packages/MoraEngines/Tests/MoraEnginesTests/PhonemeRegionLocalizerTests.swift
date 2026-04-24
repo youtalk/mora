@@ -32,12 +32,27 @@ final class PhonemeRegionLocalizerTests: XCTestCase {
         XCTAssertTrue(region.isReliable)
     }
 
-    func testMedialFlagsUnreliable() {
-        let clip = AudioClip(samples: Array(repeating: Float(0), count: 8_000), sampleRate: 16_000)
+    func testMedialReliableAndCenteredForCVC() {
+        // 600 ms clip at 16 kHz = 9_600 samples; medial of 3 phonemes →
+        // unit = 200 ms = 3_200 samples starting at 200 ms = 3_200 samples.
+        let clip = AudioClip(samples: Array(repeating: Float(0), count: 9_600), sampleRate: 16_000)
         let region = PhonemeRegionLocalizer.region(
             clip: clip,
             word: word,
             phonemePosition: .medial(position: 1, count: 3)
+        )
+        XCTAssertEqual(region.startMs, 200, accuracy: 0.01)
+        XCTAssertEqual(region.durationMs, 200, accuracy: 0.01)
+        XCTAssertEqual(region.clip.samples.count, 3_200)
+        XCTAssertTrue(region.isReliable)
+    }
+
+    func testMedialOutOfBoundsFlagsUnreliable() {
+        let clip = AudioClip(samples: Array(repeating: Float(0), count: 8_000), sampleRate: 16_000)
+        let region = PhonemeRegionLocalizer.region(
+            clip: clip,
+            word: word,
+            phonemePosition: .medial(position: 5, count: 3)
         )
         XCTAssertFalse(region.isReliable)
     }
