@@ -10,6 +10,7 @@ let package = Package(
     dependencies: [
         .package(path: "../../Packages/MoraEngines"),
         .package(path: "../../Packages/MoraCore"),
+        .package(path: "../../Packages/MoraFixtures"),
         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.3.0"),
     ],
     targets: [
@@ -18,6 +19,7 @@ let package = Package(
             dependencies: [
                 .product(name: "MoraEngines", package: "MoraEngines"),
                 .product(name: "MoraCore", package: "MoraCore"),
+                .product(name: "MoraFixtures", package: "MoraFixtures"),
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
             ],
             path: "Sources/Bench"

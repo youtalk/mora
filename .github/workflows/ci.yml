@@ -129,6 +129,11 @@ jobs:
             echo "Cloud pronunciation symbol detected in Mora binary"
             exit 1
           fi
+          if nm "$APP/Mora" 2>/dev/null | grep -iE \
+            'FixtureRecorder|FixtureWriter|FixtureMetadata|PronunciationRecorderView|DebugFixtureRecorderEntryModifier'; then
+            echo "Recorder symbol detected in Mora binary; recorder code should live in recorder/MoraFixtureRecorder/ only"
+            exit 1
+          fi
 
       # SPM .build caches per local package. hashFiles includes the package's own
       # sources and those of every package it depends on, so any upstream source
@@ -166,10 +171,18 @@ jobs:
           restore-keys: |
             spm-MoraTesting-${{ runner.os }}-
 
+      - name: Cache SwiftPM .build (MoraFixtures)
+        uses: actions/cache@v4
+        with:
+          path: Packages/MoraFixtures/.build
+          key: spm-MoraFixtures-${{ runner.os }}-${{ hashFiles('Packages/MoraFixtures/**/*.swift', 'Packages/MoraFixtures/Package.swift') }}
+          restore-keys: |
+            spm-MoraFixtures-${{ runner.os }}-
+
       - name: Test SPM packages
         run: |
           set -e
-          for pkg in MoraCore MoraEngines MoraUI MoraTesting; do
+          for pkg in MoraCore MoraEngines MoraUI MoraTesting MoraFixtures; do
             echo "::group::swift test — $pkg"
             (cd Packages/$pkg && swift test)
             echo "::endgroup::"
@@ -195,6 +208,7 @@ jobs:
     timeout-minutes: 2
     outputs:
       bench: ${{ steps.filter.outputs.bench }}
+      recorder: ${{ steps.filter.outputs.recorder }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -205,6 +219,10 @@ jobs:
           filters: |
             bench:
               - 'bench/**'
+              - '.github/workflows/ci.yml'
+            recorder:
+              - 'recorder/**'
+              - 'Packages/MoraFixtures/**'
               - '.github/workflows/ci.yml'
 
   bench-build:
@@ -303,4 +321,81 @@ jobs:
             -scheme MoraBench \
             -destination "platform=iOS Simulator,name=${SIM_NAME},OS=latest" \
             -skipMacroValidation \
+            CODE_SIGNING_ALLOWED=NO
+
+  recorder-build:
+    name: Recorder Build / Test
+    needs: changes
+    if: ${{ needs.changes.outputs.recorder == 'true' || github.event_name == 'workflow_dispatch' }}
+    runs-on: macos-15
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Cache Homebrew downloads (xcodegen)
+        uses: actions/cache@v4
+        with:
+          path: ~/Library/Caches/Homebrew/downloads
+          key: brew-${{ runner.os }}-xcodegen-v1
+          restore-keys: |
+            brew-${{ runner.os }}-xcodegen-
+
+      - name: Install xcodegen
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: "1"
+          HOMEBREW_NO_INSTALL_CLEANUP: "1"
+        run: brew install xcodegen
+
+      - name: Generate recorder project
+        working-directory: recorder
+        run: xcodegen generate
+
+      # Recorder pulls only MoraFixtures (local path), so the cache key can be
+      # tight: project.yml + its own sources + MoraFixtures sources/manifest.
+      # ModuleCache.noindex / SDKStatCaches.noindex exclusions match bench job.
+      - name: Cache Xcode DerivedData (recorder)
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/Library/Developer/Xcode/DerivedData
+            !~/Library/Developer/Xcode/DerivedData/ModuleCache.noindex
+            !~/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex
+          key: xcode-deriveddata-recorder-v1-${{ runner.os }}-${{ hashFiles('recorder/project.yml', 'recorder/MoraFixtureRecorder/**/*.swift', 'recorder/MoraFixtureRecorderTests/**/*.swift', 'Packages/MoraFixtures/**/*.swift', 'Packages/MoraFixtures/Package.swift') }}
+          restore-keys: |
+            xcode-deriveddata-recorder-v1-${{ runner.os }}-
+
+      - name: Build MoraFixtureRecorder (iOS Simulator)
+        working-directory: recorder
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project 'Mora Fixture Recorder.xcodeproj' \
+            -scheme MoraFixtureRecorder \
+            -destination 'generic/platform=iOS Simulator' \
+            -configuration Debug \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Pick iPad simulator
+        id: sim
+        run: |
+          NAME=$(xcrun simctl list devices available \
+            | grep -iE 'iPad' \
+            | head -1 \
+            | sed -E 's/^[[:space:]]*(.+) \([0-9A-Fa-f-]{36}\) \([A-Za-z]+\)[[:space:]]*$/\1/')
+          echo "name=$NAME" >> "$GITHUB_OUTPUT"
+          echo "Selected simulator: $NAME"
+
+      - name: Test MoraFixtureRecorder
+        working-directory: recorder
+        env:
+          SIM_NAME: ${{ steps.sim.outputs.name }}
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -project 'Mora Fixture Recorder.xcodeproj' \
+            -scheme MoraFixtureRecorder \
+            -destination "platform=iOS Simulator,name=${SIM_NAME},OS=latest" \
             CODE_SIGNING_ALLOWED=NO

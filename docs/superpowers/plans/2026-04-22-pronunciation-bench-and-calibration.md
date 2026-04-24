@@ -2,6 +2,8 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
+> **Superseded (recorder portion):** See `docs/superpowers/plans/2026-04-23-fixture-recorder-app.md`. Tasks 1–5 of this plan (FixtureMetadata, FixtureWriter, FixtureRecorder, PronunciationRecorderView, DebugEntryPoint) already merged; they are undone by the fixture-recorder-app plan's Step A (types move to `Packages/MoraFixtures/`), Step C (main-app deletions), and Step D (new `recorder/MoraFixtureRecorder/` app). Tasks 7–14 (dev-tools/pronunciation-bench) are preserved, with the MoraFixtures import swap added by the new plan's Step B.
+
 **Goal:** Build the calibration loop for Engine A — a DEBUG-only in-app fixture recorder, a repo-root `dev-tools/pronunciation-bench/` Swift Package that compares Engine A against SpeechAce via CSV, recorded WAV fixtures replacing three of the four TODO'd synthetic tests in `FeatureBasedEvaluatorTests` (`r/l`, `v/b`, `æ/ʌ`; the fourth, `θ/t`, is intentionally out of scope — see "Not in scope" below), and one child-speaker calibration pass that tunes `PhonemeThresholds` numerically.
 
 **Architecture:** iPad records labeled WAV + sidecar JSON via a DEBUG-only SwiftUI screen reachable from HomeView by a hidden 5-tap gesture. Files surface to Files.app, get AirDropped to a Mac, and feed `swift run bench <fixtures-dir>`. The bench links Engine A via `path:` reference, posts audio to SpeechAce, and emits a 13-column CSV. No shipped runtime code path changes except the numeric table in `PhonemeThresholds` at the end of Phase D.

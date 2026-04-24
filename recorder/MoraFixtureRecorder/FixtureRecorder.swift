@@ -1,4 +1,3 @@
-#if DEBUG
 import AVFoundation
 import Foundation
 
@@ -10,20 +9,13 @@ public enum FixtureRecorderError: Error, Sendable {
 
 /// Captures mono Float32 samples at 16 kHz from the default input device.
 /// Not thread-safe — intended to be used from the main actor inside a
-/// DEBUG-only SwiftUI view. The recorder does not request microphone
-/// permission itself; the main-session `PermissionCoordinator` is the
-/// canonical place for that, and the DEBUG recorder presumes permission
-/// already granted (alerting if not).
+/// SwiftUI view.
 @MainActor
 public final class FixtureRecorder {
 
     private let engine = AVAudioEngine()
     private var converter: AVAudioConverter?
     private var isRecording = false
-    // Incremented on every start() and stop(). The tap callback captures the
-    // value active at install time; a Task hopping to the main actor will
-    // only append if the generation still matches, so samples delivered
-    // after stop() cannot end up in a subsequent session's buffer.
     private var sessionGeneration: UInt64 = 0
     public private(set) var buffer: [Float] = []
     public let targetSampleRate: Double = 16_000
@@ -83,13 +75,9 @@ public final class FixtureRecorder {
         engine.inputNode.removeTap(onBus: 0)
         engine.stop()
         isRecording = false
-        // Any tap callback that already scheduled a Task before the tap
-        // was removed will still run; advancing the generation makes those
-        // late Tasks drop their samples instead of racing drain().
         sessionGeneration &+= 1
     }
 
-    /// Returns captured samples and clears the internal buffer.
     public func drain() -> [Float] {
         let out = buffer
         buffer.removeAll(keepingCapacity: false)
@@ -128,4 +116,3 @@ public final class FixtureRecorder {
         buffer.append(contentsOf: UnsafeBufferPointer(start: channelData[0], count: frameCount))
     }
 }
-#endif
