@@ -64,6 +64,67 @@ enum SyntheticAudio {
         return AudioClip(samples: out, sampleRate: sampleRate)
     }
 
+    /// Voiced fricative: low-amplitude full-band uniform noise continuous
+    /// from t=0 to `burstStartMs`, then a sustained voiced vowel (sine at
+    /// 220 Hz) from `burstStartMs` onward. Both regions share an envelope
+    /// with RMS ≈ 0.05 so the seam is acoustically continuous — the
+    /// signature expected from /v/, /z/, /ð/. Spectral shape is not
+    /// constrained because the relative-VOT extractor only inspects RMS
+    /// envelope and burst/voicing transitions, not band content.
+    static func voicedFricative(durationMs: Int, burstStartMs: Int) -> AudioClip {
+        let sr = sampleRate
+        let totalSamples = Int(Double(durationMs) / 1000.0 * sr)
+        let burstSamples = Int(Double(burstStartMs) / 1000.0 * sr)
+
+        var samples = [Float](repeating: 0, count: totalSamples)
+        // Fricative half: full-band uniform noise, gain 0.05.
+        var rng = SeededGenerator(seed: 0xFEED5)
+        for i in 0..<burstSamples {
+            samples[i] = Float.random(in: -1...1, using: &rng) * 0.05
+        }
+        // Vowel half: sustained 220 Hz sine, gain 0.05.
+        for i in burstSamples..<totalSamples {
+            let t = Double(i) / sr
+            samples[i] = Float(0.05 * sin(2 * .pi * 220 * t))
+        }
+        return AudioClip(samples: samples, sampleRate: sr)
+    }
+
+    /// Voiced stop: low-amplitude voicing from t=0 to `burstStartMs`,
+    /// then 5 ms silence (closure), then a sharp burst (single-sample
+    /// impulse), then a sustained vowel (sine at 220 Hz) from
+    /// `vowelStartMs`. The signature expected from /b/, /d/, /g/:
+    /// pre-burst voicing → pause → burst → voicing resumes.
+    static func voicedStop(
+        durationMs: Int,
+        burstStartMs: Int,
+        vowelStartMs: Int
+    ) -> AudioClip {
+        let sr = sampleRate
+        let totalSamples = Int(Double(durationMs) / 1000.0 * sr)
+        let preVoicingSamples = max(0, Int(Double(burstStartMs) / 1000.0 * sr) - 80)
+        let burstSample = Int(Double(burstStartMs) / 1000.0 * sr)
+        let vowelStartSample = Int(Double(vowelStartMs) / 1000.0 * sr)
+
+        var samples = [Float](repeating: 0, count: totalSamples)
+        // Pre-burst voicing: 220 Hz sine, gain 0.04.
+        for i in 0..<preVoicingSamples {
+            let t = Double(i) / sr
+            samples[i] = Float(0.04 * sin(2 * .pi * 220 * t))
+        }
+        // Closure (silence): preVoicingSamples..<burstSample stays at 0.
+        // Burst: single-sample impulse at burstSample.
+        if burstSample < totalSamples {
+            samples[burstSample] = 0.5
+        }
+        // Vowel: 220 Hz sine, gain 0.05.
+        for i in vowelStartSample..<totalSamples {
+            let t = Double(i) / sr
+            samples[i] = Float(0.05 * sin(2 * .pi * 220 * t))
+        }
+        return AudioClip(samples: samples, sampleRate: sr)
+    }
+
     /// Silent clip of the given duration.
     static func silence(durationMs: Int) -> AudioClip {
         let n = Int(Double(durationMs) / 1000.0 * sampleRate)
