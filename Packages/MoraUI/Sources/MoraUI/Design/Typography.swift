@@ -92,11 +92,19 @@ public enum MoraType {
     public static func cta() -> Font {
         .openDyslexic(size: 38)
     }
+    /// Supporting "how to play" line under a hero word/prompt
+    /// (e.g. "Listen and tap.", "Two letters, one sound.",
+    /// "Press and hold to hear it again."). Sized so it reads as
+    /// a clear second tier under the hero glyph at iPad viewing
+    /// distance, rather than disappearing like a footnote.
+    public static func subtitle() -> Font {
+        .openDyslexic(size: 40)
+    }
     public static func label() -> Font {
         .openDyslexic(size: 30)
     }
     public static func pill() -> Font {
-        .openDyslexic(size: 24)
+        .openDyslexic(size: 26)
     }
     /// Long-form English body text, also used for spoken-phrase captions
     /// shown alongside TTS playback so the parent has a written reference.

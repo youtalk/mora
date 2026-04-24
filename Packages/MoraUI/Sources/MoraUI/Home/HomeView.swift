@@ -144,31 +144,55 @@ public struct HomeView: View {
     }
 
     private var hero: some View {
+        VStack(spacing: MoraTheme.Space.lg) {
+            heroHeader
+            startCTA
+            heroFooter
+        }
+    }
+
+    /// Target word flanked by the week's yokai on the left, so the two
+    /// read as a pair ("this friend brings today's sound"). Pairing the
+    /// yokai with the hero word — rather than stacking it below — saves
+    /// the ~230pt of vertical height the previous circle-plinth occupied
+    /// and stops the CTA + pills + register link from overflowing the
+    /// bottom of the iPad screen.
+    private var heroHeader: some View {
         VStack(spacing: MoraTheme.Space.md) {
             Text(strings.homeTodayQuest)
                 .font(MoraType.label())
                 .foregroundStyle(MoraTheme.Ink.muted)
 
-            Text(target.letters ?? "—")
-                .font(MoraType.heroWord())
-                .foregroundStyle(MoraTheme.Ink.primary)
-
-            Text(ipaLine)
-                .font(MoraType.bodyReading())
-                .foregroundStyle(MoraTheme.Ink.secondary)
-                .multilineTextAlignment(.center)
-
-            startCTA
-
-            if let enc = openEncounters.first,
-                let yokai = yokaiStore?.catalog().first(where: { $0.id == enc.yokaiID })
-            {
-                YokaiPortraitCorner(yokai: yokai, sparkleTrigger: nil)
-                    .frame(width: 96, height: 96)
-                    .accessibilityLabel("This week's sound-friend: \(enc.yokaiID)")
+            HStack(alignment: .center, spacing: MoraTheme.Space.xl) {
+                yokaiCompanion
+                Text(target.letters ?? "—")
+                    .font(MoraType.heroWord())
+                    .foregroundStyle(MoraTheme.Ink.primary)
             }
 
-            HStack(spacing: MoraTheme.Space.sm) {
+            Text(ipaLine)
+                .font(MoraType.subtitle())
+                .foregroundStyle(MoraTheme.Ink.secondary)
+                .multilineTextAlignment(.center)
+        }
+    }
+
+    @ViewBuilder
+    private var yokaiCompanion: some View {
+        if let enc = openEncounters.first,
+            let yokai = yokaiStore?.catalog().first(where: { $0.id == enc.yokaiID })
+        {
+            YokaiPortraitCorner(yokai: yokai, sparkleTrigger: nil)
+                .frame(width: 160, height: 160)
+                .padding(MoraTheme.Space.sm)
+                .background(Circle().fill(MoraTheme.Background.cream))
+                .accessibilityLabel("This week's sound-friend: \(enc.yokaiID)")
+        }
+    }
+
+    private var heroFooter: some View {
+        VStack(spacing: MoraTheme.Space.md) {
+            HStack(spacing: MoraTheme.Space.md) {
                 pill(strings.homeDurationPill(16))
                 pill(strings.homeWordsPill(5))
                 pill(strings.homeSentencesPill(2))
@@ -176,9 +200,12 @@ public struct HomeView: View {
 
             NavigationLink(value: "bestiary") {
                 Label("Sound-Friend Register", systemImage: "book.closed.fill")
+                    .font(MoraType.label())
             }
             .buttonStyle(.bordered)
+            .controlSize(.large)
         }
+        .padding(.top, MoraTheme.Space.sm)
     }
 
     /// Blocking setup card shown when no `.enhanced` / `.premium` English
