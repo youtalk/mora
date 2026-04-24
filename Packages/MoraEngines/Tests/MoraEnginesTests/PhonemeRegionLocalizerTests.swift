@@ -82,5 +82,6 @@ final class PhonemeRegionLocalizerTests: XCTestCase {
         )
         XCTAssertEqual(region.clip.samples.count, 2_400)  // 150 ms of 1 s = 2_400 samples
         XCTAssertEqual(region.durationMs, 150, accuracy: 0.01)
+        XCTAssertTrue(region.isReliable)
     }
 }
