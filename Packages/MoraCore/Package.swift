@@ -10,6 +10,10 @@ let package = Package(
     targets: [
         .target(
             name: "MoraCore",
+            resources: [
+                .process("Resources"),
+                .copy("Yokai/YokaiCatalog.json"),
+            ],
             swiftSettings: [.swiftLanguageMode(.v5)]
         ),
         .testTarget(
