@@ -264,6 +264,22 @@ public final class SessionOrchestrator {
             l1InterferenceTag: nil
         )
     }
+
+    #if DEBUG
+    /// Dev-only: abandons any remaining tile-board chains and jumps
+    /// straight to the ShortSentences phase so Engine A/B paths can be
+    /// reached in a handful of taps during on-device iteration. Emits a
+    /// `phaseFinished` event with the chain count marked truncated so the
+    /// summary stays internally consistent. Never exposed in Release
+    /// builds — see the `#if DEBUG` guard at the declaration.
+    public func debugSkipDecoding() {
+        guard phase == .decoding else { return }
+        phaseMetrics.truncatedChainCount = phaseMetrics.chainCount
+        pendingChains.removeAll()
+        onTileBoardEvent?(.phaseFinished(phaseMetrics))
+        transitionTo(.shortSentences)
+    }
+    #endif
 }
 
 public struct SessionSummary: Hashable, Sendable {

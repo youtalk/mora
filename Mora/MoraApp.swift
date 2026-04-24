@@ -81,48 +81,46 @@ struct MoraApp: App {
     private static func scheduleMLXWarmup(state: MLXWarmupState) {
         Task.detached(priority: .utility) {
             await MainActor.run { state.markLoading() }
+            let start = ContinuousClock.now
+            log.info("MLX warmup: started")
             do {
                 _ = try MoraMLXModelCatalog.loadPhonemeEvaluator()
+                let ms = Self.millis(since: start)
+                log.info("MLX warmup: ready in \(ms) ms")
                 await MainActor.run { state.markReady() }
             } catch {
-                log.error("MLX warmup failed: \(String(describing: error))")
+                let ms = Self.millis(since: start)
+                log.error("MLX warmup: failed after \(ms) ms: \(String(describing: error))")
                 await MainActor.run { state.markFailed() }
             }
         }
     }
 
+    private static func millis(since start: ContinuousClock.Instant) -> Int {
+        let components = start.duration(to: .now).components
+        return Int(components.seconds) * 1000
+            + Int(components.attoseconds / 1_000_000_000_000_000)
+    }
+
     private static func makeShadowFactory() -> ShadowEvaluatorFactory {
         ShadowEvaluatorFactory { container in
             let engineA = FeatureBasedPronunciationEvaluator()
-            do {
-                let engineB = try MoraMLXModelCatalog.loadPhonemeEvaluator()
-                let logger = SwiftDataPronunciationTrialLogger(container: container)
-                return ShadowLoggingPronunciationEvaluator(
-                    primary: engineA,
-                    shadow: engineB,
-                    logger: logger,
-                    timeout: .milliseconds(1000)
-                )
-            } catch MoraMLXError.modelNotBundled {
-                // Expected in Part 1 of the Engine B rollout: the catalog is
-                // still a stub. Log at `.info` to avoid spamming `.error`
-                // on every session bootstrap.
-                log.info("MLX phoneme evaluator not bundled yet; running Engine A only")
-                return engineA
-            } catch MoraMLXError.modelLoadFailed(let reason) {
-                // Once the real model lands a `.modelLoadFailed` means the
-                // compiled bundle is corrupted or truncated — a real error
-                // we want to see in logs.
-                log.error(
-                    "MLX phoneme evaluator model load failed (\(reason)); running Engine A only"
-                )
-                return engineA
-            } catch {
-                log.error(
-                    "MLX phoneme evaluator load failed (\(String(describing: error))); running Engine A only"
-                )
+            // Non-blocking: if the background MLX warmup hasn't finished
+            // compiling the ANE graph yet (first launch after install can
+            // take ~100 s on A-series iPads), this returns `nil` and the
+            // session runs Engine A alone. The next session picks up
+            // Engine B from the warm cache.
+            guard let engineB = MoraMLXModelCatalog.cachedPhonemeEvaluator() else {
+                log.info("MLX warmup not yet complete; session running Engine A only")
                 return engineA
             }
+            let logger = SwiftDataPronunciationTrialLogger(container: container)
+            return ShadowLoggingPronunciationEvaluator(
+                primary: engineA,
+                shadow: engineB,
+                logger: logger,
+                timeout: .milliseconds(1000)
+            )
         }
     }
 }

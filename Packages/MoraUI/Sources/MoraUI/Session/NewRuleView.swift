@@ -33,6 +33,18 @@ struct NewRuleView: View {
                     workedExample("fish")
                 }
 
+                Button(action: replayIntro) {
+                    Text(strings.newRuleListenAgain)
+                        .font(MoraType.cta())
+                        .foregroundStyle(MoraTheme.Accent.teal)
+                        .padding(.vertical, MoraTheme.Space.md)
+                        .padding(.horizontal, MoraTheme.Space.xl)
+                        .background(MoraTheme.Background.mint, in: .capsule)
+                        .minimumScaleFactor(0.5)
+                }
+                .buttonStyle(.plain)
+                .disabled(speech == nil)
+
                 HeroCTA(title: strings.newRuleGotIt) {
                     Task { await orchestrator.handle(.advance) }
                 }
@@ -55,10 +67,32 @@ struct NewRuleView: View {
             finishedIntro = true
             return
         }
-        // Play the bare phoneme via IPA hint, then ground it in three
-        // exemplars. Avoids speaking the digraph letters in isolation
-        // (TTS spells "sh" out as letters in plain text); the IPA hint is
-        // the documented way to coax a clean /ʃ/ from Premium voices.
+        await speech.playAndAwait(introPrompts())
+        // Only flip the gate when the intro actually finished. A cancelled
+        // run (view disappeared, close button, user-initiated interrupt)
+        // leaves the gate closed so that a re-entering view replays the
+        // full sequence instead of skipping straight to the CTA.
+        if !Task.isCancelled {
+            finishedIntro = true
+        }
+    }
+
+    /// Re-plays the same sequence used by `playIntro` without regating
+    /// `finishedIntro`, so the CTA stays active and the learner can keep
+    /// tapping "分かった" whenever they've heard enough.
+    private func replayIntro() {
+        guard let speech else { return }
+        let prompts = introPrompts()
+        Task { @MainActor in
+            await speech.playAndAwait(prompts)
+        }
+    }
+
+    /// Build the target phoneme + "Two letters, one sound." + three
+    /// exemplar words. Avoids speaking the digraph letters in isolation
+    /// (TTS spells "sh" out as letters in plain text); the IPA hint is
+    /// the documented way to coax a clean /ʃ/ from Premium voices.
+    private func introPrompts() -> [SpeechPrompt] {
         var prompts: [SpeechPrompt] = []
         if let phoneme = orchestrator.target.phoneme {
             prompts.append(.phoneme(phoneme, .slow))
@@ -67,14 +101,7 @@ struct NewRuleView: View {
         for word in ["ship", "shop", "fish"] {
             prompts.append(.text(word, .slow))
         }
-        await speech.playAndAwait(prompts)
-        // Only flip the gate when the intro actually finished. A cancelled
-        // run (view disappeared, close button, user-initiated interrupt)
-        // leaves the gate closed so that a re-entering view replays the
-        // full sequence instead of skipping straight to the CTA.
-        if !Task.isCancelled {
-            finishedIntro = true
-        }
+        return prompts
     }
 
     private func workedExample(_ s: String) -> some View {

@@ -39,12 +39,12 @@ targets:
         MARKETING_VERSION: "0.1.0"
         CURRENT_PROJECT_VERSION: "1"
         TARGETED_DEVICE_FAMILY: "2"
-        INFOPLIST_KEY_CFBundleDisplayName: "mora"
+        INFOPLIST_KEY_CFBundleDisplayName: "Mora"
         INFOPLIST_KEY_UILaunchScreen_Generation: "YES"
         INFOPLIST_KEY_UIApplicationSceneManifest_Generation: "YES"
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
-        INFOPLIST_KEY_NSMicrophoneUsageDescription: "mora listens when you read aloud during practice."
-        INFOPLIST_KEY_NSSpeechRecognitionUsageDescription: "mora recognizes the words you read so it can score them."
+        INFOPLIST_KEY_NSMicrophoneUsageDescription: "Mora listens when you read aloud during practice."
+        INFOPLIST_KEY_NSSpeechRecognitionUsageDescription: "Mora recognizes the words you read so it can score them."
         GENERATE_INFOPLIST_FILE: "YES"
         CODE_SIGN_STYLE: Automatic
 schemes:

@@ -135,19 +135,32 @@ public struct SessionContainerView: View {
             case .newRule:
                 NewRuleView(orchestrator: orchestrator, speech: speech)
             case .decoding:
-                if let engine = orchestrator.currentTileBoardEngine {
-                    DecodeBoardView(
-                        engine: engine,
-                        chainPipStates: orchestrator.chainPipStates.map(ChainPipState.init),
-                        incomingRole: orchestrator.currentChainRole,
-                        speech: speech,
-                        onTrialComplete: { result in
-                            orchestrator.consumeTileBoardTrial(result)
-                        }
-                    )
-                    .id(orchestrator.completedTrialCount)
-                } else {
-                    Color.clear
+                VStack(spacing: MoraTheme.Space.md) {
+                    if let engine = orchestrator.currentTileBoardEngine {
+                        DecodeBoardView(
+                            engine: engine,
+                            chainPipStates: orchestrator.chainPipStates.map(ChainPipState.init),
+                            incomingRole: orchestrator.currentChainRole,
+                            speech: speech,
+                            onTrialComplete: { result in
+                                orchestrator.consumeTileBoardTrial(result)
+                            }
+                        )
+                        .id(orchestrator.completedTrialCount)
+                    } else {
+                        Color.clear
+                    }
+                    #if DEBUG
+                    // Dev-only shortcut to reach ShortSentences (the only
+                    // phase that exercises Engine A/B) in a few taps during
+                    // on-device iteration. Stripped from Release builds.
+                    Button("DEBUG: Skip to Short Sentences") {
+                        orchestrator.debugSkipDecoding()
+                    }
+                    .buttonStyle(.bordered)
+                    .tint(.orange)
+                    .padding(.bottom, MoraTheme.Space.sm)
+                    #endif
                 }
             case .shortSentences:
                 ShortSentencesView(
