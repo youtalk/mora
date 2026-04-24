@@ -8,6 +8,8 @@ import UIKit
 #endif
 
 public struct HomeView: View {
+    @Environment(\.modelContext) private var modelContext
+
     // Sort by createdAt so if duplicate rows ever appear (migration bug, test
     // seed leaking into prod store), the oldest profile wins deterministically.
     @Query(sort: \LearnerProfile.createdAt, order: .forward)
@@ -17,6 +19,18 @@ public struct HomeView: View {
     // one surfaces even if a stale row exists.
     @Query(sort: \DailyStreak.lastCompletedOn, order: .reverse)
     private var streaks: [DailyStreak]
+
+    // Open encounters (active or carryover) — the hero reads the latest one
+    // so the home screen shows the yokai the learner is currently working
+    // with rather than a fixed week-0 fallback.
+    @Query(
+        filter: #Predicate<YokaiEncounterEntity> {
+            $0.stateRaw == "active" || $0.stateRaw == "carryover"
+        },
+        sort: \YokaiEncounterEntity.weekStart,
+        order: .reverse
+    )
+    private var openEncounters: [YokaiEncounterEntity]
 
     // `needsEnhancedVoice` walks the installed-voice list; keep the result in
     // @State so the scan runs at most once per appearance / scene activation
@@ -214,7 +228,13 @@ public struct HomeView: View {
     }
 
     private var target: Target {
-        CurriculumEngine.sharedV1.currentTarget(forWeekIndex: weekIndex)
+        let ladder = CurriculumEngine.sharedV1
+        if let enc = openEncounters.first,
+            let skill = ladder.skills.first(where: { $0.yokaiID == enc.yokaiID })
+        {
+            return Target(weekStart: enc.weekStart, skill: skill)
+        }
+        return ladder.currentTarget(forWeekIndex: 0)
     }
 
     /// Weeks elapsed since the learner's profile was created, clamped into the
