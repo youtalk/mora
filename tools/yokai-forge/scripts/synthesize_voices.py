@@ -11,6 +11,9 @@ Usage:
     python scripts/synthesize_voices.py --yokai sh
 """
 from __future__ import annotations
+import sys
+import pathlib as _pathlib
+sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parent))
 import argparse
 import pathlib
 import subprocess

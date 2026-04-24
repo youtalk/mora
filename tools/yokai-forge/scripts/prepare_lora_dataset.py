@@ -20,13 +20,16 @@ def main() -> None:
     src = pathlib.Path(args.curated)
     dst = pathlib.Path(args.out)
     dst.mkdir(parents=True, exist_ok=True)
-    for i, img in enumerate(sorted(src.glob("*.png"))):
+    paths = sorted(src.glob("*.png"))
+    if not paths:
+        raise SystemExit(f"no PNG files found in {src}")
+    for i, img in enumerate(paths):
         stem = f"{STYLE_TAG}_{i:03d}"
         shutil.copy(img, dst / f"{stem}.png")
         (dst / f"{stem}.txt").write_text(
             f"{STYLE_TAG}, chibi kawaii yokai character, thick black outlines, flat pastel colors, 3/4 portrait, plain white background"
         )
-    print(f"wrote {i+1} image+caption pairs to {dst}")
+    print(f"wrote {len(paths)} image+caption pairs to {dst}")
 
 
 if __name__ == "__main__":

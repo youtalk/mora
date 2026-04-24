@@ -5,6 +5,9 @@ Usage:
     python scripts/render_portraits.py --yokai sh --count 24 --lora outputs/lora/moraforge_style_lora.safetensors
 """
 from __future__ import annotations
+import sys
+import pathlib as _pathlib
+sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parent))
 import argparse
 import pathlib
 import random
