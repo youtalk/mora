@@ -11,7 +11,7 @@ final class BundledYokaiStoreTests: XCTestCase {
 
     func test_portraitURLFallsBackToPlaceholderWhenAssetMissing() throws {
         let store = try BundledYokaiStore()
-        let url = try XCTUnwrap(store.portraitURL(for: "sh"))
+        let url = try XCTUnwrap(store.portraitURL(for: "__no_such_yokai__"))
         XCTAssertEqual(url.lastPathComponent, "portrait.png")
         XCTAssertTrue(url.path.contains("_placeholder"))
     }
