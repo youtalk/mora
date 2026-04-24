@@ -11,18 +11,21 @@ import SwiftUI
 struct MoraApp: App {
     let container: ModelContainer
     private let shadowFactory: ShadowEvaluatorFactory
+    private let mlxWarmupState: MLXWarmupState
 
     init() {
         self.container = Self.makeContainer()
         self.shadowFactory = Self.makeShadowFactory()
+        self.mlxWarmupState = MLXWarmupState()
         Self.scheduleBackgroundCleanup(container: container)
-        Self.scheduleMLXWarmup()
+        Self.scheduleMLXWarmup(state: mlxWarmupState)
     }
 
     var body: some Scene {
         WindowGroup {
             RootView()
                 .environment(\.shadowEvaluatorFactory, shadowFactory)
+                .environment(\.mlxWarmupState, mlxWarmupState)
         }
         .modelContainer(container)
     }
@@ -67,16 +70,24 @@ struct MoraApp: App {
     /// `MLModel(contentsOf:)`. `MoraMLXModelCatalog` caches the loaded
     /// model for the process lifetime, so this warm-up benefits the first
     /// session; subsequent sessions hit the cache instantly regardless.
-    /// Any load failure here is swallowed — `ShadowEvaluatorFactory`
-    /// re-runs the load on first use and handles the error there.
+    /// `state` is updated on the main actor so SwiftUI views (the Home
+    /// start-session CTA) can gate tapping until the load resolves —
+    /// `ShadowEvaluatorFactory` re-runs the load on first use if it fails.
     ///
     /// Runs at `.utility` — higher than `.background` so it actually starts
     /// promptly on a warm system, but below `.userInitiated` so it cannot
     /// steal scheduler time from the SwiftUI / Metal work that renders the
     /// first frame during app launch.
-    private static func scheduleMLXWarmup() {
+    private static func scheduleMLXWarmup(state: MLXWarmupState) {
         Task.detached(priority: .utility) {
-            _ = try? MoraMLXModelCatalog.loadPhonemeEvaluator()
+            await MainActor.run { state.markLoading() }
+            do {
+                _ = try MoraMLXModelCatalog.loadPhonemeEvaluator()
+                await MainActor.run { state.markReady() }
+            } catch {
+                log.error("MLX warmup failed: \(String(describing: error))")
+                await MainActor.run { state.markFailed() }
+            }
         }
     }
 
