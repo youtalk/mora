@@ -5,22 +5,19 @@ import SwiftUI
 
 public struct YokaiCutsceneOverlay: View {
     @Bindable var orchestrator: YokaiOrchestrator
+    let speech: SpeechController?
 
-    // Friday choreography state
     @State private var fridayPhase: Int = 0
     @State private var washiProgress: Double = 0
     @State private var choreographyTask: Task<Void, Never>?
     @State private var didHapticFriday = false
-
-    // Audio playback
     @State private var player: AVAudioPlayer?
-    @State private var synthesizer: AVSpeechSynthesizer = AVSpeechSynthesizer()
     @State private var store: BundledYokaiStore?
-    @State private var didPrimeSpeech = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
-    public init(orchestrator: YokaiOrchestrator) {
+    public init(orchestrator: YokaiOrchestrator, speech: SpeechController? = nil) {
         self.orchestrator = orchestrator
+        self.speech = speech
     }
 
     private var bgOpacity: Double {
@@ -72,12 +69,6 @@ public struct YokaiCutsceneOverlay: View {
         }
         .onAppear {
             if store == nil { store = try? BundledYokaiStore() }
-            if !didPrimeSpeech {
-                didPrimeSpeech = true
-                let primer = AVSpeechUtterance(string: " ")
-                primer.volume = 0
-                synthesizer.speak(primer)
-            }
             fridayPhase = 0
             washiProgress = 0
             if !didHapticFriday {
@@ -153,20 +144,19 @@ public struct YokaiCutsceneOverlay: View {
     }
 
     private func play(clip: YokaiClipKey, yokai: YokaiDefinition) {
-        synthesizer.stopSpeaking(at: .immediate)
         player?.stop()
         if let store, let url = store.voiceClipURL(for: yokai.id, clip: clip) {
+            speech?.play([])
             player = try? AVAudioPlayer(contentsOf: url)
             player?.play()
         } else if let text = yokai.voice.clips[clip] {
-            let utterance = AVSpeechUtterance(string: text)
-            utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-            synthesizer.speak(utterance)
+            player = nil
+            speech?.play([.text(text, .normal)])
         }
     }
 
     private func stopAudio() {
-        synthesizer.stopSpeaking(at: .immediate)
+        speech?.play([])
         player?.stop()
     }
 }
