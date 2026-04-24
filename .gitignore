@@ -85,3 +85,6 @@ bench/results/
 /dev-tools/pronunciation-bench/.build/
 /dev-tools/pronunciation-bench/*.csv
 
+# Materialized by tools/fetch-models.sh — see tools/models.manifest.
+Packages/MoraMLX/Sources/MoraMLX/Resources/wav2vec2-phoneme.mlmodelc/
+
