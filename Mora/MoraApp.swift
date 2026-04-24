@@ -105,19 +105,18 @@ struct MoraApp: App {
     private static func makeShadowFactory() -> ShadowEvaluatorFactory {
         ShadowEvaluatorFactory { container in
             let engineA = FeatureBasedPronunciationEvaluator()
-            // Non-blocking: if the background MLX warmup hasn't finished
-            // compiling the ANE graph yet (first launch after install can
-            // take ~100 s on A-series iPads), this returns `nil` and the
-            // session runs Engine A alone. The next session picks up
-            // Engine B from the warm cache.
-            guard let engineB = MoraMLXModelCatalog.cachedPhonemeEvaluator() else {
-                log.info("MLX warmup not yet complete; session running Engine A only")
-                return engineA
-            }
             let logger = SwiftDataPronunciationTrialLogger(container: container)
+            // The resolver closure is consulted per-trial: if the
+            // background MLX warmup hasn't finished compiling the ANE
+            // graph yet (first launch after install can take ~100 s on
+            // A-series iPads), `cachedPhonemeEvaluator()` returns `nil`
+            // and the shadow wrapper logs the trial with `B=notReady`.
+            // Once the warmup resolves, subsequent trials in the SAME
+            // session transparently pick up Engine B — no need to end
+            // and restart the session.
             return ShadowLoggingPronunciationEvaluator(
                 primary: engineA,
-                shadow: engineB,
+                shadowResolver: { MoraMLXModelCatalog.cachedPhonemeEvaluator() },
                 logger: logger,
                 timeout: .milliseconds(1000)
             )

@@ -32,7 +32,7 @@ final class SessionOrchestratorShadowLoggingTests: XCTestCase {
         )
         let logger = InMemoryPronunciationTrialLogger()
         let composite = ShadowLoggingPronunciationEvaluator(
-            primary: primary, shadow: shadow,
+            primary: primary, shadowResolver: { shadow },
             logger: logger, timeout: .milliseconds(500)
         )
         let engine = AssessmentEngine(

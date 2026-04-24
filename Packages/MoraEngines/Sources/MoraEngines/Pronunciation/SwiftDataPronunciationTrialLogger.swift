@@ -59,6 +59,8 @@ public actor SwiftDataPronunciationTrialLogger: PronunciationTrialLogger {
             engineBLatency = latencyMs
         case .unsupported:
             state = "unsupported"
+        case .notReady:
+            state = "notReady"
         }
 
         return PronunciationTrialLog(

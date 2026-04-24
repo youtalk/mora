@@ -143,6 +143,13 @@ public actor AppleTTSEngine: TTSEngine {
         // screen's audio would then play on the next screen because nothing
         // in the actor method checks cancellation.
         if Task.isCancelled { return }
+        #if DEBUG
+        if let ipa = ipaOverride {
+            audioLog.info("TTS: /\(ipa, privacy: .public)/")
+        } else {
+            audioLog.info("TTS: \"\(text, privacy: .public)\"")
+        }
+        #endif
         configurePlaybackSession()
         // Preempt anything still playing or queued from a prior caller —
         // without this, a view transition leaves the outgoing screen's
