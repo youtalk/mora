@@ -1,25 +1,63 @@
 # Engine B Follow-up: Real Model Bundling + Device Verification
 
-> Continuation of `docs/superpowers/plans/2026-04-22-pronunciation-feedback-engine-b.md`. PRs #43 (Part 1) and #45 (Part 2) are merged. This file captures every remaining step needed to flip shadow mode from "code ready, placeholder bundled" to "real wav2vec2 running on device" and to prepare for Engine B promotion.
+> Continuation of `docs/superpowers/plans/2026-04-22-pronunciation-feedback-engine-b.md`. PRs #43 (Part 1) and #45 (Part 2) are merged. This file originally captured the remaining steps to flip shadow mode from "code ready, placeholder bundled" to "real wav2vec2 running on device". The bundling half is now landed (see the Status section below); only the on-device verification half remains.
 
-## Current state (as of 2026-04-23, post-#45 merge)
+## Status (as of 2026-04-24)
 
-- `main` contains the full Engine B code path: `PhonemeModelPronunciationEvaluator`, `ShadowLoggingPronunciationEvaluator`, SwiftData `PronunciationTrialLog`, MoraMLX loader, CoreML provider, `dev-tools/model-conversion/` toolchain, CI LFS, latency benchmark scaffold, docs.
-- `Packages/MoraMLX/Sources/MoraMLX/Resources/wav2vec2-phoneme.mlmodelc/` is a **placeholder directory** containing only `placeholder.txt`. `phoneme-labels.json` is a **placeholder file** containing only `["<pad>"]`.
-- `MoraMLXModelCatalog.loadPhonemeEvaluator()` reaches `MLModel(contentsOf:)`, which fails because the placeholder isn't a real compiled model → throws `MoraMLXError.modelLoadFailed`. The app's `ShadowEvaluatorFactory` catches this and falls back to bare Engine A. End-user behavior is unchanged.
-- MoraMLX test suite: 3 tests, 3 skipped via `PlaceholderDetection.isPlaceholderModelBundled()` (positive detection on `phoneme-labels.json` entry count ≤ 1).
-- Git LFS is initialized locally (`git lfs install` ran), `.gitattributes` patterns are in place, CI checkout uses `lfs: true`.
+**Real-model bundling: LANDED** (via the LFS→GitHub-Releases migration in PR
+#62, `docs/superpowers/plans/2026-04-24-ci-lfs-to-releases.md`).
 
-## Blockers preventing the real model from landing
+- The INT8-quantized `wav2vec2-phoneme.mlmodelc` (~303 MB unpacked, 273 MB
+  tar.gz) is hosted on the `models/wav2vec2-phoneme-int8-v1` GitHub Release.
+  `tools/fetch-models.sh` materializes it into
+  `Packages/MoraMLX/Sources/MoraMLX/Resources/wav2vec2-phoneme.mlmodelc/`,
+  which is now gitignored.
+- `phoneme-labels.json` has **392 entries** (real vocabulary; placeholder
+  was 1 entry). `PlaceholderDetection.isPlaceholderModelBundled()` therefore
+  returns `false`.
+- MoraMLX test suite: **3 tests, 0 skipped, 0 failures.** The smoke test
+  `CoreMLPhonemePosteriorProviderSmokeTests.testPosteriorHasFramesAndPhonemes`
+  runs a live CoreML forward pass (~37 s on an M2) against the bundled
+  `Packages/MoraMLX/Tests/MoraMLXTests/Fixtures/short-sh-clip.wav` fixture
+  and asserts posterior frame count and phoneme count.
+- `.gitattributes` was removed in #62; CI uses `lfs: false` + `actions/cache`
+  keyed on `tools/models.manifest` hash + `tools/fetch-models.sh` on cache
+  miss.
+- `MoraMLXModelCatalog.loadPhonemeEvaluator()` returns a real evaluator;
+  `ShadowLoggingPronunciationEvaluator` executes Engine B in parallel with
+  Engine A on every trial.
 
-1. **Local compute** — `convert.py` takes ~10 min on an M2 MacBook Pro, produces a ~303 MB `.mlmodelc` (weights ~317 MB INT8-packed; xlsr-53 has ~317 M parameters, which sets the INT8 floor). Agentic sessions with restricted network/disk can't run it end-to-end.
-2. **CoreML compile tool** — the script calls `xcrun coremlcompiler`, so the conversion must run on macOS with Xcode Command Line Tools. Linux / Docker are not viable hosts.
+**On-device verification: PENDING** (see section 3 below — requires a
+physical iPad Air M2). Latency benchmark (`Phase3LatencyBenchmark`) and the
+end-to-end shadow-logging sanity check need hardware and are out of scope
+for agentic sessions.
 
-The upstream model `facebook/wav2vec2-xlsr-53-espeak-cv-ft` is **public** (HF API `gated: False`), so no Hugging Face access token is required.
+## Historical blockers (no longer active)
+
+Retained for context only — the bundling pipeline below was resolved by the
+LFS→Release migration in PR #62. Left in place so the original planning
+rationale is searchable; none of these blocks are live.
+
+1. **Local compute** — `convert.py` takes ~10 min on an M2 MacBook Pro,
+   produces a ~303 MB `.mlmodelc` (weights ~317 MB INT8-packed; xlsr-53 has
+   ~317 M parameters, which sets the INT8 floor).
+2. **CoreML compile tool** — the script calls `xcrun coremlcompiler`, so the
+   conversion must run on macOS with Xcode Command Line Tools. Linux /
+   Docker are not viable hosts.
+
+The upstream model `facebook/wav2vec2-xlsr-53-espeak-cv-ft` is **public** (HF
+API `gated: False`), so no Hugging Face access token is required.
 
 ## Remaining work
 
-### 1. Bundle the real model (Task 22 Steps 2–5)
+> **Sections 1, 2, and 4 below are landed** via the LFS→Release migration in
+> PR #62. Their commands are preserved verbatim for historical reference —
+> the concrete recipe (run `convert.py`, compute SHA-256, upload the tarball
+> to the release) was what the migration executed, just against a GitHub
+> Release asset instead of an LFS commit. Only **section 3 (device
+> verification)** is active work.
+
+### 1. Bundle the real model (Task 22 Steps 2–5) — LANDED via #62
 
 **Prereqs**: macOS with Xcode Command Line Tools and [`uv`](https://github.com/astral-sh/uv) (`brew install uv`). The upstream model is public — no Hugging Face token is needed.
 
@@ -64,7 +102,7 @@ gh pr create --title "mlx: bundle real wav2vec2 CoreML model via Git LFS" --body
 
 Commit the LFS artifacts in one commit. Update the progress table in `docs/superpowers/plans/2026-04-22-pronunciation-feedback-engine-b.md` to mark Task 22 as **landed** (replace the "deferred" row with the commit SHA).
 
-### 2. Create the real `short-sh-clip.wav` fixture (Task 26)
+### 2. Create the real `short-sh-clip.wav` fixture (Task 26) — LANDED
 
 The smoke test `CoreMLPhonemePosteriorProviderSmokeTests.testPosteriorHasFramesAndPhonemes` currently XCTSkips on fixture-missing. Once the real model is bundled, generate a small /ʃ/-like clip and drop it at `Packages/MoraMLX/Tests/MoraMLXTests/Fixtures/short-sh-clip.wav`.
 
@@ -90,7 +128,7 @@ Commit: `mlx: add real short-sh-clip fixture for smoke test`.
 
 Can go in the same PR as step 1 or a follow-up — either is fine.
 
-### 3. Device verification on iPad Air M2 (Task 29 + completion checklist)
+### 3. Device verification on iPad Air M2 (Task 29 + completion checklist) — ACTIVE
 
 Once the real model is bundled:
 
@@ -136,7 +174,7 @@ Success criteria (plan's Completion Checklist):
 
 Not blocking for merge; log observations back into the plan's Completion Checklist as `[x]` once verified.
 
-### 4. Update CI to run the real model (after step 1)
+### 4. Update CI to run the real model (after step 1) — LANDED via #62
 
 Once `.mlmodelc` is on main, the CI's MoraMLX test suite should run the smoke test instead of skipping. Verify:
 
@@ -156,14 +194,14 @@ Out of scope here — will be a separate plan file when ready.
 
 ## Completion checklist (of this follow-up)
 
-Pre-merge gates for the real-model PR:
+Pre-merge gates for the real-model PR (all satisfied via PR #62):
 
-- [ ] `python convert.py --output-dir ../../Packages/MoraMLX/Sources/MoraMLX/Resources` succeeded; `phoneme-labels.json` has ~390 entries; `.mlmodelc/` contains `coremldata.bin` and supporting files.
-- [ ] `git lfs ls-files | grep wav2vec2-phoneme` shows the model directory contents.
-- [ ] `(cd Packages/MoraMLX && swift test)` — 3/3 PASS, 0 skipped.
-- [ ] All other SPM suites green (`MoraCore`, `MoraEngines`, `MoraUI`, `MoraTesting`).
-- [ ] `swift-format lint --strict ...` clean.
-- [ ] iOS Simulator build passes.
+- [x] `python convert.py --output-dir ../../Packages/MoraMLX/Sources/MoraMLX/Resources` succeeded; `phoneme-labels.json` has 392 entries; `.mlmodelc/` contains `coremldata.bin` and supporting files.
+- [x] ~~`git lfs ls-files | grep wav2vec2-phoneme` shows the model directory contents.~~ Replaced by: `bash tools/fetch-models.sh` materializes the directory from the GitHub Release asset (post-#62).
+- [x] `(cd Packages/MoraMLX && swift test)` — 3/3 PASS, 0 skipped.
+- [x] All other SPM suites green (`MoraCore`, `MoraEngines`, `MoraUI`, `MoraTesting`).
+- [x] `swift-format lint --strict ...` clean.
+- [x] iOS Simulator build passes.
 - [ ] Source gate: `git grep -nIE 'speechace|azure\.cognitive|pronunciation-assessment|speechsuper' -- Mora Packages` is empty.
 - [ ] `short-sh-clip.wav` fixture added (optional — can be follow-up).
 - [ ] Plan's progress table updated: Task 22 marked landed, Task 26 marked landed (if fixture included).

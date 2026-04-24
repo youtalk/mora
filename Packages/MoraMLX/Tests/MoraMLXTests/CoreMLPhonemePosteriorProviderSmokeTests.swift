@@ -8,14 +8,17 @@ import MoraEngines
 /// `MoraMLXModelCatalog`, decode the bundled fixture WAV into an
 /// `AudioClip`, and run a forward pass through the provider.
 ///
-/// This test is adaptive because both the model and the fixture are
-/// deferred: the model is bundled via Git LFS in a follow-up manual step
-/// (see `dev-tools/model-conversion/convert.py`) and the fixture WAV is
-/// created the same way. Until the model is present,
-/// `PlaceholderDetection.isPlaceholderModelBundled()` returns true and
-/// the test `XCTSkip`s on any `MoraMLXError`; once the real model is
-/// bundled, a throwing catalog will FAIL the test (no more blanket skip
-/// on `.inferenceFailed`).
+/// The real model is hosted on the `models/wav2vec2-phoneme-int8-v1`
+/// GitHub Release and materialized into `Resources/` by
+/// `tools/fetch-models.sh` (see
+/// `docs/superpowers/plans/2026-04-24-ci-lfs-to-releases.md`). The
+/// `short-sh-clip.wav` fixture lives alongside this test target. The
+/// test stays adaptive so it survives a fresh clone before
+/// `fetch-models.sh` has run: when
+/// `PlaceholderDetection.isPlaceholderModelBundled()` returns true the
+/// test `XCTSkip`s on any `MoraMLXError`; when a real model is present,
+/// a throwing catalog FAILs the test (no blanket skip on
+/// `.inferenceFailed`).
 final class CoreMLPhonemePosteriorProviderSmokeTests: XCTestCase {
     func testPosteriorHasFramesAndPhonemes() async throws {
         let evaluator: PhonemeModelPronunciationEvaluator
