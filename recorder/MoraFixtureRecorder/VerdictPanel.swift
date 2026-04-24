@@ -97,7 +97,8 @@ struct VerdictHeadlineView: View {
         case .fail: toneWord = "fail"
         case .warn: toneWord = "warning"
         }
-        return [toneWord, content.title, content.subtitle ?? ""]
+        return [toneWord, content.title, content.subtitle]
+            .compactMap { $0 }
             .joined(separator: ". ")
     }
 }

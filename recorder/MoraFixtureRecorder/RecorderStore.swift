@@ -78,8 +78,16 @@ public final class RecorderStore {
 
     public var pendingVerdict: PendingVerdict = .idle
     public private(set) var savedVerdicts: [URL: PhonemeTrialAssessment] = [:]
+    /// URLs whose lazy evaluation has produced a decode/eval failure. Views
+    /// read this set to render a stable "unavailable" glyph instead of an
+    /// indefinite progress spinner when `savedVerdicts[url]` is empty.
+    public private(set) var failedURLs: Set<URL> = []
 
     private var evaluationTask: Task<Void, Never>?
+    /// URLs whose lazy evaluation is currently in flight. Gates `evaluateSavedTake`
+    /// against duplicate decode/eval passes when multiple `TakeRow` tasks fire
+    /// before the first completes.
+    private var inFlightURLs: Set<URL> = []
     private let runner: any PronunciationRunning
 
     private let documentsDirectory: URL
@@ -164,8 +172,10 @@ public final class RecorderStore {
     }
 
     /// Test helper: spin on MainActor until `pendingVerdict` reaches
-    /// `target` or `timeout` seconds elapse. Non-production.
-    public func waitForPendingVerdict(
+    /// `target` or `timeout` seconds elapse. Non-production; `internal`
+    /// so the test target can reach it via `@testable import` without
+    /// the production API surface of `RecorderStore` growing.
+    func waitForPendingVerdict(
         _ target: PendingVerdict,
         timeout: TimeInterval
     ) async {
@@ -224,6 +234,9 @@ public final class RecorderStore {
 
     public func evaluateSavedTake(url: URL, pattern: FixturePattern) async {
         if savedVerdicts[url] != nil { return }
+        if inFlightURLs.contains(url) { return }
+        inFlightURLs.insert(url)
+        defer { inFlightURLs.remove(url) }
         let sampleRate = recorder.targetSampleRate
         let runner = self.runner
         let assessment = await Task.detached {
@@ -238,7 +251,12 @@ public final class RecorderStore {
                 targetPhonemeIndex: pattern.targetPhonemeIndex
             )
         }.value
-        if let assessment { savedVerdicts[url] = assessment }
+        if let assessment {
+            savedVerdicts[url] = assessment
+            failedURLs.remove(url)
+        } else {
+            failedURLs.insert(url)
+        }
     }
 
     public func save(pattern: FixturePattern) {
@@ -276,6 +294,7 @@ public final class RecorderStore {
         let sidecar = url.deletingPathExtension().appendingPathExtension("json")
         try? fileManager.removeItem(at: sidecar)
         savedVerdicts[url] = nil
+        failedURLs.remove(url)
         takesRevision &+= 1
     }
 

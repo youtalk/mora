@@ -419,7 +419,7 @@ final class RecorderStoreTests: XCTestCase {
         XCTAssertEqual(secondCallCount, 1, "idempotent: cache hit skips evaluator")
     }
 
-    func testEvaluateSavedTakeNoopOnDecodeFailure() async throws {
+    func testEvaluateSavedTakeRecordsDecodeFailure() async throws {
         let fake = FakeRunner()
         let pattern = FixtureCatalog.v1Patterns.first { $0.id == "rl-right-correct" }!
         let bogus = tempDir.appendingPathComponent("does-not-exist.wav")
@@ -430,7 +430,62 @@ final class RecorderStoreTests: XCTestCase {
 
         await store.evaluateSavedTake(url: bogus, pattern: pattern)
         XCTAssertNil(store.savedVerdicts[bogus])
+        XCTAssertTrue(store.failedURLs.contains(bogus))
         let calls = await fake.callCount
         XCTAssertEqual(calls, 0)
+    }
+
+    func testDeleteTakeClearsFailedURLsEntry() async throws {
+        let fake = FakeRunner()
+        let pattern = FixtureCatalog.v1Patterns.first { $0.id == "rl-right-correct" }!
+        let bogus = tempDir.appendingPathComponent("does-not-exist.wav")
+        let store = RecorderStore(
+            documentsDirectory: tempDir, userDefaults: defaults,
+            runner: fake
+        )
+
+        await store.evaluateSavedTake(url: bogus, pattern: pattern)
+        XCTAssertTrue(store.failedURLs.contains(bogus))
+
+        store.deleteTake(url: bogus)
+        XCTAssertFalse(store.failedURLs.contains(bogus))
+    }
+
+    func testEvaluateSavedTakeDedupesConcurrentCalls() async throws {
+        let fake = FakeRunner()
+        let expected = PhonemeTrialAssessment(
+            targetPhoneme: Phoneme(ipa: "r"), label: .matched,
+            score: 100, coachingKey: nil, features: [:], isReliable: true
+        )
+        await fake.setNextResult(expected)
+        await fake.waitForNextEvaluateAndSuspend()
+
+        let pattern = FixtureCatalog.v1Patterns.first { $0.id == "rl-right-correct" }!
+        let wav = try writeSyntheticWav(
+            for: pattern,
+            takeNumber: 1,
+            speaker: .adult,
+            durationSeconds: 0.5
+        )
+        let store = RecorderStore(
+            documentsDirectory: tempDir, userDefaults: defaults,
+            runner: fake
+        )
+        store.speakerTag = .adult
+
+        // Fire two concurrent evaluateSavedTake calls. The second one sees
+        // the first still in flight (inFlightURLs contains the URL) and
+        // returns early before decoding or calling the runner.
+        async let firstResult: Void = store.evaluateSavedTake(url: wav, pattern: pattern)
+        // Tiny sleep to let the first call reach its await point.
+        try await Task.sleep(nanoseconds: 20_000_000)
+        async let secondResult: Void = store.evaluateSavedTake(url: wav, pattern: pattern)
+
+        await fake.resume()
+        _ = await (firstResult, secondResult)
+
+        let calls = await fake.callCount
+        XCTAssertEqual(calls, 1, "dedup: only one evaluator call per URL at a time")
+        XCTAssertEqual(store.savedVerdicts[wav], expected)
     }
 }

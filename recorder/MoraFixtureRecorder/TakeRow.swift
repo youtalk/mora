@@ -14,6 +14,7 @@ struct TakeRow: View {
             Spacer()
             VerdictBadge(
                 cached: store.savedVerdicts[wavURL],
+                failed: store.failedURLs.contains(wavURL),
                 pattern: pattern
             )
             ShareLink(items: store.takeArtifacts(for: wavURL)) {

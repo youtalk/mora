@@ -18,7 +18,12 @@ open class FixtureRecorder {
     private var isRecording = false
     private var sessionGeneration: UInt64 = 0
     public private(set) var buffer: [Float] = []
-    public let targetSampleRate: Double = 16_000
+
+    /// Single source of truth for the fixture sample rate, shared by the
+    /// capture path (instance `targetSampleRate`) and the nonisolated
+    /// `decode(from:)` helper so they cannot silently drift apart.
+    public nonisolated static let sampleRate: Double = 16_000
+    public var targetSampleRate: Double { Self.sampleRate }
 
     public init() {}
 
@@ -93,7 +98,7 @@ open class FixtureRecorder {
         let hardwareFormat = file.processingFormat
         guard let targetFormat = AVAudioFormat(
             commonFormat: .pcmFormatFloat32,
-            sampleRate: 16_000, channels: 1, interleaved: false
+            sampleRate: Self.sampleRate, channels: 1, interleaved: false
         ) else { throw FixtureRecorderError.converterInitFailed }
         guard let converter = AVAudioConverter(from: hardwareFormat, to: targetFormat)
         else { throw FixtureRecorderError.converterInitFailed }

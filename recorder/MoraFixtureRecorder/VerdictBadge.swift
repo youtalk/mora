@@ -5,6 +5,7 @@ import SwiftUI
 
 struct VerdictBadge: View {
     let cached: PhonemeTrialAssessment?
+    let failed: Bool
     let pattern: FixturePattern
 
     var body: some View {
@@ -18,6 +19,13 @@ struct VerdictBadge: View {
                 Text(h.title).font(.footnote).foregroundStyle(.secondary)
             }
             .accessibilityLabel(h.title)
+        } else if failed {
+            HStack(spacing: 4) {
+                Image(systemName: "minus.circle")
+                    .foregroundStyle(.secondary)
+                Text("unavailable").font(.footnote).foregroundStyle(.secondary)
+            }
+            .accessibilityLabel("verdict unavailable")
         } else {
             ProgressView().controlSize(.mini)
         }
