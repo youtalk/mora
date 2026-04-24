@@ -1,4 +1,6 @@
 import Foundation
+import MoraCore
+import MoraEngines
 import MoraFixtures
 import Observation
 
@@ -27,6 +29,12 @@ public enum RecordingState: Equatable, Sendable {
     case captured(CaptureSnapshot)
     case saving
     case saveFailed(String)
+}
+
+public enum PendingVerdict: Sendable, Equatable {
+    case idle
+    case evaluating
+    case ready(PhonemeTrialAssessment)
 }
 
 public enum FixtureExportError: Error, Sendable {
@@ -68,6 +76,12 @@ public final class RecorderStore {
     /// invalidate when the underlying takes set changes.
     public private(set) var takesRevision: UInt64 = 0
 
+    public var pendingVerdict: PendingVerdict = .idle
+    public private(set) var savedVerdicts: [URL: PhonemeTrialAssessment] = [:]
+
+    private var evaluationTask: Task<Void, Never>?
+    private let runner: any PronunciationRunning
+
     private let documentsDirectory: URL
     private let userDefaults: UserDefaults
     private let fileManager: FileManager
@@ -77,12 +91,14 @@ public final class RecorderStore {
         documentsDirectory: URL? = nil,
         userDefaults: UserDefaults = .standard,
         fileManager: FileManager = .default,
-        recorder: FixtureRecorder? = nil
+        recorder: FixtureRecorder? = nil,
+        runner: any PronunciationRunning = PronunciationEvaluationRunner()
     ) {
         self.documentsDirectory = documentsDirectory ?? RecorderStore.defaultDocumentsDirectory()
         self.userDefaults = userDefaults
         self.fileManager = fileManager
         self.recorder = recorder ?? FixtureRecorder()
+        self.runner = runner
         if let raw = userDefaults.string(forKey: speakerTagUserDefaultsKey),
             let tag = SpeakerTag(rawValue: raw)
         {
