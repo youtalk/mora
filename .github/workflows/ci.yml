@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          lfs: true
+          lfs: false
 
       - name: Cache Homebrew downloads (swift-format)
         uses: actions/cache@v4
@@ -65,7 +65,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          lfs: true
+          lfs: false
+
+      - name: Restore CoreML model cache
+        id: model-cache
+        uses: actions/cache@v4
+        with:
+          path: Packages/MoraMLX/Sources/MoraMLX/Resources/wav2vec2-phoneme.mlmodelc
+          key: model-${{ runner.os }}-${{ hashFiles('tools/models.manifest') }}
+      - name: Fetch CoreML models on cache miss
+        if: steps.model-cache.outputs.cache-hit != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash tools/fetch-models.sh
 
       - name: Cache Homebrew downloads (xcodegen)
         uses: actions/cache@v4
@@ -212,7 +224,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          lfs: true
+          lfs: false
       - uses: dorny/paths-filter@v3
         id: filter
         with:
@@ -235,7 +247,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          lfs: true
+          lfs: false
+
+      - name: Restore CoreML model cache
+        id: model-cache
+        uses: actions/cache@v4
+        with:
+          path: Packages/MoraMLX/Sources/MoraMLX/Resources/wav2vec2-phoneme.mlmodelc
+          key: model-${{ runner.os }}-${{ hashFiles('tools/models.manifest') }}
+      - name: Fetch CoreML models on cache miss
+        if: steps.model-cache.outputs.cache-hit != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash tools/fetch-models.sh
 
       - name: Cache Homebrew downloads (xcodegen)
         uses: actions/cache@v4
@@ -333,7 +357,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          lfs: true
+          lfs: false
 
       - name: Cache Homebrew downloads (xcodegen)
         uses: actions/cache@v4

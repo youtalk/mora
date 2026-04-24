@@ -84,12 +84,12 @@ public enum PhonemeThresholds {
         case ("æ", "ʌ"):
             return SubstitutionThresholds(
                 feature: .formantF1Hz,
-                targetCentroid: 700, substituteCentroid: 580, boundary: 640
+                targetCentroid: 700, substituteCentroid: 580, boundary: 590
             )
         case ("ʌ", "æ"):
             return SubstitutionThresholds(
                 feature: .formantF1Hz,
-                targetCentroid: 580, substituteCentroid: 700, boundary: 640
+                targetCentroid: 580, substituteCentroid: 700, boundary: 590
             )
         default:
             return nil
