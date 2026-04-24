@@ -55,6 +55,37 @@ public struct ScriptedContentProvider: ContentProvider {
             sentences: payload.sentences.map { $0.asDecodeSentence(targetPhoneme: targetPhoneme) }
         )
     }
+
+    /// Resource filename prefix per v1 skill code. Extending v1 means adding
+    /// a case here and a matching `*_week.json` under `Resources/`.
+    private static func resourceName(for code: SkillCode) -> String? {
+        switch code.rawValue {
+        case "sh_onset": return "sh_week1"
+        case "th_voiceless": return "th_week"
+        case "f_onset": return "f_week"
+        case "r_onset": return "r_week"
+        case "short_a": return "short_a_week"
+        default: return nil
+        }
+    }
+
+    public static func bundled(for code: SkillCode) throws -> ScriptedContentProvider {
+        guard let name = resourceName(for: code) else {
+            throw ScriptedContentError.resourceMissing("bundled provider for \(code.rawValue)")
+        }
+        guard let url = Bundle.module.url(forResource: name, withExtension: "json") else {
+            throw ScriptedContentError.resourceMissing("\(name).json")
+        }
+        let data = try Data(contentsOf: url)
+        let payload = try JSONDecoder().decode(ShWeek1Payload.self, from: data)
+        let targetPhoneme = Phoneme(ipa: payload.target.phoneme)
+        return ScriptedContentProvider(
+            target: Grapheme(letters: payload.target.letters),
+            taughtGraphemes: Set(payload.l2TaughtGraphemes.map(Grapheme.init(letters:))),
+            words: payload.decodeWords.map { $0.asDecodeWord(targetPhoneme: targetPhoneme) },
+            sentences: payload.sentences.map { $0.asDecodeSentence(targetPhoneme: targetPhoneme) }
+        )
+    }
 }
 
 public enum ScriptedContentError: Error, Equatable {

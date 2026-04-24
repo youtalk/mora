@@ -1,4 +1,6 @@
 import Foundation
+import MoraCore
+import MoraEngines
 import MoraFixtures
 import Observation
 
@@ -27,6 +29,12 @@ public enum RecordingState: Equatable, Sendable {
     case captured(CaptureSnapshot)
     case saving
     case saveFailed(String)
+}
+
+public enum PendingVerdict: Sendable, Equatable {
+    case idle
+    case evaluating
+    case ready(PhonemeTrialAssessment)
 }
 
 public enum FixtureExportError: Error, Sendable {
@@ -68,6 +76,20 @@ public final class RecorderStore {
     /// invalidate when the underlying takes set changes.
     public private(set) var takesRevision: UInt64 = 0
 
+    public var pendingVerdict: PendingVerdict = .idle
+    public private(set) var savedVerdicts: [URL: PhonemeTrialAssessment] = [:]
+    /// URLs whose lazy evaluation has produced a decode/eval failure. Views
+    /// read this set to render a stable "unavailable" glyph instead of an
+    /// indefinite progress spinner when `savedVerdicts[url]` is empty.
+    public private(set) var failedURLs: Set<URL> = []
+
+    private var evaluationTask: Task<Void, Never>?
+    /// URLs whose lazy evaluation is currently in flight. Gates `evaluateSavedTake`
+    /// against duplicate decode/eval passes when multiple `TakeRow` tasks fire
+    /// before the first completes.
+    private var inFlightURLs: Set<URL> = []
+    private let runner: any PronunciationRunning
+
     private let documentsDirectory: URL
     private let userDefaults: UserDefaults
     private let fileManager: FileManager
@@ -77,12 +99,14 @@ public final class RecorderStore {
         documentsDirectory: URL? = nil,
         userDefaults: UserDefaults = .standard,
         fileManager: FileManager = .default,
-        recorder: FixtureRecorder? = nil
+        recorder: FixtureRecorder? = nil,
+        runner: any PronunciationRunning = PronunciationEvaluationRunner()
     ) {
         self.documentsDirectory = documentsDirectory ?? RecorderStore.defaultDocumentsDirectory()
         self.userDefaults = userDefaults
         self.fileManager = fileManager
         self.recorder = recorder ?? FixtureRecorder()
+        self.runner = runner
         if let raw = userDefaults.string(forKey: speakerTagUserDefaultsKey),
             let tag = SpeakerTag(rawValue: raw)
         {
@@ -147,9 +171,25 @@ public final class RecorderStore {
         [wavURL, wavURL.deletingPathExtension().appendingPathExtension("json")]
     }
 
-    public func toggleRecording() {
+    /// Test helper: spin on MainActor until `pendingVerdict` reaches
+    /// `target` or `timeout` seconds elapse. Non-production; `internal`
+    /// so the test target can reach it via `@testable import` without
+    /// the production API surface of `RecorderStore` growing.
+    func waitForPendingVerdict(
+        _ target: PendingVerdict,
+        timeout: TimeInterval
+    ) async {
+        let deadline = Date().addingTimeInterval(timeout)
+        while pendingVerdict != target && Date() < deadline {
+            try? await Task.sleep(nanoseconds: 5_000_000)  // 5 ms
+        }
+    }
+
+    public func toggleRecording(pattern: FixturePattern) {
         switch recordingState {
         case .idle, .saveFailed, .captured:
+            evaluationTask?.cancel()
+            pendingVerdict = .idle
             do {
                 try recorder.start()
                 recordingState = .recording
@@ -162,8 +202,60 @@ public final class RecorderStore {
             let duration = Double(samples.count) / recorder.targetSampleRate
             recordingState = .captured(
                 CaptureSnapshot(samples: samples, durationSeconds: duration))
+            evaluateCaptured(pattern: pattern)
         case .saving:
             break
+        }
+    }
+
+    private func evaluateCaptured(pattern: FixturePattern) {
+        guard case let .captured(snapshot) = recordingState else { return }
+        pendingVerdict = .evaluating
+        let runner = self.runner
+        let sampleRate = recorder.targetSampleRate
+        evaluationTask = Task.detached { [weak self] in
+            let assessment = await runner.evaluate(
+                samples: snapshot.samples,
+                sampleRate: sampleRate,
+                wordSurface: pattern.wordSurface,
+                targetPhonemeIPA: pattern.targetPhonemeIPA,
+                phonemeSequenceIPA: pattern.phonemeSequenceIPA,
+                targetPhonemeIndex: pattern.targetPhonemeIndex
+            )
+            if Task.isCancelled { return }
+            await MainActor.run {
+                guard let self else { return }
+                if case .evaluating = self.pendingVerdict {
+                    self.pendingVerdict = .ready(assessment)
+                }
+            }
+        }
+    }
+
+    public func evaluateSavedTake(url: URL, pattern: FixturePattern) async {
+        if savedVerdicts[url] != nil { return }
+        if inFlightURLs.contains(url) { return }
+        inFlightURLs.insert(url)
+        defer { inFlightURLs.remove(url) }
+        let sampleRate = recorder.targetSampleRate
+        let runner = self.runner
+        let assessment = await Task.detached {
+            () -> PhonemeTrialAssessment? in
+            guard let samples = try? FixtureRecorder.decode(from: url) else { return nil }
+            return await runner.evaluate(
+                samples: samples,
+                sampleRate: sampleRate,
+                wordSurface: pattern.wordSurface,
+                targetPhonemeIPA: pattern.targetPhonemeIPA,
+                phonemeSequenceIPA: pattern.phonemeSequenceIPA,
+                targetPhonemeIndex: pattern.targetPhonemeIndex
+            )
+        }.value
+        if let assessment {
+            savedVerdicts[url] = assessment
+            failedURLs.remove(url)
+        } else {
+            failedURLs.insert(url)
         }
     }
 
@@ -179,10 +271,17 @@ public final class RecorderStore {
                 durationSeconds: snapshot.durationSeconds,
                 speakerTag: speakerTag
             )
-            _ = try FixtureWriter.writeTake(
+            let output = try FixtureWriter.writeTake(
                 samples: snapshot.samples, metadata: meta,
                 pattern: pattern, takeNumber: n, into: dir
             )
+            if case let .ready(assessment) = pendingVerdict {
+                savedVerdicts[output.wav] = assessment
+                pendingVerdict = .idle
+            }
+            // If pendingVerdict is .evaluating, leave it as-is — the late
+            // assessment will land on the still-visible captured snapshot
+            // path and a later lazy TakeRow.onAppear will fill savedVerdicts.
             recordingState = .idle
             takesRevision &+= 1
         } catch {
@@ -194,6 +293,8 @@ public final class RecorderStore {
         try? fileManager.removeItem(at: url)
         let sidecar = url.deletingPathExtension().appendingPathExtension("json")
         try? fileManager.removeItem(at: sidecar)
+        savedVerdicts[url] = nil
+        failedURLs.remove(url)
         takesRevision &+= 1
     }
 

@@ -18,6 +18,34 @@ public struct HomeView: View {
     @Query(sort: \DailyStreak.lastCompletedOn, order: .reverse)
     private var streaks: [DailyStreak]
 
+    // Open encounters (active or carryover) — the hero reads the latest one
+    // so the home screen shows the yokai the learner is currently working
+    // with rather than a fixed week-0 fallback.
+    //
+    // Raw strings are used directly because `#Predicate` cannot form a key
+    // path into an enum case (`\.active`), so `YokaiEncounterState.active`
+    // .rawValue doesn't compile inside the macro. `YokaiEncounterStateRawValuesTests`
+    // pins these strings to the enum cases so a rename breaks CI, not prod.
+    @Query(
+        filter: #Predicate<YokaiEncounterEntity> {
+            $0.stateRaw == "active" || $0.stateRaw == "carryover"
+        },
+        sort: \YokaiEncounterEntity.weekStart,
+        order: .reverse
+    )
+    private var openEncounters: [YokaiEncounterEntity]
+
+    // Bestiary entries unlock as each yokai is befriended. Once all five
+    // are in the register and no open encounters remain, the home CTA
+    // flips to the curriculum-complete terminal screen.
+    @Query private var bestiary: [BestiaryEntryEntity]
+
+    // Bundled yokai catalog cached as @State so the portrait-corner doesn't
+    // re-parse the JSON catalog on every body invalidation. `try?` lets the
+    // view still render if the bundle is somehow malformed — the corner just
+    // doesn't appear, which matches the pre-cache behavior.
+    @State private var yokaiStore: BundledYokaiStore? = try? BundledYokaiStore()
+
     // `needsEnhancedVoice` walks the installed-voice list; keep the result in
     // @State so the scan runs at most once per appearance / scene activation
     // rather than on every body invalidation (which fires on every @Query
@@ -69,6 +97,52 @@ public struct HomeView: View {
             .foregroundStyle(MoraTheme.Accent.orange)
     }
 
+    /// True once every yokai has an entry in the bestiary and no open
+    /// encounters remain. Drives the home CTA to the terminal screen.
+    ///
+    /// Counts *distinct* yokaiIDs rather than raw bestiary rows so a
+    /// duplicate entry (from a retry path that didn't dedup) doesn't
+    /// prematurely route to the terminal screen.
+    private var isCurriculumComplete: Bool {
+        openEncounters.isEmpty && Set(bestiary.map(\.yokaiID)).count >= 5
+    }
+
+    /// Primary home CTA. Branches to the curriculum-complete destination
+    /// once the learner has befriended all five yokai; otherwise renders
+    /// the regular session-start button. The button is always enabled —
+    /// the Engine B (wav2vec2 CoreML) warmup runs in the background from
+    /// app launch; if the first tap beats it, the session runs Engine A
+    /// alone and the next session picks up Engine B from the warm cache.
+    @ViewBuilder
+    private var startCTA: some View {
+        if isCurriculumComplete {
+            NavigationLink(value: "curriculumComplete") {
+                Text("All befriended — view your Register")
+                    .font(MoraType.cta())
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, MoraTheme.Space.xl)
+                    .padding(.vertical, MoraTheme.Space.md)
+                    .frame(minHeight: 88)
+                    .background(MoraTheme.Accent.orange, in: .capsule)
+            }
+            .buttonStyle(.plain)
+            .padding(.top, MoraTheme.Space.md)
+        } else {
+            NavigationLink(value: "session") {
+                Text(strings.homeStart)
+                    .font(MoraType.cta())
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, MoraTheme.Space.xl)
+                    .padding(.vertical, MoraTheme.Space.md)
+                    .frame(minHeight: 88)
+                    .background(MoraTheme.Accent.orange, in: .capsule)
+            }
+            .buttonStyle(.plain)
+            .padding(.top, MoraTheme.Space.md)
+            .accessibilityLabel(Text(strings.homeStart))
+        }
+    }
+
     private var hero: some View {
         VStack(spacing: MoraTheme.Space.md) {
             Text(strings.homeTodayQuest)
@@ -84,22 +158,15 @@ public struct HomeView: View {
                 .foregroundStyle(MoraTheme.Ink.secondary)
                 .multilineTextAlignment(.center)
 
-            // Always enabled. The Engine B (wav2vec2 CoreML) warmup runs
-            // in the background from app launch; if the first tap beats
-            // it, the session runs Engine A alone and the next session
-            // picks up Engine B from the warm cache. Child never waits.
-            NavigationLink(value: "session") {
-                Text(strings.homeStart)
-                    .font(MoraType.cta())
-                    .foregroundStyle(.white)
-                    .padding(.horizontal, MoraTheme.Space.xl)
-                    .padding(.vertical, MoraTheme.Space.md)
-                    .frame(minHeight: 88)
-                    .background(MoraTheme.Accent.orange, in: .capsule)
+            startCTA
+
+            if let enc = openEncounters.first,
+                let yokai = yokaiStore?.catalog().first(where: { $0.id == enc.yokaiID })
+            {
+                YokaiPortraitCorner(yokai: yokai, sparkleTrigger: nil)
+                    .frame(width: 96, height: 96)
+                    .accessibilityLabel("This week's sound-friend: \(enc.yokaiID)")
             }
-            .buttonStyle(.plain)
-            .padding(.top, MoraTheme.Space.md)
-            .accessibilityLabel(Text(strings.homeStart))
 
             HStack(spacing: MoraTheme.Space.sm) {
                 pill(strings.homeDurationPill(16))
@@ -205,7 +272,13 @@ public struct HomeView: View {
     }
 
     private var target: Target {
-        CurriculumEngine.sharedV1.currentTarget(forWeekIndex: weekIndex)
+        let ladder = CurriculumEngine.sharedV1
+        if let enc = openEncounters.first,
+            let skill = ladder.skills.first(where: { $0.yokaiID == enc.yokaiID })
+        {
+            return Target(weekStart: enc.weekStart, skill: skill)
+        }
+        return ladder.currentTarget(forWeekIndex: weekIndex)
     }
 
     /// Weeks elapsed since the learner's profile was created, clamped into the

@@ -1,38 +1,59 @@
-import Foundation
+import MoraCore
 import SwiftData
 import XCTest
-import MoraTesting
-@testable import MoraCore
+
 @testable import MoraEngines
 
 @MainActor
 final class YokaiGoldenWeekTests: XCTestCase {
-    func test_fiveStrongDays_befriendsByFriday() throws {
-        let container = try MoraModelContainer.inMemory()
-        let ctx = ModelContext(container)
-        let orch = YokaiOrchestrator(store: FakeYokaiStore(), modelContext: ctx)
-        try orch.startWeek(yokaiID: "sh", weekStart: Date())
+    private struct Scenario { let yokaiID: String; let next: String? }
 
-        // Mon: seeded at 10%, plus session complete.
-        orch.recordSessionCompletion()
-        orch.beginDay()
-        for _ in 0..<10 { orch.recordTrialOutcome(correct: true) }
-        orch.recordSessionCompletion()
-        orch.beginDay()
-        for _ in 0..<10 { orch.recordTrialOutcome(correct: true) }
-        orch.recordSessionCompletion()
-        orch.beginDay()
-        for _ in 0..<10 { orch.recordTrialOutcome(correct: true) }
-        orch.recordSessionCompletion()
+    private let scenarios: [Scenario] = [
+        .init(yokaiID: "sh", next: "th"),
+        .init(yokaiID: "th", next: "f"),
+        .init(yokaiID: "f", next: "r"),
+        .init(yokaiID: "r", next: "short_a"),
+        .init(yokaiID: "short_a", next: nil),
+    ]
 
-        orch.beginFridaySession(trialsPlanned: 10)
-        for _ in 0..<9 { orch.recordTrialOutcome(correct: true) }
-        orch.recordFridayFinalTrial(correct: true)
+    func test_goldenWeek_eachYokai_reachesBefriendAndHandsOff() throws {
+        for scenario in scenarios {
+            let ctx = ModelContext(try MoraModelContainer.inMemory())
+            let store = try BundledYokaiStore()
+            let progression = ClosureYokaiProgressionSource { id in
+                id == scenario.yokaiID ? scenario.next : nil
+            }
+            let orch = YokaiOrchestrator(
+                store: store, modelContext: ctx, progressionSource: progression
+            )
+            try orch.startWeek(yokaiID: scenario.yokaiID, weekStart: Date())
+            orch.dismissCutscene()
 
-        XCTAssertEqual(orch.currentEncounter?.state, .befriended)
-        let percent = try XCTUnwrap(orch.currentEncounter?.friendshipPercent)
-        XCTAssertEqual(percent, 1.0, accuracy: 1e-9)
-        let entries = try ctx.fetch(FetchDescriptor<BestiaryEntryEntity>())
-        XCTAssertEqual(entries.count, 1)
+            for _ in 0..<4 {
+                orch.beginDay()
+                for _ in 0..<20 { orch.recordTrialOutcome(correct: true) }
+                orch.recordSessionCompletion()
+            }
+
+            orch.beginFridaySession(trialsPlanned: 1)
+            orch.recordTrialOutcome(correct: true)
+
+            XCTAssertEqual(
+                orch.currentEncounter?.state, .befriended,
+                "\(scenario.yokaiID) should befriend by session 5"
+            )
+
+            let encounters = try ctx.fetch(FetchDescriptor<YokaiEncounterEntity>())
+            let nextActive = encounters.first { $0.state == .active }
+            if let nextID = scenario.next {
+                XCTAssertEqual(
+                    nextActive?.yokaiID, nextID,
+                    "\(scenario.yokaiID) should hand off to \(nextID)")
+            } else {
+                XCTAssertNil(
+                    nextActive,
+                    "\(scenario.yokaiID) is last — no further active encounter")
+            }
+        }
     }
 }

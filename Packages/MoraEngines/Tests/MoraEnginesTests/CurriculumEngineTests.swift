@@ -49,4 +49,42 @@ final class CurriculumEngineTests: XCTestCase {
             XCTAssertEqual(w.targetPhoneme, Phoneme(ipa: "ʃ"))
         }
     }
+
+    func test_defaultV1Ladder_has5SkillsAlignedToYokaiCast() {
+        let ladder = CurriculumEngine.defaultV1Ladder()
+        let codes = ladder.skills.map(\.code.rawValue)
+        XCTAssertEqual(codes, ["sh_onset", "th_voiceless", "f_onset", "r_onset", "short_a"])
+        let yokaiIDs = ladder.skills.map(\.yokaiID)
+        XCTAssertEqual(yokaiIDs, ["sh", "th", "f", "r", "short_a"])
+    }
+
+    func test_eachV1Skill_hasThreeWarmupCandidatesIncludingTarget() {
+        let ladder = CurriculumEngine.defaultV1Ladder()
+        for skill in ladder.skills {
+            let target = skill.graphemePhoneme!.grapheme
+            XCTAssertEqual(
+                skill.warmupCandidates.count, 3,
+                "\(skill.code.rawValue) should expose 3 warmup candidates"
+            )
+            XCTAssertTrue(
+                skill.warmupCandidates.contains(target),
+                "\(skill.code.rawValue) warmup candidates must include target \(target.letters)"
+            )
+        }
+    }
+
+    func test_nextSkill_returnsSuccessor_thenNil() {
+        let ladder = CurriculumEngine.defaultV1Ladder()
+        XCTAssertEqual(ladder.nextSkill(after: "sh_onset")?.code.rawValue, "th_voiceless")
+        XCTAssertEqual(ladder.nextSkill(after: "r_onset")?.code.rawValue, "short_a")
+        XCTAssertNil(ladder.nextSkill(after: "short_a"))
+        XCTAssertNil(ladder.nextSkill(after: "unknown_code"))
+    }
+
+    func test_indexOf_returnsZeroBased_orNilIfAbsent() {
+        let ladder = CurriculumEngine.defaultV1Ladder()
+        XCTAssertEqual(ladder.indexOf(code: "sh_onset"), 0)
+        XCTAssertEqual(ladder.indexOf(code: "short_a"), 4)
+        XCTAssertNil(ladder.indexOf(code: "nonsense"))
+    }
 }

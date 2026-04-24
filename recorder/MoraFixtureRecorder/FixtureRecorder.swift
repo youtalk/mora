@@ -11,20 +11,25 @@ public enum FixtureRecorderError: Error, Sendable {
 /// Not thread-safe — intended to be used from the main actor inside a
 /// SwiftUI view.
 @MainActor
-public final class FixtureRecorder {
+open class FixtureRecorder {
 
     private let engine = AVAudioEngine()
     private var converter: AVAudioConverter?
     private var isRecording = false
     private var sessionGeneration: UInt64 = 0
     public private(set) var buffer: [Float] = []
-    public let targetSampleRate: Double = 16_000
+
+    /// Single source of truth for the fixture sample rate, shared by the
+    /// capture path (instance `targetSampleRate`) and the nonisolated
+    /// `decode(from:)` helper so they cannot silently drift apart.
+    public nonisolated static let sampleRate: Double = 16_000
+    public var targetSampleRate: Double { Self.sampleRate }
 
     public init() {}
 
-    public var isRunning: Bool { isRecording }
+    open var isRunning: Bool { isRecording }
 
-    public func start() throws {
+    open func start() throws {
         guard !isRecording else { return }
 
         let inputNode = engine.inputNode
@@ -70,7 +75,7 @@ public final class FixtureRecorder {
         isRecording = true
     }
 
-    public func stop() {
+    open func stop() {
         guard isRecording else { return }
         engine.inputNode.removeTap(onBus: 0)
         engine.stop()
@@ -78,10 +83,51 @@ public final class FixtureRecorder {
         sessionGeneration &+= 1
     }
 
-    public func drain() -> [Float] {
+    open func drain() -> [Float] {
         let out = buffer
         buffer.removeAll(keepingCapacity: false)
         return out
+    }
+
+    /// Reads `url` as a WAV and returns 16 kHz mono Float32 samples — the
+    /// same format the recorder captures. `nonisolated` so synchronous
+    /// AVAudioFile IO runs on the caller's executor rather than the main
+    /// actor; callers in `RecorderStore` wrap this in `Task.detached`.
+    nonisolated public static func decode(from url: URL) throws -> [Float] {
+        let file = try AVAudioFile(forReading: url)
+        let hardwareFormat = file.processingFormat
+        guard let targetFormat = AVAudioFormat(
+            commonFormat: .pcmFormatFloat32,
+            sampleRate: Self.sampleRate, channels: 1, interleaved: false
+        ) else { throw FixtureRecorderError.converterInitFailed }
+        guard let converter = AVAudioConverter(from: hardwareFormat, to: targetFormat)
+        else { throw FixtureRecorderError.converterInitFailed }
+        guard let inBuffer = AVAudioPCMBuffer(
+            pcmFormat: hardwareFormat,
+            frameCapacity: AVAudioFrameCount(file.length)
+        ) else { throw FixtureRecorderError.converterInitFailed }
+        try file.read(into: inBuffer)
+
+        let ratio = targetFormat.sampleRate / hardwareFormat.sampleRate
+        let outCapacity = AVAudioFrameCount(Double(inBuffer.frameLength) * ratio) + 16
+        guard let outBuffer = AVAudioPCMBuffer(
+            pcmFormat: targetFormat, frameCapacity: outCapacity
+        ) else { throw FixtureRecorderError.converterInitFailed }
+
+        var done = false
+        let input: AVAudioConverterInputBlock = { _, outStatus in
+            if done { outStatus.pointee = .noDataNow; return nil }
+            done = true; outStatus.pointee = .haveData; return inBuffer
+        }
+        var error: NSError?
+        _ = converter.convert(to: outBuffer, error: &error, withInputFrom: input)
+        if let error { throw error }
+        guard let channel = outBuffer.floatChannelData else {
+            throw FixtureRecorderError.converterInitFailed
+        }
+        return Array(
+            UnsafeBufferPointer(start: channel[0], count: Int(outBuffer.frameLength))
+        )
     }
 
     private func append(
