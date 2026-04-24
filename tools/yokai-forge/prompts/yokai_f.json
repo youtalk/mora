@@ -1,0 +1,23 @@
+{
+  "id": "f",
+  "grapheme": "f",
+  "ipa": "/f/",
+  "personality": "windy breath spirit",
+  "sound_gesture": "upper teeth resting on lower lip, blowing a soft breeze",
+  "word_decor": ["koi-fish tail fin", "round paper fan in one paw", "soft feather on one ear"],
+  "palette": ["sky-blue", "white", "peach"],
+  "expression": "calm soft smile, closed eyes like meditating",
+  "voice": {
+    "character_description": "gentle airy voice, older wiser than the others, calm cadence",
+    "clips": {
+      "phoneme": "Ffff /f/",
+      "example_1": "fish",
+      "example_2": "fan",
+      "example_3": "feather",
+      "greet": "Ffff. Breathe softly, little one.",
+      "encourage": "Yes. Let the wind out.",
+      "gentle_retry": "Light breath. Feel your top teeth.",
+      "friday_acknowledge": "You carry my breath now. I am with you."
+    }
+  }
+}

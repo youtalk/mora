@@ -1,0 +1,19 @@
+# torch / torchvision / torchaudio are intentionally NOT listed here.
+# They must be installed from the CUDA-appropriate PyTorch index (cu128
+# for Blackwell / RTX 5090) as described in Appendix A.2 of
+# docs/superpowers/plans/2026-04-23-rpg-shell-yokai.md. Installing them
+# via the default PyPI index picks up CPU-only or mismatched-CUDA wheels.
+diffusers>=0.30
+transformers>=4.45
+huggingface_hub>=0.25
+accelerate
+safetensors
+Pillow
+numpy
+scipy
+librosa
+soundfile
+hf_transfer
+omegaconf
+einops
+ftfy

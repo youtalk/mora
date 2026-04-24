@@ -100,3 +100,26 @@ Product specs live under `docs/superpowers/specs/` and implementation plans unde
 ## License
 
 The project is licensed under **PolyForm Noncommercial 1.0.0** (source-available, not OSI-approved). New dependencies must be compatible with noncommercial redistribution; avoid copyleft licenses (GPL family) that would conflict with App Store distribution.
+
+### Asset-pipeline NC contamination (yokai-forge)
+
+The offline asset forge under `tools/yokai-forge/` uses **non-commercial**
+upstream models — notably **FLUX.1-dev** (FLUX.1 [dev] Non-Commercial License)
+for portraits and **Fish Speech S2 Pro** (CC-BY-NC-SA-4.0 model weights) for
+voice. Any bundled yokai PNG or `.m4a` produced by this chain is
+NC-encumbered regardless of what license the repo ships under.
+
+Before any commercial release:
+
+1. Re-render portraits with a commercially-cleared base (FLUX.1 [schnell]
+   under Apache 2.0, FLUX.1 [pro] via paid API, or another commercial
+   T2I model). The Style LoRA trained on NC bootstrap pools must also be
+   retrained on cleared inputs.
+2. Re-synthesize voice clips with a commercially-cleared TTS (ElevenLabs
+   commercial tier, real voice actors, or similar). Bark (MIT) is OK but
+   its output quality is below Fish Speech — plan accordingly.
+3. Audit `Packages/MoraCore/Sources/MoraCore/Resources/Yokai/**` for any
+   stale NC-derived files and replace before flipping the repo license.
+
+See `tools/yokai-forge/README.md` § "Licensing — commercial release requires
+swap-outs" for the per-dependency table.
