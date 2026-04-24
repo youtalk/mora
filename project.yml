@@ -47,3 +47,9 @@ targets:
         INFOPLIST_KEY_NSSpeechRecognitionUsageDescription: "mora recognizes the words you read so it can score them."
         GENERATE_INFOPLIST_FILE: "YES"
         CODE_SIGN_STYLE: Automatic
+    preBuildScripts:
+      - name: Fetch CoreML models
+        script: |
+          bash "$SRCROOT/tools/fetch-models.sh"
+        basedOnDependencyAnalysis: false
+        runOnlyWhenInstalling: false
