@@ -81,6 +81,11 @@ public enum PhonemeThresholds {
                 feature: .onsetBurstSlope,
                 targetCentroid: 0.4, substituteCentroid: 1.5, boundary: 0.8
             )
+        case ("t", "θ"):
+            return SubstitutionThresholds(
+                feature: .onsetBurstSlope,
+                targetCentroid: 1.5, substituteCentroid: 0.4, boundary: 0.8
+            )
         case ("æ", "ʌ"):
             return SubstitutionThresholds(
                 feature: .formantF1Hz,

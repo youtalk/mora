@@ -10,6 +10,7 @@ final class CoachingKeyResolverTests: XCTestCase {
         XCTAssertEqual(CoachingKeyResolver.substitution(target: "v", substitute: "b"), "coaching.v_sub_b")
         XCTAssertEqual(CoachingKeyResolver.substitution(target: "θ", substitute: "s"), "coaching.th_voiceless_sub_s")
         XCTAssertEqual(CoachingKeyResolver.substitution(target: "θ", substitute: "t"), "coaching.th_voiceless_sub_t")
+        XCTAssertEqual(CoachingKeyResolver.substitution(target: "t", substitute: "θ"), "coaching.t_sub_th_voiceless")
         XCTAssertEqual(CoachingKeyResolver.substitution(target: "æ", substitute: "ʌ"), "coaching.ae_sub_schwa")
         XCTAssertEqual(CoachingKeyResolver.substitution(target: "ʌ", substitute: "æ"), "coaching.ae_sub_schwa")
     }

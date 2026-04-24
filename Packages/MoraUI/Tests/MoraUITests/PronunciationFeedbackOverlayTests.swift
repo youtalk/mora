@@ -60,6 +60,23 @@ final class PronunciationFeedbackOverlayTests: XCTestCase {
         XCTAssertFalse(vm.showScore)
     }
 
+    func testTSubThVoicelessShowsCoachingAndLetters() {
+        let vm = PronunciationFeedbackViewModel(
+            assessment: PhonemeTrialAssessment(
+                targetPhoneme: Phoneme(ipa: "t"),
+                label: .substitutedBy(Phoneme(ipa: "θ")),
+                score: 30,
+                coachingKey: "coaching.t_sub_th_voiceless",
+                features: [:],
+                isReliable: true
+            ),
+            strings: strings()
+        )
+        XCTAssertTrue(vm.categoryText.contains("t"))
+        XCTAssertTrue(vm.categoryText.contains("th"))
+        XCTAssertEqual(vm.coachingText, strings().coachingTSubThVoiceless)
+    }
+
     func testUnclearEmitsNoContent() {
         let vm = PronunciationFeedbackViewModel(
             assessment: PhonemeTrialAssessment(

@@ -64,6 +64,7 @@ public struct PronunciationFeedbackViewModel: Sendable {
         case "coaching.v_sub_b": return strings.coachingVSubB
         case "coaching.th_voiceless_sub_s": return strings.coachingThVoicelessSubS
         case "coaching.th_voiceless_sub_t": return strings.coachingThVoicelessSubT
+        case "coaching.t_sub_th_voiceless": return strings.coachingTSubThVoiceless
         case "coaching.ae_sub_schwa": return strings.coachingAeSubSchwa
         default: return ""
         }
@@ -90,6 +91,7 @@ public struct PronunciationFeedbackViewModel: Sendable {
         case "coaching.v_sub_b": return LetterPair(target: "v", substitute: "b")
         case "coaching.th_voiceless_sub_s": return LetterPair(target: "th", substitute: "s")
         case "coaching.th_voiceless_sub_t": return LetterPair(target: "th", substitute: "t")
+        case "coaching.t_sub_th_voiceless": return LetterPair(target: "t", substitute: "th")
         case "coaching.ae_sub_schwa": return LetterPair(target: "a", substitute: "u")
         default: return nil
         }

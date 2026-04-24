@@ -72,6 +72,7 @@ public struct MoraStrings: Sendable {
     public let coachingVSubB: String
     public let coachingThVoicelessSubS: String
     public let coachingThVoicelessSubT: String
+    public let coachingTSubThVoiceless: String
     public let coachingAeSubSchwa: String
 
     // Pronunciation feedback category banner. Closures so the overlay can
@@ -125,6 +126,7 @@ public struct MoraStrings: Sendable {
         coachingVSubB: String,
         coachingThVoicelessSubS: String,
         coachingThVoicelessSubT: String,
+        coachingTSubThVoiceless: String,
         coachingAeSubSchwa: String,
         categorySubstitutionBanner: @escaping @Sendable (String, String) -> String,
         categoryDriftBanner: @escaping @Sendable (String) -> String,
@@ -184,6 +186,7 @@ public struct MoraStrings: Sendable {
         self.coachingVSubB = coachingVSubB
         self.coachingThVoicelessSubS = coachingThVoicelessSubS
         self.coachingThVoicelessSubT = coachingThVoicelessSubT
+        self.coachingTSubThVoiceless = coachingTSubThVoiceless
         self.coachingAeSubSchwa = coachingAeSubSchwa
         self.categorySubstitutionBanner = categorySubstitutionBanner
         self.categoryDriftBanner = categoryDriftBanner

@@ -179,6 +179,7 @@ public struct JapaneseL1Profile: L1Profile {
         coachingVSubB: "上のはでしたくちびるにふれて、のどをふるわせて「vvv」。",
         coachingThVoicelessSubS: "したのさきをはのあいだにそっと出して「thhh」。",
         coachingThVoicelessSubT: "したのさきをはのあいだにそっと出して、とめずに「thhh」。",
+        coachingTSubThVoiceless: "したのさきを上のはのうらにぴたっとつけて、すぐはなして「t」。",
         coachingAeSubSchwa: "口をよこにひろげて、あごを下げて「æ」。",
         categorySubstitutionBanner: { target, substitute in
             "今の \(target) は \(substitute) に寄ってたよ"
