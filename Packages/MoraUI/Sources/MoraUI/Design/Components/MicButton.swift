@@ -78,6 +78,11 @@ public struct MicButton: View {
                     .font(.system(size: 44, weight: .bold))
                     .foregroundStyle(Color.white)
             }
+            // Reserve the full 128pt bounding box at every state so the
+            // button doesn't expand by 32pt when the listening ripple
+            // appears — that expansion shoved the transcript + counter
+            // rows down by one line each time the learner tapped the mic.
+            .frame(width: 128, height: 128)
         }
         .buttonStyle(.plain)
         .disabled(state == .assessing)
