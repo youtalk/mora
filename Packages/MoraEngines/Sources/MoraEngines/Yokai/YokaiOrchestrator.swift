@@ -15,15 +15,19 @@ public final class YokaiOrchestrator {
     private let modelContext: ModelContext
     private let calendar: Calendar
     private var dayGainSoFar: Double = 0
+    private let progressionSource: YokaiProgressionSource?
+    private var isFridaySession: Bool = false
 
     public init(
         store: YokaiStore,
         modelContext: ModelContext,
-        calendar: Calendar = .current
+        calendar: Calendar = .current,
+        progressionSource: YokaiProgressionSource? = nil
     ) {
         self.store = store
         self.modelContext = modelContext
         self.calendar = calendar
+        self.progressionSource = progressionSource
     }
 
     public func dismissCutscene() { activeCutscene = nil }
@@ -59,6 +63,10 @@ public final class YokaiOrchestrator {
     }
 
     public func recordTrialOutcome(correct: Bool) {
+        if isFridaySession {
+            recordFridayFinalTrial(correct: correct)
+            return
+        }
         guard let encounter = currentEncounter else { return }
         let result = FriendshipMeterMath.applyTrialOutcome(
             percent: encounter.friendshipPercent,
@@ -76,6 +84,7 @@ public final class YokaiOrchestrator {
 
     public func beginDay() {
         dayGainSoFar = 0
+        isFridaySession = false
     }
 
     public func recordSessionCompletion() {
@@ -95,6 +104,7 @@ public final class YokaiOrchestrator {
     public func beginFridaySession(trialsPlanned: Int) {
         beginDay()
         fridayTrialsRemaining = trialsPlanned
+        isFridaySession = true
     }
 
     public func recordFridayFinalTrial(correct: Bool) {
@@ -143,12 +153,25 @@ public final class YokaiOrchestrator {
             encounter.befriendedAt = when
             let entry = BestiaryEntryEntity(yokaiID: yokai.id, befriendedAt: when)
             modelContext.insert(entry)
+
+            if let nextID = progressionSource?.nextYokaiID(after: yokai.id) {
+                let next = YokaiEncounterEntity(
+                    yokaiID: nextID,
+                    weekStart: when,
+                    state: .active,
+                    friendshipPercent: 0
+                )
+                modelContext.insert(next)
+            }
+
             try? modelContext.save()
             activeCutscene = .fridayClimax(yokaiID: yokai.id)
+            isFridaySession = false
         } else {
             encounter.state = .carryover
             encounter.storedRolloverFlag = true
             try? modelContext.save()
+            isFridaySession = false
         }
     }
 }
