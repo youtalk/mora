@@ -1,6 +1,6 @@
 import AVFoundation
 import Foundation
-import MoraEngines
+import MoraFixtures
 
 public struct FixturePair {
     public let basename: String
