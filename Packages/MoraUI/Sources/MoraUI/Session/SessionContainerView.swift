@@ -209,26 +209,37 @@ public struct SessionContainerView: View {
         #endif
 
         do {
-            let curriculum = CurriculumEngine.sharedV1
-            let target = curriculum.currentTarget(forWeekIndex: 0)
-            let taught = curriculum.taughtGraphemes(beforeWeekIndex: 0)
-            guard let targetGrapheme = target.grapheme else {
-                bootError =
-                    "Target skill \(target.skill.code.rawValue) has no grapheme/phoneme mapping"
+            let ladder = CurriculumEngine.sharedV1
+            guard
+                let resolution = try WeekRotation.resolve(
+                    context: context,
+                    ladder: ladder
+                )
+            else {
+                // All five yokai befriended. PR 2 replaces this with a proper
+                // curriculum-complete navigation; for PR 1 we surface a plain
+                // message so the session does not crash.
+                bootError = "Curriculum complete — all five yokai befriended."
                 return
             }
-            let provider = try ScriptedContentProvider.bundledShWeek1()
+            let skill = resolution.skill
+            let target = Target(weekStart: resolution.encounter.weekStart, skill: skill)
+            let weekIdx = ladder.indexOf(code: skill.code) ?? 0
+            let taught = ladder.taughtGraphemes(beforeWeekIndex: weekIdx)
+            guard let targetGrapheme = target.grapheme else {
+                bootError =
+                    "Target skill \(skill.code.rawValue) has no grapheme/phoneme mapping"
+                return
+            }
+            let provider = try ScriptedContentProvider.bundled(for: skill.code)
             let sentences = try provider.decodeSentences(
                 ContentRequest(
                     target: targetGrapheme, taughtGraphemes: taught, interests: [], count: 2
                 ))
             self.orchestrator = SessionOrchestrator(
-                target: target, taughtGraphemes: taught,
-                warmupOptions: [
-                    Grapheme(letters: "s"),
-                    Grapheme(letters: "sh"),
-                    Grapheme(letters: "ch"),
-                ],
+                target: target,
+                taughtGraphemes: taught,
+                warmupOptions: skill.warmupCandidates,
                 chainProvider: LibraryFirstWordChainProvider(),
                 sentences: sentences,
                 assessment: AssessmentEngine(
