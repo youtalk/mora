@@ -3,10 +3,12 @@ import MoraEngines
 
 public struct YokaiLayerView: View {
     @Bindable var orchestrator: YokaiOrchestrator
+    let speech: SpeechController?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
-    public init(orchestrator: YokaiOrchestrator) {
+    public init(orchestrator: YokaiOrchestrator, speech: SpeechController? = nil) {
         self.orchestrator = orchestrator
+        self.speech = speech
     }
 
     public var body: some View {
@@ -31,7 +33,7 @@ public struct YokaiLayerView: View {
                 .padding(.top, 24)
 
                 if orchestrator.activeCutscene != nil {
-                    YokaiCutsceneOverlay(orchestrator: orchestrator)
+                    YokaiCutsceneOverlay(orchestrator: orchestrator, speech: speech)
                         .transition(reduceMotion ? .identity : .opacity)
                 }
             }
