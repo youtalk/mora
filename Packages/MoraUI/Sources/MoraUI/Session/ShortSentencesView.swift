@@ -13,6 +13,7 @@ struct ShortSentencesView: View {
     @Binding var feedback: FeedbackState
     let speechEngine: SpeechEngine?
     let speech: SpeechController?
+    let clipRouter: YokaiClipRouter?
 
     @State private var micState: MicUIState = .idle
     @State private var shakeAmount: CGFloat = 0
@@ -105,6 +106,16 @@ struct ShortSentencesView: View {
             case .none: break
             }
             #endif
+            // Yokai voice routing — fire-and-forget. The router's @MainActor
+            // isolation serializes calls so the streak math is never racy.
+            switch new {
+            case .correct:
+                Task { @MainActor in await clipRouter?.recordCorrect() }
+            case .wrong:
+                Task { @MainActor in await clipRouter?.recordIncorrect() }
+            case .none:
+                break
+            }
         }
     }
 

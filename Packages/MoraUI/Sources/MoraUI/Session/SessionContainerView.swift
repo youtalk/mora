@@ -26,6 +26,7 @@ public struct SessionContainerView: View {
     @State private var speechEngine: SpeechEngine?
     @State private var speech: SpeechController?
     @State private var showCloseConfirm = false
+    @State private var clipRouter: YokaiClipRouter?
 
     public init() {}
 
@@ -88,6 +89,7 @@ public struct SessionContainerView: View {
         // warmup phoneme that introduces the target grapheme).
         .onChange(of: orchestrator?.phase) { oldValue, _ in
             guard oldValue != nil, oldValue != .notStarted else { return }
+            clipRouter?.stop()
             guard let speech else { return }
             Task { await speech.stop() }
         }
@@ -131,7 +133,7 @@ public struct SessionContainerView: View {
                 ProgressView("Preparing…")
                     .task { await orchestrator.start() }
             case .warmup:
-                WarmupView(orchestrator: orchestrator, speech: speech)
+                WarmupView(orchestrator: orchestrator, speech: speech, clipRouter: clipRouter)
             case .newRule:
                 NewRuleView(orchestrator: orchestrator, speech: speech)
             case .decoding:
@@ -162,12 +164,29 @@ public struct SessionContainerView: View {
                     .padding(.bottom, MoraTheme.Space.sm)
                     #endif
                 }
+                .task(id: orchestrator.completedTrialCount) {
+                    let idx = orchestrator.completedTrialCount
+                    let clip: YokaiClipKey?
+                    switch idx {
+                    case 0: clip = .example1
+                    case 3: clip = .example2
+                    case 7: clip = .example3
+                    default: clip = nil
+                    }
+                    guard let clip else { return }
+                    // Wait for the in-trial Apple TTS speakTarget() to finish before
+                    // triggering the yokai exemplar; the single-word utterance reliably
+                    // finishes inside this 1.5s window.
+                    try? await Task.sleep(for: .milliseconds(1500))
+                    await clipRouter?.play(clip)
+                }
             case .shortSentences:
                 ShortSentencesView(
                     orchestrator: orchestrator, uiMode: uiMode,
                     feedback: $feedback,
                     speechEngine: uiMode == .mic ? speechEngine : nil,
-                    speech: speech
+                    speech: speech,
+                    clipRouter: clipRouter
                 )
             case .completion:
                 CompletionView(
@@ -298,6 +317,15 @@ public struct SessionContainerView: View {
                     }
                 }
                 yokaiOrchestrator = orch
+                let speechRef = speech
+                self.clipRouter = YokaiClipRouter(
+                    yokaiID: enc.yokaiID,
+                    store: store,
+                    player: AVFoundationYokaiClipPlayer(),
+                    silencer: { [weak speechRef] in
+                        await speechRef?.stop()
+                    }
+                )
             } catch {
                 speechLog.error(
                     "YokaiOrchestrator init failed: \(String(describing: error))"
