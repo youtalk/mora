@@ -10,6 +10,7 @@ public struct BestiaryDetailView: View {
     @State private var synthesizer: AVSpeechSynthesizer = AVSpeechSynthesizer()
     @State private var store: BundledYokaiStore?
     @State private var caption: String = ""
+    @Environment(\.moraStrings) private var strings
 
     public init(yokai: YokaiDefinition, entry: BestiaryEntryEntity) {
         self.yokai = yokai
@@ -17,39 +18,58 @@ public struct BestiaryDetailView: View {
     }
 
     public var body: some View {
-        VStack(spacing: 24) {
-            YokaiPortraitCorner(yokai: yokai).frame(width: 200, height: 200)
-            VStack(spacing: 4) {
-                Text(yokai.grapheme).font(.largeTitle.weight(.bold))
-                Text(yokai.ipa).font(.title3).foregroundStyle(.secondary)
+        VStack(spacing: MoraTheme.Space.lg) {
+            YokaiPortraitCorner(yokai: yokai)
+                .frame(width: 320, height: 320)
+            VStack(spacing: MoraTheme.Space.xs) {
+                Text(yokai.grapheme)
+                    .font(MoraType.heroWord(96))
+                    .foregroundStyle(MoraTheme.Ink.primary)
+                Text(yokai.ipa)
+                    .font(MoraType.subtitle())
+                    .foregroundStyle(MoraTheme.Ink.muted)
             }
-            HStack(spacing: 12) {
+            HStack(spacing: MoraTheme.Space.md) {
                 ForEach([YokaiClipKey.example1, .example2, .example3], id: \.self) { key in
                     if let word = yokai.voice.clips[key] {
-                        Button(word) { play(clip: key) }
-                            .buttonStyle(.bordered)
+                        Button(action: { play(clip: key) }) {
+                            Text(word)
+                                .font(MoraType.cta())
+                                .foregroundStyle(MoraTheme.Accent.teal)
+                                .padding(.vertical, MoraTheme.Space.sm)
+                                .padding(.horizontal, MoraTheme.Space.lg)
+                                .background(MoraTheme.Background.mint, in: .capsule)
+                        }
+                        .buttonStyle(.plain)
                     }
                 }
             }
             Button(action: { play(clip: .greet) }) {
-                Label("Play greeting", systemImage: "speaker.wave.2.fill")
+                Text(strings.bestiaryPlayGreeting)
+                    .font(MoraType.cta())
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, MoraTheme.Space.xl)
+                    .padding(.vertical, MoraTheme.Space.md)
+                    .frame(minHeight: 72)
+                    .background(MoraTheme.Accent.orange, in: .capsule)
             }
-            .buttonStyle(.borderedProminent)
+            .buttonStyle(.plain)
             if !caption.isEmpty {
                 Text(caption)
-                    .font(MoraType.bodyReading(size: 32))
+                    .font(MoraType.bodyReading(size: 28))
                     .multilineTextAlignment(.center)
-                    .foregroundStyle(.primary)
-                    .padding(.horizontal, 40)
+                    .foregroundStyle(MoraTheme.Ink.primary)
+                    .padding(.horizontal, MoraTheme.Space.xl)
                     .transition(.opacity)
             }
-            Text(
-                "Befriended: \(entry.befriendedAt.formatted(date: .abbreviated, time: .omitted))"
-            )
-            .font(.caption).foregroundStyle(.secondary)
+            Text(strings.bestiaryBefriendedOn(entry.befriendedAt))
+                .font(MoraType.label())
+                .foregroundStyle(MoraTheme.Ink.muted)
             Spacer()
         }
-        .padding()
+        .padding(MoraTheme.Space.xl)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(MoraTheme.Background.page.ignoresSafeArea())
         .onAppear {
             if store == nil { store = try? BundledYokaiStore() }
         }

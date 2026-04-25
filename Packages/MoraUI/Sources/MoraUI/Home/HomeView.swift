@@ -1,10 +1,15 @@
 import MoraCore
 import MoraEngines
+import OSLog
 import SwiftData
 import SwiftUI
 
 #if canImport(UIKit)
 import UIKit
+#endif
+
+#if DEBUG
+private let debugBarLog = Logger(subsystem: "tech.reenable.Mora", category: "DebugBar")
 #endif
 
 public struct HomeView: View {
@@ -74,10 +79,14 @@ public struct HomeView: View {
                     hero
                 }
                 Spacer()
-                #if DEBUG
-                debugTimeTravelBar
-                #endif
             }
+
+            #if DEBUG
+            debugTimeTravelBar
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                .padding(.trailing, MoraTheme.Space.md)
+                .padding(.bottom, MoraTheme.Space.xxl)
+            #endif
         }
         .onAppear { refreshVoiceState() }
         .onChange(of: scenePhase) { _, phase in
@@ -197,20 +206,12 @@ public struct HomeView: View {
     }
 
     private var heroFooter: some View {
-        VStack(spacing: MoraTheme.Space.md) {
-            HStack(spacing: MoraTheme.Space.md) {
-                pill(strings.homeDurationPill(16))
-                pill(strings.homeWordsPill(5))
-                pill(strings.homeSentencesPill(2))
-            }
-
-            NavigationLink(value: "bestiary") {
-                Label("Sound-Friend Register", systemImage: "book.closed.fill")
-                    .font(MoraType.label())
-            }
-            .buttonStyle(.bordered)
-            .controlSize(.large)
+        NavigationLink(value: "bestiary") {
+            Label(strings.bestiaryLinkLabel, systemImage: "book.closed.fill")
+                .font(MoraType.label())
         }
+        .buttonStyle(.bordered)
+        .controlSize(.large)
         .padding(.top, MoraTheme.Space.sm)
     }
 
@@ -325,7 +326,10 @@ public struct HomeView: View {
 
     private var ipaLine: String {
         guard let ipa = target.ipa else { return "" }
-        return "/\(ipa)/ · as in ship, shop, fish"
+        guard let phoneme = target.phoneme else { return "/\(ipa)/" }
+        let examples = JapaneseL1Profile().exemplars(for: phoneme)
+        guard !examples.isEmpty else { return "/\(ipa)/" }
+        return "/\(ipa)/ · as in \(examples.joined(separator: ", "))"
     }
 
     private func openVoiceSettings() {
@@ -338,48 +342,129 @@ public struct HomeView: View {
 
     #if DEBUG
     private var debugTimeTravelBar: some View {
-        HStack(spacing: MoraTheme.Space.sm) {
-            Button("DEBUG: +1 Day") { shiftClock(byDays: 1) }
-                .buttonStyle(.bordered)
-                .tint(.orange)
-            Button("DEBUG: +1 Week") { shiftClock(byDays: 7) }
-                .buttonStyle(.bordered)
-                .tint(.orange)
+        VStack(spacing: 4) {
+            Button("+1 Day") { advanceDay() }
+            Button("+1 Week") { advanceWeek() }
+            Button("Reset") { resetCurriculum() }
+                .tint(.red)
         }
-        .padding(.bottom, MoraTheme.Space.sm)
+        .buttonStyle(.bordered)
+        .controlSize(.mini)
+        .tint(.orange)
+        .font(.caption2)
+        .fixedSize()
     }
 
-    /// Simulates `days` of elapsed time by back-dating profile, streak, and
-    /// open-encounter timestamps. Affects `weekIndex`, streak day math, and
-    /// anything keyed off `weekStart`; does not change the real system clock.
-    ///
-    /// Uses `Calendar.date(byAdding:)` rather than a flat 24h*`days` offset
-    /// so the shift lines up with `DailyStreak.recordCompletion`, which
-    /// computes gaps via `Calendar.dateComponents([.day], ...)`. A naive
-    /// TimeInterval offset lands 23h or 25h off across a DST transition
-    /// and can cause the streak to see 0 or 2 day-gaps where the button
-    /// label says 1.
-    private func shiftClock(byDays days: Int) {
-        let calendar = Calendar.current
-        if let profile = profiles.first,
-            let shifted = calendar.date(byAdding: .day, value: -days, to: profile.createdAt)
-        {
-            profile.createdAt = shifted
+    /// Simulates one day's session completion: bumps the open encounter's
+    /// `sessionCompletionCount` (clamped at 4 so the next real session enters
+    /// Friday mode) and records a streak completion. The curriculum's
+    /// "day-in-week" branching is driven by `sessionCompletionCount`, not the
+    /// calendar — `==4` flips `SessionContainerView` into Friday/climax mode
+    /// (SessionContainerView.swift:340).
+    private func advanceDay() {
+        debugBarLog.info(
+            "advanceDay: openEncounters=\(openEncounters.count, privacy: .public) firstYokai=\(openEncounters.first?.yokaiID ?? "nil", privacy: .public) firstSessionCount=\(openEncounters.first?.sessionCompletionCount ?? -1, privacy: .public)"
+        )
+        if let encounter = openEncounters.first, encounter.sessionCompletionCount < 4 {
+            encounter.sessionCompletionCount += 1
         }
-        if let streak = streaks.first, let last = streak.lastCompletedOn,
-            let shifted = calendar.date(byAdding: .day, value: -days, to: last)
-        {
-            streak.lastCompletedOn = shifted
+        let streak: DailyStreak
+        if let existing = streaks.first {
+            streak = existing
+        } else {
+            streak = DailyStreak()
+            debugContext.insert(streak)
         }
-        for encounter in openEncounters {
-            if let shifted = calendar.date(byAdding: .day, value: -days, to: encounter.weekStart) {
-                encounter.weekStart = shifted
-            }
+        // Route through the real DailyStreak rules instead of mutating fields
+        // directly: simulate "the next day" so each tap counts as one more
+        // day in the streak rather than a same-day no-op.
+        let simulatedCompletionDate =
+            streak.lastCompletedOn
+            .flatMap { Calendar.current.date(byAdding: .day, value: 1, to: $0) }
+            ?? Date()
+        streak.recordCompletion(on: simulatedCompletionDate)
+        persistDebugChanges()
+    }
+
+    /// Simulates befriending the current yokai and advancing to the next one
+    /// in the ladder. Mirrors `YokaiOrchestrator.finalizeFridayIfNeeded`'s
+    /// success branch but also works from a fresh state (no encounter yet) by
+    /// treating the `weekIndex`-fallback yokai as the one being befriended.
+    /// All currently-open encounters are befriended so a stale duplicate from
+    /// earlier testing can't outvote the freshly inserted next-yokai row in
+    /// `openEncounters.first`.
+    private func advanceWeek() {
+        let ladder = CurriculumEngine.sharedV1
+        let now = Date()
+
+        let currentYokaiID: String? =
+            openEncounters.first?.yokaiID
+            ?? ladder.currentTarget(forWeekIndex: weekIndex).skill.yokaiID
+
+        debugBarLog.info(
+            "advanceWeek begin: openEncounters=\(openEncounters.count, privacy: .public) currentYokai=\(currentYokaiID ?? "nil", privacy: .public) bestiary=\(self.bestiary.map(\.yokaiID).joined(separator: ","), privacy: .public)"
+        )
+
+        for enc in openEncounters {
+            enc.state = .befriended
+            enc.befriendedAt = now
+            enc.friendshipPercent = 1.0
         }
+
+        var befriendedIDs = Set(bestiary.map(\.yokaiID))
+        if let id = currentYokaiID, !befriendedIDs.contains(id) {
+            debugContext.insert(BestiaryEntryEntity(yokaiID: id, befriendedAt: now))
+            befriendedIDs.insert(id)
+        }
+
+        let nextID = ladder.skills.lazy.compactMap(\.yokaiID).first(where: {
+            !befriendedIDs.contains($0)
+        })
+        if let nextID {
+            debugContext.insert(
+                YokaiEncounterEntity(
+                    yokaiID: nextID,
+                    weekStart: now,
+                    state: .active,
+                    friendshipPercent: 0
+                )
+            )
+        }
+        debugBarLog.info(
+            "advanceWeek end: nextYokai=\(nextID ?? "nil", privacy: .public) befriendedIDs=\(befriendedIDs.sorted().joined(separator: ","), privacy: .public)"
+        )
+        persistDebugChanges()
+    }
+
+    /// Wipes curriculum-progress state so the next launch behaves like a
+    /// fresh install: deletes every yokai encounter, bestiary entry, and
+    /// cameo row, zeroes the streak, and rewinds `profile.createdAt` to
+    /// now so `weekIndex` collapses to 0.
+    private func resetCurriculum() {
+        debugBarLog.info("resetCurriculum: wiping encounters, bestiary, cameos, streak, profile.createdAt")
+        do {
+            try debugContext.delete(model: YokaiEncounterEntity.self)
+            try debugContext.delete(model: BestiaryEntryEntity.self)
+            try debugContext.delete(model: YokaiCameoEntity.self)
+        } catch {
+            assertionFailure("Failed to delete debug models: \(error)")
+        }
+        if let streak = streaks.first {
+            streak.currentCount = 0
+            streak.longestCount = 0
+            streak.lastCompletedOn = nil
+        }
+        if let profile = profiles.first {
+            profile.createdAt = Date()
+        }
+        persistDebugChanges()
+    }
+
+    private func persistDebugChanges() {
         do {
             try debugContext.save()
         } catch {
-            assertionFailure("Failed to persist debug time shift: \(error)")
+            assertionFailure("Failed to persist debug change: \(error)")
         }
     }
     #endif

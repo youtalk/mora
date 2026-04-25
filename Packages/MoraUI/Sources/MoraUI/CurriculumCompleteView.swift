@@ -4,6 +4,8 @@ import SwiftUI
 /// befriended. Leaves the navigation bar visible so the learner can swipe
 /// / tap back to Home; the forward CTA opens the Sound-Friend Register.
 public struct CurriculumCompleteView: View {
+    @Environment(\.moraStrings) private var strings
+
     public init() {}
 
     public var body: some View {
@@ -15,7 +17,7 @@ public struct CurriculumCompleteView: View {
                 .multilineTextAlignment(.center)
 
             NavigationLink(value: "bestiary") {
-                Label("Open your Sound-Friend Register", systemImage: "book.closed.fill")
+                Label(strings.bestiaryLinkLabel, systemImage: "book.closed.fill")
             }
             .buttonStyle(.bordered)
 
