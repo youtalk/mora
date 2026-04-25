@@ -65,7 +65,7 @@ The same insight lets the recorder emit sidecar JSON metadata that already carri
 - **Recorder app is a dev tool.** No privacy policy, no on-device-only CI gates, no cloud SDK ban are applied to it. It happens to make no network calls because it has no reason to, not because the spec forbids them.
 - **No `#if DEBUG` gating anywhere in the new code paths.** `MoraFixtures` types are always compiled; the recorder app is always on inside its own target; the recorder target is not linked by the main Mora app.
 - **Swift 6 `.v5` language mode pin** applies to `Packages/MoraFixtures/Package.swift` and to `recorder/project.yml`, matching the repo-wide convention captured in the existing packages' `Package.swift` files.
-- **XcodeGen team injection workflow** (`DEVELOPMENT_TEAM: 7BT28X9TQ9` added before `xcodegen generate`, reverted after) applies to `recorder/project.yml` the same way it applies to the main `project.yml`.
+- **XcodeGen team injection workflow** (`DEVELOPMENT_TEAM: 2AFT9XT8R2` added before `xcodegen generate`, reverted after) applies to `recorder/project.yml` the same way it applies to the main `project.yml`.
 
 ## 4. Design Decisions
 

@@ -487,7 +487,7 @@ Per `feedback_mora_xcodegen_team_injection` memory: inject the team ID before ge
 
 ```sh
 # Inject team ID temporarily
-perl -i -pe 's/^(  ?)settings:\n/$1settings:\n$1  base:\n$1    DEVELOPMENT_TEAM: 7BT28X9TQ9\n/ if !$done && /^  ?settings:/ && ($done = 1)' project.yml
+perl -i -pe 's/^(  ?)settings:\n/$1settings:\n$1  base:\n$1    DEVELOPMENT_TEAM: 2AFT9XT8R2\n/ if !$done && /^  ?settings:/ && ($done = 1)' project.yml
 # Or hand-edit if the perl above doesn't fit your project.yml shape.
 
 xcodegen generate
@@ -503,7 +503,7 @@ git checkout project.yml.bak 2>/dev/null || git checkout project.yml
 Concretely the cleanest sequence:
 1. Edit `project.yml` to add the script phase only.
 2. `git add project.yml && git commit -m "WIP" --no-verify` (temporary).
-3. Inject `DEVELOPMENT_TEAM: 7BT28X9TQ9` under `settings.base:` (unstaged).
+3. Inject `DEVELOPMENT_TEAM: 2AFT9XT8R2` under `settings.base:` (unstaged).
 4. `xcodegen generate`.
 5. `git checkout project.yml` to drop the injection (the WIP commit is preserved).
 6. `git reset --soft HEAD~1` to un-WIP and continue.

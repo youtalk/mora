@@ -41,6 +41,7 @@ targets:
         MARKETING_VERSION: "1.0"
         TARGETED_DEVICE_FAMILY: "2"
         CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: 2AFT9XT8R2
   MoraFixtureRecorderTests:
     type: bundle.unit-test
     platform: iOS
