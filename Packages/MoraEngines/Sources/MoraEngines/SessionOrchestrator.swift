@@ -247,7 +247,7 @@ public final class SessionOrchestrator {
     ) {
         let heard = trial.heard ?? ""
         let err = String(describing: trial.errorKind)
-        let phonemePart = Self.formatPhoneme(trial.phoneme)
+        let phonemePart = PronunciationLogFormatter.sentenceTrialPhonemeSuffix(trial.phoneme)
         #if DEBUG
         sessionLog.info(
             """
@@ -267,20 +267,6 @@ public final class SessionOrchestrator {
             """
         )
         #endif
-    }
-
-    private static func formatPhoneme(_ p: PhonemeTrialAssessment?) -> String {
-        guard let p else { return "" }
-        let score = p.score.map { String($0) } ?? "-"
-        let reliability = p.isReliable ? "" : "(unreliable)"
-        let label: String
-        switch p.label {
-        case .matched: label = "matched"
-        case .substitutedBy(let s): label = "sub(\(s.ipa))"
-        case .driftedWithin: label = "drifted"
-        case .unclear: label = "unclear"
-        }
-        return " phoneme=\(label):\(score)\(reliability)"
     }
 
     private func handleSentenceManual(correct: Bool) {

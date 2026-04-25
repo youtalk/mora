@@ -82,15 +82,25 @@ struct MoraApp: App {
         Task.detached(priority: .utility) {
             await MainActor.run { state.markLoading() }
             let start = ContinuousClock.now
-            log.info("MLX warmup: started")
+            log.info("MLX warmup: started (Engine B / wav2vec2-phoneme CoreML)")
             do {
                 _ = try MoraMLXModelCatalog.loadPhonemeEvaluator()
                 let ms = Self.millis(since: start)
-                log.info("MLX warmup: ready in \(ms) ms")
+                log.info(
+                    """
+                    MLX warmup: ready in \(ms) ms — Engine B online \
+                    (will run in shadow on each shortSentences trial)
+                    """
+                )
                 await MainActor.run { state.markReady() }
             } catch {
                 let ms = Self.millis(since: start)
-                log.error("MLX warmup: failed after \(ms) ms: \(String(describing: error))")
+                log.error(
+                    """
+                    MLX warmup: failed after \(ms) ms — Engine A only mode: \
+                    \(String(describing: error))
+                    """
+                )
                 await MainActor.run { state.markFailed() }
             }
         }
