@@ -16,7 +16,7 @@ open class FakeYokaiClipPlayer: YokaiClipPlayer {
         return playReturn
     }
 
-    open func stop() {
+    public func stop() {
         stopCallCount += 1
     }
 }
