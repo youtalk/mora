@@ -19,7 +19,7 @@
         { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "ship",   "graphemes": ["sh","i","p"],         "phonemes": ["ʃ","ɪ","p"] },
         { "surface": "at",     "graphemes": ["a","t"],              "phonemes": ["æ","t"] },
-        { "surface": "the",    "graphemes": ["t","h","e"],          "phonemes": ["ð","ə"] },
+        { "surface": "the",    "graphemes": ["th","e"],          "phonemes": ["ð","ə"] },
         { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
       ]
     },
@@ -64,7 +64,7 @@
       "words": [
         { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
         { "surface": "shut",   "graphemes": ["sh","u","t"],         "phonemes": ["ʃ","ʌ","t"] },
-        { "surface": "the",    "graphemes": ["t","h","e"],          "phonemes": ["ð","ə"] },
+        { "surface": "the",    "graphemes": ["th","e"],          "phonemes": ["ð","ə"] },
         { "surface": "shop",   "graphemes": ["sh","o","p"],         "phonemes": ["ʃ","ɒ","p"] },
         { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
         { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
@@ -103,14 +103,14 @@
         { "surface": "can",   "graphemes": ["c","a","n"],      "phonemes": ["k","æ","n"] },
         { "surface": "dash",  "graphemes": ["d","a","sh"],     "phonemes": ["d","æ","ʃ"] },
         { "surface": "to",    "graphemes": ["t","o"],          "phonemes": ["t","u"] },
-        { "surface": "the",   "graphemes": ["t","h","e"],      "phonemes": ["ð","ə"] },
+        { "surface": "the",   "graphemes": ["th","e"],      "phonemes": ["ð","ə"] },
         { "surface": "shop",  "graphemes": ["sh","o","p"],     "phonemes": ["ʃ","ɒ","p"] },
         { "surface": "and",   "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
         { "surface": "back",  "graphemes": ["b","a","c","k"],  "phonemes": ["b","æ","k"] }
       ]
     },
     {
-      "text": "Shen and Sharon ran a shop with a big ship.",
+      "text": "Shen and Sharon had a big shop and a ship.",
       "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["ship"],
@@ -118,12 +118,12 @@
         { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
         { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
         { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
-        { "surface": "ran",    "graphemes": ["r","a","n"],          "phonemes": ["r","æ","n"] },
-        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
-        { "surface": "shop",   "graphemes": ["sh","o","p"],         "phonemes": ["ʃ","ɒ","p"] },
-        { "surface": "with",   "graphemes": ["w","i","t","h"],      "phonemes": ["w","ɪ","θ"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
         { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "big",    "graphemes": ["b","i","g"],          "phonemes": ["b","ɪ","g"] },
+        { "surface": "shop",   "graphemes": ["sh","o","p"],         "phonemes": ["ʃ","ɒ","p"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "ship",   "graphemes": ["sh","i","p"],         "phonemes": ["ʃ","ɪ","p"] }
       ]
     },
@@ -133,7 +133,7 @@
       "targetInitialContentWords": 4,
       "interestWords": ["ship"],
       "words": [
-        { "surface": "The",  "graphemes": ["t","h","e"], "phonemes": ["ð","ə"] },
+        { "surface": "The",  "graphemes": ["th","e"], "phonemes": ["ð","ə"] },
         { "surface": "ship", "graphemes": ["sh","i","p"], "phonemes": ["ʃ","ɪ","p"] },
         { "surface": "can",  "graphemes": ["c","a","n"], "phonemes": ["k","æ","n"] },
         { "surface": "shut", "graphemes": ["sh","u","t"], "phonemes": ["ʃ","ʌ","t"] },
@@ -153,7 +153,7 @@
         { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
         { "surface": "shops",  "graphemes": ["sh","o","p","s"],     "phonemes": ["ʃ","ɒ","p","s"] },
         { "surface": "at",     "graphemes": ["a","t"],              "phonemes": ["æ","t"] },
-        { "surface": "the",    "graphemes": ["t","h","e"],          "phonemes": ["ð","ə"] },
+        { "surface": "the",    "graphemes": ["th","e"],          "phonemes": ["ð","ə"] },
         { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] },
         { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
         { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
@@ -248,7 +248,7 @@
         { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "ship",   "graphemes": ["sh","i","p"],         "phonemes": ["ʃ","ɪ","p"] },
         { "surface": "to",     "graphemes": ["t","o"],              "phonemes": ["t","u"] },
-        { "surface": "the",    "graphemes": ["t","h","e"],          "phonemes": ["ð","ə"] },
+        { "surface": "the",    "graphemes": ["th","e"],          "phonemes": ["ð","ə"] },
         { "surface": "shop",   "graphemes": ["sh","o","p"],         "phonemes": ["ʃ","ɒ","p"] }
       ]
     },
@@ -282,7 +282,7 @@
         { "surface": "cab",  "graphemes": ["c","a","b"],      "phonemes": ["k","æ","b"] },
         { "surface": "to",   "graphemes": ["t","o"],          "phonemes": ["t","u"] },
         { "surface": "wash", "graphemes": ["w","a","sh"],     "phonemes": ["w","ɒ","ʃ"] },
-        { "surface": "the",  "graphemes": ["t","h","e"],      "phonemes": ["ð","ə"] },
+        { "surface": "the",  "graphemes": ["th","e"],      "phonemes": ["ð","ə"] },
         { "surface": "ship", "graphemes": ["sh","i","p"],     "phonemes": ["ʃ","ɪ","p"] },
         { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
         { "surface": "shed", "graphemes": ["sh","e","d"],     "phonemes": ["ʃ","ɛ","d"] }
@@ -302,7 +302,7 @@
         { "surface": "a",    "graphemes": ["a"],         "phonemes": ["ə"] },
         { "surface": "ship", "graphemes": ["sh","i","p"], "phonemes": ["ʃ","ɪ","p"] },
         { "surface": "in",   "graphemes": ["i","n"],     "phonemes": ["ɪ","n"] },
-        { "surface": "the",  "graphemes": ["t","h","e"], "phonemes": ["ð","ə"] },
+        { "surface": "the",  "graphemes": ["th","e"], "phonemes": ["ð","ə"] },
         { "surface": "shop", "graphemes": ["sh","o","p"], "phonemes": ["ʃ","ɒ","p"] }
       ]
     },
@@ -318,7 +318,7 @@
         { "surface": "and",   "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
         { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
         { "surface": "cab",   "graphemes": ["c","a","b"],      "phonemes": ["k","æ","b"] },
-        { "surface": "made",  "graphemes": ["m","a","d","e"],  "phonemes": ["m","e","d"] },
+        { "surface": "made",  "graphemes": ["m","a","d","e"],  "phonemes": ["m","eɪ","d"] },
         { "surface": "Shen",  "graphemes": ["sh","e","n"],     "phonemes": ["ʃ","ɛ","n"] },
         { "surface": "rush",  "graphemes": ["r","u","sh"],     "phonemes": ["r","ʌ","ʃ"] }
       ]

@@ -21,7 +21,7 @@
         { "surface": "shop", "graphemes": ["sh", "o", "p"], "phonemes": ["ʃ", "ɒ", "p"] },
         { "surface": "and", "graphemes": ["a", "n", "d"], "phonemes": ["æ", "n", "d"] },
         { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
-        { "surface": "shed", "graphemes": ["sh", "e", "d"], "phonemes": ["ʃ", "ɛ", "d"] },
+        { "surface": "shed", "graphemes": ["sh", "e", "d"], "phonemes": ["ʃ", "ɛ", "d"] }
       ]
     },
     {
@@ -33,8 +33,8 @@
         { "surface": "A", "graphemes": ["a"], "phonemes": ["ə"] },
         { "surface": "ship", "graphemes": ["sh", "i", "p"], "phonemes": ["ʃ", "ɪ", "p"] },
         { "surface": "can", "graphemes": ["c", "a", "n"], "phonemes": ["k", "æ", "n"] },
-        { "surface": "hop", "graphemes": ["h", "o", "p"], "phonemes": ["h", "ɒ", "p"] },
+        { "surface": "hop", "graphemes": ["h", "o", "p"], "phonemes": ["h", "ɒ", "p"] }
       ]
-    },
+    }
   ]
 }
