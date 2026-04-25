@@ -30,7 +30,7 @@ public struct YokaiLayerView: View {
                             .padding(.bottom, 24)
                     }
                 }
-                .padding(.top, 24)
+                .padding(.top, 76)
 
                 if orchestrator.activeCutscene != nil {
                     YokaiCutsceneOverlay(orchestrator: orchestrator, speech: speech)

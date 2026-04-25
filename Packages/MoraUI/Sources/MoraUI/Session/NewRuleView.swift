@@ -28,28 +28,28 @@ struct NewRuleView: View {
                     .minimumScaleFactor(0.5)
 
                 HStack(spacing: MoraTheme.Space.lg) {
-                    workedExample("ship")
-                    workedExample("shop")
-                    workedExample("fish")
+                    ForEach(exemplars, id: \.self) { workedExample($0) }
                 }
 
-                Button(action: replayIntro) {
-                    Text(strings.newRuleListenAgain)
-                        .font(MoraType.cta())
-                        .foregroundStyle(MoraTheme.Accent.teal)
-                        .padding(.vertical, MoraTheme.Space.md)
-                        .padding(.horizontal, MoraTheme.Space.xl)
-                        .background(MoraTheme.Background.mint, in: .capsule)
-                        .minimumScaleFactor(0.5)
-                }
-                .buttonStyle(.plain)
-                .disabled(speech == nil)
+                HStack(spacing: MoraTheme.Space.md) {
+                    Button(action: replayIntro) {
+                        Text(strings.newRuleListenAgain)
+                            .font(MoraType.cta())
+                            .foregroundStyle(MoraTheme.Accent.teal)
+                            .padding(.vertical, MoraTheme.Space.md)
+                            .padding(.horizontal, MoraTheme.Space.xl)
+                            .background(MoraTheme.Background.mint, in: .capsule)
+                            .minimumScaleFactor(0.5)
+                    }
+                    .buttonStyle(.plain)
+                    .disabled(speech == nil)
 
-                HeroCTA(title: strings.newRuleGotIt) {
-                    Task { await orchestrator.handle(.advance) }
+                    HeroCTA(title: strings.newRuleGotIt) {
+                        Task { await orchestrator.handle(.advance) }
+                    }
+                    .disabled(!finishedIntro)
+                    .opacity(finishedIntro ? 1.0 : 0.4)
                 }
-                .disabled(!finishedIntro)
-                .opacity(finishedIntro ? 1.0 : 0.4)
                 .padding(.top, MoraTheme.Space.md)
             }
             .padding(.vertical, MoraTheme.Space.xl)
@@ -106,10 +106,15 @@ struct NewRuleView: View {
             prompts.append(.phoneme(phoneme, .slow))
         }
         prompts.append(.text("Two letters, one sound.", .slow))
-        for word in ["ship", "shop", "fish"] {
+        for word in exemplars {
             prompts.append(.text(word, .slow))
         }
         return prompts
+    }
+
+    private var exemplars: [String] {
+        guard let phoneme = orchestrator.target.phoneme else { return [] }
+        return JapaneseL1Profile().exemplars(for: phoneme)
     }
 
     private func workedExample(_ s: String) -> some View {

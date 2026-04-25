@@ -28,6 +28,9 @@ public struct MoraStrings: Sendable {
     public let homeDurationPill: @Sendable (Int) -> String
     public let homeWordsPill: @Sendable (Int) -> String
     public let homeSentencesPill: @Sendable (Int) -> String
+    public let bestiaryLinkLabel: String
+    public let bestiaryPlayGreeting: String
+    public let bestiaryBefriendedOn: @Sendable (Date) -> String
 
     // Voice gate — shown on Home when no `.enhanced` or `.premium` English
     // voice is installed. Parent-facing setup copy (not in the child kanji
@@ -104,6 +107,9 @@ public struct MoraStrings: Sendable {
         homeDurationPill: @escaping @Sendable (Int) -> String,
         homeWordsPill: @escaping @Sendable (Int) -> String,
         homeSentencesPill: @escaping @Sendable (Int) -> String,
+        bestiaryLinkLabel: String,
+        bestiaryPlayGreeting: String,
+        bestiaryBefriendedOn: @escaping @Sendable (Date) -> String,
         voiceGateTitle: String, voiceGateBody: String,
         voiceGateOpenSettings: String, voiceGateRecheck: String,
         voiceGateInstalledVoicesTitle: String,
@@ -155,6 +161,9 @@ public struct MoraStrings: Sendable {
         self.homeDurationPill = homeDurationPill
         self.homeWordsPill = homeWordsPill
         self.homeSentencesPill = homeSentencesPill
+        self.bestiaryLinkLabel = bestiaryLinkLabel
+        self.bestiaryPlayGreeting = bestiaryPlayGreeting
+        self.bestiaryBefriendedOn = bestiaryBefriendedOn
         self.voiceGateTitle = voiceGateTitle
         self.voiceGateBody = voiceGateBody
         self.voiceGateOpenSettings = voiceGateOpenSettings
