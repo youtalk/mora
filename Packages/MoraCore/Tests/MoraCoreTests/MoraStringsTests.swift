@@ -202,6 +202,12 @@ final class MoraStringsTests: XCTestCase {
             ("homeDurationPill(16)", s.homeDurationPill(16)),
             ("homeWordsPill(5)", s.homeWordsPill(5)),
             ("homeSentencesPill(2)", s.homeSentencesPill(2)),
+            ("bestiaryLinkLabel", s.bestiaryLinkLabel),
+            ("bestiaryPlayGreeting", s.bestiaryPlayGreeting),
+            (
+                "bestiaryBefriendedOn(epoch)",
+                s.bestiaryBefriendedOn(Date(timeIntervalSince1970: 0))
+            ),
             // voiceGate* intentionally omitted: those are parent-setup
             // strings that must match iOS Settings labels verbatim
             // (English / Settings / Spoken Content) and therefore sit

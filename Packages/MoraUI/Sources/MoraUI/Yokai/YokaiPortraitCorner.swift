@@ -36,13 +36,13 @@ public struct YokaiPortraitCorner: View {
                     SparkleOverlay(trigger: sparkleTrigger).allowsHitTesting(false)
                 }
             }
-            .onAppear {
+            .task(id: yokai.id) {
                 if store == nil { store = try? BundledYokaiStore() }
                 #if canImport(UIKit)
-                if image == nil,
-                    let url = store?.portraitURL(for: yokai.id)
-                {
+                if let url = store?.portraitURL(for: yokai.id) {
                     image = UIImage(contentsOfFile: url.path)
+                } else {
+                    image = nil
                 }
                 #endif
             }

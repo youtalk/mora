@@ -14,6 +14,7 @@ public struct YokaiCutsceneOverlay: View {
     @State private var player: AVAudioPlayer?
     @State private var store: BundledYokaiStore?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.moraStrings) private var strings
 
     public init(orchestrator: YokaiOrchestrator, speech: SpeechController? = nil) {
         self.orchestrator = orchestrator
@@ -21,7 +22,7 @@ public struct YokaiCutsceneOverlay: View {
     }
 
     private var bgOpacity: Double {
-        fridayPhase >= 1 ? 0.65 : 0.35
+        fridayPhase >= 1 ? 0.92 : 0.85
     }
 
     public var body: some View {
@@ -46,7 +47,7 @@ public struct YokaiCutsceneOverlay: View {
 
             VStack(spacing: 24) {
                 YokaiPortraitCorner(yokai: yokai)
-                    .frame(width: 240, height: 240)
+                    .frame(width: 360, height: 360)
                     .scaleEffect(reduceMotion ? 1.0 : (fridayPhase >= 2 ? 1.25 : 1.0))
                     .animation(reduceMotion ? nil : .easeInOut(duration: 0.8), value: fridayPhase)
 
@@ -59,12 +60,11 @@ public struct YokaiCutsceneOverlay: View {
                         .transition(.opacity)
                 }
 
-                Button("Tap to continue") {
+                HeroCTA(title: strings.sessionCloseKeepGoing) {
                     choreographyTask?.cancel()
                     stopAudio()
                     orchestrator.dismissCutscene()
                 }
-                .buttonStyle(.borderedProminent)
             }
         }
         .onAppear {
@@ -119,14 +119,15 @@ public struct YokaiCutsceneOverlay: View {
     private func simpleStack(for yokai: YokaiDefinition) -> some View {
         VStack(spacing: 24) {
             YokaiPortraitCorner(yokai: yokai)
-                .frame(width: 240, height: 240)
+                .frame(width: 360, height: 360)
             Text(subtitleText(for: orchestrator.activeCutscene, yokai: yokai))
                 .font(MoraType.bodyReading(size: 32))
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.white)
                 .padding(.horizontal, 40)
-            Button("Tap to continue") { orchestrator.dismissCutscene() }
-                .buttonStyle(.borderedProminent)
+            HeroCTA(title: strings.sessionCloseKeepGoing) {
+                orchestrator.dismissCutscene()
+            }
         }
     }
 
