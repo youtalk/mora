@@ -4,7 +4,7 @@ import MoraEngines
 /// Records every play / stop call. `playReturn` lets a test simulate a
 /// player that fails to initialize (e.g., missing file).
 @MainActor
-public final class FakeYokaiClipPlayer: YokaiClipPlayer {
+public class FakeYokaiClipPlayer: YokaiClipPlayer {
     public var playedURLs: [URL] = []
     public var stopCallCount: Int = 0
     public var playReturn: Bool = true
