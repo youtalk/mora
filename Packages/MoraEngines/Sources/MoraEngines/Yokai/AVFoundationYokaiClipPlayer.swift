@@ -1,6 +1,10 @@
 import AVFoundation
-import Foundation
 
+/// `AVAudioPlayer`-backed production implementation of `YokaiClipPlayer`.
+///
+/// Constructed once per session in `SessionContainerView.bootstrap` and
+/// injected into `YokaiClipRouter`. Not unit-tested — `AVAudioPlayer` requires
+/// an active audio session and is verified by on-device manual runs.
 @MainActor
 public final class AVFoundationYokaiClipPlayer: YokaiClipPlayer {
     private var player: AVAudioPlayer?
@@ -9,12 +13,13 @@ public final class AVFoundationYokaiClipPlayer: YokaiClipPlayer {
 
     public func play(url: URL) -> Bool {
         player?.stop()
-        guard let next = try? AVAudioPlayer(contentsOf: url) else {
+        guard let newPlayer = try? AVAudioPlayer(contentsOf: url) else {
             player = nil
             return false
         }
-        player = next
-        return next.play()
+        player = newPlayer
+        newPlayer.prepareToPlay()
+        return newPlayer.play()
     }
 
     public func stop() {
