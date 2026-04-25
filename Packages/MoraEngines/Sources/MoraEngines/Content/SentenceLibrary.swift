@@ -22,6 +22,15 @@ public actor SentenceLibrary {
 
     private let cells: [CellKey: Cell]
 
+    /// Loads the cells bundled with MoraEngines. Use this from app code and
+    /// from tests living in the MoraEngines test target — `Bundle.module`
+    /// resolved from a test file points at the test target's bundle, not at
+    /// the MoraEngines resource bundle, so the explicit `init(bundle:)` form
+    /// would lookup the wrong place.
+    public init() throws {
+        try self.init(bundle: .module)
+    }
+
     public init(bundle: Bundle) throws {
         self.cells = try Self.loadCells(from: bundle)
     }

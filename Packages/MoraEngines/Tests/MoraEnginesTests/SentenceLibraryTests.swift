@@ -5,7 +5,7 @@ import XCTest
 
 final class SentenceLibraryTests: XCTestCase {
     func test_init_loadsBundledCells() async throws {
-        let library = try SentenceLibrary(bundle: .module)
+        let library = try SentenceLibrary()
 
         let count = await library.cellCount
         XCTAssertGreaterThanOrEqual(
@@ -15,7 +15,7 @@ final class SentenceLibraryTests: XCTestCase {
     }
 
     func test_cell_returnsTwentySentencesForSampleCell() async throws {
-        let library = try SentenceLibrary(bundle: .module)
+        let library = try SentenceLibrary()
         let cell = await library.cell(
             phoneme: "sh",
             interest: "vehicles",
@@ -27,7 +27,7 @@ final class SentenceLibraryTests: XCTestCase {
     }
 
     func test_cell_returnsNilForUnpopulatedCell() async throws {
-        let library = try SentenceLibrary(bundle: .module)
+        let library = try SentenceLibrary()
         let cell = await library.cell(
             phoneme: "th",
             interest: "robots",
