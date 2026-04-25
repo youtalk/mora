@@ -98,7 +98,7 @@
 - **Use a HEREDOC** for commit messages so the trailer sits on its own line.
 - **Swift 6 `.v5` language mode pin** — `Packages/MoraFixtures/Package.swift` sets it on both targets.
 - **swift-format strict** runs in CI across `Mora Packages/*/Sources Packages/*/Tests`. Tests under `Packages/MoraFixtures/Tests/MoraFixturesTests/` are picked up automatically; keep 4-space indent, trailing commas on every list element, braces on same line.
-- **xcodegen team injection** applies to `recorder/project.yml`. Before `xcodegen generate`, temporarily inject `DEVELOPMENT_TEAM: 7BT28X9TQ9` under the recorder target's `settings.base`; after the generate, `git checkout -- recorder/project.yml` (or the equivalent) so the team ID is never committed.
+- **xcodegen team injection** applies to `recorder/project.yml`. Before `xcodegen generate`, temporarily inject `DEVELOPMENT_TEAM: 2AFT9XT8R2` under the recorder target's `settings.base`; after the generate, `git checkout -- recorder/project.yml` (or the equivalent) so the team ID is never committed.
 - **Cannot run** `xcodegen generate` without a team injection — generation will fail or produce un-signable output on a physical device target.
 - **Working-tree hygiene** — the `worktree-silly-wiggling-naur` branch may start with an unstaged `project.yml` diff (a local experiment re-adding the Debug `configs` / `postBuildScripts` that never landed on `main`). Task 11 discards it before committing.
 - **No `#if DEBUG`** in any new file. `MoraFixtures` types ship unconditionally; recorder app is always on inside its own target.
@@ -1588,7 +1588,7 @@ python3 -c "
 import re
 with open('project.yml') as f: p = f.read()
 if 'DEVELOPMENT_TEAM' not in p:
-    p2 = re.sub(r'(CODE_SIGN_STYLE: Automatic)', r'\1\n        DEVELOPMENT_TEAM: 7BT28X9TQ9', p, count=1)
+    p2 = re.sub(r'(CODE_SIGN_STYLE: Automatic)', r'\1\n        DEVELOPMENT_TEAM: 2AFT9XT8R2', p, count=1)
     with open('project.yml', 'w') as f: f.write(p2)
 "
 xcodegen generate
@@ -1704,7 +1704,7 @@ python3 -c "
 import re
 with open('project.yml') as f: p = f.read()
 if 'DEVELOPMENT_TEAM' not in p:
-    p2 = re.sub(r'(CODE_SIGN_STYLE: Automatic)', r'\1\n        DEVELOPMENT_TEAM: 7BT28X9TQ9', p, count=1)
+    p2 = re.sub(r'(CODE_SIGN_STYLE: Automatic)', r'\1\n        DEVELOPMENT_TEAM: 2AFT9XT8R2', p, count=1)
     with open('project.yml', 'w') as f: f.write(p2)
 "
 xcodegen generate
@@ -1852,7 +1852,7 @@ python3 -c "
 import re
 with open('project.yml') as f: p = f.read()
 if 'DEVELOPMENT_TEAM' not in p:
-    p2 = re.sub(r'(CODE_SIGN_STYLE: Automatic)', r'\1\n        DEVELOPMENT_TEAM: 7BT28X9TQ9', p, count=1)
+    p2 = re.sub(r'(CODE_SIGN_STYLE: Automatic)', r'\1\n        DEVELOPMENT_TEAM: 2AFT9XT8R2', p, count=1)
     with open('project.yml', 'w') as f: f.write(p2)
 "
 xcodegen generate
@@ -1959,7 +1959,7 @@ python3 -c "
 import re
 with open('project.yml') as f: p = f.read()
 if 'DEVELOPMENT_TEAM' not in p:
-    p2 = re.sub(r'(CODE_SIGN_STYLE: Automatic)', r'\1\n        DEVELOPMENT_TEAM: 7BT28X9TQ9', p, count=1)
+    p2 = re.sub(r'(CODE_SIGN_STYLE: Automatic)', r'\1\n        DEVELOPMENT_TEAM: 2AFT9XT8R2', p, count=1)
     with open('project.yml', 'w') as f: f.write(p2)
 "
 xcodegen generate
@@ -2555,7 +2555,7 @@ python3 -c "
 import re
 with open('project.yml') as f: p = f.read()
 if 'DEVELOPMENT_TEAM' not in p:
-    p2 = re.sub(r'(CODE_SIGN_STYLE: Automatic)', r'\1\n        DEVELOPMENT_TEAM: 7BT28X9TQ9', p, count=1)
+    p2 = re.sub(r'(CODE_SIGN_STYLE: Automatic)', r'\1\n        DEVELOPMENT_TEAM: 2AFT9XT8R2', p, count=1)
     with open('project.yml', 'w') as f: f.write(p2)
 "
 xcodegen generate
@@ -2846,7 +2846,7 @@ python3 -c "
 import re
 with open('project.yml') as f: p = f.read()
 if 'DEVELOPMENT_TEAM' not in p:
-    p2 = re.sub(r'(CODE_SIGN_STYLE: Automatic)', r'\1\n        DEVELOPMENT_TEAM: 7BT28X9TQ9', p, count=1)
+    p2 = re.sub(r'(CODE_SIGN_STYLE: Automatic)', r'\1\n        DEVELOPMENT_TEAM: 2AFT9XT8R2', p, count=1)
     with open('project.yml', 'w') as f: f.write(p2)
 "
 xcodegen generate
@@ -3147,7 +3147,7 @@ python3 -c "
 import re
 with open('project.yml') as f: p = f.read()
 if 'DEVELOPMENT_TEAM' not in p:
-    p2 = re.sub(r'(CODE_SIGN_STYLE: Automatic)', r'\1\n        DEVELOPMENT_TEAM: 7BT28X9TQ9', p, count=1)
+    p2 = re.sub(r'(CODE_SIGN_STYLE: Automatic)', r'\1\n        DEVELOPMENT_TEAM: 2AFT9XT8R2', p, count=1)
     with open('project.yml', 'w') as f: f.write(p2)
 "
 xcodegen generate

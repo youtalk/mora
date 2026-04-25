@@ -1234,7 +1234,7 @@ xcodebuild build \
   -configuration Debug CODE_SIGNING_ALLOWED=NO
 ```
 
-Expected: `BUILD SUCCEEDED`. If Xcode complains that `Mora.xcodeproj` wants a team ID, follow the `xcodegen team injection` ritual in the user's memory (inject `DEVELOPMENT_TEAM: 7BT28X9TQ9` into `project.yml`, regenerate, revert `project.yml`).
+Expected: `BUILD SUCCEEDED`. If Xcode complains that `Mora.xcodeproj` wants a team ID, follow the `xcodegen team injection` ritual in the user's memory (inject `DEVELOPMENT_TEAM: 2AFT9XT8R2` into `project.yml`, regenerate, revert `project.yml`).
 
 - [ ] **Step 3: Lint.**
 

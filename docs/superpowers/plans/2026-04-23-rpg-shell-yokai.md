@@ -1900,7 +1900,7 @@ Per the repo's convention (memory: xcodegen team injection), prepend the team ID
 ```sh
 ./scripts/xcodegen-with-team.sh   # if such a wrapper exists
 # OR manually:
-sed -i '' 's/^#  DEVELOPMENT_TEAM:.*/  DEVELOPMENT_TEAM: 7BT28X9TQ9/' project.yml
+sed -i '' 's/^#  DEVELOPMENT_TEAM:.*/  DEVELOPMENT_TEAM: 2AFT9XT8R2/' project.yml
 xcodegen generate
 git checkout -- project.yml
 ```
