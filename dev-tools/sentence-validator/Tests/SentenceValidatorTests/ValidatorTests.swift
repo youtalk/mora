@@ -164,17 +164,17 @@ final class ValidatorTests: XCTestCase {
             text: "Shen had a shop and Sharon had a shed.",
             targetCount: 4,
             targetInitialContentWords: 4,
-            interestWords: [],   // empty — should fire
+            interestWords: [],  // empty — should fire
             words: [
-                .init(surface: "Shen",   graphemes: ["sh","e","n"],         phonemes: ["ʃ","ɛ","n"]),
-                .init(surface: "had",    graphemes: ["h","a","d"],          phonemes: ["h","æ","d"]),
-                .init(surface: "a",      graphemes: ["a"],                  phonemes: ["ə"]),
-                .init(surface: "shop",   graphemes: ["sh","o","p"],         phonemes: ["ʃ","ɒ","p"]),
-                .init(surface: "and",    graphemes: ["a","n","d"],          phonemes: ["æ","n","d"]),
-                .init(surface: "Sharon", graphemes: ["sh","a","r","o","n"], phonemes: ["ʃ","æ","r","ə","n"]),
-                .init(surface: "had",    graphemes: ["h","a","d"],          phonemes: ["h","æ","d"]),
-                .init(surface: "a",      graphemes: ["a"],                  phonemes: ["ə"]),
-                .init(surface: "shed",   graphemes: ["sh","e","d"],         phonemes: ["ʃ","ɛ","d"]),
+                .init(surface: "Shen", graphemes: ["sh", "e", "n"], phonemes: ["ʃ", "ɛ", "n"]),
+                .init(surface: "had", graphemes: ["h", "a", "d"], phonemes: ["h", "æ", "d"]),
+                .init(surface: "a", graphemes: ["a"], phonemes: ["ə"]),
+                .init(surface: "shop", graphemes: ["sh", "o", "p"], phonemes: ["ʃ", "ɒ", "p"]),
+                .init(surface: "and", graphemes: ["a", "n", "d"], phonemes: ["æ", "n", "d"]),
+                .init(surface: "Sharon", graphemes: ["sh", "a", "r", "o", "n"], phonemes: ["ʃ", "æ", "r", "ə", "n"]),
+                .init(surface: "had", graphemes: ["h", "a", "d"], phonemes: ["h", "æ", "d"]),
+                .init(surface: "a", graphemes: ["a"], phonemes: ["ə"]),
+                .init(surface: "shed", graphemes: ["sh", "e", "d"], phonemes: ["ʃ", "ɛ", "d"]),
             ]
         )
 
@@ -194,17 +194,17 @@ final class ValidatorTests: XCTestCase {
             text: "Shen had a shop and Sharon had a shed.",
             targetCount: 4,
             targetInitialContentWords: 4,
-            interestWords: ["van"],   // van is not in the sentence
+            interestWords: ["van"],  // van is not in the sentence
             words: [
-                .init(surface: "Shen",   graphemes: ["sh","e","n"],         phonemes: ["ʃ","ɛ","n"]),
-                .init(surface: "had",    graphemes: ["h","a","d"],          phonemes: ["h","æ","d"]),
-                .init(surface: "a",      graphemes: ["a"],                  phonemes: ["ə"]),
-                .init(surface: "shop",   graphemes: ["sh","o","p"],         phonemes: ["ʃ","ɒ","p"]),
-                .init(surface: "and",    graphemes: ["a","n","d"],          phonemes: ["æ","n","d"]),
-                .init(surface: "Sharon", graphemes: ["sh","a","r","o","n"], phonemes: ["ʃ","æ","r","ə","n"]),
-                .init(surface: "had",    graphemes: ["h","a","d"],          phonemes: ["h","æ","d"]),
-                .init(surface: "a",      graphemes: ["a"],                  phonemes: ["ə"]),
-                .init(surface: "shed",   graphemes: ["sh","e","d"],         phonemes: ["ʃ","ɛ","d"]),
+                .init(surface: "Shen", graphemes: ["sh", "e", "n"], phonemes: ["ʃ", "ɛ", "n"]),
+                .init(surface: "had", graphemes: ["h", "a", "d"], phonemes: ["h", "æ", "d"]),
+                .init(surface: "a", graphemes: ["a"], phonemes: ["ə"]),
+                .init(surface: "shop", graphemes: ["sh", "o", "p"], phonemes: ["ʃ", "ɒ", "p"]),
+                .init(surface: "and", graphemes: ["a", "n", "d"], phonemes: ["æ", "n", "d"]),
+                .init(surface: "Sharon", graphemes: ["sh", "a", "r", "o", "n"], phonemes: ["ʃ", "æ", "r", "ə", "n"]),
+                .init(surface: "had", graphemes: ["h", "a", "d"], phonemes: ["h", "æ", "d"]),
+                .init(surface: "a", graphemes: ["a"], phonemes: ["ə"]),
+                .init(surface: "shed", graphemes: ["sh", "e", "d"], phonemes: ["ʃ", "ɛ", "d"]),
             ]
         )
 
@@ -227,11 +227,11 @@ final class ValidatorTests: XCTestCase {
             targetInitialContentWords: 4,
             interestWords: ["ship"],
             words: [
-                .init(surface: "Shen", graphemes: ["sh","e","n"], phonemes: ["ʃ","ɛ","n"]),
-                .init(surface: "had",  graphemes: ["h","a","d"],  phonemes: ["h","æ","d"]),
-                .init(surface: "a",    graphemes: ["a"],          phonemes: ["ə"]),
-                .init(surface: "ship", graphemes: ["sh","i","p"], phonemes: ["ʃ","ɪ","p"]),
-                .init(surface: "shop", graphemes: ["sh","o","p"], phonemes: ["ʃ","ɒ","p"]),
+                .init(surface: "Shen", graphemes: ["sh", "e", "n"], phonemes: ["ʃ", "ɛ", "n"]),
+                .init(surface: "had", graphemes: ["h", "a", "d"], phonemes: ["h", "æ", "d"]),
+                .init(surface: "a", graphemes: ["a"], phonemes: ["ə"]),
+                .init(surface: "ship", graphemes: ["sh", "i", "p"], phonemes: ["ʃ", "ɪ", "p"]),
+                .init(surface: "shop", graphemes: ["sh", "o", "p"], phonemes: ["ʃ", "ɒ", "p"]),
             ]
         )
 

@@ -7,8 +7,10 @@ final class CLITests: XCTestCase {
     /// fixtures live under `Tests/SentenceValidatorTests/Fixtures/{valid,invalid}/`
     /// they're addressable as relative paths inside the test bundle.
     private func fixtureBundleURL(_ subdir: String) throws -> URL {
-        guard let url = Bundle.module.url(forResource: "Fixtures", withExtension: nil)?
-            .appendingPathComponent(subdir, isDirectory: true) else {
+        guard
+            let url = Bundle.module.url(forResource: "Fixtures", withExtension: nil)?
+                .appendingPathComponent(subdir, isDirectory: true)
+        else {
             XCTFail("Missing fixture bundle '\(subdir)'")
             throw NSError(domain: "Fixture", code: 0)
         }

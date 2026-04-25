@@ -4,11 +4,11 @@ import Foundation
 /// Mirrors the spec § 6.5 schema. Field names are `snake_case`-free to keep
 /// Swift `Codable` synthesis trivial; the JSON uses the same camelCase keys.
 struct CellPayload: Decodable {
-    let phoneme: String           // e.g. "sh" — matches the directory name
-    let phonemeIPA: String        // e.g. "ʃ"
-    let graphemeLetters: String   // e.g. "sh" — letters of the target Grapheme
-    let interest: String          // e.g. "vehicles" — matches InterestCategory.key
-    let ageBand: String           // "early" | "mid" | "late"
+    let phoneme: String  // e.g. "sh" — matches the directory name
+    let phonemeIPA: String  // e.g. "ʃ"
+    let graphemeLetters: String  // e.g. "sh" — letters of the target Grapheme
+    let interest: String  // e.g. "vehicles" — matches InterestCategory.key
+    let ageBand: String  // "early" | "mid" | "late"
     let sentences: [CellSentencePayload]
 }
 

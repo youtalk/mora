@@ -23,12 +23,14 @@ struct SentenceValidatorCLI: ParsableCommand {
 
         for map in PhonemeDirectoryMap.all {
             let phonemeDir = bundleURL.appendingPathComponent(map.directory, isDirectory: true)
-            guard let entries = try? fm.contentsOfDirectory(
-                at: phonemeDir,
-                includingPropertiesForKeys: nil,
-                options: [.skipsHiddenFiles]
-            ) else {
-                continue   // missing phoneme dir is OK before B-2 fills cells in
+            guard
+                let entries = try? fm.contentsOfDirectory(
+                    at: phonemeDir,
+                    includingPropertiesForKeys: nil,
+                    options: [.skipsHiddenFiles]
+                )
+            else {
+                continue  // missing phoneme dir is OK before B-2 fills cells in
             }
             for url in entries where url.pathExtension == "json" {
                 report.cellsExamined += 1
@@ -44,21 +46,23 @@ struct SentenceValidatorCLI: ParsableCommand {
                             sightWords: sightWords
                         )
                         for v in violations {
-                            report.violations.append(.init(
-                                file: url.path,
-                                sentenceIndex: idx,
-                                sentenceText: sentence.text,
-                                violation: v
-                            ))
+                            report.violations.append(
+                                .init(
+                                    file: url.path,
+                                    sentenceIndex: idx,
+                                    sentenceText: sentence.text,
+                                    violation: v
+                                ))
                         }
                     }
                 } catch {
-                    report.violations.append(.init(
-                        file: url.path,
-                        sentenceIndex: -1,
-                        sentenceText: "<decode-error>",
-                        violation: .undecodableGrapheme(word: "<file>", grapheme: "\(error)")
-                    ))
+                    report.violations.append(
+                        .init(
+                            file: url.path,
+                            sentenceIndex: -1,
+                            sentenceText: "<decode-error>",
+                            violation: .undecodableGrapheme(word: "<file>", grapheme: "\(error)")
+                        ))
                 }
             }
         }

@@ -28,7 +28,7 @@ enum Validator {
 
         let allowed: Set<Grapheme> =
             curriculum.taughtGraphemes(beforeWeekIndex: map.weekIndex)
-                .union([map.target])
+            .union([map.target])
 
         for word in sentence.words {
             if sightWords.contains(word.surface.lowercased()) { continue }
