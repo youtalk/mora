@@ -291,11 +291,12 @@ public struct SessionContainerView: View {
                 // intro cutscene and the 10% seed from startWeek both
                 // fire; otherwise resume() would silently skip them.
                 let enc = resolution.encounter
+                let encYokaiID = enc.yokaiID
                 let isUnstartedHandoff =
                     enc.sessionCompletionCount == 0 && enc.friendshipPercent == 0
                 if resolution.isNewEncounter || isUnstartedHandoff {
                     try orch.startWeek(
-                        yokaiID: enc.yokaiID,
+                        yokaiID: encYokaiID,
                         weekStart: enc.weekStart
                     )
                     // startWeek inserts its own encounter; the existing one
@@ -319,7 +320,7 @@ public struct SessionContainerView: View {
                 yokaiOrchestrator = orch
                 let speechRef = speech
                 self.clipRouter = YokaiClipRouter(
-                    yokaiID: enc.yokaiID,
+                    yokaiID: encYokaiID,
                     store: store,
                     player: AVFoundationYokaiClipPlayer(),
                     silencer: { [weak speechRef] in
