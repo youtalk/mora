@@ -86,4 +86,75 @@ final class ValidatorTests: XCTestCase {
             "expected an .undecodableGrapheme violation for 'thin'/'th'; got \(violations)"
         )
     }
+
+    func test_validate_flagsTargetCountTooLow() {
+        let map = shCellMap()
+        let sentence = CellSentencePayload(
+            text: "Shen had a shop and a hat and a hen.",
+            targetCount: 2,
+            targetInitialContentWords: 2,
+            interestWords: ["cab"],
+            words: [
+                .init(surface: "Shen", graphemes: ["sh", "e", "n"], phonemes: ["ʃ", "ɛ", "n"]),
+                .init(surface: "had", graphemes: ["h", "a", "d"], phonemes: ["h", "æ", "d"]),
+                .init(surface: "a", graphemes: ["a"], phonemes: ["ə"]),
+                .init(surface: "shop", graphemes: ["sh", "o", "p"], phonemes: ["ʃ", "ɒ", "p"]),
+                .init(surface: "and", graphemes: ["a", "n", "d"], phonemes: ["æ", "n", "d"]),
+                .init(surface: "a", graphemes: ["a"], phonemes: ["ə"]),
+                .init(surface: "hat", graphemes: ["h", "a", "t"], phonemes: ["h", "æ", "t"]),
+                .init(surface: "and", graphemes: ["a", "n", "d"], phonemes: ["æ", "n", "d"]),
+                .init(surface: "a", graphemes: ["a"], phonemes: ["ə"]),
+                .init(surface: "hen", graphemes: ["h", "e", "n"], phonemes: ["h", "ɛ", "n"]),
+            ]
+        )
+
+        let violations = Validator.validate(
+            sentence: sentence,
+            map: map,
+            curriculum: curriculum,
+            sightWords: sightWords
+        )
+
+        XCTAssertTrue(
+            violations.contains(.targetCountTooLow(actual: 2, minimum: 4)),
+            "expected .targetCountTooLow(2, 4); got \(violations)"
+        )
+    }
+
+    func test_validate_flagsInitialContentTooLow() {
+        let map = shCellMap()
+        // 4 sh occurrences but only 2 are word-initial in content words —
+        // "fish" and "cash" both put sh in the coda.
+        let sentence = CellSentencePayload(
+            text: "A ship had a fish and a cash and a shop.",
+            targetCount: 4,
+            targetInitialContentWords: 2,
+            interestWords: ["ship"],
+            words: [
+                .init(surface: "A", graphemes: ["a"], phonemes: ["ə"]),
+                .init(surface: "ship", graphemes: ["sh", "i", "p"], phonemes: ["ʃ", "ɪ", "p"]),
+                .init(surface: "had", graphemes: ["h", "a", "d"], phonemes: ["h", "æ", "d"]),
+                .init(surface: "a", graphemes: ["a"], phonemes: ["ə"]),
+                .init(surface: "fish", graphemes: ["f", "i", "sh"], phonemes: ["f", "ɪ", "ʃ"]),
+                .init(surface: "and", graphemes: ["a", "n", "d"], phonemes: ["æ", "n", "d"]),
+                .init(surface: "a", graphemes: ["a"], phonemes: ["ə"]),
+                .init(surface: "cash", graphemes: ["c", "a", "sh"], phonemes: ["k", "æ", "ʃ"]),
+                .init(surface: "and", graphemes: ["a", "n", "d"], phonemes: ["æ", "n", "d"]),
+                .init(surface: "a", graphemes: ["a"], phonemes: ["ə"]),
+                .init(surface: "shop", graphemes: ["sh", "o", "p"], phonemes: ["ʃ", "ɒ", "p"]),
+            ]
+        )
+
+        let violations = Validator.validate(
+            sentence: sentence,
+            map: map,
+            curriculum: curriculum,
+            sightWords: sightWords
+        )
+
+        XCTAssertTrue(
+            violations.contains(.targetInitialContentWordsTooLow(actual: 2, minimum: 3)),
+            "expected .targetInitialContentWordsTooLow(2, 3); got \(violations)"
+        )
+    }
 }
