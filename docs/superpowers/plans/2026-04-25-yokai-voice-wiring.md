@@ -12,6 +12,44 @@
 
 ---
 
+## Session Progress
+
+Resume here at the start of any new session. Tasks 1–4 are committed on `feat/yokai-voice-wiring`. **Resume at Task 5.**
+
+| Task | Status | Commits (oldest → fixups) |
+|------|--------|----------------------------|
+| T1 — `YokaiClipPlayer` protocol + `FakeYokaiClipPlayer` | done | `5384e0d` → `3d0465c` (drop `final`) |
+| T2 — `AVFoundationYokaiClipPlayer` concrete            | done | `7c3cb7f` → `5a2bed5` (doc + `prepareToPlay()` + drop redundant `import Foundation` + rename `next`→`newPlayer`) |
+| T3 — Router `play()` basic + first router test         | done | `8bf73de` → `90d7329` (swift-format `{ }` → `{}`) |
+| T4 — Silencer ordering + missing-URL no-op tests       | done | `0c51a74` (also promoted `FakeYokaiClipPlayer` class + `play(url:)` to `open` for cross-module subclassing — `stop()` stays `public`) → `63d5b7d` (revert `stop()` over-promotion) |
+| T5 — `recordCorrect` streak fires `.encourage`         | pending | — |
+| T6 — `recordIncorrect` throttles `.gentle_retry`       | pending | — |
+| T7 — `stop()` regression test                          | pending | — |
+| T8 + T9 + T10 — View wiring (combined commit)          | pending | — |
+| T11 — Six-clips coverage test                          | pending | — |
+| T12 — Lint, full build, xcodegen, push (confirm first) | pending | — |
+
+### Deviations from the plan as written
+
+These are real changes that landed on the branch and that the next-session agent should be aware of when reading the plan code blocks below:
+
+1. **`FakeYokaiClipPlayer` is `open class`, not `final` class.** Task 4 promoted the class + `play(url:) -> Bool` to `open` so `TracingYokaiClipPlayer` (in the test target, a different module) can subclass it. `stop()` stays `public`. Task 5 onward should rely on this access shape — there is nothing to do here, but do NOT add `final` back.
+2. **`AVFoundationYokaiClipPlayer` has a doc comment, calls `prepareToPlay()` before `play()`, and uses `newPlayer` instead of `next`.** No semantic change vs. the plan's Task 2 code; pure code-review polish. The router's `play(_:)` contract is unchanged.
+3. **The router's `play(_:)` already short-circuits before silencer on missing URL.** Task 4's tests pass without further changes to `YokaiClipRouter.swift`. Tasks 5–7 add fields and methods to the same router file but should not change `play(_:)`'s body; they only add new methods (`recordCorrect`, `recordIncorrect`) and private state.
+4. **A `swift-format --strict` rule disallows `{ }` in favor of `{}`.** Empty closure literals must use `{}`. Apply this from the start in any new test code.
+5. **`OrderRecorder` and `TracingYokaiClipPlayer` already exist** in `YokaiClipRouterTests.swift` (file scope, after the test class brace). T5–T7 tests reuse `FakeYokaiClipPlayer` directly without subclassing, so they don't need these helpers — but don't delete them either.
+
+### What the next-session agent should do
+
+1. Read this section first.
+2. Verify current state of the branch: `git log --oneline feat/yokai-voice-wiring --not origin/main` should show 8 task-related commits on top of the spec + plan commits (`dea5e2e`, `9113804`).
+3. Verify tests still pass: `(cd Packages/MoraEngines && swift test --filter YokaiClipRouterTests)` should report 3 tests, 0 failures (`test_play_resolvesURLAndCallsPlayer`, `test_play_awaitsSilencerBeforePlayer`, `test_play_returnsFalseWhenClipURLMissing`).
+4. Resume at Task 5 below. Do NOT redo Tasks 1–4.
+5. The user has confirmed they want subagent-driven execution (one fresh implementer per task + spec reviewer + code-quality reviewer); continue that pattern.
+6. The final task (T12) requires user confirmation before pushing — do not push autonomously.
+
+---
+
 ## File Structure
 
 ### Files to Create
