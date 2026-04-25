@@ -59,6 +59,25 @@ enum Validator {
             violations.append(.targetInitialContentWordsTooLow(actual: initialInContent, minimum: 3))
         }
 
+        if sentence.interestWords.isEmpty {
+            violations.append(.interestWordsEmpty)
+        } else {
+            // Loose check: each interestWords entry must appear in the
+            // sentence's word surfaces (case-insensitive). Rejects authoring
+            // typos like "vans" tagged when only "van" appears.
+            let surfaces = Set(sentence.words.map { $0.surface.lowercased() })
+            for tag in sentence.interestWords {
+                if !surfaces.contains(tag.lowercased()) {
+                    violations.append(.interestWordNotInSentence(interestWord: tag))
+                }
+            }
+        }
+
+        let length = sentence.words.count
+        if length < 6 || length > 10 {
+            violations.append(.lengthOutOfRange(actual: length, minimum: 6, maximum: 10))
+        }
+
         return violations
     }
 }

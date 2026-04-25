@@ -157,4 +157,94 @@ final class ValidatorTests: XCTestCase {
             "expected .targetInitialContentWordsTooLow(2, 3); got \(violations)"
         )
     }
+
+    func test_validate_flagsEmptyInterestWords() {
+        let map = shCellMap()
+        let sentence = CellSentencePayload(
+            text: "Shen had a shop and Sharon had a shed.",
+            targetCount: 4,
+            targetInitialContentWords: 4,
+            interestWords: [],   // empty — should fire
+            words: [
+                .init(surface: "Shen",   graphemes: ["sh","e","n"],         phonemes: ["ʃ","ɛ","n"]),
+                .init(surface: "had",    graphemes: ["h","a","d"],          phonemes: ["h","æ","d"]),
+                .init(surface: "a",      graphemes: ["a"],                  phonemes: ["ə"]),
+                .init(surface: "shop",   graphemes: ["sh","o","p"],         phonemes: ["ʃ","ɒ","p"]),
+                .init(surface: "and",    graphemes: ["a","n","d"],          phonemes: ["æ","n","d"]),
+                .init(surface: "Sharon", graphemes: ["sh","a","r","o","n"], phonemes: ["ʃ","æ","r","ə","n"]),
+                .init(surface: "had",    graphemes: ["h","a","d"],          phonemes: ["h","æ","d"]),
+                .init(surface: "a",      graphemes: ["a"],                  phonemes: ["ə"]),
+                .init(surface: "shed",   graphemes: ["sh","e","d"],         phonemes: ["ʃ","ɛ","d"]),
+            ]
+        )
+
+        let violations = Validator.validate(
+            sentence: sentence,
+            map: map,
+            curriculum: curriculum,
+            sightWords: sightWords
+        )
+
+        XCTAssertTrue(violations.contains(.interestWordsEmpty), "got \(violations)")
+    }
+
+    func test_validate_flagsInterestWordNotInSentence() {
+        let map = shCellMap()
+        let sentence = CellSentencePayload(
+            text: "Shen had a shop and Sharon had a shed.",
+            targetCount: 4,
+            targetInitialContentWords: 4,
+            interestWords: ["van"],   // van is not in the sentence
+            words: [
+                .init(surface: "Shen",   graphemes: ["sh","e","n"],         phonemes: ["ʃ","ɛ","n"]),
+                .init(surface: "had",    graphemes: ["h","a","d"],          phonemes: ["h","æ","d"]),
+                .init(surface: "a",      graphemes: ["a"],                  phonemes: ["ə"]),
+                .init(surface: "shop",   graphemes: ["sh","o","p"],         phonemes: ["ʃ","ɒ","p"]),
+                .init(surface: "and",    graphemes: ["a","n","d"],          phonemes: ["æ","n","d"]),
+                .init(surface: "Sharon", graphemes: ["sh","a","r","o","n"], phonemes: ["ʃ","æ","r","ə","n"]),
+                .init(surface: "had",    graphemes: ["h","a","d"],          phonemes: ["h","æ","d"]),
+                .init(surface: "a",      graphemes: ["a"],                  phonemes: ["ə"]),
+                .init(surface: "shed",   graphemes: ["sh","e","d"],         phonemes: ["ʃ","ɛ","d"]),
+            ]
+        )
+
+        let violations = Validator.validate(
+            sentence: sentence,
+            map: map,
+            curriculum: curriculum,
+            sightWords: sightWords
+        )
+
+        XCTAssertTrue(violations.contains(.interestWordNotInSentence(interestWord: "van")), "got \(violations)")
+    }
+
+    func test_validate_flagsLengthOutOfRange() {
+        let map = shCellMap()
+        // 5 words — under the 6-word minimum.
+        let sentence = CellSentencePayload(
+            text: "Shen had a ship shop.",
+            targetCount: 4,
+            targetInitialContentWords: 4,
+            interestWords: ["ship"],
+            words: [
+                .init(surface: "Shen", graphemes: ["sh","e","n"], phonemes: ["ʃ","ɛ","n"]),
+                .init(surface: "had",  graphemes: ["h","a","d"],  phonemes: ["h","æ","d"]),
+                .init(surface: "a",    graphemes: ["a"],          phonemes: ["ə"]),
+                .init(surface: "ship", graphemes: ["sh","i","p"], phonemes: ["ʃ","ɪ","p"]),
+                .init(surface: "shop", graphemes: ["sh","o","p"], phonemes: ["ʃ","ɒ","p"]),
+            ]
+        )
+
+        let violations = Validator.validate(
+            sentence: sentence,
+            map: map,
+            curriculum: curriculum,
+            sightWords: sightWords
+        )
+
+        XCTAssertTrue(
+            violations.contains(.lengthOutOfRange(actual: 5, minimum: 6, maximum: 10)),
+            "got \(violations)"
+        )
+    }
 }
