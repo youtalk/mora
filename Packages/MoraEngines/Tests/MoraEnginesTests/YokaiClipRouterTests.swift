@@ -178,6 +178,41 @@ final class YokaiClipRouterTests: XCTestCase {
         router.stop()
         XCTAssertEqual(player.stopCallCount, 1)
     }
+
+    func test_typicalTuesdaySessionFiresAllSixSessionInternalClips() async {
+        let store = FakeYokaiStore()
+        let yokai = "sh"
+        store.clipURLs[yokai] = [
+            .phoneme: URL(fileURLWithPath: "/tmp/sh-phoneme.m4a"),
+            .example1: URL(fileURLWithPath: "/tmp/sh-ex1.m4a"),
+            .example2: URL(fileURLWithPath: "/tmp/sh-ex2.m4a"),
+            .example3: URL(fileURLWithPath: "/tmp/sh-ex3.m4a"),
+            .encourage: URL(fileURLWithPath: "/tmp/sh-encourage.m4a"),
+            .gentleRetry: URL(fileURLWithPath: "/tmp/sh-retry.m4a"),
+        ]
+        let player = FakeYokaiClipPlayer()
+        let router = YokaiClipRouter(
+            yokaiID: yokai, store: store, player: player, silencer: {}
+        )
+
+        // Warmup
+        await router.play(.phoneme)
+        // Decoding (10 trials, examples at indices 0/3/7)
+        await router.play(.example1)
+        await router.play(.example2)
+        await router.play(.example3)
+        // Short sentences: 3 correct → encourage; 1 wrong → retry
+        await router.recordCorrect()
+        await router.recordCorrect()
+        await router.recordCorrect()
+        await router.recordIncorrect()
+
+        let lastComponents = player.playedURLs.map { $0.lastPathComponent }
+        XCTAssertEqual(
+            Set(lastComponents),
+            ["sh-phoneme.m4a", "sh-ex1.m4a", "sh-ex2.m4a", "sh-ex3.m4a", "sh-encourage.m4a", "sh-retry.m4a"]
+        )
+    }
 }
 
 /// Test helper: ordered event log. Used only inside the @MainActor test class
