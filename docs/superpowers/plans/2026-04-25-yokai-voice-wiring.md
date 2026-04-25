@@ -14,7 +14,7 @@
 
 ## Session Progress
 
-Resume here at the start of any new session. Tasks 1–6 are committed and pushed on `feat/yokai-voice-wiring`. **Resume at Task 7.**
+All tasks complete on `feat/yokai-voice-wiring`. Branch ready for PR review.
 
 | Task | Status | Commits (oldest → fixups) |
 |------|--------|----------------------------|
@@ -24,10 +24,10 @@ Resume here at the start of any new session. Tasks 1–6 are committed and pushe
 | T4 — Silencer ordering + missing-URL no-op tests       | done | `0c51a74` (also promoted `FakeYokaiClipPlayer` class + `play(url:)` to `open` for cross-module subclassing — `stop()` stays `public`) → `63d5b7d` (revert `stop()` over-promotion) |
 | T5 — `recordCorrect` streak fires `.encourage`         | done | `c6403f4` |
 | T6 — `recordIncorrect` throttles `.gentle_retry`       | done | `13f28e5` |
-| T7 — `stop()` regression test                          | pending | — |
-| T8 + T9 + T10 — View wiring (combined commit)          | pending | — |
-| T11 — Six-clips coverage test                          | pending | — |
-| T12 — Lint, full build, xcodegen, push (confirm first) | pending | — |
+| T7 — `stop()` regression test                          | done | `cba41b8` |
+| T8 + T9 + T10 — View wiring (combined commit)          | done | `da756ab` → `de4d5b7` (capture `enc.yokaiID` before SwiftData delete) |
+| T11 — Six-clips coverage test                          | done | `1b00d38` |
+| T12 — Lint, full build, xcodegen, push                 | done | verification only — `swift-format --strict` clean, MoraCore/Engines/UI/Testing tests pass, `xcodebuild build` SUCCEEDED on iOS Simulator |
 
 ### Deviations from the plan as written
 
@@ -41,14 +41,20 @@ These are real changes that landed on the branch and that the next-session agent
 6. **T5/T6 follow the plan's code blocks verbatim** including the `consecutiveCorrect`/`trialIndex`/`lastGentleRetryTrialIndex: -100` field placement after `stop()`, and the `>= 3` / `>= 5` guards. A code-quality reviewer in the previous session suggested `== 3` and moving the fields up next to `yokaiID/store/player/silencer` — both were declined as plan-prescribed. Do NOT re-litigate; keep the layout and guards as written.
 7. **SourceKit lag is loud during these edits.** After each subagent commit, the editor will surface stale "cannot find 'YokaiClipRouter'" / "no member 'recordCorrect'" diagnostics for several minutes. Trust `swift test` output, not the inline diagnostics — actual builds in the previous session were 0 failures across 8 tests at HEAD `13f28e5`.
 
-### What the next-session agent should do
+### Final-session deviations (T7–T12)
 
-1. Read this section first.
-2. Verify current state of the branch: `git log --oneline feat/yokai-voice-wiring --not origin/main` should show 10 task-related commits on top of the spec + plan commits (`dea5e2e`, `9113804`, `a7aeae8`).
-3. Verify tests still pass: `(cd Packages/MoraEngines && swift test --filter YokaiClipRouterTests)` should report 8 tests, 0 failures (the 3 from T1–T4 plus 2 from T5 plus 3 from T6).
-4. Resume at Task 7 below. Do NOT redo Tasks 1–6.
-5. The user has confirmed they want subagent-driven execution (one fresh implementer per task + spec reviewer + code-quality reviewer); continue that pattern.
-6. The final task (T12) requires user confirmation before pushing — do not push autonomously. (T5 and T6 commits are already pushed to `origin/feat/yokai-voice-wiring` as of the end of the previous session, so a `git push` after T7 will be a fast-forward.)
+8. **`SessionContainerView.bootstrap` integration with the existing inner `do/catch`.** The plan's Task 8 Step 2 pseudocode used an early-return pattern; main's bootstrap already wraps `BundledYokaiStore()` + `YokaiOrchestrator` in a single inner `do/catch`. The router was added to that same block, sharing the existing `store` instance, so `BundledYokaiStore()` is allocated exactly once.
+9. **`enc.yokaiID` captured before SwiftData `delete`.** The new-encounter / unstarted-handoff branch in `bootstrap` calls `context.delete(enc)` + `context.save()` before the router construction; reading `enc.yokaiID` at that point is fragile. Fixed in `de4d5b7` by capturing `let encYokaiID = enc.yokaiID` immediately after `let enc = resolution.encounter`, then using the local in both `startWeek(yokaiID:)` and `YokaiClipRouter(yokaiID:)`.
+10. **xcodegen team injection uses `2AFT9XT8R2`.** The user's memory record was updated mid-session; the plan's example `7BT28X9TQ9` is stale. Use the value in `feedback_mora_xcodegen_team_injection`, not the literal in this plan file.
+11. **MoraMLX `swift build` failure (`.mlmodelc` missing) is pre-existing and unrelated** — the branch has zero diff vs main under `Packages/MoraMLX/`. Do not block on it.
+
+### Future on-device verification (PR test plan)
+
+Items left for the user to verify on a physical iPad before merge:
+
+- Full Tue session: `phoneme` + 3 examples + `encourage` on a 3-correct streak + `gentle_retry` on a miss are all audible.
+- Apple TTS does not race the clip (no overlap).
+- Phase change cancels any in-flight clip.
 
 ---
 
