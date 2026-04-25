@@ -215,6 +215,47 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
                         """
                     )
                 }
+                // `kLSRErrorDomain` code 301 ("Recognition request was
+                // canceled") is what the framework sends back when the
+                // recognition request is cancelled — either by us
+                // (`task.cancel()` from `tearDownLocked`, e.g. when the
+                // user taps the mic button a second time to stop) or by
+                // the system. The user has already finished speaking, and
+                // the latest partial transcript is what they actually
+                // said, so synthesize a `.final` from the saved snapshot
+                // rather than bubbling the cancel up as a thrown error
+                // and dropping the recognised text. The `tryMarkFinalized`
+                // guard collapses the race with the silence-timeout
+                // watchdog so only one path produces the `.final` for
+                // this trial.
+                let nsErr = err as NSError
+                if nsErr.domain == "kLSRErrorDomain" && nsErr.code == 301,
+                    timestamps.tryMarkFinalized()
+                {
+                    let clip = ringRef.drain()
+                    let snapshot = timestamps.snapshotPartial()
+                    #if DEBUG
+                    asrLog.info(
+                        """
+                        ASR cancel-final: "\(snapshot.transcript, privacy: .public)" \
+                        confidence=\(snapshot.confidence, privacy: .public) \
+                        samples=\(clip.samples.count, privacy: .public)
+                        """
+                    )
+                    #endif
+                    continuation.yield(
+                        .final(
+                            TrialRecording(
+                                asr: ASRResult(
+                                    transcript: snapshot.transcript,
+                                    confidence: snapshot.confidence
+                                ),
+                                audio: clip
+                            )))
+                    continuation.finish()
+                    self.cancel()
+                    return
+                }
                 self.cancel()
                 continuation.finish(throwing: mapped)
                 return
@@ -224,7 +265,7 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
             let confidence = Double(result.bestTranscription.segments.last?.confidence ?? 0)
             if !result.isFinal {
                 continuation.yield(.partial(transcript))
-                timestamps.markPartial()
+                timestamps.markPartial(transcript: transcript, confidence: confidence)
                 #if DEBUG
                 asrLog.info("ASR partial: \"\(transcript, privacy: .public)\"")
                 #endif
@@ -262,19 +303,32 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
                 if silence >= self.silenceTimeout || total >= self.hardTimeout {
                     guard timestamps.tryMarkFinalized() else { return }
                     let clip = ringRef.drain()
+                    let snapshot = timestamps.snapshotPartial()
                     #if DEBUG
                     asrLog.info(
                         """
                         ASR timeout: silence=\(silence, privacy: .public)s \
                         total=\(total, privacy: .public)s \
-                        samples=\(clip.samples.count, privacy: .public)
+                        samples=\(clip.samples.count, privacy: .public) \
+                        transcript="\(snapshot.transcript, privacy: .public)"
                         """
                     )
                     #endif
+                    // Surface the most recent partial as the final result —
+                    // SFSpeechRecognitionTask only sets `result.isFinal` after
+                    // a clean end-of-audio, which the silence-timeout path
+                    // skips by tearing the engine down preemptively. Without
+                    // the snapshot, the assessment received an empty
+                    // transcript and scored every spoken sentence as
+                    // `omission` even when the recognizer had already
+                    // produced "The ship can hop." in a partial.
                     continuation.yield(
                         .final(
                             TrialRecording(
-                                asr: ASRResult(transcript: "", confidence: 0),
+                                asr: ASRResult(
+                                    transcript: snapshot.transcript,
+                                    confidence: snapshot.confidence
+                                ),
                                 audio: clip
                             )))
                     continuation.finish()
@@ -323,6 +377,16 @@ private final class TimestampBox: @unchecked Sendable {
     private var start = Date()
     private var lastPartial = Date()
     private var finalized = false
+    /// Most recent partial transcript and its confidence. Saved on every
+    /// partial callback so the silence-timeout watchdog and the
+    /// user-initiated cancel path can synthesize a final result from
+    /// what the recognizer already produced — without this, the trial
+    /// log lost everything the user actually said because the framework
+    /// only sends `result.isFinal == true` after a clean end-of-audio,
+    /// not after `endAudio()` from a teardown or a `kLSRErrorDomain`
+    /// code-301 cancel.
+    private var lastPartialTranscript = ""
+    private var lastPartialConfidence: Double = 0
 
     func reset() {
         lock.lock()
@@ -330,12 +394,25 @@ private final class TimestampBox: @unchecked Sendable {
         start = Date()
         lastPartial = Date()
         finalized = false
+        lastPartialTranscript = ""
+        lastPartialConfidence = 0
     }
 
-    func markPartial() {
+    func markPartial(transcript: String, confidence: Double) {
         lock.lock()
         defer { lock.unlock() }
         lastPartial = Date()
+        lastPartialTranscript = transcript
+        lastPartialConfidence = confidence
+    }
+
+    /// Returns the most recent partial transcript and its confidence
+    /// for the silence-timeout / user-cancel paths to surface as the
+    /// final result. Empty when no partial has arrived yet.
+    func snapshotPartial() -> (transcript: String, confidence: Double) {
+        lock.lock()
+        defer { lock.unlock() }
+        return (lastPartialTranscript, lastPartialConfidence)
     }
 
     func markFinalized() {
