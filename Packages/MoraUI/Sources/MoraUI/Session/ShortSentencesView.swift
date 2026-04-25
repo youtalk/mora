@@ -16,6 +16,7 @@ struct ShortSentencesView: View {
     @Binding var feedback: FeedbackState
     let speechEngine: SpeechEngine?
     let speech: SpeechController?
+    let clipRouter: YokaiClipRouter?
     /// Fires the first time the mic path resolves to a permanent
     /// "this device can't do mic" condition (today: macOS Dictation
     /// disabled). The container view flips `uiMode` to `.tap` so the
@@ -184,6 +185,7 @@ struct ShortSentencesView: View {
                     let priorIndex = orchestrator.sentenceIndex
                     pinnedSentenceIndex = priorIndex
                     await orchestrator.handle(.answerManual(correct: true))
+                    Task { @MainActor in await clipRouter?.recordCorrect() }
                     try? await Task.sleep(nanoseconds: 450_000_000)
                     feedback = .none
                     pinnedSentenceIndex = nil
@@ -195,6 +197,7 @@ struct ShortSentencesView: View {
                     let priorIndex = orchestrator.sentenceIndex
                     pinnedSentenceIndex = priorIndex
                     await orchestrator.handle(.answerManual(correct: false))
+                    Task { @MainActor in await clipRouter?.recordIncorrect() }
                     try? await Task.sleep(nanoseconds: 650_000_000)
                     feedback = .none
                     pinnedSentenceIndex = nil
@@ -254,10 +257,20 @@ struct ShortSentencesView: View {
                         let wasCorrect = orchestrator.trials.last?.correct ?? false
                         Self.logMic("assess result correct=\(wasCorrect)")
                         feedback = wasCorrect ? .correct : .wrong
-                        if !wasCorrect, let speech {
-                            await speech.playAndAwait(
-                                [.text("Listen: " + expected.text, .slow)]
-                            )
+                        if wasCorrect {
+                            Task { @MainActor in await clipRouter?.recordCorrect() }
+                        } else {
+                            // Await record so the corrective TTS does not race
+                            // a `.gentleRetry` clip; if the clip fired, the
+                            // router already silenced TTS and the clip itself
+                            // serves as the corrective audio.
+                            let clipPlayed =
+                                (await clipRouter?.recordIncorrect()) ?? false
+                            if !clipPlayed, let speech {
+                                await speech.playAndAwait(
+                                    [.text("Listen: " + expected.text, .slow)]
+                                )
+                            }
                         }
                         try? await Task.sleep(
                             nanoseconds: wasCorrect ? 450_000_000 : 650_000_000)

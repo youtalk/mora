@@ -26,6 +26,7 @@ public struct SessionContainerView: View {
     @State private var speechEngine: SpeechEngine?
     @State private var speech: SpeechController?
     @State private var showCloseConfirm = false
+    @State private var clipRouter: YokaiClipRouter?
     /// True after the mic path reports `.dictationDisabled` for the first
     /// time on this run. Surfaces an alert pointing the user at macOS's
     /// Dictation toggle, then leaves `uiMode = .tap` so the session
@@ -75,11 +76,13 @@ public struct SessionContainerView: View {
                     let partial = orchestrator.sessionSummary(endedAt: Date())
                     persist(summary: partial)
                 }
-                // Cancel in-flight speech, drain the engine, then dismiss.
-                // Awaiting `speech.stop()` before `dismiss()` is what stops
+                // Cancel in-flight speech and any yokai clip, then dismiss.
+                // `clipRouter?.stop()` is synchronous so it lands first;
+                // awaiting `speech.stop()` before `dismiss()` is what stops
                 // the tail of the current utterance from riding out onto
                 // whatever screen the learner lands on next — a detached
                 // stop racing against dismiss leaves the audio audible.
+                clipRouter?.stop()
                 if let speech {
                     Task { @MainActor in
                         await speech.stop()
@@ -104,6 +107,7 @@ public struct SessionContainerView: View {
         // warmup phoneme that introduces the target grapheme).
         .onChange(of: orchestrator?.phase) { oldValue, _ in
             guard oldValue != nil, oldValue != .notStarted else { return }
+            clipRouter?.stop()
             guard let speech else { return }
             Task { await speech.stop() }
         }
@@ -147,7 +151,7 @@ public struct SessionContainerView: View {
                 ProgressView("Preparing…")
                     .task { await orchestrator.start() }
             case .warmup:
-                WarmupView(orchestrator: orchestrator, speech: speech)
+                WarmupView(orchestrator: orchestrator, speech: speech, clipRouter: clipRouter)
             case .newRule:
                 NewRuleView(orchestrator: orchestrator, speech: speech)
             case .decoding:
@@ -178,12 +182,35 @@ public struct SessionContainerView: View {
                     .padding(.bottom, MoraTheme.Space.sm)
                     #endif
                 }
+                .task(id: orchestrator.completedTrialCount) {
+                    let idx = orchestrator.completedTrialCount
+                    let clip: YokaiClipKey?
+                    switch idx {
+                    case 0: clip = .example1
+                    case 3: clip = .example2
+                    case 7: clip = .example3
+                    default: clip = nil
+                    }
+                    guard let clip else { return }
+                    // Wait for the in-trial Apple TTS speakTarget() to finish before
+                    // triggering the yokai exemplar; the single-word utterance reliably
+                    // finishes inside this 1.5s window. If SwiftUI cancels the task
+                    // (phase change or trial-id update) the throwing sleep exits
+                    // here so the clip never fires on a stale id.
+                    do {
+                        try await Task.sleep(for: .milliseconds(1500))
+                    } catch {
+                        return
+                    }
+                    await clipRouter?.play(clip)
+                }
             case .shortSentences:
                 ShortSentencesView(
                     orchestrator: orchestrator, uiMode: uiMode,
                     feedback: $feedback,
                     speechEngine: uiMode == .mic ? speechEngine : nil,
                     speech: speech,
+                    clipRouter: clipRouter,
                     onSpeechUnavailable: handleSpeechUnavailable
                 )
             case .completion:
@@ -295,11 +322,12 @@ public struct SessionContainerView: View {
                 // intro cutscene and the 10% seed from startWeek both
                 // fire; otherwise resume() would silently skip them.
                 let enc = resolution.encounter
+                let encYokaiID = enc.yokaiID
                 let isUnstartedHandoff =
                     enc.sessionCompletionCount == 0 && enc.friendshipPercent == 0
                 if resolution.isNewEncounter || isUnstartedHandoff {
                     try orch.startWeek(
-                        yokaiID: enc.yokaiID,
+                        yokaiID: encYokaiID,
                         weekStart: enc.weekStart
                     )
                     // startWeek inserts its own encounter; the existing one
@@ -321,6 +349,15 @@ public struct SessionContainerView: View {
                     }
                 }
                 yokaiOrchestrator = orch
+                let speechRef = speech
+                self.clipRouter = YokaiClipRouter(
+                    yokaiID: encYokaiID,
+                    store: store,
+                    player: AVFoundationYokaiClipPlayer(),
+                    silencer: { [weak speechRef] in
+                        await speechRef?.stop()
+                    }
+                )
             } catch {
                 speechLog.error(
                     "YokaiOrchestrator init failed: \(String(describing: error))"
