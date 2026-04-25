@@ -14,7 +14,7 @@
 
 ## Session Progress
 
-Resume here at the start of any new session. Tasks 1–4 are committed on `feat/yokai-voice-wiring`. **Resume at Task 5.**
+Resume here at the start of any new session. Tasks 1–6 are committed and pushed on `feat/yokai-voice-wiring`. **Resume at Task 7.**
 
 | Task | Status | Commits (oldest → fixups) |
 |------|--------|----------------------------|
@@ -22,8 +22,8 @@ Resume here at the start of any new session. Tasks 1–4 are committed on `feat/
 | T2 — `AVFoundationYokaiClipPlayer` concrete            | done | `7c3cb7f` → `5a2bed5` (doc + `prepareToPlay()` + drop redundant `import Foundation` + rename `next`→`newPlayer`) |
 | T3 — Router `play()` basic + first router test         | done | `8bf73de` → `90d7329` (swift-format `{ }` → `{}`) |
 | T4 — Silencer ordering + missing-URL no-op tests       | done | `0c51a74` (also promoted `FakeYokaiClipPlayer` class + `play(url:)` to `open` for cross-module subclassing — `stop()` stays `public`) → `63d5b7d` (revert `stop()` over-promotion) |
-| T5 — `recordCorrect` streak fires `.encourage`         | pending | — |
-| T6 — `recordIncorrect` throttles `.gentle_retry`       | pending | — |
+| T5 — `recordCorrect` streak fires `.encourage`         | done | `c6403f4` |
+| T6 — `recordIncorrect` throttles `.gentle_retry`       | done | `13f28e5` |
 | T7 — `stop()` regression test                          | pending | — |
 | T8 + T9 + T10 — View wiring (combined commit)          | pending | — |
 | T11 — Six-clips coverage test                          | pending | — |
@@ -38,15 +38,17 @@ These are real changes that landed on the branch and that the next-session agent
 3. **The router's `play(_:)` already short-circuits before silencer on missing URL.** Task 4's tests pass without further changes to `YokaiClipRouter.swift`. Tasks 5–7 add fields and methods to the same router file but should not change `play(_:)`'s body; they only add new methods (`recordCorrect`, `recordIncorrect`) and private state.
 4. **A `swift-format --strict` rule disallows `{ }` in favor of `{}`.** Empty closure literals must use `{}`. Apply this from the start in any new test code.
 5. **`OrderRecorder` and `TracingYokaiClipPlayer` already exist** in `YokaiClipRouterTests.swift` (file scope, after the test class brace). T5–T7 tests reuse `FakeYokaiClipPlayer` directly without subclassing, so they don't need these helpers — but don't delete them either.
+6. **T5/T6 follow the plan's code blocks verbatim** including the `consecutiveCorrect`/`trialIndex`/`lastGentleRetryTrialIndex: -100` field placement after `stop()`, and the `>= 3` / `>= 5` guards. A code-quality reviewer in the previous session suggested `== 3` and moving the fields up next to `yokaiID/store/player/silencer` — both were declined as plan-prescribed. Do NOT re-litigate; keep the layout and guards as written.
+7. **SourceKit lag is loud during these edits.** After each subagent commit, the editor will surface stale "cannot find 'YokaiClipRouter'" / "no member 'recordCorrect'" diagnostics for several minutes. Trust `swift test` output, not the inline diagnostics — actual builds in the previous session were 0 failures across 8 tests at HEAD `13f28e5`.
 
 ### What the next-session agent should do
 
 1. Read this section first.
-2. Verify current state of the branch: `git log --oneline feat/yokai-voice-wiring --not origin/main` should show 8 task-related commits on top of the spec + plan commits (`dea5e2e`, `9113804`).
-3. Verify tests still pass: `(cd Packages/MoraEngines && swift test --filter YokaiClipRouterTests)` should report 3 tests, 0 failures (`test_play_resolvesURLAndCallsPlayer`, `test_play_awaitsSilencerBeforePlayer`, `test_play_returnsFalseWhenClipURLMissing`).
-4. Resume at Task 5 below. Do NOT redo Tasks 1–4.
+2. Verify current state of the branch: `git log --oneline feat/yokai-voice-wiring --not origin/main` should show 10 task-related commits on top of the spec + plan commits (`dea5e2e`, `9113804`, `a7aeae8`).
+3. Verify tests still pass: `(cd Packages/MoraEngines && swift test --filter YokaiClipRouterTests)` should report 8 tests, 0 failures (the 3 from T1–T4 plus 2 from T5 plus 3 from T6).
+4. Resume at Task 7 below. Do NOT redo Tasks 1–6.
 5. The user has confirmed they want subagent-driven execution (one fresh implementer per task + spec reviewer + code-quality reviewer); continue that pattern.
-6. The final task (T12) requires user confirmation before pushing — do not push autonomously.
+6. The final task (T12) requires user confirmation before pushing — do not push autonomously. (T5 and T6 commits are already pushed to `origin/feat/yokai-voice-wiring` as of the end of the previous session, so a `git push` after T7 will be a fast-forward.)
 
 ---
 
