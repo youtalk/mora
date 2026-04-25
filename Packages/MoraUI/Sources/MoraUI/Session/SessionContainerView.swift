@@ -76,11 +76,13 @@ public struct SessionContainerView: View {
                     let partial = orchestrator.sessionSummary(endedAt: Date())
                     persist(summary: partial)
                 }
-                // Cancel in-flight speech, drain the engine, then dismiss.
-                // Awaiting `speech.stop()` before `dismiss()` is what stops
+                // Cancel in-flight speech and any yokai clip, then dismiss.
+                // `clipRouter?.stop()` is synchronous so it lands first;
+                // awaiting `speech.stop()` before `dismiss()` is what stops
                 // the tail of the current utterance from riding out onto
                 // whatever screen the learner lands on next — a detached
                 // stop racing against dismiss leaves the audio audible.
+                clipRouter?.stop()
                 if let speech {
                     Task { @MainActor in
                         await speech.stop()
@@ -192,8 +194,14 @@ public struct SessionContainerView: View {
                     guard let clip else { return }
                     // Wait for the in-trial Apple TTS speakTarget() to finish before
                     // triggering the yokai exemplar; the single-word utterance reliably
-                    // finishes inside this 1.5s window.
-                    try? await Task.sleep(for: .milliseconds(1500))
+                    // finishes inside this 1.5s window. If SwiftUI cancels the task
+                    // (phase change or trial-id update) the throwing sleep exits
+                    // here so the clip never fires on a stale id.
+                    do {
+                        try await Task.sleep(for: .milliseconds(1500))
+                    } catch {
+                        return
+                    }
                     await clipRouter?.play(clip)
                 }
             case .shortSentences:

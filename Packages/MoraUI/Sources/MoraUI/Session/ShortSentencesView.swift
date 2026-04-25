@@ -116,16 +116,6 @@ struct ShortSentencesView: View {
             case .none: break
             }
             #endif
-            // Yokai voice routing — fire-and-forget. The router's @MainActor
-            // isolation serializes calls so the streak math is never racy.
-            switch new {
-            case .correct:
-                Task { @MainActor in await clipRouter?.recordCorrect() }
-            case .wrong:
-                Task { @MainActor in await clipRouter?.recordIncorrect() }
-            case .none:
-                break
-            }
         }
     }
 
@@ -195,6 +185,7 @@ struct ShortSentencesView: View {
                     let priorIndex = orchestrator.sentenceIndex
                     pinnedSentenceIndex = priorIndex
                     await orchestrator.handle(.answerManual(correct: true))
+                    Task { @MainActor in await clipRouter?.recordCorrect() }
                     try? await Task.sleep(nanoseconds: 450_000_000)
                     feedback = .none
                     pinnedSentenceIndex = nil
@@ -206,6 +197,7 @@ struct ShortSentencesView: View {
                     let priorIndex = orchestrator.sentenceIndex
                     pinnedSentenceIndex = priorIndex
                     await orchestrator.handle(.answerManual(correct: false))
+                    Task { @MainActor in await clipRouter?.recordIncorrect() }
                     try? await Task.sleep(nanoseconds: 650_000_000)
                     feedback = .none
                     pinnedSentenceIndex = nil
@@ -265,10 +257,20 @@ struct ShortSentencesView: View {
                         let wasCorrect = orchestrator.trials.last?.correct ?? false
                         Self.logMic("assess result correct=\(wasCorrect)")
                         feedback = wasCorrect ? .correct : .wrong
-                        if !wasCorrect, let speech {
-                            await speech.playAndAwait(
-                                [.text("Listen: " + expected.text, .slow)]
-                            )
+                        if wasCorrect {
+                            Task { @MainActor in await clipRouter?.recordCorrect() }
+                        } else {
+                            // Await record so the corrective TTS does not race
+                            // a `.gentleRetry` clip; if the clip fired, the
+                            // router already silenced TTS and the clip itself
+                            // serves as the corrective audio.
+                            let clipPlayed =
+                                (await clipRouter?.recordIncorrect()) ?? false
+                            if !clipPlayed, let speech {
+                                await speech.playAndAwait(
+                                    [.text("Listen: " + expected.text, .slow)]
+                                )
+                            }
                         }
                         try? await Task.sleep(
                             nanoseconds: wasCorrect ? 450_000_000 : 650_000_000)
