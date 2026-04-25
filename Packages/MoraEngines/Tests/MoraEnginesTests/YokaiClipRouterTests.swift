@@ -15,7 +15,7 @@ final class YokaiClipRouterTests: XCTestCase {
             yokaiID: "sh",
             store: store,
             player: player,
-            silencer: { }
+            silencer: {}
         )
 
         let played = await router.play(.phoneme)
