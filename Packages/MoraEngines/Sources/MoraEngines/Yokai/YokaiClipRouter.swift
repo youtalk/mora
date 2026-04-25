@@ -48,14 +48,30 @@ public final class YokaiClipRouter {
     }
 
     private var consecutiveCorrect: Int = 0
+    private var trialIndex: Int = 0
+    private var lastGentleRetryTrialIndex: Int = -100
 
     /// Record a correct trial in `shortSentences`. Fires `.encourage` and
     /// resets the streak on every 3rd consecutive correct.
     public func recordCorrect() async {
+        trialIndex += 1
         consecutiveCorrect += 1
         if consecutiveCorrect >= 3 {
             consecutiveCorrect = 0
             await play(.encourage)
+        }
+    }
+
+    /// Record an incorrect trial in `shortSentences`. Resets the streak and
+    /// fires `.gentle_retry` if at least 5 trials have passed since the last
+    /// retry clip — protects the learner from a retry-clip storm during a
+    /// rough run.
+    public func recordIncorrect() async {
+        trialIndex += 1
+        consecutiveCorrect = 0
+        if trialIndex - lastGentleRetryTrialIndex >= 5 {
+            lastGentleRetryTrialIndex = trialIndex
+            await play(.gentleRetry)
         }
     }
 }

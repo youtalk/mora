@@ -96,6 +96,77 @@ final class YokaiClipRouterTests: XCTestCase {
 
         XCTAssertEqual(player.playedURLs.count, 2, "two encourage clips for 6-correct run (3rd and 6th)")
     }
+
+    func test_recordIncorrect_resetsStreakAndFiresGentleRetry() async {
+        let store = FakeYokaiStore()
+        let retry = URL(fileURLWithPath: "/tmp/sh-retry.m4a")
+        store.clipURLs["sh"] = [.gentleRetry: retry]
+        let player = FakeYokaiClipPlayer()
+        let router = YokaiClipRouter(
+            yokaiID: "sh", store: store, player: player, silencer: {}
+        )
+
+        await router.recordCorrect()
+        await router.recordCorrect()
+        await router.recordIncorrect()  // resets streak, fires retry (first miss)
+        await router.recordCorrect()
+        await router.recordCorrect()
+        // Two more correct trials; would have been the third in the original
+        // streak. Encourage must NOT fire because the wrong answer reset the count.
+        XCTAssertEqual(player.playedURLs, [retry])
+    }
+
+    func test_recordIncorrect_throttlesGentleRetryToAtMostOnePerFiveTrials() async {
+        let store = FakeYokaiStore()
+        let retry = URL(fileURLWithPath: "/tmp/sh-retry.m4a")
+        store.clipURLs["sh"] = [.gentleRetry: retry]
+        let player = FakeYokaiClipPlayer()
+        let router = YokaiClipRouter(
+            yokaiID: "sh", store: store, player: player, silencer: {}
+        )
+
+        // T1: first miss → fires.
+        await router.recordIncorrect()
+        XCTAssertEqual(player.playedURLs.count, 1)
+
+        // T2 / T3 / T4 / T5: still inside the throttle window
+        // (trialIndex - lastGentleRetryTrialIndex < 5). All suppressed.
+        for _ in 0..<4 {
+            await router.recordIncorrect()
+        }
+        XCTAssertEqual(
+            player.playedURLs.count, 1,
+            "trials 2–5 are within the 5-trial throttle window after T1"
+        )
+
+        // T6: trialIndex - lastGentleRetryTrialIndex == 5 → fires again.
+        await router.recordIncorrect()
+        XCTAssertEqual(
+            player.playedURLs.count, 2,
+            "fires on the 5th trial after the previous retry (T6)"
+        )
+    }
+
+    func test_recordIncorrect_correctTrialsCountTowardThrottleWindow() async {
+        let store = FakeYokaiStore()
+        let retry = URL(fileURLWithPath: "/tmp/sh-retry.m4a")
+        let encourage = URL(fileURLWithPath: "/tmp/sh-encourage.m4a")
+        store.clipURLs["sh"] = [.gentleRetry: retry, .encourage: encourage]
+        let player = FakeYokaiClipPlayer()
+        let router = YokaiClipRouter(
+            yokaiID: "sh", store: store, player: player, silencer: {}
+        )
+
+        await router.recordIncorrect()  // trial 1, retry fires
+        await router.recordCorrect()  // trial 2
+        await router.recordCorrect()  // trial 3
+        await router.recordCorrect()  // trial 4 — encourage fires (3 consecutive)
+        await router.recordIncorrect()  // trial 5 — within throttle, retry suppressed
+        XCTAssertEqual(player.playedURLs, [retry, encourage])
+
+        await router.recordIncorrect()  // trial 6 — 5 trials elapsed, retry fires
+        XCTAssertEqual(player.playedURLs, [retry, encourage, retry])
+    }
 }
 
 /// Test helper: ordered event log. Used only inside the @MainActor test class
