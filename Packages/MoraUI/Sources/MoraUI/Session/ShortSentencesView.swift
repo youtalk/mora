@@ -97,6 +97,17 @@ struct ShortSentencesView: View {
             .padding(.vertical, MoraTheme.Space.xl)
             .frame(maxWidth: .infinity)
         }
+        .task {
+            // `SessionContainerView` no longer fires a parent-level
+            // `speech.stop()` on phase change (that raced with the new
+            // view's auto-play and silenced it). Silence the prior
+            // phase's audio here instead — ShortSentences is the only
+            // phase view that does not start its own `speech.play(...)`
+            // on entry, so a leftover `cut` / `Listen:` utterance from
+            // the decoding phase would otherwise overlap the mic
+            // listening window.
+            await speech?.stop()
+        }
         .onChange(of: feedback) { _, new in
             if new == .wrong {
                 // Cancel any in-flight reset so back-to-back .wrong events

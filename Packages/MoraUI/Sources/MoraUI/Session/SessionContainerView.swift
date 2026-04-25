@@ -95,22 +95,20 @@ public struct SessionContainerView: View {
         } message: {
             Text(strings.sessionCloseMessage)
         }
-        // Every phase transition cancels whatever the prior phase was
-        // speaking. The new phase view owns the next utterance via its
-        // own `.task`. Without this, a long-press speak left over from
-        // a prior phase-intro view would keep playing into the next
-        // phase if that view has no `.task` of its own.
-        //
-        // Skip the entry from `.notStarted` — nothing is playing yet, and
-        // racing a no-op `stop()` against the new phase view's first
-        // `speech.play(...)` can cancel the very first utterance (the
-        // warmup phoneme that introduces the target grapheme).
-        .onChange(of: orchestrator?.phase) { oldValue, _ in
-            guard oldValue != nil, oldValue != .notStarted else { return }
-            clipRouter?.stop()
-            guard let speech else { return }
-            Task { await speech.stop() }
-        }
+        // Stale prior-phase audio is silenced by the new phase view's
+        // own `speech.play(...)` call — `play()` cancels any in-flight
+        // sequence before starting the new one (see `SpeechController`).
+        // A parent-level `.onChange(phase) { speech.stop() }` would race
+        // with the new view's `.task` on @MainActor and, when scheduled
+        // *after* the new `play()` set its inflight task, would cancel
+        // the new playback. The only phase view that does NOT auto-play
+        // on entry is `ShortSentencesView`; it owns its own
+        // `await speech?.stop()` so a prior phase's TTS does not leak
+        // into the mic-listening window. The same race applies to
+        // `clipRouter`: each phase that fires a clip drives it from its
+        // own `.task`, and `clipRouter.play(...)` calls the silencer
+        // before starting playback, so a parent-level `clipRouter.stop()`
+        // on phase change is not needed and would cancel the new clip.
         #if os(iOS)
         .navigationBarHidden(true)
         #endif
