@@ -1,0 +1,109 @@
+name: Swift
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: swift-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: swift-format lint
+    runs-on: macos-15
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+
+      - name: Cache Homebrew downloads (swift-format)
+        uses: actions/cache@v4
+        with:
+          path: ~/Library/Caches/Homebrew/downloads
+          key: brew-${{ runner.os }}-swift-format-v1
+          restore-keys: |
+            brew-${{ runner.os }}-swift-format-
+
+      - name: Install swift-format
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: "1"
+          HOMEBREW_NO_INSTALL_CLEANUP: "1"
+        run: brew install swift-format
+
+      - name: Show versions
+        run: |
+          swift --version
+          swift-format --version
+
+      - name: Lint
+        # Package.swift is excluded because swift-format's TrailingComma rule
+        # conflicts with the repo convention of trailing commas on every element.
+        run: swift-format lint --strict --recursive Mora Packages/*/Sources Packages/*/Tests
+
+  build-test:
+    name: Build / Test (${{ matrix.package }})
+    runs-on: macos-15
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - package: MoraCore
+            test: true
+          - package: MoraEngines
+            test: true
+          - package: MoraUI
+            test: true
+          - package: MoraTesting
+            test: true
+          - package: MoraFixtures
+            test: true
+          - package: MoraMLX
+            test: false
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+
+      - name: Show toolchain
+        run: |
+          swift --version
+          xcodebuild -version
+
+      - name: Restore CoreML model cache
+        if: matrix.package == 'MoraMLX'
+        id: model-cache
+        uses: actions/cache@v4
+        with:
+          path: Packages/MoraMLX/Sources/MoraMLX/Resources/wav2vec2-phoneme.mlmodelc
+          key: model-${{ runner.os }}-${{ hashFiles('tools/models.manifest') }}
+
+      - name: Fetch CoreML models on cache miss
+        if: matrix.package == 'MoraMLX' && steps.model-cache.outputs.cache-hit != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash tools/fetch-models.sh
+
+      - name: Cache SwiftPM .build
+        uses: actions/cache@v4
+        with:
+          path: Packages/${{ matrix.package }}/.build
+          key: spm-${{ matrix.package }}-${{ runner.os }}-${{ hashFiles(format('Packages/{0}/**/*.swift', matrix.package), format('Packages/{0}/Package.swift', matrix.package)) }}
+          restore-keys: |
+            spm-${{ matrix.package }}-${{ runner.os }}-
+
+      - name: swift build
+        working-directory: Packages/${{ matrix.package }}
+        run: swift build
+
+      - name: swift test
+        if: matrix.test
+        working-directory: Packages/${{ matrix.package }}
+        run: swift test
