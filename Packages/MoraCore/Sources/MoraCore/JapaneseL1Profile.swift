@@ -117,6 +117,17 @@ public struct JapaneseL1Profile: L1Profile {
         }
     }
 
+    /// Cached formatter for `bestiaryBefriendedOn`. Forces a Gregorian
+    /// calendar so the kanji budget stays at grade1+grade2 (a Japanese
+    /// imperial-era style would emit `令和` etc., which is grade 4).
+    private static let bestiaryDateFormatter: DateFormatter = {
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "ja_JP")
+        f.calendar = Calendar(identifier: .gregorian)
+        f.dateStyle = .long
+        return f
+    }()
+
     /// Ages 8-9 (alpha target). Kanji budget: only JPKanjiLevel.grade1And2
     /// characters appear. See spec §7.2 for the authoring rules and the
     /// per-row rationale.
@@ -142,10 +153,7 @@ public struct JapaneseL1Profile: L1Profile {
         bestiaryLinkLabel: "ともだち ずかん",
         bestiaryPlayGreeting: "🔊 あいさつ",
         bestiaryBefriendedOn: { date in
-            let f = DateFormatter()
-            f.locale = Locale(identifier: "ja_JP")
-            f.dateStyle = .long
-            return "なかよくなった日: \(f.string(from: date))"
+            "なかよくなった日 \(Self.bestiaryDateFormatter.string(from: date))"
         },
         voiceGateTitle: "英語の 声を ダウンロードしてください",
         voiceGateBody:

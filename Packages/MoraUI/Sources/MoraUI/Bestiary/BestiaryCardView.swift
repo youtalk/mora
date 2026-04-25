@@ -31,6 +31,9 @@ public struct BestiaryCardView: View {
                             .font(MoraType.heroWord(80))
                             .foregroundStyle(MoraTheme.Ink.muted)
                     )
+                // Sized placeholders keep locked cards aligned with befriended
+                // cards in the grid; the parent's `accessibilityElement(children:
+                // .ignore)` already hides them from VoiceOver.
                 Text(" ").font(MoraType.heading())
                 Text(" ").font(MoraType.label())
             }
@@ -41,6 +44,7 @@ public struct BestiaryCardView: View {
             MoraTheme.Background.cream,
             in: .rect(cornerRadius: MoraTheme.Radius.card)
         )
+        .accessibilityElement(children: .ignore)
         .accessibilityLabel(
             state == .befriended
                 ? Text("\(yokai.grapheme) yokai, befriended") : Text("Locked"))

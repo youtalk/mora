@@ -375,9 +375,14 @@ public struct HomeView: View {
             streak = DailyStreak()
             debugContext.insert(streak)
         }
-        streak.currentCount += 1
-        streak.longestCount = max(streak.longestCount, streak.currentCount)
-        streak.lastCompletedOn = Calendar.current.startOfDay(for: Date())
+        // Route through the real DailyStreak rules instead of mutating fields
+        // directly: simulate "the next day" so each tap counts as one more
+        // day in the streak rather than a same-day no-op.
+        let simulatedCompletionDate =
+            streak.lastCompletedOn
+            .flatMap { Calendar.current.date(byAdding: .day, value: 1, to: $0) }
+            ?? Date()
+        streak.recordCompletion(on: simulatedCompletionDate)
         persistDebugChanges()
     }
 
