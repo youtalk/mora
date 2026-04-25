@@ -167,6 +167,17 @@ final class YokaiClipRouterTests: XCTestCase {
         await router.recordIncorrect()  // trial 6 — 5 trials elapsed, retry fires
         XCTAssertEqual(player.playedURLs, [retry, encourage, retry])
     }
+
+    func test_stop_callsPlayerStop() async {
+        let store = FakeYokaiStore()
+        let player = FakeYokaiClipPlayer()
+        let router = YokaiClipRouter(
+            yokaiID: "sh", store: store, player: player, silencer: {}
+        )
+
+        router.stop()
+        XCTAssertEqual(player.stopCallCount, 1)
+    }
 }
 
 /// Test helper: ordered event log. Used only inside the @MainActor test class
