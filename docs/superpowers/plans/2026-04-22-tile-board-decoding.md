@@ -3608,12 +3608,12 @@ The `DEVELOPMENT_TEAM` injection step documented in the memory "xcodegen team in
 
 ```bash
 # Temporary team injection (do not commit the yml change)
-yq -i '.targets.Mora.settings.base.DEVELOPMENT_TEAM = "7BT28X9TQ9"' project.yml || true
+yq -i '.targets.Mora.settings.base.DEVELOPMENT_TEAM = "2AFT9XT8R2"' project.yml || true
 xcodegen generate
 git checkout -- project.yml
 ```
 
-If `yq` isn't available, edit `project.yml` manually to add `DEVELOPMENT_TEAM: 7BT28X9TQ9` under `targets.Mora.settings.base`, run `xcodegen generate`, then `git checkout -- project.yml`.
+If `yq` isn't available, edit `project.yml` manually to add `DEVELOPMENT_TEAM: 2AFT9XT8R2` under `targets.Mora.settings.base`, run `xcodegen generate`, then `git checkout -- project.yml`.
 
 - [ ] **Step 2: Full xcodebuild**
 

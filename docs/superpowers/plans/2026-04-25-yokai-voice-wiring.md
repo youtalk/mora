@@ -45,7 +45,7 @@ These are real changes that landed on the branch and that the next-session agent
 
 8. **`SessionContainerView.bootstrap` integration with the existing inner `do/catch`.** The plan's Task 8 Step 2 pseudocode used an early-return pattern; main's bootstrap already wraps `BundledYokaiStore()` + `YokaiOrchestrator` in a single inner `do/catch`. The router was added to that same block, sharing the existing `store` instance, so `BundledYokaiStore()` is allocated exactly once.
 9. **`enc.yokaiID` captured before SwiftData `delete`.** The new-encounter / unstarted-handoff branch in `bootstrap` calls `context.delete(enc)` + `context.save()` before the router construction; reading `enc.yokaiID` at that point is fragile. Fixed in `de4d5b7` by capturing `let encYokaiID = enc.yokaiID` immediately after `let enc = resolution.encounter`, then using the local in both `startWeek(yokaiID:)` and `YokaiClipRouter(yokaiID:)`.
-10. **xcodegen team injection uses `2AFT9XT8R2`.** The user's memory record was updated mid-session; the plan's example `7BT28X9TQ9` is stale. Use the value in `feedback_mora_xcodegen_team_injection`, not the literal in this plan file.
+10. **xcodegen team injection uses `2AFT9XT8R2`.** Use the value in `feedback_mora_xcodegen_team_injection`, not the literal in this plan file.
 11. **MoraMLX `swift build` failure (`.mlmodelc` missing) is pre-existing and unrelated** — the branch has zero diff vs main under `Packages/MoraMLX/`. Do not block on it.
 
 ### Future on-device verification (PR test plan)
@@ -1254,7 +1254,7 @@ Per `CLAUDE.md`, inject `DEVELOPMENT_TEAM` then revert (memory: `feedback_mora_x
 # Inject team for local generation only
 sed -i '' 's|^settings:|settings:\
   base:\
-    DEVELOPMENT_TEAM: 7BT28X9TQ9|' project.yml
+    DEVELOPMENT_TEAM: 2AFT9XT8R2|' project.yml
 
 xcodegen generate
 

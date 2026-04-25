@@ -101,7 +101,7 @@ Inherit the originals from `2026-04-22-pronunciation-bench-and-calibration.md` �
 - Commit messages follow `area: short description`; include `Co-Authored-By: Claude <noreply@anthropic.com>` (repo opts in, per CLAUDE.md).
 - Use a HEREDOC for commit messages so the trailer stays on its own line.
 - Do not touch files in the Phase 3 conflict boundary table — Engine B has landed and the files are live code now, but the principle of scope isolation still applies here.
-- `xcodegen generate` requires a temporary `project.yml` edit: add `DEVELOPMENT_TEAM: 7BT28X9TQ9` under the repo's `settings.base` (or equivalent — see the inline snippet in Task A1 Step 1 below), run `xcodegen generate`, then restore `project.yml` so the team ID is never committed.
+- `xcodegen generate` requires a temporary `project.yml` edit: add `DEVELOPMENT_TEAM: 2AFT9XT8R2` under the repo's `settings.base` (or equivalent — see the inline snippet in Task A1 Step 1 below), run `xcodegen generate`, then restore `project.yml` so the team ID is never committed.
 
 ---
 
@@ -122,7 +122,7 @@ python3 -c "
 import re
 with open('project.yml') as f: p = f.read()
 if 'DEVELOPMENT_TEAM' not in p:
-    p2 = re.sub(r'(CODE_SIGN_STYLE: Automatic)', r'\1\n        DEVELOPMENT_TEAM: 7BT28X9TQ9', p, count=1)
+    p2 = re.sub(r'(CODE_SIGN_STYLE: Automatic)', r'\1\n        DEVELOPMENT_TEAM: 2AFT9XT8R2', p, count=1)
     with open('project.yml', 'w') as f: f.write(p2)
 "
 xcodegen generate

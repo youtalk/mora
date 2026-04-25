@@ -13,16 +13,7 @@ speaker).
 
 ```sh
 cd recorder
-# Inject team for physical-device signing, generate, revert (per repo convention)
-python3 -c "
-import re
-with open('project.yml') as f: p = f.read()
-if 'DEVELOPMENT_TEAM' not in p:
-    p2 = re.sub(r'(CODE_SIGN_STYLE: Automatic)', r'\1\n        DEVELOPMENT_TEAM: 7BT28X9TQ9', p, count=1)
-    with open('project.yml', 'w') as f: f.write(p2)
-"
 xcodegen generate
-git restore --source=HEAD -- project.yml
 open "Mora Fixture Recorder.xcodeproj"
 ```
 

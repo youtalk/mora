@@ -226,5 +226,5 @@ The repo's `CLAUDE.md` and `~/.claude/projects/-Users-yutaka-kondo-src-mora/memo
 
 - **English-only** for all checked-in artifacts (code, comments, commits, PR bodies, issues). Conversations can be Japanese.
 - **Co-author attribution allowed** in mora commits (`Co-Authored-By: Claude <noreply@anthropic.com>`) and PR bodies (`🤖 Generated with [Claude Code]`). This is an explicit opt-in via the repo's `CLAUDE.md`.
-- **xcodegen team injection** — before `xcodegen generate`, inject `DEVELOPMENT_TEAM: 7BT28X9TQ9` into `project.yml`, then immediately revert (`git checkout -- project.yml`). The team ID stays out of git.
+- **xcodegen team injection** — before `xcodegen generate`, inject `DEVELOPMENT_TEAM: 2AFT9XT8R2` into `project.yml`, then immediately revert (`git checkout -- project.yml`). The team ID stays out of git.
 - **Swift 6 language mode pin** — every SPM `Package.swift` at tools-version 6.0 must pin `.swiftLanguageMode(.v5)` on every target and testTarget. Without it, CI's Xcode 16 trips strict concurrency on SwiftData / CoreML types.
