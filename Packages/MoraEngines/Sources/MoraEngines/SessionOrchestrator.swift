@@ -109,10 +109,14 @@ public final class SessionOrchestrator {
     public func start() async {
         guard phase == .notStarted else { return }
         sessionStartedAt = clock()
+        Self.logLifecycle("session start")
         transitionTo(.warmup)
     }
 
     public func handle(_ event: OrchestratorEvent) async {
+        Self.logLifecycle(
+            "event \(Self.eventLabel(event)) phase=\(phase.rawValue)"
+        )
         switch (phase, event) {
         case (.warmup, .warmupTap(let g)):
             if let targetG = target.skill.graphemePhoneme?.grapheme, g == targetG {
@@ -141,7 +145,9 @@ public final class SessionOrchestrator {
     /// queue is empty, so the orchestrator can never get stuck waiting for an
     /// answer that has no question to ask.
     private func transitionTo(_ newPhase: ADayPhase) {
+        let oldPhase = phase
         phase = newPhase
+        Self.logLifecycle("phase \(oldPhase.rawValue)→\(newPhase.rawValue)")
         switch phase {
         case .decoding:
             do {
@@ -232,6 +238,48 @@ public final class SessionOrchestrator {
         }
         sentenceIndex += 1
         if sentenceIndex >= sentences.count { transitionTo(.completion) }
+    }
+
+    /// Single chokepoint for lifecycle log lines emitted by `start`,
+    /// `transitionTo`, and `handle`. Branches on `#if DEBUG` so the body
+    /// of the line is `privacy: .public` while iterating on-device, then
+    /// `.private` in Release so the OS-log row redacts (sysdiagnose,
+    /// TestFlight feedback). Every lifecycle log in this file routes
+    /// through here so privacy + format stay uniform.
+    private static func logLifecycle(_ line: String) {
+        #if DEBUG
+        sessionLog.info("\(line, privacy: .public)")
+        #else
+        sessionLog.info("\(line, privacy: .private)")
+        #endif
+    }
+
+    /// Compact one-line description of an `OrchestratorEvent` for the
+    /// lifecycle log. Keeps payload-bearing cases (transcript, chain
+    /// role) inline so the console reads as a timeline without chasing
+    /// other rows. Sample counts are kept so a "0 samples" recording —
+    /// the empty-audio path the tile-board phase uses — is obvious from
+    /// the log alone.
+    private static func eventLabel(_ event: OrchestratorEvent) -> String {
+        switch event {
+        case .warmupTap(let g):
+            return "warmupTap g=\"\(g.letters)\""
+        case .advance:
+            return "advance"
+        case .answerHeard(let r):
+            return """
+                answerHeard transcript=\"\(r.asr.transcript)\" \
+                samples=\(r.audio.samples.count)
+                """
+        case .answerManual(let correct):
+            return "answerManual correct=\(correct)"
+        case .tileBoardTrialCompleted:
+            return "tileBoardTrialCompleted"
+        case .chainFinished(let role):
+            return "chainFinished role=\(role)"
+        case .phaseFinished:
+            return "phaseFinished"
+        }
     }
 
     /// Orchestrator-level per-trial log. Fires regardless of which

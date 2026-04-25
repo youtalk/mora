@@ -11,6 +11,13 @@ public enum AppleSpeechEngineError: Error, Equatable {
     case recognizerUnavailable
     case audioSessionConfigurationFailed
     case audioConverterUnavailable
+    /// macOS-specific: SFSpeechRecognitionTask returned `kLSRErrorDomain`
+    /// code 201 ("Siri and Dictation are disabled"). The on-device speech
+    /// recognizer on Mac (Mac Catalyst and "Designed for iPad" alike) is
+    /// gated behind macOS System Settings → Apple Intelligence & Siri →
+    /// Dictation; iOS has no such gate. Surfaced as a distinct case so the
+    /// UI can show an actionable hint instead of just falling silent.
+    case dictationDisabled
 }
 
 public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
@@ -51,12 +58,18 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
             do {
                 try self.startSession(continuation: continuation)
             } catch {
+                asrLog.error(
+                    "AppleSpeechEngine.listen startSession failed: \(String(describing: error), privacy: .public)"
+                )
                 continuation.finish(throwing: error)
             }
         }
     }
 
     public func cancel() {
+        #if DEBUG
+        asrLog.info("AppleSpeechEngine.cancel called")
+        #endif
         lock.lock()
         defer { lock.unlock() }
         tearDownLocked()
@@ -65,6 +78,9 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
     private func startSession(
         continuation: AsyncThrowingStream<SpeechEvent, Error>.Continuation
     ) throws {
+        #if DEBUG
+        asrLog.info("startSession enter")
+        #endif
         #if os(iOS)
         // SFSpeechRecognizer needs an active record audio session; without
         // this, engine.start() either fails or the tap captures nothing.
@@ -72,7 +88,13 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
         do {
             try session.setCategory(.record, mode: .measurement, options: .duckOthers)
             try session.setActive(true, options: .notifyOthersOnDeactivation)
+            #if DEBUG
+            asrLog.info("AVAudioSession setCategory(.record .measurement .duckOthers) ok")
+            #endif
         } catch {
+            asrLog.error(
+                "AVAudioSession config failed: \(String(describing: error), privacy: .public)"
+            )
             throw AppleSpeechEngineError.audioSessionConfigurationFailed
         }
         #endif
@@ -144,9 +166,25 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
         engine.prepare()
         lock.unlock()
 
+        #if DEBUG
+        asrLog.info(
+            """
+            AVAudioEngine prepared inputFormat=\
+            sr=\(format.sampleRate, privacy: .public) \
+            ch=\(format.channelCount, privacy: .public) \
+            tapBuffer=\(tapBufferSize, privacy: .public)
+            """
+        )
+        #endif
         do {
             try engine.start()
+            #if DEBUG
+            asrLog.info("AVAudioEngine.start ok")
+            #endif
         } catch {
+            asrLog.error(
+                "AVAudioEngine.start failed: \(String(describing: error), privacy: .public)"
+            )
             self.cancel()
             continuation.finish(throwing: AppleSpeechEngineError.audioEngineStartFailed)
             return
@@ -163,11 +201,22 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
         self.task = recognizer.recognitionTask(with: req) { [weak self, ringRef = ring] result, err in
             guard let self else { return }
             if let err {
+                let mapped = Self.mapRecognitionError(err)
                 #if DEBUG
                 asrLog.error("ASR: error \(String(describing: err), privacy: .public)")
                 #endif
+                if let mappedAppleErr = mapped as? AppleSpeechEngineError,
+                    mappedAppleErr == .dictationDisabled
+                {
+                    asrLog.error(
+                        """
+                        ASR: Dictation is disabled on macOS — open System Settings → \
+                        Apple Intelligence & Siri → Dictation to enable mic input
+                        """
+                    )
+                }
                 self.cancel()
-                continuation.finish(throwing: err)
+                continuation.finish(throwing: mapped)
                 return
             }
             guard let result else { return }
@@ -234,6 +283,22 @@ public final class AppleSpeechEngine: SpeechEngine, @unchecked Sendable {
                 }
             }
         }
+    }
+
+    /// Translates the framework-level error from `SFSpeechRecognitionTask`
+    /// into an `AppleSpeechEngineError` when we recognize it; otherwise
+    /// returns the original error unchanged so the caller can surface the
+    /// raw description. The only case mapped today is the macOS
+    /// `kLSRErrorDomain` code 201 path (Dictation disabled in System
+    /// Settings); other framework errors (network, server, audio
+    /// interruption) keep their native domain so the OS-log row is
+    /// faithful and a future mapping can extend the switch in one place.
+    private static func mapRecognitionError(_ err: Error) -> Error {
+        let nsErr = err as NSError
+        if nsErr.domain == "kLSRErrorDomain" && nsErr.code == 201 {
+            return AppleSpeechEngineError.dictationDisabled
+        }
+        return err
     }
 
     /// Must be called with `lock` held.
