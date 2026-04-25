@@ -197,6 +197,19 @@ public actor AppleTTSEngine: TTSEngine {
         } onCancel: { [weak self] in
             Task { await self?.cancelCurrentUtterance() }
         }
+        #if DEBUG
+        // `withCheckedContinuation` resumes either through the delegate
+        // (`didFinish` / `didCancel` → `DelegateProxy.takeNext`) or via
+        // the `onCancel` path's `cancelCurrentUtterance()`; in both cases
+        // the synthesizer is no longer holding this utterance by the
+        // time we reach here. Log on the way out so the console reads
+        // as a paired "speak start"/"speak end" timeline.
+        if let ipa = ipaOverride {
+            audioLog.info("TTS done /\(ipa, privacy: .public)/")
+        } else {
+            audioLog.info("TTS done \"\(text, privacy: .public)\"")
+        }
+        #endif
     }
 
     /// Invoked from `onCancel` handlers on a non-actor executor; the `Task`

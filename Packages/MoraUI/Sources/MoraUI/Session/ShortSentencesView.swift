@@ -1,10 +1,13 @@
 import MoraCore
 import MoraEngines
+import OSLog
 import SwiftUI
 
 #if canImport(UIKit)
 import UIKit
 #endif
+
+private let micLog = Logger(subsystem: "tech.reenable.Mora", category: "Speech")
 
 struct ShortSentencesView: View {
     @Environment(\.moraStrings) private var strings
@@ -14,6 +17,13 @@ struct ShortSentencesView: View {
     let speechEngine: SpeechEngine?
     let speech: SpeechController?
     let clipRouter: YokaiClipRouter?
+    /// Fires the first time the mic path resolves to a permanent
+    /// "this device can't do mic" condition (today: macOS Dictation
+    /// disabled). The container view flips `uiMode` to `.tap` so the
+    /// learner can keep the session moving via the Correct / Try-again
+    /// pair instead of being stuck on a silent mic button. Defaults to
+    /// a no-op so existing previews / tests don't have to wire it up.
+    var onSpeechUnavailable: () -> Void = {}
 
     @State private var micState: MicUIState = .idle
     @State private var shakeAmount: CGFloat = 0
@@ -221,6 +231,7 @@ struct ShortSentencesView: View {
         guard let expected = displayedSentence else { return }
         lastHeard = ""
         micState = .listening(partialText: "")
+        Self.logMic("startListening expected=\"\(expected.text)\"")
         Task { @MainActor in
             defer {
                 // Stream may terminate without a .final event (cancel, early
@@ -232,12 +243,19 @@ struct ShortSentencesView: View {
                 for try await event in engine.listen() {
                     switch event {
                     case .started:
-                        break
+                        Self.logMic("event .started; state=listening")
                     case .partial(let text):
                         if case .listening = micState {
                             micState = .listening(partialText: text)
                         }
                     case .final(let recording):
+                        Self.logMic(
+                            """
+                            event .final transcript=\"\(recording.asr.transcript)\" \
+                            confidence=\(recording.asr.confidence) \
+                            samples=\(recording.audio.samples.count)
+                            """
+                        )
                         let priorIndex = orchestrator.sentenceIndex
                         pinnedSentenceIndex = priorIndex
                         lastHeard = recording.asr.transcript
@@ -245,6 +263,7 @@ struct ShortSentencesView: View {
                         try? await Task.sleep(nanoseconds: 120_000_000)
                         await orchestrator.handle(.answerHeard(recording))
                         let wasCorrect = orchestrator.trials.last?.correct ?? false
+                        Self.logMic("assess result correct=\(wasCorrect)")
                         feedback = wasCorrect ? .correct : .wrong
                         if !wasCorrect, let speech {
                             await speech.playAndAwait(
@@ -257,11 +276,47 @@ struct ShortSentencesView: View {
                         micState = .idle
                         pinnedSentenceIndex = nil
                         lastHeard = ""
+                        Self.logMic("state=idle (post-assess)")
                     }
                 }
             } catch {
+                // Match the DEBUG-public / Release-private split the rest of
+                // this view's lifecycle logs use (`logMic`) so an unredacted
+                // framework error description does not leak through
+                // sysdiagnose / TestFlight in shipping builds. Same line is
+                // emitted both ways; only the privacy tag changes.
+                #if DEBUG
+                micLog.error(
+                    "ASR listen failed: \(String(describing: error), privacy: .public)"
+                )
+                #else
+                micLog.error(
+                    "ASR listen failed: \(String(describing: error), privacy: .private)"
+                )
+                #endif
+                if let appleErr = error as? AppleSpeechEngineError,
+                    appleErr == .dictationDisabled
+                {
+                    Self.logMic("speech unavailable (dictationDisabled); tap fallback")
+                    onSpeechUnavailable()
+                }
                 micState = .idle
             }
         }
+    }
+
+    /// Pairs with `SessionOrchestrator.logLifecycle` and
+    /// `SessionContainerView.logBootstrap`: same shape so the three
+    /// streams interleave in Console.app and a DEBUG build can be read
+    /// top-to-bottom as a timeline. Uses the file-private `micLog`
+    /// (subsystem=tech.reenable.Mora, category=Speech) so a single
+    /// `category == "Speech"` filter captures both this view's mic state
+    /// transitions and `AppleSpeechEngine`'s ASR-internal events.
+    private static func logMic(_ line: String) {
+        #if DEBUG
+        micLog.info("mic \(line, privacy: .public)")
+        #else
+        micLog.info("mic \(line, privacy: .private)")
+        #endif
     }
 }

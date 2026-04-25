@@ -27,6 +27,11 @@ public struct SessionContainerView: View {
     @State private var speech: SpeechController?
     @State private var showCloseConfirm = false
     @State private var clipRouter: YokaiClipRouter?
+    /// True after the mic path reports `.dictationDisabled` for the first
+    /// time on this run. Surfaces an alert pointing the user at macOS's
+    /// Dictation toggle, then leaves `uiMode = .tap` so the session
+    /// completes on tap input without a second pop-up on every trial.
+    @State private var showDictationDisabledAlert = false
 
     public init() {}
 
@@ -51,6 +56,17 @@ public struct SessionContainerView: View {
                 YokaiLayerView(orchestrator: yokai, speech: speech)
                     .ignoresSafeArea()
             }
+        }
+        .alert("Microphone unavailable", isPresented: $showDictationDisabledAlert) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text(
+                """
+                To use the mic on Mac, enable Dictation in System Settings → \
+                Apple Intelligence & Siri → Dictation. The session will \
+                continue with tap input for now.
+                """
+            )
         }
         .alert(strings.sessionCloseTitle, isPresented: $showCloseConfirm) {
             Button(strings.sessionCloseKeepGoing, role: .cancel) {}
@@ -186,7 +202,8 @@ public struct SessionContainerView: View {
                     feedback: $feedback,
                     speechEngine: uiMode == .mic ? speechEngine : nil,
                     speech: speech,
-                    clipRouter: clipRouter
+                    clipRouter: clipRouter,
+                    onSpeechUnavailable: handleSpeechUnavailable
                 )
             case .completion:
                 CompletionView(
@@ -206,23 +223,29 @@ public struct SessionContainerView: View {
 
     @MainActor
     private func bootstrap() async {
+        Self.logBootstrap("bootstrap start")
         #if os(iOS)
         // Decide mic vs tap before building the engine — if the user
         // denied either permission, skip engine construction entirely.
         let coord = PermissionCoordinator()
-        switch coord.current() {
+        let permission = coord.current()
+        Self.logBootstrap("permission state=\(permission)")
+        switch permission {
         case .allGranted:
             do {
                 speechEngine = try AppleSpeechEngine()
                 uiMode = .mic
+                Self.logBootstrap("AppleSpeechEngine init ok; uiMode=mic")
             } catch {
                 speechLog.error(
                     "AppleSpeechEngine init failed, falling back to tap: \(String(describing: error))"
                 )
                 uiMode = .tap
+                Self.logBootstrap("uiMode=tap (engine init failed)")
             }
         case .partial, .notDetermined:
             uiMode = .tap
+            Self.logBootstrap("uiMode=tap (permission \(permission))")
         }
         speech = SpeechController(tts: AppleTTSEngine(l1Profile: JapaneseL1Profile()))
         // Prime AVSpeechSynthesizer so the warmup phoneme isn't the
@@ -346,9 +369,44 @@ public struct SessionContainerView: View {
                 ),
                 yokai: yokaiOrchestrator
             )
+            Self.logBootstrap(
+                "orchestrator created skill=\(skill.code.rawValue) sentences=\(sentences.count)"
+            )
         } catch {
             bootError = String(describing: error)
+            Self.logBootstrap("bootstrap failed: \(String(describing: error))")
         }
+    }
+
+    /// Pairs with `SessionOrchestrator.logLifecycle`: same shape so the
+    /// two streams interleave cleanly in Console.app and a DEBUG build
+    /// reads top-to-bottom as a timeline. Routes through `speechLog`
+    /// so a `category == "Speech"` filter captures every session-startup
+    /// signal (permission state, mic vs tap, engine init outcome,
+    /// orchestrator construction) alongside the per-trial mic events.
+    private static func logBootstrap(_ line: String) {
+        #if DEBUG
+        speechLog.info("\(line, privacy: .public)")
+        #else
+        speechLog.info("\(line, privacy: .private)")
+        #endif
+    }
+
+    /// Fires when `ShortSentencesView`'s mic path observes a permanent
+    /// "this device can't do mic" condition (today only macOS Dictation
+    /// disabled). Flip `uiMode` to `.tap` so the trial loop can finish
+    /// via the Correct / Try-again pair, drop the speech engine so the
+    /// next session start doesn't reuse it, and surface a one-shot
+    /// alert pointing the user at the macOS Dictation toggle. Idempotent
+    /// — repeated calls on later trials are no-ops because `uiMode` is
+    /// already `.tap`.
+    @MainActor
+    private func handleSpeechUnavailable() {
+        guard uiMode == .mic else { return }
+        Self.logBootstrap("speech unavailable; uiMode mic→tap (dictation disabled)")
+        uiMode = .tap
+        speechEngine = nil
+        showDictationDisabledAlert = true
     }
 
     @MainActor

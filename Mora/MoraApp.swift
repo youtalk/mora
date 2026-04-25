@@ -106,6 +106,7 @@ struct MoraApp: App {
         ShadowEvaluatorFactory { container in
             let engineA = FeatureBasedPronunciationEvaluator()
             let logger = SwiftDataPronunciationTrialLogger(container: container)
+            let timeout = Self.evaluatorTimeout
             // The resolver closure is consulted per-trial: if the
             // background MLX warmup hasn't finished compiling the ANE
             // graph yet (first launch after install can take ~100 s on
@@ -116,10 +117,32 @@ struct MoraApp: App {
             // and restart the session.
             return ShadowLoggingPronunciationEvaluator(
                 primary: engineA,
-                shadowResolver: { MoraMLXModelCatalog.cachedPhonemeEvaluator() },
+                shadowResolver: { MoraMLXModelCatalog.cachedPhonemeEvaluator(timeout: timeout) },
                 logger: logger,
-                timeout: .milliseconds(1000)
+                timeout: timeout
             )
         }
+    }
+
+    /// Per-trial Engine B budget. iPad Air M2 lands in ~250–600 ms; the
+    /// `Designed for iPad` and `Mac Catalyst` runtime on Apple Silicon
+    /// Mac measured ~6.7 s on the first inference (the wav2vec2 CoreML
+    /// graph appears to land on the CPU/GPU rather than the Neural
+    /// Engine on macOS — the warmup `MLModel(contentsOf:)` already
+    /// took ~38 s). Stretch the budget on Mac so Engine B actually
+    /// produces a result instead of every trial logging `B=timedOut`,
+    /// which makes the cross-engine debug loop unusable on the
+    /// developer's Mac. The Mac path is dev-only — production
+    /// distribution targets iPad. The same timeout is applied at both
+    /// layers (shadow composite and the inner `PhonemeModelPronunciation
+    /// Evaluator.timeout`) because the inner one bounds the
+    /// `PhonemePosteriorProvider` call and will short-circuit to
+    /// `.unclear` first if it expires.
+    private static var evaluatorTimeout: Duration {
+        let info = ProcessInfo.processInfo
+        if info.isiOSAppOnMac || info.isMacCatalystApp {
+            return .milliseconds(8000)
+        }
+        return .milliseconds(1000)
     }
 }
