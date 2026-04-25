@@ -269,9 +269,20 @@ struct ShortSentencesView: View {
                     }
                 }
             } catch {
+                // Match the DEBUG-public / Release-private split the rest of
+                // this view's lifecycle logs use (`logMic`) so an unredacted
+                // framework error description does not leak through
+                // sysdiagnose / TestFlight in shipping builds. Same line is
+                // emitted both ways; only the privacy tag changes.
+                #if DEBUG
                 micLog.error(
                     "ASR listen failed: \(String(describing: error), privacy: .public)"
                 )
+                #else
+                micLog.error(
+                    "ASR listen failed: \(String(describing: error), privacy: .private)"
+                )
+                #endif
                 if let appleErr = error as? AppleSpeechEngineError,
                     appleErr == .dictationDisabled
                 {
