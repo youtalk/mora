@@ -12,6 +12,11 @@ enum Violation: Equatable {
     case interestWordsEmpty
     case interestWordNotInSentence(interestWord: String)
     case lengthOutOfRange(actual: Int, minimum: Int, maximum: Int)
+    /// A JSON decode or IO error while reading a cell file.
+    case decodeError(message: String)
+    /// A payload field (`phoneme`, `interest`, or `ageBand`) does not match
+    /// the value implied by the file's path.
+    case payloadFilenameMismatch(field: String, payloadValue: String, filenameValue: String)
 }
 
 enum Validator {

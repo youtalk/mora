@@ -27,7 +27,7 @@ final class ValidatorTests: XCTestCase {
                 .init(surface: "a", graphemes: ["a"], phonemes: ["ə"]),
                 .init(surface: "ship", graphemes: ["sh", "i", "p"], phonemes: ["ʃ", "ɪ", "p"]),
                 .init(surface: "at", graphemes: ["a", "t"], phonemes: ["æ", "t"]),
-                .init(surface: "the", graphemes: ["t", "h", "e"], phonemes: ["ð", "ə"]),
+                .init(surface: "the", graphemes: ["th", "e"], phonemes: ["ð", "ə"]),
                 .init(surface: "shed", graphemes: ["sh", "e", "d"], phonemes: ["ʃ", "ɛ", "d"]),
             ]
         )
