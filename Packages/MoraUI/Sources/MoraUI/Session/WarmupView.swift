@@ -6,6 +6,7 @@ struct WarmupView: View {
     @Environment(\.moraStrings) private var strings
     let orchestrator: SessionOrchestrator
     let speech: SpeechController?
+    let clipRouter: YokaiClipRouter?
 
     private static let promptPrefix = "Which one says"
 
@@ -49,7 +50,7 @@ struct WarmupView: View {
                         .minimumScaleFactor(0.5)
                 }
 
-                Button(action: playTargetPhoneme) {
+                Button(action: { Task { await playTargetPhoneme() } }) {
                     Text(strings.warmupListenAgain)
                         .font(MoraType.cta())
                         .foregroundStyle(MoraTheme.Accent.teal)
@@ -65,16 +66,21 @@ struct WarmupView: View {
             .frame(maxWidth: .infinity)
         }
         .task {
-            playTargetPhoneme()
+            await playTargetPhoneme()
         }
     }
 
-    private func playTargetPhoneme() {
-        guard let speech, let phoneme = orchestrator.target.phoneme else { return }
-        speech.play([
-            .text(Self.promptPrefix, .normal),
-            .phoneme(phoneme, .slow),
-        ])
+    /// Speaks the warmup prompt and the target phoneme. Sequence:
+    /// 1. Apple TTS narrator: "Which one says".
+    /// 2. Yokai's `phoneme` clip if the active week has one bundled.
+    /// 3. If no yokai clip is available, fall back to Apple TTS `.phoneme`.
+    private func playTargetPhoneme() async {
+        guard let speech else { return }
+        await speech.playAndAwait([.text(Self.promptPrefix, .normal)])
+        let played = (await clipRouter?.play(.phoneme)) ?? false
+        if !played, let phoneme = orchestrator.target.phoneme {
+            await speech.playAndAwait([.phoneme(phoneme, .slow)])
+        }
     }
 
     private var targetIPA: String {
