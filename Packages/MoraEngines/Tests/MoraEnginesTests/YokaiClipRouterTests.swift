@@ -63,6 +63,39 @@ final class YokaiClipRouterTests: XCTestCase {
         XCTAssertTrue(player.playedURLs.isEmpty)
         XCTAssertFalse(silenced, "silencer should not run when clip URL is missing")
     }
+
+    func test_recordCorrect_firesEncourageOnThirdConsecutiveCorrect() async {
+        let store = FakeYokaiStore()
+        let url = URL(fileURLWithPath: "/tmp/sh-encourage.m4a")
+        store.clipURLs["sh"] = [.encourage: url]
+        let player = FakeYokaiClipPlayer()
+        let router = YokaiClipRouter(
+            yokaiID: "sh", store: store, player: player, silencer: {}
+        )
+
+        await router.recordCorrect()
+        await router.recordCorrect()
+        XCTAssertTrue(player.playedURLs.isEmpty, "no clip until 3rd correct")
+
+        await router.recordCorrect()
+        XCTAssertEqual(player.playedURLs, [url], "encourage on 3rd correct")
+    }
+
+    func test_recordCorrect_streakResetsAfterEncourage() async {
+        let store = FakeYokaiStore()
+        let url = URL(fileURLWithPath: "/tmp/sh-encourage.m4a")
+        store.clipURLs["sh"] = [.encourage: url]
+        let player = FakeYokaiClipPlayer()
+        let router = YokaiClipRouter(
+            yokaiID: "sh", store: store, player: player, silencer: {}
+        )
+
+        for _ in 0..<6 {
+            await router.recordCorrect()
+        }
+
+        XCTAssertEqual(player.playedURLs.count, 2, "two encourage clips for 6-correct run (3rd and 6th)")
+    }
 }
 
 /// Test helper: ordered event log. Used only inside the @MainActor test class

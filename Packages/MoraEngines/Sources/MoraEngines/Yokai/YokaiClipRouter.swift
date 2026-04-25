@@ -46,4 +46,16 @@ public final class YokaiClipRouter {
     public func stop() {
         player.stop()
     }
+
+    private var consecutiveCorrect: Int = 0
+
+    /// Record a correct trial in `shortSentences`. Fires `.encourage` and
+    /// resets the streak on every 3rd consecutive correct.
+    public func recordCorrect() async {
+        consecutiveCorrect += 1
+        if consecutiveCorrect >= 3 {
+            consecutiveCorrect = 0
+            await play(.encourage)
+        }
+    }
 }
