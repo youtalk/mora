@@ -115,10 +115,26 @@ extension SentenceLibrary {
     }
 
     private static func loadCells(from bundle: Bundle) throws -> [CellKey: Cell] {
-        guard let root = bundle.url(forResource: "SentenceLibrary", withExtension: nil) else {
-            return [:]  // resource not present — cells map empty, callers fall back
+        // `Bundle.url(forResource:withExtension:)` is documented for files;
+        // its behavior for directory resources varies by macOS version. With
+        // `.copy("Resources/SentenceLibrary")` in Package.swift the tree
+        // lands at <bundle>/SentenceLibrary/ — fall back to that direct path
+        // when the Bundle lookup misses (macos-15 CI, vs. macOS 16+ where the
+        // lookup happens to find directories).
+        if let root = bundle.url(forResource: "SentenceLibrary", withExtension: nil) {
+            return try loadCells(from: root)
         }
-        return try loadCells(from: root)
+        let direct = bundle.bundleURL.appendingPathComponent(
+            "SentenceLibrary",
+            isDirectory: true
+        )
+        var isDir: ObjCBool = false
+        if FileManager.default.fileExists(atPath: direct.path, isDirectory: &isDir),
+            isDir.boolValue
+        {
+            return try loadCells(from: direct)
+        }
+        return [:]  // resource not present — cells map empty, callers fall back
     }
 
     private static func loadCells(from root: URL) throws -> [CellKey: Cell] {
