@@ -7,16 +7,16 @@ final class MoraStringsTests: XCTestCase {
 
     // MARK: - Completeness
 
-    func test_uiStrings_returnsSameTableForEveryLevel() {
-        let tables = LearnerLevel.allCases.map { profile.uiStrings(at: $0) }
-        // PR-1 stub invariant: every level falls back to `stringsAdvancedG1G2`.
-        // Compare one arbitrary plain-string field across levels to prove they're
-        // the same underlying table.
-        let first = tables[0].homeTodayQuest
-        for t in tables {
-            XCTAssertEqual(t.homeTodayQuest, first)
-        }
-        XCTAssertEqual(first, "今日の クエスト")
+    func test_uiStrings_advancedTable_homeTodayQuest_usesKanji() {
+        // Advanced tier uses G1+G2 kanji: `今日` is G2.
+        let s = profile.uiStrings(at: .advanced)
+        XCTAssertEqual(s.homeTodayQuest, "今日の クエスト")
+    }
+
+    func test_uiStrings_coreTable_homeTodayQuest_isAllHiragana() {
+        // Core tier (Task 1.5): `今` is G2 → all-hira per partial-mix rule.
+        let s = profile.uiStrings(at: .core)
+        XCTAssertEqual(s.homeTodayQuest, "きょうの クエスト")
     }
 
     func test_everyPlainStringFieldIsNonEmpty() {

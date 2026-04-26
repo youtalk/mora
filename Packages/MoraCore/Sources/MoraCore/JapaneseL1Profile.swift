@@ -124,8 +124,166 @@ public struct JapaneseL1Profile: L1Profile {
         return f
     }()
 
-    /// PR 1 stub — Task 1.5 fills in the hira-down-shifted authoring.
-    private static let stringsCoreG1 = stringsAdvancedG1G2
+    /// Ages 7 (1st-grade-finished) — kanji budget: JPKanjiLevel.grade1 only
+    /// (80 chars). Mechanically derived from stringsAdvancedG1G2 by replacing
+    /// every G2+ kanji with its hiragana reading. Per spec §6.1.1 the
+    /// partial-mix rule applies: if any kanji in a compound is outside the G1
+    /// budget the whole compound is rendered in hiragana.
+    private static let stringsCoreG1 = MoraStrings(
+        ageOnboardingPrompt: "なんさい？",
+        ageOnboardingCTA: "▶ はじめる",
+        welcomeTitle: "えいごの 音を いっしょに",
+        welcomeCTA: "はじめる",
+        // `名` G1 but `前` G2 → partial-mix forbidden → all-hira.
+        // `教` G2 → all-hira.
+        namePrompt: "なまえを おしえてね",
+        nameSkip: "スキップ",
+        nameCTA: "つぎへ",
+        interestPrompt: "すきな ものを 3つ えらんでね",
+        interestCTA: "つぎへ",
+        // `声` G2, `聞` G2 → all-hira.
+        permissionTitle: "こえを きくよ",
+        // `読` G2, `聞` G2 → all-hira. `正` G1 kept.
+        permissionBody: "きみが よんだ ことばを きいて、正しいか しらべるよ",
+        permissionAllow: "ゆるす",
+        // `後` G2 → all-hira.
+        permissionNotNow: "あとで",
+        yokaiIntroConceptTitle: "音には ともだちが いるよ",
+        // `聞` G2 → all-hira.
+        yokaiIntroConceptBody:
+            "えいごの 音 ひとつ ひとつに、Yokai が すんでいる。"
+            + "なかよく なるには、その 音を よく きいて、ことばに しよう。",
+        // `今` G2, `週` G2 → all-hira.
+        yokaiIntroTodayTitle: "こんしゅうの ともだち",
+        // `今` G2, `週` G2 → all-hira.
+        yokaiIntroTodayBody: "こんしゅうは この 音を いっしょに れんしゅうしよう。",
+        // `回` G2 → all-hira.
+        yokaiIntroSessionTitle: "1かいの すすめかた",
+        // `回` G2, `分` G2 → all-hira.
+        yokaiIntroSessionBody: "1かい だいたい 10ぷん。",
+        yokaiIntroSessionStep1: "きく",
+        yokaiIntroSessionStep2: "ならべる",
+        // `話` G2 → all-hira.
+        yokaiIntroSessionStep3: "はなす",
+        // `回` G2 → all-hira.
+        yokaiIntroProgressTitle: "5かいで ともだちに なる",
+        // `回` G2 → all-hira. `日` G1 kept.
+        yokaiIntroProgressBody:
+            "Yokai と 5かい れんしゅうすると、なかよく なれる。"
+            + "1日 1かい でも、すきな ペースで OK。",
+        yokaiIntroNext: "つぎへ",
+        yokaiIntroBegin: "▶ はじめる",
+        yokaiIntroClose: "とじる",
+        // `今` G2 → all-hira.
+        homeTodayQuest: "きょうの クエスト",
+        homeStart: "▶ はじめる",
+        // `分` G2 → all-hira.
+        homeDurationPill: { minutes in "\(minutes)ぷん" },
+        // `文` G1, `字` G1 — both in budget, kept.
+        homeWordsPill: { count in "\(count)文字" },
+        // `文` G1 — kept.
+        homeSentencesPill: { count in "\(count)文" },
+        bestiaryLinkLabel: "ともだち ずかん",
+        bestiaryPlayGreeting: "🔊 あいさつ",
+        // `日` G1 kept.
+        bestiaryBefriendedOn: { date in
+            "なかよくなった日 \(Self.bestiaryDateFormatter.string(from: date))"
+        },
+        homeRecapLink: "あそびかた",
+        // `英` G2, `語` G2, `声` G2 → all-hira.
+        voiceGateTitle: "えいごの こえを ダウンロードしてください",
+        // `入` G1, `中` G1 kept. All G2+ compounds replaced per partial-mix
+        // rule. `前` G2 → まえ. `内` G2 → ない. `表示` G3+G2 → ひょうじ.
+        // `言語` G2+G2 → ことば. `場合` G2+G2 → ばあい.
+        voiceGateBody:
+            "Moraで つかう きれいな こえが iPadに 入っていません。\n"
+            + "せっていアプリを ひらき、下の じゅんで ひらいてください:\n\n"
+            + "  せってい (Settings)\n"
+            + "  → アクセシビリティ (Accessibility)\n"
+            + "  → よみあげ と はつわ (Read & Speak)\n"
+            + "  → こえ (Voices) → えいご (English)\n\n"
+            + "その中から Premium または Enhanced の こえ (Ava / Samantha / Siri など) を\n"
+            + "ダウンロードしてください。\n"
+            + "(iPadOS 26より まえは Read & Speak の かわりに\n"
+            + " Spoken Content / よみあげコンテンツ と ひょうじされます。\n"
+            + " OSの ことばが えいごの ばあいは カッコ内の ひょうきで ひょうじされます。)",
+        // `設` `定` `開` all G3+ → all-hira.
+        voiceGateOpenSettings: "せっていを ひらく",
+        // `一` G1 but `度` G3 → partial-mix forbidden → all-hira.
+        voiceGateRecheck: "もういちど たしかめる",
+        // `済` G6, `英` G2, `語` G2 → all-hira.
+        voiceGateInstalledVoicesTitle: "インストールずみの えいご voice",
+        voiceGateNoVoicesPlaceholder: "(なし)",
+        // `今` G2 → all-hira.
+        sessionCloseTitle: "きょうの クエストを おわる？",
+        sessionCloseMessage: "ここまでの きろくは のこるよ",
+        sessionCloseKeepGoing: "つづける",
+        sessionCloseEnd: "おわる",
+        sessionWordCounter: { current, total in "\(current)/\(total)" },
+        sessionSentenceCounter: { current, total in "\(current)/\(total)" },
+        warmupListenAgain: "🔊 もういちど",
+        // `分` G2 → all-hira.
+        newRuleGotIt: "わかった",
+        newRuleListenAgain: "🔊 もういちど",
+        // `聞` G2 → all-hira.
+        decodingLongPressHint: "ながおしで もういちど きけるよ",
+        decodingBuildPrompt: "よく きいて ならべよう",
+        decodingListenAgain: "🔊 もういちど",
+        // `文` G1, `字` G1, `入` G1 — all in budget, kept.
+        tileTutorialSlotTitle: "文字を ますに 入れて ことばを つくる",
+        // `音` G1 kept.
+        tileTutorialSlotBody:
+            "ます 1つは 音 1つ。タイルを ながおしして、ますへ ドラッグしよう。",
+        // `聞` G2 → all-hira. `音` G1 kept.
+        tileTutorialAudioTitle: "きいた 音を つくろう",
+        // `聞` G2, `同` G2 → all-hira. `音` G1 kept.
+        tileTutorialAudioBody:
+            "はじめに 🔊 が 音を きかせる。きいた 音と おなじに なるよう、"
+            + "タイルを ならべよう。きこえなおすときは「もういちど きく」を タップ。",
+        tileTutorialNext: "つぎへ",
+        tileTutorialTry: "▶ やってみる",
+        // `見` G1 kept.
+        decodingHelpLabel: "あそびかたを 見る",
+        // `聞` G2 → all-hira.
+        sentencesLongPressHint: "ながおしで もういちど きけるよ",
+        feedbackCorrect: "せいかい！",
+        // `一` G1 but `回` G2 → partial-mix forbidden → all-hira.
+        feedbackTryAgain: "もういちど",
+        // `読` G2 → all-hira.
+        micIdlePrompt: "マイクを タップして よんでね",
+        // `聞` G2 → all-hira.
+        micListening: "きいてるよ…",
+        // `中` G1 kept.
+        micAssessing: "チェック中…",
+        // `答` G2 → all-hira.
+        micDeniedBanner: "マイクが つかえないので ボタンで こたえてね",
+        coachingShSubS: "くちびるをまるめて、したのおくをもちあげてみよう。「sh」。",
+        coachingShDrift: "もうすこしくちをまるくして、ながくのばしてみよう。「shhhh」。",
+        coachingRSubL: "したのさきはどこにもつけないで、おくだけすこし上に。「r」。",
+        coachingLSubR: "したのさきを上のはのうらにつけて、そのまま「l」。",
+        coachingFSubH: "上のはでしたくちびるに、かるくふれて「fff」。",
+        coachingVSubB: "上のはでしたくちびるにふれて、のどをふるわせて「vvv」。",
+        coachingThVoicelessSubS: "したのさきをはのあいだにそっと出して「thhh」。",
+        coachingThVoicelessSubT: "したのさきをはのあいだにそっと出して、とめずに「thhh」。",
+        coachingTSubThVoiceless: "したのさきを上のはのうらにぴたっとつけて、すぐはなして「t」。",
+        coachingAeSubSchwa: "口をよこにひろげて、あごを下げて「æ」。",
+        // `今` G2, `寄` G4 → all-hira.
+        categorySubstitutionBanner: { target, substitute in
+            "いまの \(target) は \(substitute) に よってたよ"
+        },
+        // `少` G2, `近` G2 → all-hira. `音` G1 kept.
+        categoryDriftBanner: { target in
+            "もうすこし \(target) らしい音に ちかづけよう"
+        },
+        completionTitle: "できた！",
+        completionScore: { correct, total in "\(correct)/\(total)" },
+        // `明` G2 + `日` G1 → partial-mix forbidden → all-hira.
+        completionComeBack: "あしたも またね",
+        a11yCloseSession: "クエストを おわる",
+        a11yMicButton: "マイク",
+        // `日` G1 kept.
+        a11yStreakChip: { days in "\(days)日 れんぞく" }
+    )
 
     /// PR 1 stub — Task 1.6 fills in the all-hira authoring.
     private static let stringsEntryHiraOnly = stringsAdvancedG1G2
