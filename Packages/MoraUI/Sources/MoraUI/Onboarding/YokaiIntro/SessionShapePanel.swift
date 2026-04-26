@@ -73,10 +73,15 @@ struct SessionShapePanel: View {
             return
         }
         for i in 0..<3 {
+            if Task.isCancelled { return }
             withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
                 stepsVisible[i] = true
             }
-            try? await Task.sleep(for: .milliseconds(120))
+            do {
+                try await Task.sleep(for: .milliseconds(120))
+            } catch {
+                return
+            }
         }
     }
 }

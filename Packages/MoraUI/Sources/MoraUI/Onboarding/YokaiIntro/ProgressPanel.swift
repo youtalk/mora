@@ -104,10 +104,15 @@ struct ProgressPanel: View {
             return
         }
         for i in 0..<5 {
+            if Task.isCancelled { return }
             withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
                 dotsLit[i] = true
             }
-            try? await Task.sleep(for: .milliseconds(120))
+            do {
+                try await Task.sleep(for: .milliseconds(120))
+            } catch {
+                return
+            }
         }
     }
 }

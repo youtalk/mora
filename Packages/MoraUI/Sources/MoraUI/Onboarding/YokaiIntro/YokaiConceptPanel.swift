@@ -70,10 +70,15 @@ struct YokaiConceptPanel: View {
             return
         }
         for index in silhouettesVisible.indices {
+            if Task.isCancelled { return }
             withAnimation(.easeOut(duration: 0.4)) {
                 silhouettesVisible[index] = true
             }
-            try? await Task.sleep(for: .milliseconds(80))
+            do {
+                try await Task.sleep(for: .milliseconds(80))
+            } catch {
+                return
+            }
         }
     }
 
