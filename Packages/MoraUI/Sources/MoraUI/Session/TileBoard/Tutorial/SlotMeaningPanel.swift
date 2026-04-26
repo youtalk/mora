@@ -105,6 +105,7 @@ struct SlotMeaningPanel: View {
         Text("👆")
             .font(.system(size: 38))
             .opacity(0.85)
+            .accessibilityHidden(true)
     }
 
     @MainActor

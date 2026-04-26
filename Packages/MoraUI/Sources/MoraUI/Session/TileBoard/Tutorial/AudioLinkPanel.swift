@@ -43,6 +43,7 @@ struct AudioLinkPanel: View {
             Text("🔊")
                 .font(.system(size: 64))
                 .scaleEffect(pulseScale)
+                .accessibilityHidden(true)
             Image(systemName: "arrow.down")
                 .font(.system(size: 28, weight: .semibold))
                 .foregroundStyle(MoraTheme.Ink.muted)
