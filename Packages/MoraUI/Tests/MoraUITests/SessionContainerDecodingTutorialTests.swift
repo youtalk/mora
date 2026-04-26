@@ -8,13 +8,19 @@ final class SessionContainerDecodingTutorialTests: XCTestCase {
     private var defaults: UserDefaults!
     private let suite = "test.SessionContainerDecodingTutorial.\(UUID().uuidString)"
 
-    override func setUp() {
-        super.setUp()
-        defaults = UserDefaults(suiteName: suite)
+    override func setUpWithError() throws {
+        try super.setUpWithError()
+        // UserDefaults(suiteName:) returns nil on invalid suite names
+        // (e.g. matching the main bundle id or starting with "."); surface
+        // that explicitly instead of crashing on a force-unwrap later.
+        defaults = try XCTUnwrap(
+            UserDefaults(suiteName: suite),
+            "Failed to construct UserDefaults suite \(suite)"
+        )
     }
 
     override func tearDown() {
-        defaults.removePersistentDomain(forName: suite)
+        defaults?.removePersistentDomain(forName: suite)
         defaults = nil
         super.tearDown()
     }
@@ -30,12 +36,14 @@ final class SessionContainerDecodingTutorialTests: XCTestCase {
         XCTAssertTrue(defaults.bool(forKey: DecodingTutorialState.seenKey))
     }
 
-    func testReplayMode_doesNotPersistFlag() {
-        // Replay mode is enforced at the OnboardingPlayMode level inside
-        // DecodingTutorialOverlay.onChange(of:); the state machine's
-        // dismiss method itself always writes when called. We rely on the
-        // overlay to call dismiss only when mode == .firstTime. This test
-        // pins the contract of the state machine: dismiss always writes.
+    func testDismissAlwaysWritesRegardlessOfMode() {
+        // The replay-mode contract — "do not flip the seen flag on a
+        // help-button replay" — is enforced upstream, in
+        // DecodingTutorialOverlay.onChange(of:): the overlay only invokes
+        // dismiss when mode == .firstTime. The state machine's dismiss
+        // itself is unconditional. This test pins that lower-level
+        // contract: once dismiss runs, the flag is set, regardless of
+        // which OnboardingPlayMode the caller was rendering.
         let state = DecodingTutorialState()
         state.dismiss(defaults: defaults)
         XCTAssertTrue(defaults.bool(forKey: DecodingTutorialState.seenKey))
