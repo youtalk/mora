@@ -7,8 +7,8 @@
   "sentences": [
     {
       "text": "Rex got a rod and Ron got a ram.",
-      "targetCount": 5,
-      "targetInitialContentWords": 5,
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
       "interestWords": ["rod", "ram"],
       "words": [
         { "surface": "Rex", "graphemes": ["r","e","x"],     "phonemes": ["r","ɛ","ks"] },

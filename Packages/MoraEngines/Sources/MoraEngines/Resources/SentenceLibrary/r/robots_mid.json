@@ -7,7 +7,7 @@
   "sentences": [
     {
       "text": "Rex got a rivet and Ron got a rod.",
-      "targetCount": 6,
+      "targetCount": 4,
       "targetInitialContentWords": 5,
       "interestWords": ["rivet", "rod"],
       "words": [

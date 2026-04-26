@@ -7,7 +7,7 @@
   "sentences": [
     {
       "text": "Rex and Ron fed a raptor and a rabbit.",
-      "targetCount": 6,
+      "targetCount": 5,
       "targetInitialContentWords": 4,
       "interestWords": ["raptor", "rabbit"],
       "words": [

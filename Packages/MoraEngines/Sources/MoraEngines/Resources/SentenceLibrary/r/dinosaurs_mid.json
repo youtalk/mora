@@ -7,7 +7,7 @@
   "sentences": [
     {
       "text": "Rex and Ron met a raptor in the dark.",
-      "targetCount": 6,
+      "targetCount": 5,
       "targetInitialContentWords": 4,
       "interestWords": ["raptor"],
       "words": [

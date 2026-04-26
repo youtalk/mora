@@ -7,7 +7,7 @@
   "sentences": [
     {
       "text": "Rex and Ron got a raft and a red ramp.",
-      "targetCount": 6,
+      "targetCount": 5,
       "targetInitialContentWords": 5,
       "interestWords": ["raft", "ramp"],
       "words": [
@@ -127,7 +127,7 @@
     },
     {
       "text": "Ron rested and a racer ran past a ramp.",
-      "targetCount": 7,
+      "targetCount": 6,
       "targetInitialContentWords": 5,
       "interestWords": ["racer", "ramp"],
       "words": [

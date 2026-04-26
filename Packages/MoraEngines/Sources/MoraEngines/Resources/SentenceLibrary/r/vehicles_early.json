@@ -7,8 +7,8 @@
   "sentences": [
     {
       "text": "Rex got a raft and Ron got a ramp.",
-      "targetCount": 5,
-      "targetInitialContentWords": 5,
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
       "interestWords": ["raft", "ramp"],
       "words": [
         { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },

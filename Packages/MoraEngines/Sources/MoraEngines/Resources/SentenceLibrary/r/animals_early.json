@@ -23,8 +23,8 @@
     },
     {
       "text": "Rip had a rabbit and Rob had a rat.",
-      "targetCount": 5,
-      "targetInitialContentWords": 5,
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
       "interestWords": ["rabbit", "rat"],
       "words": [
         { "surface": "Rip",    "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
