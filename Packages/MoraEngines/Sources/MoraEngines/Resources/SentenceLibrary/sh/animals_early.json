@@ -1,0 +1,351 @@
+{
+  "phoneme": "sh",
+  "phonemeIPA": "ʃ",
+  "graphemeLetters": "sh",
+  "interest": "animals",
+  "ageBand": "early",
+  "sentences": [
+    {
+      "text": "Shen had a fish and Sharon had a shrimp.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["fish", "shrimp"],
+      "words": [
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "fish",   "graphemes": ["f","i","sh"],         "phonemes": ["f","ɪ","ʃ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shrimp", "graphemes": ["sh","r","i","m","p"], "phonemes": ["ʃ","r","ɪ","m","p"] }
+      ]
+    },
+    {
+      "text": "Shep has a shy shark and a fish.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["shark", "fish"],
+      "words": [
+        { "surface": "Shep",  "graphemes": ["sh","e","p"],     "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "has",   "graphemes": ["h","a","s"],      "phonemes": ["h","æ","z"] },
+        { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "shy",   "graphemes": ["sh","y"],         "phonemes": ["ʃ","aɪ"] },
+        { "surface": "shark", "graphemes": ["sh","a","r","k"], "phonemes": ["ʃ","æ","r","k"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "fish",  "graphemes": ["f","i","sh"],     "phonemes": ["f","ɪ","ʃ"] }
+      ]
+    },
+    {
+      "text": "Sharon fed a shiny shark and a shrimp.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["shark", "shrimp"],
+      "words": [
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],          "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "shark",  "graphemes": ["sh","a","r","k"],     "phonemes": ["ʃ","æ","r","k"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shrimp", "graphemes": ["sh","r","i","m","p"], "phonemes": ["ʃ","r","ɪ","m","p"] }
+      ]
+    },
+    {
+      "text": "Shen and Shep fed a shy pig in a shed.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["pig"],
+      "words": [
+        { "surface": "Shen",  "graphemes": ["sh","e","n"],     "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Shep",  "graphemes": ["sh","e","p"],     "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "fed",   "graphemes": ["f","e","d"],      "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "shy",   "graphemes": ["sh","y"],         "phonemes": ["ʃ","aɪ"] },
+        { "surface": "pig",   "graphemes": ["p","i","g"],      "phonemes": ["p","ɪ","g"] },
+        { "surface": "in",    "graphemes": ["i","n"],          "phonemes": ["ɪ","n"] },
+        { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "shed",  "graphemes": ["sh","e","d"],     "phonemes": ["ʃ","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "Shep had a shy dog and a shiny fish.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["dog", "fish"],
+      "words": [
+        { "surface": "Shep",  "graphemes": ["sh","e","p"],     "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "had",   "graphemes": ["h","a","d"],      "phonemes": ["h","æ","d"] },
+        { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "shy",   "graphemes": ["sh","y"],         "phonemes": ["ʃ","aɪ"] },
+        { "surface": "dog",   "graphemes": ["d","o","g"],      "phonemes": ["d","ɒ","g"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "shiny", "graphemes": ["sh","i","n","y"], "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "fish",  "graphemes": ["f","i","sh"],     "phonemes": ["f","ɪ","ʃ"] }
+      ]
+    },
+    {
+      "text": "Sharon has a shiny fish in a shell.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["fish"],
+      "words": [
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "has",    "graphemes": ["h","a","s"],          "phonemes": ["h","æ","z"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "fish",   "graphemes": ["f","i","sh"],         "phonemes": ["f","ɪ","ʃ"] },
+        { "surface": "in",     "graphemes": ["i","n"],              "phonemes": ["ɪ","n"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shell",  "graphemes": ["sh","e","l","l"],     "phonemes": ["ʃ","ɛ","l"] }
+      ]
+    },
+    {
+      "text": "Shen got a shrimp and Shep got a fish.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["shrimp", "fish"],
+      "words": [
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shrimp", "graphemes": ["sh","r","i","m","p"], "phonemes": ["ʃ","r","ɪ","m","p"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "fish",   "graphemes": ["f","i","sh"],         "phonemes": ["f","ɪ","ʃ"] }
+      ]
+    },
+    {
+      "text": "Shep has a shiny shark in a shed.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["shark"],
+      "words": [
+        { "surface": "Shep",  "graphemes": ["sh","e","p"],     "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "has",   "graphemes": ["h","a","s"],      "phonemes": ["h","æ","z"] },
+        { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "shiny", "graphemes": ["sh","i","n","y"], "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "shark", "graphemes": ["sh","a","r","k"], "phonemes": ["ʃ","æ","r","k"] },
+        { "surface": "in",    "graphemes": ["i","n"],          "phonemes": ["ɪ","n"] },
+        { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "shed",  "graphemes": ["sh","e","d"],     "phonemes": ["ʃ","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "A shy shrimp and a shark hid in a shell.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["shrimp", "shark"],
+      "words": [
+        { "surface": "A",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shy",    "graphemes": ["sh","y"],             "phonemes": ["ʃ","aɪ"] },
+        { "surface": "shrimp", "graphemes": ["sh","r","i","m","p"], "phonemes": ["ʃ","r","ɪ","m","p"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shark",  "graphemes": ["sh","a","r","k"],     "phonemes": ["ʃ","æ","r","k"] },
+        { "surface": "hid",    "graphemes": ["h","i","d"],          "phonemes": ["h","ɪ","d"] },
+        { "surface": "in",     "graphemes": ["i","n"],              "phonemes": ["ɪ","n"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shell",  "graphemes": ["sh","e","l","l"],     "phonemes": ["ʃ","ɛ","l"] }
+      ]
+    },
+    {
+      "text": "Shen and Sharon fed a shy fox in a shed.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["fox"],
+      "words": [
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],          "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shy",    "graphemes": ["sh","y"],             "phonemes": ["ʃ","aɪ"] },
+        { "surface": "fox",    "graphemes": ["f","o","x"],          "phonemes": ["f","ɒ","k","s"] },
+        { "surface": "in",     "graphemes": ["i","n"],              "phonemes": ["ɪ","n"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "Sharon and Shep fed a shiny pup in a shell.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["pup"],
+      "words": [
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],          "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "pup",    "graphemes": ["p","u","p"],          "phonemes": ["p","ʌ","p"] },
+        { "surface": "in",     "graphemes": ["i","n"],              "phonemes": ["ɪ","n"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shell",  "graphemes": ["sh","e","l","l"],     "phonemes": ["ʃ","ɛ","l"] }
+      ]
+    },
+    {
+      "text": "Shep had a shy ant and a shiny fish.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["ant", "fish"],
+      "words": [
+        { "surface": "Shep",  "graphemes": ["sh","e","p"],     "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "had",   "graphemes": ["h","a","d"],      "phonemes": ["h","æ","d"] },
+        { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "shy",   "graphemes": ["sh","y"],         "phonemes": ["ʃ","aɪ"] },
+        { "surface": "ant",   "graphemes": ["a","n","t"],      "phonemes": ["æ","n","t"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "shiny", "graphemes": ["sh","i","n","y"], "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "fish",  "graphemes": ["f","i","sh"],     "phonemes": ["f","ɪ","ʃ"] }
+      ]
+    },
+    {
+      "text": "Shen fed a shy cub and Sharon fed a fish.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["cub", "fish"],
+      "words": [
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],          "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shy",    "graphemes": ["sh","y"],             "phonemes": ["ʃ","aɪ"] },
+        { "surface": "cub",    "graphemes": ["c","u","b"],          "phonemes": ["k","ʌ","b"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],          "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "fish",   "graphemes": ["f","i","sh"],         "phonemes": ["f","ɪ","ʃ"] }
+      ]
+    },
+    {
+      "text": "Shep saw a shiny shark swim in a shell.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["shark"],
+      "words": [
+        { "surface": "Shep",  "graphemes": ["sh","e","p"],     "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "saw",   "graphemes": ["s","a","w"],      "phonemes": ["s","ɔ","w"] },
+        { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "shiny", "graphemes": ["sh","i","n","y"], "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "shark", "graphemes": ["sh","a","r","k"], "phonemes": ["ʃ","æ","r","k"] },
+        { "surface": "swim",  "graphemes": ["s","w","i","m"],  "phonemes": ["s","w","ɪ","m"] },
+        { "surface": "in",    "graphemes": ["i","n"],          "phonemes": ["ɪ","n"] },
+        { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "shell", "graphemes": ["sh","e","l","l"], "phonemes": ["ʃ","ɛ","l"] }
+      ]
+    },
+    {
+      "text": "Shep and Shen saw a shy bat in a shed.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["bat"],
+      "words": [
+        { "surface": "Shep",  "graphemes": ["sh","e","p"],     "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Shen",  "graphemes": ["sh","e","n"],     "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "saw",   "graphemes": ["s","a","w"],      "phonemes": ["s","ɔ","w"] },
+        { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "shy",   "graphemes": ["sh","y"],         "phonemes": ["ʃ","aɪ"] },
+        { "surface": "bat",   "graphemes": ["b","a","t"],      "phonemes": ["b","æ","t"] },
+        { "surface": "in",    "graphemes": ["i","n"],          "phonemes": ["ɪ","n"] },
+        { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "shed",  "graphemes": ["sh","e","d"],     "phonemes": ["ʃ","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "Sharon has a shiny shell and a fish.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["fish"],
+      "words": [
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "has",    "graphemes": ["h","a","s"],          "phonemes": ["h","æ","z"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "shell",  "graphemes": ["sh","e","l","l"],     "phonemes": ["ʃ","ɛ","l"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "fish",   "graphemes": ["f","i","sh"],         "phonemes": ["f","ɪ","ʃ"] }
+      ]
+    },
+    {
+      "text": "Shep had a shy fish and Sharon had a dog.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["fish", "dog"],
+      "words": [
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shy",    "graphemes": ["sh","y"],             "phonemes": ["ʃ","aɪ"] },
+        { "surface": "fish",   "graphemes": ["f","i","sh"],         "phonemes": ["f","ɪ","ʃ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "dog",    "graphemes": ["d","o","g"],          "phonemes": ["d","ɒ","g"] }
+      ]
+    },
+    {
+      "text": "Sharon and Shep saw a shy shark.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["shark"],
+      "words": [
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "saw",    "graphemes": ["s","a","w"],          "phonemes": ["s","ɔ","w"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shy",    "graphemes": ["sh","y"],             "phonemes": ["ʃ","aɪ"] },
+        { "surface": "shark",  "graphemes": ["sh","a","r","k"],     "phonemes": ["ʃ","æ","r","k"] }
+      ]
+    },
+    {
+      "text": "Shen got a shiny shrimp and Shep got a hen.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["shrimp", "hen"],
+      "words": [
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "shrimp", "graphemes": ["sh","r","i","m","p"], "phonemes": ["ʃ","r","ɪ","m","p"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "hen",    "graphemes": ["h","e","n"],          "phonemes": ["h","ɛ","n"] }
+      ]
+    },
+    {
+      "text": "Shep had a shy rat and Sharon had a shrimp.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["rat", "shrimp"],
+      "words": [
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shy",    "graphemes": ["sh","y"],             "phonemes": ["ʃ","aɪ"] },
+        { "surface": "rat",    "graphemes": ["r","a","t"],          "phonemes": ["r","æ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shrimp", "graphemes": ["sh","r","i","m","p"], "phonemes": ["ʃ","r","ɪ","m","p"] }
+      ]
+    }
+  ]
+}

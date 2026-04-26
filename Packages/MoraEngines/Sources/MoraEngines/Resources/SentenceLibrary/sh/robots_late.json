@@ -1,0 +1,364 @@
+{
+  "phoneme": "sh",
+  "phonemeIPA": "ʃ",
+  "graphemeLetters": "sh",
+  "interest": "robots",
+  "ageBand": "late",
+  "sentences": [
+    {
+      "text": "Shen set a shiny sensor on a sharp shelf.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["sensor"],
+      "words": [
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],             "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "set",    "graphemes": ["s","e","t"],              "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],         "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "sensor", "graphemes": ["s","e","n","s","o","r"],  "phonemes": ["s","ɛ","n","s","ɔ","r"] },
+        { "surface": "on",     "graphemes": ["o","n"],                  "phonemes": ["ɒ","n"] },
+        { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
+        { "surface": "sharp",  "graphemes": ["sh","a","r","p"],         "phonemes": ["ʃ","ɑ","r","p"] },
+        { "surface": "shelf",  "graphemes": ["sh","e","l","f"],         "phonemes": ["ʃ","ɛ","l","f"] }
+      ]
+    },
+    {
+      "text": "Sharon washed a shiny servo and a sharp sensor.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["servo", "sensor"],
+      "words": [
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"],     "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "washed", "graphemes": ["w","a","sh","e","d"],     "phonemes": ["w","ɒ","ʃ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],         "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "servo",  "graphemes": ["s","e","r","v","o"],      "phonemes": ["s","ɜ","r","v","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],              "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
+        { "surface": "sharp",  "graphemes": ["sh","a","r","p"],         "phonemes": ["ʃ","ɑ","r","p"] },
+        { "surface": "sensor", "graphemes": ["s","e","n","s","o","r"],  "phonemes": ["s","ɛ","n","s","ɔ","r"] }
+      ]
+    },
+    {
+      "text": "Shep rushed to shut a shiny actuator and motor.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["actuator", "motor"],
+      "words": [
+        { "surface": "Shep",     "graphemes": ["sh","e","p"],                     "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "rushed",   "graphemes": ["r","u","sh","e","d"],             "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "to",       "graphemes": ["t","o"],                          "phonemes": ["t","u"] },
+        { "surface": "shut",     "graphemes": ["sh","u","t"],                     "phonemes": ["ʃ","ʌ","t"] },
+        { "surface": "a",        "graphemes": ["a"],                              "phonemes": ["ə"] },
+        { "surface": "shiny",    "graphemes": ["sh","i","n","y"],                 "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "actuator", "graphemes": ["a","c","t","u","a","t","o","r"],  "phonemes": ["æ","k","t","j","u","eɪ","t","ɔ","r"] },
+        { "surface": "and",      "graphemes": ["a","n","d"],                      "phonemes": ["æ","n","d"] },
+        { "surface": "motor",    "graphemes": ["m","o","t","o","r"],              "phonemes": ["m","oʊ","t","ɔ","r"] }
+      ]
+    },
+    {
+      "text": "Sharon shut the panel and Shen fixed a sharp signal.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["signal"],
+      "words": [
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"],     "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "shut",   "graphemes": ["sh","u","t"],             "phonemes": ["ʃ","ʌ","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
+        { "surface": "panel",  "graphemes": ["p","a","n","e","l"],      "phonemes": ["p","æ","n","ɛ","l"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],              "phonemes": ["æ","n","d"] },
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],             "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "fixed",  "graphemes": ["f","i","x","e","d"],      "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
+        { "surface": "sharp",  "graphemes": ["sh","a","r","p"],         "phonemes": ["ʃ","ɑ","r","p"] },
+        { "surface": "signal", "graphemes": ["s","i","g","n","a","l"],  "phonemes": ["s","ɪ","g","n","ə","l"] }
+      ]
+    },
+    {
+      "text": "Shen dashed to the shelf and shut a shiny robot.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["robot"],
+      "words": [
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "dashed", "graphemes": ["d","a","sh","e","d"], "phonemes": ["d","æ","ʃ","t"] },
+        { "surface": "to",     "graphemes": ["t","o"],              "phonemes": ["t","u"] },
+        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "shelf",  "graphemes": ["sh","e","l","f"],     "phonemes": ["ʃ","ɛ","l","f"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "shut",   "graphemes": ["sh","u","t"],         "phonemes": ["ʃ","ʌ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "robot",  "graphemes": ["r","o","b","o","t"],  "phonemes": ["r","oʊ","b","ɒ","t"] }
+      ]
+    },
+    {
+      "text": "Shep rushed past a shiny shelf and shot a propeller.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["propeller"],
+      "words": [
+        { "surface": "Shep",      "graphemes": ["sh","e","p"],                         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "rushed",    "graphemes": ["r","u","sh","e","d"],                 "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "past",      "graphemes": ["p","a","s","t"],                      "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",         "graphemes": ["a"],                                  "phonemes": ["ə"] },
+        { "surface": "shiny",     "graphemes": ["sh","i","n","y"],                     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "shelf",     "graphemes": ["sh","e","l","f"],                     "phonemes": ["ʃ","ɛ","l","f"] },
+        { "surface": "and",       "graphemes": ["a","n","d"],                          "phonemes": ["æ","n","d"] },
+        { "surface": "shot",      "graphemes": ["sh","o","t"],                         "phonemes": ["ʃ","ɒ","t"] },
+        { "surface": "a",         "graphemes": ["a"],                                  "phonemes": ["ə"] },
+        { "surface": "propeller", "graphemes": ["p","r","o","p","e","l","l","e","r"],  "phonemes": ["p","r","ə","p","ɛ","l","ɜ","r"] }
+      ]
+    },
+    {
+      "text": "Sharon washed a sharp shiny robot and set a servo.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["robot", "servo"],
+      "words": [
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"],     "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "washed", "graphemes": ["w","a","sh","e","d"],     "phonemes": ["w","ɒ","ʃ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
+        { "surface": "sharp",  "graphemes": ["sh","a","r","p"],         "phonemes": ["ʃ","ɑ","r","p"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],         "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "robot",  "graphemes": ["r","o","b","o","t"],      "phonemes": ["r","oʊ","b","ɒ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],              "phonemes": ["æ","n","d"] },
+        { "surface": "set",    "graphemes": ["s","e","t"],              "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
+        { "surface": "servo",  "graphemes": ["s","e","r","v","o"],      "phonemes": ["s","ɜ","r","v","oʊ"] }
+      ]
+    },
+    {
+      "text": "Shen shut a shrill siren and Shep ran to shelter.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["siren"],
+      "words": [
+        { "surface": "Shen",    "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "shut",    "graphemes": ["sh","u","t"],         "phonemes": ["ʃ","ʌ","t"] },
+        { "surface": "a",       "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shrill",  "graphemes": ["sh","r","i","l","l"], "phonemes": ["ʃ","r","ɪ","l"] },
+        { "surface": "siren",   "graphemes": ["s","i","r","e","n"],  "phonemes": ["s","aɪ","r","ɛ","n"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Shep",    "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "ran",     "graphemes": ["r","a","n"],          "phonemes": ["r","æ","n"] },
+        { "surface": "to",      "graphemes": ["t","o"],              "phonemes": ["t","u"] },
+        { "surface": "shelter", "graphemes": ["sh","e","l","t","e","r"], "phonemes": ["ʃ","ɛ","l","t","ɜ","r"] }
+      ]
+    },
+    {
+      "text": "Shep and Shen crushed a shiny circuit in a flash.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["circuit"],
+      "words": [
+        { "surface": "Shep",    "graphemes": ["sh","e","p"],             "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],              "phonemes": ["æ","n","d"] },
+        { "surface": "Shen",    "graphemes": ["sh","e","n"],             "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "crushed", "graphemes": ["c","r","u","sh","e","d"], "phonemes": ["k","r","ʌ","ʃ","t"] },
+        { "surface": "a",       "graphemes": ["a"],                      "phonemes": ["ə"] },
+        { "surface": "shiny",   "graphemes": ["sh","i","n","y"],         "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "circuit", "graphemes": ["c","i","r","c","u","i","t"], "phonemes": ["s","ɜ","r","k","ɪ","t"] },
+        { "surface": "in",      "graphemes": ["i","n"],                  "phonemes": ["ɪ","n"] },
+        { "surface": "a",       "graphemes": ["a"],                      "phonemes": ["ə"] },
+        { "surface": "flash",   "graphemes": ["f","l","a","sh"],         "phonemes": ["f","l","æ","ʃ"] }
+      ]
+    },
+    {
+      "text": "Sharon shifted a sharp lever and Shep set the motor.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["lever", "motor"],
+      "words": [
+        { "surface": "Sharon",  "graphemes": ["sh","a","r","o","n"],     "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "shifted", "graphemes": ["sh","i","f","t","e","d"], "phonemes": ["ʃ","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",       "graphemes": ["a"],                      "phonemes": ["ə"] },
+        { "surface": "sharp",   "graphemes": ["sh","a","r","p"],         "phonemes": ["ʃ","ɑ","r","p"] },
+        { "surface": "lever",   "graphemes": ["l","e","v","e","r"],      "phonemes": ["l","ɛ","v","ɜ","r"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],              "phonemes": ["æ","n","d"] },
+        { "surface": "Shep",    "graphemes": ["sh","e","p"],             "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "set",     "graphemes": ["s","e","t"],              "phonemes": ["s","ɛ","t"] },
+        { "surface": "the",     "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
+        { "surface": "motor",   "graphemes": ["m","o","t","o","r"],      "phonemes": ["m","oʊ","t","ɔ","r"] }
+      ]
+    },
+    {
+      "text": "Shen shut a shiny processor and Sharon shaped the servo.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["processor", "servo"],
+      "words": [
+        { "surface": "Shen",      "graphemes": ["sh","e","n"],                         "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "shut",      "graphemes": ["sh","u","t"],                         "phonemes": ["ʃ","ʌ","t"] },
+        { "surface": "a",         "graphemes": ["a"],                                  "phonemes": ["ə"] },
+        { "surface": "shiny",     "graphemes": ["sh","i","n","y"],                     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "processor", "graphemes": ["p","r","o","c","e","s","s","o","r"],  "phonemes": ["p","r","ɒ","s","ɛ","s","ɔ","r"] },
+        { "surface": "and",       "graphemes": ["a","n","d"],                          "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon",    "graphemes": ["sh","a","r","o","n"],                 "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "shaped",    "graphemes": ["sh","a","p","e","d"],                 "phonemes": ["ʃ","eɪ","p","t"] },
+        { "surface": "the",       "graphemes": ["th","e"],                             "phonemes": ["ð","ə"] },
+        { "surface": "servo",     "graphemes": ["s","e","r","v","o"],                  "phonemes": ["s","ɜ","r","v","oʊ"] }
+      ]
+    },
+    {
+      "text": "Shep dashed past the sharp robot and shot a signal.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["robot", "signal"],
+      "words": [
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],             "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "dashed", "graphemes": ["d","a","sh","e","d"],     "phonemes": ["d","æ","ʃ","t"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],          "phonemes": ["p","æ","s","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
+        { "surface": "sharp",  "graphemes": ["sh","a","r","p"],         "phonemes": ["ʃ","ɑ","r","p"] },
+        { "surface": "robot",  "graphemes": ["r","o","b","o","t"],      "phonemes": ["r","oʊ","b","ɒ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],              "phonemes": ["æ","n","d"] },
+        { "surface": "shot",   "graphemes": ["sh","o","t"],             "phonemes": ["ʃ","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
+        { "surface": "signal", "graphemes": ["s","i","g","n","a","l"],  "phonemes": ["s","ɪ","g","n","ə","l"] }
+      ]
+    },
+    {
+      "text": "Sharon has a sharp shell and a shiny sensor.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["sensor"],
+      "words": [
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"],     "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "has",    "graphemes": ["h","a","s"],              "phonemes": ["h","æ","z"] },
+        { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
+        { "surface": "sharp",  "graphemes": ["sh","a","r","p"],         "phonemes": ["ʃ","ɑ","r","p"] },
+        { "surface": "shell",  "graphemes": ["sh","e","l","l"],         "phonemes": ["ʃ","ɛ","l"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],              "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],         "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "sensor", "graphemes": ["s","e","n","s","o","r"],  "phonemes": ["s","ɛ","n","s","ɔ","r"] }
+      ]
+    },
+    {
+      "text": "Shen rushed to Sharon and shaped a shiny servo kit.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["servo", "kit"],
+      "words": [
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "rushed", "graphemes": ["r","u","sh","e","d"], "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "to",     "graphemes": ["t","o"],              "phonemes": ["t","u"] },
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "shaped", "graphemes": ["sh","a","p","e","d"], "phonemes": ["ʃ","eɪ","p","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "servo",  "graphemes": ["s","e","r","v","o"],  "phonemes": ["s","ɜ","r","v","oʊ"] },
+        { "surface": "kit",    "graphemes": ["k","i","t"],          "phonemes": ["k","ɪ","t"] }
+      ]
+    },
+    {
+      "text": "Shep got a shiny magnet and Shen set a shelf.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["magnet"],
+      "words": [
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],             "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],              "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],         "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "magnet", "graphemes": ["m","a","g","n","e","t"],  "phonemes": ["m","æ","g","n","ɛ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],              "phonemes": ["æ","n","d"] },
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],             "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "set",    "graphemes": ["s","e","t"],              "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
+        { "surface": "shelf",  "graphemes": ["sh","e","l","f"],         "phonemes": ["ʃ","ɛ","l","f"] }
+      ]
+    },
+    {
+      "text": "Sharon shifted the shell and Shep fixed a sharp signal.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["signal"],
+      "words": [
+        { "surface": "Sharon",  "graphemes": ["sh","a","r","o","n"],     "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "shifted", "graphemes": ["sh","i","f","t","e","d"], "phonemes": ["ʃ","ɪ","f","t","ɪ","d"] },
+        { "surface": "the",     "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
+        { "surface": "shell",   "graphemes": ["sh","e","l","l"],         "phonemes": ["ʃ","ɛ","l"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],              "phonemes": ["æ","n","d"] },
+        { "surface": "Shep",    "graphemes": ["sh","e","p"],             "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "fixed",   "graphemes": ["f","i","x","e","d"],      "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",       "graphemes": ["a"],                      "phonemes": ["ə"] },
+        { "surface": "sharp",   "graphemes": ["sh","a","r","p"],         "phonemes": ["ʃ","ɑ","r","p"] },
+        { "surface": "signal",  "graphemes": ["s","i","g","n","a","l"],  "phonemes": ["s","ɪ","g","n","ə","l"] }
+      ]
+    },
+    {
+      "text": "Shen set a shiny sharp actuator on the shelf.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["actuator"],
+      "words": [
+        { "surface": "Shen",     "graphemes": ["sh","e","n"],                     "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "set",      "graphemes": ["s","e","t"],                      "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",        "graphemes": ["a"],                              "phonemes": ["ə"] },
+        { "surface": "shiny",    "graphemes": ["sh","i","n","y"],                 "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "sharp",    "graphemes": ["sh","a","r","p"],                 "phonemes": ["ʃ","ɑ","r","p"] },
+        { "surface": "actuator", "graphemes": ["a","c","t","u","a","t","o","r"],  "phonemes": ["æ","k","t","j","u","eɪ","t","ɔ","r"] },
+        { "surface": "on",       "graphemes": ["o","n"],                          "phonemes": ["ɒ","n"] },
+        { "surface": "the",      "graphemes": ["th","e"],                         "phonemes": ["ð","ə"] },
+        { "surface": "shelf",    "graphemes": ["sh","e","l","f"],                 "phonemes": ["ʃ","ɛ","l","f"] }
+      ]
+    },
+    {
+      "text": "Shep and Sharon shut a shiny robot in a flash.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["robot"],
+      "words": [
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "shut",   "graphemes": ["sh","u","t"],         "phonemes": ["ʃ","ʌ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "robot",  "graphemes": ["r","o","b","o","t"],  "phonemes": ["r","oʊ","b","ɒ","t"] },
+        { "surface": "in",     "graphemes": ["i","n"],              "phonemes": ["ɪ","n"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "flash",  "graphemes": ["f","l","a","sh"],     "phonemes": ["f","l","æ","ʃ"] }
+      ]
+    },
+    {
+      "text": "Sharon shaped the shelf and Shep set a shiny propeller.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["propeller"],
+      "words": [
+        { "surface": "Sharon",   "graphemes": ["sh","a","r","o","n"],             "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "shaped",   "graphemes": ["sh","a","p","e","d"],             "phonemes": ["ʃ","eɪ","p","t"] },
+        { "surface": "the",      "graphemes": ["th","e"],                         "phonemes": ["ð","ə"] },
+        { "surface": "shelf",    "graphemes": ["sh","e","l","f"],                 "phonemes": ["ʃ","ɛ","l","f"] },
+        { "surface": "and",      "graphemes": ["a","n","d"],                      "phonemes": ["æ","n","d"] },
+        { "surface": "Shep",     "graphemes": ["sh","e","p"],                     "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "set",      "graphemes": ["s","e","t"],                      "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",        "graphemes": ["a"],                              "phonemes": ["ə"] },
+        { "surface": "shiny",    "graphemes": ["sh","i","n","y"],                 "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "propeller","graphemes": ["p","r","o","p","e","l","l","e","r"], "phonemes": ["p","r","ə","p","ɛ","l","ɜ","r"] }
+      ]
+    },
+    {
+      "text": "Shen washed the sharp shell and Shep fixed a sensor.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["sensor"],
+      "words": [
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],             "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "washed", "graphemes": ["w","a","sh","e","d"],     "phonemes": ["w","ɒ","ʃ","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
+        { "surface": "sharp",  "graphemes": ["sh","a","r","p"],         "phonemes": ["ʃ","ɑ","r","p"] },
+        { "surface": "shell",  "graphemes": ["sh","e","l","l"],         "phonemes": ["ʃ","ɛ","l"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],              "phonemes": ["æ","n","d"] },
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],             "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "fixed",  "graphemes": ["f","i","x","e","d"],      "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
+        { "surface": "sensor", "graphemes": ["s","e","n","s","o","r"],  "phonemes": ["s","ɛ","n","s","ɔ","r"] }
+      ]
+    }
+  ]
+}
