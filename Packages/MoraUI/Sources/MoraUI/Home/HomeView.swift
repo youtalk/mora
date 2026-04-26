@@ -56,6 +56,7 @@ public struct HomeView: View {
     // rather than on every body invalidation (which fires on every @Query
     // update). Recomputed on scenePhase → .active so returning from Settings
     // after downloading a premium voice flips the gate off immediately.
+    @State private var showYokaiIntroReplay: Bool = false
     @State private var needsBetterVoice: Bool = AppleTTSEngine.needsEnhancedVoice
     @State private var installedVoices: [String] = AppleTTSEngine.installedEnglishVoiceSummaries()
     @Environment(\.scenePhase) private var scenePhase
@@ -91,6 +92,10 @@ public struct HomeView: View {
         .onAppear { refreshVoiceState() }
         .onChange(of: scenePhase) { _, phase in
             if phase == .active { refreshVoiceState() }
+        }
+        .sheet(isPresented: $showYokaiIntroReplay) {
+            YokaiIntroFlow(mode: .replay) { showYokaiIntroReplay = false }
+                .environment(\.moraStrings, strings)
         }
         #if os(iOS)
         .navigationBarHidden(true)
@@ -206,12 +211,21 @@ public struct HomeView: View {
     }
 
     private var heroFooter: some View {
-        NavigationLink(value: "bestiary") {
-            Label(strings.bestiaryLinkLabel, systemImage: "book.closed.fill")
-                .font(MoraType.label())
+        VStack(spacing: MoraTheme.Space.sm) {
+            NavigationLink(value: "bestiary") {
+                Label(strings.bestiaryLinkLabel, systemImage: "book.closed.fill")
+                    .font(MoraType.label())
+            }
+            .buttonStyle(.bordered)
+            .controlSize(.large)
+
+            Button { showYokaiIntroReplay = true } label: {
+                Label(strings.homeRecapLink, systemImage: "questionmark.circle")
+                    .font(MoraType.label())
+            }
+            .buttonStyle(.bordered)
+            .controlSize(.large)
         }
-        .buttonStyle(.bordered)
-        .controlSize(.large)
         .padding(.top, MoraTheme.Space.sm)
     }
 
