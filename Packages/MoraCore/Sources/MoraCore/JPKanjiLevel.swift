@@ -41,4 +41,7 @@ public enum JPKanjiLevel {
     /// Cumulative G1+G2 (240 characters). The alpha JP strings render
     /// a word in kanji only when every component character is in this set.
     public static let grade1And2: Set<Character> = grade1.union(grade2)
+
+    /// Empty kanji set — used by `LearnerLevel.entry` to assert "hiragana only".
+    public static let empty: Set<Character> = []
 }
