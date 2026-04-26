@@ -275,7 +275,12 @@ public struct SessionContainerView: View {
         // Keyed on (trialCount, tutorialVisible) so dismissing the
         // first-time tutorial re-fires the task with the same trial id
         // and the previously-suppressed example1 clip still plays.
-        .task(id: TutorialAwareTrialKey(trialCount: orchestrator.completedTrialCount, tutorialVisible: showFirstTimeTutorial)) {
+        .task(
+            id: TutorialAwareTrialKey(
+                trialCount: orchestrator.completedTrialCount,
+                tutorialVisible: showFirstTimeTutorial
+            )
+        ) {
             // Suppress the yokai exemplar clip while the first-time
             // decoding tutorial cover is up; otherwise the clip plays
             // under the modal.
