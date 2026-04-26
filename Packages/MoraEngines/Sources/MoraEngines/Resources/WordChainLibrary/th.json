@@ -1,0 +1,33 @@
+{
+  "target": "th",
+  "warmup": [
+    {
+      "head": { "surface": "mat", "graphemes": ["m", "a", "t"] },
+      "successors": [
+        { "surface": "man", "graphemes": ["m", "a", "n"] },
+        { "surface": "tan", "graphemes": ["t", "a", "n"] },
+        { "surface": "tin", "graphemes": ["t", "i", "n"] }
+      ]
+    }
+  ],
+  "targetIntro": [
+    {
+      "head": { "surface": "thin", "graphemes": ["th", "i", "n"] },
+      "successors": [
+        { "surface": "then", "graphemes": ["th", "e", "n"] },
+        { "surface": "than", "graphemes": ["th", "a", "n"] },
+        { "surface": "that", "graphemes": ["th", "a", "t"] }
+      ]
+    }
+  ],
+  "mixedApplication": [
+    {
+      "head": { "surface": "math", "graphemes": ["m", "a", "th"] },
+      "successors": [
+        { "surface": "bath", "graphemes": ["b", "a", "th"] },
+        { "surface": "bash", "graphemes": ["b", "a", "sh"] },
+        { "surface": "wash", "graphemes": ["w", "a", "sh"] }
+      ]
+    }
+  ]
+}
