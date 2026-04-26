@@ -14,31 +14,48 @@ public struct YokaiLayerView: View {
     public var body: some View {
         ZStack {
             if let yokai = orchestrator.currentYokai {
-                VStack {
-                    HStack {
-                        Spacer()
-                        FriendshipGaugeHUD(percent: orchestrator.currentEncounter?.friendshipPercent ?? 0)
+                if orchestrator.activeCutscene?.isMondayIntro != true {
+                    VStack {
+                        HStack {
+                            Spacer()
+                            FriendshipGaugeHUD(
+                                percent: orchestrator.currentEncounter?.friendshipPercent ?? 0
+                            )
                             .frame(width: 200, height: 18)
                             .padding(.trailing, 24)
-                    }
-                    Spacer()
-                    HStack {
+                        }
                         Spacer()
-                        YokaiPortraitCorner(yokai: yokai, sparkleTrigger: orchestrator.lastCorrectTrialID)
+                        HStack {
+                            Spacer()
+                            YokaiPortraitCorner(
+                                yokai: yokai,
+                                sparkleTrigger: orchestrator.lastCorrectTrialID
+                            )
                             .frame(width: 140, height: 140)
                             .padding(.trailing, 24)
                             .padding(.bottom, 24)
+                        }
                     }
+                    .padding(.top, 76)
                 }
-                .padding(.top, 76)
 
-                if orchestrator.activeCutscene != nil {
+                if orchestrator.activeCutscene != nil,
+                    orchestrator.activeCutscene?.isMondayIntro != true
+                {
                     YokaiCutsceneOverlay(orchestrator: orchestrator, speech: speech)
                         .transition(reduceMotion ? .identity : .opacity)
                 }
             }
         }
         .animation(reduceMotion ? nil : .easeInOut(duration: 0.25), value: orchestrator.activeCutscene)
-        .allowsHitTesting(orchestrator.currentYokai != nil && orchestrator.activeCutscene != nil)
+        // Hit-testing is enabled only for cutscenes the layer actually
+        // renders. During `.mondayIntro` the layer is empty, and enabling
+        // hit-testing here would let an empty ZStack absorb taps meant
+        // for `WeeklyIntroView` (mounted by `SessionContainerView`).
+        .allowsHitTesting(
+            orchestrator.currentYokai != nil
+                && orchestrator.activeCutscene != nil
+                && orchestrator.activeCutscene?.isMondayIntro != true
+        )
     }
 }

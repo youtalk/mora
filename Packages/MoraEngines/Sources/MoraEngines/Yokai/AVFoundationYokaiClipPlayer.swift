@@ -5,9 +5,12 @@ private let clipLog = Logger(subsystem: "tech.reenable.Mora", category: "YokaiCl
 
 /// `AVAudioPlayer`-backed production implementation of `YokaiClipPlayer`.
 ///
-/// Constructed once per session in `SessionContainerView.bootstrap` and
-/// injected into `YokaiClipRouter`. Not unit-tested — `AVAudioPlayer` requires
-/// an active audio session and is verified by on-device manual runs.
+/// One instance lives per session as a `@State` default on
+/// `SessionContainerView` and is shared between `YokaiClipRouter` (for
+/// in-session clips) and `WeeklyIntroView` (for the Monday intro greet
+/// clip), so stopping playback on one path silences the other. Not
+/// unit-tested — `AVAudioPlayer` requires an active audio session and
+/// is verified by on-device manual runs.
 ///
 /// Emits OSLog signals on category `YokaiClip` so a Console.app filter can
 /// interleave them with the `AudioSession` (TTS) and `Speech` (ASR) streams
