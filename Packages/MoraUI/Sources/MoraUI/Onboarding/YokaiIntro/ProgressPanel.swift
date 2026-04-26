@@ -110,7 +110,10 @@ struct ProgressPanel: View {
             }
             do {
                 try await Task.sleep(for: .milliseconds(120))
+            } catch is CancellationError {
+                return
             } catch {
+                assertionFailure("Unexpected error while animating progress dots: \(error)")
                 return
             }
         }

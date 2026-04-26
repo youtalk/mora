@@ -76,7 +76,10 @@ struct YokaiConceptPanel: View {
             }
             do {
                 try await Task.sleep(for: .milliseconds(80))
+            } catch is CancellationError {
+                return
             } catch {
+                assertionFailure("Unexpected error while animating silhouettes: \(error)")
                 return
             }
         }
