@@ -57,13 +57,13 @@ replaced or re-licensed:
 | Ostris AI Toolkit | Apache 2.0 | ✅ — training wrapper only; LoRA output inherits the base model's license |
 | diffusers / transformers / accelerate | Apache 2.0 | ✅ |
 
-The repo-level license (`PolyForm Noncommercial 1.0.0`) already blocks
-commercial distribution, so there is no immediate license conflict; the
-constraint is that *even if* the repo license changes later, the bundled
-portraits and voice clips under `Packages/MoraCore/Sources/MoraCore/Resources/Yokai/`
-would still be NC-only unless they are **regenerated from commercially-cleared
-models** with the same prompts/refs. Re-running the whole forge with
-schnell + a cleared TTS is the cleanest path.
+The repo-level license (`MPL-2.0`) is OSS-permissive, so the
+NC-encumbered assets are now the *only* commercial-distribution blocker; the
+constraint is that the bundled portraits and voice clips under
+`Packages/MoraCore/Sources/MoraCore/Resources/Yokai/` are still NC-only
+unless they are **regenerated from commercially-cleared models** with the
+same prompts/refs. Re-running the whole forge with schnell + a cleared TTS
+is the cleanest path.
 
 See design spec §10 for the rationale and the planned commercial-swap
 checklist.

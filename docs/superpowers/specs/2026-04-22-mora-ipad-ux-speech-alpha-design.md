@@ -298,7 +298,7 @@ public extension MoraTheme {
 - OpenDyslexic Regular ships as `Packages/MoraUI/Sources/MoraUI/Resources/Fonts/OpenDyslexic-Regular.otf`
 - Registration via `CTFontManagerRegisterGraphicsFont` in `Typography.swift` at package init (not in the app target)
 - Package `Package.swift` adds the font to resources, and the app target inherits via the `MoraUI` product
-- License: SIL OFL, compatible with PolyForm Noncommercial 1.0.0
+- License: SIL OFL, compatible with MPL-2.0
 
 ## 7. Session Layout (L1 Fullscreen Focus)
 

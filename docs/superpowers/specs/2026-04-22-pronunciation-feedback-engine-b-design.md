@@ -677,7 +677,7 @@ This spec preserves every invariant from the parent spec §10:
 - `dev-tools/model-conversion/` does not ship with the app. Its Python dependencies (Hugging Face `transformers`, `coremltools`) are not listed in any `Package.swift`. The binary gate excludes `dev-tools/` by construction (it matches `-- Mora Packages`, which does not include `dev-tools/`).
 - `phoneme-labels.json` carries only the espeak IPA label list — no PII.
 
-The model file itself is derived from `facebook/wav2vec2-xlsr-53-espeak-cv-ft`, which is MIT-licensed and redistribution-compatible with PolyForm Noncommercial 1.0.0. The HF model card URL and SHA are recorded in `dev-tools/model-conversion/README.md`.
+The model file itself is derived from `facebook/wav2vec2-xlsr-53-espeak-cv-ft`, which is MIT-licensed and OSS-redistribution-compatible (MPL-2.0). The HF model card URL and SHA are recorded in `dev-tools/model-conversion/README.md`.
 
 ## 11. Testing Strategy
 

@@ -99,7 +99,13 @@ Product specs live under `docs/superpowers/specs/` and implementation plans unde
 
 ## License
 
-The project is licensed under **PolyForm Noncommercial 1.0.0** (source-available, not OSI-approved). New dependencies must be compatible with noncommercial redistribution; avoid copyleft licenses (GPL family) that would conflict with App Store distribution.
+The project is licensed under **Mozilla Public License 2.0** (OSI-approved,
+App Store-compatible, file-level weak copyleft). The repository was relicensed
+from PolyForm Noncommercial 1.0.0 on 2026-04-26 to satisfy the
+"Built with Opus 4.7" hackathon's open-source requirement. New dependencies
+must be MPL-2.0-compatible; avoid AGPL/GPL family licenses that would conflict
+with App Store distribution (FSF's long-standing position; VLC removal
+precedent).
 
 ### Asset-pipeline NC contamination (yokai-forge)
 

@@ -1,5 +1,11 @@
 # Mora
 
+[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
+[![Built with Opus 4.7](https://img.shields.io/badge/Built_with-Opus_4.7-orange.svg)](https://youtalk.github.io/mora/)
+[![Hackathon Stage 1](https://img.shields.io/badge/Hackathon-Stage_1_2026--04--26-blue.svg)](https://youtalk.github.io/mora/)
+
+> Submitted to Anthropic × Cerebral Valley **Built with Opus 4.7** hackathon (Apr 21–28, 2026). Demo video and full case study at <https://youtalk.github.io/mora/>.
+
 An iPad-first, on-device learning app for children with dyslexia learning English as a second language.
 
 > **Status:** Early development. Scope, architecture, and APIs are expected to change.
@@ -48,6 +54,16 @@ Then build the `Mora` scheme against an iPad simulator.
 
 ## License
 
-[PolyForm Noncommercial License 1.0.0](./LICENSE). Source-available; not OSI-approved open source.
+[Mozilla Public License 2.0](./LICENSE). OSI-approved, App Store-compatible,
+file-level weak copyleft.
 
-Note: the yokai asset forge under `tools/yokai-forge/` depends on **non-commercial** upstream models (FLUX.1-dev, Fish Speech S2 Pro). Any generated portrait or voice clip inherits that restriction, so a future commercial release would require regenerating those assets with commercially-cleared models. See `tools/yokai-forge/README.md` § "Licensing — commercial release requires swap-outs" and the project `CLAUDE.md` for the swap-out checklist.
+Note: the yokai asset forge under `tools/yokai-forge/` depends on
+**non-commercial** upstream models (FLUX.1-dev, Fish Speech S2 Pro). Any
+generated portrait or voice clip inherits that restriction, so a future
+commercial release would require regenerating those assets with
+commercially-cleared models. See `tools/yokai-forge/README.md` § "Licensing —
+commercial release requires swap-outs" for the swap-out checklist.
+
+The bundled `wav2vec2-phoneme.mlmodelc` is derived from
+`facebook/wav2vec2-xlsr-53-espeak-cv-ft` (MIT-licensed); attribution preserved
+in `Packages/MoraMLX/Sources/MoraMLX/Resources/`.
