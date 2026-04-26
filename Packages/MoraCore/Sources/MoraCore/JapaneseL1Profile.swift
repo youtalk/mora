@@ -145,6 +145,24 @@ public struct JapaneseL1Profile: L1Profile {
         permissionBody: "きみが 読んだ ことばを 聞いて、正しいか しらべるよ",
         permissionAllow: "ゆるす",
         permissionNotNow: "後で",
+        yokaiIntroConceptTitle: "音には ともだちが いるよ",
+        yokaiIntroConceptBody:
+            "えいごの 音 ひとつ ひとつに、ようかいが すんでいる。"
+            + "なかよく なるには、その 音を よく 聞いて、ことばに しよう。",
+        yokaiIntroTodayTitle: "今週の ともだち",
+        yokaiIntroTodayBody: "今週は この 音を いっしょに れんしゅうしよう。",
+        yokaiIntroSessionTitle: "1回の すすめかた",
+        yokaiIntroSessionBody: "1回 だいたい 10分。",
+        yokaiIntroSessionStep1: "きく",
+        yokaiIntroSessionStep2: "ならべる",
+        yokaiIntroSessionStep3: "話す",
+        yokaiIntroProgressTitle: "5回で ともだちに なる",
+        yokaiIntroProgressBody:
+            "ようかいと 5回 れんしゅうすると、なかよく なれる。"
+            + "1日 1回 でも、すきな ペースで おけ。",
+        yokaiIntroNext: "つぎへ",
+        yokaiIntroBegin: "▶ はじめる",
+        yokaiIntroClose: "とじる",
         homeTodayQuest: "今日の クエスト",
         homeStart: "▶ はじめる",
         homeDurationPill: { minutes in "\(minutes)分" },
@@ -155,6 +173,7 @@ public struct JapaneseL1Profile: L1Profile {
         bestiaryBefriendedOn: { date in
             "なかよくなった日 \(Self.bestiaryDateFormatter.string(from: date))"
         },
+        homeRecapLink: "あそびかた",
         voiceGateTitle: "英語の 声を ダウンロードしてください",
         voiceGateBody:
             "Moraで つかう きれいな 声が iPadに 入っていません。\n"
