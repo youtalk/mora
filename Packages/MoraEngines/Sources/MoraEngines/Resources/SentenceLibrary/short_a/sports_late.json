@@ -21,7 +21,18 @@
         { "surface": "an",       "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
         { "surface": "athlete",  "graphemes": ["a","th","l","e","t","e"], "phonemes": ["æ","θ","l","i","t"] },
         { "surface": "bat",      "graphemes": ["b","a","t"],             "phonemes": ["b","æ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam had an ace.",
+          "words": [
+            { "surface": "Adam",     "graphemes": ["a","d","a","m"],         "phonemes": ["æ","d","ə","m"] },
+            { "surface": "had",      "graphemes": ["h","a","d"],             "phonemes": ["h","æ","d"] },
+            { "surface": "an",       "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+            { "surface": "ace",      "graphemes": ["a","c","e"],             "phonemes": ["eɪ","s"] }
+          ]
+        }
+      }
     },
     {
       "text": "Andy fed an athlete and Al fed an ant.",

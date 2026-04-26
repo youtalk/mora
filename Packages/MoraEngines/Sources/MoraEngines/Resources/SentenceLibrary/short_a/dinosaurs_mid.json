@@ -20,7 +20,18 @@
         { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
         { "surface": "an",    "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
         { "surface": "Apato", "graphemes": ["a","p","a","t","o"], "phonemes": ["ə","p","æ","t","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam had an Anky.",
+          "words": [
+            { "surface": "Adam",  "graphemes": ["a","d","a","m"],     "phonemes": ["æ","d","ə","m"] },
+            { "surface": "had",   "graphemes": ["h","a","d"],         "phonemes": ["h","æ","d"] },
+            { "surface": "an",    "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+            { "surface": "Anky",  "graphemes": ["a","n","k","y"],     "phonemes": ["æ","n","k","i"] }
+          ]
+        }
+      }
     },
     {
       "text": "Andy fed an Anky and Al fed an Allo.",
@@ -37,7 +48,18 @@
         { "surface": "fed",   "graphemes": ["f","e","d"],         "phonemes": ["f","ɛ","d"] },
         { "surface": "an",    "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
         { "surface": "Allo",  "graphemes": ["a","l","l","o"],     "phonemes": ["æ","l","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Andy fed an Anky.",
+          "words": [
+            { "surface": "Andy",  "graphemes": ["a","n","d","y"],     "phonemes": ["æ","n","d","i"] },
+            { "surface": "fed",   "graphemes": ["f","e","d"],         "phonemes": ["f","ɛ","d"] },
+            { "surface": "an",    "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+            { "surface": "Anky",  "graphemes": ["a","n","k","y"],     "phonemes": ["æ","n","k","i"] }
+          ]
+        }
+      }
     },
     {
       "text": "Anna pat an Apato and Adam pat an Anky.",
@@ -54,7 +76,18 @@
         { "surface": "pat",   "graphemes": ["p","a","t"],         "phonemes": ["p","æ","t"] },
         { "surface": "an",    "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
         { "surface": "Anky",  "graphemes": ["a","n","k","y"],     "phonemes": ["æ","n","k","i"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Anna pat an Apato.",
+          "words": [
+            { "surface": "Anna",  "graphemes": ["a","n","n","a"],     "phonemes": ["æ","n","ə"] },
+            { "surface": "pat",   "graphemes": ["p","a","t"],         "phonemes": ["p","æ","t"] },
+            { "surface": "an",    "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+            { "surface": "Apato", "graphemes": ["a","p","a","t","o"], "phonemes": ["ə","p","æ","t","oʊ"] }
+          ]
+        }
+      }
     },
     {
       "text": "An Anky sat and an Apato ran past Andy.",
@@ -71,7 +104,19 @@
         { "surface": "ran",   "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
         { "surface": "past",  "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
         { "surface": "Andy",  "graphemes": ["a","n","d","y"],     "phonemes": ["æ","n","d","i"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "An Apato ran past Andy.",
+          "words": [
+            { "surface": "an",    "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+            { "surface": "Apato", "graphemes": ["a","p","a","t","o"], "phonemes": ["ə","p","æ","t","oʊ"] },
+            { "surface": "ran",   "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+            { "surface": "past",  "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+            { "surface": "Andy",  "graphemes": ["a","n","d","y"],     "phonemes": ["æ","n","d","i"] }
+          ]
+        }
+      }
     },
     {
       "text": "Adam fed an Anky and an ant at the lab.",
@@ -89,7 +134,18 @@
         { "surface": "at",    "graphemes": ["a","t"],         "phonemes": ["æ","t"] },
         { "surface": "the",   "graphemes": ["th","e"],        "phonemes": ["ð","ə"] },
         { "surface": "lab",   "graphemes": ["l","a","b"],     "phonemes": ["l","æ","b"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam fed an Anky.",
+          "words": [
+            { "surface": "Adam",  "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+            { "surface": "fed",   "graphemes": ["f","e","d"],     "phonemes": ["f","ɛ","d"] },
+            { "surface": "an",    "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+            { "surface": "Anky",  "graphemes": ["a","n","k","y"], "phonemes": ["æ","n","k","i"] }
+          ]
+        }
+      }
     },
     {
       "text": "Andy and Al ran past an Apato and an Anky.",
@@ -107,7 +163,19 @@
         { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
         { "surface": "an",    "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
         { "surface": "Anky",  "graphemes": ["a","n","k","y"],     "phonemes": ["æ","n","k","i"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Andy ran past an Apato.",
+          "words": [
+            { "surface": "Andy",  "graphemes": ["a","n","d","y"],     "phonemes": ["æ","n","d","i"] },
+            { "surface": "ran",   "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+            { "surface": "past",  "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+            { "surface": "an",    "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+            { "surface": "Apato", "graphemes": ["a","p","a","t","o"], "phonemes": ["ə","p","æ","t","oʊ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Adam met an Allo and Anna met an Anky.",
@@ -124,7 +192,18 @@
         { "surface": "met",   "graphemes": ["m","e","t"],     "phonemes": ["m","ɛ","t"] },
         { "surface": "an",    "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
         { "surface": "Anky",  "graphemes": ["a","n","k","y"], "phonemes": ["æ","n","k","i"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam met an Allo.",
+          "words": [
+            { "surface": "Adam",  "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+            { "surface": "met",   "graphemes": ["m","e","t"],     "phonemes": ["m","ɛ","t"] },
+            { "surface": "an",    "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+            { "surface": "Allo",  "graphemes": ["a","l","l","o"], "phonemes": ["æ","l","oʊ"] }
+          ]
+        }
+      }
     },
     {
       "text": "An Apato and an Anky sat with Anna.",
@@ -140,7 +219,19 @@
         { "surface": "sat",   "graphemes": ["s","a","t"],         "phonemes": ["s","æ","t"] },
         { "surface": "with",  "graphemes": ["w","i","th"],        "phonemes": ["w","ɪ","ð"] },
         { "surface": "Anna",  "graphemes": ["a","n","n","a"],     "phonemes": ["æ","n","ə"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "An Apato sat with Anna.",
+          "words": [
+            { "surface": "An",    "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+            { "surface": "Apato", "graphemes": ["a","p","a","t","o"], "phonemes": ["ə","p","æ","t","oʊ"] },
+            { "surface": "sat",   "graphemes": ["s","a","t"],         "phonemes": ["s","æ","t"] },
+            { "surface": "with",  "graphemes": ["w","i","th"],        "phonemes": ["w","ɪ","ð"] },
+            { "surface": "Anna",  "graphemes": ["a","n","n","a"],     "phonemes": ["æ","n","ə"] }
+          ]
+        }
+      }
     },
     {
       "text": "Anna had an Allo and Adam had an Apato.",
@@ -157,7 +248,18 @@
         { "surface": "had",   "graphemes": ["h","a","d"],         "phonemes": ["h","æ","d"] },
         { "surface": "an",    "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
         { "surface": "Apato", "graphemes": ["a","p","a","t","o"], "phonemes": ["ə","p","æ","t","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Anna had an Allo.",
+          "words": [
+            { "surface": "Anna",  "graphemes": ["a","n","n","a"],     "phonemes": ["æ","n","ə"] },
+            { "surface": "had",   "graphemes": ["h","a","d"],         "phonemes": ["h","æ","d"] },
+            { "surface": "an",    "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+            { "surface": "Allo",  "graphemes": ["a","l","l","o"],     "phonemes": ["æ","l","oʊ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Andy got an Anky and Al got an Allo.",
@@ -174,7 +276,18 @@
         { "surface": "got",   "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
         { "surface": "an",    "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
         { "surface": "Allo",  "graphemes": ["a","l","l","o"], "phonemes": ["æ","l","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Andy got an Anky.",
+          "words": [
+            { "surface": "Andy",  "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+            { "surface": "an",    "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+            { "surface": "Anky",  "graphemes": ["a","n","k","y"], "phonemes": ["æ","n","k","i"] }
+          ]
+        }
+      }
     },
     {
       "text": "Sam and Pat fed an Anky and an ant.",
@@ -191,7 +304,18 @@
         { "surface": "and",   "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
         { "surface": "an",    "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
         { "surface": "ant",   "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sam fed an Anky.",
+          "words": [
+            { "surface": "Sam",   "graphemes": ["s","a","m"],     "phonemes": ["s","æ","m"] },
+            { "surface": "fed",   "graphemes": ["f","e","d"],     "phonemes": ["f","ɛ","d"] },
+            { "surface": "an",    "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+            { "surface": "Anky",  "graphemes": ["a","n","k","y"], "phonemes": ["æ","n","k","i"] }
+          ]
+        }
+      }
     },
     {
       "text": "Anna and Adam pat an Apato and an Allo.",
@@ -208,7 +332,18 @@
         { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
         { "surface": "an",    "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
         { "surface": "Allo",  "graphemes": ["a","l","l","o"],     "phonemes": ["æ","l","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam pat an Apato.",
+          "words": [
+            { "surface": "Adam",  "graphemes": ["a","d","a","m"],     "phonemes": ["æ","d","ə","m"] },
+            { "surface": "pat",   "graphemes": ["p","a","t"],         "phonemes": ["p","æ","t"] },
+            { "surface": "an",    "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+            { "surface": "Apato", "graphemes": ["a","p","a","t","o"], "phonemes": ["ə","p","æ","t","oʊ"] }
+          ]
+        }
+      }
     },
     {
       "text": "An Anky ran past Andy and an ant ran past.",
@@ -226,7 +361,19 @@
         { "surface": "ant",   "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
         { "surface": "ran",   "graphemes": ["r","a","n"],     "phonemes": ["r","æ","n"] },
         { "surface": "past",  "graphemes": ["p","a","s","t"], "phonemes": ["p","æ","s","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "An Anky ran past Andy.",
+          "words": [
+            { "surface": "An",    "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+            { "surface": "Anky",  "graphemes": ["a","n","k","y"], "phonemes": ["æ","n","k","i"] },
+            { "surface": "ran",   "graphemes": ["r","a","n"],     "phonemes": ["r","æ","n"] },
+            { "surface": "past",  "graphemes": ["p","a","s","t"], "phonemes": ["p","æ","s","t"] },
+            { "surface": "Andy",  "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] }
+          ]
+        }
+      }
     },
     {
       "text": "Adam set an Anky and an Apato in the lab.",
@@ -244,7 +391,18 @@
         { "surface": "in",    "graphemes": ["i","n"],             "phonemes": ["ɪ","n"] },
         { "surface": "the",   "graphemes": ["th","e"],            "phonemes": ["ð","ə"] },
         { "surface": "lab",   "graphemes": ["l","a","b"],         "phonemes": ["l","æ","b"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam set an Anky.",
+          "words": [
+            { "surface": "Adam",  "graphemes": ["a","d","a","m"],     "phonemes": ["æ","d","ə","m"] },
+            { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+            { "surface": "an",    "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+            { "surface": "Anky",  "graphemes": ["a","n","k","y"],     "phonemes": ["æ","n","k","i"] }
+          ]
+        }
+      }
     },
     {
       "text": "Anna sat and an Anky and an Allo sat.",
@@ -261,7 +419,19 @@
         { "surface": "an",    "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
         { "surface": "Allo",  "graphemes": ["a","l","l","o"], "phonemes": ["æ","l","oʊ"] },
         { "surface": "sat",   "graphemes": ["s","a","t"],     "phonemes": ["s","æ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "An Anky and Allo sat.",
+          "words": [
+            { "surface": "an",    "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+            { "surface": "Anky",  "graphemes": ["a","n","k","y"], "phonemes": ["æ","n","k","i"] },
+            { "surface": "and",   "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+            { "surface": "Allo",  "graphemes": ["a","l","l","o"], "phonemes": ["æ","l","oʊ"] },
+            { "surface": "sat",   "graphemes": ["s","a","t"],     "phonemes": ["s","æ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "An Allo and an Apato ran past Adam and Al.",
@@ -279,7 +449,19 @@
         { "surface": "Adam",  "graphemes": ["a","d","a","m"],     "phonemes": ["æ","d","ə","m"] },
         { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
         { "surface": "Al",    "graphemes": ["a","l"],             "phonemes": ["æ","l"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "An Allo ran past Adam.",
+          "words": [
+            { "surface": "An",    "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+            { "surface": "Allo",  "graphemes": ["a","l","l","o"],     "phonemes": ["æ","l","oʊ"] },
+            { "surface": "ran",   "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+            { "surface": "past",  "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+            { "surface": "Adam",  "graphemes": ["a","d","a","m"],     "phonemes": ["æ","d","ə","m"] }
+          ]
+        }
+      }
     },
     {
       "text": "Andy met an Apato and Anna met an Allo.",
@@ -296,7 +478,18 @@
         { "surface": "met",   "graphemes": ["m","e","t"],         "phonemes": ["m","ɛ","t"] },
         { "surface": "an",    "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
         { "surface": "Allo",  "graphemes": ["a","l","l","o"],     "phonemes": ["æ","l","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Andy met an Apato.",
+          "words": [
+            { "surface": "Andy",  "graphemes": ["a","n","d","y"],     "phonemes": ["æ","n","d","i"] },
+            { "surface": "met",   "graphemes": ["m","e","t"],         "phonemes": ["m","ɛ","t"] },
+            { "surface": "an",    "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+            { "surface": "Apato", "graphemes": ["a","p","a","t","o"], "phonemes": ["ə","p","æ","t","oʊ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Adam and Anna fed an Anky and an Apato.",
@@ -313,7 +506,18 @@
         { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
         { "surface": "an",    "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
         { "surface": "Apato", "graphemes": ["a","p","a","t","o"], "phonemes": ["ə","p","æ","t","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam fed an Anky.",
+          "words": [
+            { "surface": "Adam",  "graphemes": ["a","d","a","m"],     "phonemes": ["æ","d","ə","m"] },
+            { "surface": "fed",   "graphemes": ["f","e","d"],         "phonemes": ["f","ɛ","d"] },
+            { "surface": "an",    "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+            { "surface": "Anky",  "graphemes": ["a","n","k","y"],     "phonemes": ["æ","n","k","i"] }
+          ]
+        }
+      }
     },
     {
       "text": "An Apato had a nap and an Anky sat.",
@@ -330,7 +534,19 @@
         { "surface": "an",    "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
         { "surface": "Anky",  "graphemes": ["a","n","k","y"],     "phonemes": ["æ","n","k","i"] },
         { "surface": "sat",   "graphemes": ["s","a","t"],         "phonemes": ["s","æ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "An Apato had a nap.",
+          "words": [
+            { "surface": "An",    "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+            { "surface": "Apato", "graphemes": ["a","p","a","t","o"], "phonemes": ["ə","p","æ","t","oʊ"] },
+            { "surface": "had",   "graphemes": ["h","a","d"],         "phonemes": ["h","æ","d"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "nap",   "graphemes": ["n","a","p"],         "phonemes": ["n","æ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Al and Adam ran past an Allo and an Anky.",
@@ -348,7 +564,19 @@
         { "surface": "and",   "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
         { "surface": "an",    "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
         { "surface": "Anky",  "graphemes": ["a","n","k","y"], "phonemes": ["æ","n","k","i"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam ran past an Allo.",
+          "words": [
+            { "surface": "Adam",  "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+            { "surface": "ran",   "graphemes": ["r","a","n"],     "phonemes": ["r","æ","n"] },
+            { "surface": "past",  "graphemes": ["p","a","s","t"], "phonemes": ["p","æ","s","t"] },
+            { "surface": "an",    "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+            { "surface": "Allo",  "graphemes": ["a","l","l","o"], "phonemes": ["æ","l","oʊ"] }
+          ]
+        }
+      }
     }
   ]
 }

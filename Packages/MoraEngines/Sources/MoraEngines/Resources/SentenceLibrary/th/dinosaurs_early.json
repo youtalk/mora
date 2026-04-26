@@ -21,7 +21,18 @@
         { "surface": "on",   "graphemes": ["o","n"],          "phonemes": ["ɒ","n"] },
         { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
         { "surface": "path", "graphemes": ["p","a","th"],     "phonemes": ["p","æ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad had a rex.",
+          "words": [
+            { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+            { "surface": "had",  "graphemes": ["h","a","d"],      "phonemes": ["h","æ","d"] },
+            { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "rex",  "graphemes": ["r","e","x"],      "phonemes": ["r","ɛ","k","s"] }
+          ]
+        }
+      }
     },
     {
       "text": "Theo had a thin rex and Thad had the fossil.",
@@ -39,7 +50,18 @@
         { "surface": "had",    "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
         { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "fossil", "graphemes": ["f","o","s","s","i","l"], "phonemes": ["f","ɒ","s","ɪ","l"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Theo had a rex.",
+          "words": [
+            { "surface": "Theo",   "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
+            { "surface": "had",    "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "rex",    "graphemes": ["r","e","x"],          "phonemes": ["r","ɛ","k","s"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad and Theo hid a thin egg in the shed.",
@@ -57,7 +79,19 @@
         { "surface": "in",   "graphemes": ["i","n"],          "phonemes": ["ɪ","n"] },
         { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
         { "surface": "shed", "graphemes": ["sh","e","d"],     "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad hid a thin egg.",
+          "words": [
+            { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+            { "surface": "hid",  "graphemes": ["h","i","d"],      "phonemes": ["h","ɪ","d"] },
+            { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+            { "surface": "egg",  "graphemes": ["e","g","g"],      "phonemes": ["ɛ","g"] }
+          ]
+        }
+      }
     },
     {
       "text": "Theo and Thad set a thin tusk on the path.",
@@ -75,7 +109,18 @@
         { "surface": "on",   "graphemes": ["o","n"],          "phonemes": ["ɒ","n"] },
         { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
         { "surface": "path", "graphemes": ["p","a","th"],     "phonemes": ["p","æ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Theo set a tusk.",
+          "words": [
+            { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+            { "surface": "set",  "graphemes": ["s","e","t"],      "phonemes": ["s","ɛ","t"] },
+            { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "tusk", "graphemes": ["t","u","s","k"],  "phonemes": ["t","ʌ","s","k"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad fed a thin rex and Theo got the fossil.",
@@ -93,7 +138,18 @@
         { "surface": "got",    "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
         { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "fossil", "graphemes": ["f","o","s","s","i","l"], "phonemes": ["f","ɒ","s","ɪ","l"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad fed a rex.",
+          "words": [
+            { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+            { "surface": "fed",    "graphemes": ["f","e","d"],          "phonemes": ["f","ɛ","d"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "rex",    "graphemes": ["r","e","x"],          "phonemes": ["r","ɛ","k","s"] }
+          ]
+        }
+      }
     },
     {
       "text": "A thin fossil sat with Thad and Theo.",
@@ -109,7 +165,18 @@
         { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
         { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
         { "surface": "Theo",   "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin fossil sat.",
+          "words": [
+            { "surface": "A",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "thin",   "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+            { "surface": "fossil", "graphemes": ["f","o","s","s","i","l"], "phonemes": ["f","ɒ","s","ɪ","l"] },
+            { "surface": "sat",    "graphemes": ["s","a","t"],          "phonemes": ["s","æ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad and Theo dug a thin fossil at the path.",
@@ -127,7 +194,18 @@
         { "surface": "at",     "graphemes": ["a","t"],              "phonemes": ["æ","t"] },
         { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "path",   "graphemes": ["p","a","th"],         "phonemes": ["p","æ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad dug a fossil.",
+          "words": [
+            { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+            { "surface": "dug",    "graphemes": ["d","u","g"],          "phonemes": ["d","ʌ","g"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "fossil", "graphemes": ["f","o","s","s","i","l"], "phonemes": ["f","ɒ","s","ɪ","l"] }
+          ]
+        }
+      }
     },
     {
       "text": "Theo had a thin egg and Thad had the tusk.",
@@ -145,7 +223,19 @@
         { "surface": "had",  "graphemes": ["h","a","d"],      "phonemes": ["h","æ","d"] },
         { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
         { "surface": "tusk", "graphemes": ["t","u","s","k"],  "phonemes": ["t","ʌ","s","k"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Theo had a thin egg.",
+          "words": [
+            { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+            { "surface": "had",  "graphemes": ["h","a","d"],      "phonemes": ["h","æ","d"] },
+            { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+            { "surface": "egg",  "graphemes": ["e","g","g"],      "phonemes": ["ɛ","g"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad and Theo met a thin rex in the shed.",
@@ -163,7 +253,18 @@
         { "surface": "in",   "graphemes": ["i","n"],          "phonemes": ["ɪ","n"] },
         { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
         { "surface": "shed", "graphemes": ["sh","e","d"],     "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad met a rex.",
+          "words": [
+            { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+            { "surface": "met",  "graphemes": ["m","e","t"],      "phonemes": ["m","ɛ","t"] },
+            { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "rex",  "graphemes": ["r","e","x"],      "phonemes": ["r","ɛ","k","s"] }
+          ]
+        }
+      }
     },
     {
       "text": "A thin tusk sat with Thad, Theo, and Beth.",
@@ -180,7 +281,18 @@
         { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
         { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
         { "surface": "Beth", "graphemes": ["b","e","th"],     "phonemes": ["b","ɛ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin tusk sat.",
+          "words": [
+            { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+            { "surface": "tusk", "graphemes": ["t","u","s","k"],  "phonemes": ["t","ʌ","s","k"] },
+            { "surface": "sat",  "graphemes": ["s","a","t"],      "phonemes": ["s","æ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad let Theo pet a thin rex on the path.",
@@ -198,7 +310,18 @@
         { "surface": "on",   "graphemes": ["o","n"],          "phonemes": ["ɒ","n"] },
         { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
         { "surface": "path", "graphemes": ["p","a","th"],     "phonemes": ["p","æ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad pet a rex.",
+          "words": [
+            { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+            { "surface": "pet",  "graphemes": ["p","e","t"],      "phonemes": ["p","ɛ","t"] },
+            { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "rex",  "graphemes": ["r","e","x"],      "phonemes": ["r","ɛ","k","s"] }
+          ]
+        }
+      }
     },
     {
       "text": "Theo dug a thin egg with Thad.",
@@ -213,7 +336,19 @@
         { "surface": "egg",  "graphemes": ["e","g","g"],      "phonemes": ["ɛ","g"] },
         { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
         { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Theo dug a thin egg.",
+          "words": [
+            { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+            { "surface": "dug",  "graphemes": ["d","u","g"],      "phonemes": ["d","ʌ","g"] },
+            { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+            { "surface": "egg",  "graphemes": ["e","g","g"],      "phonemes": ["ɛ","g"] }
+          ]
+        }
+      }
     },
     {
       "text": "A thin rex hid with Thad and Theo.",
@@ -229,7 +364,18 @@
         { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
         { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
         { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin rex hid.",
+          "words": [
+            { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+            { "surface": "rex",  "graphemes": ["r","e","x"],      "phonemes": ["r","ɛ","k","s"] },
+            { "surface": "hid",  "graphemes": ["h","i","d"],      "phonemes": ["h","ɪ","d"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad and Theo ran with a thin tusk.",
@@ -245,7 +391,18 @@
         { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
         { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
         { "surface": "tusk", "graphemes": ["t","u","s","k"],  "phonemes": ["t","ʌ","s","k"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad and Theo ran.",
+          "words": [
+            { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+            { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+            { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+            { "surface": "ran",  "graphemes": ["r","a","n"],      "phonemes": ["r","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Theo and Thad fed a thin tusk on the path.",
@@ -263,7 +420,18 @@
         { "surface": "on",   "graphemes": ["o","n"],          "phonemes": ["ɒ","n"] },
         { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
         { "surface": "path", "graphemes": ["p","a","th"],     "phonemes": ["p","æ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Theo fed a tusk.",
+          "words": [
+            { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+            { "surface": "fed",  "graphemes": ["f","e","d"],      "phonemes": ["f","ɛ","d"] },
+            { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "tusk", "graphemes": ["t","u","s","k"],  "phonemes": ["t","ʌ","s","k"] }
+          ]
+        }
+      }
     },
     {
       "text": "A thin egg sat with Thad and Theo.",
@@ -279,7 +447,18 @@
         { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
         { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
         { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin egg sat.",
+          "words": [
+            { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+            { "surface": "egg",  "graphemes": ["e","g","g"],      "phonemes": ["ɛ","g"] },
+            { "surface": "sat",  "graphemes": ["s","a","t"],      "phonemes": ["s","æ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad got a thin fossil and Theo got the tusk.",
@@ -297,7 +476,18 @@
         { "surface": "got",    "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
         { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "tusk",   "graphemes": ["t","u","s","k"],      "phonemes": ["t","ʌ","s","k"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad got a fossil.",
+          "words": [
+            { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+            { "surface": "got",    "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "fossil", "graphemes": ["f","o","s","s","i","l"], "phonemes": ["f","ɒ","s","ɪ","l"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad and Theo set a thin egg with Beth.",
@@ -314,7 +504,19 @@
         { "surface": "egg",  "graphemes": ["e","g","g"],      "phonemes": ["ɛ","g"] },
         { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
         { "surface": "Beth", "graphemes": ["b","e","th"],     "phonemes": ["b","ɛ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad set a thin egg.",
+          "words": [
+            { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+            { "surface": "set",  "graphemes": ["s","e","t"],      "phonemes": ["s","ɛ","t"] },
+            { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+            { "surface": "egg",  "graphemes": ["e","g","g"],      "phonemes": ["ɛ","g"] }
+          ]
+        }
+      }
     },
     {
       "text": "Theo and Thad set a thin rex at the shed.",
@@ -332,7 +534,18 @@
         { "surface": "at",   "graphemes": ["a","t"],          "phonemes": ["æ","t"] },
         { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
         { "surface": "shed", "graphemes": ["sh","e","d"],     "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Theo set a rex.",
+          "words": [
+            { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+            { "surface": "set",  "graphemes": ["s","e","t"],      "phonemes": ["s","ɛ","t"] },
+            { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "rex",  "graphemes": ["r","e","x"],      "phonemes": ["r","ɛ","k","s"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad got a thin egg and Theo met the rex.",
@@ -350,7 +563,19 @@
         { "surface": "met",  "graphemes": ["m","e","t"],      "phonemes": ["m","ɛ","t"] },
         { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
         { "surface": "rex",  "graphemes": ["r","e","x"],      "phonemes": ["r","ɛ","k","s"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad got a thin egg.",
+          "words": [
+            { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+            { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+            { "surface": "egg",  "graphemes": ["e","g","g"],      "phonemes": ["ɛ","g"] }
+          ]
+        }
+      }
     }
   ]
 }

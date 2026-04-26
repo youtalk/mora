@@ -21,7 +21,18 @@
         { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
         { "surface": "astronomy", "graphemes": ["a","s","t","r","o","n","o","m","y"], "phonemes": ["ə","s","t","r","ɒ","n","ə","m","i"] },
         { "surface": "lab",       "graphemes": ["l","a","b"],                     "phonemes": ["l","æ","b"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam had an Apollo.",
+          "words": [
+            { "surface": "Adam",      "graphemes": ["a","d","a","m"],                 "phonemes": ["æ","d","ə","m"] },
+            { "surface": "had",       "graphemes": ["h","a","d"],                     "phonemes": ["h","æ","d"] },
+            { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
+            { "surface": "Apollo",    "graphemes": ["a","p","o","l","l","o"],         "phonemes": ["ə","p","ɒ","l","oʊ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Andy fed an astral pet and Al fed an Apollo.",
@@ -39,7 +50,19 @@
         { "surface": "fed",       "graphemes": ["f","e","d"],                     "phonemes": ["f","ɛ","d"] },
         { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
         { "surface": "Apollo",    "graphemes": ["a","p","o","l","l","o"],         "phonemes": ["ə","p","ɒ","l","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Andy fed an astral pet.",
+          "words": [
+            { "surface": "Andy",      "graphemes": ["a","n","d","y"],                 "phonemes": ["æ","n","d","i"] },
+            { "surface": "fed",       "graphemes": ["f","e","d"],                     "phonemes": ["f","ɛ","d"] },
+            { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
+            { "surface": "astral",    "graphemes": ["a","s","t","r","a","l"],         "phonemes": ["æ","s","t","r","ə","l"] },
+            { "surface": "pet",       "graphemes": ["p","e","t"],                     "phonemes": ["p","ɛ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Anna sat in an astronomical Apollo at the lab.",
@@ -56,7 +79,19 @@
         { "surface": "at",           "graphemes": ["a","t"],                                 "phonemes": ["æ","t"] },
         { "surface": "the",          "graphemes": ["th","e"],                                "phonemes": ["ð","ə"] },
         { "surface": "lab",          "graphemes": ["l","a","b"],                             "phonemes": ["l","æ","b"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Anna sat in an Apollo.",
+          "words": [
+            { "surface": "Anna",         "graphemes": ["a","n","n","a"],                         "phonemes": ["æ","n","ə"] },
+            { "surface": "sat",          "graphemes": ["s","a","t"],                             "phonemes": ["s","æ","t"] },
+            { "surface": "in",           "graphemes": ["i","n"],                                 "phonemes": ["ɪ","n"] },
+            { "surface": "an",           "graphemes": ["a","n"],                                 "phonemes": ["æ","n"] },
+            { "surface": "Apollo",       "graphemes": ["a","p","o","l","l","o"],                 "phonemes": ["ə","p","ɒ","l","oʊ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Adam met an ant and Anna sat in an Apollo.",
@@ -74,7 +109,18 @@
         { "surface": "in",        "graphemes": ["i","n"],                         "phonemes": ["ɪ","n"] },
         { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
         { "surface": "Apollo",    "graphemes": ["a","p","o","l","l","o"],         "phonemes": ["ə","p","ɒ","l","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam met an ant.",
+          "words": [
+            { "surface": "Adam",      "graphemes": ["a","d","a","m"],                 "phonemes": ["æ","d","ə","m"] },
+            { "surface": "met",       "graphemes": ["m","e","t"],                     "phonemes": ["m","ɛ","t"] },
+            { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
+            { "surface": "ant",       "graphemes": ["a","n","t"],                     "phonemes": ["æ","n","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "An astronomy lab had Adam and an axis in it.",
@@ -92,7 +138,19 @@
         { "surface": "axis",      "graphemes": ["a","x","i","s"],                 "phonemes": ["æ","k","s","ɪ","s"] },
         { "surface": "in",        "graphemes": ["i","n"],                         "phonemes": ["ɪ","n"] },
         { "surface": "it",        "graphemes": ["i","t"],                         "phonemes": ["ɪ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "An astronomy lab had Adam.",
+          "words": [
+            { "surface": "An",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
+            { "surface": "astronomy", "graphemes": ["a","s","t","r","o","n","o","m","y"], "phonemes": ["ə","s","t","r","ɒ","n","ə","m","i"] },
+            { "surface": "lab",       "graphemes": ["l","a","b"],                     "phonemes": ["l","æ","b"] },
+            { "surface": "had",       "graphemes": ["h","a","d"],                     "phonemes": ["h","æ","d"] },
+            { "surface": "Adam",      "graphemes": ["a","d","a","m"],                 "phonemes": ["æ","d","ə","m"] }
+          ]
+        }
+      }
     },
     {
       "text": "Anna had an astral Apollo and Andy had an axis.",
@@ -110,7 +168,18 @@
         { "surface": "had",       "graphemes": ["h","a","d"],                     "phonemes": ["h","æ","d"] },
         { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
         { "surface": "axis",      "graphemes": ["a","x","i","s"],                 "phonemes": ["æ","k","s","ɪ","s"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Anna had an Apollo.",
+          "words": [
+            { "surface": "Anna",      "graphemes": ["a","n","n","a"],                 "phonemes": ["æ","n","ə"] },
+            { "surface": "had",       "graphemes": ["h","a","d"],                     "phonemes": ["h","æ","d"] },
+            { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
+            { "surface": "Apollo",    "graphemes": ["a","p","o","l","l","o"],         "phonemes": ["ə","p","ɒ","l","oʊ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Adam pat an astral cat and Anna pat an Apollo.",
@@ -128,7 +197,19 @@
         { "surface": "pat",       "graphemes": ["p","a","t"],                     "phonemes": ["p","æ","t"] },
         { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
         { "surface": "Apollo",    "graphemes": ["a","p","o","l","l","o"],         "phonemes": ["ə","p","ɒ","l","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam pat an astral cat.",
+          "words": [
+            { "surface": "Adam",      "graphemes": ["a","d","a","m"],                 "phonemes": ["æ","d","ə","m"] },
+            { "surface": "pat",       "graphemes": ["p","a","t"],                     "phonemes": ["p","æ","t"] },
+            { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
+            { "surface": "astral",    "graphemes": ["a","s","t","r","a","l"],         "phonemes": ["æ","s","t","r","ə","l"] },
+            { "surface": "cat",       "graphemes": ["c","a","t"],                     "phonemes": ["k","æ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "An astronomical Apollo had Andy and Anna in it.",
@@ -145,7 +226,18 @@
         { "surface": "Anna",         "graphemes": ["a","n","n","a"],                         "phonemes": ["æ","n","ə"] },
         { "surface": "in",           "graphemes": ["i","n"],                                 "phonemes": ["ɪ","n"] },
         { "surface": "it",           "graphemes": ["i","t"],                                 "phonemes": ["ɪ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "An Apollo had Andy.",
+          "words": [
+            { "surface": "An",           "graphemes": ["a","n"],                                 "phonemes": ["æ","n"] },
+            { "surface": "Apollo",       "graphemes": ["a","p","o","l","l","o"],                 "phonemes": ["ə","p","ɒ","l","oʊ"] },
+            { "surface": "had",          "graphemes": ["h","a","d"],                             "phonemes": ["h","æ","d"] },
+            { "surface": "Andy",         "graphemes": ["a","n","d","y"],                         "phonemes": ["æ","n","d","i"] }
+          ]
+        }
+      }
     },
     {
       "text": "Adam got an axis and an astral Apollo.",
@@ -161,7 +253,18 @@
         { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
         { "surface": "astral",    "graphemes": ["a","s","t","r","a","l"],         "phonemes": ["æ","s","t","r","ə","l"] },
         { "surface": "Apollo",    "graphemes": ["a","p","o","l","l","o"],         "phonemes": ["ə","p","ɒ","l","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam got an axis.",
+          "words": [
+            { "surface": "Adam",      "graphemes": ["a","d","a","m"],                 "phonemes": ["æ","d","ə","m"] },
+            { "surface": "got",       "graphemes": ["g","o","t"],                     "phonemes": ["g","ɒ","t"] },
+            { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
+            { "surface": "axis",      "graphemes": ["a","x","i","s"],                 "phonemes": ["æ","k","s","ɪ","s"] }
+          ]
+        }
+      }
     },
     {
       "text": "Anna and Adam met an axis in an Apollo.",
@@ -178,7 +281,18 @@
         { "surface": "in",        "graphemes": ["i","n"],                         "phonemes": ["ɪ","n"] },
         { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
         { "surface": "Apollo",    "graphemes": ["a","p","o","l","l","o"],         "phonemes": ["ə","p","ɒ","l","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Anna met an axis.",
+          "words": [
+            { "surface": "Anna",      "graphemes": ["a","n","n","a"],                 "phonemes": ["æ","n","ə"] },
+            { "surface": "met",       "graphemes": ["m","e","t"],                     "phonemes": ["m","ɛ","t"] },
+            { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
+            { "surface": "axis",      "graphemes": ["a","x","i","s"],                 "phonemes": ["æ","k","s","ɪ","s"] }
+          ]
+        }
+      }
     },
     {
       "text": "Andy and Al got an Apollo and an astronomy axis.",
@@ -196,7 +310,18 @@
         { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
         { "surface": "astronomy", "graphemes": ["a","s","t","r","o","n","o","m","y"], "phonemes": ["ə","s","t","r","ɒ","n","ə","m","i"] },
         { "surface": "axis",      "graphemes": ["a","x","i","s"],                 "phonemes": ["æ","k","s","ɪ","s"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Andy got an Apollo.",
+          "words": [
+            { "surface": "Andy",      "graphemes": ["a","n","d","y"],                 "phonemes": ["æ","n","d","i"] },
+            { "surface": "got",       "graphemes": ["g","o","t"],                     "phonemes": ["g","ɒ","t"] },
+            { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
+            { "surface": "Apollo",    "graphemes": ["a","p","o","l","l","o"],         "phonemes": ["ə","p","ɒ","l","oʊ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Sam and Jan sat in an astral Apollo.",
@@ -212,7 +337,19 @@
         { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
         { "surface": "astral",    "graphemes": ["a","s","t","r","a","l"],         "phonemes": ["æ","s","t","r","ə","l"] },
         { "surface": "Apollo",    "graphemes": ["a","p","o","l","l","o"],         "phonemes": ["ə","p","ɒ","l","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sam sat in an Apollo.",
+          "words": [
+            { "surface": "Sam",       "graphemes": ["s","a","m"],                     "phonemes": ["s","æ","m"] },
+            { "surface": "sat",       "graphemes": ["s","a","t"],                     "phonemes": ["s","æ","t"] },
+            { "surface": "in",        "graphemes": ["i","n"],                         "phonemes": ["ɪ","n"] },
+            { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
+            { "surface": "Apollo",    "graphemes": ["a","p","o","l","l","o"],         "phonemes": ["ə","p","ɒ","l","oʊ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Anna fed an ant in an astronomical Apollo.",
@@ -228,7 +365,18 @@
         { "surface": "an",           "graphemes": ["a","n"],                                 "phonemes": ["æ","n"] },
         { "surface": "astronomical", "graphemes": ["a","s","t","r","o","n","o","m","i","c","a","l"], "phonemes": ["æ","s","t","r","ə","n","ɒ","m","ɪ","k","ə","l"] },
         { "surface": "Apollo",       "graphemes": ["a","p","o","l","l","o"],                 "phonemes": ["ə","p","ɒ","l","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Anna fed an ant.",
+          "words": [
+            { "surface": "Anna",         "graphemes": ["a","n","n","a"],                         "phonemes": ["æ","n","ə"] },
+            { "surface": "fed",          "graphemes": ["f","e","d"],                             "phonemes": ["f","ɛ","d"] },
+            { "surface": "an",           "graphemes": ["a","n"],                                 "phonemes": ["æ","n"] },
+            { "surface": "ant",          "graphemes": ["a","n","t"],                             "phonemes": ["æ","n","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Adam ran past an Apollo and an astronomy lab.",
@@ -245,7 +393,19 @@
         { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
         { "surface": "astronomy", "graphemes": ["a","s","t","r","o","n","o","m","y"], "phonemes": ["ə","s","t","r","ɒ","n","ə","m","i"] },
         { "surface": "lab",       "graphemes": ["l","a","b"],                     "phonemes": ["l","æ","b"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam ran past an Apollo.",
+          "words": [
+            { "surface": "Adam",      "graphemes": ["a","d","a","m"],                 "phonemes": ["æ","d","ə","m"] },
+            { "surface": "ran",       "graphemes": ["r","a","n"],                     "phonemes": ["r","æ","n"] },
+            { "surface": "past",      "graphemes": ["p","a","s","t"],                 "phonemes": ["p","æ","s","t"] },
+            { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
+            { "surface": "Apollo",    "graphemes": ["a","p","o","l","l","o"],         "phonemes": ["ə","p","ɒ","l","oʊ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Anna and Andy had an astronomical axis at the lab.",
@@ -263,7 +423,18 @@
         { "surface": "at",           "graphemes": ["a","t"],                                 "phonemes": ["æ","t"] },
         { "surface": "the",          "graphemes": ["th","e"],                                "phonemes": ["ð","ə"] },
         { "surface": "lab",          "graphemes": ["l","a","b"],                             "phonemes": ["l","æ","b"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Anna had an axis.",
+          "words": [
+            { "surface": "Anna",         "graphemes": ["a","n","n","a"],                         "phonemes": ["æ","n","ə"] },
+            { "surface": "had",          "graphemes": ["h","a","d"],                             "phonemes": ["h","æ","d"] },
+            { "surface": "an",           "graphemes": ["a","n"],                                 "phonemes": ["æ","n"] },
+            { "surface": "axis",         "graphemes": ["a","x","i","s"],                         "phonemes": ["æ","k","s","ɪ","s"] }
+          ]
+        }
+      }
     },
     {
       "text": "Adam and Al fed an Apollo and an astral pet.",
@@ -281,7 +452,18 @@
         { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
         { "surface": "astral",    "graphemes": ["a","s","t","r","a","l"],         "phonemes": ["æ","s","t","r","ə","l"] },
         { "surface": "pet",       "graphemes": ["p","e","t"],                     "phonemes": ["p","ɛ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam fed an Apollo.",
+          "words": [
+            { "surface": "Adam",      "graphemes": ["a","d","a","m"],                 "phonemes": ["æ","d","ə","m"] },
+            { "surface": "fed",       "graphemes": ["f","e","d"],                     "phonemes": ["f","ɛ","d"] },
+            { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
+            { "surface": "Apollo",    "graphemes": ["a","p","o","l","l","o"],         "phonemes": ["ə","p","ɒ","l","oʊ"] }
+          ]
+        }
+      }
     },
     {
       "text": "An astronomy lab had Anna and an Apollo axis.",
@@ -298,7 +480,19 @@
         { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
         { "surface": "Apollo",    "graphemes": ["a","p","o","l","l","o"],         "phonemes": ["ə","p","ɒ","l","oʊ"] },
         { "surface": "axis",      "graphemes": ["a","x","i","s"],                 "phonemes": ["æ","k","s","ɪ","s"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "An astronomy lab had Anna.",
+          "words": [
+            { "surface": "An",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
+            { "surface": "astronomy", "graphemes": ["a","s","t","r","o","n","o","m","y"], "phonemes": ["ə","s","t","r","ɒ","n","ə","m","i"] },
+            { "surface": "lab",       "graphemes": ["l","a","b"],                     "phonemes": ["l","æ","b"] },
+            { "surface": "had",       "graphemes": ["h","a","d"],                     "phonemes": ["h","æ","d"] },
+            { "surface": "Anna",      "graphemes": ["a","n","n","a"],                 "phonemes": ["æ","n","ə"] }
+          ]
+        }
+      }
     },
     {
       "text": "Andy met an astral cat in an astronomy Apollo.",
@@ -315,7 +509,19 @@
         { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
         { "surface": "astronomy", "graphemes": ["a","s","t","r","o","n","o","m","y"], "phonemes": ["ə","s","t","r","ɒ","n","ə","m","i"] },
         { "surface": "Apollo",    "graphemes": ["a","p","o","l","l","o"],         "phonemes": ["ə","p","ɒ","l","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Andy met an astral cat.",
+          "words": [
+            { "surface": "Andy",      "graphemes": ["a","n","d","y"],                 "phonemes": ["æ","n","d","i"] },
+            { "surface": "met",       "graphemes": ["m","e","t"],                     "phonemes": ["m","ɛ","t"] },
+            { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
+            { "surface": "astral",    "graphemes": ["a","s","t","r","a","l"],         "phonemes": ["æ","s","t","r","ə","l"] },
+            { "surface": "cat",       "graphemes": ["c","a","t"],                     "phonemes": ["k","æ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "An axis and an Apollo and an astral cat sat.",
@@ -333,7 +539,18 @@
         { "surface": "astral",    "graphemes": ["a","s","t","r","a","l"],         "phonemes": ["æ","s","t","r","ə","l"] },
         { "surface": "cat",       "graphemes": ["c","a","t"],                     "phonemes": ["k","æ","t"] },
         { "surface": "sat",       "graphemes": ["s","a","t"],                     "phonemes": ["s","æ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "An astral cat sat.",
+          "words": [
+            { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
+            { "surface": "astral",    "graphemes": ["a","s","t","r","a","l"],         "phonemes": ["æ","s","t","r","ə","l"] },
+            { "surface": "cat",       "graphemes": ["c","a","t"],                     "phonemes": ["k","æ","t"] },
+            { "surface": "sat",       "graphemes": ["s","a","t"],                     "phonemes": ["s","æ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Adam and Anna had an Apollo and an astronomical axis.",
@@ -351,7 +568,18 @@
         { "surface": "an",           "graphemes": ["a","n"],                                 "phonemes": ["æ","n"] },
         { "surface": "astronomical", "graphemes": ["a","s","t","r","o","n","o","m","i","c","a","l"], "phonemes": ["æ","s","t","r","ə","n","ɒ","m","ɪ","k","ə","l"] },
         { "surface": "axis",         "graphemes": ["a","x","i","s"],                         "phonemes": ["æ","k","s","ɪ","s"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam had an Apollo.",
+          "words": [
+            { "surface": "Adam",         "graphemes": ["a","d","a","m"],                         "phonemes": ["æ","d","ə","m"] },
+            { "surface": "had",          "graphemes": ["h","a","d"],                             "phonemes": ["h","æ","d"] },
+            { "surface": "an",           "graphemes": ["a","n"],                                 "phonemes": ["æ","n"] },
+            { "surface": "Apollo",       "graphemes": ["a","p","o","l","l","o"],                 "phonemes": ["ə","p","ɒ","l","oʊ"] }
+          ]
+        }
+      }
     }
   ]
 }
