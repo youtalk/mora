@@ -30,11 +30,12 @@ final class YokaiIntroPanel2AudioTests: XCTestCase {
         let player = FakeYokaiClipPlayer()
         let panel = TodaysYokaiPanel(store: store, player: player, onContinue: {})
 
-        let host = UIHostingController(rootView:
-            panel.environment(
-                \.moraStrings,
-                JapaneseL1Profile().uiStrings(forAgeYears: 8)
-            )
+        let host = UIHostingController(
+            rootView:
+                panel.environment(
+                    \.moraStrings,
+                    JapaneseL1Profile().uiStrings(forAgeYears: 8)
+                )
         )
         host.loadViewIfNeeded()
         host.view.layoutIfNeeded()

@@ -219,7 +219,9 @@ public struct HomeView: View {
             .buttonStyle(.bordered)
             .controlSize(.large)
 
-            Button { showYokaiIntroReplay = true } label: {
+            Button {
+                showYokaiIntroReplay = true
+            } label: {
                 Label(strings.homeRecapLink, systemImage: "questionmark.circle")
                     .font(MoraType.label())
             }
