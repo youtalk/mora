@@ -200,6 +200,14 @@ jobs:
             echo "::endgroup::"
           done
 
+      - name: Validate decodable sentence library
+        run: |
+          set -euo pipefail
+          (cd dev-tools/sentence-validator && swift test)
+          swift run --package-path dev-tools/sentence-validator \
+            sentence-validator \
+            --bundle Packages/MoraEngines/Sources/MoraEngines/Resources/SentenceLibrary
+
       - name: Cache SwiftPM .build (MoraMLX)
         uses: actions/cache@v4
         with:

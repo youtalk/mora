@@ -1,0 +1,27 @@
+{
+  "phoneme": "sh",
+  "phonemeIPA": "ʃ",
+  "graphemeLetters": "sh",
+  "interest": "vehicles",
+  "ageBand": "mid",
+  "sentences": [
+    {
+      "text": "Shen and Sharon shop for a ship at the shed.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["ship"],
+      "words": [
+        { "surface": "Shen", "graphemes": ["sh", "e", "n"], "phonemes": ["ʃ", "ɛ", "n"] },
+        { "surface": "and", "graphemes": ["a", "n", "d"], "phonemes": ["æ", "n", "d"] },
+        { "surface": "Sharon", "graphemes": ["sh", "a", "r", "o", "n"], "phonemes": ["ʃ", "æ", "r", "ə", "n"] },
+        { "surface": "shop", "graphemes": ["sh", "o", "p"], "phonemes": ["ʃ", "ɒ", "p"] },
+        { "surface": "for", "graphemes": ["f", "o", "r"], "phonemes": ["f", "ɔ", "r"] },
+        { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+        { "surface": "ship", "graphemes": ["sh", "i", "p"], "phonemes": ["ʃ", "ɪ", "p"] },
+        { "surface": "at", "graphemes": ["a", "t"], "phonemes": ["æ", "t"] },
+        { "surface": "the", "graphemes": ["th", "e"], "phonemes": ["ð", "ə"] },
+        { "surface": "shed", "graphemes": ["sh", "e", "d"], "phonemes": ["ʃ", "ɛ", "d"] }
+      ]
+    }
+  ]
+}

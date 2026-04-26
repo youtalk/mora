@@ -1,0 +1,40 @@
+{
+  "phoneme": "sh",
+  "phonemeIPA": "ʃ",
+  "graphemeLetters": "sh",
+  "interest": "vehicles",
+  "ageBand": "mid",
+  "sentences": [
+    {
+      "text": "Shen had a thin ship and a shop and a shed.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["ship"],
+      "words": [
+        { "surface": "Shen", "graphemes": ["sh", "e", "n"], "phonemes": ["ʃ", "ɛ", "n"] },
+        { "surface": "had", "graphemes": ["h", "a", "d"], "phonemes": ["h", "æ", "d"] },
+        { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th", "i", "n"], "phonemes": ["θ", "ɪ", "n"] },
+        { "surface": "ship", "graphemes": ["sh", "i", "p"], "phonemes": ["ʃ", "ɪ", "p"] },
+        { "surface": "and", "graphemes": ["a", "n", "d"], "phonemes": ["æ", "n", "d"] },
+        { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+        { "surface": "shop", "graphemes": ["sh", "o", "p"], "phonemes": ["ʃ", "ɒ", "p"] },
+        { "surface": "and", "graphemes": ["a", "n", "d"], "phonemes": ["æ", "n", "d"] },
+        { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+        { "surface": "shed", "graphemes": ["sh", "e", "d"], "phonemes": ["ʃ", "ɛ", "d"] }
+      ]
+    },
+    {
+      "text": "A ship can hop.",
+      "targetCount": 1,
+      "targetInitialContentWords": 1,
+      "interestWords": [],
+      "words": [
+        { "surface": "A", "graphemes": ["a"], "phonemes": ["ə"] },
+        { "surface": "ship", "graphemes": ["sh", "i", "p"], "phonemes": ["ʃ", "ɪ", "p"] },
+        { "surface": "can", "graphemes": ["c", "a", "n"], "phonemes": ["k", "æ", "n"] },
+        { "surface": "hop", "graphemes": ["h", "o", "p"], "phonemes": ["h", "ɒ", "p"] }
+      ]
+    }
+  ]
+}
