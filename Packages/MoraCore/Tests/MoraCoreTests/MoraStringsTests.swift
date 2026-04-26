@@ -52,6 +52,7 @@ final class MoraStringsTests: XCTestCase {
             ("yokaiIntroClose", s.yokaiIntroClose),
             ("homeTodayQuest", s.homeTodayQuest),
             ("homeStart", s.homeStart),
+            ("homeRecapLink", s.homeRecapLink),
             ("voiceGateTitle", s.voiceGateTitle),
             ("voiceGateBody", s.voiceGateBody),
             ("voiceGateOpenSettings", s.voiceGateOpenSettings),
