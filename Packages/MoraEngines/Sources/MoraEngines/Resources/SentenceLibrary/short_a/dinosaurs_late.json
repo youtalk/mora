@@ -1,0 +1,355 @@
+{
+  "phoneme": "short_a",
+  "phonemeIPA": "æ",
+  "graphemeLetters": "a",
+  "interest": "dinosaurs",
+  "ageBand": "late",
+  "sentences": [
+    {
+      "text": "Adam and Anna had an Apato and an Albert.",
+      "targetCount": 12,
+      "targetInitialContentWords": 6,
+      "interestWords": ["Apato", "Albert"],
+      "words": [
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],         "phonemes": ["æ","d","ə","m"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],         "phonemes": ["æ","n","ə"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],             "phonemes": ["h","æ","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Apato",  "graphemes": ["a","p","a","t","o"],     "phonemes": ["ə","p","æ","t","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Albert", "graphemes": ["a","l","b","e","r","t"], "phonemes": ["æ","l","b","ɚ","t"] }
+      ]
+    },
+    {
+      "text": "Andy fed an Argo and Al fed an Albert.",
+      "targetCount": 10,
+      "targetInitialContentWords": 6,
+      "interestWords": ["Argo", "Albert"],
+      "words": [
+        { "surface": "Andy",   "graphemes": ["a","n","d","y"],         "phonemes": ["æ","n","d","i"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Argo",   "graphemes": ["a","r","g","o"],         "phonemes": ["ɑ","r","g","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Al",     "graphemes": ["a","l"],                 "phonemes": ["æ","l"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Albert", "graphemes": ["a","l","b","e","r","t"], "phonemes": ["æ","l","b","ɚ","t"] }
+      ]
+    },
+    {
+      "text": "Anna pat an Apato and Adam pat an Argo.",
+      "targetCount": 11,
+      "targetInitialContentWords": 6,
+      "interestWords": ["Apato", "Argo"],
+      "words": [
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],         "phonemes": ["æ","n","ə"] },
+        { "surface": "pat",    "graphemes": ["p","a","t"],             "phonemes": ["p","æ","t"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Apato",  "graphemes": ["a","p","a","t","o"],     "phonemes": ["ə","p","æ","t","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],         "phonemes": ["æ","d","ə","m"] },
+        { "surface": "pat",    "graphemes": ["p","a","t"],             "phonemes": ["p","æ","t"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Argo",   "graphemes": ["a","r","g","o"],         "phonemes": ["ɑ","r","g","oʊ"] }
+      ]
+    },
+    {
+      "text": "An Anky and an Apato sat with Adam and Andy.",
+      "targetCount": 11,
+      "targetInitialContentWords": 6,
+      "interestWords": ["Anky", "Apato"],
+      "words": [
+        { "surface": "An",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Anky",   "graphemes": ["a","n","k","y"],         "phonemes": ["æ","n","k","i"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Apato",  "graphemes": ["a","p","a","t","o"],     "phonemes": ["ə","p","æ","t","oʊ"] },
+        { "surface": "sat",    "graphemes": ["s","a","t"],             "phonemes": ["s","æ","t"] },
+        { "surface": "with",   "graphemes": ["w","i","th"],            "phonemes": ["w","ɪ","ð"] },
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],         "phonemes": ["æ","d","ə","m"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Andy",   "graphemes": ["a","n","d","y"],         "phonemes": ["æ","n","d","i"] }
+      ]
+    },
+    {
+      "text": "Adam fed an Albert and Anna fed an Apato.",
+      "targetCount": 11,
+      "targetInitialContentWords": 6,
+      "interestWords": ["Albert", "Apato"],
+      "words": [
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],         "phonemes": ["æ","d","ə","m"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Albert", "graphemes": ["a","l","b","e","r","t"], "phonemes": ["æ","l","b","ɚ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],         "phonemes": ["æ","n","ə"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Apato",  "graphemes": ["a","p","a","t","o"],     "phonemes": ["ə","p","æ","t","oʊ"] }
+      ]
+    },
+    {
+      "text": "Andy and Al ran past an Argo and an Allo.",
+      "targetCount": 11,
+      "targetInitialContentWords": 5,
+      "interestWords": ["Argo", "Allo"],
+      "words": [
+        { "surface": "Andy",   "graphemes": ["a","n","d","y"],         "phonemes": ["æ","n","d","i"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Al",     "graphemes": ["a","l"],                 "phonemes": ["æ","l"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Argo",   "graphemes": ["a","r","g","o"],         "phonemes": ["ɑ","r","g","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Allo",   "graphemes": ["a","l","l","o"],         "phonemes": ["æ","l","oʊ"] }
+      ]
+    },
+    {
+      "text": "An Albert and an Apato ran past Anna and Adam.",
+      "targetCount": 13,
+      "targetInitialContentWords": 6,
+      "interestWords": ["Albert", "Apato"],
+      "words": [
+        { "surface": "An",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Albert", "graphemes": ["a","l","b","e","r","t"], "phonemes": ["æ","l","b","ɚ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Apato",  "graphemes": ["a","p","a","t","o"],     "phonemes": ["ə","p","æ","t","oʊ"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],         "phonemes": ["æ","n","ə"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],         "phonemes": ["æ","d","ə","m"] }
+      ]
+    },
+    {
+      "text": "Anna got an Argo and Adam got an Albert.",
+      "targetCount": 11,
+      "targetInitialContentWords": 6,
+      "interestWords": ["Argo", "Albert"],
+      "words": [
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],         "phonemes": ["æ","n","ə"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Argo",   "graphemes": ["a","r","g","o"],         "phonemes": ["ɑ","r","g","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],         "phonemes": ["æ","d","ə","m"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Albert", "graphemes": ["a","l","b","e","r","t"], "phonemes": ["æ","l","b","ɚ","t"] }
+      ]
+    },
+    {
+      "text": "Adam met an Anky and Andy met an Argo.",
+      "targetCount": 9,
+      "targetInitialContentWords": 6,
+      "interestWords": ["Anky", "Argo"],
+      "words": [
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],         "phonemes": ["æ","d","ə","m"] },
+        { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Anky",   "graphemes": ["a","n","k","y"],         "phonemes": ["æ","n","k","i"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Andy",   "graphemes": ["a","n","d","y"],         "phonemes": ["æ","n","d","i"] },
+        { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Argo",   "graphemes": ["a","r","g","o"],         "phonemes": ["ɑ","r","g","oʊ"] }
+      ]
+    },
+    {
+      "text": "Anna fed an Apato and an Anky and an Argo.",
+      "targetCount": 11,
+      "targetInitialContentWords": 6,
+      "interestWords": ["Apato", "Anky"],
+      "words": [
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],     "phonemes": ["æ","n","ə"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],         "phonemes": ["f","ɛ","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Apato",  "graphemes": ["a","p","a","t","o"], "phonemes": ["ə","p","æ","t","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Anky",   "graphemes": ["a","n","k","y"],     "phonemes": ["æ","n","k","i"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Argo",   "graphemes": ["a","r","g","o"],     "phonemes": ["ɑ","r","g","oʊ"] }
+      ]
+    },
+    {
+      "text": "Andy and Anna pat an Albert and an Allo.",
+      "targetCount": 11,
+      "targetInitialContentWords": 6,
+      "interestWords": ["Albert", "Allo"],
+      "words": [
+        { "surface": "Andy",   "graphemes": ["a","n","d","y"],         "phonemes": ["æ","n","d","i"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],         "phonemes": ["æ","n","ə"] },
+        { "surface": "pat",    "graphemes": ["p","a","t"],             "phonemes": ["p","æ","t"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Albert", "graphemes": ["a","l","b","e","r","t"], "phonemes": ["æ","l","b","ɚ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Allo",   "graphemes": ["a","l","l","o"],         "phonemes": ["æ","l","oʊ"] }
+      ]
+    },
+    {
+      "text": "Sam and Jan fed an Albert and an Apato.",
+      "targetCount": 11,
+      "targetInitialContentWords": 4,
+      "interestWords": ["Albert", "Apato"],
+      "words": [
+        { "surface": "Sam",    "graphemes": ["s","a","m"],             "phonemes": ["s","æ","m"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Jan",    "graphemes": ["j","a","n"],             "phonemes": ["dʒ","æ","n"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Albert", "graphemes": ["a","l","b","e","r","t"], "phonemes": ["æ","l","b","ɚ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Apato",  "graphemes": ["a","p","a","t","o"],     "phonemes": ["ə","p","æ","t","oʊ"] }
+      ]
+    },
+    {
+      "text": "Adam set an Argo and an Anky in the lab.",
+      "targetCount": 11,
+      "targetInitialContentWords": 5,
+      "interestWords": ["Argo", "Anky"],
+      "words": [
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],         "phonemes": ["æ","d","ə","m"] },
+        { "surface": "set",    "graphemes": ["s","e","t"],             "phonemes": ["s","ɛ","t"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Argo",   "graphemes": ["a","r","g","o"],         "phonemes": ["ɑ","r","g","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Anky",   "graphemes": ["a","n","k","y"],         "phonemes": ["æ","n","k","i"] },
+        { "surface": "in",     "graphemes": ["i","n"],                 "phonemes": ["ɪ","n"] },
+        { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
+        { "surface": "lab",    "graphemes": ["l","a","b"],             "phonemes": ["l","æ","b"] }
+      ]
+    },
+    {
+      "text": "Anna had an Argo and Andy had an Albert.",
+      "targetCount": 11,
+      "targetInitialContentWords": 6,
+      "interestWords": ["Argo", "Albert"],
+      "words": [
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],         "phonemes": ["æ","n","ə"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],             "phonemes": ["h","æ","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Argo",   "graphemes": ["a","r","g","o"],         "phonemes": ["ɑ","r","g","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Andy",   "graphemes": ["a","n","d","y"],         "phonemes": ["æ","n","d","i"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],             "phonemes": ["h","æ","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Albert", "graphemes": ["a","l","b","e","r","t"], "phonemes": ["æ","l","b","ɚ","t"] }
+      ]
+    },
+    {
+      "text": "An Argo and an Albert ran past Anna fast.",
+      "targetCount": 12,
+      "targetInitialContentWords": 5,
+      "interestWords": ["Argo", "Albert"],
+      "words": [
+        { "surface": "An",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Argo",   "graphemes": ["a","r","g","o"],         "phonemes": ["ɑ","r","g","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Albert", "graphemes": ["a","l","b","e","r","t"], "phonemes": ["æ","l","b","ɚ","t"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],         "phonemes": ["æ","n","ə"] },
+        { "surface": "fast",   "graphemes": ["f","a","s","t"],         "phonemes": ["f","æ","s","t"] }
+      ]
+    },
+    {
+      "text": "Adam met an Argo and an Apato at the lab.",
+      "targetCount": 12,
+      "targetInitialContentWords": 5,
+      "interestWords": ["Argo", "Apato"],
+      "words": [
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],         "phonemes": ["æ","d","ə","m"] },
+        { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Argo",   "graphemes": ["a","r","g","o"],         "phonemes": ["ɑ","r","g","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Apato",  "graphemes": ["a","p","a","t","o"],     "phonemes": ["ə","p","æ","t","oʊ"] },
+        { "surface": "at",     "graphemes": ["a","t"],                 "phonemes": ["æ","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
+        { "surface": "lab",    "graphemes": ["l","a","b"],             "phonemes": ["l","æ","b"] }
+      ]
+    },
+    {
+      "text": "Andy fed an Anky and an Albert and an Argo.",
+      "targetCount": 12,
+      "targetInitialContentWords": 7,
+      "interestWords": ["Anky", "Albert", "Argo"],
+      "words": [
+        { "surface": "Andy",   "graphemes": ["a","n","d","y"],         "phonemes": ["æ","n","d","i"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Anky",   "graphemes": ["a","n","k","y"],         "phonemes": ["æ","n","k","i"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Albert", "graphemes": ["a","l","b","e","r","t"], "phonemes": ["æ","l","b","ɚ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Argo",   "graphemes": ["a","r","g","o"],         "phonemes": ["ɑ","r","g","oʊ"] }
+      ]
+    },
+    {
+      "text": "Anna sat and an Albert and an Apato sat.",
+      "targetCount": 11,
+      "targetInitialContentWords": 5,
+      "interestWords": ["Albert", "Apato"],
+      "words": [
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],         "phonemes": ["æ","n","ə"] },
+        { "surface": "sat",    "graphemes": ["s","a","t"],             "phonemes": ["s","æ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Albert", "graphemes": ["a","l","b","e","r","t"], "phonemes": ["æ","l","b","ɚ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Apato",  "graphemes": ["a","p","a","t","o"],     "phonemes": ["ə","p","æ","t","oʊ"] },
+        { "surface": "sat",    "graphemes": ["s","a","t"],             "phonemes": ["s","æ","t"] }
+      ]
+    },
+    {
+      "text": "Al ran past an Allo and an Albert.",
+      "targetCount": 10,
+      "targetInitialContentWords": 5,
+      "interestWords": ["Allo", "Albert"],
+      "words": [
+        { "surface": "Al",     "graphemes": ["a","l"],                 "phonemes": ["æ","l"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Allo",   "graphemes": ["a","l","l","o"],         "phonemes": ["æ","l","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+        { "surface": "Albert", "graphemes": ["a","l","b","e","r","t"], "phonemes": ["æ","l","b","ɚ","t"] }
+      ]
+    },
+    {
+      "text": "Adam and Anna had an Apato and an Argo.",
+      "targetCount": 12,
+      "targetInitialContentWords": 6,
+      "interestWords": ["Apato", "Argo"],
+      "words": [
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],     "phonemes": ["æ","d","ə","m"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],     "phonemes": ["æ","n","ə"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],         "phonemes": ["h","æ","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Apato",  "graphemes": ["a","p","a","t","o"], "phonemes": ["ə","p","æ","t","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Argo",   "graphemes": ["a","r","g","o"],     "phonemes": ["ɑ","r","g","oʊ"] }
+      ]
+    }
+  ]
+}

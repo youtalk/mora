@@ -1,0 +1,353 @@
+{
+  "phoneme": "short_a",
+  "phonemeIPA": "æ",
+  "graphemeLetters": "a",
+  "interest": "vehicles",
+  "ageBand": "late",
+  "sentences": [
+    {
+      "text": "Adam and Anna had an armored ambulance and a van.",
+      "targetCount": 13,
+      "targetInitialContentWords": 5,
+      "interestWords": ["armored", "ambulance"],
+      "words": [
+        { "surface": "Adam",      "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
+        { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "Anna",      "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] },
+        { "surface": "had",       "graphemes": ["h","a","d"],                 "phonemes": ["h","æ","d"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "armored",   "graphemes": ["a","r","m","o","r","e","d"], "phonemes": ["ɑ","r","m","ɚ","d"] },
+        { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] },
+        { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "a",         "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "van",       "graphemes": ["v","a","n"],                 "phonemes": ["v","æ","n"] }
+      ]
+    },
+    {
+      "text": "Andy got an armored van and Al got an ambulance.",
+      "targetCount": 12,
+      "targetInitialContentWords": 6,
+      "interestWords": ["armored", "ambulance"],
+      "words": [
+        { "surface": "Andy",      "graphemes": ["a","n","d","y"],             "phonemes": ["æ","n","d","i"] },
+        { "surface": "got",       "graphemes": ["g","o","t"],                 "phonemes": ["g","ɒ","t"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "armored",   "graphemes": ["a","r","m","o","r","e","d"], "phonemes": ["ɑ","r","m","ɚ","d"] },
+        { "surface": "van",       "graphemes": ["v","a","n"],                 "phonemes": ["v","æ","n"] },
+        { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "Al",        "graphemes": ["a","l"],                     "phonemes": ["æ","l"] },
+        { "surface": "got",       "graphemes": ["g","o","t"],                 "phonemes": ["g","ɒ","t"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] }
+      ]
+    },
+    {
+      "text": "Anna had an ambulance and Adam had an armored cab.",
+      "targetCount": 13,
+      "targetInitialContentWords": 6,
+      "interestWords": ["ambulance", "armored"],
+      "words": [
+        { "surface": "Anna",      "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] },
+        { "surface": "had",       "graphemes": ["h","a","d"],                 "phonemes": ["h","æ","d"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] },
+        { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "Adam",      "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
+        { "surface": "had",       "graphemes": ["h","a","d"],                 "phonemes": ["h","æ","d"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "armored",   "graphemes": ["a","r","m","o","r","e","d"], "phonemes": ["ɑ","r","m","ɚ","d"] },
+        { "surface": "cab",       "graphemes": ["c","a","b"],                 "phonemes": ["k","æ","b"] }
+      ]
+    },
+    {
+      "text": "An armored ambulance ran past Andy and Al fast.",
+      "targetCount": 11,
+      "targetInitialContentWords": 5,
+      "interestWords": ["armored", "ambulance"],
+      "words": [
+        { "surface": "An",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "armored",   "graphemes": ["a","r","m","o","r","e","d"], "phonemes": ["ɑ","r","m","ɚ","d"] },
+        { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] },
+        { "surface": "ran",       "graphemes": ["r","a","n"],                 "phonemes": ["r","æ","n"] },
+        { "surface": "past",      "graphemes": ["p","a","s","t"],             "phonemes": ["p","æ","s","t"] },
+        { "surface": "Andy",      "graphemes": ["a","n","d","y"],             "phonemes": ["æ","n","d","i"] },
+        { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "Al",        "graphemes": ["a","l"],                     "phonemes": ["æ","l"] },
+        { "surface": "fast",      "graphemes": ["f","a","s","t"],             "phonemes": ["f","æ","s","t"] }
+      ]
+    },
+    {
+      "text": "Adam fed an ant in an armored ambulance.",
+      "targetCount": 10,
+      "targetInitialContentWords": 5,
+      "interestWords": ["armored", "ambulance"],
+      "words": [
+        { "surface": "Adam",      "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
+        { "surface": "fed",       "graphemes": ["f","e","d"],                 "phonemes": ["f","ɛ","d"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "ant",       "graphemes": ["a","n","t"],                 "phonemes": ["æ","n","t"] },
+        { "surface": "in",        "graphemes": ["i","n"],                     "phonemes": ["ɪ","n"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "armored",   "graphemes": ["a","r","m","o","r","e","d"], "phonemes": ["ɑ","r","m","ɚ","d"] },
+        { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] }
+      ]
+    },
+    {
+      "text": "Anna and Andy sat in an armored ambulance fast.",
+      "targetCount": 11,
+      "targetInitialContentWords": 5,
+      "interestWords": ["armored", "ambulance"],
+      "words": [
+        { "surface": "Anna",      "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] },
+        { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "Andy",      "graphemes": ["a","n","d","y"],             "phonemes": ["æ","n","d","i"] },
+        { "surface": "sat",       "graphemes": ["s","a","t"],                 "phonemes": ["s","æ","t"] },
+        { "surface": "in",        "graphemes": ["i","n"],                     "phonemes": ["ɪ","n"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "armored",   "graphemes": ["a","r","m","o","r","e","d"], "phonemes": ["ɑ","r","m","ɚ","d"] },
+        { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] },
+        { "surface": "fast",      "graphemes": ["f","a","s","t"],             "phonemes": ["f","æ","s","t"] }
+      ]
+    },
+    {
+      "text": "Andy met Adam in an armored cab at the lab.",
+      "targetCount": 10,
+      "targetInitialContentWords": 4,
+      "interestWords": ["armored", "cab"],
+      "words": [
+        { "surface": "Andy",      "graphemes": ["a","n","d","y"],             "phonemes": ["æ","n","d","i"] },
+        { "surface": "met",       "graphemes": ["m","e","t"],                 "phonemes": ["m","ɛ","t"] },
+        { "surface": "Adam",      "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
+        { "surface": "in",        "graphemes": ["i","n"],                     "phonemes": ["ɪ","n"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "armored",   "graphemes": ["a","r","m","o","r","e","d"], "phonemes": ["ɑ","r","m","ɚ","d"] },
+        { "surface": "cab",       "graphemes": ["c","a","b"],                 "phonemes": ["k","æ","b"] },
+        { "surface": "at",        "graphemes": ["a","t"],                     "phonemes": ["æ","t"] },
+        { "surface": "the",       "graphemes": ["th","e"],                    "phonemes": ["ð","ə"] },
+        { "surface": "lab",       "graphemes": ["l","a","b"],                 "phonemes": ["l","æ","b"] }
+      ]
+    },
+    {
+      "text": "An ambulance and an armored van ran past Anna.",
+      "targetCount": 11,
+      "targetInitialContentWords": 5,
+      "interestWords": ["ambulance", "armored"],
+      "words": [
+        { "surface": "An",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] },
+        { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "armored",   "graphemes": ["a","r","m","o","r","e","d"], "phonemes": ["ɑ","r","m","ɚ","d"] },
+        { "surface": "van",       "graphemes": ["v","a","n"],                 "phonemes": ["v","æ","n"] },
+        { "surface": "ran",       "graphemes": ["r","a","n"],                 "phonemes": ["r","æ","n"] },
+        { "surface": "past",      "graphemes": ["p","a","s","t"],             "phonemes": ["p","æ","s","t"] },
+        { "surface": "Anna",      "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] }
+      ]
+    },
+    {
+      "text": "Adam pat an armored van and Anna pat an ambulance.",
+      "targetCount": 13,
+      "targetInitialContentWords": 6,
+      "interestWords": ["armored", "ambulance"],
+      "words": [
+        { "surface": "Adam",      "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
+        { "surface": "pat",       "graphemes": ["p","a","t"],                 "phonemes": ["p","æ","t"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "armored",   "graphemes": ["a","r","m","o","r","e","d"], "phonemes": ["ɑ","r","m","ɚ","d"] },
+        { "surface": "van",       "graphemes": ["v","a","n"],                 "phonemes": ["v","æ","n"] },
+        { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "Anna",      "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] },
+        { "surface": "pat",       "graphemes": ["p","a","t"],                 "phonemes": ["p","æ","t"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] }
+      ]
+    },
+    {
+      "text": "An armored van and an ambulance ran past Adam.",
+      "targetCount": 11,
+      "targetInitialContentWords": 5,
+      "interestWords": ["armored", "ambulance"],
+      "words": [
+        { "surface": "An",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "armored",   "graphemes": ["a","r","m","o","r","e","d"], "phonemes": ["ɑ","r","m","ɚ","d"] },
+        { "surface": "van",       "graphemes": ["v","a","n"],                 "phonemes": ["v","æ","n"] },
+        { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] },
+        { "surface": "ran",       "graphemes": ["r","a","n"],                 "phonemes": ["r","æ","n"] },
+        { "surface": "past",      "graphemes": ["p","a","s","t"],             "phonemes": ["p","æ","s","t"] },
+        { "surface": "Adam",      "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] }
+      ]
+    },
+    {
+      "text": "Anna had an armored cab and Andy had a tram.",
+      "targetCount": 10,
+      "targetInitialContentWords": 4,
+      "interestWords": ["armored", "cab"],
+      "words": [
+        { "surface": "Anna",      "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] },
+        { "surface": "had",       "graphemes": ["h","a","d"],                 "phonemes": ["h","æ","d"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "armored",   "graphemes": ["a","r","m","o","r","e","d"], "phonemes": ["ɑ","r","m","ɚ","d"] },
+        { "surface": "cab",       "graphemes": ["c","a","b"],                 "phonemes": ["k","æ","b"] },
+        { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "Andy",      "graphemes": ["a","n","d","y"],             "phonemes": ["æ","n","d","i"] },
+        { "surface": "had",       "graphemes": ["h","a","d"],                 "phonemes": ["h","æ","d"] },
+        { "surface": "a",         "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "tram",      "graphemes": ["t","r","a","m"],             "phonemes": ["t","r","æ","m"] }
+      ]
+    },
+    {
+      "text": "Sam and Pat got an armored ambulance and an ant.",
+      "targetCount": 12,
+      "targetInitialContentWords": 5,
+      "interestWords": ["armored", "ambulance"],
+      "words": [
+        { "surface": "Sam",       "graphemes": ["s","a","m"],                 "phonemes": ["s","æ","m"] },
+        { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "Pat",       "graphemes": ["p","a","t"],                 "phonemes": ["p","æ","t"] },
+        { "surface": "got",       "graphemes": ["g","o","t"],                 "phonemes": ["g","ɒ","t"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "armored",   "graphemes": ["a","r","m","o","r","e","d"], "phonemes": ["ɑ","r","m","ɚ","d"] },
+        { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] },
+        { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "ant",       "graphemes": ["a","n","t"],                 "phonemes": ["æ","n","t"] }
+      ]
+    },
+    {
+      "text": "Adam fed Anna in an armored van at the lab.",
+      "targetCount": 11,
+      "targetInitialContentWords": 4,
+      "interestWords": ["armored", "van"],
+      "words": [
+        { "surface": "Adam",      "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
+        { "surface": "fed",       "graphemes": ["f","e","d"],                 "phonemes": ["f","ɛ","d"] },
+        { "surface": "Anna",      "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] },
+        { "surface": "in",        "graphemes": ["i","n"],                     "phonemes": ["ɪ","n"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "armored",   "graphemes": ["a","r","m","o","r","e","d"], "phonemes": ["ɑ","r","m","ɚ","d"] },
+        { "surface": "van",       "graphemes": ["v","a","n"],                 "phonemes": ["v","æ","n"] },
+        { "surface": "at",        "graphemes": ["a","t"],                     "phonemes": ["æ","t"] },
+        { "surface": "the",       "graphemes": ["th","e"],                    "phonemes": ["ð","ə"] },
+        { "surface": "lab",       "graphemes": ["l","a","b"],                 "phonemes": ["l","æ","b"] }
+      ]
+    },
+    {
+      "text": "An armored ambulance had Adam and Anna in it.",
+      "targetCount": 11,
+      "targetInitialContentWords": 5,
+      "interestWords": ["armored", "ambulance"],
+      "words": [
+        { "surface": "An",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "armored",   "graphemes": ["a","r","m","o","r","e","d"], "phonemes": ["ɑ","r","m","ɚ","d"] },
+        { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] },
+        { "surface": "had",       "graphemes": ["h","a","d"],                 "phonemes": ["h","æ","d"] },
+        { "surface": "Adam",      "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
+        { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "Anna",      "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] },
+        { "surface": "in",        "graphemes": ["i","n"],                     "phonemes": ["ɪ","n"] },
+        { "surface": "it",        "graphemes": ["i","t"],                     "phonemes": ["ɪ","t"] }
+      ]
+    },
+    {
+      "text": "Andy got an armored ambulance and an ant.",
+      "targetCount": 11,
+      "targetInitialContentWords": 5,
+      "interestWords": ["armored", "ambulance"],
+      "words": [
+        { "surface": "Andy",      "graphemes": ["a","n","d","y"],             "phonemes": ["æ","n","d","i"] },
+        { "surface": "got",       "graphemes": ["g","o","t"],                 "phonemes": ["g","ɒ","t"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "armored",   "graphemes": ["a","r","m","o","r","e","d"], "phonemes": ["ɑ","r","m","ɚ","d"] },
+        { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] },
+        { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "ant",       "graphemes": ["a","n","t"],                 "phonemes": ["æ","n","t"] }
+      ]
+    },
+    {
+      "text": "Anna and Adam ran past an armored ambulance.",
+      "targetCount": 10,
+      "targetInitialContentWords": 4,
+      "interestWords": ["armored", "ambulance"],
+      "words": [
+        { "surface": "Anna",      "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] },
+        { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "Adam",      "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
+        { "surface": "ran",       "graphemes": ["r","a","n"],                 "phonemes": ["r","æ","n"] },
+        { "surface": "past",      "graphemes": ["p","a","s","t"],             "phonemes": ["p","æ","s","t"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "armored",   "graphemes": ["a","r","m","o","r","e","d"], "phonemes": ["ɑ","r","m","ɚ","d"] },
+        { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] }
+      ]
+    },
+    {
+      "text": "Adam met an ant in an armored ambulance.",
+      "targetCount": 10,
+      "targetInitialContentWords": 5,
+      "interestWords": ["armored", "ambulance"],
+      "words": [
+        { "surface": "Adam",      "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
+        { "surface": "met",       "graphemes": ["m","e","t"],                 "phonemes": ["m","ɛ","t"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "ant",       "graphemes": ["a","n","t"],                 "phonemes": ["æ","n","t"] },
+        { "surface": "in",        "graphemes": ["i","n"],                     "phonemes": ["ɪ","n"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "armored",   "graphemes": ["a","r","m","o","r","e","d"], "phonemes": ["ɑ","r","m","ɚ","d"] },
+        { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] }
+      ]
+    },
+    {
+      "text": "Anna sat in an armored cab and an ambulance.",
+      "targetCount": 11,
+      "targetInitialContentWords": 5,
+      "interestWords": ["armored", "ambulance"],
+      "words": [
+        { "surface": "Anna",      "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] },
+        { "surface": "sat",       "graphemes": ["s","a","t"],                 "phonemes": ["s","æ","t"] },
+        { "surface": "in",        "graphemes": ["i","n"],                     "phonemes": ["ɪ","n"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "armored",   "graphemes": ["a","r","m","o","r","e","d"], "phonemes": ["ɑ","r","m","ɚ","d"] },
+        { "surface": "cab",       "graphemes": ["c","a","b"],                 "phonemes": ["k","æ","b"] },
+        { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] }
+      ]
+    },
+    {
+      "text": "Andy and Al fed Adam in an armored ambulance.",
+      "targetCount": 11,
+      "targetInitialContentWords": 5,
+      "interestWords": ["armored", "ambulance"],
+      "words": [
+        { "surface": "Andy",      "graphemes": ["a","n","d","y"],             "phonemes": ["æ","n","d","i"] },
+        { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "Al",        "graphemes": ["a","l"],                     "phonemes": ["æ","l"] },
+        { "surface": "fed",       "graphemes": ["f","e","d"],                 "phonemes": ["f","ɛ","d"] },
+        { "surface": "Adam",      "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
+        { "surface": "in",        "graphemes": ["i","n"],                     "phonemes": ["ɪ","n"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "armored",   "graphemes": ["a","r","m","o","r","e","d"], "phonemes": ["ɑ","r","m","ɚ","d"] },
+        { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] }
+      ]
+    },
+    {
+      "text": "An armored ambulance and an armored van had Adam.",
+      "targetCount": 14,
+      "targetInitialContentWords": 6,
+      "interestWords": ["armored", "ambulance"],
+      "words": [
+        { "surface": "An",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "armored",   "graphemes": ["a","r","m","o","r","e","d"], "phonemes": ["ɑ","r","m","ɚ","d"] },
+        { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] },
+        { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+        { "surface": "armored",   "graphemes": ["a","r","m","o","r","e","d"], "phonemes": ["ɑ","r","m","ɚ","d"] },
+        { "surface": "van",       "graphemes": ["v","a","n"],                 "phonemes": ["v","æ","n"] },
+        { "surface": "had",       "graphemes": ["h","a","d"],                 "phonemes": ["h","æ","d"] },
+        { "surface": "Adam",      "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] }
+      ]
+    }
+  ]
+}

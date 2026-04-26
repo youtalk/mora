@@ -1,0 +1,350 @@
+{
+  "phoneme": "short_a",
+  "phonemeIPA": "æ",
+  "graphemeLetters": "a",
+  "interest": "robots",
+  "ageBand": "early",
+  "sentences": [
+    {
+      "text": "Adam and Anna had a bot and an arm.",
+      "targetCount": 8,
+      "targetInitialContentWords": 4,
+      "interestWords": ["bot", "arm"],
+      "words": [
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],     "phonemes": ["h","æ","d"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "bot",  "graphemes": ["b","o","t"],     "phonemes": ["b","ɒ","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "arm",  "graphemes": ["a","r","m"],     "phonemes": ["ɑ","r","m"] }
+      ]
+    },
+    {
+      "text": "Andy and Al got a bot and an ant.",
+      "targetCount": 7,
+      "targetInitialContentWords": 4,
+      "interestWords": ["bot", "ant"],
+      "words": [
+        { "surface": "Andy", "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Al",   "graphemes": ["a","l"],         "phonemes": ["æ","l"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "bot",  "graphemes": ["b","o","t"],     "phonemes": ["b","ɒ","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
+      ]
+    },
+    {
+      "text": "Anna pat a bot and Adam pat an arm.",
+      "targetCount": 8,
+      "targetInitialContentWords": 4,
+      "interestWords": ["bot", "arm"],
+      "words": [
+        { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+        { "surface": "pat",  "graphemes": ["p","a","t"],     "phonemes": ["p","æ","t"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "bot",  "graphemes": ["b","o","t"],     "phonemes": ["b","ɒ","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "pat",  "graphemes": ["p","a","t"],     "phonemes": ["p","æ","t"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "arm",  "graphemes": ["a","r","m"],     "phonemes": ["ɑ","r","m"] }
+      ]
+    },
+    {
+      "text": "Adam fed a bot and Anna fed an ant.",
+      "targetCount": 7,
+      "targetInitialContentWords": 4,
+      "interestWords": ["bot", "ant"],
+      "words": [
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "fed",  "graphemes": ["f","e","d"],     "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "bot",  "graphemes": ["b","o","t"],     "phonemes": ["b","ɒ","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+        { "surface": "fed",  "graphemes": ["f","e","d"],     "phonemes": ["f","ɛ","d"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
+      ]
+    },
+    {
+      "text": "Andy and Adam got an arm and a bot.",
+      "targetCount": 8,
+      "targetInitialContentWords": 4,
+      "interestWords": ["arm", "bot"],
+      "words": [
+        { "surface": "Andy", "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "arm",  "graphemes": ["a","r","m"],     "phonemes": ["ɑ","r","m"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "bot",  "graphemes": ["b","o","t"],     "phonemes": ["b","ɒ","t"] }
+      ]
+    },
+    {
+      "text": "Anna had an arm and Adam had a bot.",
+      "targetCount": 8,
+      "targetInitialContentWords": 4,
+      "interestWords": ["arm", "bot"],
+      "words": [
+        { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],     "phonemes": ["h","æ","d"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "arm",  "graphemes": ["a","r","m"],     "phonemes": ["ɑ","r","m"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],     "phonemes": ["h","æ","d"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "bot",  "graphemes": ["b","o","t"],     "phonemes": ["b","ɒ","t"] }
+      ]
+    },
+    {
+      "text": "An ant ran past Anna and Adam fast.",
+      "targetCount": 7,
+      "targetInitialContentWords": 4,
+      "interestWords": ["ant"],
+      "words": [
+        { "surface": "An",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],     "phonemes": ["r","æ","n"] },
+        { "surface": "past", "graphemes": ["p","a","s","t"], "phonemes": ["p","æ","s","t"] },
+        { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] }
+      ]
+    },
+    {
+      "text": "Adam and Al sat with a bot and an ant.",
+      "targetCount": 8,
+      "targetInitialContentWords": 4,
+      "interestWords": ["bot", "ant"],
+      "words": [
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Al",   "graphemes": ["a","l"],         "phonemes": ["æ","l"] },
+        { "surface": "sat",  "graphemes": ["s","a","t"],     "phonemes": ["s","æ","t"] },
+        { "surface": "with", "graphemes": ["w","i","th"],    "phonemes": ["w","ɪ","ð"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "bot",  "graphemes": ["b","o","t"],     "phonemes": ["b","ɒ","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
+      ]
+    },
+    {
+      "text": "Anna got an arm and Andy got a bot.",
+      "targetCount": 8,
+      "targetInitialContentWords": 4,
+      "interestWords": ["arm", "bot"],
+      "words": [
+        { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "arm",  "graphemes": ["a","r","m"],     "phonemes": ["ɑ","r","m"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Andy", "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "bot",  "graphemes": ["b","o","t"],     "phonemes": ["b","ɒ","t"] }
+      ]
+    },
+    {
+      "text": "Adam ran past a bot and got an ant.",
+      "targetCount": 7,
+      "targetInitialContentWords": 3,
+      "interestWords": ["bot", "ant"],
+      "words": [
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],     "phonemes": ["r","æ","n"] },
+        { "surface": "past", "graphemes": ["p","a","s","t"], "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "bot",  "graphemes": ["b","o","t"],     "phonemes": ["b","ɒ","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
+      ]
+    },
+    {
+      "text": "An ant sat on a bot and Anna pat it.",
+      "targetCount": 7,
+      "targetInitialContentWords": 3,
+      "interestWords": ["ant", "bot"],
+      "words": [
+        { "surface": "An",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+        { "surface": "sat",  "graphemes": ["s","a","t"],     "phonemes": ["s","æ","t"] },
+        { "surface": "on",   "graphemes": ["o","n"],         "phonemes": ["ɒ","n"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "bot",  "graphemes": ["b","o","t"],     "phonemes": ["b","ɒ","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+        { "surface": "pat",  "graphemes": ["p","a","t"],     "phonemes": ["p","æ","t"] },
+        { "surface": "it",   "graphemes": ["i","t"],         "phonemes": ["ɪ","t"] }
+      ]
+    },
+    {
+      "text": "Andy fed a bot and Adam fed an arm.",
+      "targetCount": 7,
+      "targetInitialContentWords": 4,
+      "interestWords": ["bot", "arm"],
+      "words": [
+        { "surface": "Andy", "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] },
+        { "surface": "fed",  "graphemes": ["f","e","d"],     "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "bot",  "graphemes": ["b","o","t"],     "phonemes": ["b","ɒ","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "fed",  "graphemes": ["f","e","d"],     "phonemes": ["f","ɛ","d"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "arm",  "graphemes": ["a","r","m"],     "phonemes": ["ɑ","r","m"] }
+      ]
+    },
+    {
+      "text": "Anna and Adam set an arm in the lab.",
+      "targetCount": 7,
+      "targetInitialContentWords": 4,
+      "interestWords": ["arm"],
+      "words": [
+        { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "set",  "graphemes": ["s","e","t"],     "phonemes": ["s","ɛ","t"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "arm",  "graphemes": ["a","r","m"],     "phonemes": ["ɑ","r","m"] },
+        { "surface": "in",   "graphemes": ["i","n"],         "phonemes": ["ɪ","n"] },
+        { "surface": "the",  "graphemes": ["th","e"],        "phonemes": ["ð","ə"] },
+        { "surface": "lab",  "graphemes": ["l","a","b"],     "phonemes": ["l","æ","b"] }
+      ]
+    },
+    {
+      "text": "Al and Andy got an ant and a bot.",
+      "targetCount": 7,
+      "targetInitialContentWords": 4,
+      "interestWords": ["ant", "bot"],
+      "words": [
+        { "surface": "Al",   "graphemes": ["a","l"],         "phonemes": ["æ","l"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Andy", "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "bot",  "graphemes": ["b","o","t"],     "phonemes": ["b","ɒ","t"] }
+      ]
+    },
+    {
+      "text": "An arm and a bot sat with Anna.",
+      "targetCount": 7,
+      "targetInitialContentWords": 3,
+      "interestWords": ["arm", "bot"],
+      "words": [
+        { "surface": "An",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "arm",  "graphemes": ["a","r","m"],     "phonemes": ["ɑ","r","m"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "bot",  "graphemes": ["b","o","t"],     "phonemes": ["b","ɒ","t"] },
+        { "surface": "sat",  "graphemes": ["s","a","t"],     "phonemes": ["s","æ","t"] },
+        { "surface": "with", "graphemes": ["w","i","th"],    "phonemes": ["w","ɪ","ð"] },
+        { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] }
+      ]
+    },
+    {
+      "text": "Adam and Anna got a bot and an ant.",
+      "targetCount": 8,
+      "targetInitialContentWords": 4,
+      "interestWords": ["bot", "ant"],
+      "words": [
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "bot",  "graphemes": ["b","o","t"],     "phonemes": ["b","ɒ","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
+      ]
+    },
+    {
+      "text": "Andy met an ant and Adam met a bot.",
+      "targetCount": 7,
+      "targetInitialContentWords": 4,
+      "interestWords": ["ant", "bot"],
+      "words": [
+        { "surface": "Andy", "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] },
+        { "surface": "met",  "graphemes": ["m","e","t"],     "phonemes": ["m","ɛ","t"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "met",  "graphemes": ["m","e","t"],     "phonemes": ["m","ɛ","t"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "bot",  "graphemes": ["b","o","t"],     "phonemes": ["b","ɒ","t"] }
+      ]
+    },
+    {
+      "text": "Anna had a tan bot and Andy had an arm.",
+      "targetCount": 9,
+      "targetInitialContentWords": 4,
+      "interestWords": ["bot", "arm"],
+      "words": [
+        { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],     "phonemes": ["h","æ","d"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "tan",  "graphemes": ["t","a","n"],     "phonemes": ["t","æ","n"] },
+        { "surface": "bot",  "graphemes": ["b","o","t"],     "phonemes": ["b","ɒ","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Andy", "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],     "phonemes": ["h","æ","d"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "arm",  "graphemes": ["a","r","m"],     "phonemes": ["ɑ","r","m"] }
+      ]
+    },
+    {
+      "text": "Adam and Anna pat an arm and a bot.",
+      "targetCount": 9,
+      "targetInitialContentWords": 4,
+      "interestWords": ["arm", "bot"],
+      "words": [
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+        { "surface": "pat",  "graphemes": ["p","a","t"],     "phonemes": ["p","æ","t"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "arm",  "graphemes": ["a","r","m"],     "phonemes": ["ɑ","r","m"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "bot",  "graphemes": ["b","o","t"],     "phonemes": ["b","ɒ","t"] }
+      ]
+    },
+    {
+      "text": "Andy and Al fed a bot and an ant.",
+      "targetCount": 7,
+      "targetInitialContentWords": 4,
+      "interestWords": ["bot", "ant"],
+      "words": [
+        { "surface": "Andy", "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Al",   "graphemes": ["a","l"],         "phonemes": ["æ","l"] },
+        { "surface": "fed",  "graphemes": ["f","e","d"],     "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "bot",  "graphemes": ["b","o","t"],     "phonemes": ["b","ɒ","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
+      ]
+    }
+  ]
+}

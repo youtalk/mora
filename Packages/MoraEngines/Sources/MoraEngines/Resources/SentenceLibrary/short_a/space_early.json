@@ -1,0 +1,352 @@
+{
+  "phoneme": "short_a",
+  "phonemeIPA": "æ",
+  "graphemeLetters": "a",
+  "interest": "space",
+  "ageBand": "early",
+  "sentences": [
+    {
+      "text": "Adam and Anna had an Apollo and a star.",
+      "targetCount": 9,
+      "targetInitialContentWords": 4,
+      "interestWords": ["Apollo", "star"],
+      "words": [
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],     "phonemes": ["æ","d","ə","m"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],     "phonemes": ["æ","n","ə"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],         "phonemes": ["h","æ","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Apollo", "graphemes": ["a","p","o","l","l","o"], "phonemes": ["ə","p","ɒ","l","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "star",   "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] }
+      ]
+    },
+    {
+      "text": "Andy and Al ran past an Apollo and a star.",
+      "targetCount": 10,
+      "targetInitialContentWords": 4,
+      "interestWords": ["Apollo", "star"],
+      "words": [
+        { "surface": "Andy",   "graphemes": ["a","n","d","y"],     "phonemes": ["æ","n","d","i"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Al",     "graphemes": ["a","l"],             "phonemes": ["æ","l"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Apollo", "graphemes": ["a","p","o","l","l","o"], "phonemes": ["ə","p","ɒ","l","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "star",   "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] }
+      ]
+    },
+    {
+      "text": "Anna sat in an Apollo and Adam sat in it.",
+      "targetCount": 10,
+      "targetInitialContentWords": 4,
+      "interestWords": ["Apollo"],
+      "words": [
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],     "phonemes": ["æ","n","ə"] },
+        { "surface": "sat",    "graphemes": ["s","a","t"],         "phonemes": ["s","æ","t"] },
+        { "surface": "in",     "graphemes": ["i","n"],             "phonemes": ["ɪ","n"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Apollo", "graphemes": ["a","p","o","l","l","o"], "phonemes": ["ə","p","ɒ","l","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],     "phonemes": ["æ","d","ə","m"] },
+        { "surface": "sat",    "graphemes": ["s","a","t"],         "phonemes": ["s","æ","t"] },
+        { "surface": "in",     "graphemes": ["i","n"],             "phonemes": ["ɪ","n"] },
+        { "surface": "it",     "graphemes": ["i","t"],             "phonemes": ["ɪ","t"] }
+      ]
+    },
+    {
+      "text": "Adam got an Apollo and Andy got a star.",
+      "targetCount": 9,
+      "targetInitialContentWords": 4,
+      "interestWords": ["Apollo", "star"],
+      "words": [
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],     "phonemes": ["æ","d","ə","m"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Apollo", "graphemes": ["a","p","o","l","l","o"], "phonemes": ["ə","p","ɒ","l","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Andy",   "graphemes": ["a","n","d","y"],     "phonemes": ["æ","n","d","i"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "star",   "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] }
+      ]
+    },
+    {
+      "text": "Anna had an ant and Adam had a Mars hat.",
+      "targetCount": 9,
+      "targetInitialContentWords": 3,
+      "interestWords": ["Mars"],
+      "words": [
+        { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],     "phonemes": ["h","æ","d"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],     "phonemes": ["h","æ","d"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "Mars", "graphemes": ["m","a","r","s"], "phonemes": ["m","ɑ","r","z"] },
+        { "surface": "hat",  "graphemes": ["h","a","t"],     "phonemes": ["h","æ","t"] }
+      ]
+    },
+    {
+      "text": "Andy had an Apollo and Anna had a Mars.",
+      "targetCount": 11,
+      "targetInitialContentWords": 4,
+      "interestWords": ["Apollo", "Mars"],
+      "words": [
+        { "surface": "Andy",   "graphemes": ["a","n","d","y"],     "phonemes": ["æ","n","d","i"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],         "phonemes": ["h","æ","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Apollo", "graphemes": ["a","p","o","l","l","o"], "phonemes": ["ə","p","ɒ","l","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],     "phonemes": ["æ","n","ə"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],         "phonemes": ["h","æ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "Mars",   "graphemes": ["m","a","r","s"],     "phonemes": ["m","ɑ","r","z"] }
+      ]
+    },
+    {
+      "text": "Adam ran fast past Anna and an Apollo.",
+      "targetCount": 8,
+      "targetInitialContentWords": 4,
+      "interestWords": ["Apollo"],
+      "words": [
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],     "phonemes": ["æ","d","ə","m"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "fast",   "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],     "phonemes": ["æ","n","ə"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Apollo", "graphemes": ["a","p","o","l","l","o"], "phonemes": ["ə","p","ɒ","l","oʊ"] }
+      ]
+    },
+    {
+      "text": "Anna and Andy fed an ant in an Apollo.",
+      "targetCount": 9,
+      "targetInitialContentWords": 5,
+      "interestWords": ["ant", "Apollo"],
+      "words": [
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],     "phonemes": ["æ","n","ə"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Andy",   "graphemes": ["a","n","d","y"],     "phonemes": ["æ","n","d","i"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],         "phonemes": ["f","ɛ","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "ant",    "graphemes": ["a","n","t"],         "phonemes": ["æ","n","t"] },
+        { "surface": "in",     "graphemes": ["i","n"],             "phonemes": ["ɪ","n"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Apollo", "graphemes": ["a","p","o","l","l","o"], "phonemes": ["ə","p","ɒ","l","oʊ"] }
+      ]
+    },
+    {
+      "text": "An Apollo and a Mars sat with Adam and Al.",
+      "targetCount": 12,
+      "targetInitialContentWords": 4,
+      "interestWords": ["Apollo", "Mars"],
+      "words": [
+        { "surface": "An",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Apollo", "graphemes": ["a","p","o","l","l","o"], "phonemes": ["ə","p","ɒ","l","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "Mars",   "graphemes": ["m","a","r","s"],     "phonemes": ["m","ɑ","r","z"] },
+        { "surface": "sat",    "graphemes": ["s","a","t"],         "phonemes": ["s","æ","t"] },
+        { "surface": "with",   "graphemes": ["w","i","th"],        "phonemes": ["w","ɪ","ð"] },
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],     "phonemes": ["æ","d","ə","m"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Al",     "graphemes": ["a","l"],             "phonemes": ["æ","l"] }
+      ]
+    },
+    {
+      "text": "Adam sat and Anna fed an ant in an Apollo.",
+      "targetCount": 10,
+      "targetInitialContentWords": 5,
+      "interestWords": ["ant", "Apollo"],
+      "words": [
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],     "phonemes": ["æ","d","ə","m"] },
+        { "surface": "sat",    "graphemes": ["s","a","t"],         "phonemes": ["s","æ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],     "phonemes": ["æ","n","ə"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],         "phonemes": ["f","ɛ","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "ant",    "graphemes": ["a","n","t"],         "phonemes": ["æ","n","t"] },
+        { "surface": "in",     "graphemes": ["i","n"],             "phonemes": ["ɪ","n"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Apollo", "graphemes": ["a","p","o","l","l","o"], "phonemes": ["ə","p","ɒ","l","oʊ"] }
+      ]
+    },
+    {
+      "text": "Anna got an Apollo and Adam got a Mars.",
+      "targetCount": 11,
+      "targetInitialContentWords": 4,
+      "interestWords": ["Apollo", "Mars"],
+      "words": [
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],     "phonemes": ["æ","n","ə"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Apollo", "graphemes": ["a","p","o","l","l","o"], "phonemes": ["ə","p","ɒ","l","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],     "phonemes": ["æ","d","ə","m"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "Mars",   "graphemes": ["m","a","r","s"],     "phonemes": ["m","ɑ","r","z"] }
+      ]
+    },
+    {
+      "text": "Andy fed an ant and Al fed an Apollo.",
+      "targetCount": 9,
+      "targetInitialContentWords": 6,
+      "interestWords": ["ant", "Apollo"],
+      "words": [
+        { "surface": "Andy",   "graphemes": ["a","n","d","y"],     "phonemes": ["æ","n","d","i"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],         "phonemes": ["f","ɛ","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "ant",    "graphemes": ["a","n","t"],         "phonemes": ["æ","n","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Al",     "graphemes": ["a","l"],             "phonemes": ["æ","l"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],         "phonemes": ["f","ɛ","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Apollo", "graphemes": ["a","p","o","l","l","o"], "phonemes": ["ə","p","ɒ","l","oʊ"] }
+      ]
+    },
+    {
+      "text": "Adam pat an Apollo and Anna pat an ant.",
+      "targetCount": 9,
+      "targetInitialContentWords": 6,
+      "interestWords": ["Apollo", "ant"],
+      "words": [
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],     "phonemes": ["æ","d","ə","m"] },
+        { "surface": "pat",    "graphemes": ["p","a","t"],         "phonemes": ["p","æ","t"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Apollo", "graphemes": ["a","p","o","l","l","o"], "phonemes": ["ə","p","ɒ","l","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],     "phonemes": ["æ","n","ə"] },
+        { "surface": "pat",    "graphemes": ["p","a","t"],         "phonemes": ["p","æ","t"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "ant",    "graphemes": ["a","n","t"],         "phonemes": ["æ","n","t"] }
+      ]
+    },
+    {
+      "text": "An Apollo had Adam and Anna in it.",
+      "targetCount": 9,
+      "targetInitialContentWords": 4,
+      "interestWords": ["Apollo"],
+      "words": [
+        { "surface": "An",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Apollo", "graphemes": ["a","p","o","l","l","o"], "phonemes": ["ə","p","ɒ","l","oʊ"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],         "phonemes": ["h","æ","d"] },
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],     "phonemes": ["æ","d","ə","m"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],     "phonemes": ["æ","n","ə"] },
+        { "surface": "in",     "graphemes": ["i","n"],             "phonemes": ["ɪ","n"] },
+        { "surface": "it",     "graphemes": ["i","t"],             "phonemes": ["ɪ","t"] }
+      ]
+    },
+    {
+      "text": "Andy and Anna sat in an Apollo at the lab.",
+      "targetCount": 10,
+      "targetInitialContentWords": 4,
+      "interestWords": ["Apollo"],
+      "words": [
+        { "surface": "Andy",   "graphemes": ["a","n","d","y"],     "phonemes": ["æ","n","d","i"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],     "phonemes": ["æ","n","ə"] },
+        { "surface": "sat",    "graphemes": ["s","a","t"],         "phonemes": ["s","æ","t"] },
+        { "surface": "in",     "graphemes": ["i","n"],             "phonemes": ["ɪ","n"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Apollo", "graphemes": ["a","p","o","l","l","o"], "phonemes": ["ə","p","ɒ","l","oʊ"] },
+        { "surface": "at",     "graphemes": ["a","t"],             "phonemes": ["æ","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],            "phonemes": ["ð","ə"] },
+        { "surface": "lab",    "graphemes": ["l","a","b"],         "phonemes": ["l","æ","b"] }
+      ]
+    },
+    {
+      "text": "Adam and Al got an Apollo and an ant.",
+      "targetCount": 9,
+      "targetInitialContentWords": 5,
+      "interestWords": ["Apollo", "ant"],
+      "words": [
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],     "phonemes": ["æ","d","ə","m"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Al",     "graphemes": ["a","l"],             "phonemes": ["æ","l"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Apollo", "graphemes": ["a","p","o","l","l","o"], "phonemes": ["ə","p","ɒ","l","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "ant",    "graphemes": ["a","n","t"],         "phonemes": ["æ","n","t"] }
+      ]
+    },
+    {
+      "text": "An Apollo got Adam and Anna to the Mars.",
+      "targetCount": 10,
+      "targetInitialContentWords": 4,
+      "interestWords": ["Apollo", "Mars"],
+      "words": [
+        { "surface": "An",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Apollo", "graphemes": ["a","p","o","l","l","o"], "phonemes": ["ə","p","ɒ","l","oʊ"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],     "phonemes": ["æ","d","ə","m"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],     "phonemes": ["æ","n","ə"] },
+        { "surface": "to",     "graphemes": ["t","o"],             "phonemes": ["t","u"] },
+        { "surface": "the",    "graphemes": ["th","e"],            "phonemes": ["ð","ə"] },
+        { "surface": "Mars",   "graphemes": ["m","a","r","s"],     "phonemes": ["m","ɑ","r","z"] }
+      ]
+    },
+    {
+      "text": "Andy met an ant and Adam met an Apollo.",
+      "targetCount": 9,
+      "targetInitialContentWords": 6,
+      "interestWords": ["ant", "Apollo"],
+      "words": [
+        { "surface": "Andy",   "graphemes": ["a","n","d","y"],     "phonemes": ["æ","n","d","i"] },
+        { "surface": "met",    "graphemes": ["m","e","t"],         "phonemes": ["m","ɛ","t"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "ant",    "graphemes": ["a","n","t"],         "phonemes": ["æ","n","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],     "phonemes": ["æ","d","ə","m"] },
+        { "surface": "met",    "graphemes": ["m","e","t"],         "phonemes": ["m","ɛ","t"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Apollo", "graphemes": ["a","p","o","l","l","o"], "phonemes": ["ə","p","ɒ","l","oʊ"] }
+      ]
+    },
+    {
+      "text": "Anna sat and Adam ran past an Apollo.",
+      "targetCount": 8,
+      "targetInitialContentWords": 4,
+      "interestWords": ["Apollo"],
+      "words": [
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],     "phonemes": ["æ","n","ə"] },
+        { "surface": "sat",    "graphemes": ["s","a","t"],         "phonemes": ["s","æ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],     "phonemes": ["æ","d","ə","m"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Apollo", "graphemes": ["a","p","o","l","l","o"], "phonemes": ["ə","p","ɒ","l","oʊ"] }
+      ]
+    },
+    {
+      "text": "Adam and Anna had a star and an Apollo.",
+      "targetCount": 9,
+      "targetInitialContentWords": 4,
+      "interestWords": ["star", "Apollo"],
+      "words": [
+        { "surface": "Adam",   "graphemes": ["a","d","a","m"],     "phonemes": ["æ","d","ə","m"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Anna",   "graphemes": ["a","n","n","a"],     "phonemes": ["æ","n","ə"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],         "phonemes": ["h","æ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "star",   "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+        { "surface": "Apollo", "graphemes": ["a","p","o","l","l","o"], "phonemes": ["ə","p","ɒ","l","oʊ"] }
+      ]
+    }
+  ]
+}
