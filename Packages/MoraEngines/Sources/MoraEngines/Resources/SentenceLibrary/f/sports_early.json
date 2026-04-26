@@ -1,0 +1,363 @@
+{
+  "phoneme": "f",
+  "phonemeIPA": "f",
+  "graphemeLetters": "f",
+  "interest": "sports",
+  "ageBand": "early",
+  "sentences": [
+    {
+      "text": "Finn and Fred ran a fast lap and got flag.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["lap", "flag"],
+      "words": [
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "lap",  "graphemes": ["l","a","p"],         "phonemes": ["l","æ","p"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Fran fit a fast flag and got a bat.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["flag", "bat"],
+      "words": [
+        { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "bat",  "graphemes": ["b","a","t"],         "phonemes": ["b","æ","t"] }
+      ]
+    },
+    {
+      "text": "Finn ran fast and Fred got a flag.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["flag"],
+      "words": [
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Fran fit a fast bat and a flag.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["bat", "flag"],
+      "words": [
+        { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "bat",  "graphemes": ["b","a","t"],         "phonemes": ["b","æ","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Fred fit a fast flag and Finn got a bat.",
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
+      "interestWords": ["flag", "bat"],
+      "words": [
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "bat",  "graphemes": ["b","a","t"],         "phonemes": ["b","æ","t"] }
+      ]
+    },
+    {
+      "text": "Finn fit a flag and Fran ran a fast lap.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["flag", "lap"],
+      "words": [
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "lap",  "graphemes": ["l","a","p"],         "phonemes": ["l","æ","p"] }
+      ]
+    },
+    {
+      "text": "Fred and Fran got a fast flag and a bat.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["flag", "bat"],
+      "words": [
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "bat",  "graphemes": ["b","a","t"],         "phonemes": ["b","æ","t"] }
+      ]
+    },
+    {
+      "text": "Finn ran fast and Fred ran a fast lap.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["lap"],
+      "words": [
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "lap",  "graphemes": ["l","a","p"],         "phonemes": ["l","æ","p"] }
+      ]
+    },
+    {
+      "text": "Fran got a fast bat and Finn got a flag.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["bat", "flag"],
+      "words": [
+        { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "bat",  "graphemes": ["b","a","t"],         "phonemes": ["b","æ","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Finn fit a flag and Fred got a fast net.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["flag", "net"],
+      "words": [
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "net",  "graphemes": ["n","e","t"],         "phonemes": ["n","ɛ","t"] }
+      ]
+    },
+    {
+      "text": "Fran got a fast flag and Fred got a mat.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["flag", "mat"],
+      "words": [
+        { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "mat",  "graphemes": ["m","a","t"],         "phonemes": ["m","æ","t"] }
+      ]
+    },
+    {
+      "text": "Finn got a fast bat and Fran got a flag.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["bat", "flag"],
+      "words": [
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "bat",  "graphemes": ["b","a","t"],         "phonemes": ["b","æ","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Fred and Finn fit a flag and a fast net.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["flag", "net"],
+      "words": [
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "net",  "graphemes": ["n","e","t"],         "phonemes": ["n","ɛ","t"] }
+      ]
+    },
+    {
+      "text": "Fran ran a fast lap and Fred fit a flag.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["lap", "flag"],
+      "words": [
+        { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "lap",  "graphemes": ["l","a","p"],         "phonemes": ["l","æ","p"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Finn fit a fast flag and Fran got a bat.",
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
+      "interestWords": ["flag", "bat"],
+      "words": [
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "bat",  "graphemes": ["b","a","t"],         "phonemes": ["b","æ","t"] }
+      ]
+    },
+    {
+      "text": "Fred fit a fast lap and Finn got a flag.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["lap", "flag"],
+      "words": [
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "lap",  "graphemes": ["l","a","p"],         "phonemes": ["l","æ","p"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Fran fit a fast net and Fred got a mat.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["net", "mat"],
+      "words": [
+        { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "net",  "graphemes": ["n","e","t"],         "phonemes": ["n","ɛ","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "mat",  "graphemes": ["m","a","t"],         "phonemes": ["m","æ","t"] }
+      ]
+    },
+    {
+      "text": "Finn fit a fast bat and Fran got a flag.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["bat", "flag"],
+      "words": [
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "bat",  "graphemes": ["b","a","t"],         "phonemes": ["b","æ","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Fred got a flag and Fran ran a fast lap.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["flag", "lap"],
+      "words": [
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "lap",  "graphemes": ["l","a","p"],         "phonemes": ["l","æ","p"] }
+      ]
+    },
+    {
+      "text": "Finn and Fran fit a fast flag and a bat.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["flag", "bat"],
+      "words": [
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "bat",  "graphemes": ["b","a","t"],         "phonemes": ["b","æ","t"] }
+      ]
+    }
+  ]
+}

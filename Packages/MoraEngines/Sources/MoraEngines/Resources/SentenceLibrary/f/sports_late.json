@@ -1,0 +1,369 @@
+{
+  "phoneme": "f",
+  "phonemeIPA": "f",
+  "graphemeLetters": "f",
+  "interest": "sports",
+  "ageBand": "late",
+  "sentences": [
+    {
+      "text": "Finn and Fred ran a fast lap, Fran lifted flag.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["lap", "flag"],
+      "words": [
+        { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fast",   "graphemes": ["f","a","s","t"],         "phonemes": ["f","æ","s","t"] },
+        { "surface": "lap",    "graphemes": ["l","a","p"],             "phonemes": ["l","æ","p"] },
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Fran fixed a fast bat and Finn fit a flag.",
+      "targetCount": 7,
+      "targetInitialContentWords": 6,
+      "interestWords": ["bat", "flag"],
+      "words": [
+        { "surface": "Fran",  "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast",  "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "bat",   "graphemes": ["b","a","t"],         "phonemes": ["b","æ","t"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Finn",  "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "fit",   "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flag",  "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Fred lifted a fast forward and Fran fit a flag.",
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
+      "interestWords": ["forward", "flag"],
+      "words": [
+        { "surface": "Fred",    "graphemes": ["f","r","e","d"],             "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "lifted",  "graphemes": ["l","i","f","t","e","d"],     "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "fast",    "graphemes": ["f","a","s","t"],             "phonemes": ["f","æ","s","t"] },
+        { "surface": "forward", "graphemes": ["f","o","r","w","a","r","d"], "phonemes": ["f","ɔ","r","w","ə","r","d"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "Fran",    "graphemes": ["f","r","a","n"],             "phonemes": ["f","r","æ","n"] },
+        { "surface": "fit",     "graphemes": ["f","i","t"],                 "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "flag",    "graphemes": ["f","l","a","g"],             "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Finn lifted a flag and Fran fit a fast bat.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["flag", "bat"],
+      "words": [
+        { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fast",   "graphemes": ["f","a","s","t"],         "phonemes": ["f","æ","s","t"] },
+        { "surface": "bat",    "graphemes": ["b","a","t"],             "phonemes": ["b","æ","t"] }
+      ]
+    },
+    {
+      "text": "Fran lifted a fan and Fred ran a fast lap.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["fan", "lap"],
+      "words": [
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fan",    "graphemes": ["f","a","n"],             "phonemes": ["f","æ","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fast",   "graphemes": ["f","a","s","t"],         "phonemes": ["f","æ","s","t"] },
+        { "surface": "lap",    "graphemes": ["l","a","p"],             "phonemes": ["l","æ","p"] }
+      ]
+    },
+    {
+      "text": "Finn fit a flag and Fran lifted a fast forward.",
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
+      "interestWords": ["flag", "forward"],
+      "words": [
+        { "surface": "Finn",    "graphemes": ["f","i","n","n"],             "phonemes": ["f","ɪ","n"] },
+        { "surface": "fit",     "graphemes": ["f","i","t"],                 "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "flag",    "graphemes": ["f","l","a","g"],             "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "Fran",    "graphemes": ["f","r","a","n"],             "phonemes": ["f","r","æ","n"] },
+        { "surface": "lifted",  "graphemes": ["l","i","f","t","e","d"],     "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "fast",    "graphemes": ["f","a","s","t"],             "phonemes": ["f","æ","s","t"] },
+        { "surface": "forward", "graphemes": ["f","o","r","w","a","r","d"], "phonemes": ["f","ɔ","r","w","ə","r","d"] }
+      ]
+    },
+    {
+      "text": "Fred and Finn fit a fast flag and a bat.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["flag", "bat"],
+      "words": [
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "bat",  "graphemes": ["b","a","t"],         "phonemes": ["b","æ","t"] }
+      ]
+    },
+    {
+      "text": "Finn fit a fast lap and Fred fixed a flag.",
+      "targetCount": 7,
+      "targetInitialContentWords": 6,
+      "interestWords": ["lap", "flag"],
+      "words": [
+        { "surface": "Finn",  "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "fit",   "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast",  "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "lap",   "graphemes": ["l","a","p"],         "phonemes": ["l","æ","p"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",  "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flag",  "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Fran fit a fast bat and Fred lifted a flag.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["bat", "flag"],
+      "words": [
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fast",   "graphemes": ["f","a","s","t"],         "phonemes": ["f","æ","s","t"] },
+        { "surface": "bat",    "graphemes": ["b","a","t"],             "phonemes": ["b","æ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Finn lifted a fast fan and Fred fit a flag.",
+      "targetCount": 7,
+      "targetInitialContentWords": 6,
+      "interestWords": ["fan", "flag"],
+      "words": [
+        { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fast",   "graphemes": ["f","a","s","t"],         "phonemes": ["f","æ","s","t"] },
+        { "surface": "fan",    "graphemes": ["f","a","n"],             "phonemes": ["f","æ","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Fran ran a fast lap and Fred lifted a fan.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["lap", "fan"],
+      "words": [
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fast",   "graphemes": ["f","a","s","t"],         "phonemes": ["f","æ","s","t"] },
+        { "surface": "lap",    "graphemes": ["l","a","p"],             "phonemes": ["l","æ","p"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fan",    "graphemes": ["f","a","n"],             "phonemes": ["f","æ","n"] }
+      ]
+    },
+    {
+      "text": "Fred fit a fast forward and Finn lifted a flag.",
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
+      "interestWords": ["forward", "flag"],
+      "words": [
+        { "surface": "Fred",    "graphemes": ["f","r","e","d"],             "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fit",     "graphemes": ["f","i","t"],                 "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "fast",    "graphemes": ["f","a","s","t"],             "phonemes": ["f","æ","s","t"] },
+        { "surface": "forward", "graphemes": ["f","o","r","w","a","r","d"], "phonemes": ["f","ɔ","r","w","ə","r","d"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "Finn",    "graphemes": ["f","i","n","n"],             "phonemes": ["f","ɪ","n"] },
+        { "surface": "lifted",  "graphemes": ["l","i","f","t","e","d"],     "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "flag",    "graphemes": ["f","l","a","g"],             "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Finn fit a fast bat and Fran fixed a flag.",
+      "targetCount": 7,
+      "targetInitialContentWords": 6,
+      "interestWords": ["bat", "flag"],
+      "words": [
+        { "surface": "Finn",  "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "fit",   "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast",  "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "bat",   "graphemes": ["b","a","t"],         "phonemes": ["b","æ","t"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fran",  "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flag",  "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Fran fit a fast net and Fred lifted a fan.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["net", "fan"],
+      "words": [
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fast",   "graphemes": ["f","a","s","t"],         "phonemes": ["f","æ","s","t"] },
+        { "surface": "net",    "graphemes": ["n","e","t"],             "phonemes": ["n","ɛ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fan",    "graphemes": ["f","a","n"],             "phonemes": ["f","æ","n"] }
+      ]
+    },
+    {
+      "text": "Finn fit a flag and Fran lifted a fast bat.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["flag", "bat"],
+      "words": [
+        { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+        { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fast",   "graphemes": ["f","a","s","t"],         "phonemes": ["f","æ","s","t"] },
+        { "surface": "bat",    "graphemes": ["b","a","t"],             "phonemes": ["b","æ","t"] }
+      ]
+    },
+    {
+      "text": "Fred lifted a fast forward and Fran lifted a fan.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["forward", "fan"],
+      "words": [
+        { "surface": "Fred",    "graphemes": ["f","r","e","d"],             "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "lifted",  "graphemes": ["l","i","f","t","e","d"],     "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "fast",    "graphemes": ["f","a","s","t"],             "phonemes": ["f","æ","s","t"] },
+        { "surface": "forward", "graphemes": ["f","o","r","w","a","r","d"], "phonemes": ["f","ɔ","r","w","ə","r","d"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "Fran",    "graphemes": ["f","r","a","n"],             "phonemes": ["f","r","æ","n"] },
+        { "surface": "lifted",  "graphemes": ["l","i","f","t","e","d"],     "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "fan",     "graphemes": ["f","a","n"],                 "phonemes": ["f","æ","n"] }
+      ]
+    },
+    {
+      "text": "Finn fixed a fast bat and Fran fit a flag.",
+      "targetCount": 7,
+      "targetInitialContentWords": 6,
+      "interestWords": ["bat", "flag"],
+      "words": [
+        { "surface": "Finn",  "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast",  "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "bat",   "graphemes": ["b","a","t"],         "phonemes": ["b","æ","t"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fran",  "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "fit",   "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flag",  "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Fran lifted a fast fan and Fred fixed a flag.",
+      "targetCount": 7,
+      "targetInitialContentWords": 6,
+      "interestWords": ["fan", "flag"],
+      "words": [
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fast",   "graphemes": ["f","a","s","t"],         "phonemes": ["f","æ","s","t"] },
+        { "surface": "fan",    "graphemes": ["f","a","n"],             "phonemes": ["f","æ","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fixed",  "graphemes": ["f","i","x","e","d"],     "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Finn fit a flag and Fred ran a fast lap.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["flag", "lap"],
+      "words": [
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "lap",  "graphemes": ["l","a","p"],         "phonemes": ["l","æ","p"] }
+      ]
+    },
+    {
+      "text": "Fred fit a fast bat and Fran lifted a flag.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["bat", "flag"],
+      "words": [
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fast",   "graphemes": ["f","a","s","t"],         "phonemes": ["f","æ","s","t"] },
+        { "surface": "bat",    "graphemes": ["b","a","t"],             "phonemes": ["b","æ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] }
+      ]
+    }
+  ]
+}

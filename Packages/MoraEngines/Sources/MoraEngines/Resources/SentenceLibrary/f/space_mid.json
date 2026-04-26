@@ -1,0 +1,356 @@
+{
+  "phoneme": "f",
+  "phonemeIPA": "f",
+  "graphemeLetters": "f",
+  "interest": "space",
+  "ageBand": "mid",
+  "sentences": [
+    {
+      "text": "Finn and Fred fit a flag on a comet.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["flag", "comet"],
+      "words": [
+        { "surface": "Finn",  "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",  "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fit",   "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flag",  "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] },
+        { "surface": "on",    "graphemes": ["o","n"],             "phonemes": ["ɒ","n"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "comet", "graphemes": ["c","o","m","e","t"], "phonemes": ["k","ɒ","m","ɪ","t"] }
+      ]
+    },
+    {
+      "text": "Fran fit a fast flag on Mars and Saturn.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["Mars", "Saturn"],
+      "words": [
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fast",   "graphemes": ["f","a","s","t"],         "phonemes": ["f","æ","s","t"] },
+        { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] },
+        { "surface": "on",     "graphemes": ["o","n"],                 "phonemes": ["ɒ","n"] },
+        { "surface": "Mars",   "graphemes": ["m","a","r","s"],         "phonemes": ["m","ɑ","r","z"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Saturn", "graphemes": ["s","a","t","u","r","n"], "phonemes": ["s","æ","t","ə","r","n"] }
+      ]
+    },
+    {
+      "text": "Fred lifted a fossil and Finn lifted a flag.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["fossil", "flag"],
+      "words": [
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fossil", "graphemes": ["f","o","s","s","i","l"], "phonemes": ["f","ɒ","s","ɪ","l"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Fran fixed a fan on a fast ship.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["fan", "ship"],
+      "words": [
+        { "surface": "Fran",  "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] },
+        { "surface": "on",    "graphemes": ["o","n"],             "phonemes": ["ɒ","n"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast",  "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "ship",  "graphemes": ["sh","i","p"],        "phonemes": ["ʃ","ɪ","p"] }
+      ]
+    },
+    {
+      "text": "Finn fit a flag and Fred fit a flat planet.",
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
+      "interestWords": ["flag", "planet"],
+      "words": [
+        { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+        { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "flat",   "graphemes": ["f","l","a","t"],         "phonemes": ["f","l","æ","t"] },
+        { "surface": "planet", "graphemes": ["p","l","a","n","e","t"], "phonemes": ["p","l","æ","n","ɪ","t"] }
+      ]
+    },
+    {
+      "text": "Fran lifted a fossil on a fast comet.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["fossil", "comet"],
+      "words": [
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fossil", "graphemes": ["f","o","s","s","i","l"], "phonemes": ["f","ɒ","s","ɪ","l"] },
+        { "surface": "on",     "graphemes": ["o","n"],                 "phonemes": ["ɒ","n"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fast",   "graphemes": ["f","a","s","t"],         "phonemes": ["f","æ","s","t"] },
+        { "surface": "comet",  "graphemes": ["c","o","m","e","t"],     "phonemes": ["k","ɒ","m","ɪ","t"] }
+      ]
+    },
+    {
+      "text": "Fred fit a fast flag and Finn lifted a fan.",
+      "targetCount": 7,
+      "targetInitialContentWords": 6,
+      "interestWords": ["flag", "fan"],
+      "words": [
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fast",   "graphemes": ["f","a","s","t"],         "phonemes": ["f","æ","s","t"] },
+        { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fan",    "graphemes": ["f","a","n"],             "phonemes": ["f","æ","n"] }
+      ]
+    },
+    {
+      "text": "Finn lifted a fossil and Fran fit a flag.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["fossil", "flag"],
+      "words": [
+        { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fossil", "graphemes": ["f","o","s","s","i","l"], "phonemes": ["f","ɒ","s","ɪ","l"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Fran fixed a fan and Fred fit a flag.",
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
+      "interestWords": ["fan", "flag"],
+      "words": [
+        { "surface": "Fran",  "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",  "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fit",   "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flag",  "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Finn fixed a fast fan on a comet ship.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["comet", "ship"],
+      "words": [
+        { "surface": "Finn",  "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fast",  "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
+        { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] },
+        { "surface": "on",    "graphemes": ["o","n"],             "phonemes": ["ɒ","n"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "comet", "graphemes": ["c","o","m","e","t"], "phonemes": ["k","ɒ","m","ɪ","t"] },
+        { "surface": "ship",  "graphemes": ["sh","i","p"],        "phonemes": ["ʃ","ɪ","p"] }
+      ]
+    },
+    {
+      "text": "Fred fit a flag and Fran lifted a fast fan.",
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
+      "interestWords": ["flag", "fan"],
+      "words": [
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fast",   "graphemes": ["f","a","s","t"],         "phonemes": ["f","æ","s","t"] },
+        { "surface": "fan",    "graphemes": ["f","a","n"],             "phonemes": ["f","æ","n"] }
+      ]
+    },
+    {
+      "text": "Fran lifted a fan and Fred lifted a flag.",
+      "targetCount": 6,
+      "targetInitialContentWords": 4,
+      "interestWords": ["fan", "flag"],
+      "words": [
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fan",    "graphemes": ["f","a","n"],             "phonemes": ["f","æ","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Finn and Fred fixed a fan on a Mars ship.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["fan", "Mars", "ship"],
+      "words": [
+        { "surface": "Finn",  "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",  "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] },
+        { "surface": "on",    "graphemes": ["o","n"],             "phonemes": ["ɒ","n"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "Mars",  "graphemes": ["m","a","r","s"],     "phonemes": ["m","ɑ","r","z"] },
+        { "surface": "ship",  "graphemes": ["sh","i","p"],        "phonemes": ["ʃ","ɪ","p"] }
+      ]
+    },
+    {
+      "text": "Fran fit a fast flag on a Saturn ship.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["flag", "Saturn", "ship"],
+      "words": [
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fast",   "graphemes": ["f","a","s","t"],         "phonemes": ["f","æ","s","t"] },
+        { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] },
+        { "surface": "on",     "graphemes": ["o","n"],                 "phonemes": ["ɒ","n"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "Saturn", "graphemes": ["s","a","t","u","r","n"], "phonemes": ["s","æ","t","ə","r","n"] },
+        { "surface": "ship",   "graphemes": ["sh","i","p"],            "phonemes": ["ʃ","ɪ","p"] }
+      ]
+    },
+    {
+      "text": "Finn fit a fan and Fred lifted a Mars flag.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["fan", "Mars", "flag"],
+      "words": [
+        { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+        { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fan",    "graphemes": ["f","a","n"],             "phonemes": ["f","æ","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "Mars",   "graphemes": ["m","a","r","s"],         "phonemes": ["m","ɑ","r","z"] },
+        { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Fran lifted a fast flag and Finn lifted a fan.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["flag", "fan"],
+      "words": [
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fast",   "graphemes": ["f","a","s","t"],         "phonemes": ["f","æ","s","t"] },
+        { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fan",    "graphemes": ["f","a","n"],             "phonemes": ["f","æ","n"] }
+      ]
+    },
+    {
+      "text": "Fred fixed a fan on a fast Saturn ship.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["fan", "Saturn", "ship"],
+      "words": [
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fixed",  "graphemes": ["f","i","x","e","d"],     "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fan",    "graphemes": ["f","a","n"],             "phonemes": ["f","æ","n"] },
+        { "surface": "on",     "graphemes": ["o","n"],                 "phonemes": ["ɒ","n"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fast",   "graphemes": ["f","a","s","t"],         "phonemes": ["f","æ","s","t"] },
+        { "surface": "Saturn", "graphemes": ["s","a","t","u","r","n"], "phonemes": ["s","æ","t","ə","r","n"] },
+        { "surface": "ship",   "graphemes": ["sh","i","p"],            "phonemes": ["ʃ","ɪ","p"] }
+      ]
+    },
+    {
+      "text": "Finn fit a flag and Fred lifted a fast fan.",
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
+      "interestWords": ["flag", "fan"],
+      "words": [
+        { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+        { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fast",   "graphemes": ["f","a","s","t"],         "phonemes": ["f","æ","s","t"] },
+        { "surface": "fan",    "graphemes": ["f","a","n"],             "phonemes": ["f","æ","n"] }
+      ]
+    },
+    {
+      "text": "Fran fit a fast flag on a planet and ship.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["flag", "planet", "ship"],
+      "words": [
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fast",   "graphemes": ["f","a","s","t"],         "phonemes": ["f","æ","s","t"] },
+        { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] },
+        { "surface": "on",     "graphemes": ["o","n"],                 "phonemes": ["ɒ","n"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "planet", "graphemes": ["p","l","a","n","e","t"], "phonemes": ["p","l","æ","n","ɪ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "ship",   "graphemes": ["sh","i","p"],            "phonemes": ["ʃ","ɪ","p"] }
+      ]
+    },
+    {
+      "text": "Fred and Fran fit a flag on a Mars ship.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["flag", "Mars", "ship"],
+      "words": [
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] },
+        { "surface": "on",   "graphemes": ["o","n"],             "phonemes": ["ɒ","n"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "Mars", "graphemes": ["m","a","r","s"],     "phonemes": ["m","ɑ","r","z"] },
+        { "surface": "ship", "graphemes": ["sh","i","p"],        "phonemes": ["ʃ","ɪ","p"] }
+      ]
+    }
+  ]
+}
