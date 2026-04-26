@@ -18,6 +18,11 @@ public actor SentenceLibrary {
         public let interest: String
         public let ageBand: AgeBand
         public let sentences: [DecodeSentence]
+        /// Per-sentence per-day variants. `byDay[i]` corresponds to
+        /// `sentences[i]`; the dictionary is keyed by the day-in-week as a
+        /// string ("1"…"4"). Day 5 has no entry — the engine returns the
+        /// full `sentences[i]` for Day 5 or any unauthored day.
+        public let byDay: [[String: DecodeSentence]]
     }
 
     private let cells: [CellKey: Cell]
@@ -52,7 +57,8 @@ public actor SentenceLibrary {
     }
 
     /// Selector — Track B-3 fills the body. The signature here matches spec
-    /// sec 6.6 so B-3 lands as a body-only change.
+    /// sec 6.6 so B-3 lands as a body-only change. Backward-compatible
+    /// overload that defaults to Day 5 (full-length sentences).
     public func sentences(
         target: SkillCode,
         interests: [String],
@@ -60,29 +66,54 @@ public actor SentenceLibrary {
         excluding seenSurfaces: Set<String> = [],
         count: Int
     ) async -> [DecodeSentence] {
+        await sentences(
+            target: target, interests: interests, ageYears: ageYears,
+            dayInWeek: 5, excluding: seenSurfaces, count: count
+        )
+    }
+
+    /// Day-aware selector. `dayInWeek` of 1..4 substitutes the cell's
+    /// authored shorter `byDay` variant for each picked sentence; Day 5 (or
+    /// any day with no authored variant) returns the full sentence.
+    public func sentences(
+        target: SkillCode,
+        interests: [String],
+        ageYears: Int,
+        dayInWeek: Int,
+        excluding seenSurfaces: Set<String> = [],
+        count: Int
+    ) async -> [DecodeSentence] {
         guard let directory = Self.directoryForSkillCode[target] else {
             return []
         }
         let band = AgeBand.from(years: ageYears)
-
-        // Empty interests → use all six (per spec § 6.6 step 3).
         let interestKeys = interests.isEmpty ? Self.allInterestKeys : interests
 
-        // Look up every cell that exists for the resolved (directory, band)
-        // across the learner's interests; missing cells are skipped silently.
-        let cellsForTarget: [Cell] = interestKeys.compactMap { interest in
-            cells[CellKey(phoneme: directory, interest: interest, ageBand: band)]
+        // Pair each sentence with its per-day variants so shuffle + day-pick
+        // stay in lockstep.
+        struct Entry { let sentence: DecodeSentence; let byDay: [String: DecodeSentence] }
+        let entries: [Entry] = interestKeys.flatMap { interest -> [Entry] in
+            guard
+                let cell = cells[CellKey(phoneme: directory, interest: interest, ageBand: band)]
+            else {
+                return []
+            }
+            return zip(cell.sentences, cell.byDay).map {
+                Entry(sentence: $0.0, byDay: $0.1)
+            }
         }
-        if cellsForTarget.isEmpty { return [] }
+        if entries.isEmpty { return [] }
 
-        let pool = cellsForTarget.flatMap(\.sentences)
-        let filtered = pool.filter { !seenSurfaces.contains($0.text) }
+        let filtered = entries.filter { !seenSurfaces.contains($0.sentence.text) }
+        let candidates = filtered.count >= count ? filtered : entries
 
-        // Spec § 6.6 step 5/6: prefer the freshness-respecting pool; relax if
-        // the filter starved the pool below `count`.
-        let candidates = filtered.count >= count ? filtered : pool
-
-        return Array(candidates.shuffled().prefix(count))
+        return Array(candidates.shuffled().prefix(count)).map { entry in
+            SentenceDayPicker.pick(
+                full: entry.sentence,
+                byDay: entry.byDay,
+                dayInWeek: dayInWeek
+            )
+        }
     }
 }
 
@@ -105,6 +136,12 @@ extension SentenceLibrary {
     }
 
     private struct SentencePayload: Decodable {
+        let text: String
+        let words: [WordPayload]
+        let byDay: [String: DayVariantPayload]?
+    }
+
+    private struct DayVariantPayload: Decodable {
         let text: String
         let words: [WordPayload]
     }
@@ -179,6 +216,14 @@ extension SentenceLibrary {
         return [:]  // resource not present — cells map empty, callers fall back
     }
 
+    private static func decodeWord(_ w: WordPayload) -> Word {
+        Word(
+            surface: w.surface,
+            graphemes: w.graphemes.map { Grapheme(letters: $0) },
+            phonemes: w.phonemes.map { Phoneme(ipa: $0) }
+        )
+    }
+
     private static func loadCells(from root: URL) throws -> [CellKey: Cell] {
         var out: [CellKey: Cell] = [:]
         let fm = FileManager.default
@@ -240,24 +285,31 @@ extension SentenceLibrary {
                 // Key is built from path-derived values (already validated to
                 // match the payload above).
                 let key = CellKey(phoneme: pathPhoneme, interest: payload.interest, ageBand: band)
+                let sentences = payload.sentences.map { p in
+                    DecodeSentence(
+                        text: p.text,
+                        words: p.words.map(Self.decodeWord)
+                    )
+                }
+                let byDay: [[String: DecodeSentence]] = payload.sentences.map { p in
+                    guard let raw = p.byDay else { return [:] }
+                    var out: [String: DecodeSentence] = [:]
+                    for (day, variant) in raw {
+                        out[day] = DecodeSentence(
+                            text: variant.text,
+                            words: variant.words.map(Self.decodeWord)
+                        )
+                    }
+                    return out
+                }
                 out[key] = Cell(
                     phoneme: payload.phoneme,
                     phonemeIPA: payload.phonemeIPA,
                     graphemeLetters: payload.graphemeLetters,
                     interest: payload.interest,
                     ageBand: band,
-                    sentences: payload.sentences.map { p in
-                        DecodeSentence(
-                            text: p.text,
-                            words: p.words.map { w in
-                                Word(
-                                    surface: w.surface,
-                                    graphemes: w.graphemes.map { Grapheme(letters: $0) },
-                                    phonemes: w.phonemes.map { Phoneme(ipa: $0) }
-                                )
-                            }
-                        )
-                    }
+                    sentences: sentences,
+                    byDay: byDay
                 )
             }
         }
