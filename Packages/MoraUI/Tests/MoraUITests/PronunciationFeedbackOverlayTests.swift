@@ -7,7 +7,7 @@ import XCTest
 final class PronunciationFeedbackOverlayTests: XCTestCase {
 
     private func strings() -> MoraStrings {
-        JapaneseL1Profile().uiStrings(forAgeYears: 8)
+        JapaneseL1Profile().uiStrings(at: .advanced)
     }
 
     func testMatchedDoesNotShowCoaching() {
