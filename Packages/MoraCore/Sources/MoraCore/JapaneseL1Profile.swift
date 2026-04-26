@@ -184,6 +184,16 @@ public struct JapaneseL1Profile: L1Profile {
         decodingLongPressHint: "ながおしで もういちど 聞けるよ",
         decodingBuildPrompt: "よく きいて ならべよう",
         decodingListenAgain: "🔊 もういちど",
+        tileTutorialSlotTitle: "文字を ますに 入れて ことばを つくる",
+        tileTutorialSlotBody:
+            "ます 1つは 音 1つ。タイルを ながおしして、ますへ ドラッグしよう。",
+        tileTutorialAudioTitle: "聞いた 音を つくろう",
+        tileTutorialAudioBody:
+            "はじめに 🔊 が 音を 聞かせる。きいた 音と 同じに なるよう、"
+            + "タイルを ならべよう。聞きなおすときは「もういちど きく」を タップ。",
+        tileTutorialNext: "つぎへ",
+        tileTutorialTry: "▶ やってみる",
+        decodingHelpLabel: "あそびかたを 見る",
         sentencesLongPressHint: "ながおしで もういちど 聞けるよ",
         feedbackCorrect: "せいかい！",
         feedbackTryAgain: "もう一回",
