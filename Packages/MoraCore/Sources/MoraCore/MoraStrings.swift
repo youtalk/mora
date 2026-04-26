@@ -88,6 +88,13 @@ public struct MoraStrings: Sendable {
 
     // Mic UI
     public let micButtonLabel: String
+    /// VoiceOver hint announced on the mic button while the recognizer is
+    /// idle. Localized so the hint matches the user-facing locale rather
+    /// than emitting English on a JP-first build.
+    public let micButtonHintTapToStart: String
+    /// VoiceOver hint announced while the recognizer is listening. Tapping
+    /// cancels the in-flight recording.
+    public let micButtonHintTapToStop: String
     public let micIdlePrompt: String
     public let micListening: String
     public let micAssessing: String
@@ -172,6 +179,8 @@ public struct MoraStrings: Sendable {
         sentencesListenAgain: String,
         feedbackCorrect: String, feedbackTryAgain: String,
         micButtonLabel: String,
+        micButtonHintTapToStart: String,
+        micButtonHintTapToStop: String,
         micIdlePrompt: String, micListening: String,
         micAssessing: String, micDeniedBanner: String,
         coachingShSubS: String,
@@ -257,6 +266,8 @@ public struct MoraStrings: Sendable {
         self.feedbackCorrect = feedbackCorrect
         self.feedbackTryAgain = feedbackTryAgain
         self.micButtonLabel = micButtonLabel
+        self.micButtonHintTapToStart = micButtonHintTapToStart
+        self.micButtonHintTapToStop = micButtonHintTapToStop
         self.micIdlePrompt = micIdlePrompt
         self.micListening = micListening
         self.micAssessing = micAssessing

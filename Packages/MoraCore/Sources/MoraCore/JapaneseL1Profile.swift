@@ -262,6 +262,8 @@ public struct JapaneseL1Profile: L1Profile {
         // `一` G1 but `回` G2 → partial-mix forbidden → all-hira.
         feedbackTryAgain: "もういちど",
         micButtonLabel: "はなす",
+        micButtonHintTapToStart: "タップで ろくおんを はじめる",
+        micButtonHintTapToStop: "タップで ろくおんを とめる",
         // `読` G2 → all-hira.
         micIdlePrompt: "マイクを タップして よんでね",
         // `聞` G2 → all-hira.
@@ -402,6 +404,8 @@ public struct JapaneseL1Profile: L1Profile {
         feedbackCorrect: "せいかい！",
         feedbackTryAgain: "もういちど",
         micButtonLabel: "はなす",
+        micButtonHintTapToStart: "タップで ろくおんを はじめる",
+        micButtonHintTapToStop: "タップで ろくおんを とめる",
         micIdlePrompt: "マイクを タップして よんでね",
         micListening: "きいてるよ…",
         // `中` G1 → on'yomi ちゅう (avoids awkward なか after カタカナ stem)
@@ -522,6 +526,8 @@ public struct JapaneseL1Profile: L1Profile {
         feedbackCorrect: "せいかい！",
         feedbackTryAgain: "もう一回",
         micButtonLabel: "はなす",
+        micButtonHintTapToStart: "タップで 録音を はじめる",
+        micButtonHintTapToStop: "タップで 録音を とめる",
         micIdlePrompt: "マイクを タップして 読んでね",
         micListening: "聞いてるよ…",
         micAssessing: "チェック中…",

@@ -12,22 +12,6 @@ public enum MicButtonState: Equatable, Sendable {
         case .assessing: return "ellipsis"
         }
     }
-
-    public var accessibilityLabel: String {
-        switch self {
-        case .idle: return "Start speaking"
-        case .listening: return "Listening"
-        case .assessing: return "Checking your answer"
-        }
-    }
-
-    public var accessibilityHint: String {
-        switch self {
-        case .idle: return "Tap to start recording"
-        case .listening: return "Tap to stop recording"
-        case .assessing: return ""
-        }
-    }
 }
 
 /// View-level state for the mic flow. Unlike `MicButtonState` it carries the
@@ -87,7 +71,7 @@ public struct MicButton: View {
         .onAppear { pulse = state == .listening }
         .onChange(of: state) { _, new in pulse = new == .listening }
         .accessibilityLabel(stateA11yLabel)
-        .accessibilityHint(state.accessibilityHint)
+        .accessibilityHint(stateA11yHint)
         .accessibilityAddTraits(state == .assessing ? .isStaticText : [])
     }
 
@@ -122,6 +106,17 @@ public struct MicButton: View {
         case .idle: return strings.a11yMicButton
         case .listening: return strings.micListening
         case .assessing: return strings.micAssessing
+        }
+    }
+
+    /// VoiceOver hint per state, sourced from `MoraStrings` so the JP-first
+    /// build does not emit English. Empty for `.assessing` (button disabled,
+    /// nothing for the user to do).
+    private var stateA11yHint: String {
+        switch state {
+        case .idle: return strings.micButtonHintTapToStart
+        case .listening: return strings.micButtonHintTapToStop
+        case .assessing: return ""
         }
     }
 
