@@ -251,6 +251,7 @@ public struct SessionContainerView: View {
                     chainPipStates: orchestrator.chainPipStates.map(ChainPipState.init),
                     incomingRole: orchestrator.currentChainRole,
                     speech: speech,
+                    audioMuted: showFirstTimeTutorial,
                     onTrialComplete: { result in
                         orchestrator.consumeTileBoardTrial(result)
                     }
@@ -271,7 +272,14 @@ public struct SessionContainerView: View {
             .padding(.bottom, MoraTheme.Space.sm)
             #endif
         }
-        .task(id: orchestrator.completedTrialCount) {
+        // Keyed on (trialCount, tutorialVisible) so dismissing the
+        // first-time tutorial re-fires the task with the same trial id
+        // and the previously-suppressed example1 clip still plays.
+        .task(id: TutorialAwareTrialKey(trialCount: orchestrator.completedTrialCount, tutorialVisible: showFirstTimeTutorial)) {
+            // Suppress the yokai exemplar clip while the first-time
+            // decoding tutorial cover is up; otherwise the clip plays
+            // under the modal.
+            if showFirstTimeTutorial { return }
             let idx = orchestrator.completedTrialCount
             let clip: YokaiClipKey?
             switch idx {
@@ -292,6 +300,20 @@ public struct SessionContainerView: View {
                 return
             }
             await clipRouter?.play(clip)
+        }
+        .onChange(of: showFirstTimeTutorial) { _, isShowing in
+            // The DecodeBoardView is already in the hierarchy when the
+            // tutorial cover appears (its .task runs after onAppear, and
+            // by then DecodeBoardView's onAppear has already kicked off
+            // speakTarget(); the .task(id:) clip-trigger above may also
+            // have a sleep in flight). Cut both audio paths so the cover
+            // appears in silence. On dismiss we do nothing — the
+            // DecodeBoardView is unchanged behind the modal and its next
+            // user interaction (or the listenAgain button) drives audio.
+            if isShowing {
+                Task { @MainActor in await speech?.stop() }
+                clipRouter?.stop()
+            }
         }
     }
 
@@ -602,6 +624,15 @@ public struct SessionContainerView: View {
             persistLog.error("SessionSummary save failed: \(error)")
         }
     }
+}
+
+/// Composite id for the decoding-phase yokai-clip task. Re-fires the
+/// task on either a trial advance or a transition out of the first-time
+/// tutorial cover, so the example clip suppressed during the cover plays
+/// once the cover dismisses on the same trial.
+private struct TutorialAwareTrialKey: Hashable {
+    let trialCount: Int
+    let tutorialVisible: Bool
 }
 
 private struct FirstTimeDecodingTutorialPresenter: ViewModifier {
