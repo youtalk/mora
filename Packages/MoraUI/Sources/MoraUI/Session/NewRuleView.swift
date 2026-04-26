@@ -6,6 +6,7 @@ struct NewRuleView: View {
     @Environment(\.moraStrings) private var strings
     let orchestrator: SessionOrchestrator
     let speech: SpeechController?
+    let clipRouter: YokaiClipRouter?
 
     @State private var finishedIntro = false
 
@@ -67,7 +68,7 @@ struct NewRuleView: View {
             finishedIntro = true
             return
         }
-        await speech.playAndAwait(introPrompts(includePhoneme: true))
+        await runIntro(speech: speech)
         // Only flip the gate when the intro actually finished. A cancelled
         // run (view disappeared, close button, user-initiated interrupt)
         // leaves the gate closed so that a re-entering view replays the
@@ -77,39 +78,39 @@ struct NewRuleView: View {
         }
     }
 
-    /// Re-plays the phrase + exemplars without the lead-in phoneme. The
-    /// learner already heard the bare /ʃ/ on first entry; replaying it
-    /// on every tap of the listen-again button feels repetitive. The CTA
-    /// stays active so the learner can advance whenever they're ready.
-    ///
-    /// `introPrompts()` reads `orchestrator.target` and the resulting
-    /// playback routes through `SpeechController`, both of which are
-    /// `@MainActor`-isolated. Building the prompt list *inside* the
-    /// `Task { @MainActor in ... }` keeps every orchestrator / speech
-    /// access on the same actor under Swift's strict concurrency
-    /// checking.
     private func replayIntro() {
         guard let speech else { return }
         Task { @MainActor in
-            let prompts = introPrompts(includePhoneme: false)
-            await speech.playAndAwait(prompts)
+            await runIntro(speech: speech)
         }
     }
 
-    /// Build an optional lead-in phoneme + "Two letters, one sound." +
-    /// three exemplar words. Avoids speaking the digraph letters in
-    /// isolation (TTS spells "sh" out as letters in plain text); the IPA
-    /// hint is the documented way to coax a clean /ʃ/ from Premium voices.
-    private func introPrompts(includePhoneme: Bool) -> [SpeechPrompt] {
-        var prompts: [SpeechPrompt] = []
-        if includePhoneme, let phoneme = orchestrator.target.phoneme {
-            prompts.append(.phoneme(phoneme, .slow))
+    /// Plays the intro: TTS narrates "Two letters, one sound." and then the
+    /// three exemplar words play in the yokai's voice via bundled
+    /// `example_1` / `example_2` / `example_3` clips. Each exemplar falls
+    /// back to TTS when the corresponding clip URL is missing or the router
+    /// is absent (e.g. a session without an encountered yokai).
+    ///
+    /// Deliberately omits a TTS /ʃ/ lead-in — the learner already heard the
+    /// yokai's `phoneme.m4a` in warmup, the rule card displays the IPA on
+    /// screen, and synthesized single-fricative phonemes from compact voices
+    /// land as a clipped "shh" that distracts from the rule narration.
+    @MainActor
+    private func runIntro(speech: SpeechController) async {
+        await speech.playAndAwait([.text("Two letters, one sound.", .slow)])
+        if Task.isCancelled { return }
+
+        let clipKeys: [YokaiClipKey] = [.example1, .example2, .example3]
+        for (index, word) in exemplars.enumerated() {
+            if Task.isCancelled { return }
+            let key = index < clipKeys.count ? clipKeys[index] : nil
+            if let key, let clipRouter,
+                await clipRouter.playAndAwait(key)
+            {
+                continue
+            }
+            await speech.playAndAwait([.text(word, .slow)])
         }
-        prompts.append(.text("Two letters, one sound.", .slow))
-        for word in exemplars {
-            prompts.append(.text(word, .slow))
-        }
-        return prompts
     }
 
     private var exemplars: [String] {
