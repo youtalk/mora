@@ -1,0 +1,353 @@
+{
+  "phoneme": "short_a",
+  "phonemeIPA": "æ",
+  "graphemeLetters": "a",
+  "interest": "vehicles",
+  "ageBand": "early",
+  "sentences": [
+    {
+      "text": "Adam and Anna had an ant and a cab.",
+      "targetCount": 9,
+      "targetInitialContentWords": 4,
+      "interestWords": ["cab"],
+      "words": [
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],     "phonemes": ["h","æ","d"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "cab",  "graphemes": ["c","a","b"],     "phonemes": ["k","æ","b"] }
+      ]
+    },
+    {
+      "text": "Andy and Al got an ant and a cab.",
+      "targetCount": 7,
+      "targetInitialContentWords": 4,
+      "interestWords": ["ant", "cab"],
+      "words": [
+        { "surface": "Andy", "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Al",   "graphemes": ["a","l"],         "phonemes": ["æ","l"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "cab",  "graphemes": ["c","a","b"],     "phonemes": ["k","æ","b"] }
+      ]
+    },
+    {
+      "text": "Anna had an ant and Adam had a tram.",
+      "targetCount": 9,
+      "targetInitialContentWords": 3,
+      "interestWords": ["ant", "tram"],
+      "words": [
+        { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],     "phonemes": ["h","æ","d"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],     "phonemes": ["h","æ","d"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "tram", "graphemes": ["t","r","a","m"], "phonemes": ["t","r","æ","m"] }
+      ]
+    },
+    {
+      "text": "Adam ran and got an ant in a cab.",
+      "targetCount": 7,
+      "targetInitialContentWords": 3,
+      "interestWords": ["ant", "cab"],
+      "words": [
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],     "phonemes": ["r","æ","n"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+        { "surface": "in",   "graphemes": ["i","n"],         "phonemes": ["ɪ","n"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "cab",  "graphemes": ["c","a","b"],     "phonemes": ["k","æ","b"] }
+      ]
+    },
+    {
+      "text": "Anna and Andy and Al sat in a fast cab.",
+      "targetCount": 8,
+      "targetInitialContentWords": 3,
+      "interestWords": ["cab"],
+      "words": [
+        { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Andy", "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Al",   "graphemes": ["a","l"],         "phonemes": ["æ","l"] },
+        { "surface": "sat",  "graphemes": ["s","a","t"],     "phonemes": ["s","æ","t"] },
+        { "surface": "in",   "graphemes": ["i","n"],         "phonemes": ["ɪ","n"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
+        { "surface": "cab",  "graphemes": ["c","a","b"],     "phonemes": ["k","æ","b"] }
+      ]
+    },
+    {
+      "text": "Adam got a van and Al got an ant.",
+      "targetCount": 7,
+      "targetInitialContentWords": 4,
+      "interestWords": ["van", "ant"],
+      "words": [
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "van",  "graphemes": ["v","a","n"],     "phonemes": ["v","æ","n"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Al",   "graphemes": ["a","l"],         "phonemes": ["æ","l"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
+      ]
+    },
+    {
+      "text": "Anna and Adam ran past an ant and a cab.",
+      "targetCount": 9,
+      "targetInitialContentWords": 4,
+      "interestWords": ["ant", "cab"],
+      "words": [
+        { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],     "phonemes": ["r","æ","n"] },
+        { "surface": "past", "graphemes": ["p","a","s","t"], "phonemes": ["p","æ","s","t"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "cab",  "graphemes": ["c","a","b"],     "phonemes": ["k","æ","b"] }
+      ]
+    },
+    {
+      "text": "Adam and Andy had a van and an ant.",
+      "targetCount": 8,
+      "targetInitialContentWords": 4,
+      "interestWords": ["van", "ant"],
+      "words": [
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Andy", "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],     "phonemes": ["h","æ","d"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "van",  "graphemes": ["v","a","n"],     "phonemes": ["v","æ","n"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
+      ]
+    },
+    {
+      "text": "Al and Adam and Anna sat in a cab.",
+      "targetCount": 8,
+      "targetInitialContentWords": 3,
+      "interestWords": ["cab"],
+      "words": [
+        { "surface": "Al",   "graphemes": ["a","l"],         "phonemes": ["æ","l"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+        { "surface": "sat",  "graphemes": ["s","a","t"],     "phonemes": ["s","æ","t"] },
+        { "surface": "in",   "graphemes": ["i","n"],         "phonemes": ["ɪ","n"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "cab",  "graphemes": ["c","a","b"],     "phonemes": ["k","æ","b"] }
+      ]
+    },
+    {
+      "text": "Andy got an ant and a fast tram.",
+      "targetCount": 7,
+      "targetInitialContentWords": 3,
+      "interestWords": ["ant", "tram"],
+      "words": [
+        { "surface": "Andy", "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
+        { "surface": "tram", "graphemes": ["t","r","a","m"], "phonemes": ["t","r","æ","m"] }
+      ]
+    },
+    {
+      "text": "Adam had an ant and Anna had a tan van.",
+      "targetCount": 9,
+      "targetInitialContentWords": 4,
+      "interestWords": ["ant", "van"],
+      "words": [
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],     "phonemes": ["h","æ","d"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],     "phonemes": ["h","æ","d"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "tan",  "graphemes": ["t","a","n"],     "phonemes": ["t","æ","n"] },
+        { "surface": "van",  "graphemes": ["v","a","n"],     "phonemes": ["v","æ","n"] }
+      ]
+    },
+    {
+      "text": "An ant sat in a cab and Adam ran fast.",
+      "targetCount": 7,
+      "targetInitialContentWords": 3,
+      "interestWords": ["ant", "cab"],
+      "words": [
+        { "surface": "An",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+        { "surface": "sat",  "graphemes": ["s","a","t"],     "phonemes": ["s","æ","t"] },
+        { "surface": "in",   "graphemes": ["i","n"],         "phonemes": ["ɪ","n"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "cab",  "graphemes": ["c","a","b"],     "phonemes": ["k","æ","b"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],     "phonemes": ["r","æ","n"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] }
+      ]
+    },
+    {
+      "text": "Anna got an ant and Andy got a cab.",
+      "targetCount": 7,
+      "targetInitialContentWords": 4,
+      "interestWords": ["ant", "cab"],
+      "words": [
+        { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Andy", "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "cab",  "graphemes": ["c","a","b"],     "phonemes": ["k","æ","b"] }
+      ]
+    },
+    {
+      "text": "Adam and Al got an ant in a van.",
+      "targetCount": 7,
+      "targetInitialContentWords": 4,
+      "interestWords": ["ant", "van"],
+      "words": [
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Al",   "graphemes": ["a","l"],         "phonemes": ["æ","l"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+        { "surface": "in",   "graphemes": ["i","n"],         "phonemes": ["ɪ","n"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "van",  "graphemes": ["v","a","n"],     "phonemes": ["v","æ","n"] }
+      ]
+    },
+    {
+      "text": "An ant and Adam ran past a fast tram.",
+      "targetCount": 7,
+      "targetInitialContentWords": 3,
+      "interestWords": ["ant", "tram"],
+      "words": [
+        { "surface": "An",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],     "phonemes": ["r","æ","n"] },
+        { "surface": "past", "graphemes": ["p","a","s","t"], "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
+        { "surface": "tram", "graphemes": ["t","r","a","m"], "phonemes": ["t","r","æ","m"] }
+      ]
+    },
+    {
+      "text": "Adam fed an ant in a van and a cab.",
+      "targetCount": 7,
+      "targetInitialContentWords": 3,
+      "interestWords": ["ant", "van"],
+      "words": [
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "fed",  "graphemes": ["f","e","d"],     "phonemes": ["f","ɛ","d"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+        { "surface": "in",   "graphemes": ["i","n"],         "phonemes": ["ɪ","n"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "van",  "graphemes": ["v","a","n"],     "phonemes": ["v","æ","n"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "cab",  "graphemes": ["c","a","b"],     "phonemes": ["k","æ","b"] }
+      ]
+    },
+    {
+      "text": "Andy and Anna and Al had a fast tram.",
+      "targetCount": 8,
+      "targetInitialContentWords": 3,
+      "interestWords": ["tram"],
+      "words": [
+        { "surface": "Andy", "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Al",   "graphemes": ["a","l"],         "phonemes": ["æ","l"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],     "phonemes": ["h","æ","d"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
+        { "surface": "tram", "graphemes": ["t","r","a","m"], "phonemes": ["t","r","æ","m"] }
+      ]
+    },
+    {
+      "text": "Anna and Adam and Al sat in a tram.",
+      "targetCount": 8,
+      "targetInitialContentWords": 3,
+      "interestWords": ["tram"],
+      "words": [
+        { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Al",   "graphemes": ["a","l"],         "phonemes": ["æ","l"] },
+        { "surface": "sat",  "graphemes": ["s","a","t"],     "phonemes": ["s","æ","t"] },
+        { "surface": "in",   "graphemes": ["i","n"],         "phonemes": ["ɪ","n"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "tram", "graphemes": ["t","r","a","m"], "phonemes": ["t","r","æ","m"] }
+      ]
+    },
+    {
+      "text": "Al got an ant and Adam got a tram.",
+      "targetCount": 7,
+      "targetInitialContentWords": 4,
+      "interestWords": ["ant", "tram"],
+      "words": [
+        { "surface": "Al",   "graphemes": ["a","l"],         "phonemes": ["æ","l"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+        { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+        { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "tram", "graphemes": ["t","r","a","m"], "phonemes": ["t","r","æ","m"] }
+      ]
+    },
+    {
+      "text": "Adam and Anna and Al ran past a cab.",
+      "targetCount": 8,
+      "targetInitialContentWords": 3,
+      "interestWords": ["cab"],
+      "words": [
+        { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Al",   "graphemes": ["a","l"],         "phonemes": ["æ","l"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],     "phonemes": ["r","æ","n"] },
+        { "surface": "past", "graphemes": ["p","a","s","t"], "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "cab",  "graphemes": ["c","a","b"],     "phonemes": ["k","æ","b"] }
+      ]
+    }
+  ]
+}
