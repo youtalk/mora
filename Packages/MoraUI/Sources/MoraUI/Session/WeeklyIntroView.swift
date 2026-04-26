@@ -3,6 +3,26 @@ import MoraEngines
 import SwiftData
 import SwiftUI
 
+/// Internal test seam: when set in the environment, `WeeklyIntroView`
+/// publishes its replay action to this object so unit tests can fire it
+/// without traversing the SwiftUI button hierarchy. Production code never
+/// reads it.
+@MainActor
+final class WeeklyIntroViewTestHook {
+    var tapReplay: (() -> Void)?
+}
+
+private struct WeeklyIntroTestHookKey: EnvironmentKey {
+    static let defaultValue: WeeklyIntroViewTestHook? = nil
+}
+
+extension EnvironmentValues {
+    var weeklyIntroTestHook: WeeklyIntroViewTestHook? {
+        get { self[WeeklyIntroTestHookKey.self] }
+        set { self[WeeklyIntroTestHookKey.self] = newValue }
+    }
+}
+
 /// Pre-warmup intro shown on the first session of each yokai week.
 /// Plays the active yokai's `.greet` clip and waits for the learner to
 /// tap "Next" before the warmup phase view (and its TTS prompt) mounts.
@@ -14,6 +34,7 @@ import SwiftUI
 public struct WeeklyIntroView: View {
     @Environment(\.moraStrings) private var strings
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.weeklyIntroTestHook) private var testHook: WeeklyIntroViewTestHook?
     @Bindable var yokai: YokaiOrchestrator
     let store: BundledYokaiStore?
     let player: any YokaiClipPlayer
@@ -52,6 +73,19 @@ public struct WeeklyIntroView: View {
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.horizontal, MoraTheme.Space.xl)
 
+            if greetClipURL != nil {
+                Button(action: replayGreet) {
+                    Text(strings.warmupListenAgain)
+                        .font(MoraType.cta())
+                        .foregroundStyle(MoraTheme.Accent.teal)
+                        .padding(.vertical, MoraTheme.Space.md)
+                        .padding(.horizontal, MoraTheme.Space.xl)
+                        .background(MoraTheme.Background.mint, in: .capsule)
+                        .minimumScaleFactor(0.5)
+                }
+                .buttonStyle(.plain)
+            }
+
             Spacer()
 
             HeroCTA(title: strings.yokaiIntroNext, action: {})
@@ -60,6 +94,7 @@ public struct WeeklyIntroView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .task {
             playGreet()
+            testHook?.tapReplay = { Task { @MainActor in self.replayGreet() } }
             if reduceMotion {
                 portraitScale = 1.0
             } else {
@@ -95,6 +130,12 @@ public struct WeeklyIntroView: View {
 
     private func playGreet() {
         guard let url = greetClipURL else { return }
+        _ = player.play(url: url)
+    }
+
+    private func replayGreet() {
+        guard let url = greetClipURL else { return }
+        player.stop()
         _ = player.play(url: url)
     }
 }

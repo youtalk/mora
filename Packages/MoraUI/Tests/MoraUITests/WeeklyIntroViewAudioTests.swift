@@ -72,6 +72,43 @@ final class WeeklyIntroViewAudioTests: XCTestCase {
         XCTAssertGreaterThanOrEqual(player.stopCallCount, 1)
         window.isHidden = true
     }
+
+    func testReplayButtonRefiresGreetClip() async throws {
+        let store = try BundledYokaiStore()
+        let player = RecordingClipPlayer()
+        let firstPlay = expectation(description: "greet plays on appear")
+        player.firstPlayExpectation = firstPlay
+        let yokai = try Self.makeYokaiOrchestrator(forID: "sh")
+        let inspector = WeeklyIntroViewTestHook()
+        let view = WeeklyIntroView(yokai: yokai, store: store, player: player)
+            .environment(\.weeklyIntroTestHook, inspector)
+
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        let host = UIHostingController(
+            rootView:
+                view.environment(
+                    \.moraStrings,
+                    JapaneseL1Profile().uiStrings(forAgeYears: 8)
+                )
+        )
+        window.rootViewController = host
+        window.makeKeyAndVisible()
+
+        await fulfillment(of: [firstPlay], timeout: 2.0)
+        XCTAssertEqual(player.playedURLs.count, 1)
+
+        // Simulate the user tapping the replay button.
+        inspector.tapReplay?()
+
+        XCTAssertEqual(player.playedURLs.count, 2)
+        XCTAssertEqual(player.stopCallCount, 1, "replay should stop before re-playing")
+        XCTAssertEqual(
+            player.playedURLs.last,
+            store.voiceClipURL(for: "sh", clip: .greet)
+        )
+
+        window.isHidden = true
+    }
     #endif
 
     static func makeYokaiOrchestrator(forID yokaiID: String) throws -> YokaiOrchestrator {
