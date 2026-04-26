@@ -156,10 +156,20 @@ final class SentenceLibrarySelectorTests: XCTestCase {
             "expected ≥ 2 of 3 returned sentences to come from the excluded set after relaxation")
     }
 
-    /// When no cells exist for the target (e.g. `th` at this PR's HEAD), the
-    /// selector returns `[]` so the caller can fall back to the per-week JSON.
+    /// When the SkillCode is registered but its directory contains no JSON
+    /// cells, the selector returns `[]` so the caller can fall back to the
+    /// per-week JSON. The bundled corpus has every registered phoneme
+    /// populated, so we exercise this path against an injected empty root.
     func test_sentences_noCellsForTarget_returnsEmpty() async throws {
-        let library = try SentenceLibrary()
+        let root = try makeTempRoot()
+        defer { try? FileManager.default.removeItem(at: root) }
+        // Empty `th/` directory — registered SkillCode `th_voiceless` maps
+        // here, so the loader sees zero cells for the target.
+        try FileManager.default.createDirectory(
+            at: root.appendingPathComponent("th", isDirectory: true),
+            withIntermediateDirectories: true
+        )
+        let library = try SentenceLibrary(rootURL: root)
 
         let result = await library.sentences(
             target: "th_voiceless",
@@ -185,5 +195,14 @@ final class SentenceLibrarySelectorTests: XCTestCase {
         )
 
         XCTAssertTrue(result.isEmpty, "expected [] for unknown SkillCode")
+    }
+
+    // MARK: - Helpers
+
+    private func makeTempRoot() throws -> URL {
+        let tmp = FileManager.default.temporaryDirectory
+            .appendingPathComponent("SentenceLibrarySelectorTests-\(UUID().uuidString)", isDirectory: true)
+        try FileManager.default.createDirectory(at: tmp, withIntermediateDirectories: true)
+        return tmp
     }
 }
