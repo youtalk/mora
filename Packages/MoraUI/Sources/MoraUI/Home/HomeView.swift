@@ -51,6 +51,8 @@ public struct HomeView: View {
     // doesn't appear, which matches the pre-cache behavior.
     @State private var yokaiStore: BundledYokaiStore? = try? BundledYokaiStore()
 
+    @State private var showYokaiIntroReplay: Bool = false
+
     // `needsEnhancedVoice` walks the installed-voice list; keep the result in
     // @State so the scan runs at most once per appearance / scene activation
     // rather than on every body invalidation (which fires on every @Query
@@ -91,6 +93,10 @@ public struct HomeView: View {
         .onAppear { refreshVoiceState() }
         .onChange(of: scenePhase) { _, phase in
             if phase == .active { refreshVoiceState() }
+        }
+        .sheet(isPresented: $showYokaiIntroReplay) {
+            YokaiIntroFlow(mode: .replay) { showYokaiIntroReplay = false }
+                .environment(\.moraStrings, strings)
         }
         #if os(iOS)
         .navigationBarHidden(true)
@@ -206,12 +212,21 @@ public struct HomeView: View {
     }
 
     private var heroFooter: some View {
-        NavigationLink(value: "bestiary") {
-            Label(strings.bestiaryLinkLabel, systemImage: "book.closed.fill")
-                .font(MoraType.label())
+        VStack(spacing: MoraTheme.Space.sm) {
+            NavigationLink(value: "bestiary") {
+                Label(strings.bestiaryLinkLabel, systemImage: "book.closed.fill")
+                    .font(MoraType.label())
+            }
+            .buttonStyle(.bordered)
+            .controlSize(.large)
+
+            Button { showYokaiIntroReplay = true } label: {
+                Label(strings.homeRecapLink, systemImage: "questionmark.circle")
+                    .font(MoraType.label())
+            }
+            .buttonStyle(.bordered)
+            .controlSize(.large)
         }
-        .buttonStyle(.bordered)
-        .controlSize(.large)
         .padding(.top, MoraTheme.Space.sm)
     }
 
