@@ -9,7 +9,7 @@ struct YokaiConceptPanel: View {
     let store: BundledYokaiStore?
     let onContinue: () -> Void
 
-    @State private var silhouettesVisible: Bool = false
+    @State private var silhouettesVisible: [Bool] = Array(repeating: false, count: 5)
 
     var body: some View {
         VStack(spacing: MoraTheme.Space.lg) {
@@ -38,29 +38,42 @@ struct YokaiConceptPanel: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .task {
-            if reduceMotion {
-                silhouettesVisible = true
-            } else {
-                withAnimation(.easeOut(duration: 0.4)) {
-                    silhouettesVisible = true
-                }
-            }
+            await animateSilhouettes()
         }
     }
 
     @ViewBuilder
     private var silhouetteRow: some View {
         HStack(spacing: MoraTheme.Space.lg) {
-            ForEach(catalog, id: \.id) { yokai in
+            ForEach(Array(catalog.enumerated()), id: \.element.id) { index, yokai in
                 VStack(spacing: 4) {
                     Text(yokai.ipa)
                         .font(MoraType.label())
                         .foregroundStyle(MoraTheme.Ink.muted)
                     YokaiPortraitCorner(yokai: yokai, sparkleTrigger: nil)
                         .frame(width: 96, height: 96)
-                        .opacity(silhouettesVisible ? 1.0 : 0.0)
+                        .opacity(isVisible(at: index) ? 1.0 : 0.0)
                 }
             }
+        }
+    }
+
+    private func isVisible(at index: Int) -> Bool {
+        guard silhouettesVisible.indices.contains(index) else { return false }
+        return silhouettesVisible[index]
+    }
+
+    @MainActor
+    private func animateSilhouettes() async {
+        if reduceMotion {
+            silhouettesVisible = Array(repeating: true, count: silhouettesVisible.count)
+            return
+        }
+        for index in silhouettesVisible.indices {
+            withAnimation(.easeOut(duration: 0.4)) {
+                silhouettesVisible[index] = true
+            }
+            try? await Task.sleep(for: .milliseconds(80))
         }
     }
 
