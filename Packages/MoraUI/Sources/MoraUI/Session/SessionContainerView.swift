@@ -33,6 +33,10 @@ public struct SessionContainerView: View {
     /// Dictation toggle, then leaves `uiMode = .tap` so the session
     /// completes on tap input without a second pop-up on every trial.
     @State private var showDictationDisabledAlert = false
+    @State private var decodingTutorialSeen: Bool = UserDefaults.standard.bool(
+        forKey: DecodingTutorialState.seenKey
+    )
+    @State private var showFirstTimeTutorial: Bool = false
 
     public init() {}
 
@@ -156,33 +160,22 @@ public struct SessionContainerView: View {
                     orchestrator: orchestrator, speech: speech, clipRouter: clipRouter
                 )
             case .decoding:
-                VStack(spacing: MoraTheme.Space.md) {
-                    if let engine = orchestrator.currentTileBoardEngine {
-                        DecodeBoardView(
-                            engine: engine,
-                            chainPipStates: orchestrator.chainPipStates.map(ChainPipState.init),
-                            incomingRole: orchestrator.currentChainRole,
-                            speech: speech,
-                            onTrialComplete: { result in
-                                orchestrator.consumeTileBoardTrial(result)
+                decodingPhaseContent(orchestrator: orchestrator)
+                    .modifier(
+                        FirstTimeDecodingTutorialPresenter(
+                            isPresented: $showFirstTimeTutorial,
+                            strings: strings,
+                            onFinished: {
+                                decodingTutorialSeen = true
+                                showFirstTimeTutorial = false
                             }
                         )
-                        .id(orchestrator.completedTrialCount)
-                    } else {
-                        Color.clear
+                    )
+                    .task {
+                        if !decodingTutorialSeen, !showFirstTimeTutorial {
+                            showFirstTimeTutorial = true
+                        }
                     }
-                    #if DEBUG
-                    // Dev-only shortcut to reach ShortSentences (the only
-                    // phase that exercises Engine A/B) in a few taps during
-                    // on-device iteration. Stripped from Release builds.
-                    Button("DEBUG: Skip to Short Sentences") {
-                        orchestrator.debugSkipDecoding()
-                    }
-                    .buttonStyle(.bordered)
-                    .tint(.orange)
-                    .padding(.bottom, MoraTheme.Space.sm)
-                    #endif
-                }
             case .shortSentences:
                 ShortSentencesView(
                     orchestrator: orchestrator, uiMode: uiMode,
@@ -249,6 +242,86 @@ public struct SessionContainerView: View {
             count: count
         )
         return try provider.decodeSentences(request)
+    }
+
+    @ViewBuilder
+    private func decodingPhaseContent(orchestrator: SessionOrchestrator) -> some View {
+        VStack(spacing: MoraTheme.Space.md) {
+            if let engine = orchestrator.currentTileBoardEngine {
+                DecodeBoardView(
+                    engine: engine,
+                    chainPipStates: orchestrator.chainPipStates.map(ChainPipState.init),
+                    incomingRole: orchestrator.currentChainRole,
+                    speech: speech,
+                    audioMuted: showFirstTimeTutorial,
+                    onTrialComplete: { result in
+                        orchestrator.consumeTileBoardTrial(result)
+                    }
+                )
+                .id(orchestrator.completedTrialCount)
+            } else {
+                Color.clear
+            }
+            #if DEBUG
+            // Dev-only shortcut to reach ShortSentences (the only
+            // phase that exercises Engine A/B) in a few taps during
+            // on-device iteration. Stripped from Release builds.
+            Button("DEBUG: Skip to Short Sentences") {
+                orchestrator.debugSkipDecoding()
+            }
+            .buttonStyle(.bordered)
+            .tint(.orange)
+            .padding(.bottom, MoraTheme.Space.sm)
+            #endif
+        }
+        // Keyed on (trialCount, tutorialVisible) so dismissing the
+        // first-time tutorial re-fires the task with the same trial id
+        // and the previously-suppressed example1 clip still plays.
+        .task(
+            id: TutorialAwareTrialKey(
+                trialCount: orchestrator.completedTrialCount,
+                tutorialVisible: showFirstTimeTutorial
+            )
+        ) {
+            // Suppress the yokai exemplar clip while the first-time
+            // decoding tutorial cover is up; otherwise the clip plays
+            // under the modal.
+            if showFirstTimeTutorial { return }
+            let idx = orchestrator.completedTrialCount
+            let clip: YokaiClipKey?
+            switch idx {
+            case 0: clip = .example1
+            case 3: clip = .example2
+            case 7: clip = .example3
+            default: clip = nil
+            }
+            guard let clip else { return }
+            // Wait for the in-trial Apple TTS speakTarget() to finish before
+            // triggering the yokai exemplar; the single-word utterance reliably
+            // finishes inside this 1.5s window. If SwiftUI cancels the task
+            // (phase change or trial-id update) the throwing sleep exits
+            // here so the clip never fires on a stale id.
+            do {
+                try await Task.sleep(for: .milliseconds(1500))
+            } catch {
+                return
+            }
+            await clipRouter?.play(clip)
+        }
+        .onChange(of: showFirstTimeTutorial) { _, isShowing in
+            // The DecodeBoardView is already in the hierarchy when the
+            // tutorial cover appears (its .task runs after onAppear, and
+            // by then DecodeBoardView's onAppear has already kicked off
+            // speakTarget(); the .task(id:) clip-trigger above may also
+            // have a sleep in flight). Cut both audio paths so the cover
+            // appears in silence. On dismiss we do nothing — the
+            // DecodeBoardView is unchanged behind the modal and its next
+            // user interaction (or the listenAgain button) drives audio.
+            if isShowing {
+                Task { @MainActor in await speech?.stop() }
+                clipRouter?.stop()
+            }
+        }
     }
 
     @MainActor
@@ -557,5 +630,34 @@ public struct SessionContainerView: View {
             // failure is debuggable; do not crash the celebration screen.
             persistLog.error("SessionSummary save failed: \(error)")
         }
+    }
+}
+
+/// Composite id for the decoding-phase yokai-clip task. Re-fires the
+/// task on either a trial advance or a transition out of the first-time
+/// tutorial cover, so the example clip suppressed during the cover plays
+/// once the cover dismisses on the same trial.
+private struct TutorialAwareTrialKey: Hashable {
+    let trialCount: Int
+    let tutorialVisible: Bool
+}
+
+private struct FirstTimeDecodingTutorialPresenter: ViewModifier {
+    @Binding var isPresented: Bool
+    let strings: MoraStrings
+    let onFinished: () -> Void
+
+    func body(content: Content) -> some View {
+        #if os(iOS)
+        content.fullScreenCover(isPresented: $isPresented) {
+            DecodingTutorialOverlay(mode: .firstTime, onFinished: onFinished)
+                .environment(\.moraStrings, strings)
+        }
+        #else
+        content.sheet(isPresented: $isPresented) {
+            DecodingTutorialOverlay(mode: .firstTime, onFinished: onFinished)
+                .environment(\.moraStrings, strings)
+        }
+        #endif
     }
 }

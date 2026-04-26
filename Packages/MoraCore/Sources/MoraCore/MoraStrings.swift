@@ -74,6 +74,14 @@ public struct MoraStrings: Sendable {
     public let decodingLongPressHint: String
     public let decodingBuildPrompt: String
     public let decodingListenAgain: String
+    // Tile-board first-run tutorial (2 panels + 2 CTAs + Help label)
+    public let tileTutorialSlotTitle: String
+    public let tileTutorialSlotBody: String
+    public let tileTutorialAudioTitle: String
+    public let tileTutorialAudioBody: String
+    public let tileTutorialNext: String
+    public let tileTutorialTry: String
+    public let decodingHelpLabel: String
     public let sentencesLongPressHint: String
     public let feedbackCorrect: String
     public let feedbackTryAgain: String
@@ -153,6 +161,13 @@ public struct MoraStrings: Sendable {
         warmupListenAgain: String, newRuleGotIt: String, newRuleListenAgain: String,
         decodingLongPressHint: String,
         decodingBuildPrompt: String, decodingListenAgain: String,
+        tileTutorialSlotTitle: String,
+        tileTutorialSlotBody: String,
+        tileTutorialAudioTitle: String,
+        tileTutorialAudioBody: String,
+        tileTutorialNext: String,
+        tileTutorialTry: String,
+        decodingHelpLabel: String,
         sentencesLongPressHint: String,
         feedbackCorrect: String, feedbackTryAgain: String,
         micIdlePrompt: String, micListening: String,
@@ -229,6 +244,13 @@ public struct MoraStrings: Sendable {
         self.decodingLongPressHint = decodingLongPressHint
         self.decodingBuildPrompt = decodingBuildPrompt
         self.decodingListenAgain = decodingListenAgain
+        self.tileTutorialSlotTitle = tileTutorialSlotTitle
+        self.tileTutorialSlotBody = tileTutorialSlotBody
+        self.tileTutorialAudioTitle = tileTutorialAudioTitle
+        self.tileTutorialAudioBody = tileTutorialAudioBody
+        self.tileTutorialNext = tileTutorialNext
+        self.tileTutorialTry = tileTutorialTry
+        self.decodingHelpLabel = decodingHelpLabel
         self.sentencesLongPressHint = sentencesLongPressHint
         self.feedbackCorrect = feedbackCorrect
         self.feedbackTryAgain = feedbackTryAgain
