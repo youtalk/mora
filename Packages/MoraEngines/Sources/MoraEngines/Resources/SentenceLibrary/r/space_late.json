@@ -1,0 +1,366 @@
+{
+  "phoneme": "r",
+  "phonemeIPA": "r",
+  "graphemeLetters": "r",
+  "interest": "space",
+  "ageBand": "late",
+  "sentences": [
+    {
+      "text": "Rex and Ron set a rim past Mars and Earth.",
+      "targetCount": 6,
+      "targetInitialContentWords": 3,
+      "interestWords": ["Mars", "Earth", "rim"],
+      "words": [
+        { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",   "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rim",   "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] },
+        { "surface": "past",  "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "Mars",  "graphemes": ["m","a","r","s"],     "phonemes": ["m","ɑ","r","z"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Earth", "graphemes": ["e","a","r","th"],    "phonemes": ["ɜ","r","θ"] }
+      ]
+    },
+    {
+      "text": "Rip ran past a red star and a red rim.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["star", "rim"],
+      "words": [
+        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "past", "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+      ]
+    },
+    {
+      "text": "Rex got a rim past Mars and Rob got Earth.",
+      "targetCount": 6,
+      "targetInitialContentWords": 4,
+      "interestWords": ["Mars", "Earth", "rim"],
+      "words": [
+        { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rim",   "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] },
+        { "surface": "past",  "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "Mars",  "graphemes": ["m","a","r","s"],     "phonemes": ["m","ɑ","r","z"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "Earth", "graphemes": ["e","a","r","th"],    "phonemes": ["ɜ","r","θ"] }
+      ]
+    },
+    {
+      "text": "Ron and Rip rested past a red star and Mars.",
+      "targetCount": 7,
+      "targetInitialContentWords": 5,
+      "interestWords": ["star", "Mars"],
+      "words": [
+        { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
+        { "surface": "rested", "graphemes": ["r","e","s","t","e","d"], "phonemes": ["r","ɛ","s","t","ɪ","d"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "red",    "graphemes": ["r","e","d"],             "phonemes": ["r","ɛ","d"] },
+        { "surface": "star",   "graphemes": ["s","t","a","r"],         "phonemes": ["s","t","ɑ","r"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Mars",   "graphemes": ["m","a","r","s"],         "phonemes": ["m","ɑ","r","z"] }
+      ]
+    },
+    {
+      "text": "Rex set a red rim and Rip set a star.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rim", "star"],
+      "words": [
+        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "set",  "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "set",  "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] }
+      ]
+    },
+    {
+      "text": "Rob got Earth and Rex got a red star.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["Earth", "star"],
+      "words": [
+        { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "Earth", "graphemes": ["e","a","r","th"],    "phonemes": ["ɜ","r","θ"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",   "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "star",  "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] }
+      ]
+    },
+    {
+      "text": "Ron got a red rim and a star past Mars.",
+      "targetCount": 6,
+      "targetInitialContentWords": 4,
+      "interestWords": ["rim", "star", "Mars"],
+      "words": [
+        { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] },
+        { "surface": "past", "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "Mars", "graphemes": ["m","a","r","s"],     "phonemes": ["m","ɑ","r","z"] }
+      ]
+    },
+    {
+      "text": "Rex and Rip ran past a star and a rim.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["star", "rim"],
+      "words": [
+        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "past", "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+      ]
+    },
+    {
+      "text": "Rob set Earth past Mars and got a red rim.",
+      "targetCount": 6,
+      "targetInitialContentWords": 4,
+      "interestWords": ["Earth", "Mars", "rim"],
+      "words": [
+        { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "Earth", "graphemes": ["e","a","r","th"],    "phonemes": ["ɜ","r","θ"] },
+        { "surface": "past",  "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "Mars",  "graphemes": ["m","a","r","s"],     "phonemes": ["m","ɑ","r","z"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",   "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "rim",   "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+      ]
+    },
+    {
+      "text": "Rex met Ron past a red rim and a star.",
+      "targetCount": 6,
+      "targetInitialContentWords": 4,
+      "interestWords": ["rim", "star"],
+      "words": [
+        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "met",  "graphemes": ["m","e","t"],         "phonemes": ["m","ɛ","t"] },
+        { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "past", "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] }
+      ]
+    },
+    {
+      "text": "Rip rested past a red star and Rob got rims.",
+      "targetCount": 7,
+      "targetInitialContentWords": 5,
+      "interestWords": ["star", "rims"],
+      "words": [
+        { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
+        { "surface": "rested", "graphemes": ["r","e","s","t","e","d"], "phonemes": ["r","ɛ","s","t","ɪ","d"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "red",    "graphemes": ["r","e","d"],             "phonemes": ["r","ɛ","d"] },
+        { "surface": "star",   "graphemes": ["s","t","a","r"],         "phonemes": ["s","t","ɑ","r"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+        { "surface": "rims",   "graphemes": ["r","i","m","s"],         "phonemes": ["r","ɪ","m","z"] }
+      ]
+    },
+    {
+      "text": "Ron and Rex got a star and a red rim.",
+      "targetCount": 6,
+      "targetInitialContentWords": 4,
+      "interestWords": ["star", "rim"],
+      "words": [
+        { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+      ]
+    },
+    {
+      "text": "Rip got Earth and Ron got a rim past Mars.",
+      "targetCount": 6,
+      "targetInitialContentWords": 3,
+      "interestWords": ["Earth", "rim", "Mars"],
+      "words": [
+        { "surface": "Rip",   "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "Earth", "graphemes": ["e","a","r","th"],    "phonemes": ["ɜ","r","θ"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",   "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rim",   "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] },
+        { "surface": "past",  "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "Mars",  "graphemes": ["m","a","r","s"],     "phonemes": ["m","ɑ","r","z"] }
+      ]
+    },
+    {
+      "text": "Rex set a red star and Rip set a rim.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["star", "rim"],
+      "words": [
+        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "set",  "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "set",  "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+      ]
+    },
+    {
+      "text": "Rob ran past a red star and got a rim.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["star", "rim"],
+      "words": [
+        { "surface": "Rob",  "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "past", "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+      ]
+    },
+    {
+      "text": "Rex and Rob got a rim past a red star.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["rim", "star"],
+      "words": [
+        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",  "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] },
+        { "surface": "past", "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] }
+      ]
+    },
+    {
+      "text": "Ron rested and Rip got Earth and a red star.",
+      "targetCount": 7,
+      "targetInitialContentWords": 5,
+      "interestWords": ["Earth", "star"],
+      "words": [
+        { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
+        { "surface": "rested", "graphemes": ["r","e","s","t","e","d"], "phonemes": ["r","ɛ","s","t","ɪ","d"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+        { "surface": "Earth",  "graphemes": ["e","a","r","th"],        "phonemes": ["ɜ","r","θ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "red",    "graphemes": ["r","e","d"],             "phonemes": ["r","ɛ","d"] },
+        { "surface": "star",   "graphemes": ["s","t","a","r"],         "phonemes": ["s","t","ɑ","r"] }
+      ]
+    },
+    {
+      "text": "Rex got Mars and Ron got a red rim.",
+      "targetCount": 6,
+      "targetInitialContentWords": 4,
+      "interestWords": ["Mars", "rim"],
+      "words": [
+        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "Mars", "graphemes": ["m","a","r","s"],     "phonemes": ["m","ɑ","r","z"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+      ]
+    },
+    {
+      "text": "Rip and Rob set a red star past Earth.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["star", "Earth"],
+      "words": [
+        { "surface": "Rip",   "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",   "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "star",  "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] },
+        { "surface": "past",  "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "Earth", "graphemes": ["e","a","r","th"],    "phonemes": ["ɜ","r","θ"] }
+      ]
+    },
+    {
+      "text": "Rex and Ron got Earth and a rim past Mars.",
+      "targetCount": 6,
+      "targetInitialContentWords": 3,
+      "interestWords": ["Earth", "rim", "Mars"],
+      "words": [
+        { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",   "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "Earth", "graphemes": ["e","a","r","th"],    "phonemes": ["ɜ","r","θ"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rim",   "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] },
+        { "surface": "past",  "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "Mars",  "graphemes": ["m","a","r","s"],     "phonemes": ["m","ɑ","r","z"] }
+      ]
+    }
+  ]
+}

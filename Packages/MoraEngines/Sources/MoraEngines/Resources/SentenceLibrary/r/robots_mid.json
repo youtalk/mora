@@ -1,0 +1,358 @@
+{
+  "phoneme": "r",
+  "phonemeIPA": "r",
+  "graphemeLetters": "r",
+  "interest": "robots",
+  "ageBand": "mid",
+  "sentences": [
+    {
+      "text": "Rex got a rivet and Ron got a rod.",
+      "targetCount": 4,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rivet", "rod"],
+      "words": [
+        { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",   "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rod",   "graphemes": ["r","o","d"],         "phonemes": ["r","ɒ","d"] }
+      ]
+    },
+    {
+      "text": "Rip got a rivet and Rob got a rim.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rivet", "rim"],
+      "words": [
+        { "surface": "Rip",   "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rim",   "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+      ]
+    },
+    {
+      "text": "Rex set a rod and Ron set a rivet.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rod", "rivet"],
+      "words": [
+        { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rod",   "graphemes": ["r","o","d"],         "phonemes": ["r","ɒ","d"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",   "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] }
+      ]
+    },
+    {
+      "text": "Ron and Rip got a rust rod and a rivet.",
+      "targetCount": 6,
+      "targetInitialContentWords": 4,
+      "interestWords": ["rust", "rod", "rivet"],
+      "words": [
+        { "surface": "Ron",   "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",   "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rust",  "graphemes": ["r","u","s","t"],     "phonemes": ["r","ʌ","s","t"] },
+        { "surface": "rod",   "graphemes": ["r","o","d"],         "phonemes": ["r","ɒ","d"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] }
+      ]
+    },
+    {
+      "text": "Rex got a red rivet and Rip got a rim.",
+      "targetCount": 7,
+      "targetInitialContentWords": 6,
+      "interestWords": ["rivet", "rim"],
+      "words": [
+        { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",   "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",   "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rim",   "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+      ]
+    },
+    {
+      "text": "Rob ran and Ron got a rust rivet.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rivet"],
+      "words": [
+        { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "ran",   "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",   "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rust",  "graphemes": ["r","u","s","t"],     "phonemes": ["r","ʌ","s","t"] },
+        { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] }
+      ]
+    },
+    {
+      "text": "Rex set a rivet and Ron set a ram.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rivet", "ram"],
+      "words": [
+        { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",   "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "ram",   "graphemes": ["r","a","m"],         "phonemes": ["r","æ","m"] }
+      ]
+    },
+    {
+      "text": "Rip and Rob set a rivet and a rod.",
+      "targetCount": 6,
+      "targetInitialContentWords": 4,
+      "interestWords": ["rivet", "rod"],
+      "words": [
+        { "surface": "Rip",   "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rod",   "graphemes": ["r","o","d"],         "phonemes": ["r","ɒ","d"] }
+      ]
+    },
+    {
+      "text": "Rex got a rivet and Ron set a rim.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rivet", "rim"],
+      "words": [
+        { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",   "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rim",   "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+      ]
+    },
+    {
+      "text": "Rip got a rust ram and Rex got a rod.",
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
+      "interestWords": ["rust", "ram", "rod"],
+      "words": [
+        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rust", "graphemes": ["r","u","s","t"],     "phonemes": ["r","ʌ","s","t"] },
+        { "surface": "ram",  "graphemes": ["r","a","m"],         "phonemes": ["r","æ","m"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rod",  "graphemes": ["r","o","d"],         "phonemes": ["r","ɒ","d"] }
+      ]
+    },
+    {
+      "text": "Rob set a rivet and Rip set a rod.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rivet", "rod"],
+      "words": [
+        { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",   "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rod",   "graphemes": ["r","o","d"],         "phonemes": ["r","ɒ","d"] }
+      ]
+    },
+    {
+      "text": "Ron got a rivet and Rob got a red rod.",
+      "targetCount": 7,
+      "targetInitialContentWords": 6,
+      "interestWords": ["rivet", "rod"],
+      "words": [
+        { "surface": "Ron",   "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",   "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "rod",   "graphemes": ["r","o","d"],         "phonemes": ["r","ɒ","d"] }
+      ]
+    },
+    {
+      "text": "Rex set a rim and Rob set a rivet.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rim", "rivet"],
+      "words": [
+        { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rim",   "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] }
+      ]
+    },
+    {
+      "text": "Rip got a ram and Ron got a rivet rod.",
+      "targetCount": 7,
+      "targetInitialContentWords": 6,
+      "interestWords": ["ram", "rivet", "rod"],
+      "words": [
+        { "surface": "Rip",   "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "ram",   "graphemes": ["r","a","m"],         "phonemes": ["r","æ","m"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",   "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] },
+        { "surface": "rod",   "graphemes": ["r","o","d"],         "phonemes": ["r","ɒ","d"] }
+      ]
+    },
+    {
+      "text": "Rex and Rob got a rivet and a rim.",
+      "targetCount": 6,
+      "targetInitialContentWords": 4,
+      "interestWords": ["rivet", "rim"],
+      "words": [
+        { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rim",   "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+      ]
+    },
+    {
+      "text": "Ron set a red rivet and Rex set a rod.",
+      "targetCount": 7,
+      "targetInitialContentWords": 6,
+      "interestWords": ["rivet", "rod"],
+      "words": [
+        { "surface": "Ron",   "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",   "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rod",   "graphemes": ["r","o","d"],         "phonemes": ["r","ɒ","d"] }
+      ]
+    },
+    {
+      "text": "Rip ran and Rex got a rivet and a rim.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rivet", "rim"],
+      "words": [
+        { "surface": "Rip",   "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "ran",   "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rim",   "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+      ]
+    },
+    {
+      "text": "Rob set a rod and Rip set a rust ram.",
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
+      "interestWords": ["rod", "rust", "ram"],
+      "words": [
+        { "surface": "Rob",  "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "set",  "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rod",  "graphemes": ["r","o","d"],         "phonemes": ["r","ɒ","d"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "set",  "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rust", "graphemes": ["r","u","s","t"],     "phonemes": ["r","ʌ","s","t"] },
+        { "surface": "ram",  "graphemes": ["r","a","m"],         "phonemes": ["r","æ","m"] }
+      ]
+    },
+    {
+      "text": "Rex met Rob and got a rivet and a rim.",
+      "targetCount": 6,
+      "targetInitialContentWords": 4,
+      "interestWords": ["rivet", "rim"],
+      "words": [
+        { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "met",   "graphemes": ["m","e","t"],         "phonemes": ["m","ɛ","t"] },
+        { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rim",   "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+      ]
+    },
+    {
+      "text": "Ron got a ram and Rip got a rust rod.",
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
+      "interestWords": ["ram", "rust", "rod"],
+      "words": [
+        { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "ram",  "graphemes": ["r","a","m"],         "phonemes": ["r","æ","m"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rust", "graphemes": ["r","u","s","t"],     "phonemes": ["r","ʌ","s","t"] },
+        { "surface": "rod",  "graphemes": ["r","o","d"],         "phonemes": ["r","ɒ","d"] }
+      ]
+    }
+  ]
+}

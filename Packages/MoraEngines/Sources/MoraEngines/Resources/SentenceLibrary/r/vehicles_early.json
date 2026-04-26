@@ -1,0 +1,342 @@
+{
+  "phoneme": "r",
+  "phonemeIPA": "r",
+  "graphemeLetters": "r",
+  "interest": "vehicles",
+  "ageBand": "early",
+  "sentences": [
+    {
+      "text": "Rex got a raft and Ron got a ramp.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["raft", "ramp"],
+      "words": [
+        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "raft", "graphemes": ["r","a","f","t"],     "phonemes": ["r","æ","f","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "ramp", "graphemes": ["r","a","m","p"],     "phonemes": ["r","æ","m","p"] }
+      ]
+    },
+    {
+      "text": "Rip ran and Rob got a red ramp.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["ramp"],
+      "words": [
+        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",  "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "ramp", "graphemes": ["r","a","m","p"],     "phonemes": ["r","æ","m","p"] }
+      ]
+    },
+    {
+      "text": "Rex got a raft and Rip got a raft.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["raft"],
+      "words": [
+        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "raft", "graphemes": ["r","a","f","t"],     "phonemes": ["r","æ","f","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "raft", "graphemes": ["r","a","f","t"],     "phonemes": ["r","æ","f","t"] }
+      ]
+    },
+    {
+      "text": "Ron and Rex ran past a red raft.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["raft"],
+      "words": [
+        { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "past", "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "raft", "graphemes": ["r","a","f","t"],     "phonemes": ["r","æ","f","t"] }
+      ]
+    },
+    {
+      "text": "Rob got a ramp and Rip got a raft.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["ramp", "raft"],
+      "words": [
+        { "surface": "Rob",  "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "ramp", "graphemes": ["r","a","m","p"],     "phonemes": ["r","æ","m","p"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "raft", "graphemes": ["r","a","f","t"],     "phonemes": ["r","æ","f","t"] }
+      ]
+    },
+    {
+      "text": "Rex ran and got a red ramp.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["ramp"],
+      "words": [
+        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "ramp", "graphemes": ["r","a","m","p"],     "phonemes": ["r","æ","m","p"] }
+      ]
+    },
+    {
+      "text": "Rip and Ron got a raft and a ramp.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["raft", "ramp"],
+      "words": [
+        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "raft", "graphemes": ["r","a","f","t"],     "phonemes": ["r","æ","f","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "ramp", "graphemes": ["r","a","m","p"],     "phonemes": ["r","æ","m","p"] }
+      ]
+    },
+    {
+      "text": "Rob ran and Rex got a red raft.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["raft"],
+      "words": [
+        { "surface": "Rob",  "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "raft", "graphemes": ["r","a","f","t"],     "phonemes": ["r","æ","f","t"] }
+      ]
+    },
+    {
+      "text": "Rex set a raft and Rip set a ramp.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["raft", "ramp"],
+      "words": [
+        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "set",  "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "raft", "graphemes": ["r","a","f","t"],     "phonemes": ["r","æ","f","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "set",  "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "ramp", "graphemes": ["r","a","m","p"],     "phonemes": ["r","æ","m","p"] }
+      ]
+    },
+    {
+      "text": "Ron got a ramp and Rex ran past a raft.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["ramp", "raft"],
+      "words": [
+        { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "ramp", "graphemes": ["r","a","m","p"],     "phonemes": ["r","æ","m","p"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "past", "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "raft", "graphemes": ["r","a","f","t"],     "phonemes": ["r","æ","f","t"] }
+      ]
+    },
+    {
+      "text": "Rip got a red raft and a red ramp.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["raft", "ramp"],
+      "words": [
+        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "raft", "graphemes": ["r","a","f","t"],     "phonemes": ["r","æ","f","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "ramp", "graphemes": ["r","a","m","p"],     "phonemes": ["r","æ","m","p"] }
+      ]
+    },
+    {
+      "text": "Rob and Rip got a raft and a ramp.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["raft", "ramp"],
+      "words": [
+        { "surface": "Rob",  "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "raft", "graphemes": ["r","a","f","t"],     "phonemes": ["r","æ","f","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "ramp", "graphemes": ["r","a","m","p"],     "phonemes": ["r","æ","m","p"] }
+      ]
+    },
+    {
+      "text": "Rex ran and Rip got a raft.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["raft"],
+      "words": [
+        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "raft", "graphemes": ["r","a","f","t"],     "phonemes": ["r","æ","f","t"] }
+      ]
+    },
+    {
+      "text": "Ron got a ramp and Rex got a ramp.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["ramp"],
+      "words": [
+        { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "ramp", "graphemes": ["r","a","m","p"],     "phonemes": ["r","æ","m","p"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "ramp", "graphemes": ["r","a","m","p"],     "phonemes": ["r","æ","m","p"] }
+      ]
+    },
+    {
+      "text": "Rip ran past a ramp and got a raft.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["ramp", "raft"],
+      "words": [
+        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "past", "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "ramp", "graphemes": ["r","a","m","p"],     "phonemes": ["r","æ","m","p"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "raft", "graphemes": ["r","a","f","t"],     "phonemes": ["r","æ","f","t"] }
+      ]
+    },
+    {
+      "text": "Rex and Rob got a red raft.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["raft"],
+      "words": [
+        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",  "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "raft", "graphemes": ["r","a","f","t"],     "phonemes": ["r","æ","f","t"] }
+      ]
+    },
+    {
+      "text": "Ron got a red ramp and Rip got a raft.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["ramp", "raft"],
+      "words": [
+        { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "ramp", "graphemes": ["r","a","m","p"],     "phonemes": ["r","æ","m","p"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "raft", "graphemes": ["r","a","f","t"],     "phonemes": ["r","æ","f","t"] }
+      ]
+    },
+    {
+      "text": "Rob and Ron ran past a red ramp.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["ramp"],
+      "words": [
+        { "surface": "Rob",  "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "past", "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "ramp", "graphemes": ["r","a","m","p"],     "phonemes": ["r","æ","m","p"] }
+      ]
+    },
+    {
+      "text": "Rex got a raft and Rob got a ramp.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["raft", "ramp"],
+      "words": [
+        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "raft", "graphemes": ["r","a","f","t"],     "phonemes": ["r","æ","f","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",  "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "ramp", "graphemes": ["r","a","m","p"],     "phonemes": ["r","æ","m","p"] }
+      ]
+    },
+    {
+      "text": "Rip and Rex got a raft and a red ramp.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["raft", "ramp"],
+      "words": [
+        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "raft", "graphemes": ["r","a","f","t"],     "phonemes": ["r","æ","f","t"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "ramp", "graphemes": ["r","a","m","p"],     "phonemes": ["r","æ","m","p"] }
+      ]
+    }
+  ]
+}

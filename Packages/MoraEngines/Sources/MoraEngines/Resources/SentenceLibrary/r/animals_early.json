@@ -1,0 +1,347 @@
+{
+  "phoneme": "r",
+  "phonemeIPA": "r",
+  "graphemeLetters": "r",
+  "interest": "animals",
+  "ageBand": "early",
+  "sentences": [
+    {
+      "text": "Rex and Ron ran past a red rat.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rat"],
+      "words": [
+        { "surface": "Rex",  "graphemes": ["r","e","x"],     "phonemes": ["r","ɛ","ks"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",  "graphemes": ["r","o","n"],     "phonemes": ["r","ɒ","n"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],     "phonemes": ["r","æ","n"] },
+        { "surface": "past", "graphemes": ["p","a","s","t"], "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "red",  "graphemes": ["r","e","d"],     "phonemes": ["r","ɛ","d"] },
+        { "surface": "rat",  "graphemes": ["r","a","t"],     "phonemes": ["r","æ","t"] }
+      ]
+    },
+    {
+      "text": "Rip had a rabbit and Rob had a rat.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["rabbit", "rat"],
+      "words": [
+        { "surface": "Rip",    "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],         "phonemes": ["h","æ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rabbit", "graphemes": ["r","a","b","b","i","t"], "phonemes": ["r","æ","b","ɪ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",    "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],         "phonemes": ["h","æ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rat",    "graphemes": ["r","a","t"],         "phonemes": ["r","æ","t"] }
+      ]
+    },
+    {
+      "text": "Rex fed a red ram and a rabbit.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["ram", "rabbit"],
+      "words": [
+        { "surface": "Rex",    "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],         "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",    "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "ram",    "graphemes": ["r","a","m"],         "phonemes": ["r","æ","m"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rabbit", "graphemes": ["r","a","b","b","i","t"], "phonemes": ["r","æ","b","ɪ","t"] }
+      ]
+    },
+    {
+      "text": "Ron and Rob ran to get a red rat.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["rat"],
+      "words": [
+        { "surface": "Ron", "graphemes": ["r","o","n"],     "phonemes": ["r","ɒ","n"] },
+        { "surface": "and", "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Rob", "graphemes": ["r","o","b"],     "phonemes": ["r","ɒ","b"] },
+        { "surface": "ran", "graphemes": ["r","a","n"],     "phonemes": ["r","æ","n"] },
+        { "surface": "to",  "graphemes": ["t","o"],         "phonemes": ["t","u"] },
+        { "surface": "get", "graphemes": ["g","e","t"],     "phonemes": ["g","ɛ","t"] },
+        { "surface": "a",   "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "red", "graphemes": ["r","e","d"],     "phonemes": ["r","ɛ","d"] },
+        { "surface": "rat", "graphemes": ["r","a","t"],     "phonemes": ["r","æ","t"] }
+      ]
+    },
+    {
+      "text": "Rex got a rabbit and Ron got a ram.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rabbit", "ram"],
+      "words": [
+        { "surface": "Rex",    "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rabbit", "graphemes": ["r","a","b","b","i","t"], "phonemes": ["r","æ","b","ɪ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",    "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "ram",    "graphemes": ["r","a","m"],         "phonemes": ["r","æ","m"] }
+      ]
+    },
+    {
+      "text": "Rip ran and Rob got a red robin.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["robin"],
+      "words": [
+        { "surface": "Rip",   "graphemes": ["r","i","p"],     "phonemes": ["r","ɪ","p"] },
+        { "surface": "ran",   "graphemes": ["r","a","n"],     "phonemes": ["r","æ","n"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",   "graphemes": ["r","o","b"],     "phonemes": ["r","ɒ","b"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "red",   "graphemes": ["r","e","d"],     "phonemes": ["r","ɛ","d"] },
+        { "surface": "robin", "graphemes": ["r","o","b","i","n"], "phonemes": ["r","ɒ","b","ɪ","n"] }
+      ]
+    },
+    {
+      "text": "Rex and Rob ran past a rat and a robin.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rat", "robin"],
+      "words": [
+        { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "ran",   "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "past",  "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rat",   "graphemes": ["r","a","t"],         "phonemes": ["r","æ","t"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "robin", "graphemes": ["r","o","b","i","n"], "phonemes": ["r","ɒ","b","ɪ","n"] }
+      ]
+    },
+    {
+      "text": "Ron rid the den of a rat and a ram.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["rat", "ram"],
+      "words": [
+        { "surface": "Ron", "graphemes": ["r","o","n"],     "phonemes": ["r","ɒ","n"] },
+        { "surface": "rid", "graphemes": ["r","i","d"],     "phonemes": ["r","ɪ","d"] },
+        { "surface": "the", "graphemes": ["th","e"],        "phonemes": ["ð","ə"] },
+        { "surface": "den", "graphemes": ["d","e","n"],     "phonemes": ["d","ɛ","n"] },
+        { "surface": "of",  "graphemes": ["o","f"],         "phonemes": ["ʌ","v"] },
+        { "surface": "a",   "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "rat", "graphemes": ["r","a","t"],     "phonemes": ["r","æ","t"] },
+        { "surface": "and", "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "a",   "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "ram", "graphemes": ["r","a","m"],     "phonemes": ["r","æ","m"] }
+      ]
+    },
+    {
+      "text": "Rip and Rex got a red ram and a rat.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["ram", "rat"],
+      "words": [
+        { "surface": "Rip", "graphemes": ["r","i","p"],     "phonemes": ["r","ɪ","p"] },
+        { "surface": "and", "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Rex", "graphemes": ["r","e","x"],     "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got", "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",   "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "red", "graphemes": ["r","e","d"],     "phonemes": ["r","ɛ","d"] },
+        { "surface": "ram", "graphemes": ["r","a","m"],     "phonemes": ["r","æ","m"] },
+        { "surface": "and", "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "a",   "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "rat", "graphemes": ["r","a","t"],     "phonemes": ["r","æ","t"] }
+      ]
+    },
+    {
+      "text": "Rex and Rip ran and a red rabbit hid.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rabbit"],
+      "words": [
+        { "surface": "Rex",    "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",    "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",    "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "rabbit", "graphemes": ["r","a","b","b","i","t"], "phonemes": ["r","æ","b","ɪ","t"] },
+        { "surface": "hid",    "graphemes": ["h","i","d"],         "phonemes": ["h","ɪ","d"] }
+      ]
+    },
+    {
+      "text": "Ron got a rat and Rex got a robin.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rat", "robin"],
+      "words": [
+        { "surface": "Ron",   "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rat",   "graphemes": ["r","a","t"],         "phonemes": ["r","æ","t"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "robin", "graphemes": ["r","o","b","i","n"], "phonemes": ["r","ɒ","b","ɪ","n"] }
+      ]
+    },
+    {
+      "text": "Rip and Rob fed a rabbit and a ram.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["rabbit", "ram"],
+      "words": [
+        { "surface": "Rip",    "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",    "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],         "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rabbit", "graphemes": ["r","a","b","b","i","t"], "phonemes": ["r","æ","b","ɪ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "ram",    "graphemes": ["r","a","m"],         "phonemes": ["r","æ","m"] }
+      ]
+    },
+    {
+      "text": "Rex met a rat and Ron met a ram.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rat", "ram"],
+      "words": [
+        { "surface": "Rex", "graphemes": ["r","e","x"],     "phonemes": ["r","ɛ","ks"] },
+        { "surface": "met", "graphemes": ["m","e","t"],     "phonemes": ["m","ɛ","t"] },
+        { "surface": "a",   "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "rat", "graphemes": ["r","a","t"],     "phonemes": ["r","æ","t"] },
+        { "surface": "and", "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Ron", "graphemes": ["r","o","n"],     "phonemes": ["r","ɒ","n"] },
+        { "surface": "met", "graphemes": ["m","e","t"],     "phonemes": ["m","ɛ","t"] },
+        { "surface": "a",   "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "ram", "graphemes": ["r","a","m"],     "phonemes": ["r","æ","m"] }
+      ]
+    },
+    {
+      "text": "Rob and Rip ran and got a red rat.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rat"],
+      "words": [
+        { "surface": "Rob", "graphemes": ["r","o","b"],     "phonemes": ["r","ɒ","b"] },
+        { "surface": "and", "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Rip", "graphemes": ["r","i","p"],     "phonemes": ["r","ɪ","p"] },
+        { "surface": "ran", "graphemes": ["r","a","n"],     "phonemes": ["r","æ","n"] },
+        { "surface": "and", "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "got", "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",   "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "red", "graphemes": ["r","e","d"],     "phonemes": ["r","ɛ","d"] },
+        { "surface": "rat", "graphemes": ["r","a","t"],     "phonemes": ["r","æ","t"] }
+      ]
+    },
+    {
+      "text": "Ron got a robin and Rip got a rabbit.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["robin", "rabbit"],
+      "words": [
+        { "surface": "Ron",    "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "robin",  "graphemes": ["r","o","b","i","n"], "phonemes": ["r","ɒ","b","ɪ","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",    "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rabbit", "graphemes": ["r","a","b","b","i","t"], "phonemes": ["r","æ","b","ɪ","t"] }
+      ]
+    },
+    {
+      "text": "Rex hid a rat and Rob hid a ram.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rat", "ram"],
+      "words": [
+        { "surface": "Rex", "graphemes": ["r","e","x"],     "phonemes": ["r","ɛ","ks"] },
+        { "surface": "hid", "graphemes": ["h","i","d"],     "phonemes": ["h","ɪ","d"] },
+        { "surface": "a",   "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "rat", "graphemes": ["r","a","t"],     "phonemes": ["r","æ","t"] },
+        { "surface": "and", "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Rob", "graphemes": ["r","o","b"],     "phonemes": ["r","ɒ","b"] },
+        { "surface": "hid", "graphemes": ["h","i","d"],     "phonemes": ["h","ɪ","d"] },
+        { "surface": "a",   "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "ram", "graphemes": ["r","a","m"],     "phonemes": ["r","æ","m"] }
+      ]
+    },
+    {
+      "text": "Ron pet a rabbit and Rex pet a ram.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rabbit", "ram"],
+      "words": [
+        { "surface": "Ron",    "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "pet",    "graphemes": ["p","e","t"],         "phonemes": ["p","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rabbit", "graphemes": ["r","a","b","b","i","t"], "phonemes": ["r","æ","b","ɪ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rex",    "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "pet",    "graphemes": ["p","e","t"],         "phonemes": ["p","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "ram",    "graphemes": ["r","a","m"],         "phonemes": ["r","æ","m"] }
+      ]
+    },
+    {
+      "text": "Rip set a red rabbit on a ram.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["rabbit", "ram"],
+      "words": [
+        { "surface": "Rip",    "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "set",    "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",    "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "rabbit", "graphemes": ["r","a","b","b","i","t"], "phonemes": ["r","æ","b","ɪ","t"] },
+        { "surface": "on",     "graphemes": ["o","n"],             "phonemes": ["ɒ","n"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "ram",    "graphemes": ["r","a","m"],         "phonemes": ["r","æ","m"] }
+      ]
+    },
+    {
+      "text": "Rex and Ron met a robin and a rat.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["robin", "rat"],
+      "words": [
+        { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",   "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "met",   "graphemes": ["m","e","t"],         "phonemes": ["m","ɛ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "robin", "graphemes": ["r","o","b","i","n"], "phonemes": ["r","ɒ","b","ɪ","n"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rat",   "graphemes": ["r","a","t"],         "phonemes": ["r","æ","t"] }
+      ]
+    },
+    {
+      "text": "Rob ran and Rex got a red robin.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["robin"],
+      "words": [
+        { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "ran",   "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "red",   "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
+        { "surface": "robin", "graphemes": ["r","o","b","i","n"], "phonemes": ["r","ɒ","b","ɪ","n"] }
+      ]
+    }
+  ]
+}
