@@ -35,7 +35,7 @@
         { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
         { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
         { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
-        { "surface": "lamb", "graphemes": ["l","a","m","b"],  "phonemes": ["l","æ","m","b"] }
+        { "surface": "lamb", "graphemes": ["l","a","m","b"],  "phonemes": ["l","æ","m"] }
       ]
     },
     {
@@ -68,7 +68,7 @@
         { "surface": "fed",    "graphemes": ["f","e","d"],          "phonemes": ["f","ɛ","d"] },
         { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "thin",   "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
-        { "surface": "parrot", "graphemes": ["p","a","r","r","o","t"], "phonemes": ["p","æ","r","r","ə","t"] },
+        { "surface": "parrot", "graphemes": ["p","a","r","r","o","t"], "phonemes": ["p","æ","r","ə","t"] },
         { "surface": "in",     "graphemes": ["i","n"],              "phonemes": ["ɪ","n"] },
         { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
@@ -122,7 +122,7 @@
         { "surface": "met",    "graphemes": ["m","e","t"],          "phonemes": ["m","ɛ","t"] },
         { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "thin",   "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
-        { "surface": "rabbit", "graphemes": ["r","a","b","b","i","t"], "phonemes": ["r","æ","b","b","ɪ","t"] },
+        { "surface": "rabbit", "graphemes": ["r","a","b","b","i","t"], "phonemes": ["r","æ","b","ɪ","t"] },
         { "surface": "on",     "graphemes": ["o","n"],              "phonemes": ["ɒ","n"] },
         { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "path",   "graphemes": ["p","a","th"],         "phonemes": ["p","æ","θ"] }
@@ -177,7 +177,7 @@
         { "surface": "Theo",   "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
         { "surface": "fed",    "graphemes": ["f","e","d"],          "phonemes": ["f","ɛ","d"] },
         { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
-        { "surface": "parrot", "graphemes": ["p","a","r","r","o","t"], "phonemes": ["p","æ","r","r","ə","t"] }
+        { "surface": "parrot", "graphemes": ["p","a","r","r","o","t"], "phonemes": ["p","æ","r","ə","t"] }
       ]
     },
     {
@@ -229,7 +229,7 @@
         { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
         { "surface": "frog", "graphemes": ["f","r","o","g"],  "phonemes": ["f","r","ɒ","g"] },
         { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
-        { "surface": "lamb", "graphemes": ["l","a","m","b"],  "phonemes": ["l","æ","m","b"] }
+        { "surface": "lamb", "graphemes": ["l","a","m","b"],  "phonemes": ["l","æ","m"] }
       ]
     },
     {
@@ -258,7 +258,7 @@
       "words": [
         { "surface": "A",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "thin",   "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
-        { "surface": "parrot", "graphemes": ["p","a","r","r","o","t"], "phonemes": ["p","æ","r","r","ə","t"] },
+        { "surface": "parrot", "graphemes": ["p","a","r","r","o","t"], "phonemes": ["p","æ","r","ə","t"] },
         { "surface": "sat",    "graphemes": ["s","a","t"],          "phonemes": ["s","æ","t"] },
         { "surface": "with",   "graphemes": ["w","i","th"],         "phonemes": ["w","ɪ","θ"] },
         { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
@@ -328,7 +328,7 @@
       "words": [
         { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
         { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
-        { "surface": "lamb", "graphemes": ["l","a","m","b"],  "phonemes": ["l","æ","m","b"] },
+        { "surface": "lamb", "graphemes": ["l","a","m","b"],  "phonemes": ["l","æ","m"] },
         { "surface": "sat",  "graphemes": ["s","a","t"],      "phonemes": ["s","æ","t"] },
         { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
         { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },

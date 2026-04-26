@@ -25,7 +25,7 @@
     },
     {
       "text": "Theo got a thin lever and Thad got the bot.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 3,
       "interestWords": ["lever", "bot"],
       "words": [
@@ -96,7 +96,7 @@
     },
     {
       "text": "A swift thin lever sat with Thad and Theo.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 3,
       "interestWords": ["lever"],
       "words": [
@@ -184,7 +184,7 @@
     },
     {
       "text": "Theo set a thin signal and Thad set the bot.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 3,
       "interestWords": ["signal", "bot"],
       "words": [
@@ -254,7 +254,7 @@
     },
     {
       "text": "A swift thin signal hid with Thad and Theo.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 3,
       "interestWords": ["signal"],
       "words": [
@@ -271,7 +271,7 @@
     },
     {
       "text": "Thad got a thin magnet and Theo got the cog.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 3,
       "interestWords": ["magnet", "cog"],
       "words": [
@@ -289,7 +289,7 @@
     },
     {
       "text": "Theo lit a thin lever and Thad had the kit.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 3,
       "interestWords": ["lever", "kit"],
       "words": [
@@ -323,7 +323,7 @@
     },
     {
       "text": "Thad and Theo had a thin arm in the shed.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 3,
       "interestWords": ["arm"],
       "words": [
@@ -341,7 +341,7 @@
     },
     {
       "text": "Theo cut a thin signal and Thad got the arm.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 3,
       "interestWords": ["signal", "arm"],
       "words": [

@@ -184,7 +184,7 @@
     },
     {
       "text": "Thad let Theo run a thin ship to the planet.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 3,
       "interestWords": ["ship", "planet"],
       "words": [
