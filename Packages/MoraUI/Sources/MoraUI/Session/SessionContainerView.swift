@@ -17,6 +17,7 @@ public struct SessionContainerView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.moraStrings) private var strings
     @Environment(\.shadowEvaluatorFactory) private var shadowEvaluatorFactory
+    @Environment(\.speechEnginesWarmup) private var speechEnginesWarmup
     @Query(sort: \DailyStreak.lastCompletedOn, order: .reverse)
     private var streaks: [DailyStreak]
     @State private var orchestrator: SessionOrchestrator?
@@ -246,71 +247,92 @@ public struct SessionContainerView: View {
         Self.logBootstrap("permission state=\(permission)")
         switch permission {
         case .allGranted:
-            // `SFSpeechRecognizer(locale:)` lazy-loads the on-device
-            // recognition model on first use — empirically 100–500 ms
-            // on cold launch. Build the engine on a detached background
-            // task and `await` the result so the model load runs off
-            // the main actor and SwiftUI can keep rendering the push
-            // transition while it's in flight. `AppleSpeechEngine` is
-            // `@unchecked Sendable` and its init is non-isolated, so
-            // hopping the constructed instance back to @MainActor is
-            // safe for the `@State` assignment.
-            //
-            // `withTaskCancellationHandler` forwards `.task`
-            // cancellation (e.g. user taps Close mid-bootstrap, or
-            // SwiftUI tears the view down before the engine resolves)
-            // to the detached child so it stops promptly instead of
-            // running to completion in the background. The explicit
-            // `Task.checkCancellation()` after the await then prevents
-            // a stale `@State` assignment from racing onto a
-            // disappeared view.
-            let engineTask = Task.detached(priority: .userInitiated) {
-                try AppleSpeechEngine()
-            }
-            do {
-                let engine = try await withTaskCancellationHandler {
-                    try await engineTask.value
-                } onCancel: {
-                    engineTask.cancel()
+            // Prefer the app-target's pre-warmed engine if it resolved
+            // already — `SpeechEnginesWarmup` runs the
+            // `SFSpeechRecognizer(locale:)` lazy-load (~100–500 ms on
+            // cold launch) on a detached `.utility` task at app launch,
+            // so by the time the learner finishes onboarding (first
+            // launch) or even glances at the home hero card (every
+            // launch after that) it's almost always ready and we can
+            // skip the inline construction entirely.
+            if let warmup = speechEnginesWarmup, warmup.isResolved {
+                if let engine = warmup.speechEngine {
+                    speechEngine = engine
+                    uiMode = .mic
+                    Self.logBootstrap("AppleSpeechEngine init ok (pre-warmed); uiMode=mic")
+                } else {
+                    // Warmup ran and speech init failed (older device,
+                    // simulator without on-device Speech support,
+                    // missing locale model). Fall back to tap mode
+                    // without re-trying — the failure is recorded in
+                    // `warmup.speechFailureReason` for diagnostics.
+                    uiMode = .tap
+                    let reason = warmup.speechFailureReason ?? "unknown"
+                    Self.logBootstrap("uiMode=tap (warmup speech failed: \(reason))")
                 }
-                try Task.checkCancellation()
-                speechEngine = engine
-                uiMode = .mic
-                Self.logBootstrap("AppleSpeechEngine init ok; uiMode=mic")
-            } catch is CancellationError {
-                Self.logBootstrap("bootstrap cancelled during AppleSpeechEngine init")
-                return
-            } catch {
-                speechLog.error(
-                    "AppleSpeechEngine init failed, falling back to tap: \(String(describing: error))"
-                )
-                uiMode = .tap
-                Self.logBootstrap("uiMode=tap (engine init failed)")
+            } else {
+                // Cold path: warmup wasn't wired (preview / test host)
+                // or hasn't resolved yet (user tapped within ~500 ms
+                // of app launch on a host that lacks the onboarding
+                // head-start). Construct inline with the same
+                // cancellation-aware detached pattern the warmup
+                // itself uses, so the fallback still doesn't block
+                // the navigation push animation.
+                let engineTask = Task.detached(priority: .userInitiated) {
+                    try AppleSpeechEngine()
+                }
+                do {
+                    let engine = try await withTaskCancellationHandler {
+                        try await engineTask.value
+                    } onCancel: {
+                        engineTask.cancel()
+                    }
+                    try Task.checkCancellation()
+                    speechEngine = engine
+                    uiMode = .mic
+                    Self.logBootstrap("AppleSpeechEngine init ok (inline); uiMode=mic")
+                } catch is CancellationError {
+                    Self.logBootstrap("bootstrap cancelled during AppleSpeechEngine init")
+                    return
+                } catch {
+                    speechLog.error(
+                        "AppleSpeechEngine init failed, falling back to tap: \(String(describing: error))"
+                    )
+                    uiMode = .tap
+                    Self.logBootstrap("uiMode=tap (engine init failed)")
+                }
             }
         case .partial, .notDetermined:
             uiMode = .tap
             Self.logBootstrap("uiMode=tap (permission \(permission))")
         }
-        // Same rationale as the recognizer hoist above — keep the
-        // synthesizer construction off the main actor so the
-        // navigation push animation isn't competing with CoreAudio
-        // setup. The actor itself is `Sendable`, so the constructed
-        // reference hops back to @MainActor cleanly for the
-        // SpeechController wrap. Mirror the cancellation handling
-        // from the recognizer path so a cancelled bootstrap doesn't
-        // leave a TTS init dangling in the background or write the
-        // `speech` `@State` after the view tore down.
-        let ttsTask = Task.detached(priority: .userInitiated) {
-            AppleTTSEngine(l1Profile: JapaneseL1Profile())
-        }
-        let tts = await withTaskCancellationHandler {
-            await ttsTask.value
-        } onCancel: {
-            ttsTask.cancel()
-        }
-        if Task.isCancelled {
-            Self.logBootstrap("bootstrap cancelled during AppleTTSEngine init")
-            return
+        // Same pre-warm-or-fallback split as the speech path. The
+        // warmup target always sets `ttsEngine` once `.resolved`
+        // (AVSpeechSynthesizer construction never throws), so the
+        // pre-warmed branch is the common case and the inline branch
+        // only runs in previews / tests / a session that beat the
+        // warmup task to ready.
+        let tts: any TTSEngine
+        if let warmup = speechEnginesWarmup, warmup.isResolved,
+            let warmedTTS = warmup.ttsEngine
+        {
+            tts = warmedTTS
+            Self.logBootstrap("AppleTTSEngine init ok (pre-warmed)")
+        } else {
+            let ttsTask = Task.detached(priority: .userInitiated) {
+                AppleTTSEngine(l1Profile: JapaneseL1Profile())
+            }
+            let inlineTTS = await withTaskCancellationHandler {
+                await ttsTask.value
+            } onCancel: {
+                ttsTask.cancel()
+            }
+            if Task.isCancelled {
+                Self.logBootstrap("bootstrap cancelled during AppleTTSEngine init")
+                return
+            }
+            tts = inlineTTS
+            Self.logBootstrap("AppleTTSEngine init ok (inline)")
         }
         speech = SpeechController(tts: tts)
         // Prime AVSpeechSynthesizer so the warmup phoneme isn't the
