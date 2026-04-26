@@ -32,6 +32,11 @@ public struct YokaiCutsceneOverlay: View {
                 switch orchestrator.activeCutscene {
                 case .fridayClimax:
                     fridayClimax(for: yokai)
+                case .mondayIntro:
+                    // WeeklyIntroView (mounted by SessionContainerView for
+                    // the .warmup phase) owns this case; the overlay must
+                    // not double-render.
+                    EmptyView()
                 default:
                     simpleStack(for: yokai)
                 }
@@ -133,13 +138,11 @@ public struct YokaiCutsceneOverlay: View {
 
     private func subtitleText(for cutscene: YokaiCutscene?, yokai: YokaiDefinition) -> String {
         switch cutscene {
-        case .mondayIntro:
-            return yokai.voice.clips[.greet] ?? ""
         case .fridayClimax:
             return yokai.voice.clips[.fridayAcknowledge] ?? ""
         case .srsCameo:
             return yokai.voice.clips[.encourage] ?? ""
-        case .sessionStart, .none:
+        case .mondayIntro, .sessionStart, .none:
             return ""
         }
     }
