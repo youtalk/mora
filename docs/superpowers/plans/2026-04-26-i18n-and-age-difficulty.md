@@ -6,7 +6,7 @@
 
 **Architecture:** Three stacked PRs. PR 1 lands the API rewrite + JP three-tier authoring without behavioral change for the existing dev install. PR 2 lands KO and EN profiles end-to-end and activates them in the picker. PR 3 narrows the age picker visually and adds the Home globe-button → `LanguageSwitchSheet` re-edit affordance.
 
-**Tech Stack:** Swift 6 (language mode v5; see [Swift 6 language mode pin](#)), SwiftData (lightweight migration for `LearnerProfile.levelOverride: String?`), SwiftUI, XCTest, swift-format `--strict`, XcodeGen + xcodebuild for the iOS app target.
+**Tech Stack:** Swift 6 with `.swiftLanguageMode(.v5)` pinned in each package's `Package.swift` (mora repo convention to keep CI green against SwiftData/CoreML strict-concurrency types — verify the pin is present after any `Package.swift` edit), SwiftData (lightweight migration handles `LearnerProfile.levelOverride: String?` additively), SwiftUI, XCTest, swift-format `--strict`, XcodeGen + xcodebuild for the iOS app target.
 
 **Spec:** `docs/superpowers/specs/2026-04-26-i18n-and-age-difficulty-design.md` (commit `800bce1`).
 
@@ -620,7 +620,7 @@ with a full `MoraStrings(...)` literal. The complete table is in `stringsAdvance
 | `permissionNotNow` | `後で` | `あとで` (`後` G2) |
 | `homeTodayQuest` | `今日の クエスト` | `きょうの クエスト` (`今` G2) |
 | `homeDurationPill(16)` | `\(minutes)分` | `\(minutes)ぷん` (`分` G2) |
-| `homeWordsPill(5)` | `\(count)文字` | `\(count)もじ` (`文` G1, `字` G1 — but kept together causes "文字" rendering; both G1 kept actually — keep `\(count)文字`) |
+| `homeWordsPill(5)` | `\(count)文字` | `\(count)文字` (`文` G1, `字` G1 — both in budget, kept) |
 | `homeBetterVoiceChip` | `もっと きれいな 声 ›` | `もっと きれいな こえ ›` (`声` G2) |
 | `voiceGateTitle` | `英語の 声を ダウンロードしてください` | `えいごの こえを ダウンロードしてください` (`英` G2, `語` G2, `声` G2) |
 | `voiceGateBody` | (multi-line, contains `英語` `設定` `読み上げ と 発話` `声` `言語` `表示` `下の 順`) | Replace `英語`→`えいご`, `設定`→`せってい`, `読み上げ`→`よみあげ`, `発話`→`はつわ`, `声`→`こえ`, `言語`→`ことば`, `表示`→`ひょうじ`, `下の 順`→`下の じゅん` (`下` G1 keep; `順` G4 → hira). Full replacement text below. |
@@ -636,7 +636,7 @@ with a full `MoraStrings(...)` literal. The complete table is in `stringsAdvance
 | `tileTutorialSlotBody` | `ます 1つは 音 1つ。タイルを ながおしして、ますへ ドラッグしよう。` | `ます 1つは 音 1つ。タイルを ながおしして、ますへ ドラッグしよう。` (`音` G1 keep — unchanged) |
 | `tileTutorialAudioTitle` | `聞いた 音を つくろう` | `きいた 音を つくろう` (`聞` G2, `音` G1 keep) |
 | `tileTutorialAudioBody` | `はじめに 🔊 が 音を 聞かせる。きいた 音と 同じに なるよう、タイルを ならべよう。聞きなおすときは「もういちど きく」を タップ。` | `はじめに 🔊 が 音を きかせる。きいた 音と おなじに なるよう、タイルを ならべよう。きこえなおすときは「もういちど きく」を タップ。` (`聞` G2, `同` G2) |
-| `decodingHelpLabel` | `あそびかたを 見る` | `あそびかたを みる` (`見` G1, kept actually — wait, `見` is G1 → keep `見る`) |
+| `decodingHelpLabel` | `あそびかたを 見る` | `あそびかたを 見る` (`見` G1, kept) |
 | `feedbackTryAgain` | `もう一回` | `もういちど` (`一` G1 + `回` G2 — partial-mix forbidden, all-hira) |
 | `micIdlePrompt` | `マイクを タップして 読んでね` | `マイクを タップして よんでね` (`読` G2) |
 | `micListening` | `聞いてるよ…` | `きいてるよ…` (`聞` G2) |
@@ -713,7 +713,7 @@ with a full `MoraStrings(...)` literal that is `stringsCoreG1` with these additi
 |---|---|---|
 | `welcomeTitle` | `えいごの 音を いっしょに` | `えいごの おとを いっしょに` (`音` → `おと`) |
 | `permissionBody` | `きみが よんだ ことばを きいて、正しいか しらべるよ` | `きみが よんだ ことばを きいて、ただしいか しらべるよ` (`正` → `ただ`) |
-| `homeWordsPill(5)` | `\(count)文字` | `\(count)もじ` (both G1 → hira to keep word-level consistency) |
+| `homeWordsPill(5)` | `\(count)文字` | `\(count)もじ` (entry budget is empty — every kanji collapses to hira) |
 | `homeSentencesPill(2)` | `\(count)文` | `\(count)ぶん` (`文` → `ぶん`) |
 | `tileTutorialSlotBody` | `ます 1つは 音 1つ。タイルを ながおしして、ますへ ドラッグしよう。` | `ます 1つは おと 1つ。タイルを ながおしして、ますへ ドラッグしよう。` |
 | `tileTutorialAudioTitle` | `きいた 音を つくろう` | `きいた おとを つくろう` |
@@ -807,9 +807,11 @@ final class LocaleScriptBudgetTests: XCTestCase {
             case 0x0041...0x005A: continue       // ASCII A-Z
             case 0x0061...0x007A: continue       // ASCII a-z
             case 0x0020, 0x000A, 0x000D: continue // whitespace, newline, CR
-            case 0x0021, 0x0028, 0x0029, 0x002C, 0x002E, 0x002F: continue  // ! ( ) , . /
+            case 0x0021, 0x0022, 0x0028, 0x0029: continue  // ! " ( )
+            case 0x002C, 0x002E, 0x002F: continue  // , . /
             case 0x003A, 0x003F, 0x005F: continue  // : ? _
             case 0x3001, 0x3002, 0x300C, 0x300D: continue  // 、 。 「 」
+            case 0xFF01, 0xFF1F: continue          // ！ ？ (fullwidth, e.g. なんさい？ せいかい！)
             case 0x2026, 0x203A, 0x25B6: continue  // … › ▶
             case 0x1F50A: continue                  // 🔊
             default: return false
@@ -2703,7 +2705,7 @@ Branch: `feat/mora-i18n/03-age-narrow-and-language-switch`.
 
 PR body summary:
 > - Narrow Step 2 age picker to 3 tiles (6 / 7 / 8), default 7
-> - Add 4 new `MoraStrings` fields (`homeChangeLanguageButton`, `languageSwitchSheetTitle`, `languageSwitchSheetCancel`, `languageSwitchSheetConfirm`) authored across all four tables (JP × 3 + KO + EN)
+> - Add 4 new `MoraStrings` fields (`homeChangeLanguageButton`, `languageSwitchSheetTitle`, `languageSwitchSheetCancel`, `languageSwitchSheetConfirm`) authored across all five tables (JP entry / core / advanced + KO + EN)
 > - Extract `LanguagePicker` view component for reuse
 > - Add `LanguageSwitchSheet` (model + view) with confirm-disabled-when-unchanged guard
 > - Wire globe button into `HomeView`; tap presents sheet, commit writes `LearnerProfile.l1Identifier` and dismisses

@@ -444,7 +444,7 @@ public extension JPKanjiLevel {
 | `permissionTitle` | `声を 聞くよ` | `こえを きくよ` | `こえを きくよ` |
 | `feedbackTryAgain` | `もう一回` | `もういちど` | `もういちど` |
 | `homeDurationPill(16)` | `16分` | `16ぷん` | `16ぷん` |
-| `homeWordsPill(5)` | `5文字` | `5もじ` | `5もじ` |
+| `homeWordsPill(5)` | `5文字` | `5文字` | `5もじ` |
 | `completionComeBack` | `明日も またね` | `あしたも またね` | `あしたも またね` |
 | `bestiaryLinkLabel` | `ともだち ずかん` | `ともだち ずかん` | `ともだち ずかん` |
 | `voiceGateTitle` | `英語の 声を ダウンロードしてください` | `えいごの こえを ダウンロードしてください` | (same as core) |
@@ -696,7 +696,7 @@ Both are referenced by the `bestiaryBefriendedOn` closure inside their respectiv
 | `LanguageAgeFlow` activation + system locale default + 3-tile age picker | 50 |
 | `LanguageSwitchSheet.swift` | 80 |
 | `HomeView` globe button + sheet integration | 15 |
-| New `MoraStrings` fields (`homeChangeLanguageButton` / `languageSwitchSheetTitle` / `languageSwitchSheetCancel` / `languageSwitchSheetConfirm`) authored across 4 tables × 4 fields | 16 |
+| New `MoraStrings` fields (`homeChangeLanguageButton` / `languageSwitchSheetTitle` / `languageSwitchSheetCancel` / `languageSwitchSheetConfirm`) authored across 5 tables × 4 fields (JP entry / core / advanced + KO + EN) | 20 |
 | Tests (unit + UI) | 500 |
 | Mechanical call-site rewrites | 27 |
 | **Total** | **~1,550 LOC** |
@@ -758,36 +758,59 @@ the wordmark. Tap presents a sheet:
 
 ```swift
 // MoraUI/LanguageAge/LanguageSwitchSheet.swift  (NEW)
-public struct LanguageSwitchSheet: View {
-    let currentIdentifier: String
-    let onCommit: (String) -> Void
-    let onCancel: () -> Void
+//
+// Split into an ObservableObject model + a SwiftUI view so unit tests can
+// drive the model (`simulateSelect` / `simulateConfirm` / `simulateCancel`)
+// without having to render the SwiftUI view hierarchy in XCTest.
 
-    @Environment(\.moraStrings) private var strings
-    @State private var pickedID: String
+@MainActor
+public final class LanguageSwitchSheet: ObservableObject, Identifiable {
+    public let currentIdentifier: String
+    public var id: String { currentIdentifier }
+    private let onCommit: (String) -> Void
+    private let onCancel: () -> Void
 
-    public init(currentIdentifier: String, onCommit: @escaping (String) -> Void, onCancel: @escaping () -> Void) {
+    @Published public var pickedID: String
+
+    public init(
+        currentIdentifier: String,
+        onCommit: @escaping (String) -> Void,
+        onCancel: @escaping () -> Void
+    ) {
         self.currentIdentifier = currentIdentifier
         self.onCommit = onCommit
         self.onCancel = onCancel
-        self._pickedID = State(initialValue: currentIdentifier)
+        self.pickedID = currentIdentifier
     }
+
+    public var isConfirmDisabled: Bool { pickedID == currentIdentifier }
+
+    public func simulateSelect(identifier: String) { pickedID = identifier }
+    public func simulateConfirm() {
+        guard !isConfirmDisabled else { return }
+        onCommit(pickedID)
+    }
+    public func simulateCancel() { onCancel() }
+}
+
+public struct LanguageSwitchSheetView: View {
+    @ObservedObject var model: LanguageSwitchSheet
+    @Environment(\.moraStrings) private var strings
+
+    public init(model: LanguageSwitchSheet) { self.model = model }
 
     public var body: some View {
         NavigationStack {
-            // Reuses the LanguageRowView used by LanguageAgeFlow Step 1 — see
-            // §8.3 for the file split that hoists it into a shared component.
-            LanguagePicker(selection: $pickedID)
+            // Reuses the LanguagePicker view extracted from LanguageAgeFlow Step 1 — see §8.3.
+            LanguagePicker(selection: $model.pickedID)
                 .navigationTitle(strings.languageSwitchSheetTitle)
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
-                        Button(strings.languageSwitchSheetCancel) { onCancel() }
+                        Button(strings.languageSwitchSheetCancel) { model.simulateCancel() }
                     }
                     ToolbarItem(placement: .confirmationAction) {
-                        Button(strings.languageSwitchSheetConfirm) {
-                            onCommit(pickedID)
-                        }
-                        .disabled(pickedID == currentIdentifier)
+                        Button(strings.languageSwitchSheetConfirm) { model.simulateConfirm() }
+                            .disabled(model.isConfirmDisabled)
                     }
                 }
         }
@@ -811,7 +834,7 @@ imperative refresh — SwiftData publishes the change and SwiftUI invalidates.
 flag, the `tech.reenable.Mora.onboarded` flag. Streak counters, yokai cameos,
 session history — all preserved.
 
-**New `MoraStrings` fields** (authored in all four tables — JP entry / core /
+**New `MoraStrings` fields** (authored in all five tables — JP entry / core /
 advanced + KO + EN, see §6.1.2 / §6.2.2 / §6.3.2 for sample rows):
 
 ```swift
@@ -876,7 +899,7 @@ behavior for any integer age:
 |---|---|
 | less than 7 | `.entry` |
 | 7 | `.core` |
-| 7 or more | `.advanced` |
+| 8 or more | `.advanced` |
 
 A learner who installed during the alpha and chose, e.g., age 5 retains that
 value; on upgrade they resolve to `.entry`. A learner at age 11 resolves to
@@ -1006,7 +1029,7 @@ Branch: `feat/mora-i18n/03-age-narrow-and-language-switch`. Estimated 200 LOC.
 - `LanguageSwitchSheet.swift` new, consuming `LanguagePicker`.
 - `HomeView` adds the globe button next to the wordmark and presents the sheet.
 - New `MoraStrings` fields (`homeChangeLanguageButton`, `languageSwitchSheetTitle`,
-  `languageSwitchSheetCancel`) authored in all four tables.
+  `languageSwitchSheetCancel`, `languageSwitchSheetConfirm`) authored in all five tables.
 - New tests: `LanguageSwitchSheetTests`, `HomeViewLanguageSwitchTests` (smoke).
 - Manual smoke on dev iPad: open Home, tap globe, switch to Korean, observe
   immediate re-render of all chrome; switch back to Japanese, observe state
@@ -1143,9 +1166,14 @@ final class LocaleScriptBudgetTests: XCTestCase {
             case 0x3040...0x309F: continue  // Hiragana
             case 0x30A0...0x30FF: continue  // Katakana
             case 0x0030...0x0039: continue  // ASCII digits
-            case 0x0020, 0x000A, 0x000D: continue  // whitespace, newline, CR
-            case 0x0021, 0x002C, 0x002E, 0x002F, 0x003A, 0x003F: continue  // ! , . / : ?
-            case 0x3001, 0x3002, 0x300C, 0x300D, 0x2026, 0x203A, 0x25B6: continue  // 、。「」… › ▶
+            case 0x0041...0x005A: continue  // ASCII A-Z (loanwords like "Mora", "Settings")
+            case 0x0061...0x007A: continue  // ASCII a-z
+            case 0x0020, 0x000A, 0x000D: continue  // space, newline, CR
+            case 0x0021, 0x0022, 0x0028, 0x0029: continue  // ! " ( )
+            case 0x002C, 0x002E, 0x002F, 0x003A, 0x003F, 0x005F: continue  // , . / : ? _
+            case 0x3001, 0x3002, 0x300C, 0x300D: continue  // 、 。 「 」
+            case 0xFF01, 0xFF1F: continue  // ！ ？ (fullwidth)
+            case 0x2026, 0x203A, 0x25B6: continue  // … › ▶
             case 0x1F50A: continue  // 🔊
             default: return false
             }
