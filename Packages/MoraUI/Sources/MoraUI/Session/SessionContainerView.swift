@@ -28,6 +28,14 @@ public struct SessionContainerView: View {
     @State private var speech: SpeechController?
     @State private var showCloseConfirm = false
     @State private var clipRouter: YokaiClipRouter?
+    /// Shared `BundledYokaiStore` used by both `clipRouter` (in-session
+    /// clip playback) and `WeeklyIntroView` (greet on the Monday intro
+    /// screen). Populated during `bootstrap()`.
+    @State private var yokaiStore: BundledYokaiStore?
+    /// Shared clip player used by `clipRouter` and `WeeklyIntroView` so
+    /// stopping playback in one path silences the other (no overlap when
+    /// the user dismisses the intro mid-clip and lands on warmup).
+    @State private var yokaiClipPlayer: any YokaiClipPlayer = AVFoundationYokaiClipPlayer()
     /// True after the mic path reports `.dictationDisabled` for the first
     /// time on this run. Surfaces an alert pointing the user at macOS's
     /// Dictation toggle, then leaves `uiMode = .tap` so the session
@@ -154,7 +162,21 @@ public struct SessionContainerView: View {
                 ProgressView("Preparing…")
                     .task { await orchestrator.start() }
             case .warmup:
-                WarmupView(orchestrator: orchestrator, speech: speech, clipRouter: clipRouter)
+                if let yokaiOrch = orchestrator.yokai,
+                    yokaiOrch.activeCutscene?.isMondayIntro == true
+                {
+                    WeeklyIntroView(
+                        yokai: yokaiOrch,
+                        store: yokaiStore,
+                        player: yokaiClipPlayer
+                    )
+                } else {
+                    WarmupView(
+                        orchestrator: orchestrator,
+                        speech: speech,
+                        clipRouter: clipRouter
+                    )
+                }
             case .newRule:
                 NewRuleView(orchestrator: orchestrator, speech: speech)
             case .decoding:
@@ -466,6 +488,7 @@ public struct SessionContainerView: View {
             let yokaiOrchestrator: YokaiOrchestrator?
             do {
                 let store = try BundledYokaiStore()
+                self.yokaiStore = store
                 let orch = YokaiOrchestrator(
                     store: store,
                     modelContext: context,
@@ -509,7 +532,7 @@ public struct SessionContainerView: View {
                 self.clipRouter = YokaiClipRouter(
                     yokaiID: encYokaiID,
                     store: store,
-                    player: AVFoundationYokaiClipPlayer(),
+                    player: yokaiClipPlayer,
                     silencer: { [weak speechRef] in
                         await speechRef?.stop()
                     }
