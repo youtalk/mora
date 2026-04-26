@@ -25,13 +25,16 @@ extension EnvironmentValues {
 }
 
 /// Pre-warmup intro shown on the first session of each yokai week.
-/// Plays the active yokai's `.greet` clip and waits for the learner to
-/// tap "Next" before the warmup phase view (and its TTS prompt) mounts.
+/// Plays the active yokai's `.greet` clip, exposes a "Listen again"
+/// replay button while the clip URL is available, and waits for the
+/// learner to tap "Next" before the warmup phase view (and its TTS
+/// prompt) mounts. Tapping "Next" stops the clip and clears the
+/// orchestrator's active cutscene, which causes
+/// `SessionContainerView` to swap in `WarmupView`.
 ///
 /// Mounted only when `phase == .warmup` AND
 /// `yokai.activeCutscene.isMondayIntro` is true; gated by
-/// `SessionContainerView.content`. CTA wiring (`yokai.dismissCutscene()`)
-/// is added in Task 4. Replay button is added in Task 3.
+/// `SessionContainerView.content`.
 public struct WeeklyIntroView: View {
     @Environment(\.moraStrings) private var strings
     @Environment(\.accessibilityReduceMotion) private var reduceMotion

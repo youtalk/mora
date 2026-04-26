@@ -42,6 +42,10 @@ final class WeeklyIntroViewDismissTests: XCTestCase {
         XCTAssertNotNil(hook.tapNext, "WeeklyIntroView must publish its CTA action")
 
         hook.tapNext?()
+        // The closure stored on the hook hops through `Task { @MainActor in }`,
+        // so the dismiss action runs after this synchronous frame yields. Yield
+        // once so the assertion below observes the post-dismiss state.
+        await Task.yield()
 
         XCTAssertNil(yokai.activeCutscene, "CTA should clear the cutscene")
         window.isHidden = true

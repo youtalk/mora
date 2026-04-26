@@ -99,6 +99,10 @@ final class WeeklyIntroViewAudioTests: XCTestCase {
 
         // Simulate the user tapping the replay button.
         inspector.tapReplay?()
+        // The closure stored on the hook hops through `Task { @MainActor in }`,
+        // so the replay action runs after this synchronous frame yields. Yield
+        // once so the assertions below observe the post-replay state.
+        await Task.yield()
 
         XCTAssertEqual(player.playedURLs.count, 2)
         XCTAssertEqual(player.stopCallCount, 1, "replay should stop before re-playing")
