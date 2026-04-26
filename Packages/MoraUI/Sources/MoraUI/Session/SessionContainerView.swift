@@ -255,13 +255,31 @@ public struct SessionContainerView: View {
             // `@unchecked Sendable` and its init is non-isolated, so
             // hopping the constructed instance back to @MainActor is
             // safe for the `@State` assignment.
+            //
+            // `withTaskCancellationHandler` forwards `.task`
+            // cancellation (e.g. user taps Close mid-bootstrap, or
+            // SwiftUI tears the view down before the engine resolves)
+            // to the detached child so it stops promptly instead of
+            // running to completion in the background. The explicit
+            // `Task.checkCancellation()` after the await then prevents
+            // a stale `@State` assignment from racing onto a
+            // disappeared view.
+            let engineTask = Task.detached(priority: .userInitiated) {
+                try AppleSpeechEngine()
+            }
             do {
-                let engine = try await Task.detached(priority: .userInitiated) {
-                    try AppleSpeechEngine()
-                }.value
+                let engine = try await withTaskCancellationHandler {
+                    try await engineTask.value
+                } onCancel: {
+                    engineTask.cancel()
+                }
+                try Task.checkCancellation()
                 speechEngine = engine
                 uiMode = .mic
                 Self.logBootstrap("AppleSpeechEngine init ok; uiMode=mic")
+            } catch is CancellationError {
+                Self.logBootstrap("bootstrap cancelled during AppleSpeechEngine init")
+                return
             } catch {
                 speechLog.error(
                     "AppleSpeechEngine init failed, falling back to tap: \(String(describing: error))"
@@ -274,13 +292,26 @@ public struct SessionContainerView: View {
             Self.logBootstrap("uiMode=tap (permission \(permission))")
         }
         // Same rationale as the recognizer hoist above — keep the
-        // synthesizer construction off the main actor so the navigation
-        // push animation isn't competing with CoreAudio setup. The
-        // actor itself is `Sendable`, so the constructed reference
-        // hops back to @MainActor cleanly for the SpeechController wrap.
-        let tts = await Task.detached(priority: .userInitiated) {
+        // synthesizer construction off the main actor so the
+        // navigation push animation isn't competing with CoreAudio
+        // setup. The actor itself is `Sendable`, so the constructed
+        // reference hops back to @MainActor cleanly for the
+        // SpeechController wrap. Mirror the cancellation handling
+        // from the recognizer path so a cancelled bootstrap doesn't
+        // leave a TTS init dangling in the background or write the
+        // `speech` `@State` after the view tore down.
+        let ttsTask = Task.detached(priority: .userInitiated) {
             AppleTTSEngine(l1Profile: JapaneseL1Profile())
-        }.value
+        }
+        let tts = await withTaskCancellationHandler {
+            await ttsTask.value
+        } onCancel: {
+            ttsTask.cancel()
+        }
+        if Task.isCancelled {
+            Self.logBootstrap("bootstrap cancelled during AppleTTSEngine init")
+            return
+        }
         speech = SpeechController(tts: tts)
         // Prime AVSpeechSynthesizer so the warmup phoneme isn't the
         // utterance that gets eaten by the cold-launch first-utterance
