@@ -39,52 +39,37 @@ public final class YokaiClipRouter {
     /// different audio path on `false`.
     @discardableResult
     public func play(_ clip: YokaiClipKey) async -> Bool {
-        #if DEBUG
         clipLog.info(
             """
             Clip request: \(clip.rawValue, privacy: .public) \
             yokai=\(self.yokaiID, privacy: .public)
             """
         )
-        #endif
         guard let url = store.voiceClipURL(for: yokaiID, clip: clip) else {
-            // Missing clip URLs are an expected/normal state: not every yokai
-            // ships every clip key. Stay at `.info` and gate behind DEBUG so
-            // release builds don't spam this as if it were an error.
-            #if DEBUG
             clipLog.info(
                 """
                 Clip URL missing: \(clip.rawValue, privacy: .public) \
                 yokai=\(self.yokaiID, privacy: .public)
                 """
             )
-            #endif
             return false
         }
-        #if DEBUG
         clipLog.info("Clip silencer: awaiting TTS stop")
-        #endif
         await silencer()
         if Task.isCancelled {
-            #if DEBUG
             clipLog.info(
                 "Clip cancelled post-silencer: \(clip.rawValue, privacy: .public)"
             )
-            #endif
             return false
         }
-        #if DEBUG
         clipLog.info("Clip silencer: returned")
-        #endif
         let started = player.play(url: url)
-        #if DEBUG
         clipLog.info(
             """
             Clip dispatch: \(clip.rawValue, privacy: .public) \
             started=\(started, privacy: .public)
             """
         )
-        #endif
         return started
     }
 
@@ -94,49 +79,37 @@ public final class YokaiClipRouter {
     /// the clip to finish — e.g., a multi-clip rule intro.
     @discardableResult
     public func playAndAwait(_ clip: YokaiClipKey) async -> Bool {
-        #if DEBUG
         clipLog.info(
             """
             Clip request (await): \(clip.rawValue, privacy: .public) \
             yokai=\(self.yokaiID, privacy: .public)
             """
         )
-        #endif
         guard let url = store.voiceClipURL(for: yokaiID, clip: clip) else {
-            #if DEBUG
             clipLog.info(
                 """
                 Clip URL missing: \(clip.rawValue, privacy: .public) \
                 yokai=\(self.yokaiID, privacy: .public)
                 """
             )
-            #endif
             return false
         }
-        #if DEBUG
         clipLog.info("Clip silencer: awaiting TTS stop")
-        #endif
         await silencer()
         if Task.isCancelled {
-            #if DEBUG
             clipLog.info(
                 "Clip cancelled post-silencer: \(clip.rawValue, privacy: .public)"
             )
-            #endif
             return false
         }
-        #if DEBUG
         clipLog.info("Clip silencer: returned")
-        #endif
         let finished = await player.playAndAwait(url: url)
-        #if DEBUG
         clipLog.info(
             """
             Clip dispatch (await): \(clip.rawValue, privacy: .public) \
             finished=\(finished, privacy: .public)
             """
         )
-        #endif
         return finished
     }
 

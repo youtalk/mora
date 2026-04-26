@@ -56,7 +56,7 @@ public struct YokaiPortraitCorner: View {
                 .resizable()
                 .scaledToFit()
                 .clipShape(Circle())
-                .scaleEffect(reduceMotion ? 1.0 : (pulse ? 1.02 : 1.0))
+                .scaleEffect(reduceMotion ? 1.0 : (pulse ? 1.01 : 1.0))
                 .animation(
                     reduceMotion ? nil : .easeInOut(duration: 2.0).repeatForever(autoreverses: true),
                     value: pulse

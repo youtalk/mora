@@ -23,11 +23,9 @@ public final class AVFoundationYokaiClipPlayer: NSObject, YokaiClipPlayer, AVAud
         let name = url.lastPathComponent
         if let prev = player, prev.isPlaying {
             let prevName = prev.url?.lastPathComponent ?? "?"
-            #if DEBUG
             clipLog.info(
                 "Clip preempt: \(prevName, privacy: .public) by \(name, privacy: .public)"
             )
-            #endif
             prev.stop()
         }
         // Anything still awaiting the previous clip is now preempted; resume
@@ -52,9 +50,7 @@ public final class AVFoundationYokaiClipPlayer: NSObject, YokaiClipPlayer, AVAud
         newPlayer.prepareToPlay()
         let started = newPlayer.play()
         if started {
-            #if DEBUG
             clipLog.info("Clip play: \(name, privacy: .public)")
-            #endif
         } else {
             clipLog.error("Clip play() returned false: \(name, privacy: .public)")
         }
@@ -63,12 +59,10 @@ public final class AVFoundationYokaiClipPlayer: NSObject, YokaiClipPlayer, AVAud
 
     public func stop() {
         if let p = player {
-            #if DEBUG
             if p.isPlaying {
                 let name = p.url?.lastPathComponent ?? "?"
                 clipLog.info("Clip stop: \(name, privacy: .public)")
             }
-            #endif
             p.stop()
         }
         player = nil
@@ -100,9 +94,7 @@ public final class AVFoundationYokaiClipPlayer: NSObject, YokaiClipPlayer, AVAud
     ) {
         let name = player.url?.lastPathComponent ?? "?"
         Task { @MainActor in
-            #if DEBUG
             clipLog.info("Clip done: \(name, privacy: .public) ok=\(flag, privacy: .public)")
-            #endif
             // The delegate callback hops main-actor via `Task { @MainActor in }`,
             // so a preempted clip can deliver its "finished" message after a
             // newer clip has already installed a fresh continuation. Only
