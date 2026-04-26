@@ -4,15 +4,14 @@ import XCTest
 
 final class MoraStringsTests: XCTestCase {
     private let profile = JapaneseL1Profile()
-    private let ageReps = [4, 7, 8, 9, 12, 15]
 
     // MARK: - Completeness
 
-    func test_uiStrings_returnsMidTableForEveryRepresentativeAge() {
-        let tables = ageReps.map { profile.uiStrings(forAgeYears: $0) }
-        // Alpha invariant: every bucket falls back to `mid`. Compare one
-        // arbitrary plain-string field across ages to prove they're the
-        // same underlying table.
+    func test_uiStrings_returnsSameTableForEveryLevel() {
+        let tables = LearnerLevel.allCases.map { profile.uiStrings(at: $0) }
+        // PR-1 stub invariant: every level falls back to `stringsAdvancedG1G2`.
+        // Compare one arbitrary plain-string field across levels to prove they're
+        // the same underlying table.
         let first = tables[0].homeTodayQuest
         for t in tables {
             XCTAssertEqual(t.homeTodayQuest, first)
@@ -21,7 +20,7 @@ final class MoraStringsTests: XCTestCase {
     }
 
     func test_everyPlainStringFieldIsNonEmpty() {
-        let s = profile.uiStrings(forAgeYears: 8)
+        let s = profile.uiStrings(at: .advanced)
         let plain: [(String, String)] = [
             ("ageOnboardingPrompt", s.ageOnboardingPrompt),
             ("ageOnboardingCTA", s.ageOnboardingCTA),
@@ -103,7 +102,7 @@ final class MoraStringsTests: XCTestCase {
         let expected = ["どうぶつ", "きょうりゅう", "のりもの", "うちゅう", "スポーツ", "ロボット"]
         for (key, want) in zip(seeded, expected) {
             XCTAssertEqual(
-                profile.interestCategoryDisplayName(key: key, forAgeYears: 8),
+                profile.interestCategoryDisplayName(key: key, at: .advanced),
                 want
             )
         }
@@ -111,7 +110,7 @@ final class MoraStringsTests: XCTestCase {
 
     func test_interestCategoryDisplayName_returnsKeyForUnknown() {
         XCTAssertEqual(
-            profile.interestCategoryDisplayName(key: "pokemon", forAgeYears: 8),
+            profile.interestCategoryDisplayName(key: "pokemon", at: .advanced),
             "pokemon"
         )
     }
@@ -119,7 +118,7 @@ final class MoraStringsTests: XCTestCase {
     // MARK: - Kanji audit
 
     func test_stringsMid_onlyUsesGrade1And2Kanji() {
-        let s = profile.uiStrings(forAgeYears: 8)
+        let s = profile.uiStrings(at: .advanced)
         let fields = Self.allRenderedStrings(s)
         for (name, value) in fields {
             for scalar in value.unicodeScalars {
@@ -134,7 +133,7 @@ final class MoraStringsTests: XCTestCase {
     }
 
     func test_stringsMid_onlyUsesAllowedNonKanjiCharacters() {
-        let s = profile.uiStrings(forAgeYears: 8)
+        let s = profile.uiStrings(at: .advanced)
         let fields = Self.allRenderedStrings(s)
         for (name, value) in fields {
             for scalar in value.unicodeScalars {
@@ -150,7 +149,7 @@ final class MoraStringsTests: XCTestCase {
     }
 
     func test_closureOutputs_sweptAcrossBoundaries_stayInBudget() {
-        let s = profile.uiStrings(forAgeYears: 8)
+        let s = profile.uiStrings(at: .advanced)
         let singleArgSamples: [Int] = [0, 1, 5, 16, 60, 99, 100, 999]
         let pairSamples: [(Int, Int)] = [
             (0, 0), (0, 5), (1, 1), (3, 5), (6, 7),
@@ -170,7 +169,7 @@ final class MoraStringsTests: XCTestCase {
     }
 
     func testMidCoachingStringsMatchSpec() {
-        let strings = profile.uiStrings(forAgeYears: 8)
+        let strings = profile.uiStrings(at: .advanced)
         XCTAssertEqual(strings.coachingShSubS, "くちびるをまるめて、したのおくをもちあげてみよう。「sh」。")
         XCTAssertEqual(strings.coachingShDrift, "もうすこしくちをまるくして、ながくのばしてみよう。「shhhh」。")
         XCTAssertEqual(strings.coachingRSubL, "したのさきはどこにもつけないで、おくだけすこし上に。「r」。")

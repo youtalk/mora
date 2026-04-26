@@ -85,35 +85,31 @@ public struct JapaneseL1Profile: L1Profile {
 
     // MARK: - L1Profile.uiStrings / interestCategoryDisplayName
 
-    private enum JPStringBucket { case preschool, early, mid, late }
-
-    private static func bucket(forAgeYears y: Int) -> JPStringBucket {
-        switch y {
-        case ..<6: return .preschool
-        case 6...7: return .early
-        case 8...9: return .mid
-        default: return .late
+    public func uiStrings(at level: LearnerLevel) -> MoraStrings {
+        switch level {
+        case .entry:    return Self.stringsEntryHiraOnly
+        case .core:     return Self.stringsCoreG1
+        case .advanced: return Self.stringsAdvancedG1G2
         }
     }
 
-    public func uiStrings(forAgeYears years: Int) -> MoraStrings {
-        // Alpha: every bucket returns the `mid` (ages 8-9) table.
-        // A future plan authors the other three tables and flips this switch.
-        switch Self.bucket(forAgeYears: years) {
-        case .preschool, .early, .mid, .late:
-            return Self.stringsMid
+    public func allowedScriptBudget(at level: LearnerLevel) -> Set<Character>? {
+        switch level {
+        case .entry:    return JPKanjiLevel.empty
+        case .core:     return JPKanjiLevel.grade1
+        case .advanced: return JPKanjiLevel.grade1And2
         }
     }
 
-    public func interestCategoryDisplayName(key: String, forAgeYears years: Int) -> String {
+    public func interestCategoryDisplayName(key: String, at level: LearnerLevel) -> String {
         switch key {
-        case "animals": return "どうぶつ"
+        case "animals":   return "どうぶつ"
         case "dinosaurs": return "きょうりゅう"
-        case "vehicles": return "のりもの"
-        case "space": return "うちゅう"
-        case "sports": return "スポーツ"
-        case "robots": return "ロボット"
-        default: return key
+        case "vehicles":  return "のりもの"
+        case "space":     return "うちゅう"
+        case "sports":    return "スポーツ"
+        case "robots":    return "ロボット"
+        default:          return key
         }
     }
 
@@ -128,10 +124,16 @@ public struct JapaneseL1Profile: L1Profile {
         return f
     }()
 
-    /// Ages 8-9 (alpha target). Kanji budget: only JPKanjiLevel.grade1And2
+    /// PR 1 stub — Task 1.5 fills in the hira-down-shifted authoring.
+    private static let stringsCoreG1 = stringsAdvancedG1G2
+
+    /// PR 1 stub — Task 1.6 fills in the all-hira authoring.
+    private static let stringsEntryHiraOnly = stringsAdvancedG1G2
+
+    /// Ages 8+ (advanced tier). Kanji budget: only JPKanjiLevel.grade1And2
     /// characters appear. See spec §7.2 for the authoring rules and the
     /// per-row rationale.
-    private static let stringsMid = MoraStrings(
+    private static let stringsAdvancedG1G2 = MoraStrings(
         ageOnboardingPrompt: "なんさい？",
         ageOnboardingCTA: "▶ はじめる",
         welcomeTitle: "えいごの 音を いっしょに",
