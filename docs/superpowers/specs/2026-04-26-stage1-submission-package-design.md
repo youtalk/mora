@@ -83,89 +83,158 @@ and the volume of merged PRs.
 
 ## 6. Video script + storyboard
 
-### 6.1 Beat sheet (180s budget)
+Restructured against Mike Brown's three-act × nine-pod framework
+(Live Session 3, Built with Opus 4.6 winner): three acts of 60s, three pods of
+~20s per act, one main message per pod. Nine messages total, in order.
 
-| Beat | Time | Visual | Purpose | Criterion |
+### 6.1 Beat sheet (180s budget — 3 acts × 3 pods)
+
+| Pod | Time | Visual | Message | Criterion |
 |---|---|---|---|---|
-| Hook + Problem | 0:00–0:25 | Opening shot — son's hands holding iPad (no face) → cut to home screen | Father → son personal stake, IEP gap | Impact |
-| Yokai world | 0:25–0:42 | Weekly yokai intro screen, voice clip plays | App's emotional surface | Impact + Demo |
-| Tile-board decoding | 0:42–1:15 | Tile-board activity, finger taps assembling a `sh-i-p` style word | Multisensory phonics, OG grounding | Demo + Depth |
-| Pronunciation feedback | 1:15–1:50 | Say-the-word activity, mic indicator, Engine A surfacing an L1-Japanese substitution | On-device CoreML, niche resolution | Depth + Opus 4.7 Use |
-| Decodable sentences | 1:50–2:00 | Sentence dictation, yokai voice reads, tiles fill | Breadth | Depth |
-| The Build (Claude Code) | 2:00–2:40 | Cut to terminal showing PR count, Claude Code session, git graph, OSLog skill running | Opus 4.7 Use core block | **Opus 4.7 Use 25%** |
-| Outro | 2:40–3:00 | Landing page hero → mora logo card with URL + license | CTA, license, repo URL | — |
+| **Act 1 — The Problem** | | | | |
+| 1.1 — Who | 0:00–0:20 | Opening shot: son's hands on iPad (no face) → home screen | Father, dyslexic 8yo son, L1-Japanese, US ESL | Impact |
+| 1.2 — Why | 0:20–0:40 | Cut to a calendar/clock motif over the home screen | IEP gated behind ESL → 1-year delay; Barton priced out | Impact |
+| 1.3 — What | 0:40–1:00 | Yokai weekly intro screen, voice clip plays under VO | "So I built mora" — OG phonics + yokai shell, fully on-device | Impact + Demo |
+| **Act 2 — The Solution** | | | | |
+| 2.1 — Multisensory decode | 1:00–1:20 | Tile-board activity, finger taps assembling a word | Multisensory phonics, every word decodable | Demo + Depth |
+| 2.2 — On-device pronunciation | 1:20–1:40 | Say-the-word, mic icon, Engine A surfaces L1-Japanese substitution | INT8 wav2vec2 CoreML, v→b/l→r/sh→s coaching | Depth + Opus 4.7 Use |
+| 2.3 — Decodable sentences | 1:40–2:00 | Sentence dictation, yokai voice, tiles fill in time | Generated against learner's mastered set | Demo + Depth |
+| **Act 3 — The Build** | | | | |
+| 3.1 — Velocity | 2:00–2:20 | Terminal: `git log --oneline \| wc -l` → 112; spec dir count | 100+ PRs in 5 days, every one with spec + plan | **Opus 4.7 Use** |
+| 3.2 — Parallelism | 2:20–2:40 | Visualization of `git worktree list` + parallel agents | 4-phoneme batch: 6h sequential → 1h parallel sub-agents | **Opus 4.7 Use** |
+| 3.3 — Custom skill + outro | 2:40–3:00 | Claude Code TUI consuming live OSLog → mora logo card | OSLog skill turns debug into a conversation; CTA | **Opus 4.7 Use** |
 
-### 6.2 Voiceover script (English, ~330 words at ~140 wpm)
+### 6.2 Voiceover script (English, ~340 words at ~140 wpm; pod-locked)
 
-> **[0:00–0:25 Hook + Problem]**
+> **[Pod 1.1 — 0:00–0:20]**
 > *(over: opening shot — son's hands on iPad, app's home screen)*
 > "My son is eight. He has dyslexia. He's also learning English as a second
 > language — his first language is Japanese, and our family moved from Japan
-> to the US last year. His school requires him to finish ESL before they'll
-> start his IEP — the structured plan for dyslexia support. That's a
-> one-year delay before he gets the help he actually needs."
+> to the US last year."
 
-> **[0:25–0:42 Yokai world]**
-> *(over: weekly yokai intro screen, voice clip plays under the VO)*
+> **[Pod 1.2 — 0:20–0:40]**
+> *(over: calendar / clock motif over home screen)*
+> "His school's IEP — the structured plan for dyslexia support — is gated
+> behind finishing ESL. That's a one-year delay before he gets the help he
+> actually needs. Barton tutoring is priced out of reach."
+
+> **[Pod 1.3 — 0:40–1:00]**
+> *(over: weekly yokai intro screen, voice clip plays softly under the VO)*
 > "So I built mora — an iPad app that pairs Orton-Gillingham phonics, the
 > gold-standard dyslexia method, with a yokai mentor that greets him every
-> week."
+> week. Fully on-device. Nothing leaves the iPad."
 
-> **[0:42–1:15 Tile-board decoding]**
+> **[Pod 2.1 — 1:00–1:20]**
 > *(over: tile-board decode activity, finger taps assembling 'sh-i-p')*
 > "Multisensory phonics means moving the letters yourself. The tile board
-> breaks every word into graphemes the learner has explicitly mastered — so
-> what shows up on screen is always decodable, never guessed from context."
+> breaks every word into graphemes the learner has explicitly mastered, so
+> what shows up is always decodable, never guessed from context."
 
-> **[1:15–1:50 Pronunciation feedback]**
+> **[Pod 2.2 — 1:20–1:40]**
 > *(over: say-the-word activity, mic icon, Engine A coaching feedback)*
-> "Then he speaks. On-device speech recognition runs alongside an
-> INT8-quantized wav2vec2 phoneme posterior in CoreML — no audio leaves the
-> iPad. The engine catches L1-Japanese substitutions: v as b, l as r, sh as
-> s — and feeds them back as targeted coaching, not red Xs."
+> "Then he speaks. An INT8-quantized wav2vec2 phoneme posterior runs in
+> CoreML. The engine catches L1-Japanese substitutions — v as b, l as r,
+> sh as s — and turns them into coaching, not red Xs."
 
-> **[1:50–2:00 Decodable sentences]**
-> *(over: sentence dictation, yokai voice reads, tiles fill)*
-> "Decodable sentences round out the day, generated against the learner's
-> mastered set."
+> **[Pod 2.3 — 1:40–2:00]**
+> *(over: sentence dictation, yokai voice reads, tiles fill in real time)*
+> "Decodable sentences round out the day. Each one is generated against the
+> learner's mastered grapheme set. The yokai reads first; the tiles fill
+> as the child speaks."
 
-> **[2:00–2:40 The Build]**
-> *(over: terminal `git log --oneline | wc -l` → 100+, Claude Code session,
-> git branch graph, OSLog skill streaming live device logs)*
-> "I'm not a Swift engineer. I built mora in five days, with Claude Code and
+> **[Pod 3.1 — 2:00–2:20]**
+> *(over: terminal showing `git log --oneline | wc -l` → 112; `ls docs/superpowers/specs | wc -l`)*
+> "I'm not a Swift engineer. I built mora in five days with Claude Code and
 > Opus 4.7. Over a hundred merged PRs — every one backed by a written spec
-> and a plan in the repo. Independent batches ran as parallel sub-agents on
-> isolated git worktrees: a four-phoneme content library that would have
-> taken six hours sequential, finished in one. I authored a Claude Code
-> skill that streams Apple OSLog from the running iPad straight into
-> Claude's context — debugging became a conversation, not a screenshot
-> round-trip."
+> and an implementation plan in the repo."
 
-> **[2:40–3:00 Outro]**
-> *(over: github.io landing page hero shot → mora logo card with URL +
-> license + hashtags)*
-> "Mora is on-device, MPL-licensed, and public at github dot com slash
-> youtalk slash mora. My son will keep using it on Monday. Built with Opus
-> 4.7."
+> **[Pod 3.2 — 2:20–2:40]**
+> *(over: `git worktree list` output highlighted; parallel agents firing)*
+> "Independent batches ran as parallel sub-agents on isolated git worktrees.
+> A four-phoneme content library that would have taken six hours sequential,
+> finished in one. Spec, plan, ship."
 
-### 6.3 Production notes
+> **[Pod 3.3 — 2:40–3:00]**
+> *(over: Claude Code TUI consuming live OSLog → mora logo card with URL,
+> license, hashtags)*
+> "I authored a Claude Code skill that streams iPad OSLog into Claude's
+> context — debugging became a conversation. Mora is on-device, MPL-licensed,
+> github.com slash youtalk slash mora. My son will keep using it on Monday.
+> Built with Opus 4.7."
 
-- **Recording**: iOS Screen Recording (Settings → Control Center → enable) on
-  iPad → AirDrop to Mac → import to QuickTime / iMovie.
-- **Microphone**: AirPods Pro built-in is sufficient. Avoid MacBook internal mic
-  (noise floor too high).
-- **Captions**: required. YouTube auto-CC is acceptable as fallback. A
-  burned-in caption track is preferred for muted-autoplay social distribution.
-- **B-roll for "The Build" segment**:
-  - Terminal: `git log --oneline | wc -l` showing PR count.
-  - Terminal: `ls docs/superpowers/specs/ | wc -l` showing spec discipline.
-  - Claude Code TUI: a session in progress, optionally with the
-    `oslog-stream-to-file` skill running and `Read` tool consuming the live log.
-  - GitHub branch graph (gh CLI or GitHub UI screenshot).
-- **Aspect ratio**: 16:9 (1920×1080).
-- **Duration**: hard cap 180s. Submitted form may reject longer.
-- **Upload**: YouTube unlisted before submitting the form. Google Drive
-  shared-link copy as fallback if YouTube processing stalls.
+### 6.3 Production notes (Mike Brown framework, compressed)
+
+**Order of operations (paper-cut first, then visuals):**
+
+1. **Lock the script** (already done — §6.2 above). Mike's rule: voice track
+   first, visuals second. Don't start cutting until the words are right.
+2. **Hear the script before recording**. Either:
+   - macOS `say -v Samantha -f script.txt` for a 5-min sanity pass, OR
+   - 11labs / Whisper Flow voice clone of Yutaka's own voice → run the
+     script through it once. Mike's specific advice: "I hate listening to
+     my own voice. Don't use 11labs' library voices — use your own. You'll
+     get the inflection."
+3. **Record VO yourself** (Yutaka, English). Mike: "I was genuinely
+   passionate about this thing. It comes across in my voice." Japanese
+   accent reinforces the L1-Japanese family authenticity.
+4. **Capture iPad B-roll while recording is being polished** (parallelizable).
+   Each pod's visual is a separate clip; record each one focused, not as
+   one continuous run-through.
+5. **Lock the timeline at 2:59 BEFORE you start editing**. Mike's rule:
+   "set the out point at 2:59:23 frames in Premiere; Black Magic / iMovie
+   equivalent: trim to 03:00 max." Going over 3:00 = "you're going to get
+   dinged."
+6. **Cut, render, upload to YouTube unlisted**. Don't wait until the form
+   is open — upload first, paste URL second.
+
+**Recording mechanics:**
+
+- **iPad screen capture**: Settings → Control Center → enable Screen
+  Recording. Tap to record. AirDrop to Mac.
+- **Opening shot of son's hands** (Pod 1.1): handheld phone, daylight,
+  ~10s, no face. One take is enough.
+- **B-roll for Act 3**: terminal recordings via `script -t timing.log
+  output.log` or just QuickTime "New Screen Recording" of the terminal
+  window. Claude Code TUI session can be screen-captured live with the
+  `oslog-stream-to-file` skill running.
+
+**Microphone**:
+- AirPods Pro built-in is acceptable. MacBook internal mic floor is too
+  high — avoid.
+- Record in a small, soft-furnished room (clothes closet works) to kill
+  echo.
+
+**Editing tools** (pick one):
+- **iMovie** (free, comes with macOS) — sufficient for a 3-min cut with
+  voiceover and B-roll.
+- **DaVinci Resolve / Black Magic** (free) — Mike's recommended free
+  option, more powerful than iMovie if comfort allows.
+- **Final Cut / Premiere** — paid, only if Yutaka already owns one.
+- **XML import shortcut**: Mike's tip — Claude can write a Premiere /
+  Resolve XML timeline from the paper-cut script + B-roll filenames.
+  Available on request once footage is named.
+
+**Captions**:
+- Required for accessibility and muted-autoplay social distribution.
+- Burn into the export, OR upload SRT alongside the YouTube unlisted video
+  (YouTube will overlay).
+- A timed-text SRT can be auto-generated from the §6.2 script if VO
+  timestamps land on the pod boundaries.
+
+**Aspect ratio + format**:
+- 16:9 1920×1080 H.264 .mp4.
+- Frame rate 24 or 30 fps; consistent throughout.
+
+**Hard constraints**:
+- Duration ≤ 180.0s (judges visibly cap and dock for over-runs).
+- File size ≤ 256 MB recommended for fast YouTube processing.
+- Upload to YouTube as **Unlisted** (not Private — judges need to view
+  without sign-in).
+
+**Backup**:
+- Copy of the rendered file uploaded to Google Drive with a shared
+  view-only link, kept ready in case YouTube processing stalls past the
+  submission window.
 
 ## 7. Written summary draft (~190 words, English)
 
@@ -415,10 +484,11 @@ Attach: "Built with Opus 4.7" graphic.
 - **Cerebral Valley submission form fields** — not directly inspected; assumed
   to follow the standard pattern (separate fields for video URL, repo URL,
   summary). Verify when the user opens the form.
-- **Live Session 3 video advice** — the Vimeo transcript file currently on disk
-  contains only the closing 80 seconds of the session. The "how to make a good
-  YouTube demo" guidance must be elsewhere in the same recording. If the user
-  retrieves it later, fold any concrete production guidance into §6.3.
+- **Live Session 3 video advice** — full transcript ingested 2026-04-26;
+  Mike Brown's three-act × nine-pod framework, paper-cut-first ordering, voice
+  cloning fallback, hard 2:59 out-point, XML-import shortcut, and tool
+  selection (DaVinci Resolve as free Premiere alternative) are all folded into
+  §6.1–§6.3. No remaining gap.
 
 ## 14. Out of scope
 
