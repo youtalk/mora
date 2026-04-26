@@ -22,6 +22,22 @@ public struct MoraStrings: Sendable {
     public let permissionAllow: String
     public let permissionNotNow: String
 
+    // Yokai intro flow (4 panels + 3 CTAs + 1 replay close)
+    public let yokaiIntroConceptTitle: String
+    public let yokaiIntroConceptBody: String
+    public let yokaiIntroTodayTitle: String
+    public let yokaiIntroTodayBody: String
+    public let yokaiIntroSessionTitle: String
+    public let yokaiIntroSessionBody: String
+    public let yokaiIntroSessionStep1: String
+    public let yokaiIntroSessionStep2: String
+    public let yokaiIntroSessionStep3: String
+    public let yokaiIntroProgressTitle: String
+    public let yokaiIntroProgressBody: String
+    public let yokaiIntroNext: String
+    public let yokaiIntroBegin: String
+    public let yokaiIntroClose: String
+
     // Home
     public let homeTodayQuest: String
     public let homeStart: String
@@ -31,6 +47,7 @@ public struct MoraStrings: Sendable {
     public let bestiaryLinkLabel: String
     public let bestiaryPlayGreeting: String
     public let bestiaryBefriendedOn: @Sendable (Date) -> String
+    public let homeRecapLink: String
 
     // Voice gate — shown on Home when no `.enhanced` or `.premium` English
     // voice is installed. Parent-facing setup copy (not in the child kanji
@@ -103,6 +120,20 @@ public struct MoraStrings: Sendable {
         interestPrompt: String, interestCTA: String,
         permissionTitle: String, permissionBody: String,
         permissionAllow: String, permissionNotNow: String,
+        yokaiIntroConceptTitle: String,
+        yokaiIntroConceptBody: String,
+        yokaiIntroTodayTitle: String,
+        yokaiIntroTodayBody: String,
+        yokaiIntroSessionTitle: String,
+        yokaiIntroSessionBody: String,
+        yokaiIntroSessionStep1: String,
+        yokaiIntroSessionStep2: String,
+        yokaiIntroSessionStep3: String,
+        yokaiIntroProgressTitle: String,
+        yokaiIntroProgressBody: String,
+        yokaiIntroNext: String,
+        yokaiIntroBegin: String,
+        yokaiIntroClose: String,
         homeTodayQuest: String, homeStart: String,
         homeDurationPill: @escaping @Sendable (Int) -> String,
         homeWordsPill: @escaping @Sendable (Int) -> String,
@@ -110,6 +141,7 @@ public struct MoraStrings: Sendable {
         bestiaryLinkLabel: String,
         bestiaryPlayGreeting: String,
         bestiaryBefriendedOn: @escaping @Sendable (Date) -> String,
+        homeRecapLink: String,
         voiceGateTitle: String, voiceGateBody: String,
         voiceGateOpenSettings: String, voiceGateRecheck: String,
         voiceGateInstalledVoicesTitle: String,
@@ -156,6 +188,20 @@ public struct MoraStrings: Sendable {
         self.permissionBody = permissionBody
         self.permissionAllow = permissionAllow
         self.permissionNotNow = permissionNotNow
+        self.yokaiIntroConceptTitle = yokaiIntroConceptTitle
+        self.yokaiIntroConceptBody = yokaiIntroConceptBody
+        self.yokaiIntroTodayTitle = yokaiIntroTodayTitle
+        self.yokaiIntroTodayBody = yokaiIntroTodayBody
+        self.yokaiIntroSessionTitle = yokaiIntroSessionTitle
+        self.yokaiIntroSessionBody = yokaiIntroSessionBody
+        self.yokaiIntroSessionStep1 = yokaiIntroSessionStep1
+        self.yokaiIntroSessionStep2 = yokaiIntroSessionStep2
+        self.yokaiIntroSessionStep3 = yokaiIntroSessionStep3
+        self.yokaiIntroProgressTitle = yokaiIntroProgressTitle
+        self.yokaiIntroProgressBody = yokaiIntroProgressBody
+        self.yokaiIntroNext = yokaiIntroNext
+        self.yokaiIntroBegin = yokaiIntroBegin
+        self.yokaiIntroClose = yokaiIntroClose
         self.homeTodayQuest = homeTodayQuest
         self.homeStart = homeStart
         self.homeDurationPill = homeDurationPill
@@ -164,6 +210,7 @@ public struct MoraStrings: Sendable {
         self.bestiaryLinkLabel = bestiaryLinkLabel
         self.bestiaryPlayGreeting = bestiaryPlayGreeting
         self.bestiaryBefriendedOn = bestiaryBefriendedOn
+        self.homeRecapLink = homeRecapLink
         self.voiceGateTitle = voiceGateTitle
         self.voiceGateBody = voiceGateBody
         self.voiceGateOpenSettings = voiceGateOpenSettings
