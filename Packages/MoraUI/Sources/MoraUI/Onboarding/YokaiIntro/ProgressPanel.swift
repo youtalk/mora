@@ -94,9 +94,7 @@ struct ProgressPanel: View {
     }
 
     private var activeYokai: YokaiDefinition? {
-        guard let store else { return nil }
-        let firstYokaiID = CurriculumEngine.sharedV1.skills.first?.yokaiID
-        return store.catalog().first { $0.id == firstYokaiID }
+        YokaiIntroLookup.activeYokai(in: store)
     }
 
     @MainActor
