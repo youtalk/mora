@@ -54,7 +54,9 @@ public struct DecodeBoardView: View {
             speakTarget()
         }
         .overlay(alignment: .topTrailing) {
-            Button { showHelp = true } label: {
+            Button {
+                showHelp = true
+            } label: {
                 Image(systemName: "questionmark.circle.fill")
                     .font(.system(size: 28, weight: .semibold))
                     .foregroundStyle(MoraTheme.Accent.teal)
