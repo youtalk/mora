@@ -137,7 +137,7 @@
         { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
         { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
         { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
-        { "surface": "ax",   "graphemes": ["a","x"],         "phonemes": ["æ","ks"] }
+        { "surface": "ax",   "graphemes": ["a","x"],         "phonemes": ["æ","k","s"] }
       ]
     },
     {
@@ -338,7 +338,7 @@
         { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
         { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
         { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
-        { "surface": "ax",   "graphemes": ["a","x"],         "phonemes": ["æ","ks"] }
+        { "surface": "ax",   "graphemes": ["a","x"],         "phonemes": ["æ","k","s"] }
       ]
     }
   ]
