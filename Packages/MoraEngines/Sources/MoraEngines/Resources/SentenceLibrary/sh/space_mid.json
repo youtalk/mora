@@ -20,7 +20,18 @@
         { "surface": "dashed", "graphemes": ["d","a","sh","e","d"], "phonemes": ["d","æ","ʃ","t"] },
         { "surface": "to",     "graphemes": ["t","o"],              "phonemes": ["t","u"] },
         { "surface": "Mars",   "graphemes": ["m","a","r","s"],      "phonemes": ["m","a","r","z"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen had a ship.",
+          "words": [
+            { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+            { "surface": "had",    "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "ship",   "graphemes": ["sh","i","p"],         "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Sharon and Shen shut the ship past Saturn.",
@@ -36,7 +47,18 @@
         { "surface": "ship",   "graphemes": ["sh","i","p"],            "phonemes": ["ʃ","ɪ","p"] },
         { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
         { "surface": "Saturn", "graphemes": ["s","a","t","u","r","n"], "phonemes": ["s","æ","t","ə","r","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon shut the ship.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"],    "phonemes": ["ʃ","æ","r","ə","n"] },
+            { "surface": "shut",   "graphemes": ["sh","u","t"],            "phonemes": ["ʃ","ʌ","t"] },
+            { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
+            { "surface": "ship",   "graphemes": ["sh","i","p"],            "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shep and Sharon shipped a shiny comet to Jupiter.",
@@ -53,7 +75,18 @@
         { "surface": "comet",   "graphemes": ["c","o","m","e","t"],    "phonemes": ["k","ɒ","m","ɪ","t"] },
         { "surface": "to",      "graphemes": ["t","o"],                "phonemes": ["t","u"] },
         { "surface": "Jupiter", "graphemes": ["j","u","p","i","t","e","r"], "phonemes": ["dʒ","ʌ","p","ɪ","t","ə","r"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon shipped a comet.",
+          "words": [
+            { "surface": "Sharon",  "graphemes": ["sh","a","r","o","n"],   "phonemes": ["ʃ","æ","r","ə","n"] },
+            { "surface": "shipped", "graphemes": ["sh","i","p","p","e","d"], "phonemes": ["ʃ","ɪ","p","t"] },
+            { "surface": "a",       "graphemes": ["a"],                    "phonemes": ["ə"] },
+            { "surface": "comet",   "graphemes": ["c","o","m","e","t"],    "phonemes": ["k","ɒ","m","ɪ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shen rushed a shiny ship to Saturn in a flash.",
@@ -71,7 +104,18 @@
         { "surface": "in",     "graphemes": ["i","n"],                  "phonemes": ["ɪ","n"] },
         { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
         { "surface": "flash",  "graphemes": ["f","l","a","sh"],         "phonemes": ["f","l","æ","ʃ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen rushed a ship.",
+          "words": [
+            { "surface": "Shen",   "graphemes": ["sh","e","n"],             "phonemes": ["ʃ","ɛ","n"] },
+            { "surface": "rushed", "graphemes": ["r","u","sh","e","d"],     "phonemes": ["r","ʌ","ʃ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
+            { "surface": "ship",   "graphemes": ["sh","i","p"],             "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shep put a shiny shelf on the ship to Mars.",
@@ -89,7 +133,18 @@
         { "surface": "ship",  "graphemes": ["sh","i","p"],         "phonemes": ["ʃ","ɪ","p"] },
         { "surface": "to",    "graphemes": ["t","o"],              "phonemes": ["t","u"] },
         { "surface": "Mars",  "graphemes": ["m","a","r","s"],      "phonemes": ["m","a","r","z"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep put a shelf.",
+          "words": [
+            { "surface": "Shep",  "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+            { "surface": "put",   "graphemes": ["p","u","t"],          "phonemes": ["p","ʊ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "shelf", "graphemes": ["sh","e","l","f"],     "phonemes": ["ʃ","ɛ","l","f"] }
+          ]
+        }
+      }
     },
     {
       "text": "Sharon and Shep had a shiny ship to visit Mercury.",
@@ -107,7 +162,18 @@
         { "surface": "to",      "graphemes": ["t","o"],                     "phonemes": ["t","u"] },
         { "surface": "visit",   "graphemes": ["v","i","s","i","t"],         "phonemes": ["v","ɪ","z","ɪ","t"] },
         { "surface": "Mercury", "graphemes": ["m","e","r","c","u","r","y"], "phonemes": ["m","ɛ","r","k","j","ʊ","r","i"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep had a ship.",
+          "words": [
+            { "surface": "Shep",    "graphemes": ["sh","e","p"],                "phonemes": ["ʃ","ɛ","p"] },
+            { "surface": "had",     "graphemes": ["h","a","d"],                 "phonemes": ["h","æ","d"] },
+            { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+            { "surface": "ship",    "graphemes": ["sh","i","p"],                "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shen shifted the ship and dashed past Jupiter.",
@@ -123,7 +189,18 @@
         { "surface": "dashed",  "graphemes": ["d","a","sh","e","d"],     "phonemes": ["d","æ","ʃ","t"] },
         { "surface": "past",    "graphemes": ["p","a","s","t"],          "phonemes": ["p","æ","s","t"] },
         { "surface": "Jupiter", "graphemes": ["j","u","p","i","t","e","r"], "phonemes": ["dʒ","ʌ","p","ɪ","t","ə","r"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen shifted the ship.",
+          "words": [
+            { "surface": "Shen",    "graphemes": ["sh","e","n"],             "phonemes": ["ʃ","ɛ","n"] },
+            { "surface": "shifted", "graphemes": ["sh","i","f","t","e","d"], "phonemes": ["ʃ","ɪ","f","t","ɪ","d"] },
+            { "surface": "the",     "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
+            { "surface": "ship",    "graphemes": ["sh","i","p"],             "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shep had a shift on the shiny ship to Jupiter.",
@@ -141,7 +218,18 @@
         { "surface": "ship",    "graphemes": ["sh","i","p"],               "phonemes": ["ʃ","ɪ","p"] },
         { "surface": "to",      "graphemes": ["t","o"],                    "phonemes": ["t","u"] },
         { "surface": "Jupiter", "graphemes": ["j","u","p","i","t","e","r"], "phonemes": ["dʒ","ʌ","p","ɪ","t","ə","r"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep had a shift.",
+          "words": [
+            { "surface": "Shep",    "graphemes": ["sh","e","p"],               "phonemes": ["ʃ","ɛ","p"] },
+            { "surface": "had",     "graphemes": ["h","a","d"],                "phonemes": ["h","æ","d"] },
+            { "surface": "a",       "graphemes": ["a"],                        "phonemes": ["ə"] },
+            { "surface": "shift",   "graphemes": ["sh","i","f","t"],           "phonemes": ["ʃ","ɪ","f","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shen washed the ship and Sharon set it to orbit.",
@@ -159,7 +247,18 @@
         { "surface": "it",     "graphemes": ["i","t"],                  "phonemes": ["ɪ","t"] },
         { "surface": "to",     "graphemes": ["t","o"],                  "phonemes": ["t","u"] },
         { "surface": "orbit",  "graphemes": ["o","r","b","i","t"],      "phonemes": ["ɔ","r","b","ɪ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen washed the ship.",
+          "words": [
+            { "surface": "Shen",   "graphemes": ["sh","e","n"],             "phonemes": ["ʃ","ɛ","n"] },
+            { "surface": "washed", "graphemes": ["w","a","sh","e","d"],     "phonemes": ["w","ɒ","ʃ","t"] },
+            { "surface": "the",    "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
+            { "surface": "ship",   "graphemes": ["sh","i","p"],             "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Sharon rushed to the shiny ship and Shen shut it.",
@@ -177,7 +276,19 @@
         { "surface": "Shen",   "graphemes": ["sh","e","n"],             "phonemes": ["ʃ","ɛ","n"] },
         { "surface": "shut",   "graphemes": ["sh","u","t"],             "phonemes": ["ʃ","ʌ","t"] },
         { "surface": "it",     "graphemes": ["i","t"],                  "phonemes": ["ɪ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon rushed to the ship.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"],     "phonemes": ["ʃ","æ","r","ə","n"] },
+            { "surface": "rushed", "graphemes": ["r","u","sh","e","d"],     "phonemes": ["r","ʌ","ʃ","t"] },
+            { "surface": "to",     "graphemes": ["t","o"],                  "phonemes": ["t","u"] },
+            { "surface": "the",    "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
+            { "surface": "ship",   "graphemes": ["sh","i","p"],             "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shep and Sharon got on a shiny ship at Saturn.",
@@ -195,7 +306,18 @@
         { "surface": "ship",   "graphemes": ["sh","i","p"],               "phonemes": ["ʃ","ɪ","p"] },
         { "surface": "at",     "graphemes": ["a","t"],                    "phonemes": ["æ","t"] },
         { "surface": "Saturn", "graphemes": ["s","a","t","u","r","n"],    "phonemes": ["s","æ","t","ə","r","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon got a ship.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"],       "phonemes": ["ʃ","æ","r","ə","n"] },
+            { "surface": "got",    "graphemes": ["g","o","t"],                "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                        "phonemes": ["ə"] },
+            { "surface": "ship",   "graphemes": ["sh","i","p"],               "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shen washed the ship and Sharon shifted it to orbit.",
@@ -213,7 +335,18 @@
         { "surface": "it",      "graphemes": ["i","t"],                  "phonemes": ["ɪ","t"] },
         { "surface": "to",      "graphemes": ["t","o"],                  "phonemes": ["t","u"] },
         { "surface": "orbit",   "graphemes": ["o","r","b","i","t"],      "phonemes": ["ɔ","r","b","ɪ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen washed the ship.",
+          "words": [
+            { "surface": "Shen",    "graphemes": ["sh","e","n"],             "phonemes": ["ʃ","ɛ","n"] },
+            { "surface": "washed",  "graphemes": ["w","a","sh","e","d"],     "phonemes": ["w","ɒ","ʃ","t"] },
+            { "surface": "the",     "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
+            { "surface": "ship",    "graphemes": ["sh","i","p"],             "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Sharon and Shep shut the ship and hit a star.",
@@ -231,7 +364,18 @@
         { "surface": "hit",    "graphemes": ["h","i","t"],              "phonemes": ["h","ɪ","t"] },
         { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
         { "surface": "star",   "graphemes": ["s","t","a","r"],          "phonemes": ["s","t","a","r"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon shut the ship.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"],     "phonemes": ["ʃ","æ","r","ə","n"] },
+            { "surface": "shut",   "graphemes": ["sh","u","t"],             "phonemes": ["ʃ","ʌ","t"] },
+            { "surface": "the",    "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
+            { "surface": "ship",   "graphemes": ["sh","i","p"],             "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shen and Sharon had a shiny ship past a planet.",
@@ -249,7 +393,18 @@
         { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "planet", "graphemes": ["p","l","a","n","e","t"], "phonemes": ["p","l","æ","n","ɪ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon had a ship.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"],    "phonemes": ["ʃ","æ","r","ə","n"] },
+            { "surface": "had",    "graphemes": ["h","a","d"],             "phonemes": ["h","æ","d"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "ship",   "graphemes": ["sh","i","p"],            "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shep rushed past a shiny comet on the ship.",
@@ -266,7 +421,18 @@
         { "surface": "on",     "graphemes": ["o","n"],                  "phonemes": ["ɒ","n"] },
         { "surface": "the",    "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
         { "surface": "ship",   "graphemes": ["sh","i","p"],             "phonemes": ["ʃ","ɪ","p"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep rushed the ship.",
+          "words": [
+            { "surface": "Shep",   "graphemes": ["sh","e","p"],             "phonemes": ["ʃ","ɛ","p"] },
+            { "surface": "rushed", "graphemes": ["r","u","sh","e","d"],     "phonemes": ["r","ʌ","ʃ","t"] },
+            { "surface": "the",    "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
+            { "surface": "ship",   "graphemes": ["sh","i","p"],             "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shep shut the ship and it shot past a star.",
@@ -284,7 +450,18 @@
         { "surface": "past",  "graphemes": ["p","a","s","t"],          "phonemes": ["p","æ","s","t"] },
         { "surface": "a",     "graphemes": ["a"],                      "phonemes": ["ə"] },
         { "surface": "star",  "graphemes": ["s","t","a","r"],          "phonemes": ["s","t","a","r"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep shut the ship.",
+          "words": [
+            { "surface": "Shep",  "graphemes": ["sh","e","p"],             "phonemes": ["ʃ","ɛ","p"] },
+            { "surface": "shut",  "graphemes": ["sh","u","t"],             "phonemes": ["ʃ","ʌ","t"] },
+            { "surface": "the",   "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
+            { "surface": "ship",  "graphemes": ["sh","i","p"],             "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shen shut the ship and Shep dashed to a star.",
@@ -302,7 +479,18 @@
         { "surface": "to",     "graphemes": ["t","o"],                  "phonemes": ["t","u"] },
         { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
         { "surface": "star",   "graphemes": ["s","t","a","r"],          "phonemes": ["s","t","a","r"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen shut the ship.",
+          "words": [
+            { "surface": "Shen",   "graphemes": ["sh","e","n"],             "phonemes": ["ʃ","ɛ","n"] },
+            { "surface": "shut",   "graphemes": ["sh","u","t"],             "phonemes": ["ʃ","ʌ","t"] },
+            { "surface": "the",    "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
+            { "surface": "ship",   "graphemes": ["sh","i","p"],             "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shep sat in a ship and Sharon had a sash.",
@@ -320,7 +508,18 @@
         { "surface": "had",    "graphemes": ["h","a","d"],              "phonemes": ["h","æ","d"] },
         { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
         { "surface": "sash",   "graphemes": ["s","a","sh"],             "phonemes": ["s","æ","ʃ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep had a sash.",
+          "words": [
+            { "surface": "Shep",   "graphemes": ["sh","e","p"],             "phonemes": ["ʃ","ɛ","p"] },
+            { "surface": "had",    "graphemes": ["h","a","d"],              "phonemes": ["h","æ","d"] },
+            { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
+            { "surface": "sash",   "graphemes": ["s","a","sh"],             "phonemes": ["s","æ","ʃ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shen and Shep set a shiny ship on a planet.",
@@ -338,7 +537,18 @@
         { "surface": "on",     "graphemes": ["o","n"],                 "phonemes": ["ɒ","n"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "planet", "graphemes": ["p","l","a","n","e","t"], "phonemes": ["p","l","æ","n","ɪ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep set a ship.",
+          "words": [
+            { "surface": "Shep",   "graphemes": ["sh","e","p"],            "phonemes": ["ʃ","ɛ","p"] },
+            { "surface": "set",    "graphemes": ["s","e","t"],             "phonemes": ["s","ɛ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "ship",   "graphemes": ["sh","i","p"],            "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shep and Shen rushed past Mars and shut the ship.",
@@ -356,7 +566,18 @@
         { "surface": "shut",   "graphemes": ["sh","u","t"],             "phonemes": ["ʃ","ʌ","t"] },
         { "surface": "the",    "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
         { "surface": "ship",   "graphemes": ["sh","i","p"],             "phonemes": ["ʃ","ɪ","p"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen shut the ship.",
+          "words": [
+            { "surface": "Shen",   "graphemes": ["sh","e","n"],             "phonemes": ["ʃ","ɛ","n"] },
+            { "surface": "shut",   "graphemes": ["sh","u","t"],             "phonemes": ["ʃ","ʌ","t"] },
+            { "surface": "the",    "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
+            { "surface": "ship",   "graphemes": ["sh","i","p"],             "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     }
   ]
 }

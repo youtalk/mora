@@ -164,7 +164,75 @@
             "t"
           ]
         }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen dashed past Sharon.",
+          "words": [
+            {
+              "surface": "Shen",
+              "graphemes": [
+                "sh",
+                "e",
+                "n"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ɛ",
+                "n"
+              ]
+            },
+            {
+              "surface": "dashed",
+              "graphemes": [
+                "d",
+                "a",
+                "sh",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "d",
+                "æ",
+                "ʃ",
+                "t"
+              ]
+            },
+            {
+              "surface": "past",
+              "graphemes": [
+                "p",
+                "a",
+                "s",
+                "t"
+              ],
+              "phonemes": [
+                "p",
+                "æ",
+                "s",
+                "t"
+              ]
+            },
+            {
+              "surface": "Sharon",
+              "graphemes": [
+                "sh",
+                "a",
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "ʃ",
+                "æ",
+                "r",
+                "ə",
+                "n"
+              ]
+            }
+          ]
+        }
+      }
     },
     {
       "text": "Sharon washed the shiny Allosaur armor on the shelf.",
@@ -309,7 +377,73 @@
             "f"
           ]
         }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon washed the shelf.",
+          "words": [
+            {
+              "surface": "Sharon",
+              "graphemes": [
+                "sh",
+                "a",
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "ʃ",
+                "æ",
+                "r",
+                "ə",
+                "n"
+              ]
+            },
+            {
+              "surface": "washed",
+              "graphemes": [
+                "w",
+                "a",
+                "sh",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "w",
+                "ɒ",
+                "ʃ",
+                "t"
+              ]
+            },
+            {
+              "surface": "the",
+              "graphemes": [
+                "th",
+                "e"
+              ],
+              "phonemes": [
+                "ð",
+                "ə"
+              ]
+            },
+            {
+              "surface": "shelf",
+              "graphemes": [
+                "sh",
+                "e",
+                "l",
+                "f"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ɛ",
+                "l",
+                "f"
+              ]
+            }
+          ]
+        }
+      }
     },
     {
       "text": "Shep crushed a fossil and Sharon sheltered a shiny raptor.",
@@ -473,7 +607,72 @@
             "r"
           ]
         }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep crushed a fossil.",
+          "words": [
+            {
+              "surface": "Shep",
+              "graphemes": [
+                "sh",
+                "e",
+                "p"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ɛ",
+                "p"
+              ]
+            },
+            {
+              "surface": "crushed",
+              "graphemes": [
+                "c",
+                "r",
+                "u",
+                "sh",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "k",
+                "r",
+                "ʌ",
+                "ʃ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "fossil",
+              "graphemes": [
+                "f",
+                "o",
+                "s",
+                "s",
+                "i",
+                "l"
+              ],
+              "phonemes": [
+                "f",
+                "ɒ",
+                "s",
+                "ɪ",
+                "l"
+              ]
+            }
+          ]
+        }
+      }
     },
     {
       "text": "Shen and Shep dashed to shelter a shaggy predator.",
@@ -616,7 +815,73 @@
             "r"
           ]
         }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen dashed to shelter.",
+          "words": [
+            {
+              "surface": "Shen",
+              "graphemes": [
+                "sh",
+                "e",
+                "n"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ɛ",
+                "n"
+              ]
+            },
+            {
+              "surface": "dashed",
+              "graphemes": [
+                "d",
+                "a",
+                "sh",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "d",
+                "æ",
+                "ʃ",
+                "t"
+              ]
+            },
+            {
+              "surface": "to",
+              "graphemes": [
+                "t",
+                "o"
+              ],
+              "phonemes": [
+                "t",
+                "u"
+              ]
+            },
+            {
+              "surface": "shelter",
+              "graphemes": [
+                "sh",
+                "e",
+                "l",
+                "t",
+                "e",
+                "r"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ɛ",
+                "l",
+                "t",
+                "ə",
+                "r"
+              ]
+            }
+          ]
+        }
+      }
     },
     {
       "text": "Sharon shut the shed and Shep sheltered the shaggy hadrosaur.",
@@ -779,7 +1044,68 @@
             "r"
           ]
         }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon shut the shed.",
+          "words": [
+            {
+              "surface": "Sharon",
+              "graphemes": [
+                "sh",
+                "a",
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "ʃ",
+                "æ",
+                "r",
+                "ə",
+                "n"
+              ]
+            },
+            {
+              "surface": "shut",
+              "graphemes": [
+                "sh",
+                "u",
+                "t"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ʌ",
+                "t"
+              ]
+            },
+            {
+              "surface": "the",
+              "graphemes": [
+                "th",
+                "e"
+              ],
+              "phonemes": [
+                "ð",
+                "ə"
+              ]
+            },
+            {
+              "surface": "shed",
+              "graphemes": [
+                "sh",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ɛ",
+                "d"
+              ]
+            }
+          ]
+        }
+      }
     },
     {
       "text": "A shy shaggy Allosaur rushed past Shen and the shed.",
@@ -927,7 +1253,71 @@
             "d"
           ]
         }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A shy Allosaur rushed.",
+          "words": [
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "shy",
+              "graphemes": [
+                "sh",
+                "y"
+              ],
+              "phonemes": [
+                "ʃ",
+                "aɪ"
+              ]
+            },
+            {
+              "surface": "Allosaur",
+              "graphemes": [
+                "a",
+                "l",
+                "l",
+                "o",
+                "s",
+                "a",
+                "u",
+                "r"
+              ],
+              "phonemes": [
+                "æ",
+                "l",
+                "ə",
+                "s",
+                "ɔ",
+                "r"
+              ]
+            },
+            {
+              "surface": "rushed",
+              "graphemes": [
+                "r",
+                "u",
+                "sh",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "r",
+                "ʌ",
+                "ʃ",
+                "t"
+              ]
+            }
+          ]
+        }
+      }
     },
     {
       "text": "Shep washed the shiny dorsal armor and Sharon rushed in.",
@@ -1086,7 +1476,71 @@
             "n"
           ]
         }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep washed the armor.",
+          "words": [
+            {
+              "surface": "Shep",
+              "graphemes": [
+                "sh",
+                "e",
+                "p"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ɛ",
+                "p"
+              ]
+            },
+            {
+              "surface": "washed",
+              "graphemes": [
+                "w",
+                "a",
+                "sh",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "w",
+                "ɒ",
+                "ʃ",
+                "t"
+              ]
+            },
+            {
+              "surface": "the",
+              "graphemes": [
+                "th",
+                "e"
+              ],
+              "phonemes": [
+                "ð",
+                "ə"
+              ]
+            },
+            {
+              "surface": "armor",
+              "graphemes": [
+                "a",
+                "r",
+                "m",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "ɑ",
+                "r",
+                "m",
+                "ə",
+                "r"
+              ]
+            }
+          ]
+        }
+      }
     },
     {
       "text": "Shen sheltered a shaggy swift raptor at the shed.",
@@ -1227,7 +1681,77 @@
             "d"
           ]
         }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen sheltered a raptor.",
+          "words": [
+            {
+              "surface": "Shen",
+              "graphemes": [
+                "sh",
+                "e",
+                "n"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ɛ",
+                "n"
+              ]
+            },
+            {
+              "surface": "sheltered",
+              "graphemes": [
+                "sh",
+                "e",
+                "l",
+                "t",
+                "e",
+                "r",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ɛ",
+                "l",
+                "t",
+                "ə",
+                "r",
+                "d"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "raptor",
+              "graphemes": [
+                "r",
+                "a",
+                "p",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "p",
+                "t",
+                "ɔ",
+                "r"
+              ]
+            }
+          ]
+        }
+      }
     },
     {
       "text": "Sharon dashed past a predator and Shep shut the shed.",
@@ -1380,7 +1904,64 @@
             "d"
           ]
         }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep shut the shed.",
+          "words": [
+            {
+              "surface": "Shep",
+              "graphemes": [
+                "sh",
+                "e",
+                "p"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ɛ",
+                "p"
+              ]
+            },
+            {
+              "surface": "shut",
+              "graphemes": [
+                "sh",
+                "u",
+                "t"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ʌ",
+                "t"
+              ]
+            },
+            {
+              "surface": "the",
+              "graphemes": [
+                "th",
+                "e"
+              ],
+              "phonemes": [
+                "ð",
+                "ə"
+              ]
+            },
+            {
+              "surface": "shed",
+              "graphemes": [
+                "sh",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ɛ",
+                "d"
+              ]
+            }
+          ]
+        }
+      }
     },
     {
       "text": "Shen washed a shiny Stego dorsal and Sharon washed it.",
@@ -1537,7 +2118,69 @@
             "t"
           ]
         }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen washed a Stego.",
+          "words": [
+            {
+              "surface": "Shen",
+              "graphemes": [
+                "sh",
+                "e",
+                "n"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ɛ",
+                "n"
+              ]
+            },
+            {
+              "surface": "washed",
+              "graphemes": [
+                "w",
+                "a",
+                "sh",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "w",
+                "ɒ",
+                "ʃ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "Stego",
+              "graphemes": [
+                "s",
+                "t",
+                "e",
+                "g",
+                "o"
+              ],
+              "phonemes": [
+                "s",
+                "t",
+                "ɛ",
+                "g",
+                "o"
+              ]
+            }
+          ]
+        }
+      }
     },
     {
       "text": "Shep saw a shaggy Allosaur and Sharon shut the shed.",
@@ -1686,7 +2329,68 @@
             "d"
           ]
         }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon shut the shed.",
+          "words": [
+            {
+              "surface": "Sharon",
+              "graphemes": [
+                "sh",
+                "a",
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "ʃ",
+                "æ",
+                "r",
+                "ə",
+                "n"
+              ]
+            },
+            {
+              "surface": "shut",
+              "graphemes": [
+                "sh",
+                "u",
+                "t"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ʌ",
+                "t"
+              ]
+            },
+            {
+              "surface": "the",
+              "graphemes": [
+                "th",
+                "e"
+              ],
+              "phonemes": [
+                "ð",
+                "ə"
+              ]
+            },
+            {
+              "surface": "shed",
+              "graphemes": [
+                "sh",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ɛ",
+                "d"
+              ]
+            }
+          ]
+        }
+      }
     },
     {
       "text": "Sharon sheltered a shiny hadrosaur and Shen fed the raptor.",
@@ -1853,7 +2557,86 @@
             "r"
           ]
         }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon sheltered a hadrosaur.",
+          "words": [
+            {
+              "surface": "Sharon",
+              "graphemes": [
+                "sh",
+                "a",
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "ʃ",
+                "æ",
+                "r",
+                "ə",
+                "n"
+              ]
+            },
+            {
+              "surface": "sheltered",
+              "graphemes": [
+                "sh",
+                "e",
+                "l",
+                "t",
+                "e",
+                "r",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ɛ",
+                "l",
+                "t",
+                "ə",
+                "r",
+                "d"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "hadrosaur",
+              "graphemes": [
+                "h",
+                "a",
+                "d",
+                "r",
+                "o",
+                "s",
+                "a",
+                "u",
+                "r"
+              ],
+              "phonemes": [
+                "h",
+                "æ",
+                "d",
+                "r",
+                "ə",
+                "s",
+                "ɔ",
+                "r"
+              ]
+            }
+          ]
+        }
+      }
     },
     {
       "text": "A shy shiny Spino dashed past Shep and the herd.",
@@ -1999,7 +2782,67 @@
             "d"
           ]
         }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A shy Spino dashed.",
+          "words": [
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "shy",
+              "graphemes": [
+                "sh",
+                "y"
+              ],
+              "phonemes": [
+                "ʃ",
+                "aɪ"
+              ]
+            },
+            {
+              "surface": "Spino",
+              "graphemes": [
+                "s",
+                "p",
+                "i",
+                "n",
+                "o"
+              ],
+              "phonemes": [
+                "s",
+                "p",
+                "aɪ",
+                "n",
+                "o"
+              ]
+            },
+            {
+              "surface": "dashed",
+              "graphemes": [
+                "d",
+                "a",
+                "sh",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "d",
+                "æ",
+                "ʃ",
+                "t"
+              ]
+            }
+          ]
+        }
+      }
     },
     {
       "text": "Shep and Sharon rushed to shut in the shy Allosaur.",
@@ -2146,7 +2989,71 @@
             "r"
           ]
         }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon rushed to shut.",
+          "words": [
+            {
+              "surface": "Sharon",
+              "graphemes": [
+                "sh",
+                "a",
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "ʃ",
+                "æ",
+                "r",
+                "ə",
+                "n"
+              ]
+            },
+            {
+              "surface": "rushed",
+              "graphemes": [
+                "r",
+                "u",
+                "sh",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "r",
+                "ʌ",
+                "ʃ",
+                "t"
+              ]
+            },
+            {
+              "surface": "to",
+              "graphemes": [
+                "t",
+                "o"
+              ],
+              "phonemes": [
+                "t",
+                "u"
+              ]
+            },
+            {
+              "surface": "shut",
+              "graphemes": [
+                "sh",
+                "u",
+                "t"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ʌ",
+                "t"
+              ]
+            }
+          ]
+        }
+      }
     },
     {
       "text": "Sharon crushed an Allosaur fossil and Shep sheltered the herd.",
@@ -2317,7 +3224,81 @@
             "d"
           ]
         }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon crushed an Allosaur.",
+          "words": [
+            {
+              "surface": "Sharon",
+              "graphemes": [
+                "sh",
+                "a",
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "ʃ",
+                "æ",
+                "r",
+                "ə",
+                "n"
+              ]
+            },
+            {
+              "surface": "crushed",
+              "graphemes": [
+                "c",
+                "r",
+                "u",
+                "sh",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "k",
+                "r",
+                "ʌ",
+                "ʃ",
+                "t"
+              ]
+            },
+            {
+              "surface": "an",
+              "graphemes": [
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "æ",
+                "n"
+              ]
+            },
+            {
+              "surface": "Allosaur",
+              "graphemes": [
+                "a",
+                "l",
+                "l",
+                "o",
+                "s",
+                "a",
+                "u",
+                "r"
+              ],
+              "phonemes": [
+                "æ",
+                "l",
+                "ə",
+                "s",
+                "ɔ",
+                "r"
+              ]
+            }
+          ]
+        }
+      }
     },
     {
       "text": "Shen dashed to shelter and Sharon sheltered a shy Spino.",
@@ -2475,7 +3456,73 @@
             "o"
           ]
         }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen dashed to shelter.",
+          "words": [
+            {
+              "surface": "Shen",
+              "graphemes": [
+                "sh",
+                "e",
+                "n"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ɛ",
+                "n"
+              ]
+            },
+            {
+              "surface": "dashed",
+              "graphemes": [
+                "d",
+                "a",
+                "sh",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "d",
+                "æ",
+                "ʃ",
+                "t"
+              ]
+            },
+            {
+              "surface": "to",
+              "graphemes": [
+                "t",
+                "o"
+              ],
+              "phonemes": [
+                "t",
+                "u"
+              ]
+            },
+            {
+              "surface": "shelter",
+              "graphemes": [
+                "sh",
+                "e",
+                "l",
+                "t",
+                "e",
+                "r"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ɛ",
+                "l",
+                "t",
+                "ə",
+                "r"
+              ]
+            }
+          ]
+        }
+      }
     },
     {
       "text": "Shep and Shen washed the shiny Allosaur dorsal.",
@@ -2607,7 +3654,73 @@
             "l"
           ]
         }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep washed the dorsal.",
+          "words": [
+            {
+              "surface": "Shep",
+              "graphemes": [
+                "sh",
+                "e",
+                "p"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ɛ",
+                "p"
+              ]
+            },
+            {
+              "surface": "washed",
+              "graphemes": [
+                "w",
+                "a",
+                "sh",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "w",
+                "ɒ",
+                "ʃ",
+                "t"
+              ]
+            },
+            {
+              "surface": "the",
+              "graphemes": [
+                "th",
+                "e"
+              ],
+              "phonemes": [
+                "ð",
+                "ə"
+              ]
+            },
+            {
+              "surface": "dorsal",
+              "graphemes": [
+                "d",
+                "o",
+                "r",
+                "s",
+                "a",
+                "l"
+              ],
+              "phonemes": [
+                "d",
+                "ɔ",
+                "r",
+                "s",
+                "ə",
+                "l"
+              ]
+            }
+          ]
+        }
+      }
     },
     {
       "text": "Sharon rushed to shelter a shiny shaggy raptor fossil.",
@@ -2758,7 +3871,77 @@
             "l"
           ]
         }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon rushed to shelter.",
+          "words": [
+            {
+              "surface": "Sharon",
+              "graphemes": [
+                "sh",
+                "a",
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "ʃ",
+                "æ",
+                "r",
+                "ə",
+                "n"
+              ]
+            },
+            {
+              "surface": "rushed",
+              "graphemes": [
+                "r",
+                "u",
+                "sh",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "r",
+                "ʌ",
+                "ʃ",
+                "t"
+              ]
+            },
+            {
+              "surface": "to",
+              "graphemes": [
+                "t",
+                "o"
+              ],
+              "phonemes": [
+                "t",
+                "u"
+              ]
+            },
+            {
+              "surface": "shelter",
+              "graphemes": [
+                "sh",
+                "e",
+                "l",
+                "t",
+                "e",
+                "r"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ɛ",
+                "l",
+                "t",
+                "ə",
+                "r"
+              ]
+            }
+          ]
+        }
+      }
     },
     {
       "text": "Shen saw a shaggy predator and Shep rushed to shelter.",
@@ -2914,7 +4097,72 @@
             "r"
           ]
         }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen saw a predator.",
+          "words": [
+            {
+              "surface": "Shen",
+              "graphemes": [
+                "sh",
+                "e",
+                "n"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ɛ",
+                "n"
+              ]
+            },
+            {
+              "surface": "saw",
+              "graphemes": [
+                "s",
+                "a",
+                "w"
+              ],
+              "phonemes": [
+                "s",
+                "ɔ",
+                "w"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "predator",
+              "graphemes": [
+                "p",
+                "r",
+                "e",
+                "d",
+                "a",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "p",
+                "r",
+                "ɛ",
+                "d",
+                "ə",
+                "t",
+                "ɔ",
+                "r"
+              ]
+            }
+          ]
+        }
+      }
     },
     {
       "text": "Shep and Sharon sheltered a shiny hadrosaur in the shed.",
@@ -3072,7 +4320,86 @@
             "d"
           ]
         }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon sheltered a hadrosaur.",
+          "words": [
+            {
+              "surface": "Sharon",
+              "graphemes": [
+                "sh",
+                "a",
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "ʃ",
+                "æ",
+                "r",
+                "ə",
+                "n"
+              ]
+            },
+            {
+              "surface": "sheltered",
+              "graphemes": [
+                "sh",
+                "e",
+                "l",
+                "t",
+                "e",
+                "r",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "ʃ",
+                "ɛ",
+                "l",
+                "t",
+                "ə",
+                "r",
+                "d"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "hadrosaur",
+              "graphemes": [
+                "h",
+                "a",
+                "d",
+                "r",
+                "o",
+                "s",
+                "a",
+                "u",
+                "r"
+              ],
+              "phonemes": [
+                "h",
+                "æ",
+                "d",
+                "r",
+                "ə",
+                "s",
+                "ɔ",
+                "r"
+              ]
+            }
+          ]
+        }
+      }
     }
   ]
 }

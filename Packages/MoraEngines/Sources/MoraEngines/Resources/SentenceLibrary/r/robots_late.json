@@ -20,7 +20,18 @@
         { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex got a rotor.",
+          "words": [
+            { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rip ran and Rob got a rust rotor.",
@@ -36,7 +47,18 @@
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "rust",  "graphemes": ["r","u","s","t"],     "phonemes": ["r","ʌ","s","t"] },
         { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rob got a rotor.",
+          "words": [
+            { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rex set a rivet and Ron set a red rotor.",
@@ -54,7 +76,18 @@
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "red",   "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
         { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex set a rivet.",
+          "words": [
+            { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+            { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Ron and Rip got a rotor and a rivet.",
@@ -71,7 +104,18 @@
         { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rip got a rotor.",
+          "words": [
+            { "surface": "Rip",   "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rex got a red rotor and Rip got a rod.",
@@ -89,7 +133,18 @@
         { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "rod",   "graphemes": ["r","o","d"],         "phonemes": ["r","ɒ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex got a rotor.",
+          "words": [
+            { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rob set a rotor and Rex set a rust rim.",
@@ -107,7 +162,18 @@
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "rust",  "graphemes": ["r","u","s","t"],     "phonemes": ["r","ʌ","s","t"] },
         { "surface": "rim",   "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rob set a rotor.",
+          "words": [
+            { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+            { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rex got a repair rod and Ron got a ram.",
@@ -125,7 +191,18 @@
         { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "ram",    "graphemes": ["r","a","m"],             "phonemes": ["r","æ","m"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex got a rod.",
+          "words": [
+            { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
+            { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "rod",    "graphemes": ["r","o","d"],             "phonemes": ["r","ɒ","d"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rip set a rotor and Rob set a rivet.",
@@ -142,7 +219,18 @@
         { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rip set a rotor.",
+          "words": [
+            { "surface": "Rip",   "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+            { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Ron got a repair and Rex set a rim.",
@@ -159,7 +247,18 @@
         { "surface": "set",    "graphemes": ["s","e","t"],             "phonemes": ["s","ɛ","t"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "rim",    "graphemes": ["r","i","m"],             "phonemes": ["r","ɪ","m"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Ron got a repair.",
+          "words": [
+            { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
+            { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "repair", "graphemes": ["r","e","p","a","i","r"], "phonemes": ["r","ɪ","p","ɛ","r"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rex and Rob got a red rotor and a rivet.",
@@ -177,7 +276,18 @@
         { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rob got a rotor.",
+          "words": [
+            { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rip got a rust rod and Rex set a rivet.",
@@ -195,7 +305,18 @@
         { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rip got a rod.",
+          "words": [
+            { "surface": "Rip",   "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "rod",   "graphemes": ["r","o","d"],         "phonemes": ["r","ɒ","d"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rob set a repair rod and Ron set a rivet.",
@@ -213,7 +334,18 @@
         { "surface": "set",    "graphemes": ["s","e","t"],             "phonemes": ["s","ɛ","t"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "rivet",  "graphemes": ["r","i","v","e","t"],     "phonemes": ["r","ɪ","v","ɪ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rob set a rod.",
+          "words": [
+            { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
+            { "surface": "set",    "graphemes": ["s","e","t"],             "phonemes": ["s","ɛ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "rod",    "graphemes": ["r","o","d"],             "phonemes": ["r","ɒ","d"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rex got a rotor and Rob got a rod.",
@@ -230,7 +362,18 @@
         { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "rod",   "graphemes": ["r","o","d"],         "phonemes": ["r","ɒ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex got a rotor.",
+          "words": [
+            { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Ron set a red rotor and Rip set a rim.",
@@ -248,7 +391,18 @@
         { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "rim",   "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Ron set a rotor.",
+          "words": [
+            { "surface": "Ron",   "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+            { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rex set a rivet and Ron got a rust rotor.",
@@ -266,7 +420,18 @@
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "rust",  "graphemes": ["r","u","s","t"],     "phonemes": ["r","ʌ","s","t"] },
         { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex set a rivet.",
+          "words": [
+            { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+            { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rip got a rotor and Rob set a rivet.",
@@ -283,7 +448,18 @@
         { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rip got a rotor.",
+          "words": [
+            { "surface": "Rip",   "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rex got a repair and Ron got a rotor.",
@@ -300,7 +476,18 @@
         { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "rotor",  "graphemes": ["r","o","t","o","r"],     "phonemes": ["r","oʊ","t","ɚ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex got a repair.",
+          "words": [
+            { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
+            { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "repair", "graphemes": ["r","e","p","a","i","r"], "phonemes": ["r","ɪ","p","ɛ","r"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rip and Rex got a rod and a red rotor.",
@@ -318,7 +505,18 @@
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "red",   "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
         { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex got a rod.",
+          "words": [
+            { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "rod",   "graphemes": ["r","o","d"],         "phonemes": ["r","ɒ","d"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rob got a rivet and Ron got a repair rod.",
@@ -336,7 +534,18 @@
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "repair", "graphemes": ["r","e","p","a","i","r"], "phonemes": ["r","ɪ","p","ɛ","r"] },
         { "surface": "rod",    "graphemes": ["r","o","d"],             "phonemes": ["r","ɒ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rob got a rivet.",
+          "words": [
+            { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
+            { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "rivet",  "graphemes": ["r","i","v","e","t"],     "phonemes": ["r","ɪ","v","ɪ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rex met Rip and got a rotor and a rivet.",
@@ -354,7 +563,18 @@
         { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "rivet", "graphemes": ["r","i","v","e","t"], "phonemes": ["r","ɪ","v","ɪ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex got a rotor.",
+          "words": [
+            { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
+          ]
+        }
+      }
     }
   ]
 }

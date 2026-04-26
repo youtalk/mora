@@ -19,7 +19,18 @@
         { "surface": "in",    "graphemes": ["i","n"],          "phonemes": ["ɪ","n"] },
         { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
         { "surface": "shed",  "graphemes": ["sh","e","d"],     "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen has a ship.",
+          "words": [
+            { "surface": "Shen",  "graphemes": ["sh","e","n"],     "phonemes": ["ʃ","ɛ","n"] },
+            { "surface": "has",   "graphemes": ["h","a","s"],      "phonemes": ["h","æ","z"] },
+            { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "ship",  "graphemes": ["sh","i","p"],     "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shep has a shy ship at the shop.",
@@ -35,7 +46,18 @@
         { "surface": "at",   "graphemes": ["a","t"],       "phonemes": ["æ","t"] },
         { "surface": "the",  "graphemes": ["th","e"],      "phonemes": ["ð","ə"] },
         { "surface": "shop", "graphemes": ["sh","o","p"],  "phonemes": ["ʃ","ɒ","p"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep has a ship.",
+          "words": [
+            { "surface": "Shep", "graphemes": ["sh","e","p"],  "phonemes": ["ʃ","ɛ","p"] },
+            { "surface": "has",  "graphemes": ["h","a","s"],   "phonemes": ["h","æ","z"] },
+            { "surface": "a",    "graphemes": ["a"],           "phonemes": ["ə"] },
+            { "surface": "ship", "graphemes": ["sh","i","p"],  "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Sharon and Shep got on a shiny ship.",
@@ -51,7 +73,18 @@
         { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
         { "surface": "ship",   "graphemes": ["sh","i","p"],         "phonemes": ["ʃ","ɪ","p"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon got a ship.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+            { "surface": "got",    "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "ship",   "graphemes": ["sh","i","p"],         "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shen washed a jet at the ship shed.",
@@ -67,7 +100,18 @@
         { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "ship",   "graphemes": ["sh","i","p"],         "phonemes": ["ʃ","ɪ","p"] },
         { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen washed a jet.",
+          "words": [
+            { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+            { "surface": "washed", "graphemes": ["w","a","sh","e","d"], "phonemes": ["w","ɒ","ʃ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "jet",    "graphemes": ["j","e","t"],          "phonemes": ["dʒ","ɛ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shep has a shy bus and Sharon has a ship.",
@@ -85,7 +129,18 @@
         { "surface": "has",    "graphemes": ["h","a","s"],          "phonemes": ["h","æ","z"] },
         { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "ship",   "graphemes": ["sh","i","p"],         "phonemes": ["ʃ","ɪ","p"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep has a bus.",
+          "words": [
+            { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+            { "surface": "has",    "graphemes": ["h","a","s"],          "phonemes": ["h","æ","z"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "bus",    "graphemes": ["b","u","s"],          "phonemes": ["b","ʌ","s"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shen got a shy van and Sharon got a ship.",
@@ -103,7 +158,18 @@
         { "surface": "got",    "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
         { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "ship",   "graphemes": ["sh","i","p"],         "phonemes": ["ʃ","ɪ","p"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen got a van.",
+          "words": [
+            { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+            { "surface": "got",    "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "van",    "graphemes": ["v","a","n"],          "phonemes": ["v","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shep washed the van at the ship shed.",
@@ -119,7 +185,18 @@
         { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "ship",   "graphemes": ["sh","i","p"],         "phonemes": ["ʃ","ɪ","p"] },
         { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep washed the van.",
+          "words": [
+            { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+            { "surface": "washed", "graphemes": ["w","a","sh","e","d"], "phonemes": ["w","ɒ","ʃ","t"] },
+            { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+            { "surface": "van",    "graphemes": ["v","a","n"],          "phonemes": ["v","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Sharon got a shiny cab at the ship shed.",
@@ -136,7 +213,18 @@
         { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "ship",   "graphemes": ["sh","i","p"],         "phonemes": ["ʃ","ɪ","p"] },
         { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon got a cab.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+            { "surface": "got",    "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "cab",    "graphemes": ["c","a","b"],          "phonemes": ["k","æ","b"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shep shut the van at the shiny ship.",
@@ -152,7 +240,18 @@
         { "surface": "the",   "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
         { "surface": "shiny", "graphemes": ["sh","i","n","y"], "phonemes": ["ʃ","aɪ","n","i"] },
         { "surface": "ship",  "graphemes": ["sh","i","p"],     "phonemes": ["ʃ","ɪ","p"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep shut the van.",
+          "words": [
+            { "surface": "Shep",  "graphemes": ["sh","e","p"],     "phonemes": ["ʃ","ɛ","p"] },
+            { "surface": "shut",  "graphemes": ["sh","u","t"],     "phonemes": ["ʃ","ʌ","t"] },
+            { "surface": "the",   "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+            { "surface": "van",   "graphemes": ["v","a","n"],      "phonemes": ["v","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "A shiny bus dashed by the ship shed.",
@@ -168,7 +267,18 @@
         { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "ship",   "graphemes": ["sh","i","p"],         "phonemes": ["ʃ","ɪ","p"] },
         { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A shiny bus dashed.",
+          "words": [
+            { "surface": "A",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+            { "surface": "bus",    "graphemes": ["b","u","s"],          "phonemes": ["b","ʌ","s"] },
+            { "surface": "dashed", "graphemes": ["d","a","sh","e","d"], "phonemes": ["d","æ","ʃ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Sharon has a shy ship and a shiny jet.",
@@ -185,7 +295,18 @@
         { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
         { "surface": "jet",    "graphemes": ["j","e","t"],          "phonemes": ["dʒ","ɛ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon has a ship.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+            { "surface": "has",    "graphemes": ["h","a","s"],          "phonemes": ["h","æ","z"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "ship",   "graphemes": ["sh","i","p"],         "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shep sat in a shiny ship at the shed.",
@@ -202,7 +323,19 @@
         { "surface": "at",    "graphemes": ["a","t"],          "phonemes": ["æ","t"] },
         { "surface": "the",   "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
         { "surface": "shed",  "graphemes": ["sh","e","d"],     "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep sat in a ship.",
+          "words": [
+            { "surface": "Shep",  "graphemes": ["sh","e","p"],     "phonemes": ["ʃ","ɛ","p"] },
+            { "surface": "sat",   "graphemes": ["s","a","t"],      "phonemes": ["s","æ","t"] },
+            { "surface": "in",    "graphemes": ["i","n"],          "phonemes": ["ɪ","n"] },
+            { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "ship",  "graphemes": ["sh","i","p"],     "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shen washed a shiny cab at the shed.",
@@ -218,7 +351,18 @@
         { "surface": "at",     "graphemes": ["a","t"],              "phonemes": ["æ","t"] },
         { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen washed a cab.",
+          "words": [
+            { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+            { "surface": "washed", "graphemes": ["w","a","sh","e","d"], "phonemes": ["w","ɒ","ʃ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "cab",    "graphemes": ["c","a","b"],          "phonemes": ["k","æ","b"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shep got a jet at the shiny ship shed.",
@@ -235,7 +379,18 @@
         { "surface": "shiny", "graphemes": ["sh","i","n","y"], "phonemes": ["ʃ","aɪ","n","i"] },
         { "surface": "ship",  "graphemes": ["sh","i","p"],     "phonemes": ["ʃ","ɪ","p"] },
         { "surface": "shed",  "graphemes": ["sh","e","d"],     "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep got a jet.",
+          "words": [
+            { "surface": "Shep",  "graphemes": ["sh","e","p"],     "phonemes": ["ʃ","ɛ","p"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "jet",   "graphemes": ["j","e","t"],      "phonemes": ["dʒ","ɛ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shen got on a ship and shut the shed.",
@@ -252,7 +407,18 @@
         { "surface": "shut", "graphemes": ["sh","u","t"],  "phonemes": ["ʃ","ʌ","t"] },
         { "surface": "the",  "graphemes": ["th","e"],      "phonemes": ["ð","ə"] },
         { "surface": "shed", "graphemes": ["sh","e","d"],  "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen shut the shed.",
+          "words": [
+            { "surface": "Shen", "graphemes": ["sh","e","n"],  "phonemes": ["ʃ","ɛ","n"] },
+            { "surface": "shut", "graphemes": ["sh","u","t"],  "phonemes": ["ʃ","ʌ","t"] },
+            { "surface": "the",  "graphemes": ["th","e"],      "phonemes": ["ð","ə"] },
+            { "surface": "shed", "graphemes": ["sh","e","d"],  "phonemes": ["ʃ","ɛ","d"] }
+          ]
+        }
+      }
     },
     {
       "text": "Sharon and Shep had a shiny ship and a van.",
@@ -270,7 +436,18 @@
         { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
         { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "van",    "graphemes": ["v","a","n"],          "phonemes": ["v","æ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon had a ship.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+            { "surface": "had",    "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "ship",   "graphemes": ["sh","i","p"],         "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shen got on a shiny ship at the shed.",
@@ -287,7 +464,18 @@
         { "surface": "at",    "graphemes": ["a","t"],          "phonemes": ["æ","t"] },
         { "surface": "the",   "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
         { "surface": "shed",  "graphemes": ["sh","e","d"],     "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen got a ship.",
+          "words": [
+            { "surface": "Shen",  "graphemes": ["sh","e","n"],     "phonemes": ["ʃ","ɛ","n"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "ship",  "graphemes": ["sh","i","p"],     "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shep got a cab and rushed to the ship shed.",
@@ -305,7 +493,18 @@
         { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "ship",   "graphemes": ["sh","i","p"],         "phonemes": ["ʃ","ɪ","p"] },
         { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep got a cab.",
+          "words": [
+            { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+            { "surface": "got",    "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "cab",    "graphemes": ["c","a","b"],          "phonemes": ["k","æ","b"] }
+          ]
+        }
+      }
     },
     {
       "text": "Sharon shut the ship and Shep got a cab.",
@@ -322,7 +521,18 @@
         { "surface": "got",    "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
         { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "cab",    "graphemes": ["c","a","b"],          "phonemes": ["k","æ","b"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon shut the ship.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+            { "surface": "shut",   "graphemes": ["sh","u","t"],         "phonemes": ["ʃ","ʌ","t"] },
+            { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+            { "surface": "ship",   "graphemes": ["sh","i","p"],         "phonemes": ["ʃ","ɪ","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shen rushed to a bus and a shiny ship.",
@@ -339,7 +549,18 @@
         { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
         { "surface": "ship",   "graphemes": ["sh","i","p"],         "phonemes": ["ʃ","ɪ","p"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen rushed a bus.",
+          "words": [
+            { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+            { "surface": "rushed", "graphemes": ["r","u","sh","e","d"], "phonemes": ["r","ʌ","ʃ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "bus",    "graphemes": ["b","u","s"],          "phonemes": ["b","ʌ","s"] }
+          ]
+        }
+      }
     }
   ]
 }

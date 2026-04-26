@@ -114,6 +114,75 @@ final class SentenceLibraryTests: XCTestCase {
         }
     }
 
+    func test_byDayLookupReturnsTrimmedSentenceForDayOne() async throws {
+        let root = try makeTempRoot()
+        defer { try? FileManager.default.removeItem(at: root) }
+        let shDir = root.appendingPathComponent("sh", isDirectory: true)
+        try FileManager.default.createDirectory(at: shDir, withIntermediateDirectories: true)
+        let json = """
+            {
+              "phoneme": "sh",
+              "phonemeIPA": "ʃ",
+              "graphemeLetters": "sh",
+              "interest": "vehicles",
+              "ageBand": "mid",
+              "sentences": [
+                {
+                  "text": "She shoves a sharp ship to shore.",
+                  "targetCount": 4, "targetInitialContentWords": 4,
+                  "interestWords": ["ship"],
+                  "words": [
+                    {"surface":"She","graphemes":["sh","e"],"phonemes":["ʃ","i"]},
+                    {"surface":"shoves","graphemes":["sh","o","v","e","s"],"phonemes":["ʃ","ʌ","v","z"]},
+                    {"surface":"a","graphemes":["a"],"phonemes":["ə"]},
+                    {"surface":"sharp","graphemes":["sh","a","r","p"],"phonemes":["ʃ","ɑ","r","p"]},
+                    {"surface":"ship","graphemes":["sh","i","p"],"phonemes":["ʃ","ɪ","p"]},
+                    {"surface":"to","graphemes":["t","o"],"phonemes":["t","ə"]},
+                    {"surface":"shore","graphemes":["sh","o","r","e"],"phonemes":["ʃ","ɔ","r"]}
+                  ],
+                  "byDay": {
+                    "1": {
+                      "text": "She shoves sharp ship.",
+                      "words": [
+                        {"surface":"She","graphemes":["sh","e"],"phonemes":["ʃ","i"]},
+                        {"surface":"shoves","graphemes":["sh","o","v","e","s"],"phonemes":["ʃ","ʌ","v","z"]},
+                        {"surface":"sharp","graphemes":["sh","a","r","p"],"phonemes":["ʃ","ɑ","r","p"]},
+                        {"surface":"ship","graphemes":["sh","i","p"],"phonemes":["ʃ","ɪ","p"]}
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+            """
+        try Data(json.utf8).write(to: shDir.appendingPathComponent("vehicles_mid.json"))
+        let library = try SentenceLibrary(rootURL: root)
+
+        let day1 = await library.sentences(
+            target: "sh_onset", interests: ["vehicles"], ageYears: 8,
+            dayInWeek: 1, excluding: [], count: 1
+        )
+        XCTAssertEqual(day1.first?.text, "She shoves sharp ship.")
+        XCTAssertEqual(day1.first?.words.count, 4)
+
+        let day5 = await library.sentences(
+            target: "sh_onset", interests: ["vehicles"], ageYears: 8,
+            dayInWeek: 5, excluding: [], count: 1
+        )
+        XCTAssertEqual(day5.first?.text, "She shoves a sharp ship to shore.")
+        XCTAssertEqual(day5.first?.words.count, 7)
+    }
+
+    func test_defaultDayOverloadReturnsFullSentences() async throws {
+        // Existing API (no dayInWeek arg) returns full sentences regardless.
+        let library = try SentenceLibrary()
+        let result = await library.sentences(
+            target: "sh_onset", interests: ["vehicles"], ageYears: 8,
+            excluding: [], count: 1
+        )
+        XCTAssertNotNil(result.first)
+    }
+
     // MARK: - Helpers
 
     private func makeTempRoot() throws -> URL {

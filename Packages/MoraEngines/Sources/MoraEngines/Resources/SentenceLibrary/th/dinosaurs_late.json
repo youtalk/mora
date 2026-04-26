@@ -21,7 +21,18 @@
         { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
         { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "fossil", "graphemes": ["f","o","s","s","i","l"], "phonemes": ["f","ɒ","s","s","ɪ","l"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad had a raptor.",
+          "words": [
+            { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+            { "surface": "had",    "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ə","r"] }
+          ]
+        }
+      }
     },
     {
       "text": "A thin predator met Thad and Theo on the path.",
@@ -39,7 +50,19 @@
         { "surface": "on",       "graphemes": ["o","n"],                      "phonemes": ["ɒ","n"] },
         { "surface": "the",      "graphemes": ["th","e"],                     "phonemes": ["ð","ə"] },
         { "surface": "path",     "graphemes": ["p","a","th"],                 "phonemes": ["p","æ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin predator met Thad.",
+          "words": [
+            { "surface": "A",        "graphemes": ["a"],                          "phonemes": ["ə"] },
+            { "surface": "thin",     "graphemes": ["th","i","n"],                 "phonemes": ["θ","ɪ","n"] },
+            { "surface": "predator", "graphemes": ["p","r","e","d","a","t","o","r"], "phonemes": ["p","r","ɛ","d","ə","t","ə","r"] },
+            { "surface": "met",      "graphemes": ["m","e","t"],                  "phonemes": ["m","ɛ","t"] },
+            { "surface": "Thad",     "graphemes": ["th","a","d"],                 "phonemes": ["θ","æ","d"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad fed a thin raptor and Theo got the predator.",
@@ -57,7 +80,18 @@
         { "surface": "got",      "graphemes": ["g","o","t"],                  "phonemes": ["g","ɒ","t"] },
         { "surface": "the",      "graphemes": ["th","e"],                     "phonemes": ["ð","ə"] },
         { "surface": "predator", "graphemes": ["p","r","e","d","a","t","o","r"], "phonemes": ["p","r","ɛ","d","ə","t","ə","r"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad fed a raptor.",
+          "words": [
+            { "surface": "Thad",     "graphemes": ["th","a","d"],                 "phonemes": ["θ","æ","d"] },
+            { "surface": "fed",      "graphemes": ["f","e","d"],                  "phonemes": ["f","ɛ","d"] },
+            { "surface": "a",        "graphemes": ["a"],                          "phonemes": ["ə"] },
+            { "surface": "raptor",   "graphemes": ["r","a","p","t","o","r"],     "phonemes": ["r","æ","p","t","ə","r"] }
+          ]
+        }
+      }
     },
     {
       "text": "Theo and Thad set a thin armor with the predator.",
@@ -75,7 +109,19 @@
         { "surface": "with",     "graphemes": ["w","i","th"],                 "phonemes": ["w","ɪ","θ"] },
         { "surface": "the",      "graphemes": ["th","e"],                     "phonemes": ["ð","ə"] },
         { "surface": "predator", "graphemes": ["p","r","e","d","a","t","o","r"], "phonemes": ["p","r","ɛ","d","ə","t","ə","r"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Theo set a thin armor.",
+          "words": [
+            { "surface": "Theo",     "graphemes": ["th","e","o"],                 "phonemes": ["θ","i","oʊ"] },
+            { "surface": "set",      "graphemes": ["s","e","t"],                  "phonemes": ["s","ɛ","t"] },
+            { "surface": "a",        "graphemes": ["a"],                          "phonemes": ["ə"] },
+            { "surface": "thin",     "graphemes": ["th","i","n"],                 "phonemes": ["θ","ɪ","n"] },
+            { "surface": "armor",    "graphemes": ["a","r","m","o","r"],          "phonemes": ["ɑ","r","m","ə","r"] }
+          ]
+        }
+      }
     },
     {
       "text": "A swift thin raptor hid with Thad, Theo, and Beth.",
@@ -93,7 +139,18 @@
         { "surface": "Theo",   "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
         { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
         { "surface": "Beth",   "graphemes": ["b","e","th"],         "phonemes": ["b","ɛ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin raptor hid.",
+          "words": [
+            { "surface": "A",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "thin",   "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+            { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ə","r"] },
+            { "surface": "hid",    "graphemes": ["h","i","d"],          "phonemes": ["h","ɪ","d"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad and Theo dug a thin dorsal at the path.",
@@ -111,7 +168,18 @@
         { "surface": "at",     "graphemes": ["a","t"],                  "phonemes": ["æ","t"] },
         { "surface": "the",    "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
         { "surface": "path",   "graphemes": ["p","a","th"],             "phonemes": ["p","æ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad dug a dorsal.",
+          "words": [
+            { "surface": "Thad",   "graphemes": ["th","a","d"],             "phonemes": ["θ","æ","d"] },
+            { "surface": "dug",    "graphemes": ["d","u","g"],              "phonemes": ["d","ʌ","g"] },
+            { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
+            { "surface": "dorsal", "graphemes": ["d","o","r","s","a","l"],  "phonemes": ["d","ɔ","r","s","ə","l"] }
+          ]
+        }
+      }
     },
     {
       "text": "A thin predator ran with Thad, Theo, and Seth.",
@@ -128,7 +196,18 @@
         { "surface": "Theo",     "graphemes": ["th","e","o"],                 "phonemes": ["θ","i","oʊ"] },
         { "surface": "and",      "graphemes": ["a","n","d"],                  "phonemes": ["æ","n","d"] },
         { "surface": "Seth",     "graphemes": ["s","e","th"],                 "phonemes": ["s","ɛ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin predator ran.",
+          "words": [
+            { "surface": "A",        "graphemes": ["a"],                          "phonemes": ["ə"] },
+            { "surface": "thin",     "graphemes": ["th","i","n"],                 "phonemes": ["θ","ɪ","n"] },
+            { "surface": "predator", "graphemes": ["p","r","e","d","a","t","o","r"], "phonemes": ["p","r","ɛ","d","ə","t","ə","r"] },
+            { "surface": "ran",      "graphemes": ["r","a","n"],                  "phonemes": ["r","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Theo had a thin raptor and Thad had the predator.",
@@ -146,7 +225,18 @@
         { "surface": "had",      "graphemes": ["h","a","d"],                  "phonemes": ["h","æ","d"] },
         { "surface": "the",      "graphemes": ["th","e"],                     "phonemes": ["ð","ə"] },
         { "surface": "predator", "graphemes": ["p","r","e","d","a","t","o","r"], "phonemes": ["p","r","ɛ","d","ə","t","ə","r"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Theo had a raptor.",
+          "words": [
+            { "surface": "Theo",     "graphemes": ["th","e","o"],                 "phonemes": ["θ","i","oʊ"] },
+            { "surface": "had",      "graphemes": ["h","a","d"],                  "phonemes": ["h","æ","d"] },
+            { "surface": "a",        "graphemes": ["a"],                          "phonemes": ["ə"] },
+            { "surface": "raptor",   "graphemes": ["r","a","p","t","o","r"],     "phonemes": ["r","æ","p","t","ə","r"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad and Theo met a thin dorsal in the shed.",
@@ -164,7 +254,18 @@
         { "surface": "in",     "graphemes": ["i","n"],                  "phonemes": ["ɪ","n"] },
         { "surface": "the",    "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
         { "surface": "shed",   "graphemes": ["sh","e","d"],             "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad met a dorsal.",
+          "words": [
+            { "surface": "Thad",   "graphemes": ["th","a","d"],             "phonemes": ["θ","æ","d"] },
+            { "surface": "met",    "graphemes": ["m","e","t"],              "phonemes": ["m","ɛ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
+            { "surface": "dorsal", "graphemes": ["d","o","r","s","a","l"],  "phonemes": ["d","ɔ","r","s","ə","l"] }
+          ]
+        }
+      }
     },
     {
       "text": "A swift thin predator ran with Thad and Theo.",
@@ -181,7 +282,18 @@
         { "surface": "Thad",     "graphemes": ["th","a","d"],                 "phonemes": ["θ","æ","d"] },
         { "surface": "and",      "graphemes": ["a","n","d"],                  "phonemes": ["æ","n","d"] },
         { "surface": "Theo",     "graphemes": ["th","e","o"],                 "phonemes": ["θ","i","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin predator ran.",
+          "words": [
+            { "surface": "A",        "graphemes": ["a"],                          "phonemes": ["ə"] },
+            { "surface": "thin",     "graphemes": ["th","i","n"],                 "phonemes": ["θ","ɪ","n"] },
+            { "surface": "predator", "graphemes": ["p","r","e","d","a","t","o","r"], "phonemes": ["p","r","ɛ","d","ə","t","ə","r"] },
+            { "surface": "ran",      "graphemes": ["r","a","n"],                  "phonemes": ["r","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad let Theo dig a thin fossil with Beth.",
@@ -198,7 +310,18 @@
         { "surface": "fossil", "graphemes": ["f","o","s","s","i","l"],  "phonemes": ["f","ɒ","s","s","ɪ","l"] },
         { "surface": "with",   "graphemes": ["w","i","th"],             "phonemes": ["w","ɪ","θ"] },
         { "surface": "Beth",   "graphemes": ["b","e","th"],             "phonemes": ["b","ɛ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad let Theo dig.",
+          "words": [
+            { "surface": "Thad",   "graphemes": ["th","a","d"],             "phonemes": ["θ","æ","d"] },
+            { "surface": "let",    "graphemes": ["l","e","t"],              "phonemes": ["l","ɛ","t"] },
+            { "surface": "Theo",   "graphemes": ["th","e","o"],             "phonemes": ["θ","i","oʊ"] },
+            { "surface": "dig",    "graphemes": ["d","i","g"],              "phonemes": ["d","ɪ","g"] }
+          ]
+        }
+      }
     },
     {
       "text": "Theo got a thin dorsal and Thad got the herd.",
@@ -216,7 +339,18 @@
         { "surface": "got",    "graphemes": ["g","o","t"],              "phonemes": ["g","ɒ","t"] },
         { "surface": "the",    "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
         { "surface": "herd",   "graphemes": ["h","e","r","d"],          "phonemes": ["h","ɜ","r","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Theo got a dorsal.",
+          "words": [
+            { "surface": "Theo",   "graphemes": ["th","e","o"],             "phonemes": ["θ","i","oʊ"] },
+            { "surface": "got",    "graphemes": ["g","o","t"],              "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
+            { "surface": "dorsal", "graphemes": ["d","o","r","s","a","l"],  "phonemes": ["d","ɔ","r","s","ə","l"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad and Theo had a thin raptor and a moth.",
@@ -234,7 +368,18 @@
         { "surface": "and",    "graphemes": ["a","n","d"],              "phonemes": ["æ","n","d"] },
         { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
         { "surface": "moth",   "graphemes": ["m","o","th"],             "phonemes": ["m","ɒ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad had a raptor.",
+          "words": [
+            { "surface": "Thad",   "graphemes": ["th","a","d"],             "phonemes": ["θ","æ","d"] },
+            { "surface": "had",    "graphemes": ["h","a","d"],              "phonemes": ["h","æ","d"] },
+            { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
+            { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ə","r"] }
+          ]
+        }
+      }
     },
     {
       "text": "A thin armor sat with Thad, Theo, and Seth.",
@@ -251,7 +396,18 @@
         { "surface": "Theo",  "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
         { "surface": "and",   "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
         { "surface": "Seth",  "graphemes": ["s","e","th"],         "phonemes": ["s","ɛ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin armor sat.",
+          "words": [
+            { "surface": "A",     "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "thin",  "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+            { "surface": "armor", "graphemes": ["a","r","m","o","r"],  "phonemes": ["ɑ","r","m","ə","r"] },
+            { "surface": "sat",   "graphemes": ["s","a","t"],          "phonemes": ["s","æ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad fed a thin predator and Theo had the egg.",
@@ -269,7 +425,18 @@
         { "surface": "had",      "graphemes": ["h","a","d"],                  "phonemes": ["h","æ","d"] },
         { "surface": "the",      "graphemes": ["th","e"],                     "phonemes": ["ð","ə"] },
         { "surface": "egg",      "graphemes": ["e","g","g"],                  "phonemes": ["ɛ","g","g"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad fed a predator.",
+          "words": [
+            { "surface": "Thad",     "graphemes": ["th","a","d"],                 "phonemes": ["θ","æ","d"] },
+            { "surface": "fed",      "graphemes": ["f","e","d"],                  "phonemes": ["f","ɛ","d"] },
+            { "surface": "a",        "graphemes": ["a"],                          "phonemes": ["ə"] },
+            { "surface": "predator", "graphemes": ["p","r","e","d","a","t","o","r"], "phonemes": ["p","r","ɛ","d","ə","t","ə","r"] }
+          ]
+        }
+      }
     },
     {
       "text": "Theo and Thad got a thin predator at the shed.",
@@ -287,7 +454,18 @@
         { "surface": "at",       "graphemes": ["a","t"],                      "phonemes": ["æ","t"] },
         { "surface": "the",      "graphemes": ["th","e"],                     "phonemes": ["ð","ə"] },
         { "surface": "shed",     "graphemes": ["sh","e","d"],                 "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Theo got a predator.",
+          "words": [
+            { "surface": "Theo",     "graphemes": ["th","e","o"],                 "phonemes": ["θ","i","oʊ"] },
+            { "surface": "got",      "graphemes": ["g","o","t"],                  "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",        "graphemes": ["a"],                          "phonemes": ["ə"] },
+            { "surface": "predator", "graphemes": ["p","r","e","d","a","t","o","r"], "phonemes": ["p","r","ɛ","d","ə","t","ə","r"] }
+          ]
+        }
+      }
     },
     {
       "text": "A swift thin raptor sat with Thad and Theo.",
@@ -304,7 +482,18 @@
         { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
         { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
         { "surface": "Theo",   "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin raptor sat.",
+          "words": [
+            { "surface": "A",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "thin",   "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+            { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ə","r"] },
+            { "surface": "sat",    "graphemes": ["s","a","t"],          "phonemes": ["s","æ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad and Theo set a thin herd with the dorsal.",
@@ -322,7 +511,18 @@
         { "surface": "with",   "graphemes": ["w","i","th"],             "phonemes": ["w","ɪ","θ"] },
         { "surface": "the",    "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
         { "surface": "dorsal", "graphemes": ["d","o","r","s","a","l"],  "phonemes": ["d","ɔ","r","s","ə","l"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad set a herd.",
+          "words": [
+            { "surface": "Thad",   "graphemes": ["th","a","d"],             "phonemes": ["θ","æ","d"] },
+            { "surface": "set",    "graphemes": ["s","e","t"],              "phonemes": ["s","ɛ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
+            { "surface": "herd",   "graphemes": ["h","e","r","d"],          "phonemes": ["h","ɜ","r","d"] }
+          ]
+        }
+      }
     },
     {
       "text": "A thin raptor ran past Thad with Theo and Beth.",
@@ -340,7 +540,18 @@
         { "surface": "Theo",   "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
         { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
         { "surface": "Beth",   "graphemes": ["b","e","th"],         "phonemes": ["b","ɛ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin raptor ran.",
+          "words": [
+            { "surface": "A",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "thin",   "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+            { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ə","r"] },
+            { "surface": "ran",    "graphemes": ["r","a","n"],          "phonemes": ["r","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad got a thin raptor and Theo met the predator.",
@@ -358,7 +569,18 @@
         { "surface": "met",      "graphemes": ["m","e","t"],                  "phonemes": ["m","ɛ","t"] },
         { "surface": "the",      "graphemes": ["th","e"],                     "phonemes": ["ð","ə"] },
         { "surface": "predator", "graphemes": ["p","r","e","d","a","t","o","r"], "phonemes": ["p","r","ɛ","d","ə","t","ə","r"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad got a raptor.",
+          "words": [
+            { "surface": "Thad",     "graphemes": ["th","a","d"],                 "phonemes": ["θ","æ","d"] },
+            { "surface": "got",      "graphemes": ["g","o","t"],                  "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",        "graphemes": ["a"],                          "phonemes": ["ə"] },
+            { "surface": "raptor",   "graphemes": ["r","a","p","t","o","r"],     "phonemes": ["r","æ","p","t","ə","r"] }
+          ]
+        }
+      }
     }
   ]
 }

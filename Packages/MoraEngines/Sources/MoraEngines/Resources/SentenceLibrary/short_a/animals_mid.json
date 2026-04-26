@@ -20,7 +20,18 @@
         { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
         { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
         { "surface": "ant",    "graphemes": ["a","n","t"],             "phonemes": ["æ","n","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam got an alpaca.",
+          "words": [
+            { "surface": "Adam",   "graphemes": ["a","d","a","m"],         "phonemes": ["æ","d","ə","m"] },
+            { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+            { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+            { "surface": "alpaca", "graphemes": ["a","l","p","a","c","a"], "phonemes": ["æ","l","p","æ","k","ə"] }
+          ]
+        }
+      }
     },
     {
       "text": "Andy fed an alpaca and Al fed an ant.",
@@ -37,7 +48,18 @@
         { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
         { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
         { "surface": "ant",    "graphemes": ["a","n","t"],             "phonemes": ["æ","n","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Andy fed an alpaca.",
+          "words": [
+            { "surface": "Andy",   "graphemes": ["a","n","d","y"],         "phonemes": ["æ","n","d","i"] },
+            { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+            { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+            { "surface": "alpaca", "graphemes": ["a","l","p","a","c","a"], "phonemes": ["æ","l","p","æ","k","ə"] }
+          ]
+        }
+      }
     },
     {
       "text": "Anna had a panda and Adam had an alpaca.",
@@ -54,7 +76,18 @@
         { "surface": "had",    "graphemes": ["h","a","d"],             "phonemes": ["h","æ","d"] },
         { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
         { "surface": "alpaca", "graphemes": ["a","l","p","a","c","a"], "phonemes": ["æ","l","p","æ","k","ə"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam had an alpaca.",
+          "words": [
+            { "surface": "Adam",   "graphemes": ["a","d","a","m"],         "phonemes": ["æ","d","ə","m"] },
+            { "surface": "had",    "graphemes": ["h","a","d"],             "phonemes": ["h","æ","d"] },
+            { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+            { "surface": "alpaca", "graphemes": ["a","l","p","a","c","a"], "phonemes": ["æ","l","p","æ","k","ə"] }
+          ]
+        }
+      }
     },
     {
       "text": "Andy got an armadillo and Anna got an ant.",
@@ -71,7 +104,18 @@
         { "surface": "got",       "graphemes": ["g","o","t"],                     "phonemes": ["g","ɒ","t"] },
         { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
         { "surface": "ant",       "graphemes": ["a","n","t"],                     "phonemes": ["æ","n","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Andy got an armadillo.",
+          "words": [
+            { "surface": "Andy",      "graphemes": ["a","n","d","y"],                 "phonemes": ["æ","n","d","i"] },
+            { "surface": "got",       "graphemes": ["g","o","t"],                     "phonemes": ["g","ɒ","t"] },
+            { "surface": "an",        "graphemes": ["a","n"],                         "phonemes": ["æ","n"] },
+            { "surface": "armadillo", "graphemes": ["a","r","m","a","d","i","l","l","o"], "phonemes": ["ɑ","r","m","ə","d","ɪ","l","oʊ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Adam fed a panda and an alpaca at the lab.",
@@ -89,7 +133,18 @@
         { "surface": "at",     "graphemes": ["a","t"],                 "phonemes": ["æ","t"] },
         { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
         { "surface": "lab",    "graphemes": ["l","a","b"],             "phonemes": ["l","æ","b"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam fed a panda.",
+          "words": [
+            { "surface": "Adam",   "graphemes": ["a","d","a","m"],         "phonemes": ["æ","d","ə","m"] },
+            { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "panda",  "graphemes": ["p","a","n","d","a"],     "phonemes": ["p","æ","n","d","ə"] }
+          ]
+        }
+      }
     },
     {
       "text": "Anna and Andy ran past an alpaca and an ant.",
@@ -107,7 +162,19 @@
         { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
         { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
         { "surface": "ant",    "graphemes": ["a","n","t"],             "phonemes": ["æ","n","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Anna ran past an alpaca.",
+          "words": [
+            { "surface": "Anna",   "graphemes": ["a","n","n","a"],         "phonemes": ["æ","n","ə"] },
+            { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
+            { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
+            { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+            { "surface": "alpaca", "graphemes": ["a","l","p","a","c","a"], "phonemes": ["æ","l","p","æ","k","ə"] }
+          ]
+        }
+      }
     },
     {
       "text": "Adam pat an ant and Al pat an alpaca.",
@@ -124,7 +191,18 @@
         { "surface": "pat",    "graphemes": ["p","a","t"],             "phonemes": ["p","æ","t"] },
         { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
         { "surface": "alpaca", "graphemes": ["a","l","p","a","c","a"], "phonemes": ["æ","l","p","æ","k","ə"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam pat an ant.",
+          "words": [
+            { "surface": "Adam",   "graphemes": ["a","d","a","m"],         "phonemes": ["æ","d","ə","m"] },
+            { "surface": "pat",    "graphemes": ["p","a","t"],             "phonemes": ["p","æ","t"] },
+            { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+            { "surface": "ant",    "graphemes": ["a","n","t"],             "phonemes": ["æ","n","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "An alpaca sat and an ant ran past Andy.",
@@ -141,7 +219,19 @@
         { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
         { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
         { "surface": "Andy",   "graphemes": ["a","n","d","y"],         "phonemes": ["æ","n","d","i"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "An ant ran past Andy.",
+          "words": [
+            { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+            { "surface": "ant",    "graphemes": ["a","n","t"],             "phonemes": ["æ","n","t"] },
+            { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
+            { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
+            { "surface": "Andy",   "graphemes": ["a","n","d","y"],         "phonemes": ["æ","n","d","i"] }
+          ]
+        }
+      }
     },
     {
       "text": "Anna had a llama and Adam had an ant.",
@@ -158,7 +248,18 @@
         { "surface": "had",    "graphemes": ["h","a","d"],         "phonemes": ["h","æ","d"] },
         { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
         { "surface": "ant",    "graphemes": ["a","n","t"],         "phonemes": ["æ","n","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam had an ant.",
+          "words": [
+            { "surface": "Adam",   "graphemes": ["a","d","a","m"],     "phonemes": ["æ","d","ə","m"] },
+            { "surface": "had",    "graphemes": ["h","a","d"],         "phonemes": ["h","æ","d"] },
+            { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+            { "surface": "ant",    "graphemes": ["a","n","t"],         "phonemes": ["æ","n","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Andy and Al fed a llama and an alpaca.",
@@ -175,7 +276,18 @@
         { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
         { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
         { "surface": "alpaca", "graphemes": ["a","l","p","a","c","a"], "phonemes": ["æ","l","p","æ","k","ə"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Al fed an alpaca.",
+          "words": [
+            { "surface": "Al",     "graphemes": ["a","l"],                 "phonemes": ["æ","l"] },
+            { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+            { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+            { "surface": "alpaca", "graphemes": ["a","l","p","a","c","a"], "phonemes": ["æ","l","p","æ","k","ə"] }
+          ]
+        }
+      }
     },
     {
       "text": "Adam met an ant and Anna met an alpaca.",
@@ -192,7 +304,18 @@
         { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
         { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
         { "surface": "alpaca", "graphemes": ["a","l","p","a","c","a"], "phonemes": ["æ","l","p","æ","k","ə"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam met an ant.",
+          "words": [
+            { "surface": "Adam",   "graphemes": ["a","d","a","m"],         "phonemes": ["æ","d","ə","m"] },
+            { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
+            { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+            { "surface": "ant",    "graphemes": ["a","n","t"],             "phonemes": ["æ","n","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Anna sat and an alpaca sat with an ant.",
@@ -209,7 +332,19 @@
         { "surface": "with",   "graphemes": ["w","i","th"],            "phonemes": ["w","ɪ","ð"] },
         { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
         { "surface": "ant",    "graphemes": ["a","n","t"],             "phonemes": ["æ","n","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Anna sat with an ant.",
+          "words": [
+            { "surface": "Anna",   "graphemes": ["a","n","n","a"],         "phonemes": ["æ","n","ə"] },
+            { "surface": "sat",    "graphemes": ["s","a","t"],             "phonemes": ["s","æ","t"] },
+            { "surface": "with",   "graphemes": ["w","i","th"],            "phonemes": ["w","ɪ","ð"] },
+            { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+            { "surface": "ant",    "graphemes": ["a","n","t"],             "phonemes": ["æ","n","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Andy and Adam pat an ant and an alpaca.",
@@ -226,7 +361,18 @@
         { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
         { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
         { "surface": "alpaca", "graphemes": ["a","l","p","a","c","a"], "phonemes": ["æ","l","p","æ","k","ə"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam pat an alpaca.",
+          "words": [
+            { "surface": "Adam",   "graphemes": ["a","d","a","m"],         "phonemes": ["æ","d","ə","m"] },
+            { "surface": "pat",    "graphemes": ["p","a","t"],             "phonemes": ["p","æ","t"] },
+            { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+            { "surface": "alpaca", "graphemes": ["a","l","p","a","c","a"], "phonemes": ["æ","l","p","æ","k","ə"] }
+          ]
+        }
+      }
     },
     {
       "text": "Sam and Cam had an ant and an alpaca.",
@@ -243,7 +389,18 @@
         { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
         { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
         { "surface": "alpaca", "graphemes": ["a","l","p","a","c","a"], "phonemes": ["æ","l","p","æ","k","ə"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sam had an ant.",
+          "words": [
+            { "surface": "Sam",    "graphemes": ["s","a","m"],             "phonemes": ["s","æ","m"] },
+            { "surface": "had",    "graphemes": ["h","a","d"],             "phonemes": ["h","æ","d"] },
+            { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+            { "surface": "ant",    "graphemes": ["a","n","t"],             "phonemes": ["æ","n","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Adam and Al fed an ant and an alpaca.",
@@ -260,7 +417,18 @@
         { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
         { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
         { "surface": "alpaca", "graphemes": ["a","l","p","a","c","a"], "phonemes": ["æ","l","p","æ","k","ə"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam fed an ant.",
+          "words": [
+            { "surface": "Adam",   "graphemes": ["a","d","a","m"],         "phonemes": ["æ","d","ə","m"] },
+            { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+            { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+            { "surface": "ant",    "graphemes": ["a","n","t"],             "phonemes": ["æ","n","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "An ant and an alpaca sat with Adam.",
@@ -276,7 +444,19 @@
         { "surface": "sat",    "graphemes": ["s","a","t"],             "phonemes": ["s","æ","t"] },
         { "surface": "with",   "graphemes": ["w","i","th"],            "phonemes": ["w","ɪ","ð"] },
         { "surface": "Adam",   "graphemes": ["a","d","a","m"],         "phonemes": ["æ","d","ə","m"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "An ant sat with Adam.",
+          "words": [
+            { "surface": "An",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+            { "surface": "ant",    "graphemes": ["a","n","t"],             "phonemes": ["æ","n","t"] },
+            { "surface": "sat",    "graphemes": ["s","a","t"],             "phonemes": ["s","æ","t"] },
+            { "surface": "with",   "graphemes": ["w","i","th"],            "phonemes": ["w","ɪ","ð"] },
+            { "surface": "Adam",   "graphemes": ["a","d","a","m"],         "phonemes": ["æ","d","ə","m"] }
+          ]
+        }
+      }
     },
     {
       "text": "Anna had an ant and a llama in a lab.",
@@ -294,7 +474,18 @@
         { "surface": "in",     "graphemes": ["i","n"],             "phonemes": ["ɪ","n"] },
         { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "lab",    "graphemes": ["l","a","b"],         "phonemes": ["l","æ","b"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Anna had an ant.",
+          "words": [
+            { "surface": "Anna",   "graphemes": ["a","n","n","a"],     "phonemes": ["æ","n","ə"] },
+            { "surface": "had",    "graphemes": ["h","a","d"],         "phonemes": ["h","æ","d"] },
+            { "surface": "an",     "graphemes": ["a","n"],             "phonemes": ["æ","n"] },
+            { "surface": "ant",    "graphemes": ["a","n","t"],         "phonemes": ["æ","n","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Andy and Anna ran past an alpaca and an ant.",
@@ -312,7 +503,19 @@
         { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
         { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
         { "surface": "ant",    "graphemes": ["a","n","t"],             "phonemes": ["æ","n","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Andy ran past an ant.",
+          "words": [
+            { "surface": "Andy",   "graphemes": ["a","n","d","y"],         "phonemes": ["æ","n","d","i"] },
+            { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
+            { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
+            { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+            { "surface": "ant",    "graphemes": ["a","n","t"],             "phonemes": ["æ","n","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Adam set an ant and an alpaca in the lab.",
@@ -330,7 +533,18 @@
         { "surface": "in",     "graphemes": ["i","n"],                 "phonemes": ["ɪ","n"] },
         { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
         { "surface": "lab",    "graphemes": ["l","a","b"],             "phonemes": ["l","æ","b"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam set an ant.",
+          "words": [
+            { "surface": "Adam",   "graphemes": ["a","d","a","m"],         "phonemes": ["æ","d","ə","m"] },
+            { "surface": "set",    "graphemes": ["s","e","t"],             "phonemes": ["s","ɛ","t"] },
+            { "surface": "an",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+            { "surface": "ant",    "graphemes": ["a","n","t"],             "phonemes": ["æ","n","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "An alpaca and an ant ran past Anna and Adam.",
@@ -348,7 +562,19 @@
         { "surface": "Anna",   "graphemes": ["a","n","n","a"],         "phonemes": ["æ","n","ə"] },
         { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
         { "surface": "Adam",   "graphemes": ["a","d","a","m"],         "phonemes": ["æ","d","ə","m"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "An alpaca ran past Anna.",
+          "words": [
+            { "surface": "An",     "graphemes": ["a","n"],                 "phonemes": ["æ","n"] },
+            { "surface": "alpaca", "graphemes": ["a","l","p","a","c","a"], "phonemes": ["æ","l","p","æ","k","ə"] },
+            { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
+            { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
+            { "surface": "Anna",   "graphemes": ["a","n","n","a"],         "phonemes": ["æ","n","ə"] }
+          ]
+        }
+      }
     }
   ]
 }

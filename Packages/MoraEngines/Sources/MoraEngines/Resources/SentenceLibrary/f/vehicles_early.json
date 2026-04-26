@@ -20,7 +20,18 @@
         { "surface": "on",    "graphemes": ["o","n"],             "phonemes": ["ɒ","n"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "ferry", "graphemes": ["f","e","r","r","y"], "phonemes": ["f","ɛ","r","i"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fred fit a fan.",
+          "words": [
+            { "surface": "Fred",  "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fit",   "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fran fit a flag on a fast ferry.",
@@ -36,7 +47,18 @@
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "fast",  "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
         { "surface": "ferry", "graphemes": ["f","e","r","r","y"], "phonemes": ["f","ɛ","r","i"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fran fit a flag.",
+          "words": [
+            { "surface": "Fran",  "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+            { "surface": "fit",   "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "flag",  "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        }
+      }
     },
     {
       "text": "Finn fit a flag on a fast ferry bus.",
@@ -53,7 +75,18 @@
         { "surface": "fast",  "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
         { "surface": "ferry", "graphemes": ["f","e","r","r","y"], "phonemes": ["f","ɛ","r","i"] },
         { "surface": "bus",   "graphemes": ["b","u","s"],         "phonemes": ["b","ʌ","s"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Finn fit a flag.",
+          "words": [
+            { "surface": "Finn",  "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+            { "surface": "fit",   "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "flag",  "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fred and Fran fit a flag on a van.",
@@ -70,7 +103,18 @@
         { "surface": "on",   "graphemes": ["o","n"],             "phonemes": ["ɒ","n"] },
         { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "van",  "graphemes": ["v","a","n"],         "phonemes": ["v","æ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fran fit a flag.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+            { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        }
+      }
     },
     {
       "text": "Finn fit a flag on a fast jet.",
@@ -86,7 +130,18 @@
         { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
         { "surface": "jet",  "graphemes": ["j","e","t"],         "phonemes": ["dʒ","ɛ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Finn fit a flag.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+            { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fran fit a flag on a ferry and a van.",
@@ -104,7 +159,18 @@
         { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "van",   "graphemes": ["v","a","n"],         "phonemes": ["v","æ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fran fit a flag.",
+          "words": [
+            { "surface": "Fran",  "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+            { "surface": "fit",   "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "flag",  "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        }
+      }
     },
     {
       "text": "Finn fit a fast flag on a jet.",
@@ -120,7 +186,18 @@
         { "surface": "on",   "graphemes": ["o","n"],             "phonemes": ["ɒ","n"] },
         { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "jet",  "graphemes": ["j","e","t"],         "phonemes": ["dʒ","ɛ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Finn fit a flag.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+            { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fred fit a flag and Fran fit a fan.",
@@ -137,7 +214,18 @@
         { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
         { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "fan",  "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fred fit a flag.",
+          "words": [
+            { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        }
+      }
     },
     {
       "text": "Finn and Fran fit a flag on a fast jet.",
@@ -155,7 +243,18 @@
         { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
         { "surface": "jet",  "graphemes": ["j","e","t"],         "phonemes": ["dʒ","ɛ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fran fit a flag.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+            { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fred fit a flag on a fast bus.",
@@ -171,7 +270,18 @@
         { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
         { "surface": "bus",  "graphemes": ["b","u","s"],         "phonemes": ["b","ʌ","s"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fred fit a flag.",
+          "words": [
+            { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fran fit a flag and Finn got a fan.",
@@ -188,7 +298,18 @@
         { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
         { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "fan",  "graphemes": ["f","a","n"],         "phonemes": ["f","æ","ŋ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fran fit a flag.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+            { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        }
+      }
     },
     {
       "text": "Finn fit a flag on a fast jet and ferry.",
@@ -206,7 +327,18 @@
         { "surface": "jet",   "graphemes": ["j","e","t"],         "phonemes": ["dʒ","ɛ","t"] },
         { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
         { "surface": "ferry", "graphemes": ["f","e","r","r","y"], "phonemes": ["f","ɛ","r","i"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Finn fit a flag.",
+          "words": [
+            { "surface": "Finn",  "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+            { "surface": "fit",   "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "flag",  "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fred fit a fan on a fast van.",
@@ -222,7 +354,18 @@
         { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
         { "surface": "van",  "graphemes": ["v","a","n"],         "phonemes": ["v","æ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fred fit a fan.",
+          "words": [
+            { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "fan",  "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fran fit a fan on a ferry and a jet.",
@@ -240,7 +383,18 @@
         { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "jet",   "graphemes": ["j","e","t"],         "phonemes": ["dʒ","ɛ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fran fit a fan.",
+          "words": [
+            { "surface": "Fran",  "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+            { "surface": "fit",   "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Finn fit a flag on a fast cab.",
@@ -256,7 +410,18 @@
         { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
         { "surface": "cab",  "graphemes": ["c","a","b"],         "phonemes": ["k","æ","b"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Finn fit a flag.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+            { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fred and Finn fit a fan on a van.",
@@ -273,7 +438,18 @@
         { "surface": "on",   "graphemes": ["o","n"],             "phonemes": ["ɒ","n"] },
         { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "van",  "graphemes": ["v","a","n"],         "phonemes": ["v","æ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Finn fit a fan.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+            { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "fan",  "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fran fit a flag on a fast bus and jet.",
@@ -291,7 +467,18 @@
         { "surface": "bus",  "graphemes": ["b","u","s"],         "phonemes": ["b","ʌ","s"] },
         { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
         { "surface": "jet",  "graphemes": ["j","e","t"],         "phonemes": ["dʒ","ɛ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fran fit a flag.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+            { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        }
+      }
     },
     {
       "text": "Finn fit a fan and Fred fit a flag.",
@@ -308,7 +495,18 @@
         { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
         { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Finn fit a fan.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+            { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "fan",  "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fred fit a flag and Fran got on a ferry.",
@@ -326,7 +524,18 @@
         { "surface": "on",    "graphemes": ["o","n"],             "phonemes": ["ɒ","n"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "ferry", "graphemes": ["f","e","r","r","y"], "phonemes": ["f","ɛ","r","i"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fred fit a flag.",
+          "words": [
+            { "surface": "Fred",  "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fit",   "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "flag",  "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        }
+      }
     },
     {
       "text": "Finn and Fred fit a fan on a fast cab.",
@@ -344,7 +553,18 @@
         { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
         { "surface": "cab",  "graphemes": ["c","a","b"],         "phonemes": ["k","æ","b"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fred fit a fan.",
+          "words": [
+            { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "fan",  "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
+          ]
+        }
+      }
     }
   ]
 }

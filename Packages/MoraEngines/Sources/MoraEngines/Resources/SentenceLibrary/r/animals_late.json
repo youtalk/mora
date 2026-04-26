@@ -21,7 +21,18 @@
         { "surface": "at",     "graphemes": ["a","t"],                 "phonemes": ["æ","t"] },
         { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
         { "surface": "barn",   "graphemes": ["b","a","r","n"],         "phonemes": ["b","ɑ","r","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex and Ron ran.",
+          "words": [
+            { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
+            { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+            { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
+            { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rip and Rob met a raptor and a robin.",
@@ -38,7 +49,18 @@
         { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "robin",  "graphemes": ["r","o","b","i","n"],     "phonemes": ["r","ɒ","b","ɪ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rob met a raptor.",
+          "words": [
+            { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
+            { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rex rested as a red rat ran past a ram.",
@@ -56,7 +78,18 @@
         { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "ram",    "graphemes": ["r","a","m"],             "phonemes": ["r","æ","m"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A red rat ran.",
+          "words": [
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "red",    "graphemes": ["r","e","d"],             "phonemes": ["r","ɛ","d"] },
+            { "surface": "rat",    "graphemes": ["r","a","t"],             "phonemes": ["r","æ","t"] },
+            { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rob got a robin and a raptor at a barn.",
@@ -74,7 +107,18 @@
         { "surface": "at",     "graphemes": ["a","t"],                 "phonemes": ["æ","t"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "barn",   "graphemes": ["b","a","r","n"],         "phonemes": ["b","ɑ","r","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rob got a robin.",
+          "words": [
+            { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
+            { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "robin",  "graphemes": ["r","o","b","i","n"],     "phonemes": ["r","ɒ","b","ɪ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Ron fed a ram and a rabbit at the farm.",
@@ -92,7 +136,18 @@
         { "surface": "at",     "graphemes": ["a","t"],                 "phonemes": ["æ","t"] },
         { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
         { "surface": "farm",   "graphemes": ["f","a","r","m"],         "phonemes": ["f","ɑ","r","m"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Ron fed a ram.",
+          "words": [
+            { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
+            { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "ram",    "graphemes": ["r","a","m"],             "phonemes": ["r","æ","m"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rip rested and Rob ran past a red robin.",
@@ -109,7 +164,18 @@
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "red",    "graphemes": ["r","e","d"],             "phonemes": ["r","ɛ","d"] },
         { "surface": "robin",  "graphemes": ["r","o","b","i","n"],     "phonemes": ["r","ɒ","b","ɪ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rip rested and ran.",
+          "words": [
+            { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
+            { "surface": "rested", "graphemes": ["r","e","s","t","e","d"], "phonemes": ["r","ɛ","s","t","ɪ","d"] },
+            { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+            { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rex met a robin and a rat in a barn.",
@@ -127,7 +193,18 @@
         { "surface": "in",    "graphemes": ["i","n"],             "phonemes": ["ɪ","n"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "barn",  "graphemes": ["b","a","r","n"],     "phonemes": ["b","ɑ","r","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex met a robin.",
+          "words": [
+            { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+            { "surface": "met",   "graphemes": ["m","e","t"],         "phonemes": ["m","ɛ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "robin", "graphemes": ["r","o","b","i","n"], "phonemes": ["r","ɒ","b","ɪ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rip and Rex got a rabbit at the farm.",
@@ -144,7 +221,18 @@
         { "surface": "at",     "graphemes": ["a","t"],                 "phonemes": ["æ","t"] },
         { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
         { "surface": "farm",   "graphemes": ["f","a","r","m"],         "phonemes": ["f","ɑ","r","m"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex got a rabbit.",
+          "words": [
+            { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
+            { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "rabbit", "graphemes": ["r","a","b","b","i","t"], "phonemes": ["r","æ","b","ɪ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rob fed a raptor and Ron fed a robin.",
@@ -161,7 +249,18 @@
         { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "robin",  "graphemes": ["r","o","b","i","n"],     "phonemes": ["r","ɒ","b","ɪ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rob fed a raptor.",
+          "words": [
+            { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
+            { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rex ran past a barn and met a robin.",
@@ -178,7 +277,18 @@
         { "surface": "met",   "graphemes": ["m","e","t"],         "phonemes": ["m","ɛ","t"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "robin", "graphemes": ["r","o","b","i","n"], "phonemes": ["r","ɒ","b","ɪ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex met a robin.",
+          "words": [
+            { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+            { "surface": "met",   "graphemes": ["m","e","t"],         "phonemes": ["m","ɛ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "robin", "graphemes": ["r","o","b","i","n"], "phonemes": ["r","ɒ","b","ɪ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Ron got a red rabbit and Rip got a robin.",
@@ -196,7 +306,18 @@
         { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "robin",  "graphemes": ["r","o","b","i","n"],     "phonemes": ["r","ɒ","b","ɪ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Ron got a rabbit.",
+          "words": [
+            { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
+            { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "rabbit", "graphemes": ["r","a","b","b","i","t"], "phonemes": ["r","æ","b","ɪ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rex met a raptor and a rat at the farm.",
@@ -214,7 +335,18 @@
         { "surface": "at",     "graphemes": ["a","t"],                 "phonemes": ["æ","t"] },
         { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
         { "surface": "farm",   "graphemes": ["f","a","r","m"],         "phonemes": ["f","ɑ","r","m"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex met a raptor.",
+          "words": [
+            { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
+            { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rip rested and Rob met a robin and a rat.",
@@ -232,7 +364,18 @@
         { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "rat",    "graphemes": ["r","a","t"],             "phonemes": ["r","æ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rob met a robin.",
+          "words": [
+            { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
+            { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "robin",  "graphemes": ["r","o","b","i","n"],     "phonemes": ["r","ɒ","b","ɪ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rex and Rip ran past a red rabbit.",
@@ -248,7 +391,18 @@
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "red",    "graphemes": ["r","e","d"],             "phonemes": ["r","ɛ","d"] },
         { "surface": "rabbit", "graphemes": ["r","a","b","b","i","t"], "phonemes": ["r","æ","b","ɪ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex and Rip ran.",
+          "words": [
+            { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
+            { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+            { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
+            { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Ron rested at the barn and Rex got a robin.",
@@ -266,7 +420,18 @@
         { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "robin",  "graphemes": ["r","o","b","i","n"],     "phonemes": ["r","ɒ","b","ɪ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex got a robin.",
+          "words": [
+            { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
+            { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "robin",  "graphemes": ["r","o","b","i","n"],     "phonemes": ["r","ɒ","b","ɪ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rip and Rob ran and a raptor met a rat.",
@@ -284,7 +449,18 @@
         { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "rat",    "graphemes": ["r","a","t"],             "phonemes": ["r","æ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rip and Rob ran.",
+          "words": [
+            { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
+            { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+            { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
+            { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rex got a robin and Ron got a ram.",
@@ -301,7 +477,18 @@
         { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "ram",   "graphemes": ["r","a","m"],         "phonemes": ["r","æ","m"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex got a robin.",
+          "words": [
+            { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "robin", "graphemes": ["r","o","b","i","n"], "phonemes": ["r","ɒ","b","ɪ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rob met a rabbit and a robin at the farm.",
@@ -319,7 +506,18 @@
         { "surface": "at",     "graphemes": ["a","t"],                 "phonemes": ["æ","t"] },
         { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
         { "surface": "farm",   "graphemes": ["f","a","r","m"],         "phonemes": ["f","ɑ","r","m"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rob met a rabbit.",
+          "words": [
+            { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
+            { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "rabbit", "graphemes": ["r","a","b","b","i","t"], "phonemes": ["r","æ","b","ɪ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Ron and Rip ran and rested past a red ram.",
@@ -337,7 +535,18 @@
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "red",    "graphemes": ["r","e","d"],             "phonemes": ["r","ɛ","d"] },
         { "surface": "ram",    "graphemes": ["r","a","m"],             "phonemes": ["r","æ","m"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Ron and Rip ran.",
+          "words": [
+            { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
+            { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+            { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
+            { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rex fed a robin and Rip fed a rabbit.",
@@ -354,7 +563,18 @@
         { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "rabbit", "graphemes": ["r","a","b","b","i","t"], "phonemes": ["r","æ","b","ɪ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex fed a robin.",
+          "words": [
+            { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
+            { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "robin",  "graphemes": ["r","o","b","i","n"],     "phonemes": ["r","ɒ","b","ɪ","n"] }
+          ]
+        }
+      }
     }
   ]
 }

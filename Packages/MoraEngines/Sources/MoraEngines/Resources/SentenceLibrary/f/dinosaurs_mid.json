@@ -20,7 +20,18 @@
         { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "fossil", "graphemes": ["f","o","s","s","i","l"], "phonemes": ["f","ɒ","s","ɪ","l"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fred lifted a fang.",
+          "words": [
+            { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "fang",   "graphemes": ["f","a","n","g"],         "phonemes": ["f","æ","ŋ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fran fit a frill and a fang on a raptor.",
@@ -38,7 +49,18 @@
         { "surface": "on",     "graphemes": ["o","n"],                     "phonemes": ["ɒ","n"] },
         { "surface": "a",      "graphemes": ["a"],                         "phonemes": ["ə"] },
         { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"],     "phonemes": ["r","æ","p","t","ə","r"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fran fit a frill.",
+          "words": [
+            { "surface": "Fran",   "graphemes": ["f","r","a","n"],             "phonemes": ["f","r","æ","n"] },
+            { "surface": "fit",    "graphemes": ["f","i","t"],                 "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                         "phonemes": ["ə"] },
+            { "surface": "frill",  "graphemes": ["f","r","i","l","l"],         "phonemes": ["f","r","ɪ","l"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fred fixed a fossil and Finn fit a fang.",
@@ -55,7 +77,18 @@
         { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "fang",   "graphemes": ["f","a","n","g"],         "phonemes": ["f","æ","ŋ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fred fixed a fossil.",
+          "words": [
+            { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fixed",  "graphemes": ["f","i","x","e","d"],     "phonemes": ["f","ɪ","k","s","t"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "fossil", "graphemes": ["f","o","s","s","i","l"], "phonemes": ["f","ɒ","s","ɪ","l"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fran spotted a swift raptor and a flat fossil.",
@@ -72,7 +105,18 @@
         { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
         { "surface": "flat",    "graphemes": ["f","l","a","t"],             "phonemes": ["f","l","æ","t"] },
         { "surface": "fossil",  "graphemes": ["f","o","s","s","i","l"],     "phonemes": ["f","ɒ","s","ɪ","l"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fran spotted a raptor.",
+          "words": [
+            { "surface": "Fran",    "graphemes": ["f","r","a","n"],             "phonemes": ["f","r","æ","n"] },
+            { "surface": "spotted", "graphemes": ["s","p","o","t","t","e","d"], "phonemes": ["s","p","ɒ","t","ɪ","d"] },
+            { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+            { "surface": "raptor",  "graphemes": ["r","a","p","t","o","r"],     "phonemes": ["r","æ","p","t","ə","r"] }
+          ]
+        }
+      }
     },
     {
       "text": "Finn lifted a flat fossil and a fang.",
@@ -88,7 +132,18 @@
         { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "fang",   "graphemes": ["f","a","n","g"],         "phonemes": ["f","æ","ŋ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Finn lifted a fossil.",
+          "words": [
+            { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+            { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "fossil", "graphemes": ["f","o","s","s","i","l"], "phonemes": ["f","ɒ","s","ɪ","l"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fred fit a fang and Fran fit a frill.",
@@ -105,7 +160,18 @@
         { "surface": "fit",   "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "frill", "graphemes": ["f","r","i","l","l"], "phonemes": ["f","r","ɪ","l"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fred fit a fang.",
+          "words": [
+            { "surface": "Fred",  "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fit",   "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "fang",  "graphemes": ["f","a","n","g"],     "phonemes": ["f","æ","ŋ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Finn and Fred had a swift fang and a frill.",
@@ -123,7 +189,18 @@
         { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "frill", "graphemes": ["f","r","i","l","l"], "phonemes": ["f","r","ɪ","l"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fred had a fang.",
+          "words": [
+            { "surface": "Fred",  "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "had",   "graphemes": ["h","a","d"],         "phonemes": ["h","æ","d"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "fang",  "graphemes": ["f","a","n","g"],     "phonemes": ["f","æ","ŋ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fran fixed a fang and Finn fixed a frill.",
@@ -140,7 +217,18 @@
         { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "frill", "graphemes": ["f","r","i","l","l"], "phonemes": ["f","r","ɪ","l"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fran fixed a fang.",
+          "words": [
+            { "surface": "Fran",  "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+            { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "fang",  "graphemes": ["f","a","n","g"],     "phonemes": ["f","æ","ŋ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fred lifted a fossil and Fran lifted a fin.",
@@ -157,7 +245,18 @@
         { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "fin",    "graphemes": ["f","i","n"],             "phonemes": ["f","ɪ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fred lifted a fossil.",
+          "words": [
+            { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "fossil", "graphemes": ["f","o","s","s","i","l"], "phonemes": ["f","ɒ","s","ɪ","l"] }
+          ]
+        }
+      }
     },
     {
       "text": "Finn fit a frill on a swift raptor.",
@@ -173,7 +272,18 @@
         { "surface": "a",      "graphemes": ["a"],                         "phonemes": ["ə"] },
         { "surface": "swift",  "graphemes": ["s","w","i","f","t"],         "phonemes": ["s","w","ɪ","f","t"] },
         { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"],     "phonemes": ["r","æ","p","t","ə","r"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Finn fit a frill.",
+          "words": [
+            { "surface": "Finn",   "graphemes": ["f","i","n","n"],             "phonemes": ["f","ɪ","n"] },
+            { "surface": "fit",    "graphemes": ["f","i","t"],                 "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                         "phonemes": ["ə"] },
+            { "surface": "frill",  "graphemes": ["f","r","i","l","l"],         "phonemes": ["f","r","ɪ","l"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fred had a flat fossil and Fran had a fang.",
@@ -191,7 +301,18 @@
         { "surface": "had",    "graphemes": ["h","a","d"],             "phonemes": ["h","æ","d"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "fang",   "graphemes": ["f","a","n","g"],         "phonemes": ["f","æ","ŋ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fred had a fossil.",
+          "words": [
+            { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "had",    "graphemes": ["h","a","d"],             "phonemes": ["h","æ","d"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "fossil", "graphemes": ["f","o","s","s","i","l"], "phonemes": ["f","ɒ","s","ɪ","l"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fran lifted a fang and Finn fit a frill.",
@@ -208,7 +329,18 @@
         { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "frill",  "graphemes": ["f","r","i","l","l"],     "phonemes": ["f","r","ɪ","l"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fran lifted a fang.",
+          "words": [
+            { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+            { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "fang",   "graphemes": ["f","a","n","g"],         "phonemes": ["f","æ","ŋ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Finn fixed a fossil and Fred fit a fang.",
@@ -225,7 +357,18 @@
         { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "fang",   "graphemes": ["f","a","n","g"],         "phonemes": ["f","æ","ŋ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Finn fixed a fossil.",
+          "words": [
+            { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+            { "surface": "fixed",  "graphemes": ["f","i","x","e","d"],     "phonemes": ["f","ɪ","k","s","t"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "fossil", "graphemes": ["f","o","s","s","i","l"], "phonemes": ["f","ɒ","s","ɪ","l"] }
+          ]
+        }
+      }
     },
     {
       "text": "A swift raptor ran past Finn and Fred and Fran.",
@@ -243,7 +386,19 @@
         { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
         { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
         { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A raptor ran past Finn.",
+          "words": [
+            { "surface": "A",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ə","r"] },
+            { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
+            { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
+            { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fran had a fossil and Fred had a frill.",
@@ -260,7 +415,18 @@
         { "surface": "had",    "graphemes": ["h","a","d"],             "phonemes": ["h","æ","d"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "frill",  "graphemes": ["f","r","i","l","l"],     "phonemes": ["f","r","ɪ","l"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fran had a fossil.",
+          "words": [
+            { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+            { "surface": "had",    "graphemes": ["h","a","d"],             "phonemes": ["h","æ","d"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "fossil", "graphemes": ["f","o","s","s","i","l"], "phonemes": ["f","ɒ","s","ɪ","l"] }
+          ]
+        }
+      }
     },
     {
       "text": "Finn lifted a fang and Fran lifted a fossil.",
@@ -277,7 +443,18 @@
         { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "fossil", "graphemes": ["f","o","s","s","i","l"], "phonemes": ["f","ɒ","s","ɪ","l"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Finn lifted a fang.",
+          "words": [
+            { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+            { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "fang",   "graphemes": ["f","a","n","g"],         "phonemes": ["f","æ","ŋ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fred fit a flat fang and a fossil.",
@@ -293,7 +470,18 @@
         { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "fossil", "graphemes": ["f","o","s","s","i","l"], "phonemes": ["f","ɒ","s","ɪ","l"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fred fit a fang.",
+          "words": [
+            { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "fang",   "graphemes": ["f","a","n","g"],         "phonemes": ["f","æ","ŋ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fran fit a swift fang on a flat raptor.",
@@ -310,7 +498,18 @@
         { "surface": "a",      "graphemes": ["a"],                         "phonemes": ["ə"] },
         { "surface": "flat",   "graphemes": ["f","l","a","t"],             "phonemes": ["f","l","æ","t"] },
         { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"],     "phonemes": ["r","æ","p","t","ə","r"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fran fit a fang.",
+          "words": [
+            { "surface": "Fran",   "graphemes": ["f","r","a","n"],             "phonemes": ["f","r","æ","n"] },
+            { "surface": "fit",    "graphemes": ["f","i","t"],                 "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                         "phonemes": ["ə"] },
+            { "surface": "fang",   "graphemes": ["f","a","n","g"],             "phonemes": ["f","æ","ŋ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Finn fit a frill and Fred fixed a fossil.",
@@ -327,7 +526,18 @@
         { "surface": "fixed",  "graphemes": ["f","i","x","e","d"],     "phonemes": ["f","ɪ","k","s","t"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "fossil", "graphemes": ["f","o","s","s","i","l"], "phonemes": ["f","ɒ","s","ɪ","l"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Finn fit a frill.",
+          "words": [
+            { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+            { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "frill",  "graphemes": ["f","r","i","l","l"],     "phonemes": ["f","r","ɪ","l"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fran lifted a fossil and Finn fit a fin.",
@@ -344,7 +554,18 @@
         { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "fin",    "graphemes": ["f","i","n"],             "phonemes": ["f","ɪ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fran lifted a fossil.",
+          "words": [
+            { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+            { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "fossil", "graphemes": ["f","o","s","s","i","l"], "phonemes": ["f","ɒ","s","ɪ","l"] }
+          ]
+        }
+      }
     }
   ]
 }

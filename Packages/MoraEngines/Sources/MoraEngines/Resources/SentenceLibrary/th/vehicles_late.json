@@ -19,7 +19,18 @@
         { "surface": "van",   "graphemes": ["v","a","n"],          "phonemes": ["v","æ","n"] },
         { "surface": "with",  "graphemes": ["w","i","th"],         "phonemes": ["w","ɪ","θ"] },
         { "surface": "Theo",  "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad had a van.",
+          "words": [
+            { "surface": "Thad",  "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+            { "surface": "had",   "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
+            { "surface": "a",     "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "van",   "graphemes": ["v","a","n"],          "phonemes": ["v","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "A swift thin taxi sat with Thad and Theo.",
@@ -36,7 +47,18 @@
         { "surface": "Thad",  "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
         { "surface": "and",   "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
         { "surface": "Theo",  "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin taxi sat.",
+          "words": [
+            { "surface": "A",     "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "thin",  "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+            { "surface": "taxi",  "graphemes": ["t","a","x","i"],      "phonemes": ["t","æ","k","s","i"] },
+            { "surface": "sat",   "graphemes": ["s","a","t"],          "phonemes": ["s","æ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad and Theo set a swift thin van with Seth.",
@@ -54,7 +76,18 @@
         { "surface": "van",   "graphemes": ["v","a","n"],          "phonemes": ["v","æ","n"] },
         { "surface": "with",  "graphemes": ["w","i","th"],         "phonemes": ["w","ɪ","θ"] },
         { "surface": "Seth",  "graphemes": ["s","e","th"],         "phonemes": ["s","ɛ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad set a van.",
+          "words": [
+            { "surface": "Thad",  "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+            { "surface": "set",   "graphemes": ["s","e","t"],          "phonemes": ["s","ɛ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "van",   "graphemes": ["v","a","n"],          "phonemes": ["v","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "A swift thin wagon ran with Thad and Theo.",
@@ -71,7 +104,18 @@
         { "surface": "Thad",  "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
         { "surface": "and",   "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
         { "surface": "Theo",  "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin wagon ran.",
+          "words": [
+            { "surface": "A",     "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "thin",  "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+            { "surface": "wagon", "graphemes": ["w","a","g","o","n"],  "phonemes": ["w","æ","g","ə","n"] },
+            { "surface": "ran",   "graphemes": ["r","a","n"],          "phonemes": ["r","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Theo had a thin taxi and Thad got the wagon.",
@@ -89,7 +133,18 @@
         { "surface": "got",   "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
         { "surface": "the",   "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "wagon", "graphemes": ["w","a","g","o","n"],  "phonemes": ["w","æ","g","ə","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Theo had a taxi.",
+          "words": [
+            { "surface": "Theo",  "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
+            { "surface": "had",   "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
+            { "surface": "a",     "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "taxi",  "graphemes": ["t","a","x","i"],      "phonemes": ["t","æ","k","s","i"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad set a thin van and Theo got the forklift.",
@@ -107,7 +162,18 @@
         { "surface": "got",      "graphemes": ["g","o","t"],                  "phonemes": ["g","ɒ","t"] },
         { "surface": "the",      "graphemes": ["th","e"],                     "phonemes": ["ð","ə"] },
         { "surface": "forklift", "graphemes": ["f","o","r","k","l","i","f","t"], "phonemes": ["f","ɔ","r","k","l","ɪ","f","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad set a van.",
+          "words": [
+            { "surface": "Thad",     "graphemes": ["th","a","d"],                 "phonemes": ["θ","æ","d"] },
+            { "surface": "set",      "graphemes": ["s","e","t"],                  "phonemes": ["s","ɛ","t"] },
+            { "surface": "a",        "graphemes": ["a"],                          "phonemes": ["ə"] },
+            { "surface": "van",      "graphemes": ["v","a","n"],                  "phonemes": ["v","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "A thin taxi ran past Thad with Theo and Beth.",
@@ -125,7 +191,18 @@
         { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
         { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
         { "surface": "Beth", "graphemes": ["b","e","th"],     "phonemes": ["b","ɛ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin taxi ran.",
+          "words": [
+            { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+            { "surface": "taxi", "graphemes": ["t","a","x","i"],  "phonemes": ["t","æ","k","s","i"] },
+            { "surface": "ran",  "graphemes": ["r","a","n"],      "phonemes": ["r","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad and Theo had a thin kart at the path.",
@@ -143,7 +220,18 @@
         { "surface": "at",   "graphemes": ["a","t"],          "phonemes": ["æ","t"] },
         { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
         { "surface": "path", "graphemes": ["p","a","th"],     "phonemes": ["p","æ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad had a kart.",
+          "words": [
+            { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+            { "surface": "had",  "graphemes": ["h","a","d"],      "phonemes": ["h","æ","d"] },
+            { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "kart", "graphemes": ["k","a","r","t"],  "phonemes": ["k","ɑ","r","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Theo got a thin forklift and Thad got the wagon.",
@@ -161,7 +249,18 @@
         { "surface": "got",      "graphemes": ["g","o","t"],                  "phonemes": ["g","ɒ","t"] },
         { "surface": "the",      "graphemes": ["th","e"],                     "phonemes": ["ð","ə"] },
         { "surface": "wagon",    "graphemes": ["w","a","g","o","n"],          "phonemes": ["w","æ","g","ə","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Theo got a forklift.",
+          "words": [
+            { "surface": "Theo",     "graphemes": ["th","e","o"],                 "phonemes": ["θ","i","oʊ"] },
+            { "surface": "got",      "graphemes": ["g","o","t"],                  "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",        "graphemes": ["a"],                          "phonemes": ["ə"] },
+            { "surface": "forklift", "graphemes": ["f","o","r","k","l","i","f","t"], "phonemes": ["f","ɔ","r","k","l","ɪ","f","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "A swift thin taxi met Thad, Theo, and Seth.",
@@ -178,7 +277,19 @@
         { "surface": "Theo",  "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
         { "surface": "and",   "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
         { "surface": "Seth",  "graphemes": ["s","e","th"],         "phonemes": ["s","ɛ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin taxi met Thad.",
+          "words": [
+            { "surface": "A",     "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "thin",  "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+            { "surface": "taxi",  "graphemes": ["t","a","x","i"],      "phonemes": ["t","æ","k","s","i"] },
+            { "surface": "met",   "graphemes": ["m","e","t"],          "phonemes": ["m","ɛ","t"] },
+            { "surface": "Thad",  "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad and Theo set a thin taxi with Beth.",
@@ -195,7 +306,18 @@
         { "surface": "taxi", "graphemes": ["t","a","x","i"],  "phonemes": ["t","æ","k","s","i"] },
         { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
         { "surface": "Beth", "graphemes": ["b","e","th"],     "phonemes": ["b","ɛ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad set a taxi.",
+          "words": [
+            { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+            { "surface": "set",  "graphemes": ["s","e","t"],      "phonemes": ["s","ɛ","t"] },
+            { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "taxi", "graphemes": ["t","a","x","i"],  "phonemes": ["t","æ","k","s","i"] }
+          ]
+        }
+      }
     },
     {
       "text": "Theo got a thin tram and Thad got the bus.",
@@ -213,7 +335,18 @@
         { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
         { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
         { "surface": "bus",  "graphemes": ["b","u","s"],      "phonemes": ["b","ʌ","s"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Theo got a tram.",
+          "words": [
+            { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+            { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "tram", "graphemes": ["t","r","a","m"],  "phonemes": ["t","r","æ","m"] }
+          ]
+        }
+      }
     },
     {
       "text": "A swift thin forklift sat with Thad and Theo.",
@@ -230,7 +363,18 @@
         { "surface": "Thad",     "graphemes": ["th","a","d"],                 "phonemes": ["θ","æ","d"] },
         { "surface": "and",      "graphemes": ["a","n","d"],                  "phonemes": ["æ","n","d"] },
         { "surface": "Theo",     "graphemes": ["th","e","o"],                 "phonemes": ["θ","i","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin forklift sat.",
+          "words": [
+            { "surface": "A",        "graphemes": ["a"],                          "phonemes": ["ə"] },
+            { "surface": "thin",     "graphemes": ["th","i","n"],                 "phonemes": ["θ","ɪ","n"] },
+            { "surface": "forklift", "graphemes": ["f","o","r","k","l","i","f","t"], "phonemes": ["f","ɔ","r","k","l","ɪ","f","t"] },
+            { "surface": "sat",      "graphemes": ["s","a","t"],                  "phonemes": ["s","æ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad let Theo run a thin van with Seth.",
@@ -247,7 +391,18 @@
         { "surface": "van",  "graphemes": ["v","a","n"],      "phonemes": ["v","æ","n"] },
         { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
         { "surface": "Seth", "graphemes": ["s","e","th"],     "phonemes": ["s","ɛ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad let Theo run.",
+          "words": [
+            { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+            { "surface": "let",  "graphemes": ["l","e","t"],      "phonemes": ["l","ɛ","t"] },
+            { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+            { "surface": "run",  "graphemes": ["r","u","n"],      "phonemes": ["r","ʌ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "A thin kart sat with Thad, Theo, and Seth.",
@@ -264,7 +419,18 @@
         { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
         { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
         { "surface": "Seth", "graphemes": ["s","e","th"],     "phonemes": ["s","ɛ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin kart sat.",
+          "words": [
+            { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+            { "surface": "kart", "graphemes": ["k","a","r","t"],  "phonemes": ["k","ɑ","r","t"] },
+            { "surface": "sat",  "graphemes": ["s","a","t"],      "phonemes": ["s","æ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad and Theo set a thin taxi at the shed.",
@@ -282,7 +448,18 @@
         { "surface": "at",   "graphemes": ["a","t"],          "phonemes": ["æ","t"] },
         { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
         { "surface": "shed", "graphemes": ["sh","e","d"],     "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad set a taxi.",
+          "words": [
+            { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+            { "surface": "set",  "graphemes": ["s","e","t"],      "phonemes": ["s","ɛ","t"] },
+            { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "taxi", "graphemes": ["t","a","x","i"],  "phonemes": ["t","æ","k","s","i"] }
+          ]
+        }
+      }
     },
     {
       "text": "A swift thin van ran past Thad with Theo.",
@@ -299,7 +476,18 @@
         { "surface": "Thad",  "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
         { "surface": "with",  "graphemes": ["w","i","th"],         "phonemes": ["w","ɪ","θ"] },
         { "surface": "Theo",  "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin van ran.",
+          "words": [
+            { "surface": "A",     "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "thin",  "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+            { "surface": "van",   "graphemes": ["v","a","n"],          "phonemes": ["v","æ","n"] },
+            { "surface": "ran",   "graphemes": ["r","a","n"],          "phonemes": ["r","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Theo had a thin kart and Thad had the wagon.",
@@ -317,7 +505,18 @@
         { "surface": "had",   "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
         { "surface": "the",   "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "wagon", "graphemes": ["w","a","g","o","n"],  "phonemes": ["w","æ","g","ə","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Theo had a kart.",
+          "words": [
+            { "surface": "Theo",  "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
+            { "surface": "had",   "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
+            { "surface": "a",     "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "kart",  "graphemes": ["k","a","r","t"],      "phonemes": ["k","ɑ","r","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad and Theo met a thin tram on the path.",
@@ -335,7 +534,18 @@
         { "surface": "on",   "graphemes": ["o","n"],          "phonemes": ["ɒ","n"] },
         { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
         { "surface": "path", "graphemes": ["p","a","th"],     "phonemes": ["p","æ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad met a tram.",
+          "words": [
+            { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+            { "surface": "met",  "graphemes": ["m","e","t"],      "phonemes": ["m","ɛ","t"] },
+            { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "tram", "graphemes": ["t","r","a","m"],  "phonemes": ["t","r","æ","m"] }
+          ]
+        }
+      }
     },
     {
       "text": "A thin forklift sat with Thad, Theo, and Seth.",
@@ -352,7 +562,18 @@
         { "surface": "Theo",     "graphemes": ["th","e","o"],                 "phonemes": ["θ","i","oʊ"] },
         { "surface": "and",      "graphemes": ["a","n","d"],                  "phonemes": ["æ","n","d"] },
         { "surface": "Seth",     "graphemes": ["s","e","th"],                 "phonemes": ["s","ɛ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin forklift sat.",
+          "words": [
+            { "surface": "A",        "graphemes": ["a"],                          "phonemes": ["ə"] },
+            { "surface": "thin",     "graphemes": ["th","i","n"],                 "phonemes": ["θ","ɪ","n"] },
+            { "surface": "forklift", "graphemes": ["f","o","r","k","l","i","f","t"], "phonemes": ["f","ɔ","r","k","l","ɪ","f","t"] },
+            { "surface": "sat",      "graphemes": ["s","a","t"],                  "phonemes": ["s","æ","t"] }
+          ]
+        }
+      }
     }
   ]
 }

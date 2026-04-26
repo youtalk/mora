@@ -119,4 +119,36 @@ final class SessionContainerBootstrapLibraryTests: XCTestCase {
         }
         XCTAssertTrue(hitAnyMidBundle, "empty-interests fallback must read from the bundle, not per-week JSON")
     }
+
+    /// Day 1 sentences from the bundle should average shorter than Day 5
+    /// sentences from the same cell. Wedges Task 4 (content authoring) into
+    /// the verification loop: until `byDay` is authored for at least the
+    /// `sh × vehicles × mid` cell, this assertion fails with equal averages.
+    func test_resolveSentences_dayInWeek1_averagesShorterThanDay5() async throws {
+        let library = try SentenceLibrary()
+        let day1 = try await SessionContainerView.resolveDecodeSentences(
+            library: library,
+            skillCode: "sh_onset",
+            targetGrapheme: Grapheme(letters: "sh"),
+            taughtGraphemes: CurriculumEngine.sharedV1.taughtGraphemes(beforeWeekIndex: 0),
+            ageYears: 9,
+            interests: ["vehicles"],
+            dayInWeek: 1,
+            count: 3
+        )
+        let day5 = try await SessionContainerView.resolveDecodeSentences(
+            library: library,
+            skillCode: "sh_onset",
+            targetGrapheme: Grapheme(letters: "sh"),
+            taughtGraphemes: CurriculumEngine.sharedV1.taughtGraphemes(beforeWeekIndex: 0),
+            ageYears: 9,
+            interests: ["vehicles"],
+            dayInWeek: 5,
+            count: 3
+        )
+        let day1Avg = Double(day1.map(\.words.count).reduce(0, +)) / Double(max(1, day1.count))
+        let day5Avg = Double(day5.map(\.words.count).reduce(0, +)) / Double(max(1, day5.count))
+        XCTAssertLessThan(day1Avg, day5Avg, "Day 1 should average shorter than Day 5")
+        XCTAssertLessThanOrEqual(day1Avg, 5.5, "Day 1 should average ≤ 5 words")
+    }
 }

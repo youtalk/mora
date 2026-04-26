@@ -20,7 +20,18 @@
         { "surface": "on",    "graphemes": ["o","n"],             "phonemes": ["ɒ","n"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "bot",   "graphemes": ["b","o","t"],         "phonemes": ["b","ɒ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fred fixed a fan.",
+          "words": [
+            { "surface": "Fred",  "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fran fit a fast fan and Fred fixed it.",
@@ -37,7 +48,18 @@
         { "surface": "Fred",  "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
         { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
         { "surface": "it",    "graphemes": ["i","t"],             "phonemes": ["ɪ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fran fit a fan.",
+          "words": [
+            { "surface": "Fran",  "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+            { "surface": "fit",   "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Finn fixed a bot and Fred fixed a fan.",
@@ -54,7 +76,18 @@
         { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Finn fixed a bot.",
+          "words": [
+            { "surface": "Finn",  "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+            { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "bot",   "graphemes": ["b","o","t"],         "phonemes": ["b","ɒ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fran fit a fan on a fast bot.",
@@ -70,7 +103,18 @@
         { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
         { "surface": "bot",  "graphemes": ["b","o","t"],         "phonemes": ["b","ɒ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fran fit a fan.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+            { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "fan",  "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Finn and Fran fixed a fan and a flag.",
@@ -87,7 +131,18 @@
         { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "flag",  "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fran fixed a fan.",
+          "words": [
+            { "surface": "Fran",  "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+            { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fred got a fast bot and Finn got a fan.",
@@ -105,7 +160,18 @@
         { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
         { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "fan",  "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fred got a bot.",
+          "words": [
+            { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "bot",  "graphemes": ["b","o","t"],         "phonemes": ["b","ɒ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Finn fit a fan and Fran fit a flag.",
@@ -122,7 +188,18 @@
         { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
         { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Finn fit a fan.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+            { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "fan",  "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fran fixed a bot and Fred fixed a fan.",
@@ -139,7 +216,18 @@
         { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fran fixed a bot.",
+          "words": [
+            { "surface": "Fran",  "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+            { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "bot",   "graphemes": ["b","o","t"],         "phonemes": ["b","ɒ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Finn fixed a fast fan on a bot.",
@@ -155,7 +243,18 @@
         { "surface": "on",    "graphemes": ["o","n"],             "phonemes": ["ɒ","n"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "bot",   "graphemes": ["b","o","t"],         "phonemes": ["b","ɒ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Finn fixed a fan.",
+          "words": [
+            { "surface": "Finn",  "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+            { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fran fit a fan and Fred fixed a bot.",
@@ -172,7 +271,18 @@
         { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "bot",   "graphemes": ["b","o","t"],         "phonemes": ["b","ɒ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fran fit a fan.",
+          "words": [
+            { "surface": "Fran",  "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+            { "surface": "fit",   "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fred fit a fast bot and Finn fit a fan.",
@@ -190,7 +300,18 @@
         { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
         { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "fan",  "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fred fit a bot.",
+          "words": [
+            { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "bot",  "graphemes": ["b","o","t"],         "phonemes": ["b","ɒ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Finn fit a fast fan and Fran fixed it.",
@@ -207,7 +328,18 @@
         { "surface": "Fran",  "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
         { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
         { "surface": "it",    "graphemes": ["i","t"],             "phonemes": ["ɪ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Finn fit a fan.",
+          "words": [
+            { "surface": "Finn",  "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+            { "surface": "fit",   "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fran got a flag and Fred got a fast bot.",
@@ -225,7 +357,18 @@
         { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
         { "surface": "bot",  "graphemes": ["b","o","t"],         "phonemes": ["b","ɒ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fran got a flag.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+            { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        }
+      }
     },
     {
       "text": "Finn fit a fan on a flag and a bot.",
@@ -243,7 +386,18 @@
         { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
         { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "bot",  "graphemes": ["b","o","t"],         "phonemes": ["b","ɒ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Finn fit a fan.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+            { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "fan",  "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fred fixed a fan on a fast bot.",
@@ -259,7 +413,18 @@
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "fast",  "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
         { "surface": "bot",   "graphemes": ["b","o","t"],         "phonemes": ["b","ɒ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fred fixed a fan.",
+          "words": [
+            { "surface": "Fred",  "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Finn fixed a flag and Fran fit a fast fan.",
@@ -277,7 +442,18 @@
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "fast",  "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
         { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Finn fixed a flag.",
+          "words": [
+            { "surface": "Finn",  "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+            { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "flag",  "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fran fixed a fast fan and Finn fit a bot.",
@@ -295,7 +471,18 @@
         { "surface": "fit",   "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "bot",   "graphemes": ["b","o","t"],         "phonemes": ["b","ɒ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fran fixed a fan.",
+          "words": [
+            { "surface": "Fran",  "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+            { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fred fit a flag and Finn fixed a fan.",
@@ -312,7 +499,18 @@
         { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fred fit a flag.",
+          "words": [
+            { "surface": "Fred",  "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fit",   "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "flag",  "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        }
+      }
     },
     {
       "text": "Fran fit a flag and Fred fit a fast bot.",
@@ -330,7 +528,18 @@
         { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "fast", "graphemes": ["f","a","s","t"],     "phonemes": ["f","æ","s","t"] },
         { "surface": "bot",  "graphemes": ["b","o","t"],         "phonemes": ["b","ɒ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Fran fit a flag.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+            { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        }
+      }
     },
     {
       "text": "Finn fixed a fan and Fran fixed a flag.",
@@ -347,7 +556,18 @@
         { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "flag",  "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Finn fixed a fan.",
+          "words": [
+            { "surface": "Finn",  "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+            { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
+          ]
+        }
+      }
     }
   ]
 }

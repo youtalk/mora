@@ -21,7 +21,18 @@
         { "surface": "on",        "graphemes": ["o","n"],                                 "phonemes": ["ɒ","n"] },
         { "surface": "the",       "graphemes": ["th","e"],                                "phonemes": ["ð","ə"] },
         { "surface": "path",      "graphemes": ["p","a","th"],                            "phonemes": ["p","æ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad had a triathlon.",
+          "words": [
+            { "surface": "Thad",      "graphemes": ["th","a","d"],                            "phonemes": ["θ","æ","d"] },
+            { "surface": "had",       "graphemes": ["h","a","d"],                             "phonemes": ["h","æ","d"] },
+            { "surface": "a",         "graphemes": ["a"],                                     "phonemes": ["ə"] },
+            { "surface": "triathlon", "graphemes": ["t","r","i","a","th","l","o","n"],       "phonemes": ["t","r","aɪ","æ","θ","l","ɒ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "A thin marathon ran past Thad with Theo and Beth.",
@@ -39,7 +50,18 @@
         { "surface": "Theo",     "graphemes": ["th","e","o"],                       "phonemes": ["θ","i","oʊ"] },
         { "surface": "and",      "graphemes": ["a","n","d"],                        "phonemes": ["æ","n","d"] },
         { "surface": "Beth",     "graphemes": ["b","e","th"],                       "phonemes": ["b","ɛ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin marathon ran.",
+          "words": [
+            { "surface": "A",        "graphemes": ["a"],                                "phonemes": ["ə"] },
+            { "surface": "thin",     "graphemes": ["th","i","n"],                       "phonemes": ["θ","ɪ","n"] },
+            { "surface": "marathon", "graphemes": ["m","a","r","a","th","o","n"],      "phonemes": ["m","æ","r","ə","θ","ə","n"] },
+            { "surface": "ran",      "graphemes": ["r","a","n"],                        "phonemes": ["r","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad ran a thin sprint and Theo got the bath.",
@@ -57,7 +79,18 @@
         { "surface": "got",    "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
         { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "bath",   "graphemes": ["b","a","th"],         "phonemes": ["b","æ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad ran a sprint.",
+          "words": [
+            { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+            { "surface": "ran",    "graphemes": ["r","a","n"],          "phonemes": ["r","æ","n"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "sprint", "graphemes": ["s","p","r","i","n","t"], "phonemes": ["s","p","r","ɪ","n","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Theo and Thad set a thin javelin with Beth.",
@@ -74,7 +107,18 @@
         { "surface": "javelin", "graphemes": ["j","a","v","e","l","i","n"], "phonemes": ["dʒ","æ","v","ə","l","ɪ","n"] },
         { "surface": "with",    "graphemes": ["w","i","th"],                 "phonemes": ["w","ɪ","θ"] },
         { "surface": "Beth",    "graphemes": ["b","e","th"],                 "phonemes": ["b","ɛ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Theo set a javelin.",
+          "words": [
+            { "surface": "Theo",    "graphemes": ["th","e","o"],                 "phonemes": ["θ","i","oʊ"] },
+            { "surface": "set",     "graphemes": ["s","e","t"],                  "phonemes": ["s","ɛ","t"] },
+            { "surface": "a",       "graphemes": ["a"],                          "phonemes": ["ə"] },
+            { "surface": "javelin", "graphemes": ["j","a","v","e","l","i","n"], "phonemes": ["dʒ","æ","v","ə","l","ɪ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "A swift thin marathon hid with Thad and Theo.",
@@ -91,7 +135,18 @@
         { "surface": "Thad",     "graphemes": ["th","a","d"],                       "phonemes": ["θ","æ","d"] },
         { "surface": "and",      "graphemes": ["a","n","d"],                        "phonemes": ["æ","n","d"] },
         { "surface": "Theo",     "graphemes": ["th","e","o"],                       "phonemes": ["θ","i","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin marathon hid.",
+          "words": [
+            { "surface": "A",        "graphemes": ["a"],                                "phonemes": ["ə"] },
+            { "surface": "thin",     "graphemes": ["th","i","n"],                       "phonemes": ["θ","ɪ","n"] },
+            { "surface": "marathon", "graphemes": ["m","a","r","a","th","o","n"],      "phonemes": ["m","æ","r","ə","θ","ə","n"] },
+            { "surface": "hid",      "graphemes": ["h","i","d"],                        "phonemes": ["h","ɪ","d"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad and Theo met a thin decathlon at the shed.",
@@ -109,7 +164,18 @@
         { "surface": "at",        "graphemes": ["a","t"],                                 "phonemes": ["æ","t"] },
         { "surface": "the",       "graphemes": ["th","e"],                                "phonemes": ["ð","ə"] },
         { "surface": "shed",      "graphemes": ["sh","e","d"],                            "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad met a decathlon.",
+          "words": [
+            { "surface": "Thad",      "graphemes": ["th","a","d"],                            "phonemes": ["θ","æ","d"] },
+            { "surface": "met",       "graphemes": ["m","e","t"],                             "phonemes": ["m","ɛ","t"] },
+            { "surface": "a",         "graphemes": ["a"],                                     "phonemes": ["ə"] },
+            { "surface": "decathlon", "graphemes": ["d","e","c","a","th","l","o","n"],       "phonemes": ["d","ɪ","k","æ","θ","l","ɒ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "A thin javelin sat with Thad and Theo.",
@@ -125,7 +191,18 @@
         { "surface": "Thad",    "graphemes": ["th","a","d"],                 "phonemes": ["θ","æ","d"] },
         { "surface": "and",     "graphemes": ["a","n","d"],                  "phonemes": ["æ","n","d"] },
         { "surface": "Theo",    "graphemes": ["th","e","o"],                 "phonemes": ["θ","i","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin javelin sat.",
+          "words": [
+            { "surface": "A",       "graphemes": ["a"],                          "phonemes": ["ə"] },
+            { "surface": "thin",    "graphemes": ["th","i","n"],                 "phonemes": ["θ","ɪ","n"] },
+            { "surface": "javelin", "graphemes": ["j","a","v","e","l","i","n"], "phonemes": ["dʒ","æ","v","ə","l","ɪ","n"] },
+            { "surface": "sat",     "graphemes": ["s","a","t"],                  "phonemes": ["s","æ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Theo got a thin sprint and Thad got the marathon.",
@@ -143,7 +220,18 @@
         { "surface": "got",      "graphemes": ["g","o","t"],                        "phonemes": ["g","ɒ","t"] },
         { "surface": "the",      "graphemes": ["th","e"],                           "phonemes": ["ð","ə"] },
         { "surface": "marathon", "graphemes": ["m","a","r","a","th","o","n"],      "phonemes": ["m","æ","r","ə","θ","ə","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Theo got a sprint.",
+          "words": [
+            { "surface": "Theo",     "graphemes": ["th","e","o"],                       "phonemes": ["θ","i","oʊ"] },
+            { "surface": "got",      "graphemes": ["g","o","t"],                        "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",        "graphemes": ["a"],                                "phonemes": ["ə"] },
+            { "surface": "sprint",   "graphemes": ["s","p","r","i","n","t"],            "phonemes": ["s","p","r","ɪ","n","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad and Theo had a thin tennis at the gym.",
@@ -161,7 +249,18 @@
         { "surface": "at",     "graphemes": ["a","t"],                 "phonemes": ["æ","t"] },
         { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
         { "surface": "gym",    "graphemes": ["g","y","m"],             "phonemes": ["dʒ","ɪ","m"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad had a tennis.",
+          "words": [
+            { "surface": "Thad",   "graphemes": ["th","a","d"],            "phonemes": ["θ","æ","d"] },
+            { "surface": "had",    "graphemes": ["h","a","d"],             "phonemes": ["h","æ","d"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "tennis", "graphemes": ["t","e","n","n","i","s"], "phonemes": ["t","ɛ","n","n","ɪ","s"] }
+          ]
+        }
+      }
     },
     {
       "text": "A swift thin javelin hid with Thad, Theo, and Beth.",
@@ -179,7 +278,18 @@
         { "surface": "Theo",    "graphemes": ["th","e","o"],                 "phonemes": ["θ","i","oʊ"] },
         { "surface": "and",     "graphemes": ["a","n","d"],                  "phonemes": ["æ","n","d"] },
         { "surface": "Beth",    "graphemes": ["b","e","th"],                 "phonemes": ["b","ɛ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin javelin hid.",
+          "words": [
+            { "surface": "A",       "graphemes": ["a"],                          "phonemes": ["ə"] },
+            { "surface": "thin",    "graphemes": ["th","i","n"],                 "phonemes": ["θ","ɪ","n"] },
+            { "surface": "javelin", "graphemes": ["j","a","v","e","l","i","n"], "phonemes": ["dʒ","æ","v","ə","l","ɪ","n"] },
+            { "surface": "hid",     "graphemes": ["h","i","d"],                  "phonemes": ["h","ɪ","d"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad let Theo run a thin triathlon at the gym.",
@@ -197,7 +307,18 @@
         { "surface": "at",        "graphemes": ["a","t"],                                 "phonemes": ["æ","t"] },
         { "surface": "the",       "graphemes": ["th","e"],                                "phonemes": ["ð","ə"] },
         { "surface": "gym",       "graphemes": ["g","y","m"],                             "phonemes": ["dʒ","ɪ","m"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad let Theo run.",
+          "words": [
+            { "surface": "Thad",      "graphemes": ["th","a","d"],                            "phonemes": ["θ","æ","d"] },
+            { "surface": "let",       "graphemes": ["l","e","t"],                             "phonemes": ["l","ɛ","t"] },
+            { "surface": "Theo",      "graphemes": ["th","e","o"],                            "phonemes": ["θ","i","oʊ"] },
+            { "surface": "run",       "graphemes": ["r","u","n"],                             "phonemes": ["r","ʌ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Theo had a thin decathlon and Thad had the marathon.",
@@ -215,7 +336,18 @@
         { "surface": "had",       "graphemes": ["h","a","d"],                             "phonemes": ["h","æ","d"] },
         { "surface": "the",       "graphemes": ["th","e"],                                "phonemes": ["ð","ə"] },
         { "surface": "marathon",  "graphemes": ["m","a","r","a","th","o","n"],           "phonemes": ["m","æ","r","ə","θ","ə","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Theo had a decathlon.",
+          "words": [
+            { "surface": "Theo",      "graphemes": ["th","e","o"],                            "phonemes": ["θ","i","oʊ"] },
+            { "surface": "had",       "graphemes": ["h","a","d"],                             "phonemes": ["h","æ","d"] },
+            { "surface": "a",         "graphemes": ["a"],                                     "phonemes": ["ə"] },
+            { "surface": "decathlon", "graphemes": ["d","e","c","a","th","l","o","n"],       "phonemes": ["d","ɪ","k","æ","θ","l","ɒ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "A thin marathon sat with Thad, Theo, and Seth.",
@@ -232,7 +364,18 @@
         { "surface": "Theo",     "graphemes": ["th","e","o"],                       "phonemes": ["θ","i","oʊ"] },
         { "surface": "and",      "graphemes": ["a","n","d"],                        "phonemes": ["æ","n","d"] },
         { "surface": "Seth",     "graphemes": ["s","e","th"],                       "phonemes": ["s","ɛ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin marathon sat.",
+          "words": [
+            { "surface": "A",        "graphemes": ["a"],                                "phonemes": ["ə"] },
+            { "surface": "thin",     "graphemes": ["th","i","n"],                       "phonemes": ["θ","ɪ","n"] },
+            { "surface": "marathon", "graphemes": ["m","a","r","a","th","o","n"],      "phonemes": ["m","æ","r","ə","θ","ə","n"] },
+            { "surface": "sat",      "graphemes": ["s","a","t"],                        "phonemes": ["s","æ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad got a thin javelin and Theo got the bat.",
@@ -250,7 +393,18 @@
         { "surface": "got",     "graphemes": ["g","o","t"],                  "phonemes": ["g","ɒ","t"] },
         { "surface": "the",     "graphemes": ["th","e"],                     "phonemes": ["ð","ə"] },
         { "surface": "bat",     "graphemes": ["b","a","t"],                  "phonemes": ["b","æ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad got a javelin.",
+          "words": [
+            { "surface": "Thad",    "graphemes": ["th","a","d"],                 "phonemes": ["θ","æ","d"] },
+            { "surface": "got",     "graphemes": ["g","o","t"],                  "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",       "graphemes": ["a"],                          "phonemes": ["ə"] },
+            { "surface": "javelin", "graphemes": ["j","a","v","e","l","i","n"], "phonemes": ["dʒ","æ","v","ə","l","ɪ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "A swift thin sprint hid with Thad and Theo.",
@@ -267,7 +421,18 @@
         { "surface": "Thad",   "graphemes": ["th","a","d"],                 "phonemes": ["θ","æ","d"] },
         { "surface": "and",    "graphemes": ["a","n","d"],                  "phonemes": ["æ","n","d"] },
         { "surface": "Theo",   "graphemes": ["th","e","o"],                 "phonemes": ["θ","i","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin sprint hid.",
+          "words": [
+            { "surface": "A",      "graphemes": ["a"],                          "phonemes": ["ə"] },
+            { "surface": "thin",   "graphemes": ["th","i","n"],                 "phonemes": ["θ","ɪ","n"] },
+            { "surface": "sprint", "graphemes": ["s","p","r","i","n","t"],      "phonemes": ["s","p","r","ɪ","n","t"] },
+            { "surface": "hid",    "graphemes": ["h","i","d"],                  "phonemes": ["h","ɪ","d"] }
+          ]
+        }
+      }
     },
     {
       "text": "Theo and Thad ran a thin decathlon on the path.",
@@ -285,7 +450,18 @@
         { "surface": "on",        "graphemes": ["o","n"],                                 "phonemes": ["ɒ","n"] },
         { "surface": "the",       "graphemes": ["th","e"],                                "phonemes": ["ð","ə"] },
         { "surface": "path",      "graphemes": ["p","a","th"],                            "phonemes": ["p","æ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Theo and Thad ran.",
+          "words": [
+            { "surface": "Theo",      "graphemes": ["th","e","o"],                            "phonemes": ["θ","i","oʊ"] },
+            { "surface": "and",       "graphemes": ["a","n","d"],                             "phonemes": ["æ","n","d"] },
+            { "surface": "Thad",      "graphemes": ["th","a","d"],                            "phonemes": ["θ","æ","d"] },
+            { "surface": "ran",       "graphemes": ["r","a","n"],                             "phonemes": ["r","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "A thin triathlon met Thad, Theo, and Beth.",
@@ -301,7 +477,19 @@
         { "surface": "Theo",      "graphemes": ["th","e","o"],                            "phonemes": ["θ","i","oʊ"] },
         { "surface": "and",       "graphemes": ["a","n","d"],                             "phonemes": ["æ","n","d"] },
         { "surface": "Beth",      "graphemes": ["b","e","th"],                            "phonemes": ["b","ɛ","θ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin triathlon met Thad.",
+          "words": [
+            { "surface": "A",         "graphemes": ["a"],                                     "phonemes": ["ə"] },
+            { "surface": "thin",      "graphemes": ["th","i","n"],                            "phonemes": ["θ","ɪ","n"] },
+            { "surface": "triathlon", "graphemes": ["t","r","i","a","th","l","o","n"],       "phonemes": ["t","r","aɪ","æ","θ","l","ɒ","n"] },
+            { "surface": "met",       "graphemes": ["m","e","t"],                             "phonemes": ["m","ɛ","t"] },
+            { "surface": "Thad",      "graphemes": ["th","a","d"],                            "phonemes": ["θ","æ","d"] }
+          ]
+        }
+      }
     },
     {
       "text": "Thad and Theo had a thin sprint at the shed.",
@@ -319,7 +507,18 @@
         { "surface": "at",     "graphemes": ["a","t"],                 "phonemes": ["æ","t"] },
         { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
         { "surface": "shed",   "graphemes": ["sh","e","d"],            "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Thad had a sprint.",
+          "words": [
+            { "surface": "Thad",   "graphemes": ["th","a","d"],            "phonemes": ["θ","æ","d"] },
+            { "surface": "had",    "graphemes": ["h","a","d"],             "phonemes": ["h","æ","d"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "sprint", "graphemes": ["s","p","r","i","n","t"], "phonemes": ["s","p","r","ɪ","n","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Theo got a thin tennis and Thad got the kit.",
@@ -337,7 +536,18 @@
         { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
         { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
         { "surface": "kit",    "graphemes": ["k","i","t"],             "phonemes": ["k","ɪ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Theo got a tennis.",
+          "words": [
+            { "surface": "Theo",   "graphemes": ["th","e","o"],            "phonemes": ["θ","i","oʊ"] },
+            { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "tennis", "graphemes": ["t","e","n","n","i","s"], "phonemes": ["t","ɛ","n","n","ɪ","s"] }
+          ]
+        }
+      }
     },
     {
       "text": "A thin decathlon sat with Thad and Theo.",
@@ -353,7 +563,18 @@
         { "surface": "Thad",      "graphemes": ["th","a","d"],                            "phonemes": ["θ","æ","d"] },
         { "surface": "and",       "graphemes": ["a","n","d"],                             "phonemes": ["æ","n","d"] },
         { "surface": "Theo",      "graphemes": ["th","e","o"],                            "phonemes": ["θ","i","oʊ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A thin decathlon sat.",
+          "words": [
+            { "surface": "A",         "graphemes": ["a"],                                     "phonemes": ["ə"] },
+            { "surface": "thin",      "graphemes": ["th","i","n"],                            "phonemes": ["θ","ɪ","n"] },
+            { "surface": "decathlon", "graphemes": ["d","e","c","a","th","l","o","n"],       "phonemes": ["d","ɪ","k","æ","θ","l","ɒ","n"] },
+            { "surface": "sat",       "graphemes": ["s","a","t"],                             "phonemes": ["s","æ","t"] }
+          ]
+        }
+      }
     }
   ]
 }

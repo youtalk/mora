@@ -21,7 +21,19 @@
         { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "shaggy", "graphemes": ["sh","a","g","g","y"], "phonemes": ["ʃ","æ","g","i"] },
         { "surface": "dog",    "graphemes": ["d","o","g"],          "phonemes": ["d","ɒ","g"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon rushed to the shed.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+            { "surface": "rushed", "graphemes": ["r","u","sh","e","d"], "phonemes": ["r","ʌ","ʃ","t"] },
+            { "surface": "to",     "graphemes": ["t","o"],              "phonemes": ["t","u"] },
+            { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+            { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shep dashed to the shed to shut a shaggy rabbit.",
@@ -39,7 +51,18 @@
         { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "shaggy", "graphemes": ["sh","a","g","g","y"], "phonemes": ["ʃ","æ","g","i"] },
         { "surface": "rabbit", "graphemes": ["r","a","b","b","i","t"], "phonemes": ["r","æ","b","ɪ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep shut a rabbit.",
+          "words": [
+            { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+            { "surface": "shut",   "graphemes": ["sh","u","t"],         "phonemes": ["ʃ","ʌ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "rabbit", "graphemes": ["r","a","b","b","i","t"], "phonemes": ["r","æ","b","ɪ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shen washed a shiny shark in the shed.",
@@ -55,7 +78,18 @@
         { "surface": "in",     "graphemes": ["i","n"],          "phonemes": ["ɪ","n"] },
         { "surface": "the",    "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
         { "surface": "shed",   "graphemes": ["sh","e","d"],     "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen washed a shark.",
+          "words": [
+            { "surface": "Shen",   "graphemes": ["sh","e","n"],     "phonemes": ["ʃ","ɛ","n"] },
+            { "surface": "washed", "graphemes": ["w","a","sh","e","d"], "phonemes": ["w","ɒ","ʃ","t"] },
+            { "surface": "a",      "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "shark",  "graphemes": ["sh","a","r","k"], "phonemes": ["ʃ","æ","r","k"] }
+          ]
+        }
+      }
     },
     {
       "text": "Sharon and Shep saw a shy panda at the shed.",
@@ -73,7 +107,18 @@
         { "surface": "at",     "graphemes": ["a","t"],              "phonemes": ["æ","t"] },
         { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon saw a panda.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+            { "surface": "saw",    "graphemes": ["s","a","w"],          "phonemes": ["s","ɔ","w"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "panda",  "graphemes": ["p","a","n","d","a"],  "phonemes": ["p","æ","n","d","ə"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shep rushed to shut a shed and shelter a lamb.",
@@ -91,7 +136,18 @@
         { "surface": "shelter", "graphemes": ["sh","e","l","t","e","r"], "phonemes": ["ʃ","ɛ","l","t","ə","r"] },
         { "surface": "a",       "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "lamb",    "graphemes": ["l","a","m","b"],      "phonemes": ["l","æ","m"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep shut a shed.",
+          "words": [
+            { "surface": "Shep",    "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+            { "surface": "shut",    "graphemes": ["sh","u","t"],         "phonemes": ["ʃ","ʌ","t"] },
+            { "surface": "a",       "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "shed",    "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shen saw a shaggy ram dash to the shed.",
@@ -108,7 +164,18 @@
         { "surface": "to",     "graphemes": ["t","o"],              "phonemes": ["t","u"] },
         { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen saw a ram.",
+          "words": [
+            { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+            { "surface": "saw",    "graphemes": ["s","a","w"],          "phonemes": ["s","ɔ","w"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "ram",    "graphemes": ["r","a","m"],          "phonemes": ["r","æ","m"] }
+          ]
+        }
+      }
     },
     {
       "text": "Sharon dashed to the shelf to get a shrimp.",
@@ -125,7 +192,19 @@
         { "surface": "get",    "graphemes": ["g","e","t"],          "phonemes": ["g","ɛ","t"] },
         { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "shrimp", "graphemes": ["sh","r","i","m","p"], "phonemes": ["ʃ","r","ɪ","m","p"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon dashed to the shelf.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+            { "surface": "dashed", "graphemes": ["d","a","sh","e","d"], "phonemes": ["d","æ","ʃ","t"] },
+            { "surface": "to",     "graphemes": ["t","o"],              "phonemes": ["t","u"] },
+            { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+            { "surface": "shelf",  "graphemes": ["sh","e","l","f"],     "phonemes": ["ʃ","ɛ","l","f"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shep washed a shiny fish on the shelf.",
@@ -141,7 +220,18 @@
         { "surface": "on",     "graphemes": ["o","n"],              "phonemes": ["ɒ","n"] },
         { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "shelf",  "graphemes": ["sh","e","l","f"],     "phonemes": ["ʃ","ɛ","l","f"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep washed a fish.",
+          "words": [
+            { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+            { "surface": "washed", "graphemes": ["w","a","sh","e","d"], "phonemes": ["w","ɒ","ʃ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "fish",   "graphemes": ["f","i","sh"],         "phonemes": ["f","ɪ","ʃ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Sharon saw a shy lizard rush past the shed.",
@@ -158,7 +248,18 @@
         { "surface": "past",   "graphemes": ["p","a","s","t"],      "phonemes": ["p","æ","s","t"] },
         { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon saw a lizard.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+            { "surface": "saw",    "graphemes": ["s","a","w"],          "phonemes": ["s","ɔ","w"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "lizard", "graphemes": ["l","i","z","a","r","d"], "phonemes": ["l","ɪ","z","ə","r","d"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shen rushed the shaggy rabbit into a shed.",
@@ -174,7 +275,18 @@
         { "surface": "into",   "graphemes": ["i","n","t","o"],      "phonemes": ["ɪ","n","t","u"] },
         { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen rushed the rabbit.",
+          "words": [
+            { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+            { "surface": "rushed", "graphemes": ["r","u","sh","e","d"], "phonemes": ["r","ʌ","ʃ","t"] },
+            { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+            { "surface": "rabbit", "graphemes": ["r","a","b","b","i","t"], "phonemes": ["r","æ","b","ɪ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shep and Shen saw a shy hen on a shelf.",
@@ -192,7 +304,18 @@
         { "surface": "on",    "graphemes": ["o","n"],          "phonemes": ["ɒ","n"] },
         { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
         { "surface": "shelf", "graphemes": ["sh","e","l","f"], "phonemes": ["ʃ","ɛ","l","f"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep saw a hen.",
+          "words": [
+            { "surface": "Shep",  "graphemes": ["sh","e","p"],     "phonemes": ["ʃ","ɛ","p"] },
+            { "surface": "saw",   "graphemes": ["s","a","w"],      "phonemes": ["s","ɔ","w"] },
+            { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
+            { "surface": "hen",   "graphemes": ["h","e","n"],      "phonemes": ["h","ɛ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Sharon rushed to shut in a shy swan.",
@@ -208,7 +331,18 @@
         { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "shy",    "graphemes": ["sh","y"],             "phonemes": ["ʃ","aɪ"] },
         { "surface": "swan",   "graphemes": ["s","w","a","n"],      "phonemes": ["s","w","ɒ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon shut a swan.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+            { "surface": "shut",   "graphemes": ["sh","u","t"],         "phonemes": ["ʃ","ʌ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "swan",   "graphemes": ["s","w","a","n"],      "phonemes": ["s","w","ɒ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shep crushed a shell and Sharon crushed a shrimp.",
@@ -225,7 +359,18 @@
         { "surface": "crushed", "graphemes": ["c","r","u","sh","e","d"], "phonemes": ["k","r","ʌ","ʃ","t"] },
         { "surface": "a",       "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "shrimp",  "graphemes": ["sh","r","i","m","p"], "phonemes": ["ʃ","r","ɪ","m","p"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep crushed a shell.",
+          "words": [
+            { "surface": "Shep",    "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+            { "surface": "crushed", "graphemes": ["c","r","u","sh","e","d"], "phonemes": ["k","r","ʌ","ʃ","t"] },
+            { "surface": "a",       "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "shell",   "graphemes": ["sh","e","l","l"],     "phonemes": ["ʃ","ɛ","l"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shen shut the shed and Shep washed the shaggy frog.",
@@ -243,7 +388,18 @@
         { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "shaggy", "graphemes": ["sh","a","g","g","y"], "phonemes": ["ʃ","æ","g","i"] },
         { "surface": "frog",   "graphemes": ["f","r","o","g"],      "phonemes": ["f","r","ɒ","g"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen shut the shed.",
+          "words": [
+            { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+            { "surface": "shut",   "graphemes": ["sh","u","t"],         "phonemes": ["ʃ","ʌ","t"] },
+            { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+            { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
+          ]
+        }
+      }
     },
     {
       "text": "A shiny shark rushed past a shrimp and a shell.",
@@ -261,7 +417,18 @@
         { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
         { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "shell",  "graphemes": ["sh","e","l","l"],     "phonemes": ["ʃ","ɛ","l"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "A shiny shark rushed.",
+          "words": [
+            { "surface": "A",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+            { "surface": "shark",  "graphemes": ["sh","a","r","k"],     "phonemes": ["ʃ","æ","r","k"] },
+            { "surface": "rushed", "graphemes": ["r","u","sh","e","d"], "phonemes": ["r","ʌ","ʃ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Sharon had a shaggy cat and Shep had a fish.",
@@ -279,7 +446,18 @@
         { "surface": "had",    "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
         { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "fish",   "graphemes": ["f","i","sh"],         "phonemes": ["f","ɪ","ʃ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Sharon had a cat.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+            { "surface": "had",    "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "cat",    "graphemes": ["c","a","t"],          "phonemes": ["k","æ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shep rushed to the shelf and shut in a shrimp.",
@@ -297,7 +475,18 @@
         { "surface": "in",     "graphemes": ["i","n"],              "phonemes": ["ɪ","n"] },
         { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "shrimp", "graphemes": ["sh","r","i","m","p"], "phonemes": ["ʃ","r","ɪ","m","p"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep shut a shrimp.",
+          "words": [
+            { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+            { "surface": "shut",   "graphemes": ["sh","u","t"],         "phonemes": ["ʃ","ʌ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "shrimp", "graphemes": ["sh","r","i","m","p"], "phonemes": ["ʃ","r","ɪ","m","p"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shen washed a shaggy panda and Sharon shut the shed.",
@@ -315,7 +504,18 @@
         { "surface": "shut",   "graphemes": ["sh","u","t"],         "phonemes": ["ʃ","ʌ","t"] },
         { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen washed a panda.",
+          "words": [
+            { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+            { "surface": "washed", "graphemes": ["w","a","sh","e","d"], "phonemes": ["w","ɒ","ʃ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+            { "surface": "panda",  "graphemes": ["p","a","n","d","a"],  "phonemes": ["p","æ","n","d","ə"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shen and Sharon dashed to shelter a hog.",
@@ -331,7 +531,18 @@
         { "surface": "shelter", "graphemes": ["sh","e","l","t","e","r"], "phonemes": ["ʃ","ɛ","l","t","ə","r"] },
         { "surface": "a",       "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "hog",     "graphemes": ["h","o","g"],          "phonemes": ["h","ɒ","g"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shen and Sharon dashed.",
+          "words": [
+            { "surface": "Shen",    "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+            { "surface": "and",     "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+            { "surface": "Sharon",  "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+            { "surface": "dashed",  "graphemes": ["d","a","sh","e","d"], "phonemes": ["d","æ","ʃ","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Shep rushed to wash a shy shark at the shelf.",
@@ -349,7 +560,19 @@
         { "surface": "at",    "graphemes": ["a","t"],          "phonemes": ["æ","t"] },
         { "surface": "the",   "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
         { "surface": "shelf", "graphemes": ["sh","e","l","f"], "phonemes": ["ʃ","ɛ","l","f"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Shep rushed to the shelf.",
+          "words": [
+            { "surface": "Shep",  "graphemes": ["sh","e","p"],     "phonemes": ["ʃ","ɛ","p"] },
+            { "surface": "rushed","graphemes": ["r","u","sh","e","d"], "phonemes": ["r","ʌ","ʃ","t"] },
+            { "surface": "to",    "graphemes": ["t","o"],          "phonemes": ["t","u"] },
+            { "surface": "the",   "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+            { "surface": "shelf", "graphemes": ["sh","e","l","f"], "phonemes": ["ʃ","ɛ","l","f"] }
+          ]
+        }
+      }
     }
   ]
 }

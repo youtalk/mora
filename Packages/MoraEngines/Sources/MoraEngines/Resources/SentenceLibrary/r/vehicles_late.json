@@ -21,7 +21,18 @@
         { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "raft",  "graphemes": ["r","a","f","t"],     "phonemes": ["r","æ","f","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Ron got a racer.",
+          "words": [
+            { "surface": "Ron",   "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "racer", "graphemes": ["r","a","c","e","r"], "phonemes": ["r","eɪ","s","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rip ran past a racer and got a rotor.",
@@ -38,7 +49,18 @@
         { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rip got a rotor.",
+          "words": [
+            { "surface": "Rip",   "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rex got a rotor and Rob got a red racer.",
@@ -56,7 +78,18 @@
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "red",   "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
         { "surface": "racer", "graphemes": ["r","a","c","e","r"], "phonemes": ["r","eɪ","s","ɚ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex got a rotor.",
+          "words": [
+            { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Ron and Rip got a racer and a red cart.",
@@ -74,7 +107,18 @@
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "red",   "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
         { "surface": "cart",  "graphemes": ["c","a","r","t"],     "phonemes": ["k","ɑ","r","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rip got a racer.",
+          "words": [
+            { "surface": "Rip",   "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "racer", "graphemes": ["r","a","c","e","r"], "phonemes": ["r","eɪ","s","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rex and Rob ran past a racer and a ramp.",
@@ -92,7 +136,18 @@
         { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "ramp",  "graphemes": ["r","a","m","p"],     "phonemes": ["r","æ","m","p"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex and Rob ran.",
+          "words": [
+            { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+            { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+            { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+            { "surface": "ran",   "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rip rested and Rex got a rotor and a raft.",
@@ -110,7 +165,18 @@
         { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "raft",   "graphemes": ["r","a","f","t"],         "phonemes": ["r","æ","f","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex got a rotor.",
+          "words": [
+            { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
+            { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "rotor",  "graphemes": ["r","o","t","o","r"],     "phonemes": ["r","oʊ","t","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Ron got a red racer and a red ramp.",
@@ -127,7 +193,18 @@
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "red",   "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
         { "surface": "ramp",  "graphemes": ["r","a","m","p"],     "phonemes": ["r","æ","m","p"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Ron got a racer.",
+          "words": [
+            { "surface": "Ron",   "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "racer", "graphemes": ["r","a","c","e","r"], "phonemes": ["r","eɪ","s","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rip and Rex got a rotor and a racer.",
@@ -144,7 +221,18 @@
         { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "racer", "graphemes": ["r","a","c","e","r"], "phonemes": ["r","eɪ","s","ɚ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex got a rotor.",
+          "words": [
+            { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rob ran past a cart and got a red raft.",
@@ -162,7 +250,18 @@
         { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
         { "surface": "raft", "graphemes": ["r","a","f","t"],     "phonemes": ["r","æ","f","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rob got a raft.",
+          "words": [
+            { "surface": "Rob",  "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+            { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "raft", "graphemes": ["r","a","f","t"],     "phonemes": ["r","æ","f","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rex got a racer and Ron got a rotor.",
@@ -179,7 +278,18 @@
         { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex got a racer.",
+          "words": [
+            { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "racer", "graphemes": ["r","a","c","e","r"], "phonemes": ["r","eɪ","s","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rip and Rob got a red rotor and a raft.",
@@ -197,7 +307,18 @@
         { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "raft",  "graphemes": ["r","a","f","t"],     "phonemes": ["r","æ","f","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rob got a rotor.",
+          "words": [
+            { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rex rested and Rip got a red racer.",
@@ -213,7 +334,18 @@
         { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
         { "surface": "red",    "graphemes": ["r","e","d"],             "phonemes": ["r","ɛ","d"] },
         { "surface": "racer",  "graphemes": ["r","a","c","e","r"],     "phonemes": ["r","eɪ","s","ɚ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rip got a racer.",
+          "words": [
+            { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
+            { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "racer",  "graphemes": ["r","a","c","e","r"],     "phonemes": ["r","eɪ","s","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Ron got a cart and Rob got a red racer.",
@@ -231,7 +363,18 @@
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "red",   "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
         { "surface": "racer", "graphemes": ["r","a","c","e","r"], "phonemes": ["r","eɪ","s","ɚ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Ron got a cart.",
+          "words": [
+            { "surface": "Ron",   "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "cart",  "graphemes": ["c","a","r","t"],     "phonemes": ["k","ɑ","r","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rip and Rex set a rotor and a ramp.",
@@ -248,7 +391,18 @@
         { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "ramp",  "graphemes": ["r","a","m","p"],     "phonemes": ["r","æ","m","p"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex set a rotor.",
+          "words": [
+            { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+            { "surface": "set",   "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rex met Ron and Rob met a red racer.",
@@ -265,7 +419,18 @@
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "red",   "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
         { "surface": "racer", "graphemes": ["r","a","c","e","r"], "phonemes": ["r","eɪ","s","ɚ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex met a racer.",
+          "words": [
+            { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+            { "surface": "met",   "graphemes": ["m","e","t"],         "phonemes": ["m","ɛ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "racer", "graphemes": ["r","a","c","e","r"], "phonemes": ["r","eɪ","s","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Ron got a rotor and Rip got a racer.",
@@ -282,7 +447,18 @@
         { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "racer", "graphemes": ["r","a","c","e","r"], "phonemes": ["r","eɪ","s","ɚ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Ron got a rotor.",
+          "words": [
+            { "surface": "Ron",   "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rob and Rip ran past a red rotor and a cart.",
@@ -300,7 +476,18 @@
         { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] },
         { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
         { "surface": "cart",  "graphemes": ["c","a","r","t"],     "phonemes": ["k","ɑ","r","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rob and Rip ran.",
+          "words": [
+            { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+            { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+            { "surface": "Rip",   "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+            { "surface": "ran",   "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rex got a red raft and Ron got a rotor.",
@@ -318,7 +505,18 @@
         { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rex got a raft.",
+          "words": [
+            { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "raft",  "graphemes": ["r","a","f","t"],     "phonemes": ["r","æ","f","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rip got a racer and ran past a red ramp.",
@@ -336,7 +534,18 @@
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "red",   "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
         { "surface": "ramp",  "graphemes": ["r","a","m","p"],     "phonemes": ["r","æ","m","p"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rip got a racer.",
+          "words": [
+            { "surface": "Rip",   "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "racer", "graphemes": ["r","a","c","e","r"], "phonemes": ["r","eɪ","s","ɚ"] }
+          ]
+        }
+      }
     },
     {
       "text": "Rex and Rob got a rotor and a red racer.",
@@ -354,7 +563,18 @@
         { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
         { "surface": "red",   "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
         { "surface": "racer", "graphemes": ["r","a","c","e","r"], "phonemes": ["r","eɪ","s","ɚ"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Rob got a rotor.",
+          "words": [
+            { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+            { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+            { "surface": "rotor", "graphemes": ["r","o","t","o","r"], "phonemes": ["r","oʊ","t","ɚ"] }
+          ]
+        }
+      }
     }
   ]
 }
