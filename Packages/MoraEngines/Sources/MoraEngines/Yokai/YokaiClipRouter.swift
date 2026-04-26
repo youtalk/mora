@@ -118,8 +118,6 @@ public final class YokaiClipRouter {
     }
 
     private var consecutiveCorrect: Int = 0
-    private var trialIndex: Int = 0
-    private var lastGentleRetryTrialIndex: Int = -100
 
     /// Record a correct trial in `shortSentences`. Fires `.encourage` and
     /// resets the streak on every 3rd consecutive correct. Suspends until
@@ -130,7 +128,6 @@ public final class YokaiClipRouter {
     /// TTS path (e.g., the mic-mode "Listen: …" prompt).
     @discardableResult
     public func recordCorrect() async -> Bool {
-        trialIndex += 1
         consecutiveCorrect += 1
         if consecutiveCorrect >= 3 {
             consecutiveCorrect = 0
@@ -139,21 +136,16 @@ public final class YokaiClipRouter {
         return false
     }
 
-    /// Record an incorrect trial in `shortSentences`. Resets the streak and
-    /// fires `.gentle_retry` if at least 5 trials have passed since the last
-    /// retry clip — protects the learner from a retry-clip storm during a
-    /// rough run. Suspends until the clip finishes playing for the same
-    /// reason as `recordCorrect`. Returns `true` if a clip was actually
-    /// started, so callers can suppress an overlapping corrective TTS
-    /// path.
+    /// Record an incorrect trial in `shortSentences`. Resets the streak
+    /// and always fires `.gentle_retry` so the learner hears a yokai
+    /// encouragement on every dictation miss. Suspends until the clip
+    /// finishes playing so the caller's post-trial sequencing does not
+    /// start TTS on top of a still-running clip. Returns `true` if a
+    /// clip was actually started, so callers can suppress an overlapping
+    /// corrective TTS path.
     @discardableResult
     public func recordIncorrect() async -> Bool {
-        trialIndex += 1
         consecutiveCorrect = 0
-        if trialIndex - lastGentleRetryTrialIndex >= 5 {
-            lastGentleRetryTrialIndex = trialIndex
-            return await playAndAwait(.gentleRetry)
-        }
-        return false
+        return await playAndAwait(.gentleRetry)
     }
 }

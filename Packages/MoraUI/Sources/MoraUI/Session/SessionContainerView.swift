@@ -128,7 +128,7 @@ public struct SessionContainerView: View {
     }
 
     private var topChrome: some View {
-        HStack {
+        HStack(alignment: .top) {
             Button(action: { showCloseConfirm = true }) {
                 Image(systemName: "xmark")
                     .font(.system(size: 18, weight: .bold))
@@ -142,11 +142,16 @@ public struct SessionContainerView: View {
 
             Spacer()
 
-            if let orchestrator {
-                PhasePips(phase: orchestrator.phase)
-            } else {
-                PhasePips(currentIndex: -1)
+            Group {
+                if let orchestrator {
+                    PhasePips(phase: orchestrator.phase)
+                } else {
+                    PhasePips(currentIndex: -1)
+                }
             }
+            // Sit the pip row visually below the streak chip's flame so the
+            // two no longer share a vertical baseline on iPad.
+            .padding(.top, MoraTheme.Space.xl)
 
             Spacer()
 
@@ -208,6 +213,7 @@ public struct SessionContainerView: View {
             case .completion:
                 CompletionView(
                     orchestrator: orchestrator, speech: speech,
+                    clipRouter: clipRouter,
                     persistSummary: { summary in persist(summary: summary) }
                 )
             }

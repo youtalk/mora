@@ -7,6 +7,7 @@ struct CompletionView: View {
     @Environment(\.moraStrings) private var strings
     let orchestrator: SessionOrchestrator
     let speech: SpeechController?
+    let clipRouter: YokaiClipRouter?
     let persistSummary: (SessionSummary) -> Void
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var ctx
@@ -52,6 +53,13 @@ struct CompletionView: View {
         .accessibilityAction(named: "Return home") { dismissSession() }
         .onAppear { persistOnce() }
         .task {
+            // On Friday befriending the cutscene overlay owns audio (it
+            // plays `.fridayAcknowledge` on its own choreography). Skip
+            // the yokai encouragement clip in that case so the two
+            // sources don't overlap.
+            if !isFridayClimaxActive {
+                _ = await clipRouter?.playAndAwait(.encourage)
+            }
             // Spoken in English (the whole app teaches English phonics to
             // an L1-Japanese learner) — keeping this literal rather than a
             // MoraStrings entry since every L1 profile would emit the same
@@ -60,6 +68,11 @@ struct CompletionView: View {
                 [.text("Quest complete! You got \(correct) out of \(total).", .normal)]
             )
         }
+    }
+
+    private var isFridayClimaxActive: Bool {
+        if case .fridayClimax = orchestrator.yokai?.activeCutscene { return true }
+        return false
     }
 
     @MainActor

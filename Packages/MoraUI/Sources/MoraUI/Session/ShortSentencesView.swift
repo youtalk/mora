@@ -68,19 +68,13 @@ struct ShortSentencesView: View {
                         micStack
                     }
 
-                    VStack(spacing: MoraTheme.Space.sm) {
-                        Text(
-                            strings.sessionSentenceCounter(
-                                (pinnedSentenceIndex ?? orchestrator.sentenceIndex) + 1,
-                                orchestrator.sentences.count
-                            )
+                    Text(
+                        strings.sessionSentenceCounter(
+                            (pinnedSentenceIndex ?? orchestrator.sentenceIndex) + 1,
+                            orchestrator.sentences.count
                         )
-                        .font(MoraType.label())
-
-                        Text(strings.sentencesLongPressHint)
-                            .font(MoraType.subtitle())
-                            .multilineTextAlignment(.center)
-                    }
+                    )
+                    .font(MoraType.label())
                     .foregroundStyle(MoraTheme.Ink.muted)
                     .minimumScaleFactor(0.5)
 
@@ -241,7 +235,7 @@ struct ShortSentencesView: View {
     private var transcriptSlot: some View {
         Text(activeTranscript)
             .font(MoraType.transcript())
-            .foregroundStyle(MoraTheme.Ink.secondary)
+            .foregroundStyle(MoraTheme.Ink.muted)
             .lineLimit(2)
             .multilineTextAlignment(.center)
             .frame(
@@ -254,9 +248,9 @@ struct ShortSentencesView: View {
             .accessibilityLabel(Text("You said: \(activeTranscript)"))
     }
 
-    /// Reserves two lines at 48pt transcript size — enough for the
+    /// Reserves two lines at 28pt transcript size — enough for the
     /// longest A-day sentence without growing past two lines on iPad.
-    private static let transcriptSlotHeight: CGFloat = 120
+    private static let transcriptSlotHeight: CGFloat = 72
 
     /// Current text to render in the transcript slot, or "" when idle.
     /// Hoisted out of the ViewBuilder so the slot can always exist in

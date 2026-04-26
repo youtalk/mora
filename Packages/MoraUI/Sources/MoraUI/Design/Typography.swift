@@ -120,7 +120,7 @@ public enum MoraType {
         .openDyslexic(size: size)
     }
     /// Displayed ASR transcript (live partial + post-trial record).
-    public static func transcript(size: CGFloat = 48) -> Font {
+    public static func transcript(size: CGFloat = 28) -> Font {
         .openDyslexic(size: size)
     }
 }
