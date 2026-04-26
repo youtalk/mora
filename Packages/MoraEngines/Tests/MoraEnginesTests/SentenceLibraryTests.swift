@@ -28,14 +28,33 @@ final class SentenceLibraryTests: XCTestCase {
     }
 
     func test_cell_returnsNilForUnpopulatedCell() async throws {
-        let library = try SentenceLibrary()
+        // The bundled corpus has every (phoneme, interest, ageBand) cell
+        // populated, so we inject a temp root that holds only one cell and
+        // query for a distinct (interest, ageBand) within the same phoneme.
+        let root = try makeTempRoot()
+        defer { try? FileManager.default.removeItem(at: root) }
+        let shDir = root.appendingPathComponent("sh", isDirectory: true)
+        try FileManager.default.createDirectory(at: shDir, withIntermediateDirectories: true)
+        let json = """
+            {
+              "phoneme": "sh",
+              "phonemeIPA": "ʃ",
+              "graphemeLetters": "sh",
+              "interest": "vehicles",
+              "ageBand": "mid",
+              "sentences": []
+            }
+            """
+        try Data(json.utf8).write(to: shDir.appendingPathComponent("vehicles_mid.json"))
+
+        let library = try SentenceLibrary(rootURL: root)
         let cell = await library.cell(
-            phoneme: "th",
+            phoneme: "sh",
             interest: "robots",
             ageBand: .late
         )
 
-        XCTAssertNil(cell, "Track B-1 only ships sh/vehicles_mid; others are absent")
+        XCTAssertNil(cell, "expected nil when no JSON exists for the (phoneme, interest, ageBand) triple")
     }
 
     // Fix #3: A cell JSON with an unrecognised ageBand must throw rather than

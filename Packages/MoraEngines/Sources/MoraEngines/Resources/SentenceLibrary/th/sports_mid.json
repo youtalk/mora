@@ -1,0 +1,358 @@
+{
+  "phoneme": "th",
+  "phonemeIPA": "θ",
+  "graphemeLetters": "th",
+  "interest": "sports",
+  "ageBand": "mid",
+  "sentences": [
+    {
+      "text": "Thad and Theo had a thin marathon on the path.",
+      "targetCount": 6,
+      "targetInitialContentWords": 3,
+      "interestWords": ["marathon"],
+      "words": [
+        { "surface": "Thad",     "graphemes": ["th","a","d"],                       "phonemes": ["θ","æ","d"] },
+        { "surface": "and",      "graphemes": ["a","n","d"],                        "phonemes": ["æ","n","d"] },
+        { "surface": "Theo",     "graphemes": ["th","e","o"],                       "phonemes": ["θ","i","oʊ"] },
+        { "surface": "had",      "graphemes": ["h","a","d"],                        "phonemes": ["h","æ","d"] },
+        { "surface": "a",        "graphemes": ["a"],                                "phonemes": ["ə"] },
+        { "surface": "thin",     "graphemes": ["th","i","n"],                       "phonemes": ["θ","ɪ","n"] },
+        { "surface": "marathon", "graphemes": ["m","a","r","a","th","o","n"],      "phonemes": ["m","æ","r","ə","θ","ə","n"] },
+        { "surface": "on",       "graphemes": ["o","n"],                            "phonemes": ["ɒ","n"] },
+        { "surface": "the",      "graphemes": ["th","e"],                           "phonemes": ["ð","ə"] },
+        { "surface": "path",     "graphemes": ["p","a","th"],                       "phonemes": ["p","æ","θ"] }
+      ]
+    },
+    {
+      "text": "Theo got a thin bath and Thad got the gym.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["bath", "gym"],
+      "words": [
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "bath", "graphemes": ["b","a","th"],     "phonemes": ["b","æ","θ"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
+        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+        { "surface": "gym",  "graphemes": ["g","y","m"],      "phonemes": ["dʒ","ɪ","m"] }
+      ]
+    },
+    {
+      "text": "A thin marathon met Thad and Theo at the path.",
+      "targetCount": 6,
+      "targetInitialContentWords": 3,
+      "interestWords": ["marathon"],
+      "words": [
+        { "surface": "A",        "graphemes": ["a"],                                "phonemes": ["ə"] },
+        { "surface": "thin",     "graphemes": ["th","i","n"],                       "phonemes": ["θ","ɪ","n"] },
+        { "surface": "marathon", "graphemes": ["m","a","r","a","th","o","n"],      "phonemes": ["m","æ","r","ə","θ","ə","n"] },
+        { "surface": "met",      "graphemes": ["m","e","t"],                        "phonemes": ["m","ɛ","t"] },
+        { "surface": "Thad",     "graphemes": ["th","a","d"],                       "phonemes": ["θ","æ","d"] },
+        { "surface": "and",      "graphemes": ["a","n","d"],                        "phonemes": ["æ","n","d"] },
+        { "surface": "Theo",     "graphemes": ["th","e","o"],                       "phonemes": ["θ","i","oʊ"] },
+        { "surface": "at",       "graphemes": ["a","t"],                            "phonemes": ["æ","t"] },
+        { "surface": "the",      "graphemes": ["th","e"],                           "phonemes": ["ð","ə"] },
+        { "surface": "path",     "graphemes": ["p","a","th"],                       "phonemes": ["p","æ","θ"] }
+      ]
+    },
+    {
+      "text": "Thad and Theo ran a thin marathon at the gym.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["marathon", "gym"],
+      "words": [
+        { "surface": "Thad",     "graphemes": ["th","a","d"],                       "phonemes": ["θ","æ","d"] },
+        { "surface": "and",      "graphemes": ["a","n","d"],                        "phonemes": ["æ","n","d"] },
+        { "surface": "Theo",     "graphemes": ["th","e","o"],                       "phonemes": ["θ","i","oʊ"] },
+        { "surface": "ran",      "graphemes": ["r","a","n"],                        "phonemes": ["r","æ","n"] },
+        { "surface": "a",        "graphemes": ["a"],                                "phonemes": ["ə"] },
+        { "surface": "thin",     "graphemes": ["th","i","n"],                       "phonemes": ["θ","ɪ","n"] },
+        { "surface": "marathon", "graphemes": ["m","a","r","a","th","o","n"],      "phonemes": ["m","æ","r","ə","θ","ə","n"] },
+        { "surface": "at",       "graphemes": ["a","t"],                            "phonemes": ["æ","t"] },
+        { "surface": "the",      "graphemes": ["th","e"],                           "phonemes": ["ð","ə"] },
+        { "surface": "gym",      "graphemes": ["g","y","m"],                        "phonemes": ["dʒ","ɪ","m"] }
+      ]
+    },
+    {
+      "text": "Theo and Thad had a thin bath with Beth.",
+      "targetCount": 6,
+      "targetInitialContentWords": 3,
+      "interestWords": ["bath"],
+      "words": [
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],      "phonemes": ["h","æ","d"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "bath", "graphemes": ["b","a","th"],     "phonemes": ["b","æ","θ"] },
+        { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Beth", "graphemes": ["b","e","th"],     "phonemes": ["b","ɛ","θ"] }
+      ]
+    },
+    {
+      "text": "A swift thin marathon ran past Thad with Theo.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["marathon"],
+      "words": [
+        { "surface": "A",        "graphemes": ["a"],                                "phonemes": ["ə"] },
+        { "surface": "swift",    "graphemes": ["s","w","i","f","t"],                "phonemes": ["s","w","ɪ","f","t"] },
+        { "surface": "thin",     "graphemes": ["th","i","n"],                       "phonemes": ["θ","ɪ","n"] },
+        { "surface": "marathon", "graphemes": ["m","a","r","a","th","o","n"],      "phonemes": ["m","æ","r","ə","θ","ə","n"] },
+        { "surface": "ran",      "graphemes": ["r","a","n"],                        "phonemes": ["r","æ","n"] },
+        { "surface": "past",     "graphemes": ["p","a","s","t"],                    "phonemes": ["p","æ","s","t"] },
+        { "surface": "Thad",     "graphemes": ["th","a","d"],                       "phonemes": ["θ","æ","d"] },
+        { "surface": "with",     "graphemes": ["w","i","th"],                       "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Theo",     "graphemes": ["th","e","o"],                       "phonemes": ["θ","i","oʊ"] }
+      ]
+    },
+    {
+      "text": "Thad and Theo set a thin bat at the gym.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["bat", "gym"],
+      "words": [
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "set",  "graphemes": ["s","e","t"],      "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "bat",  "graphemes": ["b","a","t"],      "phonemes": ["b","æ","t"] },
+        { "surface": "at",   "graphemes": ["a","t"],          "phonemes": ["æ","t"] },
+        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+        { "surface": "gym",  "graphemes": ["g","y","m"],      "phonemes": ["dʒ","ɪ","m"] }
+      ]
+    },
+    {
+      "text": "A thin bath sat with Thad, Theo, and Seth.",
+      "targetCount": 6,
+      "targetInitialContentWords": 3,
+      "interestWords": ["bath"],
+      "words": [
+        { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "bath", "graphemes": ["b","a","th"],     "phonemes": ["b","æ","θ"] },
+        { "surface": "sat",  "graphemes": ["s","a","t"],      "phonemes": ["s","æ","t"] },
+        { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Seth", "graphemes": ["s","e","th"],     "phonemes": ["s","ɛ","θ"] }
+      ]
+    },
+    {
+      "text": "Theo got a thin pass and Thad got the bat.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["pass", "bat"],
+      "words": [
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "pass", "graphemes": ["p","a","s","s"],  "phonemes": ["p","æ","s","s"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
+        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+        { "surface": "bat",  "graphemes": ["b","a","t"],      "phonemes": ["b","æ","t"] }
+      ]
+    },
+    {
+      "text": "Thad let Theo dash a thin lap on the path.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["dash", "lap"],
+      "words": [
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "let",  "graphemes": ["l","e","t"],      "phonemes": ["l","ɛ","t"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "dash", "graphemes": ["d","a","sh"],     "phonemes": ["d","æ","ʃ"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "lap",  "graphemes": ["l","a","p"],      "phonemes": ["l","æ","p"] },
+        { "surface": "on",   "graphemes": ["o","n"],          "phonemes": ["ɒ","n"] },
+        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+        { "surface": "path", "graphemes": ["p","a","th"],     "phonemes": ["p","æ","θ"] }
+      ]
+    },
+    {
+      "text": "A thin gym met Thad, Theo, and Beth.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["gym"],
+      "words": [
+        { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "gym",  "graphemes": ["g","y","m"],      "phonemes": ["dʒ","ɪ","m"] },
+        { "surface": "met",  "graphemes": ["m","e","t"],      "phonemes": ["m","ɛ","t"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Beth", "graphemes": ["b","e","th"],     "phonemes": ["b","ɛ","θ"] }
+      ]
+    },
+    {
+      "text": "Thad and Theo had a thin marathon with Beth.",
+      "targetCount": 6,
+      "targetInitialContentWords": 3,
+      "interestWords": ["marathon"],
+      "words": [
+        { "surface": "Thad",     "graphemes": ["th","a","d"],                       "phonemes": ["θ","æ","d"] },
+        { "surface": "and",      "graphemes": ["a","n","d"],                        "phonemes": ["æ","n","d"] },
+        { "surface": "Theo",     "graphemes": ["th","e","o"],                       "phonemes": ["θ","i","oʊ"] },
+        { "surface": "had",      "graphemes": ["h","a","d"],                        "phonemes": ["h","æ","d"] },
+        { "surface": "a",        "graphemes": ["a"],                                "phonemes": ["ə"] },
+        { "surface": "thin",     "graphemes": ["th","i","n"],                       "phonemes": ["θ","ɪ","n"] },
+        { "surface": "marathon", "graphemes": ["m","a","r","a","th","o","n"],      "phonemes": ["m","æ","r","ə","θ","ə","n"] },
+        { "surface": "with",     "graphemes": ["w","i","th"],                       "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Beth",     "graphemes": ["b","e","th"],                       "phonemes": ["b","ɛ","θ"] }
+      ]
+    },
+    {
+      "text": "A swift thin bath sat with Thad and Theo.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["bath"],
+      "words": [
+        { "surface": "A",     "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "swift", "graphemes": ["s","w","i","f","t"],  "phonemes": ["s","w","ɪ","f","t"] },
+        { "surface": "thin",  "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "bath",  "graphemes": ["b","a","th"],         "phonemes": ["b","æ","θ"] },
+        { "surface": "sat",   "graphemes": ["s","a","t"],          "phonemes": ["s","æ","t"] },
+        { "surface": "with",  "graphemes": ["w","i","th"],         "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Thad",  "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Theo",  "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] }
+      ]
+    },
+    {
+      "text": "Theo and Thad set a thin pass at the path.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["pass"],
+      "words": [
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "set",  "graphemes": ["s","e","t"],      "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "pass", "graphemes": ["p","a","s","s"],  "phonemes": ["p","æ","s","s"] },
+        { "surface": "at",   "graphemes": ["a","t"],          "phonemes": ["æ","t"] },
+        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+        { "surface": "path", "graphemes": ["p","a","th"],     "phonemes": ["p","æ","θ"] }
+      ]
+    },
+    {
+      "text": "Thad got a thin pass and Theo got the bath.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["pass", "bath"],
+      "words": [
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "pass", "graphemes": ["p","a","s","s"],  "phonemes": ["p","æ","s","s"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
+        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+        { "surface": "bath", "graphemes": ["b","a","th"],     "phonemes": ["b","æ","θ"] }
+      ]
+    },
+    {
+      "text": "A thin lap ran with Thad and Theo.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["lap"],
+      "words": [
+        { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "lap",  "graphemes": ["l","a","p"],      "phonemes": ["l","æ","p"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],      "phonemes": ["r","æ","n"] },
+        { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] }
+      ]
+    },
+    {
+      "text": "Thad and Theo dashed a thin lap on the path.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["lap"],
+      "words": [
+        { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Theo",   "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
+        { "surface": "dashed", "graphemes": ["d","a","sh","e","d"], "phonemes": ["d","æ","ʃ","ɛ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "lap",    "graphemes": ["l","a","p"],          "phonemes": ["l","æ","p"] },
+        { "surface": "on",     "graphemes": ["o","n"],              "phonemes": ["ɒ","n"] },
+        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "path",   "graphemes": ["p","a","th"],         "phonemes": ["p","æ","θ"] }
+      ]
+    },
+    {
+      "text": "Theo let Thad swim a thin lap with Beth.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["swim", "lap"],
+      "words": [
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "let",  "graphemes": ["l","e","t"],      "phonemes": ["l","ɛ","t"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "swim", "graphemes": ["s","w","i","m"],  "phonemes": ["s","w","ɪ","m"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "lap",  "graphemes": ["l","a","p"],      "phonemes": ["l","æ","p"] },
+        { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Beth", "graphemes": ["b","e","th"],     "phonemes": ["b","ɛ","θ"] }
+      ]
+    },
+    {
+      "text": "A thin pass hid with Thad, Theo, and Seth.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["pass"],
+      "words": [
+        { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "pass", "graphemes": ["p","a","s","s"],  "phonemes": ["p","æ","s","s"] },
+        { "surface": "hid",  "graphemes": ["h","i","d"],      "phonemes": ["h","ɪ","d"] },
+        { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Seth", "graphemes": ["s","e","th"],     "phonemes": ["s","ɛ","θ"] }
+      ]
+    },
+    {
+      "text": "Thad and Theo had a thin gym at the shed.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["gym"],
+      "words": [
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],      "phonemes": ["h","æ","d"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "gym",  "graphemes": ["g","y","m"],      "phonemes": ["dʒ","ɪ","m"] },
+        { "surface": "at",   "graphemes": ["a","t"],          "phonemes": ["æ","t"] },
+        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+        { "surface": "shed", "graphemes": ["sh","e","d"],     "phonemes": ["ʃ","ɛ","d"] }
+      ]
+    }
+  ]
+}
