@@ -219,19 +219,22 @@ public struct SessionContainerView: View {
         taughtGraphemes: Set<Grapheme>,
         ageYears: Int,
         interests: [String],
+        dayInWeek: Int = 5,
         count: Int
     ) async throws -> [DecodeSentence] {
         let primary = await library.sentences(
             target: skillCode,
             interests: interests,
             ageYears: ageYears,
+            dayInWeek: dayInWeek,
             excluding: [],
             count: count
         )
         if primary.count >= count { return primary }
 
-        // Fallback: per-week hand-authored JSON. Bundle/decode failures
-        // propagate so bootstrap's `do/catch` sets `bootError`.
+        // Fallback: per-week hand-authored JSON has no `byDay` variants — every
+        // day reads as the full sentence regardless of `dayInWeek`. Bundle/decode
+        // failures propagate so bootstrap's `do/catch` sets `bootError`.
         let provider = try ScriptedContentProvider.bundled(for: skillCode)
         let request = ContentRequest(
             target: targetGrapheme,
@@ -446,6 +449,10 @@ public struct SessionContainerView: View {
             let interests = profile?.interests ?? []
             let ageYears = profile?.ageYears ?? 8
 
+            // Day-in-week threads from the active encounter (sessionCompletionCount
+            // is 0..4 → Day 1..5). Clamp defensively; a stale or migrated value
+            // outside this range still yields a usable session.
+            let dayInWeek = max(1, min(5, resolution.encounter.sessionCompletionCount + 1))
             let library = try SentenceLibrary()
             let sentences = try await Self.resolveDecodeSentences(
                 library: library,
@@ -454,6 +461,7 @@ public struct SessionContainerView: View {
                 taughtGraphemes: taught,
                 ageYears: ageYears,
                 interests: interests,
+                dayInWeek: dayInWeek,
                 count: 3
             )
 
