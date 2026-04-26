@@ -39,13 +39,23 @@ public struct YokaiLayerView: View {
                     .padding(.top, 76)
                 }
 
-                if orchestrator.activeCutscene != nil {
+                if orchestrator.activeCutscene != nil,
+                    orchestrator.activeCutscene?.isMondayIntro != true
+                {
                     YokaiCutsceneOverlay(orchestrator: orchestrator, speech: speech)
                         .transition(reduceMotion ? .identity : .opacity)
                 }
             }
         }
         .animation(reduceMotion ? nil : .easeInOut(duration: 0.25), value: orchestrator.activeCutscene)
-        .allowsHitTesting(orchestrator.currentYokai != nil && orchestrator.activeCutscene != nil)
+        // Hit-testing is enabled only for cutscenes the layer actually
+        // renders. During `.mondayIntro` the layer is empty, and enabling
+        // hit-testing here would let an empty ZStack absorb taps meant
+        // for `WeeklyIntroView` (mounted by `SessionContainerView`).
+        .allowsHitTesting(
+            orchestrator.currentYokai != nil
+                && orchestrator.activeCutscene != nil
+                && orchestrator.activeCutscene?.isMondayIntro != true
+        )
     }
 }

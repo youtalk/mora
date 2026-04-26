@@ -14,7 +14,7 @@ import UIKit
 @MainActor
 final class YokaiCutsceneOverlayMondayIntroTests: XCTestCase {
     #if canImport(UIKit)
-    func testMondayIntroRendersNothing() throws {
+    func testMondayIntroRendersNothing() async throws {
         let container = try MoraModelContainer.inMemory()
         let ctx = ModelContext(container)
         let store = try BundledYokaiStore()
@@ -28,32 +28,44 @@ final class YokaiCutsceneOverlayMondayIntroTests: XCTestCase {
                 JapaneseL1Profile().uiStrings(forAgeYears: 8)
             )
 
+        // Mount in a real UIWindow so SwiftUI's lifecycle (.task / layout)
+        // actually runs; a detached UIHostingController does not always
+        // deliver these.
+        let window = UIWindow(frame: UIScreen.main.bounds)
         let host = UIHostingController(rootView: overlay)
-        host.loadViewIfNeeded()
+        window.rootViewController = host
+        window.makeKeyAndVisible()
         host.view.layoutIfNeeded()
+        try await Task.sleep(for: .milliseconds(50))
 
-        // The overlay's body is a ZStack with a black background by default.
-        // For .mondayIntro we want it to publish *no* yokai content. We
-        // assert this by checking that the rendered view tree contains no
-        // text node carrying the greet subtitle (which would only be
-        // produced by the simpleStack arm).
-        let greetText = orch.currentYokai?.voice.clips[.greet] ?? "<unset>"
-        XCTAssertFalse(
-            host.view.recursiveDescription().contains(greetText),
-            "Monday intro overlay must not render the greet subtitle"
+        // For `.mondayIntro` the overlay's body collapses to an empty
+        // ZStack — no Color.black tint and no content. Verify by walking
+        // the rendered UIView tree and asserting no descendant carries
+        // the cutscene-content accessibility identifier (which marks
+        // the simpleStack and fridayClimax wrappers).
+        let hasContent = host.view.containsAccessibilityIdentifier(
+            YokaiCutsceneOverlay.contentIdentifier
         )
+        XCTAssertFalse(
+            hasContent,
+            "Monday intro overlay must not render any cutscene content"
+        )
+
+        window.isHidden = true
     }
 
-    func testFridayClimaxStillRenders() throws {
+    func testFridayClimaxStillRenders() async throws {
         let container = try MoraModelContainer.inMemory()
         let ctx = ModelContext(container)
         let store = try BundledYokaiStore()
         let orch = YokaiOrchestrator(store: store, modelContext: ctx)
         try orch.startWeek(yokaiID: "sh", weekStart: Date())
-        // Force-set fridayClimax via a public surface: nudge friendship to
-        // 100% then run a Friday final-trial correct. This is the same
-        // path the production session uses, kept here so the test does not
-        // depend on internal mutation.
+        // Drive the orchestrator to `.fridayClimax` through its public
+        // surface: begin a Friday session with a single planned trial,
+        // then record that trial correct. The friendship floor-boost
+        // fills the gauge to 100% on the final trial, which fires
+        // `finalizeFridayIfNeeded()` and sets `activeCutscene =
+        // .fridayClimax`.
         orch.beginFridaySession(trialsPlanned: 1)
         orch.recordFridayFinalTrial(correct: true)
 
@@ -67,24 +79,41 @@ final class YokaiCutsceneOverlayMondayIntroTests: XCTestCase {
                 JapaneseL1Profile().uiStrings(forAgeYears: 8)
             )
 
+        let window = UIWindow(frame: UIScreen.main.bounds)
         let host = UIHostingController(rootView: overlay)
-        host.loadViewIfNeeded()
+        window.rootViewController = host
+        window.makeKeyAndVisible()
         host.view.layoutIfNeeded()
+        try await Task.sleep(for: .milliseconds(50))
 
-        // We don't assert specific subtitle text here (the climax view
-        // staggers its phases), only that the host view has positive
-        // content size — i.e., the cutscene is not empty.
-        XCTAssertGreaterThan(host.view.bounds.width, 0)
+        // The climax stack carries the cutscene-content accessibility
+        // identifier. Asserting on its presence is meaningful coverage
+        // even though the climax view staggers in over multiple phases
+        // — the wrapper VStack mounts immediately at phase 0.
+        let hasContent = host.view.containsAccessibilityIdentifier(
+            YokaiCutsceneOverlay.contentIdentifier
+        )
+        XCTAssertTrue(
+            hasContent,
+            "Friday climax overlay must render its cutscene content"
+        )
+
+        window.isHidden = true
     }
     #endif
 }
 
 #if canImport(UIKit)
-private extension UIView {
-    func recursiveDescription() -> String {
-        let me = String(describing: self)
-        let kids = subviews.map { $0.recursiveDescription() }.joined(separator: "\n")
-        return me + "\n" + kids
+extension UIView {
+    /// Recursively walks the receiver and its descendants looking for a
+    /// view that carries the given accessibility identifier. SwiftUI's
+    /// `accessibilityIdentifier(_:)` modifier surfaces through this
+    /// property on the backing UIKit view, so this is a reliable test
+    /// seam — unlike `String(describing:)` of `UIView`, which does not
+    /// include rendered text or modifier metadata.
+    fileprivate func containsAccessibilityIdentifier(_ identifier: String) -> Bool {
+        if accessibilityIdentifier == identifier { return true }
+        return subviews.contains { $0.containsAccessibilityIdentifier(identifier) }
     }
 }
 #endif

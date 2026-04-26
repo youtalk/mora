@@ -110,6 +110,12 @@ public struct WeeklyIntroView: View {
         }
         .onDisappear {
             player.stop()
+            // Clear the test-hook closures so a stale reference can't
+            // strong-capture this view's state past unmount and so a
+            // subsequent test using the same hook instance does not
+            // accidentally fire actions on a no-longer-mounted view.
+            testHook?.tapReplay = nil
+            testHook?.tapNext = nil
         }
     }
 

@@ -27,22 +27,34 @@ public struct YokaiCutsceneOverlay: View {
 
     public var body: some View {
         ZStack {
-            Color.black.opacity(bgOpacity).ignoresSafeArea()
-            if let yokai = orchestrator.currentYokai {
+            // The full-screen black tint is part of the cutscene treatment
+            // and must NOT render during `.mondayIntro` — `WeeklyIntroView`
+            // owns that case (via `SessionContainerView`'s `.warmup` gate)
+            // and would otherwise be dimmed by the overlay sitting on top.
+            // Keeping the tint inside the same conditional as the content
+            // means the overlay collapses to an empty `ZStack` for Monday
+            // intro, with no visible footprint and no hit-testing surface.
+            if let yokai = orchestrator.currentYokai,
+                orchestrator.activeCutscene?.isMondayIntro != true
+            {
+                Color.black.opacity(bgOpacity).ignoresSafeArea()
                 switch orchestrator.activeCutscene {
                 case .fridayClimax:
                     fridayClimax(for: yokai)
-                case .mondayIntro:
-                    // WeeklyIntroView (mounted by SessionContainerView for
-                    // the .warmup phase) owns this case; the overlay must
-                    // not double-render.
-                    EmptyView()
+                        .accessibilityIdentifier(Self.contentIdentifier)
                 default:
                     simpleStack(for: yokai)
+                        .accessibilityIdentifier(Self.contentIdentifier)
                 }
             }
         }
     }
+
+    /// Accessibility identifier on the cutscene's rendered content stack.
+    /// Tests use this to assert which arm of the body rendered (or that
+    /// nothing rendered at all) without depending on UIView description
+    /// strings, which do not surface SwiftUI text content.
+    static let contentIdentifier = "yokai-cutscene-overlay-content"
 
     @ViewBuilder
     private func fridayClimax(for yokai: YokaiDefinition) -> some View {

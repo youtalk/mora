@@ -48,6 +48,8 @@ final class WeeklyIntroViewAudioTests: XCTestCase {
     func testGreetClipStopsOnDisappear() async throws {
         let store = try BundledYokaiStore()
         let player = RecordingClipPlayer()
+        let firstPlay = expectation(description: "greet plays on appear")
+        player.firstPlayExpectation = firstPlay
         let yokai = try Self.makeYokaiOrchestrator(forID: "sh")
         let view = WeeklyIntroView(yokai: yokai, store: store, player: player)
 
@@ -62,12 +64,15 @@ final class WeeklyIntroViewAudioTests: XCTestCase {
         window.rootViewController = host
         window.makeKeyAndVisible()
 
-        try await Task.sleep(for: .milliseconds(200))
+        // Wait on `.task` rather than a fixed delay.
+        await fulfillment(of: [firstPlay], timeout: 2.0)
         XCTAssertEqual(player.playedURLs.count, 1)
         XCTAssertEqual(player.stopCallCount, 0)
 
         window.rootViewController = UIHostingController(rootView: Color.clear)
-        try await Task.sleep(for: .milliseconds(50))
+        // Poll for `.onDisappear` to deliver the `player.stop()` call
+        // rather than relying on a hard-coded sleep.
+        try await waitUntil(timeout: 2.0) { player.stopCallCount >= 1 }
 
         XCTAssertGreaterThanOrEqual(player.stopCallCount, 1)
         window.isHidden = true
@@ -124,6 +129,22 @@ final class WeeklyIntroViewAudioTests: XCTestCase {
         return orch
     }
 }
+
+#if canImport(UIKit)
+/// Polls `condition` every 25 ms until it returns `true` or `timeout`
+/// elapses. Avoids hard-coded sleeps that can flake on CI under load.
+@MainActor
+private func waitUntil(
+    timeout: TimeInterval,
+    condition: @MainActor () -> Bool
+) async throws {
+    let deadline = Date().addingTimeInterval(timeout)
+    while !condition() {
+        if Date() >= deadline { return }
+        try await Task.sleep(for: .milliseconds(25))
+    }
+}
+#endif
 
 @MainActor
 final class RecordingClipPlayer: YokaiClipPlayer {

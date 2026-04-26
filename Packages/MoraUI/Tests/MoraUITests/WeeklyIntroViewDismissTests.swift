@@ -37,8 +37,10 @@ final class WeeklyIntroViewDismissTests: XCTestCase {
         window.rootViewController = host
         window.makeKeyAndVisible()
 
-        // Wait for `.task` to publish the dismiss closure.
-        try await Task.sleep(for: .milliseconds(200))
+        // Wait for `.task` to publish the dismiss closure. Poll briefly
+        // rather than `Task.sleep` so the test does not depend on a
+        // fixed delay under CI load.
+        try await waitUntil(timeout: 2.0) { hook.tapNext != nil }
         XCTAssertNotNil(hook.tapNext, "WeeklyIntroView must publish its CTA action")
 
         hook.tapNext?()
@@ -58,3 +60,19 @@ private final class SilentClipPlayer: YokaiClipPlayer {
     func play(url: URL) -> Bool { true }
     func stop() {}
 }
+
+#if canImport(UIKit)
+/// Polls `condition` every 25 ms until it returns `true` or `timeout`
+/// elapses. Avoids hard-coded sleeps that can flake on CI under load.
+@MainActor
+private func waitUntil(
+    timeout: TimeInterval,
+    condition: @MainActor () -> Bool
+) async throws {
+    let deadline = Date().addingTimeInterval(timeout)
+    while !condition() {
+        if Date() >= deadline { return }
+        try await Task.sleep(for: .milliseconds(25))
+    }
+}
+#endif
