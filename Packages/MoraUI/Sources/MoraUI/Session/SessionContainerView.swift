@@ -230,6 +230,14 @@ public struct SessionContainerView: View {
     @MainActor
     private func bootstrap() async {
         Self.logBootstrap("bootstrap start")
+        // Yield once so the NavigationStack push animation can paint the
+        // "Loading session…" frame before bootstrap's synchronous
+        // main-actor work begins. Without this, `.task` runs at frame 0
+        // of the push transition and the heavy steps below (engine init,
+        // first-launch SwiftData saves, JSON decodes) hold the main
+        // thread for the entire animation, dropping frames and producing
+        // a visible stutter on the way into the session.
+        await Task.yield()
         #if os(iOS)
         // Decide mic vs tap before building the engine — if the user
         // denied either permission, skip engine construction entirely.
@@ -238,8 +246,20 @@ public struct SessionContainerView: View {
         Self.logBootstrap("permission state=\(permission)")
         switch permission {
         case .allGranted:
+            // `SFSpeechRecognizer(locale:)` lazy-loads the on-device
+            // recognition model on first use — empirically 100–500 ms
+            // on cold launch. Build the engine on a detached background
+            // task and `await` the result so the model load runs off
+            // the main actor and SwiftUI can keep rendering the push
+            // transition while it's in flight. `AppleSpeechEngine` is
+            // `@unchecked Sendable` and its init is non-isolated, so
+            // hopping the constructed instance back to @MainActor is
+            // safe for the `@State` assignment.
             do {
-                speechEngine = try AppleSpeechEngine()
+                let engine = try await Task.detached(priority: .userInitiated) {
+                    try AppleSpeechEngine()
+                }.value
+                speechEngine = engine
                 uiMode = .mic
                 Self.logBootstrap("AppleSpeechEngine init ok; uiMode=mic")
             } catch {
@@ -253,7 +273,15 @@ public struct SessionContainerView: View {
             uiMode = .tap
             Self.logBootstrap("uiMode=tap (permission \(permission))")
         }
-        speech = SpeechController(tts: AppleTTSEngine(l1Profile: JapaneseL1Profile()))
+        // Same rationale as the recognizer hoist above — keep the
+        // synthesizer construction off the main actor so the navigation
+        // push animation isn't competing with CoreAudio setup. The
+        // actor itself is `Sendable`, so the constructed reference
+        // hops back to @MainActor cleanly for the SpeechController wrap.
+        let tts = await Task.detached(priority: .userInitiated) {
+            AppleTTSEngine(l1Profile: JapaneseL1Profile())
+        }.value
+        speech = SpeechController(tts: tts)
         // Prime AVSpeechSynthesizer so the warmup phoneme isn't the
         // utterance that gets eaten by the cold-launch first-utterance
         // quirk: on a fresh audio session the very first short speak()
