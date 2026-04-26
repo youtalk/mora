@@ -113,14 +113,26 @@ public struct JapaneseL1Profile: L1Profile {
         }
     }
 
-    /// Cached formatter for `bestiaryBefriendedOn`. Forces a Gregorian
-    /// calendar so the kanji budget stays at grade1+grade2 (a Japanese
-    /// imperial-era style would emit `令和` etc., which is grade 4).
+    /// Cached formatter for `bestiaryBefriendedOn` at the advanced tier.
+    /// Forces a Gregorian calendar so the kanji budget stays at grade1+grade2
+    /// (a Japanese imperial-era style would emit `令和` etc., which is grade 4).
+    /// `dateStyle = .long` renders as `yyyy年M月d日` — uses `年` (G2), `月` (G2),
+    /// `日` (G1), all within the advanced budget.
     private static let bestiaryDateFormatter: DateFormatter = {
         let f = DateFormatter()
         f.locale = Locale(identifier: "ja_JP")
         f.calendar = Calendar(identifier: .gregorian)
         f.dateStyle = .long
+        return f
+    }()
+
+    /// Numeric date formatter used by the core and entry tiers, where the
+    /// kanji budget cannot accommodate `年` / `月`. Renders `yyyy/M/d`.
+    private static let bestiaryDateFormatterNumeric: DateFormatter = {
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "ja_JP")
+        f.calendar = Calendar(identifier: .gregorian)
+        f.dateFormat = "yyyy/M/d"
         return f
     }()
 
@@ -185,9 +197,10 @@ public struct JapaneseL1Profile: L1Profile {
         homeSentencesPill: { count in "\(count)文" },
         bestiaryLinkLabel: "ともだち ずかん",
         bestiaryPlayGreeting: "🔊 あいさつ",
-        // `日` G1 kept.
+        // `日` G1 kept. Numeric date formatter avoids `年` / `月` (G2, outside
+        // the core G1 budget).
         bestiaryBefriendedOn: { date in
-            "なかよくなった日 \(Self.bestiaryDateFormatter.string(from: date))"
+            "なかよくなった日 \(Self.bestiaryDateFormatterNumeric.string(from: date))"
         },
         homeRecapLink: "あそびかた",
         // `英` G2, `語` G2, `声` G2 → all-hira.
@@ -336,7 +349,7 @@ public struct JapaneseL1Profile: L1Profile {
         bestiaryPlayGreeting: "🔊 あいさつ",
         // `日` G1 → ひ
         bestiaryBefriendedOn: { date in
-            "なかよくなったひ \(Self.bestiaryDateFormatter.string(from: date))"
+            "なかよくなったひ \(Self.bestiaryDateFormatterNumeric.string(from: date))"
         },
         homeRecapLink: "あそびかた",
         voiceGateTitle: "えいごの こえを ダウンロードしてください",
@@ -521,8 +534,9 @@ public struct JapaneseL1Profile: L1Profile {
         coachingThVoicelessSubT: "したのさきをはのあいだにそっと出して、とめずに「thhh」。",
         coachingTSubThVoiceless: "したのさきを上のはのうらにぴたっとつけて、すぐはなして「t」。",
         coachingAeSubSchwa: "口をよこにひろげて、あごを下げて「æ」。",
+        // `寄` is G3 (outside the G1+G2 budget) → render as hiragana.
         categorySubstitutionBanner: { target, substitute in
-            "今の \(target) は \(substitute) に寄ってたよ"
+            "今の \(target) は \(substitute) によってたよ"
         },
         categoryDriftBanner: { target in
             "もう少し \(target) らしい音に近づけよう"
