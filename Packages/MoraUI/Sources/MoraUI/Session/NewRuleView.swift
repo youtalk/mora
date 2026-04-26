@@ -6,7 +6,6 @@ struct NewRuleView: View {
     @Environment(\.moraStrings) private var strings
     let orchestrator: SessionOrchestrator
     let speech: SpeechController?
-    let clipRouter: YokaiClipRouter?
 
     @State private var finishedIntro = false
     /// Tracks the most recent intro task spawned by the listen-again button
@@ -93,30 +92,13 @@ struct NewRuleView: View {
         }
     }
 
-    /// Plays the intro: TTS narrates "Two letters, one sound." and then the
-    /// three exemplar words play in the yokai's voice via bundled
-    /// `example_1` / `example_2` / `example_3` clips. Each exemplar falls
-    /// back to TTS when the corresponding clip URL is missing or the router
-    /// is absent (e.g. a session without an encountered yokai).
-    ///
-    /// Deliberately omits a TTS /ʃ/ lead-in — the learner already heard the
-    /// yokai's `phoneme.m4a` in warmup, the rule card displays the IPA on
-    /// screen, and synthesized single-fricative phonemes from compact voices
-    /// land as a clipped "shh" that distracts from the rule narration.
     @MainActor
     private func runIntro(speech: SpeechController) async {
         await speech.playAndAwait([.text("Two letters, one sound.", .slow)])
         if Task.isCancelled { return }
 
-        let clipKeys: [YokaiClipKey] = [.example1, .example2, .example3]
-        for (index, word) in exemplars.enumerated() {
+        for word in exemplars {
             if Task.isCancelled { return }
-            let key = index < clipKeys.count ? clipKeys[index] : nil
-            if let key, let clipRouter,
-                await clipRouter.playAndAwait(key)
-            {
-                continue
-            }
             await speech.playAndAwait([.text(word, .slow)])
         }
     }

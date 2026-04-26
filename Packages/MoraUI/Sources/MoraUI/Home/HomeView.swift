@@ -212,7 +212,7 @@ public struct HomeView: View {
     }
 
     private var heroFooter: some View {
-        VStack(spacing: MoraTheme.Space.sm) {
+        HStack(spacing: MoraTheme.Space.sm) {
             NavigationLink(value: "bestiary") {
                 Label(strings.bestiaryLinkLabel, systemImage: "book.closed.fill")
                     .font(MoraType.label())

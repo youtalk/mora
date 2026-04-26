@@ -156,9 +156,7 @@ public struct SessionContainerView: View {
             case .warmup:
                 WarmupView(orchestrator: orchestrator, speech: speech, clipRouter: clipRouter)
             case .newRule:
-                NewRuleView(
-                    orchestrator: orchestrator, speech: speech, clipRouter: clipRouter
-                )
+                NewRuleView(orchestrator: orchestrator, speech: speech)
             case .decoding:
                 decodingPhaseContent(orchestrator: orchestrator)
                     .modifier(
@@ -273,40 +271,6 @@ public struct SessionContainerView: View {
             .tint(.orange)
             .padding(.bottom, MoraTheme.Space.sm)
             #endif
-        }
-        // Keyed on (trialCount, tutorialVisible) so dismissing the
-        // first-time tutorial re-fires the task with the same trial id
-        // and the previously-suppressed example1 clip still plays.
-        .task(
-            id: TutorialAwareTrialKey(
-                trialCount: orchestrator.completedTrialCount,
-                tutorialVisible: showFirstTimeTutorial
-            )
-        ) {
-            // Suppress the yokai exemplar clip while the first-time
-            // decoding tutorial cover is up; otherwise the clip plays
-            // under the modal.
-            if showFirstTimeTutorial { return }
-            let idx = orchestrator.completedTrialCount
-            let clip: YokaiClipKey?
-            switch idx {
-            case 0: clip = .example1
-            case 3: clip = .example2
-            case 7: clip = .example3
-            default: clip = nil
-            }
-            guard let clip else { return }
-            // Wait for the in-trial Apple TTS speakTarget() to finish before
-            // triggering the yokai exemplar; the single-word utterance reliably
-            // finishes inside this 1.5s window. If SwiftUI cancels the task
-            // (phase change or trial-id update) the throwing sleep exits
-            // here so the clip never fires on a stale id.
-            do {
-                try await Task.sleep(for: .milliseconds(1500))
-            } catch {
-                return
-            }
-            await clipRouter?.play(clip)
         }
         .onChange(of: showFirstTimeTutorial) { _, isShowing in
             // The DecodeBoardView is already in the hierarchy when the
@@ -631,15 +595,6 @@ public struct SessionContainerView: View {
             persistLog.error("SessionSummary save failed: \(error)")
         }
     }
-}
-
-/// Composite id for the decoding-phase yokai-clip task. Re-fires the
-/// task on either a trial advance or a transition out of the first-time
-/// tutorial cover, so the example clip suppressed during the cover plays
-/// once the cover dismisses on the same trial.
-private struct TutorialAwareTrialKey: Hashable {
-    let trialCount: Int
-    let tutorialVisible: Bool
 }
 
 private struct FirstTimeDecodingTutorialPresenter: ViewModifier {
