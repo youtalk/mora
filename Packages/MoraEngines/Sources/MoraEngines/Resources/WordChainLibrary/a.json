@@ -1,0 +1,33 @@
+{
+  "target": "a",
+  "warmup": [
+    {
+      "head": { "surface": "pot", "graphemes": ["p", "o", "t"] },
+      "successors": [
+        { "surface": "pet", "graphemes": ["p", "e", "t"] },
+        { "surface": "pen", "graphemes": ["p", "e", "n"] },
+        { "surface": "pin", "graphemes": ["p", "i", "n"] }
+      ]
+    }
+  ],
+  "targetIntro": [
+    {
+      "head": { "surface": "cat", "graphemes": ["c", "a", "t"] },
+      "successors": [
+        { "surface": "cap", "graphemes": ["c", "a", "p"] },
+        { "surface": "can", "graphemes": ["c", "a", "n"] },
+        { "surface": "cab", "graphemes": ["c", "a", "b"] }
+      ]
+    }
+  ],
+  "mixedApplication": [
+    {
+      "head": { "surface": "math", "graphemes": ["m", "a", "th"] },
+      "successors": [
+        { "surface": "mash", "graphemes": ["m", "a", "sh"] },
+        { "surface": "bash", "graphemes": ["b", "a", "sh"] },
+        { "surface": "rash", "graphemes": ["r", "a", "sh"] }
+      ]
+    }
+  ]
+}

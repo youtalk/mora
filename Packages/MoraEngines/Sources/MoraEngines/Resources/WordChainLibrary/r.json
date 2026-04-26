@@ -1,0 +1,33 @@
+{
+  "target": "r",
+  "warmup": [
+    {
+      "head": { "surface": "bag", "graphemes": ["b", "a", "g"] },
+      "successors": [
+        { "surface": "big", "graphemes": ["b", "i", "g"] },
+        { "surface": "bug", "graphemes": ["b", "u", "g"] },
+        { "surface": "bun", "graphemes": ["b", "u", "n"] }
+      ]
+    }
+  ],
+  "targetIntro": [
+    {
+      "head": { "surface": "rib", "graphemes": ["r", "i", "b"] },
+      "successors": [
+        { "surface": "rim", "graphemes": ["r", "i", "m"] },
+        { "surface": "ram", "graphemes": ["r", "a", "m"] },
+        { "surface": "rat", "graphemes": ["r", "a", "t"] }
+      ]
+    }
+  ],
+  "mixedApplication": [
+    {
+      "head": { "surface": "rush", "graphemes": ["r", "u", "sh"] },
+      "successors": [
+        { "surface": "rash", "graphemes": ["r", "a", "sh"] },
+        { "surface": "bash", "graphemes": ["b", "a", "sh"] },
+        { "surface": "bath", "graphemes": ["b", "a", "th"] }
+      ]
+    }
+  ]
+}
