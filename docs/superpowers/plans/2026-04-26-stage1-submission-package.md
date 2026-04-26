@@ -473,7 +473,7 @@ open Mora.xcodeproj</pre>
 grep -c "REPLACE_WITH_YOUTUBE_ID" /Users/yutaka.kondo/src/mora/docs/index.html
 ```
 
-Expected: `1` (one placeholder, replaced in Task C7).
+Expected: `1` (one placeholder, replaced in Task C6).
 
 ### Task A12: [Cl] Stage landing-page commit
 
