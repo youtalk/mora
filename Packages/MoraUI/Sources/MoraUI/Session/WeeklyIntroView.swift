@@ -10,6 +10,7 @@ import SwiftUI
 @MainActor
 final class WeeklyIntroViewTestHook {
     var tapReplay: (() -> Void)?
+    var tapNext: (() -> Void)?
 }
 
 private struct WeeklyIntroTestHookKey: EnvironmentKey {
@@ -88,13 +89,14 @@ public struct WeeklyIntroView: View {
 
             Spacer()
 
-            HeroCTA(title: strings.yokaiIntroNext, action: {})
+            HeroCTA(title: strings.yokaiIntroNext, action: dismiss)
                 .padding(.bottom, MoraTheme.Space.xl)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .task {
             playGreet()
             testHook?.tapReplay = { Task { @MainActor in self.replayGreet() } }
+            testHook?.tapNext = { Task { @MainActor in self.dismiss() } }
             if reduceMotion {
                 portraitScale = 1.0
             } else {
@@ -137,6 +139,11 @@ public struct WeeklyIntroView: View {
         guard let url = greetClipURL else { return }
         player.stop()
         _ = player.play(url: url)
+    }
+
+    private func dismiss() {
+        player.stop()
+        yokai.dismissCutscene()
     }
 }
 
