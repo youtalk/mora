@@ -60,7 +60,29 @@ public actor SentenceLibrary {
         excluding seenSurfaces: Set<String> = [],
         count: Int
     ) async -> [DecodeSentence] {
-        fatalError("SentenceLibrary.sentences — selector wiring is Track B-3")
+        guard let directory = Self.directoryForSkillCode[target] else {
+            return []
+        }
+        let band = AgeBand.from(years: ageYears)
+
+        // Empty interests → use all six (per spec § 6.6 step 3).
+        let interestKeys = interests.isEmpty ? Self.allInterestKeys : interests
+
+        // Look up every cell that exists for the resolved (directory, band)
+        // across the learner's interests; missing cells are skipped silently.
+        let cellsForTarget: [Cell] = interestKeys.compactMap { interest in
+            cells[CellKey(phoneme: directory, interest: interest, ageBand: band)]
+        }
+        if cellsForTarget.isEmpty { return [] }
+
+        let pool = cellsForTarget.flatMap(\.sentences)
+        let filtered = pool.filter { !seenSurfaces.contains($0.text) }
+
+        // Spec § 6.6 step 5/6: prefer the freshness-respecting pool; relax if
+        // the filter starved the pool below `count`.
+        let candidates = filtered.count >= count ? filtered : pool
+
+        return Array(candidates.shuffled().prefix(count))
     }
 }
 
