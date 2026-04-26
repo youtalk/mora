@@ -210,7 +210,7 @@
       "interestWords": ["orbit"],
       "words": [
         { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
-        { "surface": "saw",    "graphemes": ["s","a","w"],          "phonemes": ["s","ɔ"] },
+        { "surface": "saw",    "graphemes": ["s","a","w"],          "phonemes": ["s","ɔ","w"] },
         { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "shimmer","graphemes": ["sh","i","m","m","e","r"], "phonemes": ["ʃ","ɪ","m","ə","r"] },
         { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },

@@ -7,8 +7,8 @@
   "sentences": [
     {
       "text": "Shen and Sharon had a shiny robot to shut.",
-      "targetCount": 5,
-      "targetInitialContentWords": 3,
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
       "interestWords": ["robot"],
       "words": [
         { "surface": "Shen",   "graphemes": ["sh","e","n"],          "phonemes": ["ʃ","ɛ","n"] },
@@ -24,7 +24,7 @@
     },
     {
       "text": "Shep fixed the shiny robot and the shed shut.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["robot"],
       "words": [
@@ -41,7 +41,7 @@
     },
     {
       "text": "Sharon had a sharp shiny robot in the shed.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["robot"],
       "words": [
@@ -58,7 +58,7 @@
     },
     {
       "text": "Shen got a shiny bot and set the shed shut.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["bot"],
       "words": [
@@ -76,7 +76,7 @@
     },
     {
       "text": "Shep shut the shed and fixed the shiny motor.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["motor"],
       "words": [
@@ -93,8 +93,8 @@
     },
     {
       "text": "Sharon and Shep shut a shiny robot signal.",
-      "targetCount": 5,
-      "targetInitialContentWords": 5,
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
       "interestWords": ["robot", "signal"],
       "words": [
         { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"],      "phonemes": ["ʃ","æ","r","ə","n"] },
@@ -179,8 +179,8 @@
     },
     {
       "text": "Shep and Sharon shut the shiny robot signal.",
-      "targetCount": 5,
-      "targetInitialContentWords": 5,
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
       "interestWords": ["robot", "signal"],
       "words": [
         { "surface": "Shep",   "graphemes": ["sh","e","p"],              "phonemes": ["ʃ","ɛ","p"] },
@@ -284,7 +284,7 @@
     },
     {
       "text": "Shen had a shiny robot and shut the sharp lever.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["robot", "lever"],
       "words": [
@@ -337,7 +337,7 @@
       ]
     },
     {
-      "text": "Shep had a shiny robot and sharp circuit in shed.",
+      "text": "Shep had a shy shiny robot and a sharp circuit.",
       "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["robot", "circuit"],
@@ -345,13 +345,13 @@
         { "surface": "Shep",    "graphemes": ["sh","e","p"],                "phonemes": ["ʃ","ɛ","p"] },
         { "surface": "had",     "graphemes": ["h","a","d"],                 "phonemes": ["h","æ","d"] },
         { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "shy",     "graphemes": ["sh","y"],                    "phonemes": ["ʃ","aɪ"] },
         { "surface": "shiny",   "graphemes": ["sh","i","n","y"],            "phonemes": ["ʃ","aɪ","n","i"] },
         { "surface": "robot",   "graphemes": ["r","o","b","o","t"],         "phonemes": ["r","o","b","ɒ","t"] },
         { "surface": "and",     "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
         { "surface": "sharp",   "graphemes": ["sh","a","r","p"],            "phonemes": ["ʃ","ɑ","r","p"] },
-        { "surface": "circuit", "graphemes": ["c","i","r","c","u","i","t"], "phonemes": ["s","ɜ","r","k","ɪ","t"] },
-        { "surface": "in",      "graphemes": ["i","n"],                     "phonemes": ["ɪ","n"] },
-        { "surface": "shed",    "graphemes": ["sh","e","d"],                "phonemes": ["ʃ","ɛ","d"] }
+        { "surface": "circuit", "graphemes": ["c","i","r","c","u","i","t"], "phonemes": ["s","ɜ","r","k","ɪ","t"] }
       ]
     }
   ]

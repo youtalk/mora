@@ -24,8 +24,8 @@
     },
     {
       "text": "Sharon washed a shiny sprint mat and Shep set it.",
-      "targetCount": 5,
-      "targetInitialContentWords": 4,
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
       "interestWords": ["sprint", "mat"],
       "words": [
         { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
@@ -115,7 +115,7 @@
     {
       "text": "A shy Shep dashed past a shiny javelin.",
       "targetCount": 4,
-      "targetInitialContentWords": 4,
+      "targetInitialContentWords": 3,
       "interestWords": ["javelin"],
       "words": [
         { "surface": "A",       "graphemes": ["a"],                        "phonemes": ["ə"] },
@@ -130,8 +130,8 @@
     },
     {
       "text": "Shep shut the shed and Sharon ran a sprint.",
-      "targetCount": 5,
-      "targetInitialContentWords": 5,
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
       "interestWords": ["sprint"],
       "words": [
         { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
@@ -148,7 +148,7 @@
     {
       "text": "Shen washed a shiny bat and Sharon set the net.",
       "targetCount": 4,
-      "targetInitialContentWords": 4,
+      "targetInitialContentWords": 3,
       "interestWords": ["bat", "net"],
       "words": [
         { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
@@ -165,8 +165,8 @@
     },
     {
       "text": "Sharon dashed past a sharp javelin and Shep ran.",
-      "targetCount": 5,
-      "targetInitialContentWords": 4,
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
       "interestWords": ["javelin"],
       "words": [
         { "surface": "Sharon",  "graphemes": ["sh","a","r","o","n"],       "phonemes": ["ʃ","æ","r","ə","n"] },
@@ -183,7 +183,7 @@
     {
       "text": "Shep rushed to the shed and Sharon washed a mat.",
       "targetCount": 5,
-      "targetInitialContentWords": 4,
+      "targetInitialContentWords": 3,
       "interestWords": ["mat"],
       "words": [
         { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
@@ -200,7 +200,7 @@
     },
     {
       "text": "Shen shut the shed and Shep ran a dash.",
-      "targetCount": 4,
+      "targetCount": 5,
       "targetInitialContentWords": 4,
       "interestWords": ["dash"],
       "words": [
@@ -218,7 +218,7 @@
     {
       "text": "Sharon washed the shiny gym kit and Shen ran.",
       "targetCount": 4,
-      "targetInitialContentWords": 4,
+      "targetInitialContentWords": 3,
       "interestWords": ["gym", "kit"],
       "words": [
         { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
@@ -269,8 +269,8 @@
     },
     {
       "text": "Sharon shut the shiny gym and Shep set a javelin.",
-      "targetCount": 5,
-      "targetInitialContentWords": 5,
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
       "interestWords": ["gym", "javelin"],
       "words": [
         { "surface": "Sharon",  "graphemes": ["sh","a","r","o","n"],       "phonemes": ["ʃ","æ","r","ə","n"] },
@@ -305,8 +305,8 @@
     },
     {
       "text": "Shen has a sharp shy javelin and Sharon ran.",
-      "targetCount": 5,
-      "targetInitialContentWords": 5,
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
       "interestWords": ["javelin"],
       "words": [
         { "surface": "Shen",    "graphemes": ["sh","e","n"],               "phonemes": ["ʃ","ɛ","n"] },
@@ -340,8 +340,8 @@
     },
     {
       "text": "Sharon rushed past a shiny net and Shep ran.",
-      "targetCount": 5,
-      "targetInitialContentWords": 4,
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
       "interestWords": ["net"],
       "words": [
         { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },

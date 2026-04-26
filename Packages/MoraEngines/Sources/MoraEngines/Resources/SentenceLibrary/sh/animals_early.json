@@ -24,8 +24,8 @@
     },
     {
       "text": "Shep has a shy shark and a fish.",
-      "targetCount": 5,
-      "targetInitialContentWords": 4,
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
       "interestWords": ["shark", "fish"],
       "words": [
         { "surface": "Shep",  "graphemes": ["sh","e","p"],     "phonemes": ["ʃ","ɛ","p"] },
@@ -40,7 +40,7 @@
     },
     {
       "text": "Sharon fed a shiny shark and a shrimp.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["shark", "shrimp"],
       "words": [
@@ -56,7 +56,7 @@
     },
     {
       "text": "Shen and Shep fed a shy pig in a shed.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["pig"],
       "words": [
@@ -74,8 +74,8 @@
     },
     {
       "text": "Shep had a shy dog and a shiny fish.",
-      "targetCount": 5,
-      "targetInitialContentWords": 4,
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
       "interestWords": ["dog", "fish"],
       "words": [
         { "surface": "Shep",  "graphemes": ["sh","e","p"],     "phonemes": ["ʃ","ɛ","p"] },
@@ -91,7 +91,7 @@
     },
     {
       "text": "Sharon has a shiny fish in a shell.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 3,
       "interestWords": ["fish"],
       "words": [
@@ -124,7 +124,7 @@
     },
     {
       "text": "Shep has a shiny shark in a shed.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["shark"],
       "words": [
@@ -140,8 +140,8 @@
     },
     {
       "text": "A shy shrimp and a shark hid in a shell.",
-      "targetCount": 5,
-      "targetInitialContentWords": 3,
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
       "interestWords": ["shrimp", "shark"],
       "words": [
         { "surface": "A",      "graphemes": ["a"],                  "phonemes": ["ə"] },
@@ -158,7 +158,7 @@
     },
     {
       "text": "Shen and Sharon fed a shy fox in a shed.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["fox"],
       "words": [
@@ -176,8 +176,8 @@
     },
     {
       "text": "Sharon and Shep fed a shiny pup in a shell.",
-      "targetCount": 5,
-      "targetInitialContentWords": 3,
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
       "interestWords": ["pup"],
       "words": [
         { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
@@ -194,8 +194,8 @@
     },
     {
       "text": "Shep had a shy ant and a shiny fish.",
-      "targetCount": 5,
-      "targetInitialContentWords": 4,
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
       "interestWords": ["ant", "fish"],
       "words": [
         { "surface": "Shep",  "graphemes": ["sh","e","p"],     "phonemes": ["ʃ","ɛ","p"] },
@@ -211,7 +211,7 @@
     },
     {
       "text": "Shen fed a shy cub and Sharon fed a fish.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 3,
       "interestWords": ["cub", "fish"],
       "words": [
@@ -229,8 +229,8 @@
     },
     {
       "text": "Shep saw a shiny shark swim in a shell.",
-      "targetCount": 5,
-      "targetInitialContentWords": 3,
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
       "interestWords": ["shark"],
       "words": [
         { "surface": "Shep",  "graphemes": ["sh","e","p"],     "phonemes": ["ʃ","ɛ","p"] },
@@ -246,7 +246,7 @@
     },
     {
       "text": "Shep and Shen saw a shy bat in a shed.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["bat"],
       "words": [
@@ -264,7 +264,7 @@
     },
     {
       "text": "Sharon has a shiny shell and a fish.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 3,
       "interestWords": ["fish"],
       "words": [
@@ -313,7 +313,7 @@
     },
     {
       "text": "Shen got a shiny shrimp and Shep got a hen.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["shrimp", "hen"],
       "words": [
@@ -331,7 +331,7 @@
     },
     {
       "text": "Shep had a shy rat and Sharon had a shrimp.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["rat", "shrimp"],
       "words": [

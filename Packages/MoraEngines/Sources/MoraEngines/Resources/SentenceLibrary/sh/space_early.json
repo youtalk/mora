@@ -8,7 +8,7 @@
     {
       "text": "Shen had a shiny ship and a shed.",
       "targetCount": 4,
-      "targetInitialContentWords": 3,
+      "targetInitialContentWords": 4,
       "interestWords": ["ship"],
       "words": [
         { "surface": "Shen",  "graphemes": ["sh","e","n"],     "phonemes": ["ʃ","ɛ","n"] },
@@ -23,7 +23,7 @@
     },
     {
       "text": "Sharon has a shiny ship and Shep has a star.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["ship", "star"],
       "words": [
@@ -175,8 +175,8 @@
     },
     {
       "text": "Shen washed a shiny ship at the shed.",
-      "targetCount": 4,
-      "targetInitialContentWords": 3,
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
       "interestWords": ["ship"],
       "words": [
         { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },

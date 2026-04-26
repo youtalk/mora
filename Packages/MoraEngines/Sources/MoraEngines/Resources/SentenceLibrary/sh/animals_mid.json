@@ -43,8 +43,8 @@
     },
     {
       "text": "Shen washed a shiny shark in the shed.",
-      "targetCount": 4,
-      "targetInitialContentWords": 3,
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
       "interestWords": ["shark"],
       "words": [
         { "surface": "Shen",   "graphemes": ["sh","e","n"],     "phonemes": ["ʃ","ɛ","n"] },
@@ -59,7 +59,7 @@
     },
     {
       "text": "Sharon and Shep saw a shy panda at the shed.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["panda"],
       "words": [
@@ -161,26 +161,26 @@
       ]
     },
     {
-      "text": "Shen rushed the shaggy donkey into a shed.",
+      "text": "Shen rushed the shaggy rabbit into a shed.",
       "targetCount": 4,
       "targetInitialContentWords": 3,
-      "interestWords": ["donkey"],
+      "interestWords": ["rabbit"],
       "words": [
         { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
         { "surface": "rushed", "graphemes": ["r","u","sh","e","d"], "phonemes": ["r","ʌ","ʃ","t"] },
         { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "shaggy", "graphemes": ["sh","a","g","g","y"], "phonemes": ["ʃ","æ","g","i"] },
-        { "surface": "donkey", "graphemes": ["d","o","n","k","e","y"], "phonemes": ["d","ɒ","ŋ","k","i"] },
+        { "surface": "rabbit", "graphemes": ["r","a","b","b","i","t"], "phonemes": ["r","æ","b","ɪ","t"] },
         { "surface": "into",   "graphemes": ["i","n","t","o"],      "phonemes": ["ɪ","n","t","u"] },
         { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
       ]
     },
     {
-      "text": "Shep and Shen saw a shy owl on a shelf.",
-      "targetCount": 5,
+      "text": "Shep and Shen saw a shy hen on a shelf.",
+      "targetCount": 4,
       "targetInitialContentWords": 4,
-      "interestWords": ["owl"],
+      "interestWords": ["hen"],
       "words": [
         { "surface": "Shep",  "graphemes": ["sh","e","p"],     "phonemes": ["ʃ","ɛ","p"] },
         { "surface": "and",   "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
@@ -188,7 +188,7 @@
         { "surface": "saw",   "graphemes": ["s","a","w"],      "phonemes": ["s","ɔ","w"] },
         { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
         { "surface": "shy",   "graphemes": ["sh","y"],         "phonemes": ["ʃ","aɪ"] },
-        { "surface": "owl",   "graphemes": ["o","w","l"],      "phonemes": ["aʊ","l"] },
+        { "surface": "hen",   "graphemes": ["h","e","n"],      "phonemes": ["h","ɛ","n"] },
         { "surface": "on",    "graphemes": ["o","n"],          "phonemes": ["ɒ","n"] },
         { "surface": "a",     "graphemes": ["a"],              "phonemes": ["ə"] },
         { "surface": "shelf", "graphemes": ["sh","e","l","f"], "phonemes": ["ʃ","ɛ","l","f"] }
@@ -196,8 +196,8 @@
     },
     {
       "text": "Sharon rushed to shut in a shy swan.",
-      "targetCount": 5,
-      "targetInitialContentWords": 4,
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
       "interestWords": ["swan"],
       "words": [
         { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
@@ -212,7 +212,7 @@
     },
     {
       "text": "Shep crushed a shell and Sharon crushed a shrimp.",
-      "targetCount": 5,
+      "targetCount": 6,
       "targetInitialContentWords": 4,
       "interestWords": ["shrimp"],
       "words": [
@@ -229,7 +229,7 @@
     },
     {
       "text": "Shen shut the shed and Shep washed the shaggy frog.",
-      "targetCount": 5,
+      "targetCount": 6,
       "targetInitialContentWords": 5,
       "interestWords": ["frog"],
       "words": [
@@ -248,7 +248,7 @@
     {
       "text": "A shiny shark rushed past a shrimp and a shell.",
       "targetCount": 5,
-      "targetInitialContentWords": 3,
+      "targetInitialContentWords": 4,
       "interestWords": ["shark", "shrimp"],
       "words": [
         { "surface": "A",      "graphemes": ["a"],                  "phonemes": ["ə"] },
@@ -265,8 +265,8 @@
     },
     {
       "text": "Sharon had a shaggy cat and Shep had a fish.",
-      "targetCount": 5,
-      "targetInitialContentWords": 4,
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
       "interestWords": ["cat", "fish"],
       "words": [
         { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
@@ -301,7 +301,7 @@
     },
     {
       "text": "Shen washed a shaggy panda and Sharon shut the shed.",
-      "targetCount": 5,
+      "targetCount": 6,
       "targetInitialContentWords": 5,
       "interestWords": ["panda"],
       "words": [

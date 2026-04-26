@@ -93,8 +93,8 @@
     },
     {
       "text": "Shep and Sharon saw a shiny raven and a shark.",
-      "targetCount": 5,
-      "targetInitialContentWords": 5,
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
       "interestWords": ["raven", "shark"],
       "words": [
         { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
@@ -111,8 +111,8 @@
     },
     {
       "text": "Shen washed the shaggy pony and Sharon washed a shrimp.",
-      "targetCount": 5,
-      "targetInitialContentWords": 5,
+      "targetCount": 6,
+      "targetInitialContentWords": 4,
       "interestWords": ["pony", "shrimp"],
       "words": [
         { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
@@ -165,8 +165,8 @@
     },
     {
       "text": "Shen shut the shed and sheltered a shiny shark.",
-      "targetCount": 5,
-      "targetInitialContentWords": 5,
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
       "interestWords": ["shark"],
       "words": [
         { "surface": "Shen",      "graphemes": ["sh","e","n"],             "phonemes": ["ʃ","ɛ","n"] },
@@ -216,10 +216,10 @@
       ]
     },
     {
-      "text": "Shep and Shen sheltered a shy donkey at the shed.",
+      "text": "Shep and Shen sheltered a shy lizard at the shed.",
       "targetCount": 5,
-      "targetInitialContentWords": 4,
-      "interestWords": ["donkey"],
+      "targetInitialContentWords": 5,
+      "interestWords": ["lizard"],
       "words": [
         { "surface": "Shep",      "graphemes": ["sh","e","p"],             "phonemes": ["ʃ","ɛ","p"] },
         { "surface": "and",       "graphemes": ["a","n","d"],              "phonemes": ["æ","n","d"] },
@@ -227,7 +227,7 @@
         { "surface": "sheltered", "graphemes": ["sh","e","l","t","e","r","e","d"], "phonemes": ["ʃ","ɛ","l","t","ə","r","d"] },
         { "surface": "a",         "graphemes": ["a"],                      "phonemes": ["ə"] },
         { "surface": "shy",       "graphemes": ["sh","y"],                 "phonemes": ["ʃ","aɪ"] },
-        { "surface": "donkey",    "graphemes": ["d","o","n","k","e","y"],  "phonemes": ["d","ɒ","ŋ","k","i"] },
+        { "surface": "lizard",    "graphemes": ["l","i","z","a","r","d"],  "phonemes": ["l","ɪ","z","ə","r","d"] },
         { "surface": "at",        "graphemes": ["a","t"],                  "phonemes": ["æ","t"] },
         { "surface": "the",       "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
         { "surface": "shed",      "graphemes": ["sh","e","d"],             "phonemes": ["ʃ","ɛ","d"] }
@@ -269,7 +269,7 @@
     },
     {
       "text": "Shep dashed to the shed and shut a shiny shrimp.",
-      "targetCount": 5,
+      "targetCount": 6,
       "targetInitialContentWords": 5,
       "interestWords": ["shrimp"],
       "words": [
@@ -336,8 +336,8 @@
     },
     {
       "text": "Shep washed a shaggy hippo and Shen washed a shark.",
-      "targetCount": 5,
-      "targetInitialContentWords": 5,
+      "targetCount": 6,
+      "targetInitialContentWords": 4,
       "interestWords": ["hippo", "shark"],
       "words": [
         { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },

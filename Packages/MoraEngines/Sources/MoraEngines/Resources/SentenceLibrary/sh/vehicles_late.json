@@ -43,7 +43,7 @@
     {
       "text": "Sharon washed a shiny kart and Shep washed a tram.",
       "targetCount": 5,
-      "targetInitialContentWords": 5,
+      "targetInitialContentWords": 3,
       "interestWords": ["kart", "tram"],
       "words": [
         { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
@@ -113,7 +113,7 @@
     },
     {
       "text": "Shen saw a sharp shiny ship and a tram.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["ship", "tram"],
       "words": [
@@ -148,8 +148,8 @@
     },
     {
       "text": "Sharon shut the shiny kart and Shep got a wagon.",
-      "targetCount": 5,
-      "targetInitialContentWords": 5,
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
       "interestWords": ["kart", "wagon"],
       "words": [
         { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
@@ -166,7 +166,7 @@
     },
     {
       "text": "Shen rushed a shiny jet to the ship shed.",
-      "targetCount": 4,
+      "targetCount": 5,
       "targetInitialContentWords": 4,
       "interestWords": ["jet", "ship"],
       "words": [
@@ -342,7 +342,7 @@
     },
     {
       "text": "Shep had a shiny jet and a sharp shiny kart.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["jet", "kart"],
       "words": [

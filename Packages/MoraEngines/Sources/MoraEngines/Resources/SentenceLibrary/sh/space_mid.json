@@ -19,7 +19,7 @@
         { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
         { "surface": "dashed", "graphemes": ["d","a","sh","e","d"], "phonemes": ["d","æ","ʃ","t"] },
         { "surface": "to",     "graphemes": ["t","o"],              "phonemes": ["t","u"] },
-        { "surface": "Mars",   "graphemes": ["M","a","r","s"],      "phonemes": ["m","a","r","z"] }
+        { "surface": "Mars",   "graphemes": ["m","a","r","s"],      "phonemes": ["m","a","r","z"] }
       ]
     },
     {
@@ -35,7 +35,7 @@
         { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
         { "surface": "ship",   "graphemes": ["sh","i","p"],            "phonemes": ["ʃ","ɪ","p"] },
         { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
-        { "surface": "Saturn", "graphemes": ["S","a","t","u","r","n"], "phonemes": ["s","æ","t","ə","r","n"] }
+        { "surface": "Saturn", "graphemes": ["s","a","t","u","r","n"], "phonemes": ["s","æ","t","ə","r","n"] }
       ]
     },
     {
@@ -52,7 +52,7 @@
         { "surface": "shiny",   "graphemes": ["sh","i","n","y"],       "phonemes": ["ʃ","aɪ","n","i"] },
         { "surface": "comet",   "graphemes": ["c","o","m","e","t"],    "phonemes": ["k","ɒ","m","ɪ","t"] },
         { "surface": "to",      "graphemes": ["t","o"],                "phonemes": ["t","u"] },
-        { "surface": "Jupiter", "graphemes": ["J","u","p","i","t","e","r"], "phonemes": ["dʒ","ʌ","p","ɪ","t","ə","r"] }
+        { "surface": "Jupiter", "graphemes": ["j","u","p","i","t","e","r"], "phonemes": ["dʒ","ʌ","p","ɪ","t","ə","r"] }
       ]
     },
     {
@@ -67,7 +67,7 @@
         { "surface": "shiny",  "graphemes": ["sh","i","n","y"],         "phonemes": ["ʃ","aɪ","n","i"] },
         { "surface": "ship",   "graphemes": ["sh","i","p"],             "phonemes": ["ʃ","ɪ","p"] },
         { "surface": "to",     "graphemes": ["t","o"],                  "phonemes": ["t","u"] },
-        { "surface": "Saturn", "graphemes": ["S","a","t","u","r","n"],  "phonemes": ["s","æ","t","ə","r","n"] },
+        { "surface": "Saturn", "graphemes": ["s","a","t","u","r","n"],  "phonemes": ["s","æ","t","ə","r","n"] },
         { "surface": "in",     "graphemes": ["i","n"],                  "phonemes": ["ɪ","n"] },
         { "surface": "a",      "graphemes": ["a"],                      "phonemes": ["ə"] },
         { "surface": "flash",  "graphemes": ["f","l","a","sh"],         "phonemes": ["f","l","æ","ʃ"] }
@@ -88,7 +88,7 @@
         { "surface": "the",   "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "ship",  "graphemes": ["sh","i","p"],         "phonemes": ["ʃ","ɪ","p"] },
         { "surface": "to",    "graphemes": ["t","o"],              "phonemes": ["t","u"] },
-        { "surface": "Mars",  "graphemes": ["M","a","r","s"],      "phonemes": ["m","a","r","z"] }
+        { "surface": "Mars",  "graphemes": ["m","a","r","s"],      "phonemes": ["m","a","r","z"] }
       ]
     },
     {
@@ -106,7 +106,7 @@
         { "surface": "ship",    "graphemes": ["sh","i","p"],                "phonemes": ["ʃ","ɪ","p"] },
         { "surface": "to",      "graphemes": ["t","o"],                     "phonemes": ["t","u"] },
         { "surface": "visit",   "graphemes": ["v","i","s","i","t"],         "phonemes": ["v","ɪ","z","ɪ","t"] },
-        { "surface": "Mercury", "graphemes": ["M","e","r","c","u","r","y"], "phonemes": ["m","ɛ","r","k","j","ʊ","r","i"] }
+        { "surface": "Mercury", "graphemes": ["m","e","r","c","u","r","y"], "phonemes": ["m","ɛ","r","k","j","ʊ","r","i"] }
       ]
     },
     {
@@ -122,7 +122,7 @@
         { "surface": "and",     "graphemes": ["a","n","d"],              "phonemes": ["æ","n","d"] },
         { "surface": "dashed",  "graphemes": ["d","a","sh","e","d"],     "phonemes": ["d","æ","ʃ","t"] },
         { "surface": "past",    "graphemes": ["p","a","s","t"],          "phonemes": ["p","æ","s","t"] },
-        { "surface": "Jupiter", "graphemes": ["J","u","p","i","t","e","r"], "phonemes": ["dʒ","ʌ","p","ɪ","t","ə","r"] }
+        { "surface": "Jupiter", "graphemes": ["j","u","p","i","t","e","r"], "phonemes": ["dʒ","ʌ","p","ɪ","t","ə","r"] }
       ]
     },
     {
@@ -140,7 +140,7 @@
         { "surface": "shiny",   "graphemes": ["sh","i","n","y"],           "phonemes": ["ʃ","aɪ","n","i"] },
         { "surface": "ship",    "graphemes": ["sh","i","p"],               "phonemes": ["ʃ","ɪ","p"] },
         { "surface": "to",      "graphemes": ["t","o"],                    "phonemes": ["t","u"] },
-        { "surface": "Jupiter", "graphemes": ["J","u","p","i","t","e","r"], "phonemes": ["dʒ","ʌ","p","ɪ","t","ə","r"] }
+        { "surface": "Jupiter", "graphemes": ["j","u","p","i","t","e","r"], "phonemes": ["dʒ","ʌ","p","ɪ","t","ə","r"] }
       ]
     },
     {
@@ -194,7 +194,7 @@
         { "surface": "shiny",  "graphemes": ["sh","i","n","y"],           "phonemes": ["ʃ","aɪ","n","i"] },
         { "surface": "ship",   "graphemes": ["sh","i","p"],               "phonemes": ["ʃ","ɪ","p"] },
         { "surface": "at",     "graphemes": ["a","t"],                    "phonemes": ["æ","t"] },
-        { "surface": "Saturn", "graphemes": ["S","a","t","u","r","n"],    "phonemes": ["s","æ","t","ə","r","n"] }
+        { "surface": "Saturn", "graphemes": ["s","a","t","u","r","n"],    "phonemes": ["s","æ","t","ə","r","n"] }
       ]
     },
     {
@@ -288,7 +288,7 @@
     },
     {
       "text": "Shen shut the ship and Shep dashed to a star.",
-      "targetCount": 4,
+      "targetCount": 5,
       "targetInitialContentWords": 4,
       "interestWords": ["ship", "star"],
       "words": [
@@ -342,7 +342,7 @@
     },
     {
       "text": "Shep and Shen rushed past Mars and shut the ship.",
-      "targetCount": 4,
+      "targetCount": 5,
       "targetInitialContentWords": 4,
       "interestWords": ["Mars", "ship"],
       "words": [
@@ -351,7 +351,7 @@
         { "surface": "Shen",   "graphemes": ["sh","e","n"],             "phonemes": ["ʃ","ɛ","n"] },
         { "surface": "rushed", "graphemes": ["r","u","sh","e","d"],     "phonemes": ["r","ʌ","ʃ","t"] },
         { "surface": "past",   "graphemes": ["p","a","s","t"],          "phonemes": ["p","æ","s","t"] },
-        { "surface": "Mars",   "graphemes": ["M","a","r","s"],          "phonemes": ["m","a","r","z"] },
+        { "surface": "Mars",   "graphemes": ["m","a","r","s"],          "phonemes": ["m","a","r","z"] },
         { "surface": "and",    "graphemes": ["a","n","d"],              "phonemes": ["æ","n","d"] },
         { "surface": "shut",   "graphemes": ["sh","u","t"],             "phonemes": ["ʃ","ʌ","t"] },
         { "surface": "the",    "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },

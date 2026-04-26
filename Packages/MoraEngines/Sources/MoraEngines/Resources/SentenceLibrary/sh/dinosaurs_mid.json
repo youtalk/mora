@@ -103,8 +103,8 @@
     },
     {
       "text": "Shep crushed a shiny fossil on the shelf.",
-      "targetCount": 5,
-      "targetInitialContentWords": 4,
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
       "interestWords": ["fossil"],
       "words": [
         { "surface": "Shep",    "graphemes": ["sh","e","p"],             "phonemes": ["ʃ","ɛ","p"] },
@@ -152,7 +152,7 @@
     {
       "text": "A shaggy rex rushed past Shep and Sharon.",
       "targetCount": 4,
-      "targetInitialContentWords": 4,
+      "targetInitialContentWords": 3,
       "interestWords": ["rex"],
       "words": [
         { "surface": "A",      "graphemes": ["a"],                  "phonemes": ["ə"] },
@@ -168,7 +168,7 @@
     {
       "text": "Shep and Shen rushed to shut in the herd.",
       "targetCount": 4,
-      "targetInitialContentWords": 4,
+      "targetInitialContentWords": 3,
       "interestWords": ["herd"],
       "words": [
         { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
@@ -183,17 +183,17 @@
       ]
     },
     {
-      "text": "Sharon dashed to the shed with a shiny Stego bone.",
-      "targetCount": 5,
-      "targetInitialContentWords": 4,
+      "text": "Sharon dashed past the shed and a shiny Stego bone.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
       "interestWords": ["Stego", "bone"],
       "words": [
         { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
         { "surface": "dashed", "graphemes": ["d","a","sh","e","d"], "phonemes": ["d","æ","ʃ","t"] },
-        { "surface": "to",     "graphemes": ["t","o"],              "phonemes": ["t","u"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],      "phonemes": ["p","æ","s","t"] },
         { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
         { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] },
-        { "surface": "with",   "graphemes": ["w","i","t","h"],      "phonemes": ["w","ɪ","ð"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
         { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
         { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
         { "surface": "Stego",  "graphemes": ["s","t","e","g","o"],  "phonemes": ["s","t","ɛ","g","o"] },
@@ -236,8 +236,8 @@
     },
     {
       "text": "Sharon washed the shiny Spino fossil in the shed.",
-      "targetCount": 5,
-      "targetInitialContentWords": 5,
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
       "interestWords": ["Spino", "fossil"],
       "words": [
         { "surface": "Sharon",  "graphemes": ["sh","a","r","o","n"],    "phonemes": ["ʃ","æ","r","ə","n"] },
@@ -270,8 +270,8 @@
     },
     {
       "text": "Shep and Sharon rushed to shelter the Stego herd.",
-      "targetCount": 5,
-      "targetInitialContentWords": 5,
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
       "interestWords": ["Stego", "herd"],
       "words": [
         { "surface": "Shep",    "graphemes": ["sh","e","p"],              "phonemes": ["ʃ","ɛ","p"] },
@@ -287,7 +287,7 @@
     },
     {
       "text": "Sharon washed a shiny raptor egg on the shelf.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 3,
       "interestWords": ["raptor", "egg"],
       "words": [
@@ -304,7 +304,7 @@
     },
     {
       "text": "Shen shut the shed and Sharon dashed to shelter it.",
-      "targetCount": 5,
+      "targetCount": 6,
       "targetInitialContentWords": 5,
       "interestWords": ["shed"],
       "words": [
@@ -323,7 +323,7 @@
     {
       "text": "Shep rushed past a shiny Spino and Sharon rushed in.",
       "targetCount": 5,
-      "targetInitialContentWords": 4,
+      "targetInitialContentWords": 3,
       "interestWords": ["Spino"],
       "words": [
         { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },

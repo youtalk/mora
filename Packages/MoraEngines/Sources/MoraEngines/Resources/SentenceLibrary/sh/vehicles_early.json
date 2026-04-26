@@ -124,7 +124,7 @@
     {
       "text": "Sharon got a shiny cab at the ship shed.",
       "targetCount": 4,
-      "targetInitialContentWords": 3,
+      "targetInitialContentWords": 4,
       "interestWords": ["cab", "ship"],
       "words": [
         { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },

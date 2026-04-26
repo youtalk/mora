@@ -8,7 +8,7 @@
     {
       "text": "Shen had a shiny shy robot in a shed.",
       "targetCount": 4,
-      "targetInitialContentWords": 3,
+      "targetInitialContentWords": 4,
       "interestWords": ["robot"],
       "words": [
         { "surface": "Shen",  "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
@@ -40,7 +40,7 @@
     },
     {
       "text": "Shep shut the shed and set a shy bot in.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["bot"],
       "words": [
@@ -58,7 +58,7 @@
     },
     {
       "text": "Shen got a shiny shy robot kit in a shed.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["robot", "kit"],
       "words": [
@@ -76,8 +76,8 @@
     },
     {
       "text": "Sharon has a shy shiny robot in a shed.",
-      "targetCount": 5,
-      "targetInitialContentWords": 5,
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
       "interestWords": ["robot"],
       "words": [
         { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
@@ -93,7 +93,7 @@
     },
     {
       "text": "Shep and Shen fix a shiny bot in a shed.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["bot"],
       "words": [
@@ -146,7 +146,7 @@
     },
     {
       "text": "Sharon shut the shed and a shy bot ran.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["bot"],
       "words": [
@@ -196,8 +196,8 @@
     },
     {
       "text": "Sharon has a shiny bot and Shep has a shed.",
-      "targetCount": 5,
-      "targetInitialContentWords": 5,
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
       "interestWords": ["bot"],
       "words": [
         { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
@@ -214,7 +214,7 @@
     },
     {
       "text": "Shen can fix a shiny shy bot in a shed.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["bot"],
       "words": [
@@ -232,7 +232,7 @@
     },
     {
       "text": "Shep set a shy robot on a shiny shelf.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["robot"],
       "words": [
@@ -249,8 +249,8 @@
     },
     {
       "text": "Sharon got a shy shiny bot in a shed.",
-      "targetCount": 5,
-      "targetInitialContentWords": 5,
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
       "interestWords": ["bot"],
       "words": [
         { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
@@ -266,7 +266,7 @@
     },
     {
       "text": "Shen and Shep shut the shed and fix a bot.",
-      "targetCount": 5,
+      "targetCount": 4,
       "targetInitialContentWords": 4,
       "interestWords": ["bot"],
       "words": [
@@ -301,7 +301,7 @@
     {
       "text": "Shen hid a shy robot in a shiny shed.",
       "targetCount": 4,
-      "targetInitialContentWords": 3,
+      "targetInitialContentWords": 4,
       "interestWords": ["robot"],
       "words": [
         { "surface": "Shen",  "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
