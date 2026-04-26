@@ -1,5 +1,4 @@
 import Foundation
-import SwiftData
 import XCTest
 
 @testable import MoraCore
@@ -18,7 +17,7 @@ final class SessionContainerBootstrapLibraryTests: XCTestCase {
         )
         let cellTexts = Set(vehiclesCell?.sentences.map(\.text) ?? [])
 
-        let resolved = await SessionContainerView.resolveDecodeSentences(
+        let resolved = try await SessionContainerView.resolveDecodeSentences(
             library: library,
             skillCode: "sh_onset",
             targetGrapheme: Grapheme(letters: "sh"),
@@ -43,7 +42,7 @@ final class SessionContainerBootstrapLibraryTests: XCTestCase {
         )
         let cellTexts = Set(robotsCell?.sentences.map(\.text) ?? [])
 
-        let resolved = await SessionContainerView.resolveDecodeSentences(
+        let resolved = try await SessionContainerView.resolveDecodeSentences(
             library: library,
             skillCode: "sh_onset",
             targetGrapheme: Grapheme(letters: "sh"),
@@ -68,7 +67,7 @@ final class SessionContainerBootstrapLibraryTests: XCTestCase {
     func test_resolveSentences_unauthoredTarget_fallsBackToScriptedProvider() async throws {
         let library = try SentenceLibrary()
 
-        let resolved = await SessionContainerView.resolveDecodeSentences(
+        let resolved = try await SessionContainerView.resolveDecodeSentences(
             library: library,
             skillCode: "th_voiceless",
             targetGrapheme: Grapheme(letters: "th"),
@@ -91,7 +90,7 @@ final class SessionContainerBootstrapLibraryTests: XCTestCase {
     func test_resolveSentences_emptyInterests_usesAllInterestsFromLibrary() async throws {
         let library = try SentenceLibrary()
 
-        let resolved = await SessionContainerView.resolveDecodeSentences(
+        let resolved = try await SessionContainerView.resolveDecodeSentences(
             library: library,
             skillCode: "sh_onset",
             targetGrapheme: Grapheme(letters: "sh"),
@@ -103,26 +102,21 @@ final class SessionContainerBootstrapLibraryTests: XCTestCase {
 
         XCTAssertEqual(resolved.count, 3)
 
-        // The pool spans 6 cells × 20 sentences = 120; assert at least one of
-        // the returned sentences comes from a cell we know exists.
-        let vehiclesCell = await library.cell(phoneme: "sh", interest: "vehicles", ageBand: .mid)
-        let knownTexts = Set(vehiclesCell?.sentences.map(\.text) ?? [])
-        // Not a strict assertion — just sanity: 3 random picks from 120 should
-        // overwhelmingly never all come from non-vehicles cells, so this
-        // confirms `resolveDecodeSentences` did not silently fall through to
-        // the per-week JSON. Instead, assert at least one returned sentence is
-        // present in some sh-mid bundle cell.
+        // The empty-interests path samples uniformly from the 6 mid-band cells
+        // (6 × 20 = 120 sentences). Every sentence in that pool belongs to one
+        // of the six cells, so the loop below must hit at least one — this
+        // confirms `resolveDecodeSentences` read from the bundle and did not
+        // silently fall through to the per-week JSON.
+        let resolvedTexts = Set(resolved.map(\.text))
         var hitAnyMidBundle = false
         for interest in ["animals", "dinosaurs", "vehicles", "space", "sports", "robots"] {
             let cell = await library.cell(phoneme: "sh", interest: interest, ageBand: .mid)
             let texts = Set(cell?.sentences.map(\.text) ?? [])
-            if !texts.isDisjoint(with: Set(resolved.map(\.text))) {
+            if !texts.isDisjoint(with: resolvedTexts) {
                 hitAnyMidBundle = true
                 break
             }
         }
         XCTAssertTrue(hitAnyMidBundle, "empty-interests fallback must read from the bundle, not per-week JSON")
-        // Suppress unused-warning suppression on `knownTexts`.
-        _ = knownTexts
     }
 }

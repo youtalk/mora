@@ -128,13 +128,12 @@ extension SentenceLibrary {
         "short_a": "short_a",
     ]
 
-    /// Six interest keys mirrored from `JapaneseL1Profile.interestCategories`.
-    /// Used as the fallback set when a learner has no `interests` recorded
-    /// (e.g. a profile from before the interest picker shipped — only the
-    /// dev profile is in this state).
-    private static let allInterestKeys: [String] = [
-        "animals", "dinosaurs", "vehicles", "space", "sports", "robots",
-    ]
+    /// Interest keys derived from `JapaneseL1Profile.interestCategories`
+    /// (the v1 source of truth). Used as the fallback set when a learner
+    /// has no `interests` recorded (e.g. a profile from before the interest
+    /// picker shipped — only the dev profile is in this state).
+    private static let allInterestKeys: [String] =
+        JapaneseL1Profile().interestCategories.map(\.key)
 
     private static let phonemeDirectories: [String] = [
         "sh", "th", "f", "r", "short_a",

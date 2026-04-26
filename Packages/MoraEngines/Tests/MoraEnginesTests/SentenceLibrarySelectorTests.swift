@@ -38,10 +38,11 @@ final class SentenceLibrarySelectorTests: XCTestCase {
     func test_sentences_multipleInterests_poolsAcrossCells() async throws {
         let library = try SentenceLibrary()
 
-        // Run multiple selections so the random shuffle has a chance to span
-        // both cells. With pool size 40 and a count of 6 (cap at 3 per call,
-        // call twice, dedupe), the union is overwhelmingly likely to span
-        // both cells.
+        // Run multiple selections so the random shuffle has repeated chances
+        // to draw from both matching cells. Each call requests up to 3
+        // sentences, and this loop runs 10 times while deduping via `union`,
+        // so the accumulated set is overwhelmingly likely to contain
+        // sentences from both cells.
         var union: Set<String> = []
         for _ in 0..<10 {
             let result = await library.sentences(

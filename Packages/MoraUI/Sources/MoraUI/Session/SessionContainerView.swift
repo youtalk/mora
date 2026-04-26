@@ -232,12 +232,15 @@ public struct SessionContainerView: View {
     /// bundled `SentenceLibrary` first; if it returns fewer than `count`
     /// sentences (cell unauthored, or pool too sparse), falls back to the
     /// per-week `<skill>_week.json` via `ScriptedContentProvider.bundled`.
+    /// A bundle/decode failure on the fallback path throws so `bootstrap`'s
+    /// surrounding `do/catch` can surface it as `bootError`, matching the
+    /// pre-Track-B failure visibility.
     ///
-    /// Public to the package only because `SessionContainerBootstrapLibraryTests`
+    /// Package-internal because `SessionContainerBootstrapLibraryTests`
     /// drives this directly without spinning up SwiftUI. Kept `static` so it
     /// has no instance dependencies and is trivially testable; bootstrap
-    /// resolves all inputs and passes them in.
-    @MainActor
+    /// resolves all inputs and passes them in. Not `@MainActor` so the sync
+    /// JSON load on the fallback path can run off the main actor.
     static func resolveDecodeSentences(
         library: SentenceLibrary,
         skillCode: SkillCode,
@@ -246,7 +249,7 @@ public struct SessionContainerView: View {
         ageYears: Int,
         interests: [String],
         count: Int
-    ) async -> [DecodeSentence] {
+    ) async throws -> [DecodeSentence] {
         let primary = await library.sentences(
             target: skillCode,
             interests: interests,
@@ -256,19 +259,16 @@ public struct SessionContainerView: View {
         )
         if primary.count >= count { return primary }
 
-        // Fallback: per-week hand-authored JSON. Throws on missing bundle
-        // resources — propagate up via [] so the session can still run from
-        // whatever the orchestrator already tolerates.
-        guard let provider = try? ScriptedContentProvider.bundled(for: skillCode) else {
-            return primary  // best effort; orchestrator handles a short list
-        }
+        // Fallback: per-week hand-authored JSON. Bundle/decode failures
+        // propagate so bootstrap's `do/catch` sets `bootError`.
+        let provider = try ScriptedContentProvider.bundled(for: skillCode)
         let request = ContentRequest(
             target: targetGrapheme,
             taughtGraphemes: taughtGraphemes,
             interests: [],
             count: count
         )
-        return (try? provider.decodeSentences(request)) ?? primary
+        return try provider.decodeSentences(request)
     }
 
     @MainActor
@@ -418,17 +418,19 @@ public struct SessionContainerView: View {
                 return
             }
             // Resolve the learner's interests + age band from the singleton profile.
-            // Falls back to (8, []) if no profile exists (defensive — onboarding
-            // always creates one before a session starts).
+            // Falls back to (8, []) if the row is missing (defensive — onboarding
+            // always creates one before a session starts). Fetch errors throw
+            // into the surrounding `do/catch` so store corruption surfaces as
+            // `bootError` rather than silently degrading to defaults.
             let profileFetch = FetchDescriptor<LearnerProfile>(
                 sortBy: [SortDescriptor(\.createdAt, order: .forward)]
             )
-            let profile = (try? context.fetch(profileFetch))?.first
+            let profile = try context.fetch(profileFetch).first
             let interests = profile?.interests ?? []
             let ageYears = profile?.ageYears ?? 8
 
             let library = try SentenceLibrary()
-            let sentences = await Self.resolveDecodeSentences(
+            let sentences = try await Self.resolveDecodeSentences(
                 library: library,
                 skillCode: skill.code,
                 targetGrapheme: targetGrapheme,
