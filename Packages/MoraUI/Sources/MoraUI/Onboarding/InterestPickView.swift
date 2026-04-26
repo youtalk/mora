@@ -3,6 +3,7 @@ import SwiftUI
 
 struct InterestPickView: View {
     @Environment(\.moraStrings) private var strings
+    @Environment(\.currentL1Profile) private var currentL1Profile
     @Binding var selectedKeys: Set<String>
     let categories: [InterestCategory]
     var ageYears: Int = 8
@@ -62,8 +63,8 @@ struct InterestPickView: View {
                 Text(Self.emoji[cat.key] ?? "⭐")
                     .font(.system(size: 48))
                 Text(
-                    JapaneseL1Profile().interestCategoryDisplayName(
-                        key: cat.key, forAgeYears: ageYears
+                    currentL1Profile.interestCategoryDisplayName(
+                        key: cat.key, at: LearnerLevel.from(years: ageYears)
                     )
                 )
                 .font(MoraType.label())

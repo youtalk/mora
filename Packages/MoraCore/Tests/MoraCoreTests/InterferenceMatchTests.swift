@@ -15,7 +15,7 @@ private struct JaStub: L1Profile {
             from: .init(ipa: "f"), to: .init(ipa: "h"),
             bidirectional: false),
     ]
-    func uiStrings(forAgeYears years: Int) -> MoraStrings { JapaneseL1Profile().uiStrings(forAgeYears: years) }
+    func uiStrings(at level: LearnerLevel) -> MoraStrings { JapaneseL1Profile().uiStrings(at: level) }
 }
 
 final class InterferenceMatchTests: XCTestCase {

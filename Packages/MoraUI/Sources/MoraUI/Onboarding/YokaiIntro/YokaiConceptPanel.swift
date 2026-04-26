@@ -93,6 +93,6 @@ struct YokaiConceptPanel: View {
 #if DEBUG
 #Preview {
     YokaiConceptPanel(store: try? BundledYokaiStore(), onContinue: {})
-        .environment(\.moraStrings, JapaneseL1Profile().uiStrings(forAgeYears: 8))
+        .environment(\.moraStrings, MoraStrings.previewDefault)
 }
 #endif

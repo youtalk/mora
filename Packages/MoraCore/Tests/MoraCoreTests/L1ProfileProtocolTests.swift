@@ -6,7 +6,7 @@ private struct StubProfile: L1Profile {
     let characterSystem: CharacterSystem = .alphabetic
     let interferencePairs: [PhonemeConfusionPair] = []
     let interestCategories: [InterestCategory] = []
-    func uiStrings(forAgeYears years: Int) -> MoraStrings { JapaneseL1Profile().uiStrings(forAgeYears: years) }
+    func uiStrings(at level: LearnerLevel) -> MoraStrings { JapaneseL1Profile().uiStrings(at: level) }
 }
 
 final class L1ProfileProtocolTests: XCTestCase {

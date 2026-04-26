@@ -18,6 +18,7 @@ public struct RootView: View {
     public init() {}
 
     public var body: some View {
+        let (strings, l1) = resolved(profile: profiles.first)
         Group {
             if !languageAgeOnboarded {
                 LanguageAgeFlow {
@@ -27,10 +28,12 @@ public struct RootView: View {
                 OnboardingFlow {
                     onboarded = true
                 }
-                .environment(\.moraStrings, resolvedStrings)
+                .environment(\.moraStrings, strings)
+                .environment(\.currentL1Profile, l1)
             } else if !yokaiIntroSeen {
                 YokaiIntroFlow(mode: .firstTime) { yokaiIntroSeen = true }
-                    .environment(\.moraStrings, resolvedStrings)
+                    .environment(\.moraStrings, strings)
+                    .environment(\.currentL1Profile, l1)
             } else {
                 NavigationStack {
                     HomeView()
@@ -39,28 +42,32 @@ public struct RootView: View {
                             case "session": SessionContainerView()
                             case "bestiary":
                                 BestiaryView()
-                                    .environment(\.moraStrings, resolvedStrings)
+                                    .environment(\.moraStrings, strings)
+                                    .environment(\.currentL1Profile, l1)
                             case "curriculumComplete":
                                 CurriculumCompleteView()
-                                    .environment(\.moraStrings, resolvedStrings)
+                                    .environment(\.moraStrings, strings)
+                                    .environment(\.currentL1Profile, l1)
                             default: EmptyView()
                             }
                         }
                 }
-                .environment(\.moraStrings, resolvedStrings)
+                .environment(\.moraStrings, strings)
+                .environment(\.currentL1Profile, l1)
             }
         }
     }
 
-    /// Build the string catalog from the active profile. Before onboarding
-    /// completes, age may be nil — default to 8 (matches
-    /// `MoraStringsKey.defaultValue`) so screens still render.
-    ///
-    /// Alpha only ships `JapaneseL1Profile`, so every profile renders JP.
-    /// When a second `L1Profile` lands, switch on `profile?.l1Identifier`
-    /// here and return the matching profile's `uiStrings`.
-    private var resolvedStrings: MoraStrings {
-        let years = profiles.first?.ageYears ?? 8
-        return JapaneseL1Profile().uiStrings(forAgeYears: years)
+    /// Resolve the active profile to (strings, L1Profile). Before onboarding
+    /// completes, profile may be nil — fall back to JapaneseL1Profile at
+    /// `.advanced` so screens still render with the same defaults as
+    /// `MoraStringsKey.defaultValue`.
+    private func resolved(profile: LearnerProfile?) -> (strings: MoraStrings, l1: any L1Profile) {
+        guard let p = profile else {
+            let fallback = JapaneseL1Profile()
+            return (fallback.uiStrings(at: .advanced), fallback)
+        }
+        let l1 = L1ProfileResolver.profile(for: p.l1Identifier)
+        return (l1.uiStrings(at: p.resolvedLevel), l1)
     }
 }

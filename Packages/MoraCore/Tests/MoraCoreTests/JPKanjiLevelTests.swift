@@ -30,4 +30,13 @@ final class JPKanjiLevelTests: XCTestCase {
         XCTAssertFalse(JPKanjiLevel.grade1And2.contains("終"))  // G3
         XCTAssertFalse(JPKanjiLevel.grade1And2.contains("解"))  // G5
     }
+
+    func test_empty_isEmptySet() {
+        XCTAssertTrue(JPKanjiLevel.empty.isEmpty)
+        XCTAssertEqual(JPKanjiLevel.empty.count, 0)
+    }
+
+    func test_grade1_isSubset_of_grade1And2() {
+        XCTAssertTrue(JPKanjiLevel.grade1.isSubset(of: JPKanjiLevel.grade1And2))
+    }
 }

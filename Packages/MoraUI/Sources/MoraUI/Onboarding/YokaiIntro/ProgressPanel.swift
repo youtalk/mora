@@ -123,6 +123,6 @@ struct ProgressPanel: View {
 #if DEBUG
 #Preview {
     ProgressPanel(store: try? BundledYokaiStore(), mode: .firstTime, onContinue: {})
-        .environment(\.moraStrings, JapaneseL1Profile().uiStrings(forAgeYears: 8))
+        .environment(\.moraStrings, MoraStrings.previewDefault)
 }
 #endif
