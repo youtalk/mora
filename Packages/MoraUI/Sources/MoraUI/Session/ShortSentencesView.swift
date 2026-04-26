@@ -58,7 +58,7 @@ struct ShortSentencesView: View {
                         .minimumScaleFactor(0.5)
                         .shake(amount: shakeAmount)
                         .onLongPressGesture {
-                            speech?.play([.text(current.text, .verySlow)])
+                            Task { @MainActor in await replaySentence() }
                         }
 
                     switch uiMode {
@@ -180,14 +180,7 @@ struct ShortSentencesView: View {
     /// gated identically while playback runs.
     private var replayButton: some View {
         Button {
-            guard !isPlayingPrompt else { return }
-            guard micState == .idle else { return }
-            guard let sentence = displayedSentence else { return }
-            Task { @MainActor in
-                isPlayingPrompt = true
-                defer { isPlayingPrompt = false }
-                await speech?.playAndAwait([.text(sentence.text, .verySlow)])
-            }
+            Task { @MainActor in await replaySentence() }
         } label: {
             Text(strings.sentencesListenAgain)
                 .font(MoraType.heading())
@@ -202,6 +195,23 @@ struct ShortSentencesView: View {
         .accessibilityLabel(strings.sentencesListenAgain)
     }
 
+    /// Manual replay path — shared by the visible "🔊 もういちど" button
+    /// and the long-press gesture on the sentence text. Gates on
+    /// `isPlayingPrompt` so two replays don't pile up on the audio bus,
+    /// and on `micState == .idle` so a learner who has already opened
+    /// the mic can't replay TTS into the live ASR window (the previous
+    /// long-press path skipped this gate and re-enabled the "ASR
+    /// captures the model's voice" failure mode).
+    @MainActor
+    private func replaySentence() async {
+        guard !isPlayingPrompt else { return }
+        guard micState == .idle else { return }
+        guard let sentence = displayedSentence else { return }
+        isPlayingPrompt = true
+        defer { isPlayingPrompt = false }
+        await speech?.playAndAwait([.text(sentence.text, .verySlow)])
+    }
+
     /// Auto-plays the currently displayed sentence at `.verySlow` pace
     /// the first time the learner sees it. Runs at view entry and
     /// again whenever `pinnedSentenceIndex` unpins (i.e. after the
@@ -209,6 +219,7 @@ struct ShortSentencesView: View {
     /// becomes the displayed one). Skips when an in-flight feedback
     /// animation has the prior sentence pinned, when the same index
     /// has already been spoken, and when no sentence is on screen.
+    @MainActor
     private func playCurrentSentenceIfNeeded() async {
         guard pinnedSentenceIndex == nil else { return }
         let idx = orchestrator.sentenceIndex

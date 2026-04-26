@@ -249,11 +249,26 @@ public final class SessionOrchestrator {
                 recording: recording,
                 leniency: .newWord
             )
+            // When the sentence-level rubric rejects but the target word
+            // itself matched, `wordTrial.errorKind` is `.none` — passing that
+            // through would log an "incorrect trial with no error", which
+            // misleads telemetry and any UI that branches on `errorKind`.
+            // The learner said the target word but didn't read enough of
+            // the sentence, so attribute the trial-level error as a
+            // sentence-coverage `.omission`.
+            let derivedErrorKind: TrialErrorKind
+            if sentenceResult.correct {
+                derivedErrorKind = .none
+            } else if wordTrial.errorKind == .none {
+                derivedErrorKind = .omission
+            } else {
+                derivedErrorKind = wordTrial.errorKind
+            }
             let trial = TrialAssessment(
                 expected: wordTrial.expected,
                 heard: wordTrial.heard,
                 correct: sentenceResult.correct,
-                errorKind: sentenceResult.correct ? .none : wordTrial.errorKind,
+                errorKind: derivedErrorKind,
                 l1InterferenceTag: sentenceResult.correct
                     ? nil : wordTrial.l1InterferenceTag,
                 phoneme: wordTrial.phoneme

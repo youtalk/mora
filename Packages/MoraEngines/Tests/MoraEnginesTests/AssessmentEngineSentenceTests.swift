@@ -65,7 +65,7 @@ final class AssessmentEngineSentenceTests: XCTestCase {
     }
 
     func test_oneMissingWord_isCorrectAtThreshold() {
-        // Drop one word: 3/4 = 0.75 ≥ 0.7.
+        // Drop one word: 3/4 = 0.75 ≥ 0.6 (.newWord coverage threshold).
         let r = engine().assessSentence(
             expected: theShipCanHop,
             asr: asr("the ship hop"),
@@ -76,7 +76,7 @@ final class AssessmentEngineSentenceTests: XCTestCase {
     }
 
     func test_twoMissingWords_isWrong() {
-        // Only 2/4 = 0.5 < 0.7.
+        // Only 2/4 = 0.5 < 0.6 (.newWord coverage threshold).
         let r = engine().assessSentence(
             expected: theShipCanHop,
             asr: asr("the hop"),
