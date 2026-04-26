@@ -1,0 +1,359 @@
+{
+  "phoneme": "sh",
+  "phonemeIPA": "ʃ",
+  "graphemeLetters": "sh",
+  "interest": "sports",
+  "ageBand": "late",
+  "sentences": [
+    {
+      "text": "Shep dashed past a shiny bat and Sharon ran.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["bat"],
+      "words": [
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "dashed", "graphemes": ["d","a","sh","e","d"], "phonemes": ["d","æ","ʃ","t"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],      "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "bat",    "graphemes": ["b","a","t"],          "phonemes": ["b","æ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],          "phonemes": ["r","æ","n"] }
+      ]
+    },
+    {
+      "text": "Sharon washed a shiny sprint mat and Shep set it.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["sprint", "mat"],
+      "words": [
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "washed", "graphemes": ["w","a","sh","e","d"], "phonemes": ["w","ɒ","ʃ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "sprint", "graphemes": ["s","p","r","i","n","t"], "phonemes": ["s","p","r","ɪ","n","t"] },
+        { "surface": "mat",    "graphemes": ["m","a","t"],          "phonemes": ["m","æ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "set",    "graphemes": ["s","e","t"],          "phonemes": ["s","ɛ","t"] },
+        { "surface": "it",     "graphemes": ["i","t"],              "phonemes": ["ɪ","t"] }
+      ]
+    },
+    {
+      "text": "Shen rushed to the gym and Sharon shut the shed.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["gym"],
+      "words": [
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "rushed", "graphemes": ["r","u","sh","e","d"], "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "to",     "graphemes": ["t","o"],              "phonemes": ["t","u"] },
+        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "gym",    "graphemes": ["g","y","m"],          "phonemes": ["dʒ","ɪ","m"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "shut",   "graphemes": ["sh","u","t"],         "phonemes": ["ʃ","ʌ","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "Shep got a shiny bat and Sharon rushed a lap.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["bat", "lap"],
+      "words": [
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "bat",    "graphemes": ["b","a","t"],          "phonemes": ["b","æ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "rushed", "graphemes": ["r","u","sh","e","d"], "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "lap",    "graphemes": ["l","a","p"],          "phonemes": ["l","æ","p"] }
+      ]
+    },
+    {
+      "text": "Shen dashed to the shed and Sharon hit a net.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["net"],
+      "words": [
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "dashed", "graphemes": ["d","a","sh","e","d"], "phonemes": ["d","æ","ʃ","t"] },
+        { "surface": "to",     "graphemes": ["t","o"],              "phonemes": ["t","u"] },
+        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "hit",    "graphemes": ["h","i","t"],          "phonemes": ["h","ɪ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "net",    "graphemes": ["n","e","t"],          "phonemes": ["n","ɛ","t"] }
+      ]
+    },
+    {
+      "text": "Sharon crushed a shiny kit and Shen ran a lap.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["kit", "lap"],
+      "words": [
+        { "surface": "Sharon",  "graphemes": ["sh","a","r","o","n"],     "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "crushed", "graphemes": ["c","r","u","sh","e","d"], "phonemes": ["k","r","ʌ","ʃ","t"] },
+        { "surface": "a",       "graphemes": ["a"],                      "phonemes": ["ə"] },
+        { "surface": "shiny",   "graphemes": ["sh","i","n","y"],         "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "kit",     "graphemes": ["k","i","t"],              "phonemes": ["k","ɪ","t"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],              "phonemes": ["æ","n","d"] },
+        { "surface": "Shen",    "graphemes": ["sh","e","n"],             "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "ran",     "graphemes": ["r","a","n"],              "phonemes": ["r","æ","n"] },
+        { "surface": "a",       "graphemes": ["a"],                      "phonemes": ["ə"] },
+        { "surface": "lap",     "graphemes": ["l","a","p"],              "phonemes": ["l","æ","p"] }
+      ]
+    },
+    {
+      "text": "A shy Shep dashed past a shiny javelin.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["javelin"],
+      "words": [
+        { "surface": "A",       "graphemes": ["a"],                        "phonemes": ["ə"] },
+        { "surface": "shy",     "graphemes": ["sh","y"],                   "phonemes": ["ʃ","aɪ"] },
+        { "surface": "Shep",    "graphemes": ["sh","e","p"],               "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "dashed",  "graphemes": ["d","a","sh","e","d"],       "phonemes": ["d","æ","ʃ","t"] },
+        { "surface": "past",    "graphemes": ["p","a","s","t"],            "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",       "graphemes": ["a"],                        "phonemes": ["ə"] },
+        { "surface": "shiny",   "graphemes": ["sh","i","n","y"],           "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "javelin", "graphemes": ["j","a","v","e","l","i","n"], "phonemes": ["dʒ","æ","v","ə","l","ɪ","n"] }
+      ]
+    },
+    {
+      "text": "Shep shut the shed and Sharon ran a sprint.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["sprint"],
+      "words": [
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "shut",   "graphemes": ["sh","u","t"],         "phonemes": ["ʃ","ʌ","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],          "phonemes": ["r","æ","n"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "sprint", "graphemes": ["s","p","r","i","n","t"], "phonemes": ["s","p","r","ɪ","n","t"] }
+      ]
+    },
+    {
+      "text": "Shen washed a shiny bat and Sharon set the net.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["bat", "net"],
+      "words": [
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "washed", "graphemes": ["w","a","sh","e","d"], "phonemes": ["w","ɒ","ʃ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "bat",    "graphemes": ["b","a","t"],          "phonemes": ["b","æ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "set",    "graphemes": ["s","e","t"],          "phonemes": ["s","ɛ","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "net",    "graphemes": ["n","e","t"],          "phonemes": ["n","ɛ","t"] }
+      ]
+    },
+    {
+      "text": "Sharon dashed past a sharp javelin and Shep ran.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["javelin"],
+      "words": [
+        { "surface": "Sharon",  "graphemes": ["sh","a","r","o","n"],       "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "dashed",  "graphemes": ["d","a","sh","e","d"],       "phonemes": ["d","æ","ʃ","t"] },
+        { "surface": "past",    "graphemes": ["p","a","s","t"],            "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",       "graphemes": ["a"],                        "phonemes": ["ə"] },
+        { "surface": "sharp",   "graphemes": ["sh","a","r","p"],           "phonemes": ["ʃ","æ","r","p"] },
+        { "surface": "javelin", "graphemes": ["j","a","v","e","l","i","n"], "phonemes": ["dʒ","æ","v","ə","l","ɪ","n"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],                "phonemes": ["æ","n","d"] },
+        { "surface": "Shep",    "graphemes": ["sh","e","p"],               "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "ran",     "graphemes": ["r","a","n"],                "phonemes": ["r","æ","n"] }
+      ]
+    },
+    {
+      "text": "Shep rushed to the shed and Sharon washed a mat.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["mat"],
+      "words": [
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "rushed", "graphemes": ["r","u","sh","e","d"], "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "to",     "graphemes": ["t","o"],              "phonemes": ["t","u"] },
+        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "washed", "graphemes": ["w","a","sh","e","d"], "phonemes": ["w","ɒ","ʃ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "mat",    "graphemes": ["m","a","t"],          "phonemes": ["m","æ","t"] }
+      ]
+    },
+    {
+      "text": "Shen shut the shed and Shep ran a dash.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["dash"],
+      "words": [
+        { "surface": "Shen",  "graphemes": ["sh","e","n"],   "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "shut",  "graphemes": ["sh","u","t"],   "phonemes": ["ʃ","ʌ","t"] },
+        { "surface": "the",   "graphemes": ["th","e"],       "phonemes": ["ð","ə"] },
+        { "surface": "shed",  "graphemes": ["sh","e","d"],   "phonemes": ["ʃ","ɛ","d"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],    "phonemes": ["æ","n","d"] },
+        { "surface": "Shep",  "graphemes": ["sh","e","p"],   "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "ran",   "graphemes": ["r","a","n"],    "phonemes": ["r","æ","n"] },
+        { "surface": "a",     "graphemes": ["a"],            "phonemes": ["ə"] },
+        { "surface": "dash",  "graphemes": ["d","a","sh"],   "phonemes": ["d","æ","ʃ"] }
+      ]
+    },
+    {
+      "text": "Sharon washed the shiny gym kit and Shen ran.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["gym", "kit"],
+      "words": [
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "washed", "graphemes": ["w","a","sh","e","d"], "phonemes": ["w","ɒ","ʃ","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "gym",    "graphemes": ["g","y","m"],          "phonemes": ["dʒ","ɪ","m"] },
+        { "surface": "kit",    "graphemes": ["k","i","t"],          "phonemes": ["k","ɪ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],          "phonemes": ["r","æ","n"] }
+      ]
+    },
+    {
+      "text": "Shep hit a shiny bat and Sharon shut the net.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["bat", "net"],
+      "words": [
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "hit",    "graphemes": ["h","i","t"],          "phonemes": ["h","ɪ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "bat",    "graphemes": ["b","a","t"],          "phonemes": ["b","æ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "shut",   "graphemes": ["sh","u","t"],         "phonemes": ["ʃ","ʌ","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "net",    "graphemes": ["n","e","t"],          "phonemes": ["n","ɛ","t"] }
+      ]
+    },
+    {
+      "text": "Shen ran a shiny sprint and Shep rushed past.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["sprint"],
+      "words": [
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],          "phonemes": ["r","æ","n"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "sprint", "graphemes": ["s","p","r","i","n","t"], "phonemes": ["s","p","r","ɪ","n","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "rushed", "graphemes": ["r","u","sh","e","d"], "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],      "phonemes": ["p","æ","s","t"] }
+      ]
+    },
+    {
+      "text": "Sharon shut the shiny gym and Shep set a javelin.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["gym", "javelin"],
+      "words": [
+        { "surface": "Sharon",  "graphemes": ["sh","a","r","o","n"],       "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "shut",    "graphemes": ["sh","u","t"],               "phonemes": ["ʃ","ʌ","t"] },
+        { "surface": "the",     "graphemes": ["th","e"],                   "phonemes": ["ð","ə"] },
+        { "surface": "shiny",   "graphemes": ["sh","i","n","y"],           "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "gym",     "graphemes": ["g","y","m"],                "phonemes": ["dʒ","ɪ","m"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],                "phonemes": ["æ","n","d"] },
+        { "surface": "Shep",    "graphemes": ["sh","e","p"],               "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "set",     "graphemes": ["s","e","t"],                "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",       "graphemes": ["a"],                        "phonemes": ["ə"] },
+        { "surface": "javelin", "graphemes": ["j","a","v","e","l","i","n"], "phonemes": ["dʒ","æ","v","ə","l","ɪ","n"] }
+      ]
+    },
+    {
+      "text": "Shep and Shen washed the shed and ran a lap.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["lap"],
+      "words": [
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "washed", "graphemes": ["w","a","sh","e","d"], "phonemes": ["w","ɒ","ʃ","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],          "phonemes": ["r","æ","n"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "lap",    "graphemes": ["l","a","p"],          "phonemes": ["l","æ","p"] }
+      ]
+    },
+    {
+      "text": "Shen has a sharp shy javelin and Sharon ran.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["javelin"],
+      "words": [
+        { "surface": "Shen",    "graphemes": ["sh","e","n"],               "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "has",     "graphemes": ["h","a","s"],                "phonemes": ["h","æ","z"] },
+        { "surface": "a",       "graphemes": ["a"],                        "phonemes": ["ə"] },
+        { "surface": "sharp",   "graphemes": ["sh","a","r","p"],           "phonemes": ["ʃ","æ","r","p"] },
+        { "surface": "shy",     "graphemes": ["sh","y"],                   "phonemes": ["ʃ","aɪ"] },
+        { "surface": "javelin", "graphemes": ["j","a","v","e","l","i","n"], "phonemes": ["dʒ","æ","v","ə","l","ɪ","n"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],                "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon",  "graphemes": ["sh","a","r","o","n"],       "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "ran",     "graphemes": ["r","a","n"],                "phonemes": ["r","æ","n"] }
+      ]
+    },
+    {
+      "text": "Shep washed a shiny mat and Shen shut the shed.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["mat"],
+      "words": [
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "washed", "graphemes": ["w","a","sh","e","d"], "phonemes": ["w","ɒ","ʃ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "mat",    "graphemes": ["m","a","t"],          "phonemes": ["m","æ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "shut",   "graphemes": ["sh","u","t"],         "phonemes": ["ʃ","ʌ","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "Sharon rushed past a shiny net and Shep ran.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["net"],
+      "words": [
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "rushed", "graphemes": ["r","u","sh","e","d"], "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],      "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "net",    "graphemes": ["n","e","t"],          "phonemes": ["n","ɛ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],          "phonemes": ["r","æ","n"] }
+      ]
+    }
+  ]
+}
