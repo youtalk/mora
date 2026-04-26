@@ -220,6 +220,23 @@ public final class SessionOrchestrator {
             return
         }
         let sentence = sentences[sentenceIndex]
+
+        // Sentence-level coverage is the source of truth for `correct`. The
+        // older single-word path compared the entire ASR transcript of a
+        // full read-aloud to a single target word's surface, which made
+        // anything past a one-word utterance fail edit-distance check —
+        // see `AssessmentEngine.assessSentence` for the threshold rubric.
+        let sentenceResult = assessment.assessSentence(
+            expected: sentence,
+            asr: recording.asr,
+            leniency: .newWord
+        )
+
+        // Pick a target-bearing word so the existing per-word phoneme
+        // evaluator (Engine B) still gets a chance to score the focal
+        // grapheme inside the sentence. Word-level `correct` is then
+        // overwritten by the sentence-level outcome before the trial
+        // lands in `trials` / `yokai`.
         let targetGrapheme = target.skill.graphemePhoneme?.grapheme
         let expected =
             sentence.words.first { w in
@@ -227,12 +244,23 @@ public final class SessionOrchestrator {
                 return w.graphemes.contains(g)
             } ?? sentence.words.first
         if let expected {
-            let trial = await assessment.assess(
+            let wordTrial = await assessment.assess(
                 expected: expected,
                 recording: recording,
                 leniency: .newWord
             )
-            Self.logSentenceTrial(expected: expected, trial: trial)
+            let trial = TrialAssessment(
+                expected: wordTrial.expected,
+                heard: wordTrial.heard,
+                correct: sentenceResult.correct,
+                errorKind: sentenceResult.correct ? .none : wordTrial.errorKind,
+                l1InterferenceTag: sentenceResult.correct
+                    ? nil : wordTrial.l1InterferenceTag,
+                phoneme: wordTrial.phoneme
+            )
+            Self.logSentenceTrial(
+                expected: expected, trial: trial, sentenceResult: sentenceResult
+            )
             trials.append(trial)
             yokai?.recordTrialOutcome(correct: trial.correct)
         }
@@ -291,11 +319,20 @@ public final class SessionOrchestrator {
     /// was it accepted" view; the other captures the model-level "what
     /// did A and B each predict" view.
     private static func logSentenceTrial(
-        expected: Word, trial: TrialAssessment
+        expected: Word,
+        trial: TrialAssessment,
+        sentenceResult: SentenceAssessment? = nil
     ) {
         let heard = trial.heard ?? ""
         let err = String(describing: trial.errorKind)
         let phonemePart = Self.formatPhoneme(trial.phoneme)
+        let coveragePart: String
+        if let s = sentenceResult {
+            coveragePart =
+                " coverage=\(s.matchedTokenCount)/\(s.expectedTokenCount)"
+        } else {
+            coveragePart = ""
+        }
         #if DEBUG
         sessionLog.info(
             """
@@ -303,6 +340,7 @@ public final class SessionOrchestrator {
             heard="\(heard, privacy: .public)" \
             correct=\(trial.correct, privacy: .public) \
             err=\(err, privacy: .public)\
+            \(coveragePart, privacy: .public)\
             \(phonemePart, privacy: .public)
             """
         )
@@ -311,7 +349,7 @@ public final class SessionOrchestrator {
             """
             sentence-trial: expected="\(expected.surface)" \
             heard="\(heard)" correct=\(trial.correct) \
-            err=\(err)\(phonemePart)
+            err=\(err)\(coveragePart)\(phonemePart)
             """
         )
         #endif

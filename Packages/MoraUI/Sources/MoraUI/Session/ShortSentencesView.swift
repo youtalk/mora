@@ -34,6 +34,17 @@ struct ShortSentencesView: View {
     /// sentence, and the "Listen:" audio then names the previous sentence.
     @State private var pinnedSentenceIndex: Int?
     @State private var lastHeard: String = ""
+    /// True while the auto-play TTS prompt for the current sentence is in
+    /// flight. Mic input is suppressed during playback so the learner does
+    /// not start reading before the model finishes saying the sentence —
+    /// otherwise the ASR window opens mid-prompt and captures the prompt
+    /// itself.
+    @State private var isPlayingPrompt: Bool = false
+    /// Tracks which orchestrator index the auto-play has already covered.
+    /// Re-entrant `task` / `onChange` callbacks fall through when this
+    /// matches the current index, so a rapid pin/unpin sequence doesn't
+    /// fire two overlapping prompt playbacks.
+    @State private var lastPromptedIndex: Int = -1
 
     var body: some View {
         ScrollView {
@@ -47,7 +58,7 @@ struct ShortSentencesView: View {
                         .minimumScaleFactor(0.5)
                         .shake(amount: shakeAmount)
                         .onLongPressGesture {
-                            speech?.play([.text(current.text, .slow)])
+                            speech?.play([.text(current.text, .verySlow)])
                         }
 
                     switch uiMode {
@@ -98,15 +109,20 @@ struct ShortSentencesView: View {
             .frame(maxWidth: .infinity)
         }
         .task {
-            // `SessionContainerView` no longer fires a parent-level
-            // `speech.stop()` on phase change (that raced with the new
-            // view's auto-play and silenced it). Silence the prior
-            // phase's audio here instead — ShortSentences is the only
-            // phase view that does not start its own `speech.play(...)`
-            // on entry, so a leftover `cut` / `Listen:` utterance from
-            // the decoding phase would otherwise overlap the mic
-            // listening window.
+            // Silence any lingering audio from the prior phase before
+            // the auto-play kicks in — `SessionContainerView` no longer
+            // fires a parent-level `speech.stop()` on phase change (that
+            // raced with phase auto-plays and silenced them).
             await speech?.stop()
+            await playCurrentSentenceIfNeeded()
+        }
+        .onChange(of: pinnedSentenceIndex) { _, new in
+            // The pinned index unpins after the post-trial feedback
+            // delay; that is the moment the next sentence is on screen
+            // and ready to be auto-played for the learner.
+            if new == nil {
+                Task { @MainActor in await playCurrentSentenceIfNeeded() }
+            }
         }
         .onChange(of: feedback) { _, new in
             if new == .wrong {
@@ -132,18 +148,77 @@ struct ShortSentencesView: View {
 
     private var micStack: some View {
         VStack(spacing: MoraTheme.Space.md) {
-            MicButton(state: micState.buttonState) {
-                switch micState {
-                case .idle:
-                    if let engine = speechEngine { startListening(engine: engine) }
-                case .listening:
-                    speechEngine?.cancel()
-                case .assessing:
-                    break
+            HStack(spacing: MoraTheme.Space.lg) {
+                replayButton
+                MicButton(state: micState.buttonState) {
+                    // Suppress mic taps while the auto-play prompt is in
+                    // flight — opening the ASR window on top of TTS would
+                    // capture the model's own voice as the learner's
+                    // attempt.
+                    guard !isPlayingPrompt else { return }
+                    switch micState {
+                    case .idle:
+                        if let engine = speechEngine { startListening(engine: engine) }
+                    case .listening:
+                        speechEngine?.cancel()
+                    case .assessing:
+                        break
+                    }
                 }
+                .disabled(isPlayingPrompt)
+                .opacity(isPlayingPrompt ? 0.4 : 1.0)
             }
             transcriptSlot
         }
+    }
+
+    /// Visible "🔊 もういちど" button next to the mic. The long-press
+    /// gesture on the sentence text was the only previous way to
+    /// re-hear the prompt and on-device testing showed learners
+    /// missed it. Tapping replays the current sentence at `.verySlow`
+    /// through the same auto-play path used on entry, so the mic is
+    /// gated identically while playback runs.
+    private var replayButton: some View {
+        Button {
+            guard !isPlayingPrompt else { return }
+            guard micState == .idle else { return }
+            guard let sentence = displayedSentence else { return }
+            Task { @MainActor in
+                isPlayingPrompt = true
+                defer { isPlayingPrompt = false }
+                await speech?.playAndAwait([.text(sentence.text, .verySlow)])
+            }
+        } label: {
+            Text(strings.sentencesListenAgain)
+                .font(MoraType.heading())
+                .foregroundStyle(.white)
+                .frame(minHeight: 64)
+                .padding(.horizontal, MoraTheme.Space.lg)
+                .background(MoraTheme.Accent.teal, in: .capsule)
+        }
+        .buttonStyle(.plain)
+        .disabled(isPlayingPrompt || micState != .idle)
+        .opacity(isPlayingPrompt || micState != .idle ? 0.4 : 1.0)
+        .accessibilityLabel(strings.sentencesListenAgain)
+    }
+
+    /// Auto-plays the currently displayed sentence at `.verySlow` pace
+    /// the first time the learner sees it. Runs at view entry and
+    /// again whenever `pinnedSentenceIndex` unpins (i.e. after the
+    /// per-trial feedback animation finishes and the next sentence
+    /// becomes the displayed one). Skips when an in-flight feedback
+    /// animation has the prior sentence pinned, when the same index
+    /// has already been spoken, and when no sentence is on screen.
+    private func playCurrentSentenceIfNeeded() async {
+        guard pinnedSentenceIndex == nil else { return }
+        let idx = orchestrator.sentenceIndex
+        guard idx < orchestrator.sentences.count else { return }
+        guard idx != lastPromptedIndex else { return }
+        guard let sentence = displayedSentence else { return }
+        lastPromptedIndex = idx
+        isPlayingPrompt = true
+        defer { isPlayingPrompt = false }
+        await speech?.playAndAwait([.text(sentence.text, .verySlow)])
     }
 
     /// Fixed-height plate for the ASR read-out. The slot is always laid
@@ -196,7 +271,11 @@ struct ShortSentencesView: View {
                     let priorIndex = orchestrator.sentenceIndex
                     pinnedSentenceIndex = priorIndex
                     await orchestrator.handle(.answerManual(correct: true))
-                    Task { @MainActor in await clipRouter?.recordCorrect() }
+                    // Await clip completion (router uses `playAndAwait`)
+                    // before the post-trial sleep + unpin — otherwise the
+                    // next sentence's `.verySlow` auto-play overlaps an
+                    // in-flight `.encourage` clip on the audio bus.
+                    await clipRouter?.recordCorrect()
                     try? await Task.sleep(nanoseconds: 450_000_000)
                     feedback = .none
                     pinnedSentenceIndex = nil
@@ -208,7 +287,7 @@ struct ShortSentencesView: View {
                     let priorIndex = orchestrator.sentenceIndex
                     pinnedSentenceIndex = priorIndex
                     await orchestrator.handle(.answerManual(correct: false))
-                    Task { @MainActor in await clipRouter?.recordIncorrect() }
+                    await clipRouter?.recordIncorrect()
                     try? await Task.sleep(nanoseconds: 650_000_000)
                     feedback = .none
                     pinnedSentenceIndex = nil
@@ -269,7 +348,7 @@ struct ShortSentencesView: View {
                         Self.logMic("assess result correct=\(wasCorrect)")
                         feedback = wasCorrect ? .correct : .wrong
                         if wasCorrect {
-                            Task { @MainActor in await clipRouter?.recordCorrect() }
+                            await clipRouter?.recordCorrect()
                         } else {
                             // Await record so the corrective TTS does not race
                             // a `.gentleRetry` clip; if the clip fired, the
@@ -279,7 +358,7 @@ struct ShortSentencesView: View {
                                 (await clipRouter?.recordIncorrect()) ?? false
                             if !clipPlayed, let speech {
                                 await speech.playAndAwait(
-                                    [.text("Listen: " + expected.text, .slow)]
+                                    [.text("Listen: " + expected.text, .verySlow)]
                                 )
                             }
                         }
