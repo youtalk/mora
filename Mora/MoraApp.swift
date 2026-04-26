@@ -12,13 +12,16 @@ struct MoraApp: App {
     let container: ModelContainer
     private let shadowFactory: ShadowEvaluatorFactory
     private let mlxWarmupState: MLXWarmupState
+    private let speechEnginesWarmup: SpeechEnginesWarmup
 
     init() {
         self.container = Self.makeContainer()
         self.shadowFactory = Self.makeShadowFactory()
         self.mlxWarmupState = MLXWarmupState()
+        self.speechEnginesWarmup = SpeechEnginesWarmup()
         Self.scheduleBackgroundCleanup(container: container)
         Self.scheduleMLXWarmup(state: mlxWarmupState)
+        Self.scheduleSpeechEnginesWarmup(state: speechEnginesWarmup)
     }
 
     var body: some Scene {
@@ -26,11 +29,13 @@ struct MoraApp: App {
             RootView()
                 .environment(\.shadowEvaluatorFactory, shadowFactory)
                 .environment(\.mlxWarmupState, mlxWarmupState)
+                .environment(\.speechEnginesWarmup, speechEnginesWarmup)
         }
         .modelContainer(container)
     }
 
     private static let log = Logger(subsystem: "tech.reenable.Mora", category: "Pronunciation")
+    private static let speechLog = Logger(subsystem: "tech.reenable.Mora", category: "Speech")
 
     private static func makeContainer() -> ModelContainer {
         let log = Logger(subsystem: "tech.reenable.Mora", category: "ModelContainer")
@@ -100,6 +105,65 @@ struct MoraApp: App {
         let components = start.duration(to: .now).components
         return Int(components.seconds) * 1000
             + Int(components.attoseconds / 1_000_000_000_000_000)
+    }
+
+    /// Pre-loads `AppleSpeechEngine` (~100–500 ms `SFSpeechRecognizer`
+    /// locale-model lazy-load on cold launch) and `AppleTTSEngine`
+    /// (~10 ms `AVSpeechSynthesizer` construction) on a detached
+    /// background task at app launch. Mirrors `scheduleMLXWarmup` —
+    /// runs at `.utility` priority so the load can't steal scheduler
+    /// time from the SwiftUI / Metal first-frame work, but high enough
+    /// to resolve well before the learner taps "▶ はじめる" on Home
+    /// (the onboarding read-flow on first launch buys multiple seconds
+    /// of headroom; on subsequent launches the home hero card buys at
+    /// least a second).
+    ///
+    /// `AppleSpeechEngine` requires no microphone or speech-recognition
+    /// permission to construct — only the per-session `listen()` call
+    /// does — so the warmup runs unconditionally. If init fails (older
+    /// device, simulator without on-device Speech support, missing
+    /// locale model), the warmup resolves with `speechEngine == nil`
+    /// and `SessionContainerView.bootstrap` falls back to tap mode at
+    /// session start, same branch the permission check already takes
+    /// for `.partial` / `.notDetermined`.
+    ///
+    /// `AppleTTSEngine` is constructed on every host (including Mac)
+    /// because `AVSpeechSynthesizer` is available everywhere — the
+    /// session-time priming utterance still goes through it.
+    private static func scheduleSpeechEnginesWarmup(state: SpeechEnginesWarmup) {
+        Task.detached(priority: .utility) {
+            await MainActor.run { state.markLoading() }
+            let start = ContinuousClock.now
+            speechLog.info("Speech engines warmup: started")
+            #if os(iOS)
+            let speechResult: (engine: (any SpeechEngine)?, failureReason: String?)
+            do {
+                let engine = try AppleSpeechEngine()
+                speechResult = (engine, nil)
+            } catch {
+                let reason = String(describing: error)
+                speechLog.error(
+                    "Speech engines warmup: AppleSpeechEngine failed: \(reason, privacy: .public)"
+                )
+                speechResult = (nil, reason)
+            }
+            #else
+            let speechResult: (engine: (any SpeechEngine)?, failureReason: String?) = (nil, nil)
+            #endif
+            let tts: any TTSEngine = AppleTTSEngine(l1Profile: JapaneseL1Profile())
+            let ms = Self.millis(since: start)
+            let speechReady = speechResult.engine != nil ? "yes" : "no"
+            speechLog.info(
+                "Speech engines warmup: ready in \(ms) ms (speech=\(speechReady, privacy: .public))"
+            )
+            await MainActor.run {
+                state.resolve(
+                    speechEngine: speechResult.engine,
+                    ttsEngine: tts,
+                    speechFailureReason: speechResult.failureReason
+                )
+            }
+        }
     }
 
     private static func makeShadowFactory() -> ShadowEvaluatorFactory {
