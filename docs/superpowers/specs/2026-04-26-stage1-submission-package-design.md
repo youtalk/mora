@@ -274,7 +274,8 @@ are kept verbatim as the project's own narrative record.
 
 ```sh
 # 1. MPL-2.0 full text staged
-curl -sSL https://www.mozilla.org/media/MPL/2.0/index.815ca599c9df.txt > /tmp/mpl-2.0.txt
+curl -fsSL https://www.mozilla.org/media/MPL/2.0/index.815ca599c9df.txt -o /tmp/mpl-2.0.txt
+head -1 /tmp/mpl-2.0.txt | grep -Fqx 'Mozilla Public License Version 2.0'
 
 # 2. Tree-filter rewrites LICENSE in every commit
 git filter-branch --force --tree-filter '
