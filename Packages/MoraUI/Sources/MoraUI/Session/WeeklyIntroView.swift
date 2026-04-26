@@ -77,23 +77,26 @@ public struct WeeklyIntroView: View {
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.horizontal, MoraTheme.Space.xl)
 
-            if greetClipURL != nil {
-                Button(action: replayGreet) {
-                    Text(strings.warmupListenAgain)
-                        .font(MoraType.cta())
-                        .foregroundStyle(MoraTheme.Accent.teal)
-                        .padding(.vertical, MoraTheme.Space.md)
-                        .padding(.horizontal, MoraTheme.Space.xl)
-                        .background(MoraTheme.Background.mint, in: .capsule)
-                        .minimumScaleFactor(0.5)
-                }
-                .buttonStyle(.plain)
-            }
-
             Spacer()
 
-            HeroCTA(title: strings.yokaiIntroNext, action: dismiss)
-                .padding(.bottom, MoraTheme.Space.xl)
+            HStack(spacing: MoraTheme.Space.lg) {
+                if greetClipURL != nil {
+                    Button(action: replayGreet) {
+                        Text(strings.warmupListenAgain)
+                            .font(MoraType.cta())
+                            .foregroundStyle(MoraTheme.Accent.teal)
+                            .padding(.vertical, MoraTheme.Space.md)
+                            .padding(.horizontal, MoraTheme.Space.xl)
+                            .frame(minHeight: 88)
+                            .background(MoraTheme.Background.mint, in: .capsule)
+                            .minimumScaleFactor(0.5)
+                    }
+                    .buttonStyle(.plain)
+                }
+
+                HeroCTA(title: strings.yokaiIntroNext, action: dismiss)
+            }
+            .padding(.bottom, MoraTheme.Space.xl)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .task {

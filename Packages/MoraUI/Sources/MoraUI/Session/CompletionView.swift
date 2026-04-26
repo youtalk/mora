@@ -7,6 +7,7 @@ struct CompletionView: View {
     @Environment(\.moraStrings) private var strings
     let orchestrator: SessionOrchestrator
     let speech: SpeechController?
+    let clipRouter: YokaiClipRouter?
     let persistSummary: (SessionSummary) -> Void
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var ctx
@@ -52,6 +53,14 @@ struct CompletionView: View {
         .accessibilityAction(named: "Return home") { dismissSession() }
         .onAppear { persistOnce() }
         .task {
+            // On Friday befriending the cutscene overlay owns audio: it
+            // plays `.fridayAcknowledge` via its own AVAudioPlayer on a
+            // fixed choreography. Skip BOTH the yokai encouragement clip
+            // AND the celebratory TTS so we don't overlap the cutscene's
+            // audio — otherwise the "Quest complete!" line rides on top
+            // of the friday-climax voice clip.
+            guard !isFridayClimaxActive else { return }
+            _ = await clipRouter?.playAndAwait(.encourage)
             // Spoken in English (the whole app teaches English phonics to
             // an L1-Japanese learner) — keeping this literal rather than a
             // MoraStrings entry since every L1 profile would emit the same
@@ -62,8 +71,17 @@ struct CompletionView: View {
         }
     }
 
+    private var isFridayClimaxActive: Bool {
+        if case .fridayClimax = orchestrator.yokai?.activeCutscene { return true }
+        return false
+    }
+
     @MainActor
     private func dismissSession() {
+        // Stop any in-flight yokai encouragement clip first — synchronous
+        // so it lands before dismiss(). Without this, a tap-to-dismiss
+        // mid `.encourage` clip leaves the audio playing on top of Home.
+        clipRouter?.stop()
         // Silence the celebration utterance and wait for it to stop before
         // dismissing. A detached stop followed by an immediate dismiss
         // races against the synthesizer draining and lets audio leak onto

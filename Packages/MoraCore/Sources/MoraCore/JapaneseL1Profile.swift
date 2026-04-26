@@ -257,12 +257,13 @@ public struct JapaneseL1Profile: L1Profile {
         tileTutorialTry: "▶ やってみる",
         // `見` G1 kept.
         decodingHelpLabel: "あそびかたを 見る",
-        // `聞` G2 → all-hira.
-        sentencesLongPressHint: "ながおしで もういちど きけるよ",
         sentencesListenAgain: "🔊 もういちど",
         feedbackCorrect: "せいかい！",
         // `一` G1 but `回` G2 → partial-mix forbidden → all-hira.
         feedbackTryAgain: "もういちど",
+        micButtonLabel: "はなす",
+        micButtonHintTapToStart: "タップで ろくおんを はじめる",
+        micButtonHintTapToStop: "タップで ろくおんを とめる",
         // `読` G2 → all-hira.
         micIdlePrompt: "マイクを タップして よんでね",
         // `聞` G2 → all-hira.
@@ -399,10 +400,12 @@ public struct JapaneseL1Profile: L1Profile {
         // `見` G1 → みる (spec §6.1.1 empty budget; plan note "unchanged" is
         // superseded by the invariant that no kanji may appear at entry tier)
         decodingHelpLabel: "あそびかたを みる",
-        sentencesLongPressHint: "ながおしで もういちど きけるよ",
         sentencesListenAgain: "🔊 もういちど",
         feedbackCorrect: "せいかい！",
         feedbackTryAgain: "もういちど",
+        micButtonLabel: "はなす",
+        micButtonHintTapToStart: "タップで ろくおんを はじめる",
+        micButtonHintTapToStop: "タップで ろくおんを とめる",
         micIdlePrompt: "マイクを タップして よんでね",
         micListening: "きいてるよ…",
         // `中` G1 → on'yomi ちゅう (avoids awkward なか after カタカナ stem)
@@ -519,10 +522,12 @@ public struct JapaneseL1Profile: L1Profile {
         tileTutorialNext: "つぎへ",
         tileTutorialTry: "▶ やってみる",
         decodingHelpLabel: "あそびかたを 見る",
-        sentencesLongPressHint: "ながおしで もういちど 聞けるよ",
         sentencesListenAgain: "🔊 もういちど",
         feedbackCorrect: "せいかい！",
         feedbackTryAgain: "もう一回",
+        micButtonLabel: "はなす",
+        micButtonHintTapToStart: "タップで 録音を はじめる",
+        micButtonHintTapToStop: "タップで 録音を とめる",
         micIdlePrompt: "マイクを タップして 読んでね",
         micListening: "聞いてるよ…",
         micAssessing: "チェック中…",

@@ -12,22 +12,6 @@ public enum MicButtonState: Equatable, Sendable {
         case .assessing: return "ellipsis"
         }
     }
-
-    public var accessibilityLabel: String {
-        switch self {
-        case .idle: return "Start speaking"
-        case .listening: return "Listening"
-        case .assessing: return "Checking your answer"
-        }
-    }
-
-    public var accessibilityHint: String {
-        switch self {
-        case .idle: return "Tap to start recording"
-        case .listening: return "Tap to stop recording"
-        case .assessing: return ""
-        }
-    }
 }
 
 /// View-level state for the mic flow. Unlike `MicButtonState` it carries the
@@ -61,9 +45,9 @@ public struct MicButton: View {
         Button(action: action) {
             ZStack {
                 if state == .listening {
-                    Circle()
+                    Capsule()
                         .stroke(MoraTheme.Accent.teal, lineWidth: 6)
-                        .frame(width: 128, height: 128)
+                        .frame(width: pillWidth + 32, height: pillHeight + 32)
                         .scaleEffect(pulse ? 1.12 : 1.0)
                         .opacity(pulse ? 0 : 1)
                         .animation(
@@ -71,26 +55,46 @@ public struct MicButton: View {
                             value: pulse
                         )
                 }
-                Circle()
+                Capsule()
                     .fill(MoraTheme.Accent.orange)
-                    .frame(width: 96, height: 96)
-                Image(systemName: state.iconName)
-                    .font(.system(size: 44, weight: .bold))
-                    .foregroundStyle(Color.white)
+                    .frame(width: pillWidth, height: pillHeight)
+                iconRow
             }
-            // Reserve the full 128pt bounding box at every state so the
-            // button doesn't expand by 32pt when the listening ripple
-            // appears — that expansion shoved the transcript + counter
-            // rows down by one line each time the learner tapped the mic.
-            .frame(width: 128, height: 128)
+            // Reserve a constant bounding box at every state so the
+            // button doesn't reflow when the listening ripple appears or
+            // the idle "はなす" label disappears — that reflow shoves
+            // the transcript + counter rows below.
+            .frame(width: pillWidth + 32, height: pillHeight + 32)
         }
         .buttonStyle(.plain)
         .disabled(state == .assessing)
         .onAppear { pulse = state == .listening }
         .onChange(of: state) { _, new in pulse = new == .listening }
         .accessibilityLabel(stateA11yLabel)
-        .accessibilityHint(state.accessibilityHint)
+        .accessibilityHint(stateA11yHint)
         .accessibilityAddTraits(state == .assessing ? .isStaticText : [])
+    }
+
+    /// Outer width of the orange pill. Idle state shows mic + "はなす",
+    /// other states show just the icon — but the pill stays the same
+    /// size so the button doesn't jump on state change.
+    private var pillWidth: CGFloat { 216 }
+    private var pillHeight: CGFloat { 112 }
+
+    @ViewBuilder
+    private var iconRow: some View {
+        HStack(spacing: MoraTheme.Space.sm) {
+            Image(systemName: state.iconName)
+                .font(.system(size: 36, weight: .bold))
+                .foregroundStyle(Color.white)
+            if state == .idle {
+                Text(strings.micButtonLabel)
+                    .font(MoraType.heading())
+                    .foregroundStyle(Color.white)
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
+            }
+        }
     }
 
     /// Pick a localized label from `strings` based on the current state so
@@ -102,6 +106,17 @@ public struct MicButton: View {
         case .idle: return strings.a11yMicButton
         case .listening: return strings.micListening
         case .assessing: return strings.micAssessing
+        }
+    }
+
+    /// VoiceOver hint per state, sourced from `MoraStrings` so the JP-first
+    /// build does not emit English. Empty for `.assessing` (button disabled,
+    /// nothing for the user to do).
+    private var stateA11yHint: String {
+        switch state {
+        case .idle: return strings.micButtonHintTapToStart
+        case .listening: return strings.micButtonHintTapToStop
+        case .assessing: return ""
         }
     }
 

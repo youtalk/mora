@@ -82,12 +82,19 @@ public struct MoraStrings: Sendable {
     public let tileTutorialNext: String
     public let tileTutorialTry: String
     public let decodingHelpLabel: String
-    public let sentencesLongPressHint: String
     public let sentencesListenAgain: String
     public let feedbackCorrect: String
     public let feedbackTryAgain: String
 
     // Mic UI
+    public let micButtonLabel: String
+    /// VoiceOver hint announced on the mic button while the recognizer is
+    /// idle. Localized so the hint matches the user-facing locale rather
+    /// than emitting English on a JP-first build.
+    public let micButtonHintTapToStart: String
+    /// VoiceOver hint announced while the recognizer is listening. Tapping
+    /// cancels the in-flight recording.
+    public let micButtonHintTapToStop: String
     public let micIdlePrompt: String
     public let micListening: String
     public let micAssessing: String
@@ -169,9 +176,11 @@ public struct MoraStrings: Sendable {
         tileTutorialNext: String,
         tileTutorialTry: String,
         decodingHelpLabel: String,
-        sentencesLongPressHint: String,
         sentencesListenAgain: String,
         feedbackCorrect: String, feedbackTryAgain: String,
+        micButtonLabel: String,
+        micButtonHintTapToStart: String,
+        micButtonHintTapToStop: String,
         micIdlePrompt: String, micListening: String,
         micAssessing: String, micDeniedBanner: String,
         coachingShSubS: String,
@@ -253,10 +262,12 @@ public struct MoraStrings: Sendable {
         self.tileTutorialNext = tileTutorialNext
         self.tileTutorialTry = tileTutorialTry
         self.decodingHelpLabel = decodingHelpLabel
-        self.sentencesLongPressHint = sentencesLongPressHint
         self.sentencesListenAgain = sentencesListenAgain
         self.feedbackCorrect = feedbackCorrect
         self.feedbackTryAgain = feedbackTryAgain
+        self.micButtonLabel = micButtonLabel
+        self.micButtonHintTapToStart = micButtonHintTapToStart
+        self.micButtonHintTapToStop = micButtonHintTapToStop
         self.micIdlePrompt = micIdlePrompt
         self.micListening = micListening
         self.micAssessing = micAssessing
