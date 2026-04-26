@@ -1,0 +1,345 @@
+{
+  "phoneme": "f",
+  "phonemeIPA": "f",
+  "graphemeLetters": "f",
+  "interest": "vehicles",
+  "ageBand": "mid",
+  "sentences": [
+    {
+      "text": "Finn and Fred fit a flag on a forklift.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["flag", "forklift"],
+      "words": [
+        { "surface": "Finn",     "graphemes": ["f","i","n","n"],                 "phonemes": ["f","ɪ","n"] },
+        { "surface": "and",      "graphemes": ["a","n","d"],                     "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",     "graphemes": ["f","r","e","d"],                 "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fit",      "graphemes": ["f","i","t"],                     "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "flag",     "graphemes": ["f","l","a","g"],                 "phonemes": ["f","l","æ","g"] },
+        { "surface": "on",       "graphemes": ["o","n"],                         "phonemes": ["ɒ","n"] },
+        { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "forklift", "graphemes": ["f","o","r","k","l","i","f","t"], "phonemes": ["f","ɔ","r","k","l","ɪ","f","t"] }
+      ]
+    },
+    {
+      "text": "Fran fixed a fan on a fast flatbed.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["fan", "flatbed"],
+      "words": [
+        { "surface": "Fran",    "graphemes": ["f","r","a","n"],             "phonemes": ["f","r","æ","n"] },
+        { "surface": "fixed",   "graphemes": ["f","i","x","e","d"],         "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "fan",     "graphemes": ["f","a","n"],                 "phonemes": ["f","æ","n"] },
+        { "surface": "on",      "graphemes": ["o","n"],                     "phonemes": ["ɒ","n"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "fast",    "graphemes": ["f","a","s","t"],             "phonemes": ["f","æ","s","t"] },
+        { "surface": "flatbed", "graphemes": ["f","l","a","t","b","e","d"], "phonemes": ["f","l","æ","t","b","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "Fred lifted a flag and Finn fit a fan.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["flag", "fan"],
+      "words": [
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+        { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fan",    "graphemes": ["f","a","n"],             "phonemes": ["f","æ","n"] }
+      ]
+    },
+    {
+      "text": "Fran fit a flag on a forklift and a van.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["forklift", "van"],
+      "words": [
+        { "surface": "Fran",     "graphemes": ["f","r","a","n"],                 "phonemes": ["f","r","æ","n"] },
+        { "surface": "fit",      "graphemes": ["f","i","t"],                     "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "flag",     "graphemes": ["f","l","a","g"],                 "phonemes": ["f","l","æ","g"] },
+        { "surface": "on",       "graphemes": ["o","n"],                         "phonemes": ["ɒ","n"] },
+        { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "forklift", "graphemes": ["f","o","r","k","l","i","f","t"], "phonemes": ["f","ɔ","r","k","l","ɪ","f","t"] },
+        { "surface": "and",      "graphemes": ["a","n","d"],                     "phonemes": ["æ","n","d"] },
+        { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "van",      "graphemes": ["v","a","n"],                     "phonemes": ["v","æ","n"] }
+      ]
+    },
+    {
+      "text": "Finn fixed a fan and Fran fixed a flag.",
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
+      "interestWords": ["fan", "flag"],
+      "words": [
+        { "surface": "Finn",  "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fran",  "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flag",  "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Fred lifted a fan onto a fast flatbed.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["fan", "flatbed"],
+      "words": [
+        { "surface": "Fred",    "graphemes": ["f","r","e","d"],             "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "lifted",  "graphemes": ["l","i","f","t","e","d"],     "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "fan",     "graphemes": ["f","a","n"],                 "phonemes": ["f","æ","n"] },
+        { "surface": "onto",    "graphemes": ["o","n","t","o"],             "phonemes": ["ɒ","n","t","u"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "fast",    "graphemes": ["f","a","s","t"],             "phonemes": ["f","æ","s","t"] },
+        { "surface": "flatbed", "graphemes": ["f","l","a","t","b","e","d"], "phonemes": ["f","l","æ","t","b","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "Finn fit a flag on a fast forklift.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["flag", "forklift"],
+      "words": [
+        { "surface": "Finn",     "graphemes": ["f","i","n","n"],                 "phonemes": ["f","ɪ","n"] },
+        { "surface": "fit",      "graphemes": ["f","i","t"],                     "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "flag",     "graphemes": ["f","l","a","g"],                 "phonemes": ["f","l","æ","g"] },
+        { "surface": "on",       "graphemes": ["o","n"],                         "phonemes": ["ɒ","n"] },
+        { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "fast",     "graphemes": ["f","a","s","t"],                 "phonemes": ["f","æ","s","t"] },
+        { "surface": "forklift", "graphemes": ["f","o","r","k","l","i","f","t"], "phonemes": ["f","ɔ","r","k","l","ɪ","f","t"] }
+      ]
+    },
+    {
+      "text": "Fran fit a fan and Fred fixed a flatbed.",
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
+      "interestWords": ["fan", "flatbed"],
+      "words": [
+        { "surface": "Fran",    "graphemes": ["f","r","a","n"],             "phonemes": ["f","r","æ","n"] },
+        { "surface": "fit",     "graphemes": ["f","i","t"],                 "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "fan",     "graphemes": ["f","a","n"],                 "phonemes": ["f","æ","n"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",    "graphemes": ["f","r","e","d"],             "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fixed",   "graphemes": ["f","i","x","e","d"],         "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "flatbed", "graphemes": ["f","l","a","t","b","e","d"], "phonemes": ["f","l","æ","t","b","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "Finn lifted a flag on a fast jet.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["flag", "jet"],
+      "words": [
+        { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] },
+        { "surface": "on",     "graphemes": ["o","n"],                 "phonemes": ["ɒ","n"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fast",   "graphemes": ["f","a","s","t"],         "phonemes": ["f","æ","s","t"] },
+        { "surface": "jet",    "graphemes": ["j","e","t"],             "phonemes": ["dʒ","ɛ","t"] }
+      ]
+    },
+    {
+      "text": "Fred fit a fan and Fran lifted a flag.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["fan", "flag"],
+      "words": [
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fan",    "graphemes": ["f","a","n"],             "phonemes": ["f","æ","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] }
+      ]
+    },
+    {
+      "text": "Finn and Fred fit a fast forklift on a flatbed.",
+      "targetCount": 7,
+      "targetInitialContentWords": 5,
+      "interestWords": ["forklift", "flatbed"],
+      "words": [
+        { "surface": "Finn",     "graphemes": ["f","i","n","n"],                 "phonemes": ["f","ɪ","n"] },
+        { "surface": "and",      "graphemes": ["a","n","d"],                     "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",     "graphemes": ["f","r","e","d"],                 "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fit",      "graphemes": ["f","i","t"],                     "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "fast",     "graphemes": ["f","a","s","t"],                 "phonemes": ["f","æ","s","t"] },
+        { "surface": "forklift", "graphemes": ["f","o","r","k","l","i","f","t"], "phonemes": ["f","ɔ","r","k","l","ɪ","f","t"] },
+        { "surface": "on",       "graphemes": ["o","n"],                         "phonemes": ["ɒ","n"] },
+        { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "flatbed",  "graphemes": ["f","l","a","t","b","e","d"],     "phonemes": ["f","l","æ","t","b","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "Fran fixed a flag and Finn fixed a fan.",
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
+      "interestWords": ["flag", "fan"],
+      "words": [
+        { "surface": "Fran",  "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flag",  "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Finn",  "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
+      ]
+    },
+    {
+      "text": "Fred fit a fast flag on a forklift.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["flag", "forklift"],
+      "words": [
+        { "surface": "Fred",     "graphemes": ["f","r","e","d"],                 "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fit",      "graphemes": ["f","i","t"],                     "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "fast",     "graphemes": ["f","a","s","t"],                 "phonemes": ["f","æ","s","t"] },
+        { "surface": "flag",     "graphemes": ["f","l","a","g"],                 "phonemes": ["f","l","æ","g"] },
+        { "surface": "on",       "graphemes": ["o","n"],                         "phonemes": ["ɒ","n"] },
+        { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "forklift", "graphemes": ["f","o","r","k","l","i","f","t"], "phonemes": ["f","ɔ","r","k","l","ɪ","f","t"] }
+      ]
+    },
+    {
+      "text": "Finn lifted a fan on a fast flatbed van.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["fan", "flatbed", "van"],
+      "words": [
+        { "surface": "Finn",    "graphemes": ["f","i","n","n"],             "phonemes": ["f","ɪ","n"] },
+        { "surface": "lifted",  "graphemes": ["l","i","f","t","e","d"],     "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "fan",     "graphemes": ["f","a","n"],                 "phonemes": ["f","æ","n"] },
+        { "surface": "on",      "graphemes": ["o","n"],                     "phonemes": ["ɒ","n"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "fast",    "graphemes": ["f","a","s","t"],             "phonemes": ["f","æ","s","t"] },
+        { "surface": "flatbed", "graphemes": ["f","l","a","t","b","e","d"], "phonemes": ["f","l","æ","t","b","ɛ","d"] },
+        { "surface": "van",     "graphemes": ["v","a","n"],                 "phonemes": ["v","æ","n"] }
+      ]
+    },
+    {
+      "text": "Fran fit a flag and Fred fit a fan.",
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
+      "interestWords": ["flag", "fan"],
+      "words": [
+        { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fan",  "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
+      ]
+    },
+    {
+      "text": "Finn fixed a fan on a fast forklift.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["fan", "forklift"],
+      "words": [
+        { "surface": "Finn",     "graphemes": ["f","i","n","n"],                 "phonemes": ["f","ɪ","n"] },
+        { "surface": "fixed",    "graphemes": ["f","i","x","e","d"],             "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "fan",      "graphemes": ["f","a","n"],                     "phonemes": ["f","æ","n"] },
+        { "surface": "on",       "graphemes": ["o","n"],                         "phonemes": ["ɒ","n"] },
+        { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "fast",     "graphemes": ["f","a","s","t"],                 "phonemes": ["f","æ","s","t"] },
+        { "surface": "forklift", "graphemes": ["f","o","r","k","l","i","f","t"], "phonemes": ["f","ɔ","r","k","l","ɪ","f","t"] }
+      ]
+    },
+    {
+      "text": "Fred lifted a flag and Fran lifted a fan.",
+      "targetCount": 6,
+      "targetInitialContentWords": 4,
+      "interestWords": ["flag", "fan"],
+      "words": [
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fan",    "graphemes": ["f","a","n"],             "phonemes": ["f","æ","n"] }
+      ]
+    },
+    {
+      "text": "Finn and Fran fit a flag on a forklift.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["flag", "forklift"],
+      "words": [
+        { "surface": "Finn",     "graphemes": ["f","i","n","n"],                 "phonemes": ["f","ɪ","n"] },
+        { "surface": "and",      "graphemes": ["a","n","d"],                     "phonemes": ["æ","n","d"] },
+        { "surface": "Fran",     "graphemes": ["f","r","a","n"],                 "phonemes": ["f","r","æ","n"] },
+        { "surface": "fit",      "graphemes": ["f","i","t"],                     "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "flag",     "graphemes": ["f","l","a","g"],                 "phonemes": ["f","l","æ","g"] },
+        { "surface": "on",       "graphemes": ["o","n"],                         "phonemes": ["ɒ","n"] },
+        { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "forklift", "graphemes": ["f","o","r","k","l","i","f","t"], "phonemes": ["f","ɔ","r","k","l","ɪ","f","t"] }
+      ]
+    },
+    {
+      "text": "Fran fit a flag and Fred fixed a flatbed.",
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
+      "interestWords": ["flag", "flatbed"],
+      "words": [
+        { "surface": "Fran",    "graphemes": ["f","r","a","n"],             "phonemes": ["f","r","æ","n"] },
+        { "surface": "fit",     "graphemes": ["f","i","t"],                 "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "flag",    "graphemes": ["f","l","a","g"],             "phonemes": ["f","l","æ","g"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",    "graphemes": ["f","r","e","d"],             "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fixed",   "graphemes": ["f","i","x","e","d"],         "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "flatbed", "graphemes": ["f","l","a","t","b","e","d"], "phonemes": ["f","l","æ","t","b","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "Finn fit a fan and Fran fixed a flag.",
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
+      "interestWords": ["fan", "flag"],
+      "words": [
+        { "surface": "Finn",  "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "fit",   "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fran",  "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flag",  "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+      ]
+    }
+  ]
+}
