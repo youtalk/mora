@@ -121,6 +121,7 @@ func everyStringField(_ s: MoraStrings) -> [(name: String, value: String)] {
         ("tileTutorialTry", s.tileTutorialTry),
         ("decodingHelpLabel", s.decodingHelpLabel),
         ("sentencesLongPressHint", s.sentencesLongPressHint),
+        ("sentencesListenAgain", s.sentencesListenAgain),
         ("feedbackCorrect", s.feedbackCorrect),
         ("feedbackTryAgain", s.feedbackTryAgain),
         ("micIdlePrompt", s.micIdlePrompt),

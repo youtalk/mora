@@ -259,6 +259,7 @@ public struct JapaneseL1Profile: L1Profile {
         decodingHelpLabel: "あそびかたを 見る",
         // `聞` G2 → all-hira.
         sentencesLongPressHint: "ながおしで もういちど きけるよ",
+        sentencesListenAgain: "🔊 もういちど",
         feedbackCorrect: "せいかい！",
         // `一` G1 but `回` G2 → partial-mix forbidden → all-hira.
         feedbackTryAgain: "もういちど",
@@ -399,6 +400,7 @@ public struct JapaneseL1Profile: L1Profile {
         // superseded by the invariant that no kanji may appear at entry tier)
         decodingHelpLabel: "あそびかたを みる",
         sentencesLongPressHint: "ながおしで もういちど きけるよ",
+        sentencesListenAgain: "🔊 もういちど",
         feedbackCorrect: "せいかい！",
         feedbackTryAgain: "もういちど",
         micIdlePrompt: "マイクを タップして よんでね",
