@@ -55,7 +55,9 @@ struct SessionShapePanel: View {
 
     private func stepIcon(emoji: String, label: String, index: Int) -> some View {
         VStack(spacing: MoraTheme.Space.sm) {
-            Text(emoji).font(.system(size: 56))
+            Text(emoji)
+                .font(.system(size: 56))
+                .accessibilityHidden(true)
             Text(label)
                 .font(MoraType.label())
                 .foregroundStyle(MoraTheme.Ink.primary)
