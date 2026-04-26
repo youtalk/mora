@@ -36,6 +36,20 @@ final class MoraStringsTests: XCTestCase {
             ("permissionBody", s.permissionBody),
             ("permissionAllow", s.permissionAllow),
             ("permissionNotNow", s.permissionNotNow),
+            ("yokaiIntroConceptTitle", s.yokaiIntroConceptTitle),
+            ("yokaiIntroConceptBody", s.yokaiIntroConceptBody),
+            ("yokaiIntroTodayTitle", s.yokaiIntroTodayTitle),
+            ("yokaiIntroTodayBody", s.yokaiIntroTodayBody),
+            ("yokaiIntroSessionTitle", s.yokaiIntroSessionTitle),
+            ("yokaiIntroSessionBody", s.yokaiIntroSessionBody),
+            ("yokaiIntroSessionStep1", s.yokaiIntroSessionStep1),
+            ("yokaiIntroSessionStep2", s.yokaiIntroSessionStep2),
+            ("yokaiIntroSessionStep3", s.yokaiIntroSessionStep3),
+            ("yokaiIntroProgressTitle", s.yokaiIntroProgressTitle),
+            ("yokaiIntroProgressBody", s.yokaiIntroProgressBody),
+            ("yokaiIntroNext", s.yokaiIntroNext),
+            ("yokaiIntroBegin", s.yokaiIntroBegin),
+            ("yokaiIntroClose", s.yokaiIntroClose),
             ("homeTodayQuest", s.homeTodayQuest),
             ("homeStart", s.homeStart),
             ("voiceGateTitle", s.voiceGateTitle),
@@ -197,6 +211,20 @@ final class MoraStringsTests: XCTestCase {
             ("permissionBody", s.permissionBody),
             ("permissionAllow", s.permissionAllow),
             ("permissionNotNow", s.permissionNotNow),
+            ("yokaiIntroConceptTitle", s.yokaiIntroConceptTitle),
+            ("yokaiIntroConceptBody", s.yokaiIntroConceptBody),
+            ("yokaiIntroTodayTitle", s.yokaiIntroTodayTitle),
+            ("yokaiIntroTodayBody", s.yokaiIntroTodayBody),
+            ("yokaiIntroSessionTitle", s.yokaiIntroSessionTitle),
+            ("yokaiIntroSessionBody", s.yokaiIntroSessionBody),
+            ("yokaiIntroSessionStep1", s.yokaiIntroSessionStep1),
+            ("yokaiIntroSessionStep2", s.yokaiIntroSessionStep2),
+            ("yokaiIntroSessionStep3", s.yokaiIntroSessionStep3),
+            ("yokaiIntroProgressTitle", s.yokaiIntroProgressTitle),
+            ("yokaiIntroProgressBody", s.yokaiIntroProgressBody),
+            ("yokaiIntroNext", s.yokaiIntroNext),
+            ("yokaiIntroBegin", s.yokaiIntroBegin),
+            ("yokaiIntroClose", s.yokaiIntroClose),
             ("homeTodayQuest", s.homeTodayQuest),
             ("homeStart", s.homeStart),
             ("homeDurationPill(16)", s.homeDurationPill(16)),
@@ -208,6 +236,7 @@ final class MoraStringsTests: XCTestCase {
                 "bestiaryBefriendedOn(epoch)",
                 s.bestiaryBefriendedOn(Date(timeIntervalSince1970: 0))
             ),
+            ("homeRecapLink", s.homeRecapLink),
             // voiceGate* intentionally omitted: those are parent-setup
             // strings that must match iOS Settings labels verbatim
             // (English / Settings / Spoken Content) and therefore sit
@@ -287,6 +316,7 @@ final class MoraStringsTests: XCTestCase {
         case 0x0020: return true  // ASCII space — needed between tokens
         case 0x002F: return true  // '/' — used in "\(current)/\(total)" counters
         case 0x0030...0x0039: return true  // ASCII digits 0-9 for count/score closures
+        case 0x0041...0x005A: return true  // ASCII uppercase A-Z — proper nouns ("Yokai") and acronyms ("OK") in yokai-intro strings
         case 0x0061...0x007A: return true  // ASCII lowercase a-z — phoneme exemplars in coaching strings
         default: return allowedSymbols.contains(scalar)
         }
