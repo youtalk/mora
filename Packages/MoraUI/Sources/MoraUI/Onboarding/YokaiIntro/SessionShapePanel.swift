@@ -55,7 +55,9 @@ struct SessionShapePanel: View {
 
     private func stepIcon(emoji: String, label: String, index: Int) -> some View {
         VStack(spacing: MoraTheme.Space.sm) {
-            Text(emoji).font(.system(size: 56))
+            Text(emoji)
+                .font(.system(size: 56))
+                .accessibilityHidden(true)
             Text(label)
                 .font(MoraType.label())
                 .foregroundStyle(MoraTheme.Ink.primary)
@@ -71,10 +73,18 @@ struct SessionShapePanel: View {
             return
         }
         for i in 0..<3 {
+            if Task.isCancelled { return }
             withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
                 stepsVisible[i] = true
             }
-            try? await Task.sleep(for: .milliseconds(120))
+            do {
+                try await Task.sleep(for: .milliseconds(120))
+            } catch is CancellationError {
+                return
+            } catch {
+                assertionFailure("Unexpected error while animating session-shape steps: \(error)")
+                return
+            }
         }
     }
 }

@@ -16,8 +16,15 @@ final class FakeYokaiClipPlayer: YokaiClipPlayer {
     private(set) var playedURLs: [URL] = []
     private(set) var stopCount: Int = 0
 
+    /// Optional expectation fulfilled the first time `play(url:)` is called,
+    /// so tests can wait on `.task` firing without a hard-coded sleep.
+    var firstPlayExpectation: XCTestExpectation?
+
     func play(url: URL) -> Bool {
         playedURLs.append(url)
+        if playedURLs.count == 1 {
+            firstPlayExpectation?.fulfill()
+        }
         return true
     }
 
@@ -32,8 +39,14 @@ final class YokaiIntroPanel2AudioTests: XCTestCase {
     func testPlayingTodaysYokaiPanelTriggersGreetClipExactlyOnce() async throws {
         let store = try BundledYokaiStore()
         let player = FakeYokaiClipPlayer()
+        let playExpectation = expectation(description: "greet clip plays once on appear")
+        player.firstPlayExpectation = playExpectation
         let panel = TodaysYokaiPanel(store: store, player: player, onContinue: {})
 
+        // Hosting the panel inside a real UIWindow lets SwiftUI's lifecycle
+        // fire `.task` reliably (just `loadViewIfNeeded()` does not always
+        // deliver `.task` on detached hosting controllers).
+        let window = UIWindow(frame: UIScreen.main.bounds)
         let host = UIHostingController(
             rootView:
                 panel.environment(
@@ -41,17 +54,18 @@ final class YokaiIntroPanel2AudioTests: XCTestCase {
                     JapaneseL1Profile().uiStrings(forAgeYears: 8)
                 )
         )
-        host.loadViewIfNeeded()
-        host.view.layoutIfNeeded()
+        window.rootViewController = host
+        window.makeKeyAndVisible()
 
-        // Allow `.task` to run.
-        try await Task.sleep(for: .milliseconds(200))
+        await fulfillment(of: [playExpectation], timeout: 2.0)
 
         XCTAssertEqual(player.playedURLs.count, 1, "greet clip should fire once on appear")
         let firstYokaiID = CurriculumEngine.sharedV1.skills.first?.yokaiID
         XCTAssertNotNil(firstYokaiID)
         let expectedURL = store.voiceClipURL(for: firstYokaiID!, clip: .greet)
         XCTAssertEqual(player.playedURLs.first, expectedURL)
+
+        window.isHidden = true
     }
 
     func testTodaysYokaiPanelStopsGreetClipOnDisappear() async throws {
