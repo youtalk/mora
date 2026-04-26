@@ -285,8 +285,139 @@ public struct JapaneseL1Profile: L1Profile {
         a11yStreakChip: { days in "\(days)日 れんぞく" }
     )
 
-    /// PR 1 stub — Task 1.6 fills in the all-hira authoring.
-    private static let stringsEntryHiraOnly = stringsAdvancedG1G2
+    /// Ages ≤6 (entry tier). Kanji budget: empty — every kanji collapses to
+    /// its hiragana reading. Mechanically derived from `stringsCoreG1` by
+    /// applying the additional substitutions in spec §6.1.1 / Task 1.6.
+    private static let stringsEntryHiraOnly = MoraStrings(
+        ageOnboardingPrompt: "なんさい？",
+        ageOnboardingCTA: "▶ はじめる",
+        // `音` G1 → おと
+        welcomeTitle: "えいごの おとを いっしょに",
+        welcomeCTA: "はじめる",
+        namePrompt: "なまえを おしえてね",
+        nameSkip: "スキップ",
+        nameCTA: "つぎへ",
+        interestPrompt: "すきな ものを 3つ えらんでね",
+        interestCTA: "つぎへ",
+        permissionTitle: "こえを きくよ",
+        // `正` G1 → ただ
+        permissionBody: "きみが よんだ ことばを きいて、ただしいか しらべるよ",
+        permissionAllow: "ゆるす",
+        permissionNotNow: "あとで",
+        // `音` G1 → おと
+        yokaiIntroConceptTitle: "おとには ともだちが いるよ",
+        // `音` G1 → おと (both occurrences)
+        yokaiIntroConceptBody:
+            "えいごの おと ひとつ ひとつに、Yokai が すんでいる。"
+            + "なかよく なるには、その おとを よく きいて、ことばに しよう。",
+        yokaiIntroTodayTitle: "こんしゅうの ともだち",
+        yokaiIntroTodayBody: "こんしゅうは この おとを いっしょに れんしゅうしよう。",
+        yokaiIntroSessionTitle: "1かいの すすめかた",
+        yokaiIntroSessionBody: "1かい だいたい 10ぷん。",
+        yokaiIntroSessionStep1: "きく",
+        yokaiIntroSessionStep2: "ならべる",
+        yokaiIntroSessionStep3: "はなす",
+        yokaiIntroProgressTitle: "5かいで ともだちに なる",
+        // `日` G1 → ひ
+        yokaiIntroProgressBody:
+            "Yokai と 5かい れんしゅうすると、なかよく なれる。"
+            + "1ひ 1かい でも、すきな ペースで OK。",
+        yokaiIntroNext: "つぎへ",
+        yokaiIntroBegin: "▶ はじめる",
+        yokaiIntroClose: "とじる",
+        homeTodayQuest: "きょうの クエスト",
+        homeStart: "▶ はじめる",
+        homeDurationPill: { minutes in "\(minutes)ぷん" },
+        // `文` G1, `字` G1 → もじ
+        homeWordsPill: { count in "\(count)もじ" },
+        // `文` G1 → ぶん
+        homeSentencesPill: { count in "\(count)ぶん" },
+        bestiaryLinkLabel: "ともだち ずかん",
+        bestiaryPlayGreeting: "🔊 あいさつ",
+        // `日` G1 → ひ
+        bestiaryBefriendedOn: { date in
+            "なかよくなったひ \(Self.bestiaryDateFormatter.string(from: date))"
+        },
+        homeRecapLink: "あそびかた",
+        voiceGateTitle: "えいごの こえを ダウンロードしてください",
+        // `入` G1 → はい, `中` G1 → なか, `下` G1 → した
+        voiceGateBody:
+            "Moraで つかう きれいな こえが iPadに はいっていません。\n"
+            + "せっていアプリを ひらき、したの じゅんで ひらいてください:\n\n"
+            + "  せってい (Settings)\n"
+            + "  → アクセシビリティ (Accessibility)\n"
+            + "  → よみあげ と はつわ (Read & Speak)\n"
+            + "  → こえ (Voices) → えいご (English)\n\n"
+            + "その なかから Premium または Enhanced の こえ (Ava / Samantha / Siri など) を\n"
+            + "ダウンロードしてください。\n"
+            + "(iPadOS 26より まえは Read & Speak の かわりに\n"
+            + " Spoken Content / よみあげコンテンツ と ひょうじされます。\n"
+            + " OSの ことばが えいごの ばあいは カッコ ないの ひょうきで ひょうじされます。)",
+        voiceGateOpenSettings: "せっていを ひらく",
+        voiceGateRecheck: "もういちど たしかめる",
+        voiceGateInstalledVoicesTitle: "インストールずみの えいご voice",
+        voiceGateNoVoicesPlaceholder: "(なし)",
+        sessionCloseTitle: "きょうの クエストを おわる？",
+        sessionCloseMessage: "ここまでの きろくは のこるよ",
+        sessionCloseKeepGoing: "つづける",
+        sessionCloseEnd: "おわる",
+        sessionWordCounter: { current, total in "\(current)/\(total)" },
+        sessionSentenceCounter: { current, total in "\(current)/\(total)" },
+        warmupListenAgain: "🔊 もういちど",
+        newRuleGotIt: "わかった",
+        newRuleListenAgain: "🔊 もういちど",
+        decodingLongPressHint: "ながおしで もういちど きけるよ",
+        decodingBuildPrompt: "よく きいて ならべよう",
+        decodingListenAgain: "🔊 もういちど",
+        // `文` G1, `字` G1, `入` G1 → もじ, ます, い
+        tileTutorialSlotTitle: "もじを ますに いれて ことばを つくる",
+        // `音` G1 → おと
+        tileTutorialSlotBody:
+            "ます 1つは おと 1つ。タイルを ながおしして、ますへ ドラッグしよう。",
+        // `音` G1 → おと
+        tileTutorialAudioTitle: "きいた おとを つくろう",
+        // `音` G1 → おと (both occurrences)
+        tileTutorialAudioBody:
+            "はじめに 🔊 が おとを きかせる。きいた おとと おなじに なるよう、"
+            + "タイルを ならべよう。きこえなおすときは「もういちど きく」を タップ。",
+        tileTutorialNext: "つぎへ",
+        tileTutorialTry: "▶ やってみる",
+        // `見` G1 → みる (spec §6.1.1 empty budget; plan note "unchanged" is
+        // superseded by the invariant that no kanji may appear at entry tier)
+        decodingHelpLabel: "あそびかたを みる",
+        sentencesLongPressHint: "ながおしで もういちど きけるよ",
+        feedbackCorrect: "せいかい！",
+        feedbackTryAgain: "もういちど",
+        micIdlePrompt: "マイクを タップして よんでね",
+        micListening: "きいてるよ…",
+        // `中` G1 → on'yomi ちゅう (avoids awkward なか after カタカナ stem)
+        micAssessing: "チェックちゅう…",
+        micDeniedBanner: "マイクが つかえないので ボタンで こたえてね",
+        // coaching strings: `上` G1 → うえ, `出` G1 → だ(して), `下` G1 → さ(げて)
+        coachingShSubS: "くちびるをまるめて、したのおくをもちあげてみよう。「sh」。",
+        coachingShDrift: "もうすこしくちをまるくして、ながくのばしてみよう。「shhhh」。",
+        coachingRSubL: "したのさきはどこにもつけないで、おくだけすこし うえに。「r」。",
+        coachingLSubR: "したのさきを うえのはのうらにつけて、そのまま「l」。",
+        coachingFSubH: "うえのはでしたくちびるに、かるくふれて「fff」。",
+        coachingVSubB: "うえのはでしたくちびるにふれて、のどをふるわせて「vvv」。",
+        coachingThVoicelessSubS: "したのさきをはのあいだにそっとだして「thhh」。",
+        coachingThVoicelessSubT: "したのさきをはのあいだにそっとだして、とめずに「thhh」。",
+        coachingTSubThVoiceless: "したのさきを うえのはのうらにぴたっとつけて、すぐはなして「t」。",
+        coachingAeSubSchwa: "くちをよこにひろげて、あごをさげて「æ」。",
+        categorySubstitutionBanner: { target, substitute in
+            "いまの \(target) は \(substitute) に よってたよ"
+        },
+        categoryDriftBanner: { target in
+            "もうすこし \(target) らしいおとに ちかづけよう"
+        },
+        completionTitle: "できた！",
+        completionScore: { correct, total in "\(correct)/\(total)" },
+        completionComeBack: "あしたも またね",
+        a11yCloseSession: "クエストを おわる",
+        a11yMicButton: "マイク",
+        // `日` G1 → にち
+        a11yStreakChip: { days in "\(days)にち れんぞく" }
+    )
 
     /// Ages 8+ (advanced tier). Kanji budget: only JPKanjiLevel.grade1And2
     /// characters appear. See spec §7.2 for the authoring rules and the
