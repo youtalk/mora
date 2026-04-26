@@ -83,6 +83,7 @@ public struct MoraStrings: Sendable {
     public let tileTutorialTry: String
     public let decodingHelpLabel: String
     public let sentencesLongPressHint: String
+    public let sentencesListenAgain: String
     public let feedbackCorrect: String
     public let feedbackTryAgain: String
 
@@ -169,6 +170,7 @@ public struct MoraStrings: Sendable {
         tileTutorialTry: String,
         decodingHelpLabel: String,
         sentencesLongPressHint: String,
+        sentencesListenAgain: String,
         feedbackCorrect: String, feedbackTryAgain: String,
         micIdlePrompt: String, micListening: String,
         micAssessing: String, micDeniedBanner: String,
@@ -252,6 +254,7 @@ public struct MoraStrings: Sendable {
         self.tileTutorialTry = tileTutorialTry
         self.decodingHelpLabel = decodingHelpLabel
         self.sentencesLongPressHint = sentencesLongPressHint
+        self.sentencesListenAgain = sentencesListenAgain
         self.feedbackCorrect = feedbackCorrect
         self.feedbackTryAgain = feedbackTryAgain
         self.micIdlePrompt = micIdlePrompt

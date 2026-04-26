@@ -214,6 +214,7 @@ public struct JapaneseL1Profile: L1Profile {
         tileTutorialTry: "▶ やってみる",
         decodingHelpLabel: "あそびかたを 見る",
         sentencesLongPressHint: "ながおしで もういちど 聞けるよ",
+        sentencesListenAgain: "🔊 もういちど",
         feedbackCorrect: "せいかい！",
         feedbackTryAgain: "もう一回",
         micIdlePrompt: "マイクを タップして 読んでね",

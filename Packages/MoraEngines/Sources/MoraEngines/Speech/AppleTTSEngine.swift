@@ -9,6 +9,7 @@ public actor AppleTTSEngine: TTSEngine {
     private let synthesizer: AVSpeechSynthesizer
     private let delegateProxy: DelegateProxy
     private let l1Profile: any L1Profile
+    private let verySlowRate: Float
     private let slowRate: Float
     private let normalRate: Float
     public let preferredVoiceIdentifier: String?
@@ -28,11 +29,13 @@ public actor AppleTTSEngine: TTSEngine {
     public init(
         l1Profile: any L1Profile,
         preferredVoiceIdentifier: String? = nil,
+        verySlowRate: Float = 0.34,
         slowRate: Float = 0.40,
         normalRate: Float = 0.46
     ) {
         self.l1Profile = l1Profile
         self.preferredVoiceIdentifier = preferredVoiceIdentifier
+        self.verySlowRate = verySlowRate
         self.slowRate = slowRate
         self.normalRate = normalRate
         let synth = AVSpeechSynthesizer()
@@ -245,6 +248,7 @@ public actor AppleTTSEngine: TTSEngine {
         let isHighQuality = voice.quality == .enhanced || voice.quality == .premium
         guard isHighQuality else { return AVSpeechUtteranceDefaultSpeechRate }
         switch pace {
+        case .verySlow: return verySlowRate
         case .slow: return slowRate
         case .normal: return normalRate
         }
