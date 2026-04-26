@@ -317,6 +317,7 @@ final class MoraStringsTests: XCTestCase {
         case 0x0020: return true  // ASCII space — needed between tokens
         case 0x002F: return true  // '/' — used in "\(current)/\(total)" counters
         case 0x0030...0x0039: return true  // ASCII digits 0-9 for count/score closures
+        case 0x0041...0x005A: return true  // ASCII uppercase A-Z — romaji proper nouns (Yokai, Mora, iPad, OK)
         case 0x0061...0x007A: return true  // ASCII lowercase a-z — phoneme exemplars in coaching strings
         default: return allowedSymbols.contains(scalar)
         }

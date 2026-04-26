@@ -147,7 +147,7 @@ public struct JapaneseL1Profile: L1Profile {
         permissionNotNow: "後で",
         yokaiIntroConceptTitle: "音には ともだちが いるよ",
         yokaiIntroConceptBody:
-            "えいごの 音 ひとつ ひとつに、ようかいが すんでいる。"
+            "えいごの 音 ひとつ ひとつに、Yokai が すんでいる。"
             + "なかよく なるには、その 音を よく 聞いて、ことばに しよう。",
         yokaiIntroTodayTitle: "今週の ともだち",
         yokaiIntroTodayBody: "今週は この 音を いっしょに れんしゅうしよう。",
@@ -158,8 +158,8 @@ public struct JapaneseL1Profile: L1Profile {
         yokaiIntroSessionStep3: "話す",
         yokaiIntroProgressTitle: "5回で ともだちに なる",
         yokaiIntroProgressBody:
-            "ようかいと 5回 れんしゅうすると、なかよく なれる。"
-            + "1日 1回 でも、すきな ペースで おけ。",
+            "Yokai と 5回 れんしゅうすると、なかよく なれる。"
+            + "1日 1回 でも、すきな ペースで OK。",
         yokaiIntroNext: "つぎへ",
         yokaiIntroBegin: "▶ はじめる",
         yokaiIntroClose: "とじる",
