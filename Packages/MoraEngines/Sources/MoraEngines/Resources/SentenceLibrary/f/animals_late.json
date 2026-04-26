@@ -1,0 +1,368 @@
+{
+  "phoneme": "f",
+  "phonemeIPA": "f",
+  "graphemeLetters": "f",
+  "interest": "animals",
+  "ageBand": "late",
+  "sentences": [
+    {
+      "text": "Finn and Fred spotted a fluffy ferret and a flamingo.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["ferret", "flamingo"],
+      "words": [
+        { "surface": "Finn",     "graphemes": ["f","i","n","n"],                 "phonemes": ["f","ɪ","n"] },
+        { "surface": "and",      "graphemes": ["a","n","d"],                     "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",     "graphemes": ["f","r","e","d"],                 "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "spotted",  "graphemes": ["s","p","o","t","t","e","d"],     "phonemes": ["s","p","ɒ","t","ɪ","d"] },
+        { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "fluffy",   "graphemes": ["f","l","u","f","f","y"],         "phonemes": ["f","l","ʌ","f","i"] },
+        { "surface": "ferret",   "graphemes": ["f","e","r","r","e","t"],         "phonemes": ["f","ɛ","r","ɛ","t"] },
+        { "surface": "and",      "graphemes": ["a","n","d"],                     "phonemes": ["æ","n","d"] },
+        { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "flamingo", "graphemes": ["f","l","a","m","i","n","g","o"], "phonemes": ["f","l","ə","m","ɪ","ŋ","g","oʊ"] }
+      ]
+    },
+    {
+      "text": "Fran lifted a firefly and Finn spotted a fluffy fox.",
+      "targetCount": 7,
+      "targetInitialContentWords": 6,
+      "interestWords": ["firefly", "fox"],
+      "words": [
+        { "surface": "Fran",    "graphemes": ["f","r","a","n"],                 "phonemes": ["f","r","æ","n"] },
+        { "surface": "lifted",  "graphemes": ["l","i","f","t","e","d"],         "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",       "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "firefly", "graphemes": ["f","i","r","e","f","l","y"],     "phonemes": ["f","aɪ","r","f","l","aɪ"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],                     "phonemes": ["æ","n","d"] },
+        { "surface": "Finn",    "graphemes": ["f","i","n","n"],                 "phonemes": ["f","ɪ","n"] },
+        { "surface": "spotted", "graphemes": ["s","p","o","t","t","e","d"],     "phonemes": ["s","p","ɒ","t","ɪ","d"] },
+        { "surface": "a",       "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "fluffy",  "graphemes": ["f","l","u","f","f","y"],         "phonemes": ["f","l","ʌ","f","i"] },
+        { "surface": "fox",     "graphemes": ["f","o","x"],                     "phonemes": ["f","ɒ","k","s"] }
+      ]
+    },
+    {
+      "text": "Fred fed a falcon and Fran fed a fluffy ferret.",
+      "targetCount": 7,
+      "targetInitialContentWords": 7,
+      "interestWords": ["falcon", "ferret"],
+      "words": [
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "falcon", "graphemes": ["f","a","l","c","o","n"], "phonemes": ["f","æ","l","k","ə","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fluffy", "graphemes": ["f","l","u","f","f","y"], "phonemes": ["f","l","ʌ","f","i"] },
+        { "surface": "ferret", "graphemes": ["f","e","r","r","e","t"], "phonemes": ["f","ɛ","r","ɛ","t"] }
+      ]
+    },
+    {
+      "text": "Finn lifted a flat fish and Fran fed a frog.",
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
+      "interestWords": ["fish", "frog"],
+      "words": [
+        { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "flat",   "graphemes": ["f","l","a","t"],         "phonemes": ["f","l","æ","t"] },
+        { "surface": "fish",   "graphemes": ["f","i","sh"],            "phonemes": ["f","ɪ","ʃ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "frog",   "graphemes": ["f","r","o","g"],         "phonemes": ["f","r","ɒ","g"] }
+      ]
+    },
+    {
+      "text": "Fran fixed a pen and Fred fed a fluffy falcon.",
+      "targetCount": 7,
+      "targetInitialContentWords": 6,
+      "interestWords": ["falcon"],
+      "words": [
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "fixed",  "graphemes": ["f","i","x","e","d"],     "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "pen",    "graphemes": ["p","e","n"],             "phonemes": ["p","ɛ","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fluffy", "graphemes": ["f","l","u","f","f","y"], "phonemes": ["f","l","ʌ","f","i"] },
+        { "surface": "falcon", "graphemes": ["f","a","l","c","o","n"], "phonemes": ["f","æ","l","k","ə","n"] }
+      ]
+    },
+    {
+      "text": "Finn spotted a fluffy ferret and Fred lifted a frog.",
+      "targetCount": 7,
+      "targetInitialContentWords": 6,
+      "interestWords": ["ferret", "frog"],
+      "words": [
+        { "surface": "Finn",    "graphemes": ["f","i","n","n"],             "phonemes": ["f","ɪ","n"] },
+        { "surface": "spotted", "graphemes": ["s","p","o","t","t","e","d"], "phonemes": ["s","p","ɒ","t","ɪ","d"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "fluffy",  "graphemes": ["f","l","u","f","f","y"],     "phonemes": ["f","l","ʌ","f","i"] },
+        { "surface": "ferret",  "graphemes": ["f","e","r","r","e","t"],     "phonemes": ["f","ɛ","r","ɛ","t"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",    "graphemes": ["f","r","e","d"],             "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "lifted",  "graphemes": ["l","i","f","t","e","d"],     "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "frog",    "graphemes": ["f","r","o","g"],             "phonemes": ["f","r","ɒ","g"] }
+      ]
+    },
+    {
+      "text": "Fred lifted a flamingo and Fran fed a fluffy fox.",
+      "targetCount": 7,
+      "targetInitialContentWords": 6,
+      "interestWords": ["flamingo", "fox"],
+      "words": [
+        { "surface": "Fred",     "graphemes": ["f","r","e","d"],                 "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "lifted",   "graphemes": ["l","i","f","t","e","d"],         "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "flamingo", "graphemes": ["f","l","a","m","i","n","g","o"], "phonemes": ["f","l","ə","m","ɪ","ŋ","g","oʊ"] },
+        { "surface": "and",      "graphemes": ["a","n","d"],                     "phonemes": ["æ","n","d"] },
+        { "surface": "Fran",     "graphemes": ["f","r","a","n"],                 "phonemes": ["f","r","æ","n"] },
+        { "surface": "fed",      "graphemes": ["f","e","d"],                     "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "fluffy",   "graphemes": ["f","l","u","f","f","y"],         "phonemes": ["f","l","ʌ","f","i"] },
+        { "surface": "fox",      "graphemes": ["f","o","x"],                     "phonemes": ["f","ɒ","k","s"] }
+      ]
+    },
+    {
+      "text": "Finn fixed a pen and Fred had a fluffy frog.",
+      "targetCount": 7,
+      "targetInitialContentWords": 5,
+      "interestWords": ["frog"],
+      "words": [
+        { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+        { "surface": "fixed",  "graphemes": ["f","i","x","e","d"],     "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "pen",    "graphemes": ["p","e","n"],             "phonemes": ["p","ɛ","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],             "phonemes": ["h","æ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fluffy", "graphemes": ["f","l","u","f","f","y"], "phonemes": ["f","l","ʌ","f","i"] },
+        { "surface": "frog",   "graphemes": ["f","r","o","g"],         "phonemes": ["f","r","ɒ","g"] }
+      ]
+    },
+    {
+      "text": "Fran spotted a firefly and Finn lifted a fluffy fox.",
+      "targetCount": 7,
+      "targetInitialContentWords": 6,
+      "interestWords": ["firefly", "fox"],
+      "words": [
+        { "surface": "Fran",    "graphemes": ["f","r","a","n"],             "phonemes": ["f","r","æ","n"] },
+        { "surface": "spotted", "graphemes": ["s","p","o","t","t","e","d"], "phonemes": ["s","p","ɒ","t","ɪ","d"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "firefly", "graphemes": ["f","i","r","e","f","l","y"], "phonemes": ["f","aɪ","r","f","l","aɪ"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "Finn",    "graphemes": ["f","i","n","n"],             "phonemes": ["f","ɪ","n"] },
+        { "surface": "lifted",  "graphemes": ["l","i","f","t","e","d"],     "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "fluffy",  "graphemes": ["f","l","u","f","f","y"],     "phonemes": ["f","l","ʌ","f","i"] },
+        { "surface": "fox",     "graphemes": ["f","o","x"],                 "phonemes": ["f","ɒ","k","s"] }
+      ]
+    },
+    {
+      "text": "Fred and Finn fed a fluffy falcon and a fish.",
+      "targetCount": 7,
+      "targetInitialContentWords": 5,
+      "interestWords": ["falcon", "fish"],
+      "words": [
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fluffy", "graphemes": ["f","l","u","f","f","y"], "phonemes": ["f","l","ʌ","f","i"] },
+        { "surface": "falcon", "graphemes": ["f","a","l","c","o","n"], "phonemes": ["f","æ","l","k","ə","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fish",   "graphemes": ["f","i","sh"],            "phonemes": ["f","ɪ","ʃ"] }
+      ]
+    },
+    {
+      "text": "Fran fixed a fluffy ferret and Finn fed a frog.",
+      "targetCount": 7,
+      "targetInitialContentWords": 6,
+      "interestWords": ["ferret", "frog"],
+      "words": [
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "fixed",  "graphemes": ["f","i","x","e","d"],     "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fluffy", "graphemes": ["f","l","u","f","f","y"], "phonemes": ["f","l","ʌ","f","i"] },
+        { "surface": "ferret", "graphemes": ["f","e","r","r","e","t"], "phonemes": ["f","ɛ","r","ɛ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "frog",   "graphemes": ["f","r","o","g"],         "phonemes": ["f","r","ɒ","g"] }
+      ]
+    },
+    {
+      "text": "Finn lifted a flat fish and a fluffy frog.",
+      "targetCount": 7,
+      "targetInitialContentWords": 5,
+      "interestWords": ["fish", "frog"],
+      "words": [
+        { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "flat",   "graphemes": ["f","l","a","t"],         "phonemes": ["f","l","æ","t"] },
+        { "surface": "fish",   "graphemes": ["f","i","sh"],            "phonemes": ["f","ɪ","ʃ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fluffy", "graphemes": ["f","l","u","f","f","y"], "phonemes": ["f","l","ʌ","f","i"] },
+        { "surface": "frog",   "graphemes": ["f","r","o","g"],         "phonemes": ["f","r","ɒ","g"] }
+      ]
+    },
+    {
+      "text": "Fred spotted a flamingo and Fran lifted a fluffy ferret.",
+      "targetCount": 7,
+      "targetInitialContentWords": 6,
+      "interestWords": ["flamingo", "ferret"],
+      "words": [
+        { "surface": "Fred",     "graphemes": ["f","r","e","d"],                 "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "spotted",  "graphemes": ["s","p","o","t","t","e","d"],     "phonemes": ["s","p","ɒ","t","ɪ","d"] },
+        { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "flamingo", "graphemes": ["f","l","a","m","i","n","g","o"], "phonemes": ["f","l","ə","m","ɪ","ŋ","g","oʊ"] },
+        { "surface": "and",      "graphemes": ["a","n","d"],                     "phonemes": ["æ","n","d"] },
+        { "surface": "Fran",     "graphemes": ["f","r","a","n"],                 "phonemes": ["f","r","æ","n"] },
+        { "surface": "lifted",   "graphemes": ["l","i","f","t","e","d"],         "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "fluffy",   "graphemes": ["f","l","u","f","f","y"],         "phonemes": ["f","l","ʌ","f","i"] },
+        { "surface": "ferret",   "graphemes": ["f","e","r","r","e","t"],         "phonemes": ["f","ɛ","r","ɛ","t"] }
+      ]
+    },
+    {
+      "text": "Finn and Fran spotted a firefly and a fluffy fox.",
+      "targetCount": 7,
+      "targetInitialContentWords": 5,
+      "interestWords": ["firefly", "fox"],
+      "words": [
+        { "surface": "Finn",    "graphemes": ["f","i","n","n"],             "phonemes": ["f","ɪ","n"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "Fran",    "graphemes": ["f","r","a","n"],             "phonemes": ["f","r","æ","n"] },
+        { "surface": "spotted", "graphemes": ["s","p","o","t","t","e","d"], "phonemes": ["s","p","ɒ","t","ɪ","d"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "firefly", "graphemes": ["f","i","r","e","f","l","y"], "phonemes": ["f","aɪ","r","f","l","aɪ"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "fluffy",  "graphemes": ["f","l","u","f","f","y"],     "phonemes": ["f","l","ʌ","f","i"] },
+        { "surface": "fox",     "graphemes": ["f","o","x"],                 "phonemes": ["f","ɒ","k","s"] }
+      ]
+    },
+    {
+      "text": "Fran lifted a fluffy ferret and Fred fed a falcon.",
+      "targetCount": 7,
+      "targetInitialContentWords": 7,
+      "interestWords": ["ferret", "falcon"],
+      "words": [
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fluffy", "graphemes": ["f","l","u","f","f","y"], "phonemes": ["f","l","ʌ","f","i"] },
+        { "surface": "ferret", "graphemes": ["f","e","r","r","e","t"], "phonemes": ["f","ɛ","r","ɛ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "falcon", "graphemes": ["f","a","l","c","o","n"], "phonemes": ["f","æ","l","k","ə","n"] }
+      ]
+    },
+    {
+      "text": "Finn fixed a pen and Fran fed a fluffy frog.",
+      "targetCount": 7,
+      "targetInitialContentWords": 5,
+      "interestWords": ["frog"],
+      "words": [
+        { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+        { "surface": "fixed",  "graphemes": ["f","i","x","e","d"],     "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "pen",    "graphemes": ["p","e","n"],             "phonemes": ["p","ɛ","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fluffy", "graphemes": ["f","l","u","f","f","y"], "phonemes": ["f","l","ʌ","f","i"] },
+        { "surface": "frog",   "graphemes": ["f","r","o","g"],         "phonemes": ["f","r","ɒ","g"] }
+      ]
+    },
+    {
+      "text": "Fred lifted a fluffy fox and Fran fed a frog.",
+      "targetCount": 7,
+      "targetInitialContentWords": 6,
+      "interestWords": ["fox", "frog"],
+      "words": [
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fluffy", "graphemes": ["f","l","u","f","f","y"], "phonemes": ["f","l","ʌ","f","i"] },
+        { "surface": "fox",    "graphemes": ["f","o","x"],             "phonemes": ["f","ɒ","k","s"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "frog",   "graphemes": ["f","r","o","g"],         "phonemes": ["f","r","ɒ","g"] }
+      ]
+    },
+    {
+      "text": "Finn spotted a fluffy fox and Fred fixed a fan.",
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
+      "interestWords": ["fox"],
+      "words": [
+        { "surface": "Finn",    "graphemes": ["f","i","n","n"],             "phonemes": ["f","ɪ","n"] },
+        { "surface": "spotted", "graphemes": ["s","p","o","t","t","e","d"], "phonemes": ["s","p","ɒ","t","ɪ","d"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "fluffy",  "graphemes": ["f","l","u","f","f","y"],     "phonemes": ["f","l","ʌ","f","i"] },
+        { "surface": "fox",     "graphemes": ["f","o","x"],                 "phonemes": ["f","ɒ","k","s"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",    "graphemes": ["f","r","e","d"],             "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fixed",   "graphemes": ["f","i","x","e","d"],         "phonemes": ["f","ɪ","k","s","t"] },
+        { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+        { "surface": "fan",     "graphemes": ["f","a","n"],                 "phonemes": ["f","æ","n"] }
+      ]
+    },
+    {
+      "text": "Fran lifted a flamingo and Fred fed a fluffy frog.",
+      "targetCount": 7,
+      "targetInitialContentWords": 6,
+      "interestWords": ["flamingo", "frog"],
+      "words": [
+        { "surface": "Fran",     "graphemes": ["f","r","a","n"],                 "phonemes": ["f","r","æ","n"] },
+        { "surface": "lifted",   "graphemes": ["l","i","f","t","e","d"],         "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "flamingo", "graphemes": ["f","l","a","m","i","n","g","o"], "phonemes": ["f","l","ə","m","ɪ","ŋ","g","oʊ"] },
+        { "surface": "and",      "graphemes": ["a","n","d"],                     "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",     "graphemes": ["f","r","e","d"],                 "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fed",      "graphemes": ["f","e","d"],                     "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "fluffy",   "graphemes": ["f","l","u","f","f","y"],         "phonemes": ["f","l","ʌ","f","i"] },
+        { "surface": "frog",     "graphemes": ["f","r","o","g"],                 "phonemes": ["f","r","ɒ","g"] }
+      ]
+    },
+    {
+      "text": "Finn lifted a fluffy ferret and Fred fed a falcon.",
+      "targetCount": 7,
+      "targetInitialContentWords": 6,
+      "interestWords": ["ferret", "falcon"],
+      "words": [
+        { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+        { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fluffy", "graphemes": ["f","l","u","f","f","y"], "phonemes": ["f","l","ʌ","f","i"] },
+        { "surface": "ferret", "graphemes": ["f","e","r","r","e","t"], "phonemes": ["f","ɛ","r","ɛ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "falcon", "graphemes": ["f","a","l","c","o","n"], "phonemes": ["f","æ","l","k","ə","n"] }
+      ]
+    }
+  ]
+}
