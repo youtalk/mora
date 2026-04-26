@@ -28,7 +28,7 @@ final class WeeklyIntroViewAudioTests: XCTestCase {
             rootView:
                 view.environment(
                     \.moraStrings,
-                    JapaneseL1Profile().uiStrings(forAgeYears: 8)
+                    JapaneseL1Profile().uiStrings(at: .advanced)
                 )
         )
         window.rootViewController = host
@@ -58,7 +58,7 @@ final class WeeklyIntroViewAudioTests: XCTestCase {
             rootView:
                 view.environment(
                     \.moraStrings,
-                    JapaneseL1Profile().uiStrings(forAgeYears: 8)
+                    JapaneseL1Profile().uiStrings(at: .advanced)
                 )
         )
         window.rootViewController = host
@@ -93,7 +93,7 @@ final class WeeklyIntroViewAudioTests: XCTestCase {
             rootView:
                 view.environment(
                     \.moraStrings,
-                    JapaneseL1Profile().uiStrings(forAgeYears: 8)
+                    JapaneseL1Profile().uiStrings(at: .advanced)
                 )
         )
         window.rootViewController = host

@@ -72,10 +72,10 @@ public struct DecodingTutorialOverlay: View {
 #if DEBUG
 #Preview("First time") {
     DecodingTutorialOverlay(mode: .firstTime, onFinished: {})
-        .environment(\.moraStrings, JapaneseL1Profile().uiStrings(forAgeYears: 8))
+        .environment(\.moraStrings, MoraStrings.previewDefault)
 }
 #Preview("Replay") {
     DecodingTutorialOverlay(mode: .replay, onFinished: {})
-        .environment(\.moraStrings, JapaneseL1Profile().uiStrings(forAgeYears: 8))
+        .environment(\.moraStrings, MoraStrings.previewDefault)
 }
 #endif

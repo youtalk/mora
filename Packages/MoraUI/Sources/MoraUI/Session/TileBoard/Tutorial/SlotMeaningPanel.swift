@@ -148,6 +148,6 @@ struct SlotMeaningPanel: View {
 #if DEBUG
 #Preview {
     SlotMeaningPanel(onContinue: {})
-        .environment(\.moraStrings, JapaneseL1Profile().uiStrings(forAgeYears: 8))
+        .environment(\.moraStrings, MoraStrings.previewDefault)
 }
 #endif

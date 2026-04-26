@@ -25,7 +25,7 @@ final class YokaiCutsceneOverlayMondayIntroTests: XCTestCase {
         let overlay = YokaiCutsceneOverlay(orchestrator: orch, speech: nil)
             .environment(
                 \.moraStrings,
-                JapaneseL1Profile().uiStrings(forAgeYears: 8)
+                JapaneseL1Profile().uiStrings(at: .advanced)
             )
 
         // Mount in a real UIWindow so SwiftUI's lifecycle (.task / layout)
@@ -76,7 +76,7 @@ final class YokaiCutsceneOverlayMondayIntroTests: XCTestCase {
         let overlay = YokaiCutsceneOverlay(orchestrator: orch, speech: nil)
             .environment(
                 \.moraStrings,
-                JapaneseL1Profile().uiStrings(forAgeYears: 8)
+                JapaneseL1Profile().uiStrings(at: .advanced)
             )
 
         let window = UIWindow(frame: UIScreen.main.bounds)

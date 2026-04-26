@@ -29,7 +29,7 @@ final class WeeklyIntroViewDismissTests: XCTestCase {
             .environment(\.weeklyIntroTestHook, hook)
             .environment(
                 \.moraStrings,
-                JapaneseL1Profile().uiStrings(forAgeYears: 8)
+                JapaneseL1Profile().uiStrings(at: .advanced)
             )
 
         let window = UIWindow(frame: UIScreen.main.bounds)

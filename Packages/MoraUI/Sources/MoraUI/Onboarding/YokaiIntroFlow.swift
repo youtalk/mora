@@ -83,10 +83,10 @@ public struct YokaiIntroFlow: View {
 #if DEBUG
 #Preview("First time") {
     YokaiIntroFlow(mode: .firstTime, onFinished: {})
-        .environment(\.moraStrings, JapaneseL1Profile().uiStrings(forAgeYears: 8))
+        .environment(\.moraStrings, MoraStrings.previewDefault)
 }
 #Preview("Replay") {
     YokaiIntroFlow(mode: .replay, onFinished: {})
-        .environment(\.moraStrings, JapaneseL1Profile().uiStrings(forAgeYears: 8))
+        .environment(\.moraStrings, MoraStrings.previewDefault)
 }
 #endif
