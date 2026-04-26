@@ -1,0 +1,367 @@
+{
+  "phoneme": "sh",
+  "phonemeIPA": "ʃ",
+  "graphemeLetters": "sh",
+  "interest": "space",
+  "ageBand": "late",
+  "sentences": [
+    {
+      "text": "Shep dashed past Saturn and Shen had a shiny star.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["Saturn", "star"],
+      "words": [
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "dashed", "graphemes": ["d","a","sh","e","d"], "phonemes": ["d","æ","ʃ","t"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],      "phonemes": ["p","æ","s","t"] },
+        { "surface": "Saturn", "graphemes": ["s","a","t","u","r","n"], "phonemes": ["s","æ","t","ə","r","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "star",   "graphemes": ["s","t","a","r"],      "phonemes": ["s","t","ɑ","r"] }
+      ]
+    },
+    {
+      "text": "Sharon had a shiny comet and Shep rushed past Mercury.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["comet", "Mercury"],
+      "words": [
+        { "surface": "Sharon",  "graphemes": ["sh","a","r","o","n"],   "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "had",     "graphemes": ["h","a","d"],            "phonemes": ["h","æ","d"] },
+        { "surface": "a",       "graphemes": ["a"],                    "phonemes": ["ə"] },
+        { "surface": "shiny",   "graphemes": ["sh","i","n","y"],       "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "comet",   "graphemes": ["c","o","m","e","t"],    "phonemes": ["k","ɒ","m","ɪ","t"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],            "phonemes": ["æ","n","d"] },
+        { "surface": "Shep",    "graphemes": ["sh","e","p"],           "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "rushed",  "graphemes": ["r","u","sh","e","d"],   "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "past",    "graphemes": ["p","a","s","t"],        "phonemes": ["p","æ","s","t"] },
+        { "surface": "Mercury", "graphemes": ["m","e","r","c","u","r","y"], "phonemes": ["m","ɜ","r","k","j","ə","r","i"] }
+      ]
+    },
+    {
+      "text": "Shen shut a shiny lander and Sharon rushed past Saturn.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["lander", "Saturn"],
+      "words": [
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],           "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "shut",   "graphemes": ["sh","u","t"],           "phonemes": ["ʃ","ʌ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                    "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],       "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "lander", "graphemes": ["l","a","n","d","e","r"], "phonemes": ["l","æ","n","d","ə","r"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],            "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"],   "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "rushed", "graphemes": ["r","u","sh","e","d"],   "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],        "phonemes": ["p","æ","s","t"] },
+        { "surface": "Saturn", "graphemes": ["s","a","t","u","r","n"], "phonemes": ["s","æ","t","ə","r","n"] }
+      ]
+    },
+    {
+      "text": "Sharon washed a shiny shell in a shimmer of stars.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["stars"],
+      "words": [
+        { "surface": "Sharon",  "graphemes": ["sh","a","r","o","n"],    "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "washed",  "graphemes": ["w","a","sh","e","d"],    "phonemes": ["w","ɒ","ʃ","t"] },
+        { "surface": "a",       "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "shiny",   "graphemes": ["sh","i","n","y"],        "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "shell",   "graphemes": ["sh","e","l","l"],        "phonemes": ["ʃ","ɛ","l"] },
+        { "surface": "in",      "graphemes": ["i","n"],                 "phonemes": ["ɪ","n"] },
+        { "surface": "a",       "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "shimmer", "graphemes": ["sh","i","m","m","e","r"], "phonemes": ["ʃ","ɪ","m","ə","r"] },
+        { "surface": "of",      "graphemes": ["o","f"],                 "phonemes": ["ɒ","v"] },
+        { "surface": "stars",   "graphemes": ["s","t","a","r","s"],     "phonemes": ["s","t","ɑ","r","z"] }
+      ]
+    },
+    {
+      "text": "Shep and Shen set up a shiny shelter on Saturn.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["Saturn"],
+      "words": [
+        { "surface": "Shep",    "graphemes": ["sh","e","p"],           "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],            "phonemes": ["æ","n","d"] },
+        { "surface": "Shen",    "graphemes": ["sh","e","n"],           "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "set",     "graphemes": ["s","e","t"],            "phonemes": ["s","ɛ","t"] },
+        { "surface": "up",      "graphemes": ["u","p"],                "phonemes": ["ʌ","p"] },
+        { "surface": "a",       "graphemes": ["a"],                    "phonemes": ["ə"] },
+        { "surface": "shiny",   "graphemes": ["sh","i","n","y"],       "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "shelter", "graphemes": ["sh","e","l","t","e","r"], "phonemes": ["ʃ","ɛ","l","t","ə","r"] },
+        { "surface": "on",      "graphemes": ["o","n"],                "phonemes": ["ɒ","n"] },
+        { "surface": "Saturn",  "graphemes": ["s","a","t","u","r","n"], "phonemes": ["s","æ","t","ə","r","n"] }
+      ]
+    },
+    {
+      "text": "Sharon dashed past a shiny satellite as Shep rushed past.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["satellite"],
+      "words": [
+        { "surface": "Sharon",    "graphemes": ["sh","a","r","o","n"],            "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "dashed",    "graphemes": ["d","a","sh","e","d"],            "phonemes": ["d","æ","ʃ","t"] },
+        { "surface": "past",      "graphemes": ["p","a","s","t"],                 "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",         "graphemes": ["a"],                             "phonemes": ["ə"] },
+        { "surface": "shiny",     "graphemes": ["sh","i","n","y"],                "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "satellite", "graphemes": ["s","a","t","e","l","l","i","t","e"], "phonemes": ["s","æ","t","ə","l","aɪ","t"] },
+        { "surface": "as",        "graphemes": ["a","s"],                         "phonemes": ["æ","z"] },
+        { "surface": "Shep",      "graphemes": ["sh","e","p"],                    "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "rushed",    "graphemes": ["r","u","sh","e","d"],            "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "past",      "graphemes": ["p","a","s","t"],                 "phonemes": ["p","æ","s","t"] }
+      ]
+    },
+    {
+      "text": "Shep shut a shiny ship and Shen rushed past Mars.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["ship", "Mars"],
+      "words": [
+        { "surface": "Shep",  "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "shut",  "graphemes": ["sh","u","t"],         "phonemes": ["ʃ","ʌ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shiny", "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "ship",  "graphemes": ["sh","i","p"],         "phonemes": ["ʃ","ɪ","p"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Shen",  "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "rushed","graphemes": ["r","u","sh","e","d"], "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "past",  "graphemes": ["p","a","s","t"],      "phonemes": ["p","æ","s","t"] },
+        { "surface": "Mars",  "graphemes": ["m","a","r","s"],      "phonemes": ["m","ɑ","r","z"] }
+      ]
+    },
+    {
+      "text": "Sharon washed the shiny ship and Shep had a lander.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["ship", "lander"],
+      "words": [
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"],   "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "washed", "graphemes": ["w","a","sh","e","d"],   "phonemes": ["w","ɒ","ʃ","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],               "phonemes": ["ð","ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],       "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "ship",   "graphemes": ["sh","i","p"],           "phonemes": ["ʃ","ɪ","p"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],            "phonemes": ["æ","n","d"] },
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],           "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],            "phonemes": ["h","æ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                    "phonemes": ["ə"] },
+        { "surface": "lander", "graphemes": ["l","a","n","d","e","r"], "phonemes": ["l","æ","n","d","ə","r"] }
+      ]
+    },
+    {
+      "text": "Shen had a shiny star and Sharon rushed past Jupiter.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["star", "Jupiter"],
+      "words": [
+        { "surface": "Shen",    "graphemes": ["sh","e","n"],           "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "had",     "graphemes": ["h","a","d"],            "phonemes": ["h","æ","d"] },
+        { "surface": "a",       "graphemes": ["a"],                    "phonemes": ["ə"] },
+        { "surface": "shiny",   "graphemes": ["sh","i","n","y"],       "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "star",    "graphemes": ["s","t","a","r"],        "phonemes": ["s","t","ɑ","r"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],            "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon",  "graphemes": ["sh","a","r","o","n"],   "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "rushed",  "graphemes": ["r","u","sh","e","d"],   "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "past",    "graphemes": ["p","a","s","t"],        "phonemes": ["p","æ","s","t"] },
+        { "surface": "Jupiter", "graphemes": ["j","u","p","i","t","e","r"], "phonemes": ["dʒ","u","p","ɪ","t","ə","r"] }
+      ]
+    },
+    {
+      "text": "Sharon got a shiny galaxy and Shep rushed past Shen.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["galaxy"],
+      "words": [
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"],   "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],            "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                    "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],       "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "galaxy", "graphemes": ["g","a","l","a","x","y"], "phonemes": ["g","æ","l","ə","k","s","i"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],            "phonemes": ["æ","n","d"] },
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],           "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "rushed", "graphemes": ["r","u","sh","e","d"],   "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],        "phonemes": ["p","æ","s","t"] },
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],           "phonemes": ["ʃ","ɛ","n"] }
+      ]
+    },
+    {
+      "text": "Shep crushed a cosmos shard and Sharon had a star.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["cosmos", "star"],
+      "words": [
+        { "surface": "Shep",    "graphemes": ["sh","e","p"],           "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "crushed", "graphemes": ["c","r","u","sh","e","d"], "phonemes": ["k","r","ʌ","ʃ","t"] },
+        { "surface": "a",       "graphemes": ["a"],                    "phonemes": ["ə"] },
+        { "surface": "cosmos",  "graphemes": ["c","o","s","m","o","s"], "phonemes": ["k","ɒ","z","m","ɒ","s"] },
+        { "surface": "shard",   "graphemes": ["sh","a","r","d"],       "phonemes": ["ʃ","ɑ","r","d"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],            "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon",  "graphemes": ["sh","a","r","o","n"],   "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "had",     "graphemes": ["h","a","d"],            "phonemes": ["h","æ","d"] },
+        { "surface": "a",       "graphemes": ["a"],                    "phonemes": ["ə"] },
+        { "surface": "star",    "graphemes": ["s","t","a","r"],        "phonemes": ["s","t","ɑ","r"] }
+      ]
+    },
+    {
+      "text": "Shen saw a shimmer and Sharon rushed past the orbit.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["orbit"],
+      "words": [
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "saw",    "graphemes": ["s","a","w"],          "phonemes": ["s","ɔ","w"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shimmer","graphemes": ["sh","i","m","m","e","r"], "phonemes": ["ʃ","ɪ","m","ə","r"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "rushed", "graphemes": ["r","u","sh","e","d"], "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],      "phonemes": ["p","æ","s","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "orbit",  "graphemes": ["o","r","b","i","t"],  "phonemes": ["ɔ","r","b","ɪ","t"] }
+      ]
+    },
+    {
+      "text": "Shep had a shiny asteroid as Sharon rushed past.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["asteroid"],
+      "words": [
+        { "surface": "Shep",     "graphemes": ["sh","e","p"],             "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "had",      "graphemes": ["h","a","d"],              "phonemes": ["h","æ","d"] },
+        { "surface": "a",        "graphemes": ["a"],                      "phonemes": ["ə"] },
+        { "surface": "shiny",    "graphemes": ["sh","i","n","y"],         "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "asteroid", "graphemes": ["a","s","t","e","r","o","i","d"], "phonemes": ["æ","s","t","ə","r","ɔɪ","d"] },
+        { "surface": "as",       "graphemes": ["a","s"],                  "phonemes": ["æ","z"] },
+        { "surface": "Sharon",   "graphemes": ["sh","a","r","o","n"],     "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "rushed",   "graphemes": ["r","u","sh","e","d"],     "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "past",     "graphemes": ["p","a","s","t"],          "phonemes": ["p","æ","s","t"] }
+      ]
+    },
+    {
+      "text": "Sharon set up a shelter and Shep rushed past Mars.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["Mars"],
+      "words": [
+        { "surface": "Sharon",  "graphemes": ["sh","a","r","o","n"],   "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "set",     "graphemes": ["s","e","t"],            "phonemes": ["s","ɛ","t"] },
+        { "surface": "up",      "graphemes": ["u","p"],                "phonemes": ["ʌ","p"] },
+        { "surface": "a",       "graphemes": ["a"],                    "phonemes": ["ə"] },
+        { "surface": "shelter", "graphemes": ["sh","e","l","t","e","r"], "phonemes": ["ʃ","ɛ","l","t","ə","r"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],            "phonemes": ["æ","n","d"] },
+        { "surface": "Shep",    "graphemes": ["sh","e","p"],           "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "rushed",  "graphemes": ["r","u","sh","e","d"],   "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "past",    "graphemes": ["p","a","s","t"],        "phonemes": ["p","æ","s","t"] },
+        { "surface": "Mars",    "graphemes": ["m","a","r","s"],        "phonemes": ["m","ɑ","r","z"] }
+      ]
+    },
+    {
+      "text": "Shep washed the shiny ship and Sharon had a planet.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["ship", "planet"],
+      "words": [
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],           "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "washed", "graphemes": ["w","a","sh","e","d"],   "phonemes": ["w","ɒ","ʃ","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],               "phonemes": ["ð","ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],       "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "ship",   "graphemes": ["sh","i","p"],           "phonemes": ["ʃ","ɪ","p"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],            "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"],   "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],            "phonemes": ["h","æ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                    "phonemes": ["ə"] },
+        { "surface": "planet", "graphemes": ["p","l","a","n","e","t"], "phonemes": ["p","l","æ","n","ɪ","t"] }
+      ]
+    },
+    {
+      "text": "Sharon rushed to shelter a shiny lander on Mars.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["lander", "Mars"],
+      "words": [
+        { "surface": "Sharon",  "graphemes": ["sh","a","r","o","n"],   "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "rushed",  "graphemes": ["r","u","sh","e","d"],   "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "to",      "graphemes": ["t","o"],                "phonemes": ["t","u"] },
+        { "surface": "shelter", "graphemes": ["sh","e","l","t","e","r"], "phonemes": ["ʃ","ɛ","l","t","ə","r"] },
+        { "surface": "a",       "graphemes": ["a"],                    "phonemes": ["ə"] },
+        { "surface": "shiny",   "graphemes": ["sh","i","n","y"],       "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "lander",  "graphemes": ["l","a","n","d","e","r"], "phonemes": ["l","æ","n","d","ə","r"] },
+        { "surface": "on",      "graphemes": ["o","n"],                "phonemes": ["ɒ","n"] },
+        { "surface": "Mars",    "graphemes": ["m","a","r","s"],        "phonemes": ["m","ɑ","r","z"] }
+      ]
+    },
+    {
+      "text": "Shen rushed past a shimmer and Shep got a comet.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["comet"],
+      "words": [
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],           "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "rushed", "graphemes": ["r","u","sh","e","d"],   "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],        "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",      "graphemes": ["a"],                    "phonemes": ["ə"] },
+        { "surface": "shimmer","graphemes": ["sh","i","m","m","e","r"], "phonemes": ["ʃ","ɪ","m","ə","r"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],            "phonemes": ["æ","n","d"] },
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],           "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],            "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                    "phonemes": ["ə"] },
+        { "surface": "comet",  "graphemes": ["c","o","m","e","t"],    "phonemes": ["k","ɒ","m","ɪ","t"] }
+      ]
+    },
+    {
+      "text": "Sharon shut the ship and Shen dashed past the planet.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["planet"],
+      "words": [
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"],   "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "shut",   "graphemes": ["sh","u","t"],           "phonemes": ["ʃ","ʌ","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],               "phonemes": ["ð","ə"] },
+        { "surface": "ship",   "graphemes": ["sh","i","p"],           "phonemes": ["ʃ","ɪ","p"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],            "phonemes": ["æ","n","d"] },
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],           "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "dashed", "graphemes": ["d","a","sh","e","d"],   "phonemes": ["d","æ","ʃ","t"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],        "phonemes": ["p","æ","s","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],               "phonemes": ["ð","ə"] },
+        { "surface": "planet", "graphemes": ["p","l","a","n","e","t"], "phonemes": ["p","l","æ","n","ɪ","t"] }
+      ]
+    },
+    {
+      "text": "Shen washed the shiny ship and dashed past the sun.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["sun"],
+      "words": [
+        { "surface": "Shen",  "graphemes": ["sh","e","n"],           "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "washed","graphemes": ["w","a","sh","e","d"],   "phonemes": ["w","ɒ","ʃ","t"] },
+        { "surface": "the",   "graphemes": ["th","e"],               "phonemes": ["ð","ə"] },
+        { "surface": "shiny", "graphemes": ["sh","i","n","y"],       "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "ship",  "graphemes": ["sh","i","p"],           "phonemes": ["ʃ","ɪ","p"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],            "phonemes": ["æ","n","d"] },
+        { "surface": "dashed","graphemes": ["d","a","sh","e","d"],   "phonemes": ["d","æ","ʃ","t"] },
+        { "surface": "past",  "graphemes": ["p","a","s","t"],        "phonemes": ["p","æ","s","t"] },
+        { "surface": "the",   "graphemes": ["th","e"],               "phonemes": ["ð","ə"] },
+        { "surface": "sun",   "graphemes": ["s","u","n"],            "phonemes": ["s","ʌ","n"] }
+      ]
+    },
+    {
+      "text": "Shen crushed a comet and Sharon rushed past shiny Mars.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["comet", "Mars"],
+      "words": [
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],           "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "crushed","graphemes": ["c","r","u","sh","e","d"], "phonemes": ["k","r","ʌ","ʃ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                    "phonemes": ["ə"] },
+        { "surface": "comet",  "graphemes": ["c","o","m","e","t"],    "phonemes": ["k","ɒ","m","ɪ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],            "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"],   "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "rushed", "graphemes": ["r","u","sh","e","d"],   "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],        "phonemes": ["p","æ","s","t"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],       "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "Mars",   "graphemes": ["m","a","r","s"],        "phonemes": ["m","ɑ","r","z"] }
+      ]
+    }
+  ]
+}
