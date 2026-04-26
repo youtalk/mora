@@ -8,6 +8,12 @@
 
 An iPad-first, on-device learning app for children with dyslexia learning English as a second language.
 
+## Demo video
+
+[![Mora — 3-min demo (Built with Opus 4.7)](https://img.youtube.com/vi/zrsgP30Miqg/maxresdefault.jpg)](https://youtu.be/zrsgP30Miqg)
+
+Three-minute walkthrough of one A-day session on a real iPad: <https://youtu.be/zrsgP30Miqg>
+
 > **Status:** Early development. Scope, architecture, and APIs are expected to change.
 
 ## Requirements
