@@ -1,0 +1,102 @@
+import Foundation
+import MoraCore
+import MoraEngines
+import SwiftData
+import SwiftUI
+import XCTest
+
+#if canImport(UIKit)
+import UIKit
+#endif
+
+@testable import MoraUI
+
+@MainActor
+final class WeeklyIntroViewAudioTests: XCTestCase {
+    #if canImport(UIKit)
+    func testGreetClipPlaysOnceOnAppear() async throws {
+        let store = try BundledYokaiStore()
+        let player = RecordingClipPlayer()
+        let player1Expectation = expectation(description: "greet plays once on appear")
+        player.firstPlayExpectation = player1Expectation
+
+        let yokai = try Self.makeYokaiOrchestrator(forID: "sh")
+        let view = WeeklyIntroView(yokai: yokai, store: store, player: player)
+
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        let host = UIHostingController(
+            rootView:
+                view.environment(
+                    \.moraStrings,
+                    JapaneseL1Profile().uiStrings(forAgeYears: 8)
+                )
+        )
+        window.rootViewController = host
+        window.makeKeyAndVisible()
+
+        await fulfillment(of: [player1Expectation], timeout: 2.0)
+
+        XCTAssertEqual(player.playedURLs.count, 1)
+        XCTAssertEqual(
+            player.playedURLs.first,
+            store.voiceClipURL(for: "sh", clip: .greet)
+        )
+
+        window.isHidden = true
+    }
+
+    func testGreetClipStopsOnDisappear() async throws {
+        let store = try BundledYokaiStore()
+        let player = RecordingClipPlayer()
+        let yokai = try Self.makeYokaiOrchestrator(forID: "sh")
+        let view = WeeklyIntroView(yokai: yokai, store: store, player: player)
+
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        let host = UIHostingController(
+            rootView:
+                view.environment(
+                    \.moraStrings,
+                    JapaneseL1Profile().uiStrings(forAgeYears: 8)
+                )
+        )
+        window.rootViewController = host
+        window.makeKeyAndVisible()
+
+        try await Task.sleep(for: .milliseconds(200))
+        XCTAssertEqual(player.playedURLs.count, 1)
+        XCTAssertEqual(player.stopCallCount, 0)
+
+        window.rootViewController = UIHostingController(rootView: Color.clear)
+        try await Task.sleep(for: .milliseconds(50))
+
+        XCTAssertGreaterThanOrEqual(player.stopCallCount, 1)
+        window.isHidden = true
+    }
+    #endif
+
+    static func makeYokaiOrchestrator(forID yokaiID: String) throws -> YokaiOrchestrator {
+        let container = try MoraModelContainer.inMemory()
+        let ctx = ModelContext(container)
+        let store = try BundledYokaiStore()
+        let orch = YokaiOrchestrator(store: store, modelContext: ctx)
+        try orch.startWeek(yokaiID: yokaiID, weekStart: Date())
+        return orch
+    }
+}
+
+@MainActor
+final class RecordingClipPlayer: YokaiClipPlayer {
+    private(set) var playedURLs: [URL] = []
+    private(set) var stopCallCount: Int = 0
+    var firstPlayExpectation: XCTestExpectation?
+
+    func play(url: URL) -> Bool {
+        playedURLs.append(url)
+        if playedURLs.count == 1 { firstPlayExpectation?.fulfill() }
+        return true
+    }
+
+    func stop() {
+        stopCallCount += 1
+    }
+}

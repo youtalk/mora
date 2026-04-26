@@ -1,0 +1,122 @@
+import MoraCore
+import MoraEngines
+import SwiftData
+import SwiftUI
+
+/// Pre-warmup intro shown on the first session of each yokai week.
+/// Plays the active yokai's `.greet` clip and waits for the learner to
+/// tap "Next" before the warmup phase view (and its TTS prompt) mounts.
+///
+/// Mounted only when `phase == .warmup` AND
+/// `yokai.activeCutscene.isMondayIntro` is true; gated by
+/// `SessionContainerView.content`. CTA wiring (`yokai.dismissCutscene()`)
+/// is added in Task 4. Replay button is added in Task 3.
+public struct WeeklyIntroView: View {
+    @Environment(\.moraStrings) private var strings
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Bindable var yokai: YokaiOrchestrator
+    let store: BundledYokaiStore?
+    let player: any YokaiClipPlayer
+
+    @State private var portraitScale: CGFloat = 0.8
+
+    public init(
+        yokai: YokaiOrchestrator,
+        store: BundledYokaiStore?,
+        player: any YokaiClipPlayer
+    ) {
+        self.yokai = yokai
+        self.store = store
+        self.player = player
+    }
+
+    public var body: some View {
+        VStack(spacing: MoraTheme.Space.lg) {
+            Spacer().frame(height: MoraTheme.Space.xl)
+
+            Text(strings.yokaiIntroTodayTitle)
+                .font(MoraType.heading())
+                .foregroundStyle(MoraTheme.Ink.primary)
+                .multilineTextAlignment(.center)
+
+            if let definition = yokai.currentYokai {
+                portraitColumn(yokai: definition)
+            } else {
+                Color.clear.frame(height: 240)
+            }
+
+            Text(strings.yokaiIntroTodayBody)
+                .font(MoraType.bodyReading())
+                .foregroundStyle(MoraTheme.Ink.secondary)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(.horizontal, MoraTheme.Space.xl)
+
+            Spacer()
+
+            HeroCTA(title: strings.yokaiIntroNext, action: {})
+                .padding(.bottom, MoraTheme.Space.xl)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .task {
+            playGreet()
+            if reduceMotion {
+                portraitScale = 1.0
+            } else {
+                withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) {
+                    portraitScale = 1.0
+                }
+            }
+        }
+        .onDisappear {
+            player.stop()
+        }
+    }
+
+    @ViewBuilder
+    private func portraitColumn(yokai: YokaiDefinition) -> some View {
+        VStack(spacing: MoraTheme.Space.sm) {
+            YokaiPortraitCorner(yokai: yokai, sparkleTrigger: nil)
+                .frame(width: 200, height: 200)
+                .scaleEffect(portraitScale)
+            Text(yokai.grapheme)
+                .font(MoraType.heroWord(72))
+                .foregroundStyle(MoraTheme.Ink.primary)
+            Text(yokai.ipa)
+                .font(MoraType.subtitle())
+                .foregroundStyle(MoraTheme.Ink.secondary)
+        }
+    }
+
+    private var greetClipURL: URL? {
+        guard let id = yokai.currentYokai?.id else { return nil }
+        return store?.voiceClipURL(for: id, clip: .greet)
+    }
+
+    private func playGreet() {
+        guard let url = greetClipURL else { return }
+        _ = player.play(url: url)
+    }
+}
+
+#if DEBUG
+@MainActor
+private func makePreviewOrchestrator(yokaiID: String) -> (YokaiOrchestrator, BundledYokaiStore) {
+    let container = try! MoraModelContainer.inMemory()
+    let ctx = ModelContext(container)
+    let store = try! BundledYokaiStore()
+    let orch = YokaiOrchestrator(store: store, modelContext: ctx)
+    try! orch.startWeek(yokaiID: yokaiID, weekStart: Date())
+    return (orch, store)
+}
+
+#Preview("Weekly intro — sh") {
+    let (orch, store) = makePreviewOrchestrator(yokaiID: "sh")
+    WeeklyIntroView(
+        yokai: orch,
+        store: store,
+        player: AVFoundationYokaiClipPlayer()
+    )
+    .environment(\.moraStrings, JapaneseL1Profile().uiStrings(forAgeYears: 8))
+}
+#endif
