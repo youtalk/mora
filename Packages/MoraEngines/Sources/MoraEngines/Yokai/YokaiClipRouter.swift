@@ -1,5 +1,8 @@
 import Foundation
 import MoraCore
+import OSLog
+
+private let clipLog = Logger(subsystem: "tech.reenable.Mora", category: "YokaiClip")
 
 /// Coordinates yokai voice-clip playback during an A-day session.
 ///
@@ -36,11 +39,105 @@ public final class YokaiClipRouter {
     /// different audio path on `false`.
     @discardableResult
     public func play(_ clip: YokaiClipKey) async -> Bool {
+        #if DEBUG
+        clipLog.info(
+            """
+            Clip request: \(clip.rawValue, privacy: .public) \
+            yokai=\(self.yokaiID, privacy: .public)
+            """
+        )
+        #endif
         guard let url = store.voiceClipURL(for: yokaiID, clip: clip) else {
+            // Missing clip URLs are an expected/normal state: not every yokai
+            // ships every clip key. Stay at `.info` and gate behind DEBUG so
+            // release builds don't spam this as if it were an error.
+            #if DEBUG
+            clipLog.info(
+                """
+                Clip URL missing: \(clip.rawValue, privacy: .public) \
+                yokai=\(self.yokaiID, privacy: .public)
+                """
+            )
+            #endif
             return false
         }
+        #if DEBUG
+        clipLog.info("Clip silencer: awaiting TTS stop")
+        #endif
         await silencer()
-        return player.play(url: url)
+        if Task.isCancelled {
+            #if DEBUG
+            clipLog.info(
+                "Clip cancelled post-silencer: \(clip.rawValue, privacy: .public)"
+            )
+            #endif
+            return false
+        }
+        #if DEBUG
+        clipLog.info("Clip silencer: returned")
+        #endif
+        let started = player.play(url: url)
+        #if DEBUG
+        clipLog.info(
+            """
+            Clip dispatch: \(clip.rawValue, privacy: .public) \
+            started=\(started, privacy: .public)
+            """
+        )
+        #endif
+        return started
+    }
+
+    /// Same as `play(_:)` but suspends until playback ends. Returns `true`
+    /// only when the clip ran to natural completion. Use this when the next
+    /// audio step (another clip, a TTS prompt, a CTA enable) must wait for
+    /// the clip to finish — e.g., a multi-clip rule intro.
+    @discardableResult
+    public func playAndAwait(_ clip: YokaiClipKey) async -> Bool {
+        #if DEBUG
+        clipLog.info(
+            """
+            Clip request (await): \(clip.rawValue, privacy: .public) \
+            yokai=\(self.yokaiID, privacy: .public)
+            """
+        )
+        #endif
+        guard let url = store.voiceClipURL(for: yokaiID, clip: clip) else {
+            #if DEBUG
+            clipLog.info(
+                """
+                Clip URL missing: \(clip.rawValue, privacy: .public) \
+                yokai=\(self.yokaiID, privacy: .public)
+                """
+            )
+            #endif
+            return false
+        }
+        #if DEBUG
+        clipLog.info("Clip silencer: awaiting TTS stop")
+        #endif
+        await silencer()
+        if Task.isCancelled {
+            #if DEBUG
+            clipLog.info(
+                "Clip cancelled post-silencer: \(clip.rawValue, privacy: .public)"
+            )
+            #endif
+            return false
+        }
+        #if DEBUG
+        clipLog.info("Clip silencer: returned")
+        #endif
+        let finished = await player.playAndAwait(url: url)
+        #if DEBUG
+        clipLog.info(
+            """
+            Clip dispatch (await): \(clip.rawValue, privacy: .public) \
+            finished=\(finished, privacy: .public)
+            """
+        )
+        #endif
+        return finished
     }
 
     public func stop() {

@@ -74,10 +74,17 @@ struct WarmupView: View {
     /// 1. Apple TTS narrator: "Which one says".
     /// 2. Yokai's `phoneme` clip if the active week has one bundled.
     /// 3. If no yokai clip is available, fall back to Apple TTS `.phoneme`.
+    ///
+    /// Each step bails on cancellation. SwiftUI cancels this view's `.task`
+    /// when the user taps a tile and the phase advances to `.newRule`; without
+    /// the guards, the phoneme clip would still fire from a cancelled task
+    /// and play under the next phase's TTS prompt.
     private func playTargetPhoneme() async {
         guard let speech else { return }
         await speech.playAndAwait([.text(Self.promptPrefix, .normal)])
+        if Task.isCancelled { return }
         let played = (await clipRouter?.play(.phoneme)) ?? false
+        if Task.isCancelled { return }
         if !played, let phoneme = orchestrator.target.phoneme {
             await speech.playAndAwait([.phoneme(phoneme, .slow)])
         }

@@ -64,6 +64,91 @@ final class YokaiClipRouterTests: XCTestCase {
         XCTAssertFalse(silenced, "silencer should not run when clip URL is missing")
     }
 
+    func test_playAndAwait_resolvesURLAndCallsPlayer() async {
+        let store = FakeYokaiStore()
+        let url = URL(fileURLWithPath: "/tmp/sh-ex1.m4a")
+        store.clipURLs["sh"] = [.example1: url]
+
+        let player = FakeYokaiClipPlayer()
+        let router = YokaiClipRouter(
+            yokaiID: "sh",
+            store: store,
+            player: player,
+            silencer: {}
+        )
+
+        let finished = await router.playAndAwait(.example1)
+
+        XCTAssertTrue(finished)
+        XCTAssertEqual(player.playedURLs, [url])
+    }
+
+    func test_playAndAwait_awaitsSilencerBeforePlayer() async {
+        let store = FakeYokaiStore()
+        let url = URL(fileURLWithPath: "/tmp/sh-ex2.m4a")
+        store.clipURLs["sh"] = [.example2: url]
+
+        let recorder = OrderRecorder()
+        let player = TracingYokaiClipPlayer(recorder: recorder)
+        let router = YokaiClipRouter(
+            yokaiID: "sh",
+            store: store,
+            player: player,
+            silencer: { recorder.append("silencer") }
+        )
+
+        _ = await router.playAndAwait(.example2)
+
+        XCTAssertEqual(recorder.events, ["silencer", "player"])
+    }
+
+    func test_playAndAwait_returnsFalseWhenClipURLMissing() async {
+        let store = FakeYokaiStore()  // no clip URLs seeded
+        let player = FakeYokaiClipPlayer()
+        var silenced = false
+        let router = YokaiClipRouter(
+            yokaiID: "sh",
+            store: store,
+            player: player,
+            silencer: { silenced = true }
+        )
+
+        let finished = await router.playAndAwait(.example1)
+
+        XCTAssertFalse(finished)
+        XCTAssertTrue(player.playedURLs.isEmpty)
+        XCTAssertFalse(silenced, "silencer should not run when clip URL is missing")
+    }
+
+    func test_playAndAwait_skipsPlayerWhenCancelledDuringSilencer() async {
+        let store = FakeYokaiStore()
+        let url = URL(fileURLWithPath: "/tmp/sh-ex3.m4a")
+        store.clipURLs["sh"] = [.example3: url]
+
+        let player = FakeYokaiClipPlayer()
+        // Spawn a task that we cancel before the silencer's await suspension
+        // resumes — emulates a SwiftUI .task being cancelled while the
+        // router is mid-flight. The silencer below yields once so the
+        // cancellation lands while the router is suspended on `await`.
+        let router = YokaiClipRouter(
+            yokaiID: "sh",
+            store: store,
+            player: player,
+            silencer: { await Task.yield() }
+        )
+
+        let task = Task { @MainActor in
+            await router.playAndAwait(.example3)
+        }
+        task.cancel()
+        let finished = await task.value
+
+        XCTAssertFalse(finished, "cancelled task should not start playback")
+        XCTAssertTrue(
+            player.playedURLs.isEmpty, "player must not be invoked when cancelled post-silencer"
+        )
+    }
+
     func test_recordCorrect_firesEncourageOnThirdConsecutiveCorrect() async {
         let store = FakeYokaiStore()
         let url = URL(fileURLWithPath: "/tmp/sh-encourage.m4a")
