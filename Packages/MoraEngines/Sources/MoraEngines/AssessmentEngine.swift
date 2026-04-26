@@ -6,6 +6,31 @@ public enum AssessmentLeniency: Sendable {
     case mastered
 }
 
+/// Result of evaluating a learner's full read-aloud against a `DecodeSentence`.
+/// Compared to the per-word `TrialAssessment`, this carries token-coverage
+/// counts so callers (orchestrator, future telemetry) can reason about how
+/// much of the sentence was actually read — the sentence is accepted as
+/// "correct" when coverage clears the leniency-specific threshold and the
+/// ASR confidence is above the floor.
+public struct SentenceAssessment: Sendable, Equatable {
+    public let correct: Bool
+    public let coverage: Double
+    public let matchedTokenCount: Int
+    public let expectedTokenCount: Int
+
+    public init(
+        correct: Bool,
+        coverage: Double,
+        matchedTokenCount: Int,
+        expectedTokenCount: Int
+    ) {
+        self.correct = correct
+        self.coverage = coverage
+        self.matchedTokenCount = matchedTokenCount
+        self.expectedTokenCount = expectedTokenCount
+    }
+}
+
 public struct AssessmentEngine: Sendable {
     public let l1Profile: any L1Profile
     public let evaluator: any PronunciationEvaluator
@@ -106,6 +131,85 @@ public struct AssessmentEngine: Sendable {
             l1InterferenceTag: baseline.l1InterferenceTag,
             phoneme: phoneme
         )
+    }
+
+    /// Sentence-level read-aloud assessment. Tokenizes both the expected
+    /// `DecodeSentence` (using its `words` field) and the heard ASR
+    /// transcript, then greedily pairs each expected token to a heard
+    /// token within edit distance 1. The sentence is accepted when
+    /// `matched / expected >= threshold` and ASR confidence clears the
+    /// floor for the chosen leniency.
+    ///
+    /// Thresholds (April 2026 calibration against on-device th-voiceless
+    /// session: Apple ASR's per-token confidence collapses to 0.0–0.1
+    /// whenever the silence-driven cancel path produces the final
+    /// transcript, so a strict floor would reject reads that cleared
+    /// coverage. Coverage 0.6 lets a 4-of-7 word read pass — the
+    /// pedagogical bar is "did the learner read most of the sentence",
+    /// not "did Apple ASR transcribe it perfectly"):
+    ///   - `.newWord`: coverage ≥ 0.6, confidence ≥ 0.10
+    ///   - `.mastered`: coverage ≥ 0.85, confidence ≥ 0.50
+    public func assessSentence(
+        expected: DecodeSentence,
+        asr: ASRResult,
+        leniency: AssessmentLeniency
+    ) -> SentenceAssessment {
+        let expectedTokens = expected.words.map { $0.surface.lowercased() }
+        let heardTokens = tokenizeTranscript(asr.transcript)
+
+        guard !expectedTokens.isEmpty else {
+            return SentenceAssessment(
+                correct: false, coverage: 0,
+                matchedTokenCount: 0, expectedTokenCount: 0
+            )
+        }
+
+        // Greedy left-to-right pairing: each heard token can satisfy at
+        // most one expected token. Cheap and deterministic — for typical
+        // 4-7 word A-day sentences the input is small enough that the
+        // O(n*m) walk does not warrant a Hungarian-style optimal match.
+        var remainingHeard = heardTokens
+        var matched = 0
+        for token in expectedTokens {
+            if let idx = remainingHeard.firstIndex(where: { editDistance($0, token) <= 1 }) {
+                remainingHeard.remove(at: idx)
+                matched += 1
+            }
+        }
+        let coverage = Double(matched) / Double(expectedTokens.count)
+
+        let coverageThreshold: Double
+        let confidenceFloor: Double
+        switch leniency {
+        case .newWord:
+            coverageThreshold = 0.6
+            confidenceFloor = 0.10
+        case .mastered:
+            coverageThreshold = 0.85
+            confidenceFloor = 0.50
+        }
+
+        let correct =
+            matched > 0
+            && coverage >= coverageThreshold
+            && asr.confidence >= confidenceFloor
+        return SentenceAssessment(
+            correct: correct,
+            coverage: coverage,
+            matchedTokenCount: matched,
+            expectedTokenCount: expectedTokens.count
+        )
+    }
+
+    /// Lowercases, splits on whitespace, strips outer punctuation per
+    /// token, drops empty entries. Mirrors the per-token shape of
+    /// `Word.surface` so comparisons line up with `expected.words`.
+    private func tokenizeTranscript(_ s: String) -> [String] {
+        let punctuation = CharacterSet(charactersIn: ".,!?;:\"'()[]")
+        return s.lowercased()
+            .split(whereSeparator: { $0.isWhitespace })
+            .map { String($0).trimmingCharacters(in: punctuation) }
+            .filter { !$0.isEmpty }
     }
 
     private func normalize(_ s: String) -> String {
