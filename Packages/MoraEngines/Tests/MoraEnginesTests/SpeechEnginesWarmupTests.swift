@@ -1,4 +1,4 @@
-import MoraCore
+import MoraTesting
 import XCTest
 
 @testable import MoraEngines
@@ -23,8 +23,8 @@ final class SpeechEnginesWarmupTests: XCTestCase {
 
     func testResolveWithBothEnginesPopulatesEngines() {
         let state = SpeechEnginesWarmup()
-        let speech = StubSpeechEngine()
-        let tts = StubTTSEngine()
+        let speech = FakeSpeechEngine()
+        let tts = FakeTTSEngine()
         state.markLoading()
         state.resolve(speechEngine: speech, ttsEngine: tts)
         XCTAssertEqual(state.phase, .resolved)
@@ -36,7 +36,7 @@ final class SpeechEnginesWarmupTests: XCTestCase {
 
     func testResolveWithSpeechNilRecordsFailureReason() {
         let state = SpeechEnginesWarmup()
-        let tts = StubTTSEngine()
+        let tts = FakeTTSEngine()
         state.markLoading()
         state.resolve(speechEngine: nil, ttsEngine: tts, speechFailureReason: "test failure")
         XCTAssertEqual(state.phase, .resolved)
@@ -45,17 +45,4 @@ final class SpeechEnginesWarmupTests: XCTestCase {
         XCTAssertNotNil(state.ttsEngine)
         XCTAssertEqual(state.speechFailureReason, "test failure")
     }
-}
-
-private final class StubSpeechEngine: SpeechEngine, @unchecked Sendable {
-    func listen() -> AsyncThrowingStream<SpeechEvent, Error> {
-        AsyncThrowingStream { $0.finish() }
-    }
-    func cancel() {}
-}
-
-private final class StubTTSEngine: TTSEngine, @unchecked Sendable {
-    func speak(_ text: String, pace: TTSPace) async {}
-    func speak(phoneme: Phoneme, pace: TTSPace) async {}
-    func stop() async {}
 }

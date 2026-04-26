@@ -113,10 +113,10 @@ struct MoraApp: App {
     /// background task at app launch. Mirrors `scheduleMLXWarmup` —
     /// runs at `.utility` priority so the load can't steal scheduler
     /// time from the SwiftUI / Metal first-frame work, but high enough
-    /// to resolve well before the learner taps "▶ はじめる" on Home
-    /// (the onboarding read-flow on first launch buys multiple seconds
-    /// of headroom; on subsequent launches the home hero card buys at
-    /// least a second).
+    /// to resolve well before the learner taps the session-start CTA
+    /// on Home (the onboarding read-flow on first launch buys multiple
+    /// seconds of headroom; on subsequent launches the home hero card
+    /// buys at least a second).
     ///
     /// `AppleSpeechEngine` requires no microphone or speech-recognition
     /// permission to construct — only the per-session `listen()` call
