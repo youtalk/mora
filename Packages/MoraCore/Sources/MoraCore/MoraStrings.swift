@@ -278,3 +278,12 @@ public struct MoraStrings: Sendable {
         self.a11yStreakChip = a11yStreakChip
     }
 }
+
+extension MoraStrings {
+    /// Convenience for SwiftUI #Preview blocks. Always returns the JP
+    /// advanced table — runtime resolution happens in RootView via
+    /// L1ProfileResolver. Preview-only; not used in production paths.
+    public static var previewDefault: MoraStrings {
+        JapaneseL1Profile().uiStrings(at: .advanced)
+    }
+}
