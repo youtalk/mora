@@ -1,0 +1,365 @@
+{
+  "phoneme": "th",
+  "phonemeIPA": "θ",
+  "graphemeLetters": "th",
+  "interest": "animals",
+  "ageBand": "late",
+  "sentences": [
+    {
+      "text": "Thad had a thin python and Theo had a moth.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["python", "moth"],
+      "words": [
+        { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "python", "graphemes": ["p","y","th","o","n"], "phonemes": ["p","aɪ","θ","ə","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Theo",   "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "moth",   "graphemes": ["m","o","th"],         "phonemes": ["m","ɒ","θ"] }
+      ]
+    },
+    {
+      "text": "A thin parrot met Thad and Theo on the path.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["parrot"],
+      "words": [
+        { "surface": "A",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "parrot", "graphemes": ["p","a","r","r","o","t"], "phonemes": ["p","æ","r","r","ə","t"] },
+        { "surface": "met",    "graphemes": ["m","e","t"],          "phonemes": ["m","ɛ","t"] },
+        { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Theo",   "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
+        { "surface": "on",     "graphemes": ["o","n"],              "phonemes": ["ɒ","n"] },
+        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "path",   "graphemes": ["p","a","th"],         "phonemes": ["p","æ","θ"] }
+      ]
+    },
+    {
+      "text": "Thad let Theo pet a thin shaggy panda with Beth.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["panda"],
+      "words": [
+        { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "let",    "graphemes": ["l","e","t"],          "phonemes": ["l","ɛ","t"] },
+        { "surface": "Theo",   "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
+        { "surface": "pet",    "graphemes": ["p","e","t"],          "phonemes": ["p","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "shaggy", "graphemes": ["sh","a","g","g","y"], "phonemes": ["ʃ","æ","g","g","i"] },
+        { "surface": "panda",  "graphemes": ["p","a","n","d","a"],  "phonemes": ["p","æ","n","d","ə"] },
+        { "surface": "with",   "graphemes": ["w","i","th"],         "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Beth",   "graphemes": ["b","e","th"],         "phonemes": ["b","ɛ","θ"] }
+      ]
+    },
+    {
+      "text": "A thin python met Theo and Thad on the path.",
+      "targetCount": 6,
+      "targetInitialContentWords": 3,
+      "interestWords": ["python"],
+      "words": [
+        { "surface": "A",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "python", "graphemes": ["p","y","th","o","n"], "phonemes": ["p","aɪ","θ","ə","n"] },
+        { "surface": "met",    "graphemes": ["m","e","t"],          "phonemes": ["m","ɛ","t"] },
+        { "surface": "Theo",   "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "on",     "graphemes": ["o","n"],              "phonemes": ["ɒ","n"] },
+        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "path",   "graphemes": ["p","a","th"],         "phonemes": ["p","æ","θ"] }
+      ]
+    },
+    {
+      "text": "Thad and Theo had a thin panda in the shed.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["panda"],
+      "words": [
+        { "surface": "Thad",  "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Theo",  "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
+        { "surface": "had",   "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
+        { "surface": "a",     "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "thin",  "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "panda", "graphemes": ["p","a","n","d","a"],  "phonemes": ["p","æ","n","d","ə"] },
+        { "surface": "in",    "graphemes": ["i","n"],              "phonemes": ["ɪ","n"] },
+        { "surface": "the",   "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "shed",  "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "Theo fed a thin python and Thad got a parrot.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["python", "parrot"],
+      "words": [
+        { "surface": "Theo",   "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],          "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "python", "graphemes": ["p","y","th","o","n"], "phonemes": ["p","aɪ","θ","ə","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "parrot", "graphemes": ["p","a","r","r","o","t"], "phonemes": ["p","æ","r","r","ə","t"] }
+      ]
+    },
+    {
+      "text": "Thad and Theo had a thin rabbit on the path.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["rabbit"],
+      "words": [
+        { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Theo",   "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "rabbit", "graphemes": ["r","a","b","b","i","t"], "phonemes": ["r","æ","b","b","ɪ","t"] },
+        { "surface": "on",     "graphemes": ["o","n"],              "phonemes": ["ɒ","n"] },
+        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "path",   "graphemes": ["p","a","th"],         "phonemes": ["p","æ","θ"] }
+      ]
+    },
+    {
+      "text": "A thin python ran past Thad with Theo and Seth.",
+      "targetCount": 6,
+      "targetInitialContentWords": 3,
+      "interestWords": ["python"],
+      "words": [
+        { "surface": "A",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "python", "graphemes": ["p","y","th","o","n"], "phonemes": ["p","aɪ","θ","ə","n"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],          "phonemes": ["r","æ","n"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],      "phonemes": ["p","æ","s","t"] },
+        { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "with",   "graphemes": ["w","i","th"],         "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Theo",   "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Seth",   "graphemes": ["s","e","th"],         "phonemes": ["s","ɛ","θ"] }
+      ]
+    },
+    {
+      "text": "Thad and Theo had a thin lizard and the panda.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["lizard", "panda"],
+      "words": [
+        { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Theo",   "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "lizard", "graphemes": ["l","i","z","a","r","d"], "phonemes": ["l","ɪ","z","ə","r","d"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "panda",  "graphemes": ["p","a","n","d","a"],  "phonemes": ["p","æ","n","d","ə"] }
+      ]
+    },
+    {
+      "text": "Theo got a python and Thad fed a thin camel.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["python", "camel"],
+      "words": [
+        { "surface": "Theo",   "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "python", "graphemes": ["p","y","th","o","n"], "phonemes": ["p","aɪ","θ","ə","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],          "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "camel",  "graphemes": ["c","a","m","e","l"],  "phonemes": ["k","æ","m","ə","l"] }
+      ]
+    },
+    {
+      "text": "A thin moth sat with Thad, Theo, and Beth.",
+      "targetCount": 6,
+      "targetInitialContentWords": 3,
+      "interestWords": ["moth"],
+      "words": [
+        { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "moth", "graphemes": ["m","o","th"],     "phonemes": ["m","ɒ","θ"] },
+        { "surface": "sat",  "graphemes": ["s","a","t"],      "phonemes": ["s","æ","t"] },
+        { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Beth", "graphemes": ["b","e","th"],     "phonemes": ["b","ɛ","θ"] }
+      ]
+    },
+    {
+      "text": "Thad fed a thin shaggy lizard with Theo and Seth.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["lizard"],
+      "words": [
+        { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],          "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "shaggy", "graphemes": ["sh","a","g","g","y"], "phonemes": ["ʃ","æ","g","g","i"] },
+        { "surface": "lizard", "graphemes": ["l","i","z","a","r","d"], "phonemes": ["l","ɪ","z","ə","r","d"] },
+        { "surface": "with",   "graphemes": ["w","i","th"],         "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Theo",   "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Seth",   "graphemes": ["s","e","th"],         "phonemes": ["s","ɛ","θ"] }
+      ]
+    },
+    {
+      "text": "Theo got a thin rabbit and Thad got a moth.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["rabbit", "moth"],
+      "words": [
+        { "surface": "Theo",   "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "rabbit", "graphemes": ["r","a","b","b","i","t"], "phonemes": ["r","æ","b","b","ɪ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "moth",   "graphemes": ["m","o","th"],         "phonemes": ["m","ɒ","θ"] }
+      ]
+    },
+    {
+      "text": "Thad and Theo hid a thin moth in the shed.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["moth"],
+      "words": [
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "hid",  "graphemes": ["h","i","d"],      "phonemes": ["h","ɪ","d"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "moth", "graphemes": ["m","o","th"],     "phonemes": ["m","ɒ","θ"] },
+        { "surface": "in",   "graphemes": ["i","n"],          "phonemes": ["ɪ","n"] },
+        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+        { "surface": "shed", "graphemes": ["sh","e","d"],     "phonemes": ["ʃ","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "A shaggy thin parrot ran with Thad and Theo.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["parrot"],
+      "words": [
+        { "surface": "A",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shaggy", "graphemes": ["sh","a","g","g","y"], "phonemes": ["ʃ","æ","g","g","i"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "parrot", "graphemes": ["p","a","r","r","o","t"], "phonemes": ["p","æ","r","r","ə","t"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],          "phonemes": ["r","æ","n"] },
+        { "surface": "with",   "graphemes": ["w","i","th"],         "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Theo",   "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] }
+      ]
+    },
+    {
+      "text": "Thad let Theo pet a thin lizard with Beth.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["lizard"],
+      "words": [
+        { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "let",    "graphemes": ["l","e","t"],          "phonemes": ["l","ɛ","t"] },
+        { "surface": "Theo",   "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
+        { "surface": "pet",    "graphemes": ["p","e","t"],          "phonemes": ["p","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "lizard", "graphemes": ["l","i","z","a","r","d"], "phonemes": ["l","ɪ","z","ə","r","d"] },
+        { "surface": "with",   "graphemes": ["w","i","th"],         "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Beth",   "graphemes": ["b","e","th"],         "phonemes": ["b","ɛ","θ"] }
+      ]
+    },
+    {
+      "text": "Theo and Thad met a thin parrot with the camel.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["parrot", "camel"],
+      "words": [
+        { "surface": "Theo",   "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "met",    "graphemes": ["m","e","t"],          "phonemes": ["m","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "parrot", "graphemes": ["p","a","r","r","o","t"], "phonemes": ["p","æ","r","r","ə","t"] },
+        { "surface": "with",   "graphemes": ["w","i","th"],         "phonemes": ["w","ɪ","θ"] },
+        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "camel",  "graphemes": ["c","a","m","e","l"],  "phonemes": ["k","æ","m","ə","l"] }
+      ]
+    },
+    {
+      "text": "A thin panda met Thad on the path with Theo.",
+      "targetCount": 6,
+      "targetInitialContentWords": 3,
+      "interestWords": ["panda"],
+      "words": [
+        { "surface": "A",     "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "thin",  "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "panda", "graphemes": ["p","a","n","d","a"],  "phonemes": ["p","æ","n","d","ə"] },
+        { "surface": "met",   "graphemes": ["m","e","t"],          "phonemes": ["m","ɛ","t"] },
+        { "surface": "Thad",  "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "on",    "graphemes": ["o","n"],              "phonemes": ["ɒ","n"] },
+        { "surface": "the",   "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "path",  "graphemes": ["p","a","th"],         "phonemes": ["p","æ","θ"] },
+        { "surface": "with",  "graphemes": ["w","i","th"],         "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Theo",  "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] }
+      ]
+    },
+    {
+      "text": "Thad and Theo set a thin camel at the path.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["camel"],
+      "words": [
+        { "surface": "Thad",  "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Theo",  "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
+        { "surface": "set",   "graphemes": ["s","e","t"],          "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "thin",  "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "camel", "graphemes": ["c","a","m","e","l"],  "phonemes": ["k","æ","m","ə","l"] },
+        { "surface": "at",    "graphemes": ["a","t"],              "phonemes": ["æ","t"] },
+        { "surface": "the",   "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "path",  "graphemes": ["p","a","th"],         "phonemes": ["p","æ","θ"] }
+      ]
+    },
+    {
+      "text": "Beth ran with Thad, Theo, and a thin moth.",
+      "targetCount": 6,
+      "targetInitialContentWords": 3,
+      "interestWords": ["moth"],
+      "words": [
+        { "surface": "Beth", "graphemes": ["b","e","th"],     "phonemes": ["b","ɛ","θ"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],      "phonemes": ["r","æ","n"] },
+        { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "moth", "graphemes": ["m","o","th"],     "phonemes": ["m","ɒ","θ"] }
+      ]
+    }
+  ]
+}

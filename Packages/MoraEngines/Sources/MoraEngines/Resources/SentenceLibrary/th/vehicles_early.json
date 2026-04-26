@@ -1,0 +1,354 @@
+{
+  "phoneme": "th",
+  "phonemeIPA": "θ",
+  "graphemeLetters": "th",
+  "interest": "vehicles",
+  "ageBand": "early",
+  "sentences": [
+    {
+      "text": "Thad and Theo had a thin van on the path.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["van"],
+      "words": [
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],      "phonemes": ["h","æ","d"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "van",  "graphemes": ["v","a","n"],      "phonemes": ["v","æ","n"] },
+        { "surface": "on",   "graphemes": ["o","n"],          "phonemes": ["ɒ","n"] },
+        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+        { "surface": "path", "graphemes": ["p","a","th"],     "phonemes": ["p","æ","θ"] }
+      ]
+    },
+    {
+      "text": "Theo got a thin cab and Thad got the bus.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["cab", "bus"],
+      "words": [
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "cab",  "graphemes": ["c","a","b"],      "phonemes": ["k","æ","b"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
+        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+        { "surface": "bus",  "graphemes": ["b","u","s"],      "phonemes": ["b","ʌ","s"] }
+      ]
+    },
+    {
+      "text": "A thin ship sat with Thad and Theo.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["ship"],
+      "words": [
+        { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "ship", "graphemes": ["sh","i","p"],     "phonemes": ["ʃ","ɪ","p"] },
+        { "surface": "sat",  "graphemes": ["s","a","t"],      "phonemes": ["s","æ","t"] },
+        { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] }
+      ]
+    },
+    {
+      "text": "Thad and Theo ran with a thin jet.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["jet"],
+      "words": [
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],      "phonemes": ["r","æ","n"] },
+        { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "jet",  "graphemes": ["j","e","t"],      "phonemes": ["dʒ","ɛ","t"] }
+      ]
+    },
+    {
+      "text": "Theo and Thad had a thin tram on the path.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["tram"],
+      "words": [
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],      "phonemes": ["h","æ","d"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "tram", "graphemes": ["t","r","a","m"],  "phonemes": ["t","r","æ","m"] },
+        { "surface": "on",   "graphemes": ["o","n"],          "phonemes": ["ɒ","n"] },
+        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+        { "surface": "path", "graphemes": ["p","a","th"],     "phonemes": ["p","æ","θ"] }
+      ]
+    },
+    {
+      "text": "Thad had a thin cab with Theo.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["cab"],
+      "words": [
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],      "phonemes": ["h","æ","d"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "cab",  "graphemes": ["c","a","b"],      "phonemes": ["k","æ","b"] },
+        { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] }
+      ]
+    },
+    {
+      "text": "A thin bus met Thad and Theo on the path.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["bus"],
+      "words": [
+        { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "bus",  "graphemes": ["b","u","s"],      "phonemes": ["b","ʌ","s"] },
+        { "surface": "met",  "graphemes": ["m","e","t"],      "phonemes": ["m","ɛ","t"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "on",   "graphemes": ["o","n"],          "phonemes": ["ɒ","n"] },
+        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+        { "surface": "path", "graphemes": ["p","a","th"],     "phonemes": ["p","æ","θ"] }
+      ]
+    },
+    {
+      "text": "Theo and Thad set a thin van at the shed.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["van"],
+      "words": [
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "set",  "graphemes": ["s","e","t"],      "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "van",  "graphemes": ["v","a","n"],      "phonemes": ["v","æ","n"] },
+        { "surface": "at",   "graphemes": ["a","t"],          "phonemes": ["æ","t"] },
+        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+        { "surface": "shed", "graphemes": ["sh","e","d"],     "phonemes": ["ʃ","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "Thad and Theo got a thin kart on the path.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["kart"],
+      "words": [
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "kart", "graphemes": ["k","a","r","t"],  "phonemes": ["k","ɑ","r","t"] },
+        { "surface": "on",   "graphemes": ["o","n"],          "phonemes": ["ɒ","n"] },
+        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+        { "surface": "path", "graphemes": ["p","a","th"],     "phonemes": ["p","æ","θ"] }
+      ]
+    },
+    {
+      "text": "A thin jet hid with Thad and Theo.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["jet"],
+      "words": [
+        { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "jet",  "graphemes": ["j","e","t"],      "phonemes": ["dʒ","ɛ","t"] },
+        { "surface": "hid",  "graphemes": ["h","i","d"],      "phonemes": ["h","ɪ","d"] },
+        { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] }
+      ]
+    },
+    {
+      "text": "Thad let Theo sit in a thin van with Beth.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["van"],
+      "words": [
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "let",  "graphemes": ["l","e","t"],      "phonemes": ["l","ɛ","t"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "sit",  "graphemes": ["s","i","t"],      "phonemes": ["s","ɪ","t"] },
+        { "surface": "in",   "graphemes": ["i","n"],          "phonemes": ["ɪ","n"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "van",  "graphemes": ["v","a","n"],      "phonemes": ["v","æ","n"] },
+        { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Beth", "graphemes": ["b","e","th"],     "phonemes": ["b","ɛ","θ"] }
+      ]
+    },
+    {
+      "text": "Theo got a thin ship and Thad got the kart.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["ship", "kart"],
+      "words": [
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "ship", "graphemes": ["sh","i","p"],     "phonemes": ["ʃ","ɪ","p"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
+        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+        { "surface": "kart", "graphemes": ["k","a","r","t"],  "phonemes": ["k","ɑ","r","t"] }
+      ]
+    },
+    {
+      "text": "A thin cab sat with Thad and Theo.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["cab"],
+      "words": [
+        { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "cab",  "graphemes": ["c","a","b"],      "phonemes": ["k","æ","b"] },
+        { "surface": "sat",  "graphemes": ["s","a","t"],      "phonemes": ["s","æ","t"] },
+        { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] }
+      ]
+    },
+    {
+      "text": "Thad and Theo had a thin van in the shed.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["van"],
+      "words": [
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],      "phonemes": ["h","æ","d"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "van",  "graphemes": ["v","a","n"],      "phonemes": ["v","æ","n"] },
+        { "surface": "in",   "graphemes": ["i","n"],          "phonemes": ["ɪ","n"] },
+        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+        { "surface": "shed", "graphemes": ["sh","e","d"],     "phonemes": ["ʃ","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "Theo and Thad met a thin tram at the path.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["tram"],
+      "words": [
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "met",  "graphemes": ["m","e","t"],      "phonemes": ["m","ɛ","t"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "tram", "graphemes": ["t","r","a","m"],  "phonemes": ["t","r","æ","m"] },
+        { "surface": "at",   "graphemes": ["a","t"],          "phonemes": ["æ","t"] },
+        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+        { "surface": "path", "graphemes": ["p","a","th"],     "phonemes": ["p","æ","θ"] }
+      ]
+    },
+    {
+      "text": "A thin jet ran past Thad with Theo.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["jet"],
+      "words": [
+        { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "jet",  "graphemes": ["j","e","t"],      "phonemes": ["dʒ","ɛ","t"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],      "phonemes": ["r","æ","n"] },
+        { "surface": "past", "graphemes": ["p","a","s","t"],  "phonemes": ["p","æ","s","t"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] }
+      ]
+    },
+    {
+      "text": "Thad got a thin bus and Theo got the cart.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["bus", "cart"],
+      "words": [
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "bus",  "graphemes": ["b","u","s"],      "phonemes": ["b","ʌ","s"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
+        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+        { "surface": "cart", "graphemes": ["c","a","r","t"],  "phonemes": ["k","ɑ","r","t"] }
+      ]
+    },
+    {
+      "text": "Theo and Thad set a thin ship in the shed.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["ship"],
+      "words": [
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "set",  "graphemes": ["s","e","t"],      "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "ship", "graphemes": ["sh","i","p"],     "phonemes": ["ʃ","ɪ","p"] },
+        { "surface": "in",   "graphemes": ["i","n"],          "phonemes": ["ɪ","n"] },
+        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+        { "surface": "shed", "graphemes": ["sh","e","d"],     "phonemes": ["ʃ","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "A thin kart met Thad, Theo, and Beth.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["kart"],
+      "words": [
+        { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "kart", "graphemes": ["k","a","r","t"],  "phonemes": ["k","ɑ","r","t"] },
+        { "surface": "met",  "graphemes": ["m","e","t"],      "phonemes": ["m","ɛ","t"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Beth", "graphemes": ["b","e","th"],     "phonemes": ["b","ɛ","θ"] }
+      ]
+    },
+    {
+      "text": "Thad and Theo ran a thin cab on the path.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["cab"],
+      "words": [
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],      "phonemes": ["r","æ","n"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "cab",  "graphemes": ["c","a","b"],      "phonemes": ["k","æ","b"] },
+        { "surface": "on",   "graphemes": ["o","n"],          "phonemes": ["ɒ","n"] },
+        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+        { "surface": "path", "graphemes": ["p","a","th"],     "phonemes": ["p","æ","θ"] }
+      ]
+    }
+  ]
+}
