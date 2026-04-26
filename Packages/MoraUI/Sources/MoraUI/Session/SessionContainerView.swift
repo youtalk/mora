@@ -228,6 +228,49 @@ public struct SessionContainerView: View {
         }
     }
 
+    /// Resolves the per-session sentence triple for `bootstrap()`. Tries the
+    /// bundled `SentenceLibrary` first; if it returns fewer than `count`
+    /// sentences (cell unauthored, or pool too sparse), falls back to the
+    /// per-week `<skill>_week.json` via `ScriptedContentProvider.bundled`.
+    ///
+    /// Public to the package only because `SessionContainerBootstrapLibraryTests`
+    /// drives this directly without spinning up SwiftUI. Kept `static` so it
+    /// has no instance dependencies and is trivially testable; bootstrap
+    /// resolves all inputs and passes them in.
+    @MainActor
+    static func resolveDecodeSentences(
+        library: SentenceLibrary,
+        skillCode: SkillCode,
+        targetGrapheme: Grapheme,
+        taughtGraphemes: Set<Grapheme>,
+        ageYears: Int,
+        interests: [String],
+        count: Int
+    ) async -> [DecodeSentence] {
+        let primary = await library.sentences(
+            target: skillCode,
+            interests: interests,
+            ageYears: ageYears,
+            excluding: [],
+            count: count
+        )
+        if primary.count >= count { return primary }
+
+        // Fallback: per-week hand-authored JSON. Throws on missing bundle
+        // resources — propagate up via [] so the session can still run from
+        // whatever the orchestrator already tolerates.
+        guard let provider = try? ScriptedContentProvider.bundled(for: skillCode) else {
+            return primary  // best effort; orchestrator handles a short list
+        }
+        let request = ContentRequest(
+            target: targetGrapheme,
+            taughtGraphemes: taughtGraphemes,
+            interests: [],
+            count: count
+        )
+        return (try? provider.decodeSentences(request)) ?? primary
+    }
+
     @MainActor
     private func bootstrap() async {
         Self.logBootstrap("bootstrap start")
@@ -374,11 +417,26 @@ public struct SessionContainerView: View {
                     "Target skill \(skill.code.rawValue) has no grapheme/phoneme mapping"
                 return
             }
-            let provider = try ScriptedContentProvider.bundled(for: skill.code)
-            let sentences = try provider.decodeSentences(
-                ContentRequest(
-                    target: targetGrapheme, taughtGraphemes: taught, interests: [], count: 2
-                ))
+            // Resolve the learner's interests + age band from the singleton profile.
+            // Falls back to (8, []) if no profile exists (defensive — onboarding
+            // always creates one before a session starts).
+            let profileFetch = FetchDescriptor<LearnerProfile>(
+                sortBy: [SortDescriptor(\.createdAt, order: .forward)]
+            )
+            let profile = (try? context.fetch(profileFetch))?.first
+            let interests = profile?.interests ?? []
+            let ageYears = profile?.ageYears ?? 8
+
+            let library = try SentenceLibrary()
+            let sentences = await Self.resolveDecodeSentences(
+                library: library,
+                skillCode: skill.code,
+                targetGrapheme: targetGrapheme,
+                taughtGraphemes: taught,
+                ageYears: ageYears,
+                interests: interests,
+                count: 3
+            )
 
             let progression = ClosureYokaiProgressionSource { currentID in
                 ladder.skills
