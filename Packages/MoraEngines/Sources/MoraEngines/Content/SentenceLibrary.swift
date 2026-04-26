@@ -60,7 +60,29 @@ public actor SentenceLibrary {
         excluding seenSurfaces: Set<String> = [],
         count: Int
     ) async -> [DecodeSentence] {
-        fatalError("SentenceLibrary.sentences — selector wiring is Track B-3")
+        guard let directory = Self.directoryForSkillCode[target] else {
+            return []
+        }
+        let band = AgeBand.from(years: ageYears)
+
+        // Empty interests → use all six (per spec § 6.6 step 3).
+        let interestKeys = interests.isEmpty ? Self.allInterestKeys : interests
+
+        // Look up every cell that exists for the resolved (directory, band)
+        // across the learner's interests; missing cells are skipped silently.
+        let cellsForTarget: [Cell] = interestKeys.compactMap { interest in
+            cells[CellKey(phoneme: directory, interest: interest, ageBand: band)]
+        }
+        if cellsForTarget.isEmpty { return [] }
+
+        let pool = cellsForTarget.flatMap(\.sentences)
+        let filtered = pool.filter { !seenSurfaces.contains($0.text) }
+
+        // Spec § 6.6 step 5/6: prefer the freshness-respecting pool; relax if
+        // the filter starved the pool below `count`.
+        let candidates = filtered.count >= count ? filtered : pool
+
+        return Array(candidates.shuffled().prefix(count))
     }
 }
 
@@ -92,6 +114,26 @@ extension SentenceLibrary {
         let graphemes: [String]
         let phonemes: [String]
     }
+
+    /// Map from runtime `SkillCode` to the on-disk directory name used by
+    /// `Resources/SentenceLibrary/<dir>/<interest>_<ageBand>.json`. Mirrors
+    /// `dev-tools/sentence-validator`'s `PhonemeDirectoryMap.all`; the two
+    /// cannot share because the validator target is outside the app build.
+    /// Keep this in sync when the v1 ladder skill codes change.
+    private static let directoryForSkillCode: [SkillCode: String] = [
+        "sh_onset": "sh",
+        "th_voiceless": "th",
+        "f_onset": "f",
+        "r_onset": "r",
+        "short_a": "short_a",
+    ]
+
+    /// Interest keys derived from `JapaneseL1Profile.interestCategories`
+    /// (the v1 source of truth). Used as the fallback set when a learner
+    /// has no `interests` recorded (e.g. a profile from before the interest
+    /// picker shipped — only the dev profile is in this state).
+    private static let allInterestKeys: [String] =
+        JapaneseL1Profile().interestCategories.map(\.key)
 
     private static let phonemeDirectories: [String] = [
         "sh", "th", "f", "r", "short_a",
