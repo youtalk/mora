@@ -283,10 +283,11 @@ public struct MoraStrings: Sendable {
 }
 
 extension MoraStrings {
-    /// Convenience for SwiftUI #Preview blocks. Always returns the JP
-    /// advanced table — runtime resolution happens in RootView via
-    /// L1ProfileResolver. Preview-only; not used in production paths.
-    public static var previewDefault: MoraStrings {
-        JapaneseL1Profile().uiStrings(at: .advanced)
-    }
+    /// Default fallback table used by SwiftUI `#Preview` blocks and as the
+    /// `\.moraStrings` environment default. Returns the JP advanced table.
+    /// Production view hierarchies inject the resolved table from `RootView`
+    /// via `L1ProfileResolver`; this is what they fall back to if the
+    /// injection is missing.
+    public static let previewDefault: MoraStrings = JapaneseL1Profile()
+        .uiStrings(at: .advanced)
 }

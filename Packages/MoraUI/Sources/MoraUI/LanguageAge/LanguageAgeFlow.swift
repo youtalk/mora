@@ -100,7 +100,7 @@ public struct LanguageAgeFlow: View {
         // Japanese regardless of `state.selectedLanguageID`. When a second
         // L1 profile lands, switch on `state.selectedLanguageID` here.
         let strings = JapaneseL1Profile().uiStrings(
-            at: LearnerLevel.from(years: state.selectedAge ?? 7)
+            at: LearnerLevel.from(years: state.selectedAge ?? 8)
         )
 
         ZStack {

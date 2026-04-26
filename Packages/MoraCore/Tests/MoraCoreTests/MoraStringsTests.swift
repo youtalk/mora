@@ -13,8 +13,9 @@ final class MoraStringsTests: XCTestCase {
         XCTAssertEqual(s.homeTodayQuest, "今日の クエスト")
     }
 
-    func test_uiStrings_coreTable_homeTodayQuest_isAllHiragana() {
-        // Core tier (Task 1.5): `今` is G2 → all-hira per partial-mix rule.
+    func test_uiStrings_coreTable_homeTodayQuest_collapsesKanjiToHiragana() {
+        // Core tier (Task 1.5): `今` is G2, so the kanji portion is rendered
+        // in hiragana while katakana remains unchanged.
         let s = profile.uiStrings(at: .core)
         XCTAssertEqual(s.homeTodayQuest, "きょうの クエスト")
     }
@@ -115,7 +116,7 @@ final class MoraStringsTests: XCTestCase {
         )
     }
 
-    func testMidCoachingStringsMatchSpec() {
+    func testAdvancedCoachingStringsMatchSpec() {
         let strings = profile.uiStrings(at: .advanced)
         XCTAssertEqual(strings.coachingShSubS, "くちびるをまるめて、したのおくをもちあげてみよう。「sh」。")
         XCTAssertEqual(strings.coachingShDrift, "もうすこしくちをまるくして、ながくのばしてみよう。「shhhh」。")
