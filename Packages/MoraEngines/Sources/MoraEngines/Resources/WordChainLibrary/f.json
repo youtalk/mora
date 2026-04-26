@@ -1,0 +1,33 @@
+{
+  "target": "f",
+  "warmup": [
+    {
+      "head": { "surface": "pen", "graphemes": ["p", "e", "n"] },
+      "successors": [
+        { "surface": "pet", "graphemes": ["p", "e", "t"] },
+        { "surface": "pat", "graphemes": ["p", "a", "t"] },
+        { "surface": "pit", "graphemes": ["p", "i", "t"] }
+      ]
+    }
+  ],
+  "targetIntro": [
+    {
+      "head": { "surface": "fan", "graphemes": ["f", "a", "n"] },
+      "successors": [
+        { "surface": "fin", "graphemes": ["f", "i", "n"] },
+        { "surface": "fit", "graphemes": ["f", "i", "t"] },
+        { "surface": "fix", "graphemes": ["f", "i", "x"] }
+      ]
+    }
+  ],
+  "mixedApplication": [
+    {
+      "head": { "surface": "fast", "graphemes": ["f", "a", "s", "t"] },
+      "successors": [
+        { "surface": "fist", "graphemes": ["f", "i", "s", "t"] },
+        { "surface": "list", "graphemes": ["l", "i", "s", "t"] },
+        { "surface": "lift", "graphemes": ["l", "i", "f", "t"] }
+      ]
+    }
+  ]
+}
