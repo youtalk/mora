@@ -228,6 +228,49 @@ public struct SessionContainerView: View {
         }
     }
 
+    /// Resolves the per-session sentence triple for `bootstrap()`. Tries the
+    /// bundled `SentenceLibrary` first; if it returns fewer than `count`
+    /// sentences (cell unauthored, or pool too sparse), falls back to the
+    /// per-week `<skill>_week.json` via `ScriptedContentProvider.bundled`.
+    /// A bundle/decode failure on the fallback path throws so `bootstrap`'s
+    /// surrounding `do/catch` can surface it as `bootError`, matching the
+    /// pre-Track-B failure visibility.
+    ///
+    /// Package-internal because `SessionContainerBootstrapLibraryTests`
+    /// drives this directly without spinning up SwiftUI. Kept `static` so it
+    /// has no instance dependencies and is trivially testable; bootstrap
+    /// resolves all inputs and passes them in. Not `@MainActor` so the sync
+    /// JSON load on the fallback path can run off the main actor.
+    static func resolveDecodeSentences(
+        library: SentenceLibrary,
+        skillCode: SkillCode,
+        targetGrapheme: Grapheme,
+        taughtGraphemes: Set<Grapheme>,
+        ageYears: Int,
+        interests: [String],
+        count: Int
+    ) async throws -> [DecodeSentence] {
+        let primary = await library.sentences(
+            target: skillCode,
+            interests: interests,
+            ageYears: ageYears,
+            excluding: [],
+            count: count
+        )
+        if primary.count >= count { return primary }
+
+        // Fallback: per-week hand-authored JSON. Bundle/decode failures
+        // propagate so bootstrap's `do/catch` sets `bootError`.
+        let provider = try ScriptedContentProvider.bundled(for: skillCode)
+        let request = ContentRequest(
+            target: targetGrapheme,
+            taughtGraphemes: taughtGraphemes,
+            interests: [],
+            count: count
+        )
+        return try provider.decodeSentences(request)
+    }
+
     @MainActor
     private func bootstrap() async {
         Self.logBootstrap("bootstrap start")
@@ -374,11 +417,28 @@ public struct SessionContainerView: View {
                     "Target skill \(skill.code.rawValue) has no grapheme/phoneme mapping"
                 return
             }
-            let provider = try ScriptedContentProvider.bundled(for: skill.code)
-            let sentences = try provider.decodeSentences(
-                ContentRequest(
-                    target: targetGrapheme, taughtGraphemes: taught, interests: [], count: 2
-                ))
+            // Resolve the learner's interests + age band from the singleton profile.
+            // Falls back to (8, []) if the row is missing (defensive — onboarding
+            // always creates one before a session starts). Fetch errors throw
+            // into the surrounding `do/catch` so store corruption surfaces as
+            // `bootError` rather than silently degrading to defaults.
+            let profileFetch = FetchDescriptor<LearnerProfile>(
+                sortBy: [SortDescriptor(\.createdAt, order: .forward)]
+            )
+            let profile = try context.fetch(profileFetch).first
+            let interests = profile?.interests ?? []
+            let ageYears = profile?.ageYears ?? 8
+
+            let library = try SentenceLibrary()
+            let sentences = try await Self.resolveDecodeSentences(
+                library: library,
+                skillCode: skill.code,
+                targetGrapheme: targetGrapheme,
+                taughtGraphemes: taught,
+                ageYears: ageYears,
+                interests: interests,
+                count: 3
+            )
 
             let progression = ClosureYokaiProgressionSource { currentID in
                 ladder.skills
@@ -422,9 +482,9 @@ public struct SessionContainerView: View {
                         // trialsPlanned matches the total trial budget for a
                         // session: tile-board phase emits one trial per chain
                         // link (up to 12), sentences phase emits up to
-                        // `sentences.count` trials (2 here). Use an upper bound
+                        // `sentences.count` trials (3 here). Use an upper bound
                         // so floor math always reaches 100%.
-                        orch.beginFridaySession(trialsPlanned: 14)
+                        orch.beginFridaySession(trialsPlanned: 15)
                     }
                 }
                 yokaiOrchestrator = orch
