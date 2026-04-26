@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mora — Built with Opus 4.7</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="An on-device, dyslexia-aware ESL tutor for L1-Japanese kids. Built in 5 days for the Built with Opus 4.7 hackathon.">
+<meta property="og:title" content="Mora — Built with Opus 4.7">
+<meta property="og:description" content="An on-device, dyslexia-aware ESL tutor for L1-Japanese kids. Built in 5 days for the Built with Opus 4.7 hackathon.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://youtalk.github.io/mora/">
+<style>
+  :root { --bg:#0d0f11; --fg:#f1f4f6; --muted:#9aa4ad; --accent:#ffb86b; --rule:#1f242a; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:var(--bg); color:var(--fg); }
+  body { font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 48px 24px 96px; }
+  h1 { font-size: 40px; margin: 0 0 8px; letter-spacing: -0.02em; }
+  h2 { font-size: 24px; margin: 48px 0 12px; letter-spacing: -0.01em; }
+  h3 { font-size: 18px; margin: 24px 0 8px; }
+  p { margin: 0 0 16px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .lede { color: var(--muted); font-size: 18px; margin-bottom: 32px; }
+  .badges a { display:inline-block; margin: 0 8px 8px 0; padding: 4px 12px; border-radius: 14px; background: var(--rule); color: var(--fg); font-size: 13px; }
+  .video-wrap { position: relative; padding-top: 56.25%; margin: 24px 0 32px; background: #000; border-radius: 8px; overflow: hidden; }
+  .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  hr { border: 0; border-top: 1px solid var(--rule); margin: 48px 0; }
+  ul { padding-left: 20px; }
+  li { margin-bottom: 8px; }
+  code { background: var(--rule); padding: 1px 6px; border-radius: 3px; font-size: 14px; }
+  pre { background: var(--rule); padding: 12px 16px; border-radius: 6px; overflow-x: auto; font-size: 13px; }
+  footer { color: var(--muted); font-size: 14px; margin-top: 64px; border-top: 1px solid var(--rule); padding-top: 24px; }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Mora — Built with Opus 4.7</h1>
+<p class="lede">An on-device, dyslexia-aware ESL tutor for L1-Japanese kids. Built in 5 days for the <strong>Built with Opus 4.7</strong> hackathon (Anthropic × Cerebral Valley, Apr 21–28, 2026).</p>
+
+<div class="badges">
+  <a href="https://github.com/youtalk/mora">GitHub repo →</a>
+  <a href="https://opensource.org/licenses/MPL-2.0">License: MPL-2.0</a>
+  <a href="https://www.anthropic.com/claude-code">Built with Claude Code</a>
+</div>
+
+<div class="video-wrap">
+  <iframe src="https://www.youtube.com/embed/REPLACE_WITH_YOUTUBE_ID" title="Mora — 3-min demo (Built with Opus 4.7)" allowfullscreen></iframe>
+</div>
+
+<h2>The problem</h2>
+<p>My son is eight. He has dyslexia. He's also learning English as a second language — his first language is Japanese, and our family moved from Japan to the US last year.</p>
+<p>His school's IEP — the structured plan for dyslexia support — is gated behind finishing ESL. That's a one-year delay before he gets the help he actually needs. Barton tutoring, the gold-standard structured-literacy program, is priced out of reach for a family-funded effort.</p>
+<p>For a child user, on-device privacy is non-negotiable: no audio, no transcripts, no per-trial details may leave the iPad.</p>
+
+<h2>What it does</h2>
+
+<h3>Yokai mentor + warmup</h3>
+<p>Each week, a hand-illustrated yokai mentor introduces the practice arc with a voiced clip. The yokai shell turns daily phonics practice into a quest, not a drill.</p>
+
+<h3>Tile-board decoding (multisensory phonics)</h3>
+<p>The tile board breaks every word into graphemes the learner has explicitly mastered, so what shows up on screen is always decodable, never guessed from context. Multisensory phonics — Orton-Gillingham's core — means moving the letters yourself.</p>
+
+<h3>On-device pronunciation feedback</h3>
+<p>The learner speaks. An INT8-quantized <code>wav2vec2-xlsr-53-espeak-cv-ft</code> phoneme posterior runs in CoreML. The engine catches L1-Japanese substitutions — <em>v</em> as <em>b</em>, <em>l</em> as <em>r</em>, <em>sh</em> as <em>s</em> — and turns them into targeted coaching, not red Xs. No audio leaves the device.</p>
+
+<h3>Decodable sentences</h3>
+<p>Each sentence is generated against the learner's mastered grapheme set. The yokai reads first; the tiles fill as the child speaks.</p>
+
+<hr>
+
+<h2>How it's built</h2>
+<p>Five local Swift packages with one-way dependencies — <code>MoraCore ← MoraEngines ← MoraUI</code>, with <code>MoraTesting</code> and <code>MoraMLX</code> cross-cutting. The thin <code>Mora/</code> iOS app target wires SwiftData and presents <code>RootView</code>; all real logic lives in the packages.</p>
+<ul>
+  <li><strong>MoraCore</strong> — domain model + SwiftData persistence; <code>L1Profile</code> protocol with <code>JapaneseL1Profile</code> as the v1 implementation.</li>
+  <li><strong>MoraEngines</strong> — <code>SessionOrchestrator</code> state machine, <code>AssessmentEngine</code>, <code>SpeechEngine</code> / <code>TTSEngine</code> protocols, <code>CurriculumEngine</code>, <code>ContentProvider</code>, <code>TemplateEngine</code>.</li>
+  <li><strong>MoraUI</strong> — SwiftUI only; views observe the orchestrator, never own business logic.</li>
+  <li><strong>MoraTesting</strong> — fakes shared across test targets.</li>
+  <li><strong>MoraMLX</strong> — CoreML-bundled wav2vec2 phoneme posterior; reserved for future MLX-hosted on-device LLM work.</li>
+</ul>
+<p><strong>On-device invariant:</strong> no raw audio, transcripts, or per-trial details leave the device. The only planned cloud touchpoint is CloudKit private DB for parent-mode sync — not in the v1 scope.</p>
+
+<h2>Built with Claude Code</h2>
+<p>I'm not a Swift engineer by trade. I built mora in five days with Claude Code and Opus 4.7. Some of the workflow was deliberately structured to push the model:</p>
+<ul>
+  <li><strong>100+ structured PRs in 5 days</strong> — every one backed by a written spec under <code>docs/superpowers/specs/</code> and an implementation plan under <code>docs/superpowers/plans/</code>. Spec → plan → execute, repeat.</li>
+  <li><strong>Parallel sub-agents on isolated git worktrees.</strong> A four-phoneme decodable-sentence content batch that would have taken six hours sequential, finished in one — each phase ran as a separate sub-agent on its own git worktree, no cross-batch state. The default "no parallel implementation agents" guidance from the superpowers skill set applies to single-worktree conflicts; <code>isolation: "worktree"</code> defeats it because each agent gets its own filesystem copy.</li>
+  <li><strong>Custom <code>oslog-stream-to-file</code> skill.</strong> Streams Apple OSLog from the running iPad into <code>/tmp/&lt;repo&gt;.log</code>, which Claude reads directly via the <code>Read</code> tool. The classic debug round-trip ("user takes a screenshot of Console.app, pastes it") collapses into a conversation.</li>
+  <li><strong>Spec-driven discipline.</strong> Brainstorming → writing-plans → executing-plans, with the user-side review gate at each step. Self-authored skills include <code>pr-autofix-loop</code> (monitor GitHub Actions + Copilot reviews, fix, push, repeat until green) and <code>conduit-archive-to-app-store</code> (CLI orchestration of <code>Product → Archive → Validate → Distribute</code> in parallel for iOS + Mac Catalyst).</li>
+</ul>
+
+<h2>Try it</h2>
+<pre>git clone https://github.com/youtalk/mora.git
+cd mora
+bash tools/fetch-models.sh   # downloads + SHA-verifies the wav2vec2 CoreML model
+xcodegen generate
+open Mora.xcodeproj</pre>
+<p>Build the <code>Mora</code> scheme against an iPad simulator. Code is licensed under <a href="https://opensource.org/licenses/MPL-2.0">MPL-2.0</a>; bundled yokai portraits and voice clips inherit non-commercial restrictions from FLUX.1-dev and Fish Speech S2 Pro — disclosed in <code>tools/yokai-forge/README.md</code>.</p>
+
+<footer>
+  <p>Built with <a href="https://www.anthropic.com/claude-code">Claude Code</a> + <strong>Opus 4.7</strong> during the <a href="https://www.cerebralvalley.ai/">Cerebral Valley</a> × <a href="https://www.anthropic.com">Anthropic</a> hackathon, Apr 21–28, 2026. <a href="https://github.com/youtalk/mora">github.com/youtalk/mora</a> · <a href="https://x.com/y_kondoh">@y_kondoh</a></p>
+</footer>
+
+</main>
+</body>
+</html>
