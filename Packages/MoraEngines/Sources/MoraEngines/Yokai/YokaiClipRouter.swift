@@ -48,18 +48,31 @@ public final class YokaiClipRouter {
         )
         #endif
         guard let url = store.voiceClipURL(for: yokaiID, clip: clip) else {
-            clipLog.error(
+            // Missing clip URLs are an expected/normal state: not every yokai
+            // ships every clip key. Stay at `.info` and gate behind DEBUG so
+            // release builds don't spam this as if it were an error.
+            #if DEBUG
+            clipLog.info(
                 """
                 Clip URL missing: \(clip.rawValue, privacy: .public) \
                 yokai=\(self.yokaiID, privacy: .public)
                 """
             )
+            #endif
             return false
         }
         #if DEBUG
         clipLog.info("Clip silencer: awaiting TTS stop")
         #endif
         await silencer()
+        if Task.isCancelled {
+            #if DEBUG
+            clipLog.info(
+                "Clip cancelled post-silencer: \(clip.rawValue, privacy: .public)"
+            )
+            #endif
+            return false
+        }
         #if DEBUG
         clipLog.info("Clip silencer: returned")
         #endif
@@ -90,18 +103,28 @@ public final class YokaiClipRouter {
         )
         #endif
         guard let url = store.voiceClipURL(for: yokaiID, clip: clip) else {
-            clipLog.error(
+            #if DEBUG
+            clipLog.info(
                 """
                 Clip URL missing: \(clip.rawValue, privacy: .public) \
                 yokai=\(self.yokaiID, privacy: .public)
                 """
             )
+            #endif
             return false
         }
         #if DEBUG
         clipLog.info("Clip silencer: awaiting TTS stop")
         #endif
         await silencer()
+        if Task.isCancelled {
+            #if DEBUG
+            clipLog.info(
+                "Clip cancelled post-silencer: \(clip.rawValue, privacy: .public)"
+            )
+            #endif
+            return false
+        }
         #if DEBUG
         clipLog.info("Clip silencer: returned")
         #endif

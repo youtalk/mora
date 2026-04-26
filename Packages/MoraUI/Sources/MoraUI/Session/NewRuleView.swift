@@ -9,6 +9,13 @@ struct NewRuleView: View {
     let clipRouter: YokaiClipRouter?
 
     @State private var finishedIntro = false
+    /// Tracks the most recent intro task spawned by the listen-again button
+    /// so a rapid second tap cancels the in-flight intro before kicking off
+    /// a new one. Without this, two `runIntro` instances race on the shared
+    /// `clipRouter` / `speech` and produce overlapping playback. The initial
+    /// `.task { await playIntro() }` is owned by SwiftUI and gets cancelled
+    /// on view disappear; we only need to track the detached replays here.
+    @State private var replayTask: Task<Void, Never>?
 
     var body: some View {
         ScrollView {
@@ -80,7 +87,8 @@ struct NewRuleView: View {
 
     private func replayIntro() {
         guard let speech else { return }
-        Task { @MainActor in
+        replayTask?.cancel()
+        replayTask = Task { @MainActor in
             await runIntro(speech: speech)
         }
     }

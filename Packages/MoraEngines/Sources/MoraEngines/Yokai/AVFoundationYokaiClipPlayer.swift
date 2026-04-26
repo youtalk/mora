@@ -103,6 +103,13 @@ public final class AVFoundationYokaiClipPlayer: NSObject, YokaiClipPlayer, AVAud
             #if DEBUG
             clipLog.info("Clip done: \(name, privacy: .public) ok=\(flag, privacy: .public)")
             #endif
+            // The delegate callback hops main-actor via `Task { @MainActor in }`,
+            // so a preempted clip can deliver its "finished" message after a
+            // newer clip has already installed a fresh continuation. Only
+            // resume when the callback's player is still the installed one;
+            // a stale callback gets dropped and the new continuation will be
+            // resolved by its own player's callback (or by the next preempt).
+            guard player === self.player else { return }
             self.resumePending(flag)
         }
     }
@@ -119,6 +126,7 @@ public final class AVFoundationYokaiClipPlayer: NSObject, YokaiClipPlayer, AVAud
                 err=\(String(describing: error), privacy: .public)
                 """
             )
+            guard player === self.player else { return }
             self.resumePending(false)
         }
     }

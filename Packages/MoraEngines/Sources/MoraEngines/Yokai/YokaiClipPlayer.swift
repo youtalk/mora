@@ -8,12 +8,14 @@ public protocol YokaiClipPlayer: AnyObject {
     func play(url: URL) -> Bool
     func stop()
 
-    /// Plays `url` and suspends until playback ends. Returns `true` if the
-    /// clip ran to natural completion, `false` if it was preempted, stopped,
-    /// failed to start, or hit a decode error. The default implementation
-    /// dispatches to `play(url:)` and returns immediately — sufficient for
-    /// fakes/tests where there is no real audio to wait for. Real audio
-    /// backends override to wait on their delegate callback.
+    /// Plays `url` and suspends until playback ends. Real audio backends
+    /// (e.g. `AVFoundationYokaiClipPlayer`) override to await the delegate
+    /// callback and return `true` only when the clip reaches natural
+    /// completion (`false` for preempt / stop / decode error / failure to
+    /// start). The default implementation forwards to `play(url:)` and
+    /// returns immediately with whatever the synchronous start returned —
+    /// sufficient for fakes/tests where there is no real audio to wait
+    /// for, but it cannot distinguish "started" from "completed".
     func playAndAwait(url: URL) async -> Bool
 }
 
