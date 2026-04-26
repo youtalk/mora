@@ -156,7 +156,9 @@ public struct SessionContainerView: View {
             case .warmup:
                 WarmupView(orchestrator: orchestrator, speech: speech, clipRouter: clipRouter)
             case .newRule:
-                NewRuleView(orchestrator: orchestrator, speech: speech)
+                NewRuleView(
+                    orchestrator: orchestrator, speech: speech, clipRouter: clipRouter
+                )
             case .decoding:
                 decodingPhaseContent(orchestrator: orchestrator)
                     .modifier(

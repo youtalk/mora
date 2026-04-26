@@ -9,6 +9,9 @@ public struct RootView: View {
     @State private var onboarded: Bool = UserDefaults.standard.bool(
         forKey: OnboardingState.onboardedKey
     )
+    @State private var yokaiIntroSeen: Bool = UserDefaults.standard.bool(
+        forKey: YokaiIntroState.onboardedKey
+    )
     @Query(sort: \LearnerProfile.createdAt, order: .forward)
     private var profiles: [LearnerProfile]
 
@@ -25,6 +28,9 @@ public struct RootView: View {
                     onboarded = true
                 }
                 .environment(\.moraStrings, resolvedStrings)
+            } else if !yokaiIntroSeen {
+                YokaiIntroFlow(mode: .firstTime) { yokaiIntroSeen = true }
+                    .environment(\.moraStrings, resolvedStrings)
             } else {
                 NavigationStack {
                     HomeView()
