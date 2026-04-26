@@ -1,0 +1,347 @@
+{
+  "phoneme": "f",
+  "phonemeIPA": "f",
+  "graphemeLetters": "f",
+  "interest": "animals",
+  "ageBand": "early",
+  "sentences": [
+    {
+      "text": "Finn fed a fox and Fred fed a fish.",
+      "targetCount": 5,
+      "targetInitialContentWords": 6,
+      "interestWords": ["fox", "fish"],
+      "words": [
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "fed",  "graphemes": ["f","e","d"],         "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fox",  "graphemes": ["f","o","x"],         "phonemes": ["f","ɒ","k","s"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fed",  "graphemes": ["f","e","d"],         "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fish", "graphemes": ["f","i","sh"],        "phonemes": ["f","ɪ","ʃ"] }
+      ]
+    },
+    {
+      "text": "Fran had a flat fish and a frog.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["fish", "frog"],
+      "words": [
+        { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],         "phonemes": ["h","æ","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flat", "graphemes": ["f","l","a","t"],     "phonemes": ["f","l","æ","t"] },
+        { "surface": "fish", "graphemes": ["f","i","sh"],        "phonemes": ["f","ɪ","ʃ"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "frog", "graphemes": ["f","r","o","g"],     "phonemes": ["f","r","ɒ","g"] }
+      ]
+    },
+    {
+      "text": "Finn and Fred fit a fox in a pen.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["fox"],
+      "words": [
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fox",  "graphemes": ["f","o","x"],         "phonemes": ["f","ɒ","k","s"] },
+        { "surface": "in",   "graphemes": ["i","n"],             "phonemes": ["ɪ","n"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "pen",  "graphemes": ["p","e","n"],         "phonemes": ["p","ɛ","n"] }
+      ]
+    },
+    {
+      "text": "Fran fed a frog and a fluffy pup.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["frog", "pup"],
+      "words": [
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "frog",   "graphemes": ["f","r","o","g"],         "phonemes": ["f","r","ɒ","g"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fluffy", "graphemes": ["f","l","u","f","f","y"], "phonemes": ["f","l","ʌ","f","i"] },
+        { "surface": "pup",    "graphemes": ["p","u","p"],             "phonemes": ["p","ʌ","p"] }
+      ]
+    },
+    {
+      "text": "Fred fit a fox and Finn had a frog.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["fox", "frog"],
+      "words": [
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fox",  "graphemes": ["f","o","x"],         "phonemes": ["f","ɒ","k","s"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],         "phonemes": ["h","æ","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "frog", "graphemes": ["f","r","o","g"],     "phonemes": ["f","r","ɒ","g"] }
+      ]
+    },
+    {
+      "text": "Finn got a flat fish and a fox.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["fish", "fox"],
+      "words": [
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "flat", "graphemes": ["f","l","a","t"],     "phonemes": ["f","l","æ","t"] },
+        { "surface": "fish", "graphemes": ["f","i","sh"],        "phonemes": ["f","ɪ","ʃ"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fox",  "graphemes": ["f","o","x"],         "phonemes": ["f","ɒ","k","s"] }
+      ]
+    },
+    {
+      "text": "Fran and Fred fed a fish in a pan.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["fish"],
+      "words": [
+        { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fed",  "graphemes": ["f","e","d"],         "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fish", "graphemes": ["f","i","sh"],        "phonemes": ["f","ɪ","ʃ"] },
+        { "surface": "in",   "graphemes": ["i","n"],             "phonemes": ["ɪ","n"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "pan",  "graphemes": ["p","a","n"],         "phonemes": ["p","æ","n"] }
+      ]
+    },
+    {
+      "text": "Finn had a frog and Fran had a fox.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["frog", "fox"],
+      "words": [
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],         "phonemes": ["h","æ","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "frog", "graphemes": ["f","r","o","g"],     "phonemes": ["f","r","ɒ","g"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],         "phonemes": ["h","æ","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fox",  "graphemes": ["f","o","x"],         "phonemes": ["f","ɒ","k","s"] }
+      ]
+    },
+    {
+      "text": "Fred fit a fox and a fish in a sled.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["fox", "fish"],
+      "words": [
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fox",  "graphemes": ["f","o","x"],         "phonemes": ["f","ɒ","k","s"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fish", "graphemes": ["f","i","sh"],        "phonemes": ["f","ɪ","ʃ"] },
+        { "surface": "in",   "graphemes": ["i","n"],             "phonemes": ["ɪ","n"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "sled", "graphemes": ["s","l","e","d"],     "phonemes": ["s","l","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "Fran got a fox and Finn got a fish.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["fox", "fish"],
+      "words": [
+        { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fox",  "graphemes": ["f","o","x"],         "phonemes": ["f","ɒ","k","s"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fish", "graphemes": ["f","i","sh"],        "phonemes": ["f","ɪ","ʃ"] }
+      ]
+    },
+    {
+      "text": "Finn fed a fluffy cat and a fish.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["cat", "fish"],
+      "words": [
+        { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
+        { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fluffy", "graphemes": ["f","l","u","f","f","y"], "phonemes": ["f","l","ʌ","f","i"] },
+        { "surface": "cat",    "graphemes": ["c","a","t"],             "phonemes": ["k","æ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fish",   "graphemes": ["f","i","sh"],            "phonemes": ["f","ɪ","ʃ"] }
+      ]
+    },
+    {
+      "text": "Fred had a fox and Fran fed a frog.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["fox", "frog"],
+      "words": [
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],         "phonemes": ["h","æ","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fox",  "graphemes": ["f","o","x"],         "phonemes": ["f","ɒ","k","s"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "fed",  "graphemes": ["f","e","d"],         "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "frog", "graphemes": ["f","r","o","g"],     "phonemes": ["f","r","ɒ","g"] }
+      ]
+    },
+    {
+      "text": "Finn and Fred fit a fish in a tub.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["fish"],
+      "words": [
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fish", "graphemes": ["f","i","sh"],        "phonemes": ["f","ɪ","ʃ"] },
+        { "surface": "in",   "graphemes": ["i","n"],             "phonemes": ["ɪ","n"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "tub",  "graphemes": ["t","u","b"],         "phonemes": ["t","ʌ","b"] }
+      ]
+    },
+    {
+      "text": "Fran fed a fish and Fred had a fox.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["fish", "fox"],
+      "words": [
+        { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "fed",  "graphemes": ["f","e","d"],         "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fish", "graphemes": ["f","i","sh"],        "phonemes": ["f","ɪ","ʃ"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],         "phonemes": ["h","æ","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fox",  "graphemes": ["f","o","x"],         "phonemes": ["f","ɒ","k","s"] }
+      ]
+    },
+    {
+      "text": "A fox and a frog ran past Finn and Fred.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["fox", "frog"],
+      "words": [
+        { "surface": "A",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fox",  "graphemes": ["f","o","x"],         "phonemes": ["f","ɒ","k","s"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "frog", "graphemes": ["f","r","o","g"],     "phonemes": ["f","r","ɒ","g"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "past", "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "Fred fit a flat fish and a fluffy pup.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["fish", "pup"],
+      "words": [
+        { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "flat",   "graphemes": ["f","l","a","t"],         "phonemes": ["f","l","æ","t"] },
+        { "surface": "fish",   "graphemes": ["f","i","sh"],            "phonemes": ["f","ɪ","ʃ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fluffy", "graphemes": ["f","l","u","f","f","y"], "phonemes": ["f","l","ʌ","f","i"] },
+        { "surface": "pup",    "graphemes": ["p","u","p"],             "phonemes": ["p","ʌ","p"] }
+      ]
+    },
+    {
+      "text": "Finn fed a fish and Fran fed a frog.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["fish", "frog"],
+      "words": [
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "fed",  "graphemes": ["f","e","d"],         "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fish", "graphemes": ["f","i","sh"],        "phonemes": ["f","ɪ","ʃ"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "fed",  "graphemes": ["f","e","d"],         "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "frog", "graphemes": ["f","r","o","g"],     "phonemes": ["f","r","ɒ","g"] }
+      ]
+    },
+    {
+      "text": "Fred put a frog and Fran put a fish in.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["frog", "fish"],
+      "words": [
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "put",  "graphemes": ["p","u","t"],         "phonemes": ["p","ʌ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "frog", "graphemes": ["f","r","o","g"],     "phonemes": ["f","r","ɒ","g"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fran", "graphemes": ["f","r","a","n"],     "phonemes": ["f","r","æ","n"] },
+        { "surface": "put",  "graphemes": ["p","u","t"],         "phonemes": ["p","ʌ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fish", "graphemes": ["f","i","sh"],        "phonemes": ["f","ɪ","ʃ"] },
+        { "surface": "in",   "graphemes": ["i","n"],             "phonemes": ["ɪ","n"] }
+      ]
+    },
+    {
+      "text": "Fran had a fluffy pup and a fox.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["pup", "fox"],
+      "words": [
+        { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],             "phonemes": ["h","æ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fluffy", "graphemes": ["f","l","u","f","f","y"], "phonemes": ["f","l","ʌ","f","i"] },
+        { "surface": "pup",    "graphemes": ["p","u","p"],             "phonemes": ["p","ʌ","p"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "fox",    "graphemes": ["f","o","x"],             "phonemes": ["f","ɒ","k","s"] }
+      ]
+    },
+    {
+      "text": "Finn fed a frog and Fred fit a fox.",
+      "targetCount": 5,
+      "targetInitialContentWords": 6,
+      "interestWords": ["frog", "fox"],
+      "words": [
+        { "surface": "Finn", "graphemes": ["f","i","n","n"],     "phonemes": ["f","ɪ","n"] },
+        { "surface": "fed",  "graphemes": ["f","e","d"],         "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "frog", "graphemes": ["f","r","o","g"],     "phonemes": ["f","r","ɒ","g"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Fred", "graphemes": ["f","r","e","d"],     "phonemes": ["f","r","ɛ","d"] },
+        { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "fox",  "graphemes": ["f","o","x"],         "phonemes": ["f","ɒ","k","s"] }
+      ]
+    }
+  ]
+}
