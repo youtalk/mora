@@ -1,0 +1,352 @@
+{
+  "phoneme": "r",
+  "phonemeIPA": "r",
+  "graphemeLetters": "r",
+  "interest": "sports",
+  "ageBand": "mid",
+  "sentences": [
+    {
+      "text": "Rex and Ron ran past a runner and Rob.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["runner"],
+      "words": [
+        { "surface": "Rex",    "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",    "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "runner", "graphemes": ["r","u","n","n","e","r"], "phonemes": ["r","ʌ","n","ɚ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",    "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] }
+      ]
+    },
+    {
+      "text": "Rip got a racer and Rob got a runner.",
+      "targetCount": 7,
+      "targetInitialContentWords": 5,
+      "interestWords": ["racer", "runner"],
+      "words": [
+        { "surface": "Rip",    "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "racer",  "graphemes": ["r","a","c","e","r"], "phonemes": ["r","eɪ","s","ɚ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",    "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "runner", "graphemes": ["r","u","n","n","e","r"], "phonemes": ["r","ʌ","n","ɚ"] }
+      ]
+    },
+    {
+      "text": "Rex ran past a rugby ramp and a rim.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rugby", "rim"],
+      "words": [
+        { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "ran",   "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "past",  "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rugby", "graphemes": ["r","u","g","b","y"], "phonemes": ["r","ʌ","g","b","i"] },
+        { "surface": "ramp",  "graphemes": ["r","a","m","p"],     "phonemes": ["r","æ","m","p"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rim",   "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+      ]
+    },
+    {
+      "text": "Ron and Rip ran and met a runner.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["runner"],
+      "words": [
+        { "surface": "Ron",    "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",    "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "met",    "graphemes": ["m","e","t"],         "phonemes": ["m","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "runner", "graphemes": ["r","u","n","n","e","r"], "phonemes": ["r","ʌ","n","ɚ"] }
+      ]
+    },
+    {
+      "text": "Rex got a rugby and Rip got a racer.",
+      "targetCount": 6,
+      "targetInitialContentWords": 4,
+      "interestWords": ["rugby", "racer"],
+      "words": [
+        { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rugby", "graphemes": ["r","u","g","b","y"], "phonemes": ["r","ʌ","g","b","i"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",   "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "racer", "graphemes": ["r","a","c","e","r"], "phonemes": ["r","eɪ","s","ɚ"] }
+      ]
+    },
+    {
+      "text": "Rob ran past a runner and Rex got a rim.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["runner", "rim"],
+      "words": [
+        { "surface": "Rob",    "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "runner", "graphemes": ["r","u","n","n","e","r"], "phonemes": ["r","ʌ","n","ɚ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rex",    "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rim",    "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+      ]
+    },
+    {
+      "text": "Rip ran past a rugby ramp and Ron ran.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rugby"],
+      "words": [
+        { "surface": "Rip",   "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "ran",   "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "past",  "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rugby", "graphemes": ["r","u","g","b","y"], "phonemes": ["r","ʌ","g","b","i"] },
+        { "surface": "ramp",  "graphemes": ["r","a","m","p"],     "phonemes": ["r","æ","m","p"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",   "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "ran",   "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] }
+      ]
+    },
+    {
+      "text": "Rex met a runner and Rob met a racer.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["runner", "racer"],
+      "words": [
+        { "surface": "Rex",    "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "met",    "graphemes": ["m","e","t"],         "phonemes": ["m","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "runner", "graphemes": ["r","u","n","n","e","r"], "phonemes": ["r","ʌ","n","ɚ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",    "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "met",    "graphemes": ["m","e","t"],         "phonemes": ["m","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "racer",  "graphemes": ["r","a","c","e","r"], "phonemes": ["r","eɪ","s","ɚ"] }
+      ]
+    },
+    {
+      "text": "Ron got a rugby and Rip got a rim.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rugby", "rim"],
+      "words": [
+        { "surface": "Ron",   "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rugby", "graphemes": ["r","u","g","b","y"], "phonemes": ["r","ʌ","g","b","i"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",   "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rim",   "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+      ]
+    },
+    {
+      "text": "Rex and Ron got a runner past a rim.",
+      "targetCount": 6,
+      "targetInitialContentWords": 4,
+      "interestWords": ["runner", "rim"],
+      "words": [
+        { "surface": "Rex",    "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",    "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "runner", "graphemes": ["r","u","n","n","e","r"], "phonemes": ["r","ʌ","n","ɚ"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rim",    "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+      ]
+    },
+    {
+      "text": "Rip ran and Rob got a rugby and a rim.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rugby", "rim"],
+      "words": [
+        { "surface": "Rip",   "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "ran",   "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rugby", "graphemes": ["r","u","g","b","y"], "phonemes": ["r","ʌ","g","b","i"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rim",   "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+      ]
+    },
+    {
+      "text": "Rex met Ron and a runner ran past.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["runner"],
+      "words": [
+        { "surface": "Rex",    "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "met",    "graphemes": ["m","e","t"],         "phonemes": ["m","ɛ","t"] },
+        { "surface": "Ron",    "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "runner", "graphemes": ["r","u","n","n","e","r"], "phonemes": ["r","ʌ","n","ɚ"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] }
+      ]
+    },
+    {
+      "text": "Rob got a racer and Rip got a rugby.",
+      "targetCount": 6,
+      "targetInitialContentWords": 4,
+      "interestWords": ["racer", "rugby"],
+      "words": [
+        { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "racer", "graphemes": ["r","a","c","e","r"], "phonemes": ["r","eɪ","s","ɚ"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",   "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rugby", "graphemes": ["r","u","g","b","y"], "phonemes": ["r","ʌ","g","b","i"] }
+      ]
+    },
+    {
+      "text": "Rex ran and Rob ran past a runner and Rip.",
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
+      "interestWords": ["runner"],
+      "words": [
+        { "surface": "Rex",    "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",    "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "runner", "graphemes": ["r","u","n","n","e","r"], "phonemes": ["r","ʌ","n","ɚ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",    "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] }
+      ]
+    },
+    {
+      "text": "Ron got a rugby and a runner ran past.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["rugby", "runner"],
+      "words": [
+        { "surface": "Ron",    "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rugby",  "graphemes": ["r","u","g","b","y"], "phonemes": ["r","ʌ","g","b","i"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "runner", "graphemes": ["r","u","n","n","e","r"], "phonemes": ["r","ʌ","n","ɚ"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] }
+      ]
+    },
+    {
+      "text": "Rex set a rim and Rip set a runner.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rim", "runner"],
+      "words": [
+        { "surface": "Rex",    "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "set",    "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rim",    "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",    "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "set",    "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "runner", "graphemes": ["r","u","n","n","e","r"], "phonemes": ["r","ʌ","n","ɚ"] }
+      ]
+    },
+    {
+      "text": "Rob and Ron met a racer and got a rim.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["racer", "rim"],
+      "words": [
+        { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",   "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "met",   "graphemes": ["m","e","t"],         "phonemes": ["m","ɛ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "racer", "graphemes": ["r","a","c","e","r"], "phonemes": ["r","eɪ","s","ɚ"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rim",   "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+      ]
+    },
+    {
+      "text": "Rex got a runner and Rip met a racer.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["runner", "racer"],
+      "words": [
+        { "surface": "Rex",    "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "runner", "graphemes": ["r","u","n","n","e","r"], "phonemes": ["r","ʌ","n","ɚ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",    "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "met",    "graphemes": ["m","e","t"],         "phonemes": ["m","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "racer",  "graphemes": ["r","a","c","e","r"], "phonemes": ["r","eɪ","s","ɚ"] }
+      ]
+    },
+    {
+      "text": "Ron and Rip got a rugby and met Rex.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["rugby"],
+      "words": [
+        { "surface": "Ron",   "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",   "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rugby", "graphemes": ["r","u","g","b","y"], "phonemes": ["r","ʌ","g","b","i"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "met",   "graphemes": ["m","e","t"],         "phonemes": ["m","ɛ","t"] },
+        { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] }
+      ]
+    },
+    {
+      "text": "Rex and Rob ran past a racer and a rim.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["racer", "rim"],
+      "words": [
+        { "surface": "Rex",   "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",   "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "ran",   "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "past",  "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "racer", "graphemes": ["r","a","c","e","r"], "phonemes": ["r","eɪ","s","ɚ"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rim",   "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,354 @@
+{
+  "phoneme": "r",
+  "phonemeIPA": "r",
+  "graphemeLetters": "r",
+  "interest": "dinosaurs",
+  "ageBand": "mid",
+  "sentences": [
+    {
+      "text": "Rex and Ron met a raptor in the dark.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["raptor"],
+      "words": [
+        { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
+        { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
+        { "surface": "in",     "graphemes": ["i","n"],                 "phonemes": ["ɪ","n"] },
+        { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
+        { "surface": "dark",   "graphemes": ["d","a","r","k"],         "phonemes": ["d","ɑ","r","k"] }
+      ]
+    },
+    {
+      "text": "Rip ran past a raptor and rested in a den.",
+      "targetCount": 6,
+      "targetInitialContentWords": 4,
+      "interestWords": ["raptor"],
+      "words": [
+        { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "rested", "graphemes": ["r","e","s","t","e","d"], "phonemes": ["r","ɛ","s","t","ɪ","d"] },
+        { "surface": "in",     "graphemes": ["i","n"],                 "phonemes": ["ɪ","n"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "den",    "graphemes": ["d","e","n"],             "phonemes": ["d","ɛ","n"] }
+      ]
+    },
+    {
+      "text": "Rob got a rib and Rex got a raptor.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rib", "raptor"],
+      "words": [
+        { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "rib",    "graphemes": ["r","i","b"],             "phonemes": ["r","ɪ","b"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] }
+      ]
+    },
+    {
+      "text": "Ron and Rex ran past a red raptor.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["raptor"],
+      "words": [
+        { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "red",    "graphemes": ["r","e","d"],             "phonemes": ["r","ɛ","d"] },
+        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] }
+      ]
+    },
+    {
+      "text": "Rip rested as a raptor ran past a rib.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["raptor", "rib"],
+      "words": [
+        { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
+        { "surface": "rested", "graphemes": ["r","e","s","t","e","d"], "phonemes": ["r","ɛ","s","t","ɪ","d"] },
+        { "surface": "as",     "graphemes": ["a","s"],                 "phonemes": ["æ","z"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "rib",    "graphemes": ["r","i","b"],             "phonemes": ["r","ɪ","b"] }
+      ]
+    },
+    {
+      "text": "Rex ran and Rob met a raptor in the dark.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["raptor"],
+      "words": [
+        { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
+        { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
+        { "surface": "in",     "graphemes": ["i","n"],                 "phonemes": ["ɪ","n"] },
+        { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
+        { "surface": "dark",   "graphemes": ["d","a","r","k"],         "phonemes": ["d","ɑ","r","k"] }
+      ]
+    },
+    {
+      "text": "Rob and Rip got a rib and a raptor.",
+      "targetCount": 6,
+      "targetInitialContentWords": 4,
+      "interestWords": ["rib", "raptor"],
+      "words": [
+        { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "rib",    "graphemes": ["r","i","b"],             "phonemes": ["r","ɪ","b"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] }
+      ]
+    },
+    {
+      "text": "Rex met a raptor and Ron met a rat.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["raptor", "rat"],
+      "words": [
+        { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
+        { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
+        { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "rat",    "graphemes": ["r","a","t"],             "phonemes": ["r","æ","t"] }
+      ]
+    },
+    {
+      "text": "Rip got a rib and a raptor in the mud.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["rib", "raptor"],
+      "words": [
+        { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "rib",    "graphemes": ["r","i","b"],             "phonemes": ["r","ɪ","b"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
+        { "surface": "in",     "graphemes": ["i","n"],                 "phonemes": ["ɪ","n"] },
+        { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
+        { "surface": "mud",    "graphemes": ["m","u","d"],             "phonemes": ["m","ʌ","d"] }
+      ]
+    },
+    {
+      "text": "Ron rested and Rex got a red raptor.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["raptor"],
+      "words": [
+        { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
+        { "surface": "rested", "graphemes": ["r","e","s","t","e","d"], "phonemes": ["r","ɛ","s","t","ɪ","d"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "red",    "graphemes": ["r","e","d"],             "phonemes": ["r","ɛ","d"] },
+        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] }
+      ]
+    },
+    {
+      "text": "Rex and Rip ran past a rib in the dark.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["rib"],
+      "words": [
+        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
+        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
+        { "surface": "past", "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rib",  "graphemes": ["r","i","b"],         "phonemes": ["r","ɪ","b"] },
+        { "surface": "in",   "graphemes": ["i","n"],             "phonemes": ["ɪ","n"] },
+        { "surface": "the",  "graphemes": ["th","e"],            "phonemes": ["ð","ə"] },
+        { "surface": "dark", "graphemes": ["d","a","r","k"],     "phonemes": ["d","ɑ","r","k"] }
+      ]
+    },
+    {
+      "text": "Rob met a raptor and Ron met a rib.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["raptor", "rib"],
+      "words": [
+        { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
+        { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
+        { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "rib",    "graphemes": ["r","i","b"],             "phonemes": ["r","ɪ","b"] }
+      ]
+    },
+    {
+      "text": "Rip and Rex rested and a raptor ran past.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["raptor"],
+      "words": [
+        { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
+        { "surface": "rested", "graphemes": ["r","e","s","t","e","d"], "phonemes": ["r","ɛ","s","t","ɪ","d"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] }
+      ]
+    },
+    {
+      "text": "Ron got a red rib and Rex got a rat.",
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
+      "interestWords": ["rib", "rat"],
+      "words": [
+        { "surface": "Ron", "graphemes": ["r","o","n"],     "phonemes": ["r","ɒ","n"] },
+        { "surface": "got", "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",   "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "red", "graphemes": ["r","e","d"],     "phonemes": ["r","ɛ","d"] },
+        { "surface": "rib", "graphemes": ["r","i","b"],     "phonemes": ["r","ɪ","b"] },
+        { "surface": "and", "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+        { "surface": "Rex", "graphemes": ["r","e","x"],     "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got", "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",   "graphemes": ["a"],             "phonemes": ["ə"] },
+        { "surface": "rat", "graphemes": ["r","a","t"],     "phonemes": ["r","æ","t"] }
+      ]
+    },
+    {
+      "text": "Rex and Rob hid a rib in the dark.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["rib"],
+      "words": [
+        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
+        { "surface": "Rob",  "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
+        { "surface": "hid",  "graphemes": ["h","i","d"],         "phonemes": ["h","ɪ","d"] },
+        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
+        { "surface": "rib",  "graphemes": ["r","i","b"],         "phonemes": ["r","ɪ","b"] },
+        { "surface": "in",   "graphemes": ["i","n"],             "phonemes": ["ɪ","n"] },
+        { "surface": "the",  "graphemes": ["th","e"],            "phonemes": ["ð","ə"] },
+        { "surface": "dark", "graphemes": ["d","a","r","k"],     "phonemes": ["d","ɑ","r","k"] }
+      ]
+    },
+    {
+      "text": "Rip got a raptor and Ron got a red rib.",
+      "targetCount": 7,
+      "targetInitialContentWords": 6,
+      "interestWords": ["raptor", "rib"],
+      "words": [
+        { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "red",    "graphemes": ["r","e","d"],             "phonemes": ["r","ɛ","d"] },
+        { "surface": "rib",    "graphemes": ["r","i","b"],             "phonemes": ["r","ɪ","b"] }
+      ]
+    },
+    {
+      "text": "Rex met a rat and a raptor in a swamp.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["rat", "raptor"],
+      "words": [
+        { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
+        { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "rat",    "graphemes": ["r","a","t"],             "phonemes": ["r","æ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
+        { "surface": "in",     "graphemes": ["i","n"],                 "phonemes": ["ɪ","n"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "swamp",  "graphemes": ["s","w","a","m","p"],     "phonemes": ["s","w","ɒ","m","p"] }
+      ]
+    },
+    {
+      "text": "Ron and Rip ran and a raptor met Rex.",
+      "targetCount": 6,
+      "targetInitialContentWords": 6,
+      "interestWords": ["raptor"],
+      "words": [
+        { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
+        { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
+        { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] }
+      ]
+    },
+    {
+      "text": "Rob hid in the dark and a raptor ran.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["raptor"],
+      "words": [
+        { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
+        { "surface": "hid",    "graphemes": ["h","i","d"],             "phonemes": ["h","ɪ","d"] },
+        { "surface": "in",     "graphemes": ["i","n"],                 "phonemes": ["ɪ","n"] },
+        { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
+        { "surface": "dark",   "graphemes": ["d","a","r","k"],         "phonemes": ["d","ɑ","r","k"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
+        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] }
+      ]
+    },
+    {
+      "text": "Rex got a rib and Rip got a raptor.",
+      "targetCount": 6,
+      "targetInitialContentWords": 5,
+      "interestWords": ["rib", "raptor"],
+      "words": [
+        { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "rib",    "graphemes": ["r","i","b"],             "phonemes": ["r","ɪ","b"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] }
+      ]
+    }
+  ]
+}
