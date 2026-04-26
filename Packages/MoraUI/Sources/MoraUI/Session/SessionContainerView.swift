@@ -480,9 +480,9 @@ public struct SessionContainerView: View {
                         // trialsPlanned matches the total trial budget for a
                         // session: tile-board phase emits one trial per chain
                         // link (up to 12), sentences phase emits up to
-                        // `sentences.count` trials (2 here). Use an upper bound
+                        // `sentences.count` trials (3 here). Use an upper bound
                         // so floor math always reaches 100%.
-                        orch.beginFridaySession(trialsPlanned: 14)
+                        orch.beginFridaySession(trialsPlanned: 15)
                     }
                 }
                 yokaiOrchestrator = orch
