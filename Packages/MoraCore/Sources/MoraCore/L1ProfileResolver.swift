@@ -11,7 +11,7 @@ public enum L1ProfileResolver {
         switch identifier {
         case "ja": return JapaneseL1Profile()
         // PR 2 will add cases "ko" → KoreanL1Profile(), "en" → EnglishL1Profile()
-        default:   return JapaneseL1Profile()
+        default: return JapaneseL1Profile()
         }
     }
 }

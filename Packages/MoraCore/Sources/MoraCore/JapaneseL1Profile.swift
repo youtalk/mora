@@ -87,29 +87,29 @@ public struct JapaneseL1Profile: L1Profile {
 
     public func uiStrings(at level: LearnerLevel) -> MoraStrings {
         switch level {
-        case .entry:    return Self.stringsEntryHiraOnly
-        case .core:     return Self.stringsCoreG1
+        case .entry: return Self.stringsEntryHiraOnly
+        case .core: return Self.stringsCoreG1
         case .advanced: return Self.stringsAdvancedG1G2
         }
     }
 
     public func allowedScriptBudget(at level: LearnerLevel) -> Set<Character>? {
         switch level {
-        case .entry:    return JPKanjiLevel.empty
-        case .core:     return JPKanjiLevel.grade1
+        case .entry: return JPKanjiLevel.empty
+        case .core: return JPKanjiLevel.grade1
         case .advanced: return JPKanjiLevel.grade1And2
         }
     }
 
     public func interestCategoryDisplayName(key: String, at level: LearnerLevel) -> String {
         switch key {
-        case "animals":   return "どうぶつ"
+        case "animals": return "どうぶつ"
         case "dinosaurs": return "きょうりゅう"
-        case "vehicles":  return "のりもの"
-        case "space":     return "うちゅう"
-        case "sports":    return "スポーツ"
-        case "robots":    return "ロボット"
-        default:          return key
+        case "vehicles": return "のりもの"
+        case "space": return "うちゅう"
+        case "sports": return "スポーツ"
+        case "robots": return "ロボット"
+        default: return key
         }
     }
 

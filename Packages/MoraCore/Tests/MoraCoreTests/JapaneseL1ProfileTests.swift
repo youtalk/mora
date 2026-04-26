@@ -70,8 +70,8 @@ final class JapaneseL1ProfileTests: XCTestCase {
     func test_uiStrings_core_collapsesG2KanjiToHira() {
         let s = JapaneseL1Profile().uiStrings(at: .core)
         XCTAssertEqual(s.homeTodayQuest, "きょうの クエスト")  // 今 G2 → きょう
-        XCTAssertEqual(s.feedbackTryAgain, "もういちど")        // 一回 → all-hira
-        XCTAssertEqual(s.permissionTitle, "こえを きくよ")      // 声 G2, 聞 G2 → hira
+        XCTAssertEqual(s.feedbackTryAgain, "もういちど")  // 一回 → all-hira
+        XCTAssertEqual(s.permissionTitle, "こえを きくよ")  // 声 G2, 聞 G2 → hira
     }
 
     func test_uiStrings_entry_collapsesAllKanjiToHira() {

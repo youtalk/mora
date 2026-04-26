@@ -8,7 +8,7 @@ final class LocaleScriptBudgetTests: XCTestCase {
     /// that return `nil` from `allowedScriptBudget(at:)` are skipped.
     func test_all_profile_level_combinations_respect_script_budget() {
         let profiles: [any L1Profile] = [
-            JapaneseL1Profile(),
+            JapaneseL1Profile()
             // PR 2 will append KoreanL1Profile() and EnglishL1Profile()
         ]
 
@@ -18,7 +18,7 @@ final class LocaleScriptBudgetTests: XCTestCase {
                 guard let budget = profile.allowedScriptBudget(at: level) else {
                     continue  // no script ladder applies
                 }
-                for (fieldName, value) in EveryStringField(strings) {
+                for (fieldName, value) in everyStringField(strings) {
                     for char in value {
                         XCTAssertTrue(
                             isAllowed(char, budget: budget),
@@ -34,21 +34,21 @@ final class LocaleScriptBudgetTests: XCTestCase {
         if budget.contains(char) { return true }
         for scalar in char.unicodeScalars {
             switch scalar.value {
-            case 0x3040...0x309F: continue       // Hiragana
-            case 0x30A0...0x30FF: continue       // Katakana
-            case 0x0030...0x0039: continue       // ASCII digits
-            case 0x0041...0x005A: continue       // ASCII A-Z
-            case 0x0061...0x007A: continue       // ASCII a-z
-            case 0x0020, 0x000A, 0x000D: continue // whitespace, newline, CR
+            case 0x3040...0x309F: continue  // Hiragana
+            case 0x30A0...0x30FF: continue  // Katakana
+            case 0x0030...0x0039: continue  // ASCII digits
+            case 0x0041...0x005A: continue  // ASCII A-Z
+            case 0x0061...0x007A: continue  // ASCII a-z
+            case 0x0020, 0x000A, 0x000D: continue  // whitespace, newline, CR
             case 0x0021, 0x0022, 0x0028, 0x0029: continue  // ! " ( )
             case 0x002C, 0x002E, 0x002F: continue  // , . /
             case 0x003A, 0x003F, 0x005F: continue  // : ? _
             case 0x3001, 0x3002, 0x300C, 0x300D: continue  // 、 。 「 」
-            case 0xFF01, 0xFF1F: continue          // ！ ？ (fullwidth, e.g. なんさい？ せいかい！)
+            case 0xFF01, 0xFF1F: continue  // ！ ？ (fullwidth, e.g. なんさい？ せいかい！)
             case 0x2026, 0x203A, 0x25B6: continue  // … › ▶
-            case 0x1F50A: continue                  // 🔊
-            case 0x00E6: continue                   // æ — IPA vowel in coachingAeSubSchwa
-            case 0x3000: continue                   // ideographic space
+            case 0x1F50A: continue  // 🔊
+            case 0x00E6: continue  // æ — IPA vowel in coachingAeSubSchwa
+            case 0x3000: continue  // ideographic space
             default: return false
             }
         }
@@ -60,7 +60,7 @@ final class LocaleScriptBudgetTests: XCTestCase {
 /// representative arguments. Memory-stable: changes to MoraStrings's field
 /// list require explicit edits here, surfacing accidental field additions
 /// in code review.
-func EveryStringField(_ s: MoraStrings) -> [(name: String, value: String)] {
+func everyStringField(_ s: MoraStrings) -> [(name: String, value: String)] {
     [
         ("ageOnboardingPrompt", s.ageOnboardingPrompt),
         ("ageOnboardingCTA", s.ageOnboardingCTA),
