@@ -93,6 +93,27 @@ extension SentenceLibrary {
         let phonemes: [String]
     }
 
+    /// Map from runtime `SkillCode` to the on-disk directory name used by
+    /// `Resources/SentenceLibrary/<dir>/<interest>_<ageBand>.json`. Mirrors
+    /// `dev-tools/sentence-validator`'s `PhonemeDirectoryMap.all`; the two
+    /// cannot share because the validator target is outside the app build.
+    /// Keep this in sync when the v1 ladder skill codes change.
+    private static let directoryForSkillCode: [SkillCode: String] = [
+        "sh_onset": "sh",
+        "th_voiceless": "th",
+        "f_onset": "f",
+        "r_onset": "r",
+        "short_a": "short_a",
+    ]
+
+    /// Six interest keys mirrored from `JapaneseL1Profile.interestCategories`.
+    /// Used as the fallback set when a learner has no `interests` recorded
+    /// (e.g. a profile from before the interest picker shipped — only the
+    /// dev profile is in this state).
+    private static let allInterestKeys: [String] = [
+        "animals", "dinosaurs", "vehicles", "space", "sports", "robots",
+    ]
+
     private static let phonemeDirectories: [String] = [
         "sh", "th", "f", "r", "short_a",
     ]
