@@ -115,7 +115,11 @@ struct SlotMeaningPanel: View {
             draggingTileVisible = false
             return
         }
-        // Loop forever while panel is on-screen.
+        // Loop forever while panel is on-screen. `try? await sleep`
+        // would swallow CancellationError and busy-loop after view
+        // teardown; thread cancellation through with explicit
+        // try/catch returns instead. (See Yokai/SparkleOverlay for
+        // the same pattern.)
         while !Task.isCancelled {
             // Reset
             withAnimation(.easeOut(duration: 0.2)) {
@@ -123,18 +127,20 @@ struct SlotMeaningPanel: View {
                 draggingTileOffset = CGSize(width: -90, height: 70)
                 draggingTileVisible = true
             }
-            try? await Task.sleep(for: .milliseconds(500))
+            do { try await Task.sleep(for: .milliseconds(500)) } catch { return }
+            if Task.isCancelled { return }
             // Drag
             withAnimation(.easeInOut(duration: 0.7)) {
                 draggingTileOffset = CGSize(width: -90, height: -50)
             }
-            try? await Task.sleep(for: .milliseconds(700))
+            do { try await Task.sleep(for: .milliseconds(700)) } catch { return }
+            if Task.isCancelled { return }
             // Drop
             withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
                 slotFilled = true
                 draggingTileVisible = false
             }
-            try? await Task.sleep(for: .milliseconds(900))
+            do { try await Task.sleep(for: .milliseconds(900)) } catch { return }
         }
     }
 }

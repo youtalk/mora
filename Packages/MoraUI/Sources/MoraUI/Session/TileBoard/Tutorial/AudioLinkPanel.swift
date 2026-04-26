@@ -69,15 +69,19 @@ struct AudioLinkPanel: View {
         if reduceMotion {
             return
         }
+        // `try? await sleep` would swallow CancellationError and busy-loop
+        // after view teardown; thread cancellation through with explicit
+        // try/catch returns. (See Yokai/SparkleOverlay for the same pattern.)
         while !Task.isCancelled {
             withAnimation(.easeInOut(duration: 0.5)) {
                 pulseScale = 1.15
             }
-            try? await Task.sleep(for: .milliseconds(500))
+            do { try await Task.sleep(for: .milliseconds(500)) } catch { return }
+            if Task.isCancelled { return }
             withAnimation(.easeInOut(duration: 0.5)) {
                 pulseScale = 1.0
             }
-            try? await Task.sleep(for: .milliseconds(500))
+            do { try await Task.sleep(for: .milliseconds(500)) } catch { return }
         }
     }
 }
