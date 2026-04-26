@@ -11,6 +11,8 @@ public struct DecodeBoardView: View {
     public let speech: SpeechController?
     public var onTrialComplete: (TileBoardTrialResult) -> Void = { _ in }
 
+    @State private var showHelp: Bool = false
+
     private let tileSize: CGFloat = 128
     private let slotSize: CGFloat = 168
 
@@ -50,6 +52,29 @@ public struct DecodeBoardView: View {
             engine.apply(.preparationFinished)
             engine.apply(.promptFinished)
             speakTarget()
+        }
+        .overlay(alignment: .topTrailing) {
+            Button { showHelp = true } label: {
+                Image(systemName: "questionmark.circle.fill")
+                    .font(.system(size: 28, weight: .semibold))
+                    .foregroundStyle(MoraTheme.Accent.teal)
+                    .frame(width: 44, height: 44)
+            }
+            .buttonStyle(.plain)
+            .padding(.trailing, 12)
+            .padding(.top, 8)
+            .accessibilityLabel(strings.decodingHelpLabel)
+        }
+        .sheet(isPresented: $showHelp) {
+            DecodingTutorialOverlay(mode: .replay) {
+                showHelp = false
+            }
+            .environment(\.moraStrings, strings)
+        }
+        .onChange(of: showHelp) { _, isShowing in
+            if isShowing {
+                Task { await speech?.stop() }
+            }
         }
     }
 
