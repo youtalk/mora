@@ -1,0 +1,361 @@
+{
+  "phoneme": "th",
+  "phonemeIPA": "θ",
+  "graphemeLetters": "th",
+  "interest": "robots",
+  "ageBand": "mid",
+  "sentences": [
+    {
+      "text": "Thad and Theo had a thin magnet on the path.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["magnet"],
+      "words": [
+        { "surface": "Thad",   "graphemes": ["th","a","d"],            "phonemes": ["θ","æ","d"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Theo",   "graphemes": ["th","e","o"],            "phonemes": ["θ","i","oʊ"] },
+        { "surface": "had",    "graphemes": ["h","a","d"],             "phonemes": ["h","æ","d"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],            "phonemes": ["θ","ɪ","n"] },
+        { "surface": "magnet", "graphemes": ["m","a","g","n","e","t"], "phonemes": ["m","æ","g","n","ɛ","t"] },
+        { "surface": "on",     "graphemes": ["o","n"],                 "phonemes": ["ɒ","n"] },
+        { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
+        { "surface": "path",   "graphemes": ["p","a","th"],            "phonemes": ["p","æ","θ"] }
+      ]
+    },
+    {
+      "text": "Theo got a thin lever and Thad got the bot.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["lever", "bot"],
+      "words": [
+        { "surface": "Theo",  "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "thin",  "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "lever", "graphemes": ["l","e","v","e","r"],  "phonemes": ["l","ɛ","v","ɜ","r"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Thad",  "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "got",   "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
+        { "surface": "the",   "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "bot",   "graphemes": ["b","o","t"],          "phonemes": ["b","ɒ","t"] }
+      ]
+    },
+    {
+      "text": "A thin signal met Thad and Theo at the path.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["signal"],
+      "words": [
+        { "surface": "A",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],            "phonemes": ["θ","ɪ","n"] },
+        { "surface": "signal", "graphemes": ["s","i","g","n","a","l"], "phonemes": ["s","ɪ","g","n","ə","l"] },
+        { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
+        { "surface": "Thad",   "graphemes": ["th","a","d"],            "phonemes": ["θ","æ","d"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Theo",   "graphemes": ["th","e","o"],            "phonemes": ["θ","i","oʊ"] },
+        { "surface": "at",     "graphemes": ["a","t"],                 "phonemes": ["æ","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
+        { "surface": "path",   "graphemes": ["p","a","th"],            "phonemes": ["p","æ","θ"] }
+      ]
+    },
+    {
+      "text": "Thad and Theo fix a thin magnet at the shed.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["magnet"],
+      "words": [
+        { "surface": "Thad",   "graphemes": ["th","a","d"],            "phonemes": ["θ","æ","d"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Theo",   "graphemes": ["th","e","o"],            "phonemes": ["θ","i","oʊ"] },
+        { "surface": "fix",    "graphemes": ["f","i","x"],             "phonemes": ["f","ɪ","k","s"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],            "phonemes": ["θ","ɪ","n"] },
+        { "surface": "magnet", "graphemes": ["m","a","g","n","e","t"], "phonemes": ["m","æ","g","n","ɛ","t"] },
+        { "surface": "at",     "graphemes": ["a","t"],                 "phonemes": ["æ","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
+        { "surface": "shed",   "graphemes": ["sh","e","d"],            "phonemes": ["ʃ","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "Theo and Thad lift a thin arm with Beth.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["arm"],
+      "words": [
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "lift", "graphemes": ["l","i","f","t"],  "phonemes": ["l","ɪ","f","t"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "arm",  "graphemes": ["a","r","m"],      "phonemes": ["ɑ","r","m"] },
+        { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Beth", "graphemes": ["b","e","th"],     "phonemes": ["b","ɛ","θ"] }
+      ]
+    },
+    {
+      "text": "A swift thin lever sat with Thad and Theo.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["lever"],
+      "words": [
+        { "surface": "A",     "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "swift", "graphemes": ["s","w","i","f","t"],  "phonemes": ["s","w","ɪ","f","t"] },
+        { "surface": "thin",  "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "lever", "graphemes": ["l","e","v","e","r"],  "phonemes": ["l","ɛ","v","ɜ","r"] },
+        { "surface": "sat",   "graphemes": ["s","a","t"],          "phonemes": ["s","æ","t"] },
+        { "surface": "with",  "graphemes": ["w","i","th"],         "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Thad",  "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Theo",  "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] }
+      ]
+    },
+    {
+      "text": "Thad let Theo set a thin signal on the path.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["signal"],
+      "words": [
+        { "surface": "Thad",   "graphemes": ["th","a","d"],            "phonemes": ["θ","æ","d"] },
+        { "surface": "let",    "graphemes": ["l","e","t"],             "phonemes": ["l","ɛ","t"] },
+        { "surface": "Theo",   "graphemes": ["th","e","o"],            "phonemes": ["θ","i","oʊ"] },
+        { "surface": "set",    "graphemes": ["s","e","t"],             "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],            "phonemes": ["θ","ɪ","n"] },
+        { "surface": "signal", "graphemes": ["s","i","g","n","a","l"], "phonemes": ["s","ɪ","g","n","ə","l"] },
+        { "surface": "on",     "graphemes": ["o","n"],                 "phonemes": ["ɒ","n"] },
+        { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
+        { "surface": "path",   "graphemes": ["p","a","th"],            "phonemes": ["p","æ","θ"] }
+      ]
+    },
+    {
+      "text": "Theo got a thin hand and Thad got the kit.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["hand", "kit"],
+      "words": [
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "hand", "graphemes": ["h","a","n","d"],  "phonemes": ["h","æ","n","d"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
+        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+        { "surface": "kit",  "graphemes": ["k","i","t"],      "phonemes": ["k","ɪ","t"] }
+      ]
+    },
+    {
+      "text": "A thin magnet hid with Thad, Theo, and Seth.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["magnet"],
+      "words": [
+        { "surface": "A",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],            "phonemes": ["θ","ɪ","n"] },
+        { "surface": "magnet", "graphemes": ["m","a","g","n","e","t"], "phonemes": ["m","æ","g","n","ɛ","t"] },
+        { "surface": "hid",    "graphemes": ["h","i","d"],             "phonemes": ["h","ɪ","d"] },
+        { "surface": "with",   "graphemes": ["w","i","th"],            "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Thad",   "graphemes": ["th","a","d"],            "phonemes": ["θ","æ","d"] },
+        { "surface": "Theo",   "graphemes": ["th","e","o"],            "phonemes": ["θ","i","oʊ"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Seth",   "graphemes": ["s","e","th"],            "phonemes": ["s","ɛ","θ"] }
+      ]
+    },
+    {
+      "text": "Thad and Theo fix a thin lever in the shed.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["lever"],
+      "words": [
+        { "surface": "Thad",  "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Theo",  "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
+        { "surface": "fix",   "graphemes": ["f","i","x"],          "phonemes": ["f","ɪ","k","s"] },
+        { "surface": "a",     "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "thin",  "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "lever", "graphemes": ["l","e","v","e","r"],  "phonemes": ["l","ɛ","v","ɜ","r"] },
+        { "surface": "in",    "graphemes": ["i","n"],              "phonemes": ["ɪ","n"] },
+        { "surface": "the",   "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "shed",  "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "Theo set a thin signal and Thad set the bot.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["signal", "bot"],
+      "words": [
+        { "surface": "Theo",   "graphemes": ["th","e","o"],            "phonemes": ["θ","i","oʊ"] },
+        { "surface": "set",    "graphemes": ["s","e","t"],             "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],            "phonemes": ["θ","ɪ","n"] },
+        { "surface": "signal", "graphemes": ["s","i","g","n","a","l"], "phonemes": ["s","ɪ","g","n","ə","l"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Thad",   "graphemes": ["th","a","d"],            "phonemes": ["θ","æ","d"] },
+        { "surface": "set",    "graphemes": ["s","e","t"],             "phonemes": ["s","ɛ","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
+        { "surface": "bot",    "graphemes": ["b","o","t"],             "phonemes": ["b","ɒ","t"] }
+      ]
+    },
+    {
+      "text": "A thin arm dug past Thad with Theo.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["arm"],
+      "words": [
+        { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "arm",  "graphemes": ["a","r","m"],      "phonemes": ["ɑ","r","m"] },
+        { "surface": "dug",  "graphemes": ["d","u","g"],      "phonemes": ["d","ʌ","g"] },
+        { "surface": "past", "graphemes": ["p","a","s","t"],  "phonemes": ["p","æ","s","t"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] }
+      ]
+    },
+    {
+      "text": "Thad fed a thin hand and Theo had the bot.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["hand", "bot"],
+      "words": [
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "fed",  "graphemes": ["f","e","d"],      "phonemes": ["f","ɛ","d"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "hand", "graphemes": ["h","a","n","d"],  "phonemes": ["h","æ","n","d"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],      "phonemes": ["h","æ","d"] },
+        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+        { "surface": "bot",  "graphemes": ["b","o","t"],      "phonemes": ["b","ɒ","t"] }
+      ]
+    },
+    {
+      "text": "Theo and Thad set a thin lever at the shed.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["lever"],
+      "words": [
+        { "surface": "Theo",  "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Thad",  "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "set",   "graphemes": ["s","e","t"],          "phonemes": ["s","ɛ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "thin",  "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "lever", "graphemes": ["l","e","v","e","r"],  "phonemes": ["l","ɛ","v","ɜ","r"] },
+        { "surface": "at",    "graphemes": ["a","t"],              "phonemes": ["æ","t"] },
+        { "surface": "the",   "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "shed",  "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "A swift thin signal hid with Thad and Theo.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["signal"],
+      "words": [
+        { "surface": "A",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "swift",  "graphemes": ["s","w","i","f","t"],     "phonemes": ["s","w","ɪ","f","t"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],            "phonemes": ["θ","ɪ","n"] },
+        { "surface": "signal", "graphemes": ["s","i","g","n","a","l"], "phonemes": ["s","ɪ","g","n","ə","l"] },
+        { "surface": "hid",    "graphemes": ["h","i","d"],             "phonemes": ["h","ɪ","d"] },
+        { "surface": "with",   "graphemes": ["w","i","th"],            "phonemes": ["w","ɪ","θ"] },
+        { "surface": "Thad",   "graphemes": ["th","a","d"],            "phonemes": ["θ","æ","d"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Theo",   "graphemes": ["th","e","o"],            "phonemes": ["θ","i","oʊ"] }
+      ]
+    },
+    {
+      "text": "Thad got a thin magnet and Theo got the cog.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["magnet", "cog"],
+      "words": [
+        { "surface": "Thad",   "graphemes": ["th","a","d"],            "phonemes": ["θ","æ","d"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],            "phonemes": ["θ","ɪ","n"] },
+        { "surface": "magnet", "graphemes": ["m","a","g","n","e","t"], "phonemes": ["m","æ","g","n","ɛ","t"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Theo",   "graphemes": ["th","e","o"],            "phonemes": ["θ","i","oʊ"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
+        { "surface": "cog",    "graphemes": ["c","o","g"],             "phonemes": ["k","ɒ","g"] }
+      ]
+    },
+    {
+      "text": "Theo lit a thin lever and Thad had the kit.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["lever", "kit"],
+      "words": [
+        { "surface": "Theo",  "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
+        { "surface": "lit",   "graphemes": ["l","i","t"],          "phonemes": ["l","ɪ","t"] },
+        { "surface": "a",     "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "thin",  "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
+        { "surface": "lever", "graphemes": ["l","e","v","e","r"],  "phonemes": ["l","ɛ","v","ɜ","r"] },
+        { "surface": "and",   "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Thad",  "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
+        { "surface": "had",   "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
+        { "surface": "the",   "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "kit",   "graphemes": ["k","i","t"],          "phonemes": ["k","ɪ","t"] }
+      ]
+    },
+    {
+      "text": "A thin hand met Thad, Theo, and Beth.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["hand"],
+      "words": [
+        { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "hand", "graphemes": ["h","a","n","d"],  "phonemes": ["h","æ","n","d"] },
+        { "surface": "met",  "graphemes": ["m","e","t"],      "phonemes": ["m","ɛ","t"] },
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Beth", "graphemes": ["b","e","th"],     "phonemes": ["b","ɛ","θ"] }
+      ]
+    },
+    {
+      "text": "Thad and Theo had a thin arm in the shed.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["arm"],
+      "words": [
+        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
+        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
+        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
+        { "surface": "had",  "graphemes": ["h","a","d"],      "phonemes": ["h","æ","d"] },
+        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
+        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
+        { "surface": "arm",  "graphemes": ["a","r","m"],      "phonemes": ["ɑ","r","m"] },
+        { "surface": "in",   "graphemes": ["i","n"],          "phonemes": ["ɪ","n"] },
+        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
+        { "surface": "shed", "graphemes": ["sh","e","d"],     "phonemes": ["ʃ","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "Theo cut a thin signal and Thad got the arm.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["signal", "arm"],
+      "words": [
+        { "surface": "Theo",   "graphemes": ["th","e","o"],            "phonemes": ["θ","i","oʊ"] },
+        { "surface": "cut",    "graphemes": ["c","u","t"],             "phonemes": ["k","ʌ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+        { "surface": "thin",   "graphemes": ["th","i","n"],            "phonemes": ["θ","ɪ","n"] },
+        { "surface": "signal", "graphemes": ["s","i","g","n","a","l"], "phonemes": ["s","ɪ","g","n","ə","l"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
+        { "surface": "Thad",   "graphemes": ["th","a","d"],            "phonemes": ["θ","æ","d"] },
+        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
+        { "surface": "arm",    "graphemes": ["a","r","m"],             "phonemes": ["ɑ","r","m"] }
+      ]
+    }
+  ]
+}
