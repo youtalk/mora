@@ -1,0 +1,342 @@
+{
+  "phoneme": "sh",
+  "phonemeIPA": "ʃ",
+  "graphemeLetters": "sh",
+  "interest": "dinosaurs",
+  "ageBand": "mid",
+  "sentences": [
+    {
+      "text": "Shep saw a shiny shaggy raptor dash past.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["raptor"],
+      "words": [
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],              "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "saw",    "graphemes": ["s","a","w"],               "phonemes": ["s","ɔ","w"] },
+        { "surface": "a",      "graphemes": ["a"],                       "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],          "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "shaggy", "graphemes": ["sh","a","g","g","y"],      "phonemes": ["ʃ","æ","g","i"] },
+        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"],   "phonemes": ["r","æ","p","t","ɔ","r"] },
+        { "surface": "dash",   "graphemes": ["d","a","sh"],              "phonemes": ["d","æ","ʃ"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],           "phonemes": ["p","æ","s","t"] }
+      ]
+    },
+    {
+      "text": "Shen rushed to shelter a shiny fossil.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["fossil"],
+      "words": [
+        { "surface": "Shen",    "graphemes": ["sh","e","n"],              "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "rushed",  "graphemes": ["r","u","sh","e","d"],      "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "to",      "graphemes": ["t","o"],                   "phonemes": ["t","u"] },
+        { "surface": "shelter", "graphemes": ["sh","e","l","t","e","r"],  "phonemes": ["ʃ","ɛ","l","t","ə","r"] },
+        { "surface": "a",       "graphemes": ["a"],                       "phonemes": ["ə"] },
+        { "surface": "shiny",   "graphemes": ["sh","i","n","y"],          "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "fossil",  "graphemes": ["f","o","s","s","i","l"],   "phonemes": ["f","ɒ","s","ɪ","l"] }
+      ]
+    },
+    {
+      "text": "Shep washed a shiny shaggy Stego claw.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["Stego", "claw"],
+      "words": [
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "washed", "graphemes": ["w","a","sh","e","d"], "phonemes": ["w","ɒ","ʃ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "shaggy", "graphemes": ["sh","a","g","g","y"], "phonemes": ["ʃ","æ","g","i"] },
+        { "surface": "Stego",  "graphemes": ["s","t","e","g","o"],  "phonemes": ["s","t","ɛ","g","o"] },
+        { "surface": "claw",   "graphemes": ["c","l","a","w"],      "phonemes": ["k","l","ɔ","w"] }
+      ]
+    },
+    {
+      "text": "Sharon shut the shed to shelter the herd.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["herd"],
+      "words": [
+        { "surface": "Sharon",  "graphemes": ["sh","a","r","o","n"],     "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "shut",    "graphemes": ["sh","u","t"],             "phonemes": ["ʃ","ʌ","t"] },
+        { "surface": "the",     "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
+        { "surface": "shed",    "graphemes": ["sh","e","d"],             "phonemes": ["ʃ","ɛ","d"] },
+        { "surface": "to",      "graphemes": ["t","o"],                  "phonemes": ["t","u"] },
+        { "surface": "shelter", "graphemes": ["sh","e","l","t","e","r"], "phonemes": ["ʃ","ɛ","l","t","ə","r"] },
+        { "surface": "the",     "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
+        { "surface": "herd",    "graphemes": ["h","e","r","d"],          "phonemes": ["h","ɛ","r","d"] }
+      ]
+    },
+    {
+      "text": "Shep saw a shaggy Spino rush past the shed.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["Spino"],
+      "words": [
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "saw",    "graphemes": ["s","a","w"],          "phonemes": ["s","ɔ","w"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shaggy", "graphemes": ["sh","a","g","g","y"], "phonemes": ["ʃ","æ","g","i"] },
+        { "surface": "Spino",  "graphemes": ["s","p","i","n","o"],  "phonemes": ["s","p","aɪ","n","o"] },
+        { "surface": "rush",   "graphemes": ["r","u","sh"],         "phonemes": ["r","ʌ","ʃ"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],      "phonemes": ["p","æ","s","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "Shen and Sharon dashed to shut in a rex.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["rex"],
+      "words": [
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "dashed", "graphemes": ["d","a","sh","e","d"], "phonemes": ["d","æ","ʃ","t"] },
+        { "surface": "to",     "graphemes": ["t","o"],              "phonemes": ["t","u"] },
+        { "surface": "shut",   "graphemes": ["sh","u","t"],         "phonemes": ["ʃ","ʌ","t"] },
+        { "surface": "in",     "graphemes": ["i","n"],              "phonemes": ["ɪ","n"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "rex",    "graphemes": ["r","e","x"],          "phonemes": ["r","ɛ","k","s"] }
+      ]
+    },
+    {
+      "text": "Shep crushed a shiny fossil on the shelf.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["fossil"],
+      "words": [
+        { "surface": "Shep",    "graphemes": ["sh","e","p"],             "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "crushed", "graphemes": ["c","r","u","sh","e","d"], "phonemes": ["k","r","ʌ","ʃ","t"] },
+        { "surface": "a",       "graphemes": ["a"],                      "phonemes": ["ə"] },
+        { "surface": "shiny",   "graphemes": ["sh","i","n","y"],         "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "fossil",  "graphemes": ["f","o","s","s","i","l"],  "phonemes": ["f","ɒ","s","ɪ","l"] },
+        { "surface": "on",      "graphemes": ["o","n"],                  "phonemes": ["ɒ","n"] },
+        { "surface": "the",     "graphemes": ["th","e"],                 "phonemes": ["ð","ə"] },
+        { "surface": "shelf",   "graphemes": ["sh","e","l","f"],         "phonemes": ["ʃ","ɛ","l","f"] }
+      ]
+    },
+    {
+      "text": "Sharon saw a shiny shaggy raptor rush past.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["raptor"],
+      "words": [
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"],      "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "saw",    "graphemes": ["s","a","w"],               "phonemes": ["s","ɔ","w"] },
+        { "surface": "a",      "graphemes": ["a"],                       "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],          "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "shaggy", "graphemes": ["sh","a","g","g","y"],      "phonemes": ["ʃ","æ","g","i"] },
+        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"],   "phonemes": ["r","æ","p","t","ɔ","r"] },
+        { "surface": "rush",   "graphemes": ["r","u","sh"],              "phonemes": ["r","ʌ","ʃ"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],           "phonemes": ["p","æ","s","t"] }
+      ]
+    },
+    {
+      "text": "Shen washed a shiny tusk on the shelf.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["tusk"],
+      "words": [
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "washed", "graphemes": ["w","a","sh","e","d"], "phonemes": ["w","ɒ","ʃ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "tusk",   "graphemes": ["t","u","s","k"],      "phonemes": ["t","ʌ","s","k"] },
+        { "surface": "on",     "graphemes": ["o","n"],              "phonemes": ["ɒ","n"] },
+        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "shelf",  "graphemes": ["sh","e","l","f"],     "phonemes": ["ʃ","ɛ","l","f"] }
+      ]
+    },
+    {
+      "text": "A shaggy rex rushed past Shep and Sharon.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["rex"],
+      "words": [
+        { "surface": "A",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shaggy", "graphemes": ["sh","a","g","g","y"], "phonemes": ["ʃ","æ","g","i"] },
+        { "surface": "rex",    "graphemes": ["r","e","x"],          "phonemes": ["r","ɛ","k","s"] },
+        { "surface": "rushed", "graphemes": ["r","u","sh","e","d"], "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],      "phonemes": ["p","æ","s","t"] },
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] }
+      ]
+    },
+    {
+      "text": "Shep and Shen rushed to shut in the herd.",
+      "targetCount": 4,
+      "targetInitialContentWords": 4,
+      "interestWords": ["herd"],
+      "words": [
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "rushed", "graphemes": ["r","u","sh","e","d"], "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "to",     "graphemes": ["t","o"],              "phonemes": ["t","u"] },
+        { "surface": "shut",   "graphemes": ["sh","u","t"],         "phonemes": ["ʃ","ʌ","t"] },
+        { "surface": "in",     "graphemes": ["i","n"],              "phonemes": ["ɪ","n"] },
+        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "herd",   "graphemes": ["h","e","r","d"],      "phonemes": ["h","ɛ","r","d"] }
+      ]
+    },
+    {
+      "text": "Sharon dashed to the shed with a shiny Stego bone.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["Stego", "bone"],
+      "words": [
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "dashed", "graphemes": ["d","a","sh","e","d"], "phonemes": ["d","æ","ʃ","t"] },
+        { "surface": "to",     "graphemes": ["t","o"],              "phonemes": ["t","u"] },
+        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "shed",   "graphemes": ["sh","e","d"],         "phonemes": ["ʃ","ɛ","d"] },
+        { "surface": "with",   "graphemes": ["w","i","t","h"],      "phonemes": ["w","ɪ","ð"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "Stego",  "graphemes": ["s","t","e","g","o"],  "phonemes": ["s","t","ɛ","g","o"] },
+        { "surface": "bone",   "graphemes": ["b","o","n","e"],      "phonemes": ["b","o","n"] }
+      ]
+    },
+    {
+      "text": "Shen rushed to the shelf to get a shiny egg.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["egg"],
+      "words": [
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],         "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "rushed", "graphemes": ["r","u","sh","e","d"], "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "to",     "graphemes": ["t","o"],              "phonemes": ["t","u"] },
+        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
+        { "surface": "shelf",  "graphemes": ["sh","e","l","f"],     "phonemes": ["ʃ","ɛ","l","f"] },
+        { "surface": "to",     "graphemes": ["t","o"],              "phonemes": ["t","u"] },
+        { "surface": "get",    "graphemes": ["g","e","t"],          "phonemes": ["g","ɛ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "egg",    "graphemes": ["e","g","g"],          "phonemes": ["ɛ","g"] }
+      ]
+    },
+    {
+      "text": "Shep dashed past a shaggy shiny Stego dino.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["Stego", "dino"],
+      "words": [
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "dashed", "graphemes": ["d","a","sh","e","d"], "phonemes": ["d","æ","ʃ","t"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],      "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shaggy", "graphemes": ["sh","a","g","g","y"], "phonemes": ["ʃ","æ","g","i"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "Stego",  "graphemes": ["s","t","e","g","o"],  "phonemes": ["s","t","ɛ","g","o"] },
+        { "surface": "dino",   "graphemes": ["d","i","n","o"],      "phonemes": ["d","aɪ","n","o"] }
+      ]
+    },
+    {
+      "text": "Sharon washed the shiny Spino fossil in the shed.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["Spino", "fossil"],
+      "words": [
+        { "surface": "Sharon",  "graphemes": ["sh","a","r","o","n"],    "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "washed",  "graphemes": ["w","a","sh","e","d"],    "phonemes": ["w","ɒ","ʃ","t"] },
+        { "surface": "the",     "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
+        { "surface": "shiny",   "graphemes": ["sh","i","n","y"],        "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "Spino",   "graphemes": ["s","p","i","n","o"],     "phonemes": ["s","p","aɪ","n","o"] },
+        { "surface": "fossil",  "graphemes": ["f","o","s","s","i","l"], "phonemes": ["f","ɒ","s","ɪ","l"] },
+        { "surface": "in",      "graphemes": ["i","n"],                 "phonemes": ["ɪ","n"] },
+        { "surface": "the",     "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
+        { "surface": "shed",    "graphemes": ["sh","e","d"],            "phonemes": ["ʃ","ɛ","d"] }
+      ]
+    },
+    {
+      "text": "Shen saw a shaggy raptor rush past the shelf.",
+      "targetCount": 4,
+      "targetInitialContentWords": 3,
+      "interestWords": ["raptor"],
+      "words": [
+        { "surface": "Shen",   "graphemes": ["sh","e","n"],              "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "saw",    "graphemes": ["s","a","w"],               "phonemes": ["s","ɔ","w"] },
+        { "surface": "a",      "graphemes": ["a"],                       "phonemes": ["ə"] },
+        { "surface": "shaggy", "graphemes": ["sh","a","g","g","y"],      "phonemes": ["ʃ","æ","g","i"] },
+        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"],   "phonemes": ["r","æ","p","t","ɔ","r"] },
+        { "surface": "rush",   "graphemes": ["r","u","sh"],              "phonemes": ["r","ʌ","ʃ"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],           "phonemes": ["p","æ","s","t"] },
+        { "surface": "the",    "graphemes": ["th","e"],                  "phonemes": ["ð","ə"] },
+        { "surface": "shelf",  "graphemes": ["sh","e","l","f"],          "phonemes": ["ʃ","ɛ","l","f"] }
+      ]
+    },
+    {
+      "text": "Shep and Sharon rushed to shelter the Stego herd.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["Stego", "herd"],
+      "words": [
+        { "surface": "Shep",    "graphemes": ["sh","e","p"],              "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],               "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon",  "graphemes": ["sh","a","r","o","n"],      "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "rushed",  "graphemes": ["r","u","sh","e","d"],      "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "to",      "graphemes": ["t","o"],                   "phonemes": ["t","u"] },
+        { "surface": "shelter", "graphemes": ["sh","e","l","t","e","r"],  "phonemes": ["ʃ","ɛ","l","t","ə","r"] },
+        { "surface": "the",     "graphemes": ["th","e"],                  "phonemes": ["ð","ə"] },
+        { "surface": "Stego",   "graphemes": ["s","t","e","g","o"],       "phonemes": ["s","t","ɛ","g","o"] },
+        { "surface": "herd",    "graphemes": ["h","e","r","d"],           "phonemes": ["h","ɛ","r","d"] }
+      ]
+    },
+    {
+      "text": "Sharon washed a shiny raptor egg on the shelf.",
+      "targetCount": 5,
+      "targetInitialContentWords": 3,
+      "interestWords": ["raptor", "egg"],
+      "words": [
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"],      "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "washed", "graphemes": ["w","a","sh","e","d"],      "phonemes": ["w","ɒ","ʃ","t"] },
+        { "surface": "a",      "graphemes": ["a"],                       "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],          "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"],   "phonemes": ["r","æ","p","t","ɔ","r"] },
+        { "surface": "egg",    "graphemes": ["e","g","g"],               "phonemes": ["ɛ","g"] },
+        { "surface": "on",     "graphemes": ["o","n"],                   "phonemes": ["ɒ","n"] },
+        { "surface": "the",    "graphemes": ["th","e"],                  "phonemes": ["ð","ə"] },
+        { "surface": "shelf",  "graphemes": ["sh","e","l","f"],          "phonemes": ["ʃ","ɛ","l","f"] }
+      ]
+    },
+    {
+      "text": "Shen shut the shed and Sharon dashed to shelter it.",
+      "targetCount": 5,
+      "targetInitialContentWords": 5,
+      "interestWords": ["shed"],
+      "words": [
+        { "surface": "Shen",    "graphemes": ["sh","e","n"],              "phonemes": ["ʃ","ɛ","n"] },
+        { "surface": "shut",    "graphemes": ["sh","u","t"],              "phonemes": ["ʃ","ʌ","t"] },
+        { "surface": "the",     "graphemes": ["th","e"],                  "phonemes": ["ð","ə"] },
+        { "surface": "shed",    "graphemes": ["sh","e","d"],              "phonemes": ["ʃ","ɛ","d"] },
+        { "surface": "and",     "graphemes": ["a","n","d"],               "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon",  "graphemes": ["sh","a","r","o","n"],      "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "dashed",  "graphemes": ["d","a","sh","e","d"],      "phonemes": ["d","æ","ʃ","t"] },
+        { "surface": "to",      "graphemes": ["t","o"],                   "phonemes": ["t","u"] },
+        { "surface": "shelter", "graphemes": ["sh","e","l","t","e","r"],  "phonemes": ["ʃ","ɛ","l","t","ə","r"] },
+        { "surface": "it",      "graphemes": ["i","t"],                   "phonemes": ["ɪ","t"] }
+      ]
+    },
+    {
+      "text": "Shep rushed past a shiny Spino and Sharon rushed in.",
+      "targetCount": 5,
+      "targetInitialContentWords": 4,
+      "interestWords": ["Spino"],
+      "words": [
+        { "surface": "Shep",   "graphemes": ["sh","e","p"],         "phonemes": ["ʃ","ɛ","p"] },
+        { "surface": "rushed", "graphemes": ["r","u","sh","e","d"], "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "past",   "graphemes": ["p","a","s","t"],      "phonemes": ["p","æ","s","t"] },
+        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
+        { "surface": "shiny",  "graphemes": ["sh","i","n","y"],     "phonemes": ["ʃ","aɪ","n","i"] },
+        { "surface": "Spino",  "graphemes": ["s","p","i","n","o"],  "phonemes": ["s","p","aɪ","n","o"] },
+        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
+        { "surface": "Sharon", "graphemes": ["sh","a","r","o","n"], "phonemes": ["ʃ","æ","r","ə","n"] },
+        { "surface": "rushed", "graphemes": ["r","u","sh","e","d"], "phonemes": ["r","ʌ","ʃ","t"] },
+        { "surface": "in",     "graphemes": ["i","n"],              "phonemes": ["ɪ","n"] }
+      ]
+    }
+  ]
+}
