@@ -83,7 +83,9 @@ struct ProgressPanel: View {
             YokaiPortraitCorner(yokai: yokai, sparkleTrigger: nil)
                 .frame(width: 56, height: 56)
         } else if index == 4 {
-            Text("🤝").font(.system(size: 36))
+            Text("🤝")
+                .font(.system(size: 36))
+                .accessibilityHidden(true)
         } else {
             Text("\(index + 1)")
                 .font(MoraType.heading())
@@ -92,9 +94,7 @@ struct ProgressPanel: View {
     }
 
     private var activeYokai: YokaiDefinition? {
-        guard let store else { return nil }
-        let firstYokaiID = CurriculumEngine.sharedV1.skills.first?.yokaiID
-        return store.catalog().first { $0.id == firstYokaiID }
+        YokaiIntroLookup.activeYokai(in: store)
     }
 
     @MainActor
@@ -104,10 +104,18 @@ struct ProgressPanel: View {
             return
         }
         for i in 0..<5 {
+            if Task.isCancelled { return }
             withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
                 dotsLit[i] = true
             }
-            try? await Task.sleep(for: .milliseconds(120))
+            do {
+                try await Task.sleep(for: .milliseconds(120))
+            } catch is CancellationError {
+                return
+            } catch {
+                assertionFailure("Unexpected error while animating progress dots: \(error)")
+                return
+            }
         }
     }
 }
