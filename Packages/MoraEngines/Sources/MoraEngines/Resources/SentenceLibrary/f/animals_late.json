@@ -31,6 +31,16 @@
             { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
             { "surface": "ferret",   "graphemes": ["f","e","r","r","e","t"],         "phonemes": ["f","ɛ","r","ɛ","t"] }
           ]
+        },
+        "2": {
+          "text": "Fred spotted a fluffy ferret.",
+          "words": [
+            { "surface": "Fred", "graphemes": ["f","r","e","d"], "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "spotted", "graphemes": ["s","p","o","t","t","e","d"], "phonemes": ["s","p","ɒ","t","ɪ","d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fluffy", "graphemes": ["f","l","u","f","f","y"], "phonemes": ["f","l","ʌ","f","i"] },
+            { "surface": "ferret", "graphemes": ["f","e","r","r","e","t"], "phonemes": ["f","ɛ","r","ɛ","t"] }
+          ]
         }
       }
     },
@@ -60,6 +70,15 @@
             { "surface": "a",       "graphemes": ["a"],                             "phonemes": ["ə"] },
             { "surface": "firefly", "graphemes": ["f","i","r","e","f","l","y"],     "phonemes": ["f","aɪ","r","f","l","aɪ"] }
           ]
+        },
+        "2": {
+          "text": "Fran lifted a firefly.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"], "phonemes": ["f","r","æ","n"] },
+            { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "firefly", "graphemes": ["f","i","r","e","f","l","y"], "phonemes": ["f","aɪ","r","f","l","aɪ"] }
+          ]
         }
       }
     },
@@ -87,6 +106,15 @@
             { "surface": "Fred",   "graphemes": ["f","r","e","d"],         "phonemes": ["f","r","ɛ","d"] },
             { "surface": "fed",    "graphemes": ["f","e","d"],             "phonemes": ["f","ɛ","d"] },
             { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "falcon", "graphemes": ["f","a","l","c","o","n"], "phonemes": ["f","æ","l","k","ə","n"] }
+          ]
+        },
+        "2": {
+          "text": "Fred fed a falcon.",
+          "words": [
+            { "surface": "Fred", "graphemes": ["f","r","e","d"], "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fed", "graphemes": ["f","e","d"], "phonemes": ["f","ɛ","d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
             { "surface": "falcon", "graphemes": ["f","a","l","c","o","n"], "phonemes": ["f","æ","l","k","ə","n"] }
           ]
         }
@@ -118,6 +146,16 @@
             { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
             { "surface": "fish",   "graphemes": ["f","i","sh"],            "phonemes": ["f","ɪ","ʃ"] }
           ]
+        },
+        "2": {
+          "text": "Finn lifted a flat fish.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"], "phonemes": ["f","ɪ","n"] },
+            { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "flat", "graphemes": ["f","l","a","t"], "phonemes": ["f","l","æ","t"] },
+            { "surface": "fish", "graphemes": ["f","i","sh"], "phonemes": ["f","ɪ","ʃ"] }
+          ]
         }
       }
     },
@@ -146,6 +184,15 @@
             { "surface": "fixed",  "graphemes": ["f","i","x","e","d"],     "phonemes": ["f","ɪ","k","s","t"] },
             { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
             { "surface": "pen",    "graphemes": ["p","e","n"],             "phonemes": ["p","ɛ","n"] }
+          ]
+        },
+        "2": {
+          "text": "Fran fixed a pen.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"], "phonemes": ["f","r","æ","n"] },
+            { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "pen", "graphemes": ["p","e","n"], "phonemes": ["p","ɛ","n"] }
           ]
         }
       }
@@ -176,6 +223,16 @@
             { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
             { "surface": "ferret",  "graphemes": ["f","e","r","r","e","t"],     "phonemes": ["f","ɛ","r","ɛ","t"] }
           ]
+        },
+        "2": {
+          "text": "Finn spotted a fluffy ferret.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"], "phonemes": ["f","ɪ","n"] },
+            { "surface": "spotted", "graphemes": ["s","p","o","t","t","e","d"], "phonemes": ["s","p","ɒ","t","ɪ","d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fluffy", "graphemes": ["f","l","u","f","f","y"], "phonemes": ["f","l","ʌ","f","i"] },
+            { "surface": "ferret", "graphemes": ["f","e","r","r","e","t"], "phonemes": ["f","ɛ","r","ɛ","t"] }
+          ]
         }
       }
     },
@@ -203,6 +260,15 @@
             { "surface": "Fred",     "graphemes": ["f","r","e","d"],                 "phonemes": ["f","r","ɛ","d"] },
             { "surface": "lifted",   "graphemes": ["l","i","f","t","e","d"],         "phonemes": ["l","ɪ","f","t","ɪ","d"] },
             { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+            { "surface": "flamingo", "graphemes": ["f","l","a","m","i","n","g","o"], "phonemes": ["f","l","ə","m","ɪ","ŋ","g","oʊ"] }
+          ]
+        },
+        "2": {
+          "text": "Fred lifted a flamingo.",
+          "words": [
+            { "surface": "Fred", "graphemes": ["f","r","e","d"], "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
             { "surface": "flamingo", "graphemes": ["f","l","a","m","i","n","g","o"], "phonemes": ["f","l","ə","m","ɪ","ŋ","g","oʊ"] }
           ]
         }
@@ -234,6 +300,15 @@
             { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
             { "surface": "pen",    "graphemes": ["p","e","n"],             "phonemes": ["p","ɛ","n"] }
           ]
+        },
+        "2": {
+          "text": "Finn fixed a pen.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"], "phonemes": ["f","ɪ","n"] },
+            { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "pen", "graphemes": ["p","e","n"], "phonemes": ["p","ɛ","n"] }
+          ]
         }
       }
     },
@@ -261,6 +336,15 @@
             { "surface": "Fran",    "graphemes": ["f","r","a","n"],             "phonemes": ["f","r","æ","n"] },
             { "surface": "spotted", "graphemes": ["s","p","o","t","t","e","d"], "phonemes": ["s","p","ɒ","t","ɪ","d"] },
             { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
+            { "surface": "firefly", "graphemes": ["f","i","r","e","f","l","y"], "phonemes": ["f","aɪ","r","f","l","aɪ"] }
+          ]
+        },
+        "2": {
+          "text": "Fran spotted a firefly.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"], "phonemes": ["f","r","æ","n"] },
+            { "surface": "spotted", "graphemes": ["s","p","o","t","t","e","d"], "phonemes": ["s","p","ɒ","t","ɪ","d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
             { "surface": "firefly", "graphemes": ["f","i","r","e","f","l","y"], "phonemes": ["f","aɪ","r","f","l","aɪ"] }
           ]
         }
@@ -292,6 +376,16 @@
             { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
             { "surface": "falcon", "graphemes": ["f","a","l","c","o","n"], "phonemes": ["f","æ","l","k","ə","n"] }
           ]
+        },
+        "2": {
+          "text": "Finn fed a fluffy falcon.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"], "phonemes": ["f","ɪ","n"] },
+            { "surface": "fed", "graphemes": ["f","e","d"], "phonemes": ["f","ɛ","d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fluffy", "graphemes": ["f","l","u","f","f","y"], "phonemes": ["f","l","ʌ","f","i"] },
+            { "surface": "falcon", "graphemes": ["f","a","l","c","o","n"], "phonemes": ["f","æ","l","k","ə","n"] }
+          ]
         }
       }
     },
@@ -319,6 +413,16 @@
             { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
             { "surface": "fixed",  "graphemes": ["f","i","x","e","d"],     "phonemes": ["f","ɪ","k","s","t"] },
             { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "ferret", "graphemes": ["f","e","r","r","e","t"], "phonemes": ["f","ɛ","r","ɛ","t"] }
+          ]
+        },
+        "2": {
+          "text": "Fran fixed a fluffy ferret.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"], "phonemes": ["f","r","æ","n"] },
+            { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fluffy", "graphemes": ["f","l","u","f","f","y"], "phonemes": ["f","l","ʌ","f","i"] },
             { "surface": "ferret", "graphemes": ["f","e","r","r","e","t"], "phonemes": ["f","ɛ","r","ɛ","t"] }
           ]
         }
@@ -349,6 +453,16 @@
             { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
             { "surface": "fish",   "graphemes": ["f","i","sh"],            "phonemes": ["f","ɪ","ʃ"] }
           ]
+        },
+        "2": {
+          "text": "Finn lifted a flat fish.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"], "phonemes": ["f","ɪ","n"] },
+            { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "flat", "graphemes": ["f","l","a","t"], "phonemes": ["f","l","æ","t"] },
+            { "surface": "fish", "graphemes": ["f","i","sh"], "phonemes": ["f","ɪ","ʃ"] }
+          ]
         }
       }
     },
@@ -376,6 +490,15 @@
             { "surface": "Fred",     "graphemes": ["f","r","e","d"],                 "phonemes": ["f","r","ɛ","d"] },
             { "surface": "spotted",  "graphemes": ["s","p","o","t","t","e","d"],     "phonemes": ["s","p","ɒ","t","ɪ","d"] },
             { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+            { "surface": "flamingo", "graphemes": ["f","l","a","m","i","n","g","o"], "phonemes": ["f","l","ə","m","ɪ","ŋ","g","oʊ"] }
+          ]
+        },
+        "2": {
+          "text": "Fred spotted a flamingo.",
+          "words": [
+            { "surface": "Fred", "graphemes": ["f","r","e","d"], "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "spotted", "graphemes": ["s","p","o","t","t","e","d"], "phonemes": ["s","p","ɒ","t","ɪ","d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
             { "surface": "flamingo", "graphemes": ["f","l","a","m","i","n","g","o"], "phonemes": ["f","l","ə","m","ɪ","ŋ","g","oʊ"] }
           ]
         }
@@ -407,6 +530,15 @@
             { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
             { "surface": "firefly", "graphemes": ["f","i","r","e","f","l","y"], "phonemes": ["f","aɪ","r","f","l","aɪ"] }
           ]
+        },
+        "2": {
+          "text": "Fran spotted a firefly.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"], "phonemes": ["f","r","æ","n"] },
+            { "surface": "spotted", "graphemes": ["s","p","o","t","t","e","d"], "phonemes": ["s","p","ɒ","t","ɪ","d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "firefly", "graphemes": ["f","i","r","e","f","l","y"], "phonemes": ["f","aɪ","r","f","l","aɪ"] }
+          ]
         }
       }
     },
@@ -434,6 +566,16 @@
             { "surface": "Fran",   "graphemes": ["f","r","a","n"],         "phonemes": ["f","r","æ","n"] },
             { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
             { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "ferret", "graphemes": ["f","e","r","r","e","t"], "phonemes": ["f","ɛ","r","ɛ","t"] }
+          ]
+        },
+        "2": {
+          "text": "Fran lifted a fluffy ferret.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"], "phonemes": ["f","r","æ","n"] },
+            { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fluffy", "graphemes": ["f","l","u","f","f","y"], "phonemes": ["f","l","ʌ","f","i"] },
             { "surface": "ferret", "graphemes": ["f","e","r","r","e","t"], "phonemes": ["f","ɛ","r","ɛ","t"] }
           ]
         }
@@ -465,6 +607,15 @@
             { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
             { "surface": "pen",    "graphemes": ["p","e","n"],             "phonemes": ["p","ɛ","n"] }
           ]
+        },
+        "2": {
+          "text": "Finn fixed a pen.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"], "phonemes": ["f","ɪ","n"] },
+            { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "pen", "graphemes": ["p","e","n"], "phonemes": ["p","ɛ","n"] }
+          ]
         }
       }
     },
@@ -493,6 +644,16 @@
             { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
             { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
             { "surface": "fox",    "graphemes": ["f","o","x"],             "phonemes": ["f","ɒ","k","s"] }
+          ]
+        },
+        "2": {
+          "text": "Fred lifted a fluffy fox.",
+          "words": [
+            { "surface": "Fred", "graphemes": ["f","r","e","d"], "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fluffy", "graphemes": ["f","l","u","f","f","y"], "phonemes": ["f","l","ʌ","f","i"] },
+            { "surface": "fox", "graphemes": ["f","o","x"], "phonemes": ["f","ɒ","k","s"] }
           ]
         }
       }
@@ -523,6 +684,16 @@
             { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
             { "surface": "fox",     "graphemes": ["f","o","x"],                 "phonemes": ["f","ɒ","k","s"] }
           ]
+        },
+        "2": {
+          "text": "Finn spotted a fluffy fox.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"], "phonemes": ["f","ɪ","n"] },
+            { "surface": "spotted", "graphemes": ["s","p","o","t","t","e","d"], "phonemes": ["s","p","ɒ","t","ɪ","d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fluffy", "graphemes": ["f","l","u","f","f","y"], "phonemes": ["f","l","ʌ","f","i"] },
+            { "surface": "fox", "graphemes": ["f","o","x"], "phonemes": ["f","ɒ","k","s"] }
+          ]
         }
       }
     },
@@ -552,6 +723,15 @@
             { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
             { "surface": "flamingo", "graphemes": ["f","l","a","m","i","n","g","o"], "phonemes": ["f","l","ə","m","ɪ","ŋ","g","oʊ"] }
           ]
+        },
+        "2": {
+          "text": "Fran lifted a flamingo.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"], "phonemes": ["f","r","æ","n"] },
+            { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "flamingo", "graphemes": ["f","l","a","m","i","n","g","o"], "phonemes": ["f","l","ə","m","ɪ","ŋ","g","oʊ"] }
+          ]
         }
       }
     },
@@ -579,6 +759,16 @@
             { "surface": "Finn",   "graphemes": ["f","i","n","n"],         "phonemes": ["f","ɪ","n"] },
             { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
             { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
+            { "surface": "ferret", "graphemes": ["f","e","r","r","e","t"], "phonemes": ["f","ɛ","r","ɛ","t"] }
+          ]
+        },
+        "2": {
+          "text": "Finn lifted a fluffy ferret.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"], "phonemes": ["f","ɪ","n"] },
+            { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fluffy", "graphemes": ["f","l","u","f","f","y"], "phonemes": ["f","l","ʌ","f","i"] },
             { "surface": "ferret", "graphemes": ["f","e","r","r","e","t"], "phonemes": ["f","ɛ","r","ɛ","t"] }
           ]
         }
