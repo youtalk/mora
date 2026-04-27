@@ -128,6 +128,12 @@ public struct MoraStrings: Sendable {
     public let a11yMicButton: String
     public let a11yStreakChip: @Sendable (Int) -> String
 
+    // In-app language switch (Home globe button + sheet)
+    public let homeChangeLanguageButton: String
+    public let languageSwitchSheetTitle: String
+    public let languageSwitchSheetCancel: String
+    public let languageSwitchSheetConfirm: String
+
     public init(
         ageOnboardingPrompt: String,
         ageOnboardingCTA: String,
@@ -199,7 +205,11 @@ public struct MoraStrings: Sendable {
         completionScore: @escaping @Sendable (Int, Int) -> String,
         completionComeBack: String,
         a11yCloseSession: String, a11yMicButton: String,
-        a11yStreakChip: @escaping @Sendable (Int) -> String
+        a11yStreakChip: @escaping @Sendable (Int) -> String,
+        homeChangeLanguageButton: String,
+        languageSwitchSheetTitle: String,
+        languageSwitchSheetCancel: String,
+        languageSwitchSheetConfirm: String
     ) {
         self.ageOnboardingPrompt = ageOnboardingPrompt
         self.ageOnboardingCTA = ageOnboardingCTA
@@ -290,6 +300,10 @@ public struct MoraStrings: Sendable {
         self.a11yCloseSession = a11yCloseSession
         self.a11yMicButton = a11yMicButton
         self.a11yStreakChip = a11yStreakChip
+        self.homeChangeLanguageButton = homeChangeLanguageButton
+        self.languageSwitchSheetTitle = languageSwitchSheetTitle
+        self.languageSwitchSheetCancel = languageSwitchSheetCancel
+        self.languageSwitchSheetConfirm = languageSwitchSheetConfirm
     }
 }
 

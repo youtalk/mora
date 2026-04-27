@@ -147,5 +147,9 @@ func everyStringField(_ s: MoraStrings) -> [(name: String, value: String)] {
         ("a11yCloseSession", s.a11yCloseSession),
         ("a11yMicButton", s.a11yMicButton),
         ("a11yStreakChip(5)", s.a11yStreakChip(5)),
+        ("homeChangeLanguageButton", s.homeChangeLanguageButton),
+        ("languageSwitchSheetTitle", s.languageSwitchSheetTitle),
+        ("languageSwitchSheetCancel", s.languageSwitchSheetCancel),
+        ("languageSwitchSheetConfirm", s.languageSwitchSheetConfirm),
     ]
 }
