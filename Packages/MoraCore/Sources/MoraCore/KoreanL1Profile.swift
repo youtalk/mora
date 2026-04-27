@@ -87,8 +87,9 @@ public struct KoreanL1Profile: L1Profile {
     }()
 
     /// Single level-invariant table — KO has no script ladder at this age range.
-    /// Authoring rules: simple-vocab register from 한국 초등 1–2학년 교과서,
-    /// 반말 informal kid-directed form, 한자 not used. See spec §6.2.1.
+    /// Authoring rules: simple-vocabulary register aligned with Korean elementary
+    /// grades 1–2 textbooks, informal kid-directed speech, and no Hanja.
+    /// See spec §6.2.1.
     private static let stringsKidKo = MoraStrings(
         ageOnboardingPrompt: "몇 살이야?",
         ageOnboardingCTA: "▶ 시작하기",

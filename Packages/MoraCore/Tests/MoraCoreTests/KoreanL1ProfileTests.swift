@@ -60,8 +60,8 @@ final class KoreanL1ProfileTests: XCTestCase {
 
     /// Hangul-purity: every field is verified to contain no CJK Unified
     /// Ideographs (U+4E00..U+9FFF) or CJK Compatibility Ideographs
-    /// (U+F900..U+FAFF). KO kid texts should be 순한글 — Hanja insertion
-    /// is a regression.
+    /// (U+F900..U+FAFF). KO kid texts should use pure Hangul — Hanja
+    /// insertion is a regression.
     func test_stringsKidKo_containsNoCJKIdeographs() {
         let strings = KoreanL1Profile().uiStrings(at: .core)
         for (fieldName, value) in everyStringField(strings) {
