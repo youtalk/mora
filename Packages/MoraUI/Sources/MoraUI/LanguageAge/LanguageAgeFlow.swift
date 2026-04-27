@@ -8,12 +8,16 @@ import SwiftUI
 @MainActor
 final class LanguageAgeState {
     var step: Step = .language
-    var selectedLanguageID: String = "ja"  // pre-selected per spec §6.1
+    var selectedLanguageID: String
     var selectedAge: Int? = 8  // pre-selected per spec §6.2
 
     static let onboardedKey = "tech.reenable.Mora.languageAgeOnboarded"
 
     enum Step: Equatable { case language, age, finished }
+
+    init(systemLocale: Locale = .current) {
+        self.selectedLanguageID = LanguageAgeFlow.defaultLanguageID(for: systemLocale)
+    }
 
     func advance() {
         switch step {
@@ -95,11 +99,25 @@ public struct LanguageAgeFlow: View {
         self.onFinished = onFinished
     }
 
+    /// Identifiers of language rows that are tap-enabled. See spec §7.4.
+    public static let activeLanguageIdentifiers: [String] = ["ja", "ko", "en"]
+
+    /// Identifiers of language rows that render with `(Coming soon)` and are disabled.
+    public static let comingSoonLanguageIdentifiers: [String] = ["zh"]
+
+    /// Default language identifier given a system locale. `ja_*` → `"ja"`,
+    /// `ko_*` → `"ko"`, anything else (including `en_*` and unsupported locales)
+    /// → `"en"` (international fallback). See spec §7.4.
+    public static func defaultLanguageID(for locale: Locale) -> String {
+        switch locale.language.languageCode?.identifier {
+        case "ja": return "ja"
+        case "ko": return "ko"
+        default: return "en"
+        }
+    }
+
     public var body: some View {
-        // Alpha only ships JapaneseL1Profile, so Step 2 always renders in
-        // Japanese regardless of `state.selectedLanguageID`. When a second
-        // L1 profile lands, switch on `state.selectedLanguageID` here.
-        let strings = JapaneseL1Profile().uiStrings(
+        let strings = L1ProfileResolver.profile(for: state.selectedLanguageID).uiStrings(
             at: LearnerLevel.from(years: state.selectedAge ?? 8)
         )
 

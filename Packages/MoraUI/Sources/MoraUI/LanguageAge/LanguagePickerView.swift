@@ -12,13 +12,19 @@ struct LanguagePickerView: View {
         let enabled: Bool
     }
 
-    // Only `.ja` is enabled in alpha. See spec §6.1.
-    private let options: [Option] = [
-        Option(id: "ja", label: "にほんご", enabled: true),
-        Option(id: "ko", label: "한국어", enabled: false),
-        Option(id: "zh", label: "中文", enabled: false),
-        Option(id: "en", label: "English", enabled: false),
+    private static let allOptions: [(id: String, label: String)] = [
+        (id: "ja", label: "にほんご"),
+        (id: "ko", label: "한국어"),
+        (id: "zh", label: "中文"),
+        (id: "en", label: "English"),
     ]
+
+    private var options: [Option] {
+        let active = Set(LanguageAgeFlow.activeLanguageIdentifiers)
+        return Self.allOptions.map { entry in
+            Option(id: entry.id, label: entry.label, enabled: active.contains(entry.id))
+        }
+    }
 
     var body: some View {
         ZStack {
