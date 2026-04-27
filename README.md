@@ -1,16 +1,16 @@
 # Mora
 
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
-[![Built with Opus 4.7](https://img.shields.io/badge/Built_with-Opus_4.7-orange.svg)](https://youtalk.github.io/mora/)
-[![Hackathon Stage 1](https://img.shields.io/badge/Hackathon-Stage_1_2026--04--26-blue.svg)](https://youtalk.github.io/mora/)
+[![Built with Opus 4.7](https://img.shields.io/badge/Built_with-Opus_4.7-orange.svg)](https://www.youtalk.jp/mora)
+[![Hackathon Stage 1](https://img.shields.io/badge/Hackathon-Stage_1_2026--04--26-blue.svg)](https://www.youtalk.jp/mora)
 
-> Submitted to Anthropic × Cerebral Valley **Built with Opus 4.7** hackathon (Apr 21–28, 2026). Demo video and full case study at <https://youtalk.github.io/mora/>.
+> Submitted to Anthropic × Cerebral Valley **Built with Opus 4.7** hackathon (Apr 21–28, 2026). Demo video and full case study at <https://www.youtalk.jp/mora>.
 
 An iPad-first, on-device learning app for children with dyslexia learning English as a second language.
 
 ## Demo video
 
-[![Mora — 3-min demo (Built with Opus 4.7)](https://img.youtube.com/vi/zrsgP30Miqg/maxresdefault.jpg)](https://youtu.be/zrsgP30Miqg)
+<a href="https://youtu.be/zrsgP30Miqg"><img src="https://img.youtube.com/vi/zrsgP30Miqg/hqdefault.jpg" alt="Mora — 3-min demo (Built with Opus 4.7)" width="480"></a>
 
 Three-minute walkthrough of one A-day session on a real iPad: <https://youtu.be/zrsgP30Miqg>
 
