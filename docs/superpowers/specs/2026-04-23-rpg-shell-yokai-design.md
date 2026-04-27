@@ -20,7 +20,7 @@ The first iteration ships five yokai — `sh`, `th`, `f`, `r`, `short_a` — cho
 
 The canonical mora spec identifies retention and daily adherence as its largest unsolved risks ("A-only would likely bore the child within weeks"). The pronunciation feedback and tile-board features shipped recently have hardened the technical backbone, but the emotional payoff of each session is still thin (streak animation + XP). A short survey of dyslexia-targeted literacy apps (Nessy, Lexia Core5, GraphoGame, Teach Your Monster to Read, Prodigy Math, Mila-Learn) confirms that a game-shell around structured practice is the dominant approach to sustaining daily use, and rhythm / character-driven mnemonic designs have the strongest dyslexia-specific research support.
 
-The user (father of an 8-year-old Japanese-L1 son with dyslexia) requested a gamified layer that provides competitive appeal and adrenaline, *and* that turns phonemes into memorable characters. A pure combat RPG (Prodigy-style) raises the known stress / anxiety vulnerability of dyslexic children, and collides with mora's ASR false-negative sensitivity. A befriending-through-skillful-pronunciation frame — modeled after Yo-kai Watch Season 1 plus Ghibli plus Splatoon — preserves motivational stakes while staying psychologically safe.
+The user (parent of an 8-year-old Japanese-L1 child with dyslexia) requested a gamified layer that provides competitive appeal and adrenaline, *and* that turns phonemes into memorable characters. A pure combat RPG (Prodigy-style) raises the known stress / anxiety vulnerability of dyslexic children, and collides with mora's ASR false-negative sensitivity. A befriending-through-skillful-pronunciation frame — modeled after Yo-kai Watch Season 1 plus Ghibli plus Splatoon — preserves motivational stakes while staying psychologically safe.
 
 ## 3. Goals & Non-Goals
 
@@ -51,7 +51,7 @@ The user (father of an 8-year-old Japanese-L1 son with dyslexia) requested a gam
 | RPG scope | Minimal — one weekly monster, no avatar/equipment/pets | Contains asset cost, preserves OG session time budget. |
 | Battle model | Weekly Friendship Meter filling 0→100% | Week-long narrative arc matches OG weekly-target cadence. |
 | Narrative tone | Befriending (no combat, no damage) | Dyslexic-child stress vulnerability; ASR false-negative tolerance. |
-| Art style | Chibi kawaii (Yo-kai Watch × Splatoon × Kirby / Ghibli) | Cultural resonance for Japanese-L1 son; strong LoRA support. |
+| Art style | Chibi kawaii (Yo-kai Watch × Splatoon × Kirby / Ghibli) | Cultural resonance for the Japanese-L1 child; strong LoRA support. |
 | Phoneme theming | Sound gesture + word-mnemonic decor, both present | Maximum mnemonic density per character. |
 | Voice language | English, forever (mono-L2) | Asset reuse across all future L1 profiles. |
 | Runtime speech | Pre-baked voice clips, no runtime TTS for yokai | Character preservation; offline guarantee. |
@@ -509,7 +509,7 @@ This spec extends, and does not override, `docs/superpowers/specs/2026-04-21-mor
 
 ### Field
 
-- α testing with the son: confirm that after each week, the child can name the yokai, reproduce the sound gesture, and recall at least one example word.
+- α testing with the child: confirm that after each week, the child can name the yokai, reproduce the sound gesture, and recall at least one example word.
 - Qualitative: does the yokai become a mnemonic that the child uses on subsequent reads? (interview-level signal)
 - Time budget: average per-session RPG overhead stays under 15 s.
 

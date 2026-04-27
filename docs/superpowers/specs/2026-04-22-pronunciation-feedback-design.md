@@ -65,7 +65,7 @@ A CI job asserts that neither sources nor compiled binary of the shipped app con
 
 Engine A is a rule-based feature extractor, tiny, deterministic, and interpretable. It is the right implementation for:
 
-- a v1.5 audience of one (the author's son) plus a small TestFlight ring,
+- a v1.5 audience of one (a child close to the author) plus a small TestFlight ring,
 - a design where scoring must not be fabricated (score comes from a measured feature value plus a documented boundary; every score is reproducible from the log),
 - a surface area we can debug with `print(features)` and a spectrogram, not a neural network.
 
@@ -636,11 +636,11 @@ Added to `MoraCore.Word`. Non-breaking: default is the first element of `phoneme
 ## 14. Open Questions
 
 1. Medial-position phoneme evaluation is gated behind `isReliable = false` in Engine A. When Engine B lands with forced alignment, medial positions become fully supported. Is the UX confusing for the learner when the same phoneme sometimes shows a score (onset/coda) and sometimes does not (medial)? Revisit with Yutaka after first-week use.
-2. Per-speaker threshold adaptation (±15% shift based on a calibration set collected from the son's first N sessions). Trigger: Settings UI? Background automatic after N sessions with variance under a bound? Deferred to a post-v1.5 PR.
+2. Per-speaker threshold adaptation (±15% shift based on a calibration set collected from the child's first N sessions). Trigger: Settings UI? Background automatic after N sessions with variance under a bound? Deferred to a post-v1.5 PR.
 3. The `PhonemeConfusionPair.from == to` sentinel for drift targets is a pragmatic fit but is not self-documenting. When Engine B design begins, evaluate introducing a distinct `PhonemeAcousticTarget` type and migrating drift entries into it. If migrated, deprecate the sentinel pattern and update Engine A accordingly.
 4. Shadow-mode log retention UX — parent-mode-only view or also a debug-mode in-app screen? Decide when Parent Mode spec starts.
 5. Engine B's CoreML model size (~150 MB) is significant against the app download size. If App Store review raises concerns, consider on-demand resource download (first-launch-only, over Wi-Fi) for the model file. Out of scope for this spec.
-6. Child-speech acoustics: all literature values are for adult speakers. Children's formants and spectral peaks sit higher (shorter vocal tract). A secondary validation pass against Yutaka's son's own recordings may require a uniform upward shift of ~10% on F-features. Observe and adjust during Phase 2 testing.
+6. Child-speech acoustics: all literature values are for adult speakers. Children's formants and spectral peaks sit higher (shorter vocal tract). A secondary validation pass against the child's own recordings may require a uniform upward shift of ~10% on F-features. Observe and adjust during Phase 2 testing.
 7. `AudioClip` uses Float32 samples; memory cost is roughly 8 bytes/ms at 16 kHz stereo or 4 bytes/ms mono. A 2-second clip is ~8 KB mono, which is negligible, but the SwiftData log should store feature JSON + score only, not the audio itself. Confirmed in §13.1 schema.
 
 ---

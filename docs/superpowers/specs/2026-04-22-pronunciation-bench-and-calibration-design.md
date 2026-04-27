@@ -20,7 +20,7 @@ Part 2 closes that gap by standing up the calibration loop the parent spec alrea
 1. A **DEBUG-build-only in-app fixture recorder** that lets Yutaka capture labeled WAV + sidecar JSON from an iPad, export them via Files.app, and feed them into the bench.
 2. A new repo-root Swift Package **`dev-tools/pronunciation-bench/`** that links Engine A by `path:` reference, calls the SpeechAce HTTP API for each fixture, and produces a CSV of (fixture, Engine A output, SpeechAce score) for manual review.
 3. **Recorded WAV fixtures** (Yutaka, adult proxy) checked into `Packages/MoraEngines/Tests/MoraEnginesTests/Fixtures/`, replacing the three TODO'd synthetic test stubs with real-audio behavioral tests.
-4. A **child-speaker calibration pass** that runs the son's recordings through the bench, quantifies the roughly-10 % formant shift predicted in the parent spec §14.6, and updates `PhonemeThresholds.swift` numerically once.
+4. A **child-speaker calibration pass** that runs the child's recordings through the bench, quantifies the roughly-10 % formant shift predicted in the parent spec §14.6, and updates `PhonemeThresholds.swift` numerically once.
 
 The shipped application binary gains nothing at runtime beyond an updated numeric table in `PhonemeThresholds`. The debug recorder lives entirely behind `#if DEBUG` and the bench is isolated at the repo root. The on-device invariant from `2026-04-21-mora-dyslexia-esl-design.md` §3 is preserved on every shipped build (Debug and Release).
 
@@ -40,7 +40,7 @@ The bench exists to answer one question per phoneme pair: does Engine A's label 
 - Capture labeled fixture audio on an iPad with one SwiftUI screen, using only the iPad's microphone — no laptop handoff during capture.
 - Ship a repo-root bench harness that Yutaka runs locally with `swift run bench <fixtures-dir>` and that produces a per-fixture CSV containing Engine A's output and a SpeechAce reference score.
 - Replace the three TODO'd synthetic tests in `FeatureBasedEvaluatorTests` with fixture-based behavioral tests covering `r/l`, `v/b`, `æ/ʌ`.
-- Perform one calibration pass: record the son's voice for the supported phoneme set, run the bench, update `PhonemeThresholds` numerically if and only if the data warrants it.
+- Perform one calibration pass: record the child's voice for the supported phoneme set, run the bench, update `PhonemeThresholds` numerically if and only if the data warrants it.
 - Preserve the on-device invariant. No cloud symbols in the shipped binary, no cloud calls from any shipped package.
 - Do not touch any file Phase 3 (Engine B) is known to modify. Part 2 and Phase 3 merge cleanly in either order.
 
@@ -92,13 +92,13 @@ No other shared files. Merge order between Part 2 and Phase 3 is irrelevant.
 
 ### 4.5 Session-capture is out of scope
 
-The learner's son will generate useful calibration data during normal A-day sessions, and it is tempting to auto-save every trial's audio. Part 2 explicitly does not do this because implementing it would require touching `AppleSpeechEngine` (to expose the captured PCM to a sink) or `SessionOrchestrator` (to intercept `SpeechEvent.final`). Both files are Phase 3 territory. Capturing the son's voice happens by having Yutaka sit next to him and drive the DEBUG recorder manually between utterances. The throughput cost is acceptable for one learner; the structural cost of touching Phase 3's files is not.
+The learner will generate useful calibration data during normal A-day sessions, and it is tempting to auto-save every trial's audio. Part 2 explicitly does not do this because implementing it would require touching `AppleSpeechEngine` (to expose the captured PCM to a sink) or `SessionOrchestrator` (to intercept `SpeechEvent.final`). Both files are Phase 3 territory. Capturing the child's voice happens by having Yutaka sit next to them and drive the DEBUG recorder manually between utterances. The throughput cost is acceptable for one learner; the structural cost of touching Phase 3's files is not.
 
 A cleaner design becomes possible once Phase 3's `PronunciationTrialLog` exists: that entity can grow an optional `audioBytes: Data?` field under a DEBUG-only code path, eliminating the need for a parallel capture pipeline. That is a post-Phase-3 discussion, not a Part 2 concern.
 
 ### 4.6 Adult proxy fixtures ship; child fixtures stay local
 
-Initial WAV fixtures checked into `Packages/MoraEngines/Tests/.../Fixtures/` are recorded by Yutaka (adult, known pronunciations). These are small (<100 KB each, short, mono, 16 kHz) and their purpose is behavioral regression — making sure Engine A labels `/r/` as `/r/` when it is `/r/` and as `/l/` when it is `/l/`. The son's recordings used for threshold calibration stay on Yutaka's laptop and are not committed. This preserves the privacy posture of the project while letting the repo carry enough fixtures to catch Engine A regressions in CI.
+Initial WAV fixtures checked into `Packages/MoraEngines/Tests/.../Fixtures/` are recorded by Yutaka (adult, known pronunciations). These are small (<100 KB each, short, mono, 16 kHz) and their purpose is behavioral regression — making sure Engine A labels `/r/` as `/r/` when it is `/r/` and as `/l/` when it is `/l/`. The child's recordings used for threshold calibration stay on Yutaka's laptop and are not committed. This preserves the privacy posture of the project while letting the repo carry enough fixtures to catch Engine A regressions in CI.
 
 ## 5. Architecture
 
@@ -340,7 +340,7 @@ CSV files are git-ignored at the `dev-tools/pronunciation-bench/` level. Results
 ### 9.3 Fixture repo policy
 
 - Adult-proxy fixtures (Yutaka's voice) are checked into `Packages/MoraEngines/Tests/.../Fixtures/` as short WAVs (<100 KB each) that regression-test Engine A behavior.
-- Child fixtures (the son's voice) are **not** checked in. They live on Yutaka's Mac for calibration work and are referenced in the calibration PR's commit message as "recorded locally, not committed, N fixtures per pair."
+- Child fixtures (the child's voice) are **not** checked in. They live on Yutaka's Mac for calibration work and are referenced in the calibration PR's commit message as "recorded locally, not committed, N fixtures per pair."
 - This asymmetric policy keeps the repo's voice-data footprint minimal while still giving CI the regression coverage it needs.
 
 ## 10. Testing
@@ -404,7 +404,7 @@ The existing `// TODO(post-alpha): needs recorded fixture` comments in `FeatureB
 - **Phase A — DEBUG recorder (iPad side).** FixtureMetadata → FixtureWriter → FixtureRecorder → PronunciationRecorderView → DebugEntryPoint. Verified by unit tests for the plumbing and by manual iPad recording for the UI.
 - **Phase B — dev-tools bench (Mac side).** Package skeleton → FixtureLoader → EngineARunner → SpeechAceClient → CSVWriter → BenchCLI. Verified by local unit tests and one smoke run with two fixtures.
 - **Phase C — Fixture collection and test adoption.** Record adult-proxy WAVs for the three pairs, check them in, replace the TODO'd stubs with `FeatureBasedEvaluatorFixtureTests`, ensure CI stays green.
-- **Phase D — Child-speaker calibration pass.** Record the son's fixtures locally (not committed), run the bench, eyeball CSV, update `PhonemeThresholds.swift` numerically if data warrants, re-tune fixture test tolerances if the adult-proxy tests begin to fail post-update.
+- **Phase D — Child-speaker calibration pass.** Record the child's fixtures locally (not committed), run the bench, eyeball CSV, update `PhonemeThresholds.swift` numerically if data warrants, re-tune fixture test tolerances if the adult-proxy tests begin to fail post-update.
 
 Phases are sequential: B requires no file from A, but C needs both (the recorder to produce fixtures, the bench to sanity-check them before committing). D requires C so the child fixtures do not interfere with the adult-proxy regression suite.
 

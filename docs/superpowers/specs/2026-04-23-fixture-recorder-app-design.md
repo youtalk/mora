@@ -87,7 +87,7 @@ Renaming `-take1.wav` to `-take.wav` for the committed adult-proxy fixture set i
 
 ### 4.4 Global speaker toggle at the session root
 
-Recording sessions alternate: Yutaka records his own voice for the adult-proxy set over one session, then switches to recording his son for the child-speaker set in a later session. A global toggle in the `CatalogListView` header is therefore natural: pick adult, do all twelve; pick child, do the same twelve again with multiple takes per row. Take-count badges on the list are filtered by the current speaker; files under the other speaker's subdirectory stay on disk but are not displayed. UserDefaults persists the toggle across launches so Yutaka does not re-pick speaker on every run.
+Recording sessions alternate: Yutaka records his own voice for the adult-proxy set over one session, then switches to recording the child for the child-speaker set in a later session. A global toggle in the `CatalogListView` header is therefore natural: pick adult, do all twelve; pick child, do the same twelve again with multiple takes per row. Take-count badges on the list are filtered by the current speaker; files under the other speaker's subdirectory stay on disk but are not displayed. UserDefaults persists the toggle across launches so Yutaka does not re-pick speaker on every run.
 
 A per-pattern speaker picker (flippable mid-row) was considered and rejected — it reintroduces the "misclick on every save" failure mode the whole redesign is built to eliminate.
 

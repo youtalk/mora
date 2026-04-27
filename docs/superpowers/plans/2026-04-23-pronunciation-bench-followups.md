@@ -35,8 +35,8 @@ Not yet done (from the original plan):
 | Plan task | Why not landed |
 |---|---|
 | 13. Record adult-proxy WAV fixtures | Manual hardware step (requires physical iPad + human speaker) |
-| 15. Record son's fixtures | Manual hardware step (same) |
-| 16. Run bench against son's fixtures | Depends on 15 |
+| 15. Record the child's fixtures | Manual hardware step (same) |
+| 16. Run bench against the child's fixtures | Depends on 15 |
 | 17. Update `PhonemeThresholds` | Depends on 16 |
 
 This follow-up plan schedules the manual steps above and captures three code items raised during PR review.
@@ -48,8 +48,8 @@ This follow-up plan schedules the manual steps above and captures three code ite
 ### In scope
 
 - **Task A1 — Record 12 adult-proxy WAV fixtures on iPad and check them in.** Unblocks the 12 `XCTSkip` tests in `FeatureBasedEvaluatorFixtureTests`. Equivalent to the original plan's Task 13.
-- **Task A2 — Record son's child-speaker fixtures (not committed).** Original plan's Task 15.
-- **Task A3 — Run the bench against son's fixtures and review.** Original plan's Task 16.
+- **Task A2 — Record the child's child-speaker fixtures (not committed).** Original plan's Task 15.
+- **Task A3 — Run the bench against the child's fixtures and review.** Original plan's Task 16.
 - **Task A4 — Update `PhonemeThresholds` numeric constants if the child data warrants.** Original plan's Task 17.
 - **Task B1 — Extend `FixtureMetadata` with an optional phoneme sequence + target index.** Required so `PhonemeRegionLocalizer` slices medial-vowel fixtures (`æ`/`ʌ` in `cat`/`cut`) correctly instead of falling back to whole-clip evaluation. Raised by Copilot on both #41 and #42.
 - **Task B2 — Tighten `FeatureBasedEvaluatorFixtureTests` assertions after B1.** Convert onset-fixture assertions from `if let score = …` conditional bounds to `XCTAssertTrue(isReliable) && XCTAssertNotNil(score)` unconditional bounds where reliability is guaranteed post-B1.
@@ -87,7 +87,7 @@ This follow-up plan schedules the manual steps above and captures three code ite
 | `Packages/MoraEngines/Tests/MoraEnginesTests/Fixtures/aeuh/*.wav` (4) | Adult-proxy recordings of `cat` / `cut` × {correct, substituted} |
 | `Packages/MoraEngines/Tests/MoraEnginesTests/Fixtures/th/*.wav` (optional, Task B3) | Adult-proxy recordings of `thin` / `tin` etc. if B3 chooses the symmetric four-fixture approach |
 
-**Not committed:** son's child-speaker fixtures (`~/mora-fixtures-child/`). Kept on Yutaka's laptop per spec §9.3.
+**Not committed:** the child's child-speaker fixtures (`~/mora-fixtures-child/`). Kept on Yutaka's laptop per spec §9.3.
 
 ---
 
@@ -225,7 +225,7 @@ EOF
 
 ---
 
-### Task A2: Record son's child-speaker fixtures (not committed)
+### Task A2: Record the child's child-speaker fixtures (not committed)
 
 Same recorder app, but with the speaker toggle flipped to **Child**. Three or more takes per (pattern, speakerTag = child) row. Quiet room; no siblings audible.
 
@@ -249,7 +249,7 @@ ls ~/mora-fixtures-child/
 
 ---
 
-### Task A3: Run the bench against son's fixtures
+### Task A3: Run the bench against the child's fixtures
 
 - [ ] **Step 1:** Configure SpeechAce:
 
@@ -291,7 +291,7 @@ Only if Task A3 identified shifts. Skip this task entirely if Task A3 concluded 
 
 If a `matched` bound fails, widen by ≤ 5 points (70 → 65). If a `substitutedBy` bound fails, widen by ≤ 5 points (40 → 45). Document the widening in the commit message. Anything wider than 5 points means the child shift is too aggressive — roll back and try smaller.
 
-- [ ] **Step 3:** Re-run the bench against son's fixtures (Task A3, Step 2) and confirm the targeted `matched` rows now cluster ≥ 60.
+- [ ] **Step 3:** Re-run the bench against the child's fixtures (Task A3, Step 2) and confirm the targeted `matched` rows now cluster ≥ 60.
 
 - [ ] **Step 4:** Commit. One phoneme per commit; do not batch.
 
@@ -476,6 +476,6 @@ Task B3 may or may not land in this cycle depending on the Option A/B/C choice.
 
 - **Fixture recording is the bottleneck.** Without Task A1 WAVs, the 12 engine tests stay skipped; without Task A2/A3, Phase D can't run. Block on A1 before any code task if the aim is closing the skip gap.
 - **Task B1 is independent of recordings** and can start anytime — it's a schema change plus two call-site updates. Landing B1 first actually makes Task A1 smoother because the recorder UI will already capture the phoneme sequence, so re-recording won't be needed to pick up the richer localization signal.
-- **Task A4 may legitimately be a no-op.** If son's fixtures score within literature-derived bounds everywhere, the Phase D calibration outcome is "no threshold changes needed" — skip the commit and add a note in the PR description per the original plan §Task 17 Step 6.
+- **Task A4 may legitimately be a no-op.** If the child's fixtures score within literature-derived bounds everywhere, the Phase D calibration outcome is "no threshold changes needed" — skip the commit and add a note in the PR description per the original plan §Task 17 Step 6.
 - **θ/t is still explicitly optional.** Don't let it block the rest of Phase D.
 - **Copilot deferred items** from #41 / #42 are covered by Task B1 and Task B2. After those two land, the review threads on #41 (EngineARunner line 17) and #42 (FeatureBasedEvaluatorFixtureTests lines 42 + 122) can be re-visited and marked resolved.

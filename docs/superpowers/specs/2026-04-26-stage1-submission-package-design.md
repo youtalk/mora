@@ -33,11 +33,11 @@
 
 ## 3. Positioning narrative
 
-**Lead:** "Build From What You Know" problem statement. A father builds an
-on-device, dyslexia-aware ESL tutor for his own 8-year-old L1-Japanese son after
-moving from Japan to the US, after the school's IEP-blocked-by-ESL policy adds a
-one-year delay before his son gets structured dyslexia support, and after Barton
-tutoring is priced out of reach.
+**Lead:** "Build From What You Know" problem statement. A parent builds an
+on-device, dyslexia-aware ESL tutor for an 8-year-old L1-Japanese child close to
+them after moving from Japan to the US, after the school's IEP-blocked-by-ESL
+policy adds a one-year delay before the child gets structured dyslexia support,
+and after Barton tutoring is priced out of reach.
 
 **Supporting layer (Opus 4.7 Use 25%):** Built in 5 days with Claude Code and
 Opus 4.7 — 100+ structured PRs each backed by a written spec and an
@@ -47,8 +47,8 @@ skill that streams Apple OSLog from the running iPad straight into Claude's
 context so debugging becomes a conversation instead of a screenshot round-trip.
 
 **Why this combination:** Impact (30%) is mora's strongest pillar — a real domain
-expert (the father) building for a real specific user (his own son) addresses
-the highest-weighted criterion head-on. The Claude Code workflow innovations
+expert (the parent) building for a real specific user (a child close to them)
+addresses the highest-weighted criterion head-on. The Claude Code workflow innovations
 directly hit Opus 4.7 Use (25%). Together they cover 55% of the rubric. Demo
 (25%) is carried by the iPad recording itself; Depth (20%) is carried by the
 five-package SPM architecture, the on-device CoreML wav2vec2 phoneme posterior,
@@ -59,7 +59,7 @@ and the volume of merged PRs.
 | | |
 |---|---|
 | License | MPL-2.0 via `git filter-branch` rewrite over full history |
-| Video shape | Hybrid — 5–10s opening shot of son's hands on iPad (no face), remainder iPad screen capture + voiceover |
+| Video shape | Hybrid — 5–10s opening shot of the child's hands on iPad (no face), remainder iPad screen capture + voiceover |
 | Voiceover | Yutaka's own voice in English — Japanese accent reinforces the "L1-Japanese family" authenticity |
 | Yokai assets retention | Keep in demo and in the bundled app; document NC inheritance in README + landing page |
 | Submission form | Cerebral Valley platform, separate fields for video URL / repo URL / summary |
@@ -92,7 +92,7 @@ Restructured against Mike Brown's three-act × nine-pod framework
 | Pod | Time | Visual | Message | Criterion |
 |---|---|---|---|---|
 | **Act 1 — The Problem** | | | | |
-| 1.1 — Who | 0:00–0:20 | Opening shot: son's hands on iPad (no face) → home screen | Father, dyslexic 8yo son, L1-Japanese, US ESL | Impact |
+| 1.1 — Who | 0:00–0:20 | Opening shot: the child's hands on iPad (no face) → home screen | Parent, dyslexic 8yo child, L1-Japanese, US ESL | Impact |
 | 1.2 — Why | 0:20–0:40 | Cut to a calendar/clock motif over the home screen | IEP gated behind ESL → 1-year delay; Barton priced out | Impact |
 | 1.3 — What | 0:40–1:00 | Yokai weekly intro screen, voice clip plays under VO | "So I built mora" — OG phonics + yokai shell, fully on-device | Impact + Demo |
 | **Act 2 — The Solution** | | | | |
@@ -107,21 +107,21 @@ Restructured against Mike Brown's three-act × nine-pod framework
 ### 6.2 Voiceover script (English, ~340 words at ~140 wpm; pod-locked)
 
 > **[Pod 1.1 — 0:00–0:20]**
-> *(over: opening shot — son's hands on iPad, app's home screen)*
-> "My son is eight. He has dyslexia. He's also learning English as a second
-> language — his first language is Japanese, and our family moved from Japan
-> to the US last year."
+> *(over: opening shot — the child's hands on iPad, app's home screen)*
+> "A child close to me is eight. They have dyslexia. They're also learning
+> English as a second language — their first language is Japanese, and our
+> family moved from Japan to the US last year."
 
 > **[Pod 1.2 — 0:20–0:40]**
 > *(over: calendar / clock motif over home screen)*
-> "His school's IEP — the structured plan for dyslexia support — is gated
-> behind finishing ESL. That's a one-year delay before he gets the help he
-> actually needs. Barton tutoring is priced out of reach."
+> "Their school's IEP — the structured plan for dyslexia support — is gated
+> behind finishing ESL. That's a one-year delay before they get the help they
+> actually need. Barton tutoring is priced out of reach."
 
 > **[Pod 1.3 — 0:40–1:00]**
 > *(over: weekly yokai intro screen, voice clip plays softly under the VO)*
 > "So I built mora — an iPad app that pairs Orton-Gillingham phonics, the
-> gold-standard dyslexia method, with a yokai mentor that greets him every
+> gold-standard dyslexia method, with a yokai mentor that greets them every
 > week. Fully on-device. Nothing leaves the iPad."
 
 > **[Pod 2.1 — 1:00–1:20]**
@@ -132,7 +132,7 @@ Restructured against Mike Brown's three-act × nine-pod framework
 
 > **[Pod 2.2 — 1:20–1:40]**
 > *(over: say-the-word activity, mic icon, Engine A coaching feedback)*
-> "Then he speaks. An INT8-quantized wav2vec2 phoneme posterior runs in
+> "Then they speak. An INT8-quantized wav2vec2 phoneme posterior runs in
 > CoreML. The engine catches L1-Japanese substitutions — v as b, l as r,
 > sh as s — and turns them into coaching, not red Xs."
 
@@ -159,8 +159,8 @@ Restructured against Mike Brown's three-act × nine-pod framework
 > license, hashtags)*
 > "I authored a Claude Code skill that streams iPad OSLog into Claude's
 > context — debugging became a conversation. Mora is on-device, MPL-licensed,
-> github.com slash youtalk slash mora. My son will keep using it on Monday.
-> Built with Opus 4.7."
+> github.com slash youtalk slash mora. A child close to me will keep using it
+> on Monday. Built with Opus 4.7."
 
 ### 6.3 Production notes (Mike Brown framework, compressed)
 
@@ -191,7 +191,7 @@ Restructured against Mike Brown's three-act × nine-pod framework
 
 - **iPad screen capture**: Settings → Control Center → enable Screen
   Recording. Tap to record. AirDrop to Mac.
-- **Opening shot of son's hands** (Pod 1.1): handheld phone, daylight,
+- **Opening shot of the child's hands** (Pod 1.1): handheld phone, daylight,
   ~10s, no face. One take is enough.
 - **B-roll for Act 3**: terminal recordings via `script -t timing.log
   output.log` or just QuickTime "New Screen Recording" of the terminal
@@ -241,10 +241,10 @@ Restructured against Mike Brown's three-act × nine-pod framework
 > **mora — an on-device, dyslexia-aware ESL tutor for L1-Japanese kids,
 > built in 5 days with Claude Code and Opus 4.7.**
 >
-> My 8-year-old son has dyslexia. He's also learning English as a second
-> language — we moved from Japan to the US last year. His school's IEP for
-> dyslexia is gated behind finishing ESL, costing him a year. Barton
-> tutoring is too expensive. So I built mora.
+> An 8-year-old child close to me has dyslexia. They're also learning English
+> as a second language — we moved from Japan to the US last year. Their
+> school's IEP for dyslexia is gated behind finishing ESL, costing them a
+> year. Barton tutoring is too expensive. So I built mora.
 >
 > Mora is an iPad app that pairs Orton-Gillingham phonics with a yokai RPG
 > shell. A tile-board decoder enforces grapheme mastery. An on-device
@@ -347,7 +347,7 @@ Updates required at HEAD only:
   [GitHub repo →]   [License: MPL-2.0]   [Built with Claude Code]
 
 [The problem]
-  Father → son personal narrative (3 paragraphs).
+  Parent → child personal narrative (3 paragraphs).
   IEP-blocked-by-ESL structural gap.
   Barton tutoring out of reach.
   On-device privacy as a non-negotiable for a child user.
@@ -400,7 +400,7 @@ is positioned in the hero.
 
 ```
 Built mora during @claudeai @claudedevs @cerebral_valley's Built with Opus 4.7 hackathon —
-an iPad dyslexia + ESL tutor for my 8yo son.
+an iPad dyslexia + ESL tutor for an 8yo child close to me.
 On-device CoreML wav2vec2 catches L1-Japanese substitutions (v→b, l→r).
 100+ PRs in 5 days w/ Claude Code.
 https://youtalk.github.io/mora/
@@ -416,9 +416,10 @@ Character budget: ≤280 (current draft ~270 ASCII).
 I'm participating in Built with Opus 4.7, a Claude Code hackathon by Anthropic and Cerebral Valley.
 It's a one-week sprint to build something with Claude Code and Opus 4.7.
 
-I built mora — an iPad app for my 8-year-old son. He has dyslexia, and he's learning
-English as a second language after our family moved from Japan to the US last year.
-His school's IEP is gated behind finishing ESL — costing him a year of structured support.
+I built mora — an iPad app for an 8-year-old child close to me. They have dyslexia,
+and they're learning English as a second language after our family moved from Japan
+to the US last year. Their school's IEP is gated behind finishing ESL — costing them
+a year of structured support.
 
 Mora pairs Orton-Gillingham phonics with on-device CoreML pronunciation feedback. A
 wav2vec2 phoneme model catches L1-Japanese substitutions (v→b, l→r) and turns them into
@@ -451,7 +452,7 @@ Attach: "Built with Opus 4.7" graphic.
 
 - iPad screen recording per beat (yokai intro / tile-board / pronunciation /
   decodable sentence) → AirDrop to Mac.
-- Opening shot — son's hands on iPad, 5–10s, no face.
+- Opening shot — the child's hands on iPad, 5–10s, no face.
 - Voiceover record (Yutaka, English).
 - Editing in iMovie or QuickTime.
 - Render → upload to YouTube as unlisted.

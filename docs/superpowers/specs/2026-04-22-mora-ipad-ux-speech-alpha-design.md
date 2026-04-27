@@ -12,7 +12,7 @@
 
 The A-day scaffold (warmup → new rule → decoding → short sentences → completion) has been implemented end-to-end using fake Speech/TTS engines and placeholder "Correct/Wrong" tap buttons. The SwiftUI surface renders in the simulator but is sized to content and sits in a small centered stack on iPad — the app does not use the iPad's screen area, and the fakes prevent the target learner from actually reading aloud.
 
-This plan turns the existing scaffold into an **alpha version the target user (Yutaka's 8-year-old son) can use on a real iPad**. It covers four intertwined concerns:
+This plan turns the existing scaffold into an **alpha version the target user (an 8-year-old child close to Yutaka) can use on a real iPad**. It covers four intertwined concerns:
 
 1. An iPad-native design system (tokens + components) tuned for dyslexia legibility and a playful tone
 2. A full-bleed "Fullscreen Focus" session layout and a "Single Hero" home screen that use the full iPad canvas
