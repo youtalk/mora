@@ -9,7 +9,7 @@ import SwiftUI
 final class LanguageAgeState {
     var step: Step = .language
     var selectedLanguageID: String
-    var selectedAge: Int? = 8  // pre-selected per spec §6.2
+    var selectedAge: Int? = LanguageAgeFlow.defaultAge  // pre-selected per spec §6.2
 
     static let onboardedKey = "tech.reenable.Mora.languageAgeOnboarded"
 
@@ -98,6 +98,13 @@ public struct LanguageAgeFlow: View {
     public init(onFinished: @escaping () -> Void) {
         self.onFinished = onFinished
     }
+
+    /// Age tiles shown in Step 2. Narrowed in PR 3 to the dyslexia
+    /// intervention window (6–8 = JP 小学校低学年). See spec §7.2.
+    public static let ageOptions: [Int] = [6, 7, 8]
+
+    /// Default selected age in Step 2 — middle of the target range.
+    public static let defaultAge: Int = 7
 
     /// Identifiers of language rows that are tap-enabled. See spec §7.4.
     public static let activeLanguageIdentifiers: [String] = ["ja", "ko", "en"]
