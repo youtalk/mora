@@ -20,7 +20,18 @@
         { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
         { "surface": "a",         "graphemes": ["a"],                         "phonemes": ["ə"] },
         { "surface": "van",       "graphemes": ["v","a","n"],                 "phonemes": ["v","æ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam had an ambulance.",
+          "words": [
+            { "surface": "Adam",      "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
+            { "surface": "had",       "graphemes": ["h","a","d"],                 "phonemes": ["h","æ","d"] },
+            { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] }
+          ]
+        }
+      }
     },
     {
       "text": "Andy and Al got an ambulance and a tram.",
@@ -37,7 +48,18 @@
         { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
         { "surface": "a",         "graphemes": ["a"],                         "phonemes": ["ə"] },
         { "surface": "tram",      "graphemes": ["t","r","a","m"],             "phonemes": ["t","r","æ","m"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Andy got an ambulance.",
+          "words": [
+            { "surface": "Andy",      "graphemes": ["a","n","d","y"],             "phonemes": ["æ","n","d","i"] },
+            { "surface": "got",       "graphemes": ["g","o","t"],                 "phonemes": ["g","ɒ","t"] },
+            { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] }
+          ]
+        }
+      }
     },
     {
       "text": "Anna ran past an ambulance and an ant.",
@@ -53,7 +75,19 @@
         { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
         { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
         { "surface": "ant",       "graphemes": ["a","n","t"],                 "phonemes": ["æ","n","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Anna ran past an ant.",
+          "words": [
+            { "surface": "Anna",      "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] },
+            { "surface": "ran",       "graphemes": ["r","a","n"],                 "phonemes": ["r","æ","n"] },
+            { "surface": "past",      "graphemes": ["p","a","s","t"],             "phonemes": ["p","æ","s","t"] },
+            { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "ant",       "graphemes": ["a","n","t"],                 "phonemes": ["æ","n","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Adam fed an ant in an ambulance at the lab.",
@@ -71,7 +105,18 @@
         { "surface": "at",        "graphemes": ["a","t"],                     "phonemes": ["æ","t"] },
         { "surface": "the",       "graphemes": ["th","e"],                    "phonemes": ["ð","ə"] },
         { "surface": "lab",       "graphemes": ["l","a","b"],                 "phonemes": ["l","æ","b"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam fed an ant.",
+          "words": [
+            { "surface": "Adam",      "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
+            { "surface": "fed",       "graphemes": ["f","e","d"],                 "phonemes": ["f","ɛ","d"] },
+            { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "ant",       "graphemes": ["a","n","t"],                 "phonemes": ["æ","n","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "An ambulance ran past Andy and Anna.",
@@ -86,7 +131,18 @@
         { "surface": "Andy",      "graphemes": ["a","n","d","y"],             "phonemes": ["æ","n","d","i"] },
         { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
         { "surface": "Anna",      "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "An ambulance ran past.",
+          "words": [
+            { "surface": "An",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] },
+            { "surface": "ran",       "graphemes": ["r","a","n"],                 "phonemes": ["r","æ","n"] },
+            { "surface": "past",      "graphemes": ["p","a","s","t"],             "phonemes": ["p","æ","s","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Anna got an ambulance and Adam got a cab.",
@@ -103,7 +159,18 @@
         { "surface": "got",       "graphemes": ["g","o","t"],                 "phonemes": ["g","ɒ","t"] },
         { "surface": "a",         "graphemes": ["a"],                         "phonemes": ["ə"] },
         { "surface": "cab",       "graphemes": ["c","a","b"],                 "phonemes": ["k","æ","b"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Anna got an ambulance.",
+          "words": [
+            { "surface": "Anna",      "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] },
+            { "surface": "got",       "graphemes": ["g","o","t"],                 "phonemes": ["g","ɒ","t"] },
+            { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] }
+          ]
+        }
+      }
     },
     {
       "text": "Andy and Anna sat in an ambulance and a van.",
@@ -121,7 +188,19 @@
         { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
         { "surface": "a",         "graphemes": ["a"],                         "phonemes": ["ə"] },
         { "surface": "van",       "graphemes": ["v","a","n"],                 "phonemes": ["v","æ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Andy sat in an ambulance.",
+          "words": [
+            { "surface": "Andy",      "graphemes": ["a","n","d","y"],             "phonemes": ["æ","n","d","i"] },
+            { "surface": "sat",       "graphemes": ["s","a","t"],                 "phonemes": ["s","æ","t"] },
+            { "surface": "in",        "graphemes": ["i","n"],                     "phonemes": ["ɪ","n"] },
+            { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] }
+          ]
+        }
+      }
     },
     {
       "text": "An ambulance had Adam and an ant in it.",
@@ -138,7 +217,18 @@
         { "surface": "ant",       "graphemes": ["a","n","t"],                 "phonemes": ["æ","n","t"] },
         { "surface": "in",        "graphemes": ["i","n"],                     "phonemes": ["ɪ","n"] },
         { "surface": "it",        "graphemes": ["i","t"],                     "phonemes": ["ɪ","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "An ambulance had Adam.",
+          "words": [
+            { "surface": "An",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] },
+            { "surface": "had",       "graphemes": ["h","a","d"],                 "phonemes": ["h","æ","d"] },
+            { "surface": "Adam",      "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] }
+          ]
+        }
+      }
     },
     {
       "text": "Anna and Adam sat in an ambulance at the lab.",
@@ -156,7 +246,19 @@
         { "surface": "at",        "graphemes": ["a","t"],                     "phonemes": ["æ","t"] },
         { "surface": "the",       "graphemes": ["th","e"],                    "phonemes": ["ð","ə"] },
         { "surface": "lab",       "graphemes": ["l","a","b"],                 "phonemes": ["l","æ","b"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Anna sat in an ambulance.",
+          "words": [
+            { "surface": "Anna",      "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] },
+            { "surface": "sat",       "graphemes": ["s","a","t"],                 "phonemes": ["s","æ","t"] },
+            { "surface": "in",        "graphemes": ["i","n"],                     "phonemes": ["ɪ","n"] },
+            { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] }
+          ]
+        }
+      }
     },
     {
       "text": "Andy fed an ant and Al got an ambulance.",
@@ -173,7 +275,18 @@
         { "surface": "got",       "graphemes": ["g","o","t"],                 "phonemes": ["g","ɒ","t"] },
         { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
         { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Andy fed an ant.",
+          "words": [
+            { "surface": "Andy",      "graphemes": ["a","n","d","y"],             "phonemes": ["æ","n","d","i"] },
+            { "surface": "fed",       "graphemes": ["f","e","d"],                 "phonemes": ["f","ɛ","d"] },
+            { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "ant",       "graphemes": ["a","n","t"],                 "phonemes": ["æ","n","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "An ambulance and a van ran past Adam fast.",
@@ -190,7 +303,18 @@
         { "surface": "past",      "graphemes": ["p","a","s","t"],             "phonemes": ["p","æ","s","t"] },
         { "surface": "Adam",      "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
         { "surface": "fast",      "graphemes": ["f","a","s","t"],             "phonemes": ["f","æ","s","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "An ambulance ran past.",
+          "words": [
+            { "surface": "An",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] },
+            { "surface": "ran",       "graphemes": ["r","a","n"],                 "phonemes": ["r","æ","n"] },
+            { "surface": "past",      "graphemes": ["p","a","s","t"],             "phonemes": ["p","æ","s","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Anna had an ambulance and Andy had a tram.",
@@ -207,7 +331,18 @@
         { "surface": "had",       "graphemes": ["h","a","d"],                 "phonemes": ["h","æ","d"] },
         { "surface": "a",         "graphemes": ["a"],                         "phonemes": ["ə"] },
         { "surface": "tram",      "graphemes": ["t","r","a","m"],             "phonemes": ["t","r","æ","m"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Anna had an ambulance.",
+          "words": [
+            { "surface": "Anna",      "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] },
+            { "surface": "had",       "graphemes": ["h","a","d"],                 "phonemes": ["h","æ","d"] },
+            { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] }
+          ]
+        }
+      }
     },
     {
       "text": "Adam fed an ant and Anna sat in a van.",
@@ -225,7 +360,18 @@
         { "surface": "in",        "graphemes": ["i","n"],                     "phonemes": ["ɪ","n"] },
         { "surface": "a",         "graphemes": ["a"],                         "phonemes": ["ə"] },
         { "surface": "van",       "graphemes": ["v","a","n"],                 "phonemes": ["v","æ","n"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam fed an ant.",
+          "words": [
+            { "surface": "Adam",      "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
+            { "surface": "fed",       "graphemes": ["f","e","d"],                 "phonemes": ["f","ɛ","d"] },
+            { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "ant",       "graphemes": ["a","n","t"],                 "phonemes": ["æ","n","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Sam and Pat got an ambulance and an ant.",
@@ -242,7 +388,18 @@
         { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
         { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
         { "surface": "ant",       "graphemes": ["a","n","t"],                 "phonemes": ["æ","n","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Pat got an ambulance.",
+          "words": [
+            { "surface": "Pat",       "graphemes": ["p","a","t"],                 "phonemes": ["p","æ","t"] },
+            { "surface": "got",       "graphemes": ["g","o","t"],                 "phonemes": ["g","ɒ","t"] },
+            { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] }
+          ]
+        }
+      }
     },
     {
       "text": "An ambulance dashed past Anna and Adam.",
@@ -257,7 +414,18 @@
         { "surface": "Anna",      "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] },
         { "surface": "and",       "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
         { "surface": "Adam",      "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "An ambulance dashed past.",
+          "words": [
+            { "surface": "An",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] },
+            { "surface": "dashed",    "graphemes": ["d","a","sh","e","d"],        "phonemes": ["d","æ","ʃ","t"] },
+            { "surface": "past",      "graphemes": ["p","a","s","t"],             "phonemes": ["p","æ","s","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Andy got an ambulance and an ant in the lab.",
@@ -275,7 +443,18 @@
         { "surface": "in",        "graphemes": ["i","n"],                     "phonemes": ["ɪ","n"] },
         { "surface": "the",       "graphemes": ["th","e"],                    "phonemes": ["ð","ə"] },
         { "surface": "lab",       "graphemes": ["l","a","b"],                 "phonemes": ["l","æ","b"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Andy got an ambulance.",
+          "words": [
+            { "surface": "Andy",      "graphemes": ["a","n","d","y"],             "phonemes": ["æ","n","d","i"] },
+            { "surface": "got",       "graphemes": ["g","o","t"],                 "phonemes": ["g","ɒ","t"] },
+            { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] }
+          ]
+        }
+      }
     },
     {
       "text": "Anna and Andy and Al ran past an ambulance.",
@@ -292,7 +471,19 @@
         { "surface": "past",      "graphemes": ["p","a","s","t"],             "phonemes": ["p","æ","s","t"] },
         { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
         { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Anna ran past an ambulance.",
+          "words": [
+            { "surface": "Anna",      "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] },
+            { "surface": "ran",       "graphemes": ["r","a","n"],                 "phonemes": ["r","æ","n"] },
+            { "surface": "past",      "graphemes": ["p","a","s","t"],             "phonemes": ["p","æ","s","t"] },
+            { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] }
+          ]
+        }
+      }
     },
     {
       "text": "Adam met an ant in an ambulance.",
@@ -307,7 +498,18 @@
         { "surface": "in",        "graphemes": ["i","n"],                     "phonemes": ["ɪ","n"] },
         { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
         { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Adam met an ant.",
+          "words": [
+            { "surface": "Adam",      "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
+            { "surface": "met",       "graphemes": ["m","e","t"],                 "phonemes": ["m","ɛ","t"] },
+            { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "ant",       "graphemes": ["a","n","t"],                 "phonemes": ["æ","n","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "Anna pat an ant and Adam pat an ambulance.",
@@ -324,7 +526,18 @@
         { "surface": "pat",       "graphemes": ["p","a","t"],                 "phonemes": ["p","æ","t"] },
         { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
         { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "Anna pat an ant.",
+          "words": [
+            { "surface": "Anna",      "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] },
+            { "surface": "pat",       "graphemes": ["p","a","t"],                 "phonemes": ["p","æ","t"] },
+            { "surface": "an",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "ant",       "graphemes": ["a","n","t"],                 "phonemes": ["æ","n","t"] }
+          ]
+        }
+      }
     },
     {
       "text": "An ambulance got Adam to the lab fast.",
@@ -340,7 +553,18 @@
         { "surface": "the",       "graphemes": ["th","e"],                    "phonemes": ["ð","ə"] },
         { "surface": "lab",       "graphemes": ["l","a","b"],                 "phonemes": ["l","æ","b"] },
         { "surface": "fast",      "graphemes": ["f","a","s","t"],             "phonemes": ["f","æ","s","t"] }
-      ]
+      ],
+      "byDay": {
+        "1": {
+          "text": "An ambulance got Adam.",
+          "words": [
+            { "surface": "An",        "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "ambulance", "graphemes": ["a","m","b","u","l","a","n","c","e"], "phonemes": ["æ","m","b","ʊ","l","ə","n","s"] },
+            { "surface": "got",       "graphemes": ["g","o","t"],                 "phonemes": ["g","ɒ","t"] },
+            { "surface": "Adam",      "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] }
+          ]
+        }
+      }
     }
   ]
 }
