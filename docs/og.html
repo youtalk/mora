@@ -1,0 +1,1487 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mora · 16:9 Cover Art Gallery</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet">
+<style>
+  /* ---------- shared design system tokens (match docs/index.html) ---------- */
+  :root{
+    --ink:#14110d;
+    --ink-soft:#2a1e13;
+    --paper:#fbf3e3;
+    --paper-warm:#f6e8c6;
+    --washi:#ecdcb4;
+    --washi-deep:#d7c187;
+    --vermilion:#c4341c;
+    --vermilion-deep:#8e2415;
+    --mora-orange:#ff7a00;
+    --mora-orange-shadow:#c85800;
+    --mora-teal:#00a896;
+    --mora-teal-shadow:#007f73;
+    --gold:#b8932a;
+    --rule:#3a2a1c;
+    --muted:#6e5a44;
+    --haze:#a89880;
+    --dyslexic:"OpenDyslexic","OpenDyslexic Regular","Comic Sans MS",sans-serif;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0;color:var(--ink);background:#1a1a1a}
+  html{scroll-behavior:smooth}
+  body{
+    font:400 16px/1.55 "Spectral","Iowan Old Style",Georgia,serif;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  /* ---------- gallery wrapper ---------- */
+  .page-header{
+    background:#0a0a0a;color:#f6e8c6;
+    padding:28px 36px;
+    border-bottom:1px solid #2a2a2a;
+  }
+  .page-header h1{
+    font-family:"Fraunces",serif;
+    font-variation-settings:"opsz" 96,"wght" 700,"SOFT" 50,"WONK" 1;
+    font-size:34px;letter-spacing:-.02em;line-height:1;
+    margin:0 0 6px;color:#fbf3e3;
+  }
+  .page-header h1 em{font-style:normal;color:var(--mora-orange)}
+  .page-header p{
+    font:500 12px/1.55 "JetBrains Mono",monospace;
+    letter-spacing:.06em;color:#a89880;
+    max-width:78ch;margin:0;
+  }
+  .page-header p code{
+    background:rgba(255,255,255,.08);
+    padding:2px 7px;border-radius:4px;
+    color:var(--mora-orange);
+    font-size:11px;
+  }
+  .gallery{
+    padding:40px 36px 80px;
+    display:grid;grid-template-columns:1fr;gap:48px;
+    max-width:1320px;margin:0 auto;
+  }
+  .thumb{display:block}
+  .thumb-meta{
+    display:flex;align-items:baseline;gap:18px;
+    margin:0 0 14px;
+    color:#cfc6b6;
+  }
+  .thumb-meta .num{
+    font:700 14px/1 "JetBrains Mono",monospace;
+    letter-spacing:.18em;color:var(--mora-orange);
+  }
+  .thumb-meta h2{
+    font-family:"Fraunces",serif;
+    font-variation-settings:"opsz" 60,"wght" 600,"SOFT" 30;
+    font-size:22px;letter-spacing:-.01em;line-height:1.1;
+    margin:0;color:#fbf3e3;
+  }
+  .thumb-meta .desc{
+    font:400 13px/1.4 "Spectral",serif;
+    color:#a89880;margin:0;flex:1;
+  }
+  .thumb-meta .open{
+    font:600 11px/1 "JetBrains Mono",monospace;
+    letter-spacing:.16em;text-transform:uppercase;
+    color:var(--mora-orange);
+    border:1px solid var(--mora-orange);
+    padding:8px 12px;border-radius:999px;
+    text-decoration:none;
+    transition:background .2s,color .2s;
+  }
+  .thumb-meta .open:hover{background:var(--mora-orange);color:#0a0a0a}
+
+  /* ---------- frame: container that scales board to fit ---------- */
+  .frame{
+    width:100%;
+    aspect-ratio:16/9;
+    container-type:inline-size;
+    overflow:hidden;
+    position:relative;
+    background:#000;
+    border:1px solid #2a2a2a;
+    border-radius:6px;
+    box-shadow:0 30px 70px -30px rgba(0,0,0,.6);
+  }
+  .board{
+    position:absolute;
+    top:0;left:0;
+    width:1920px;height:1080px;
+    transform:scale(calc(100cqw / 1920px));
+    transform-origin:top left;
+    overflow:hidden;
+  }
+
+  /* ---------- target mode: when a thumb is selected via #native-XX,
+       overlay that single board at native 1920×1080 over the gallery. ---------- */
+  .thumb:target{
+    position:fixed;top:0;left:0;
+    width:1920px;height:1080px;
+    margin:0;padding:0;
+    z-index:100;
+    background:#000;
+  }
+  .thumb:target .thumb-meta{display:none}
+  .thumb:target .frame{
+    position:absolute;top:0;left:0;
+    width:1920px;height:1080px;
+    aspect-ratio:auto;max-width:none;
+    container-type:normal;
+    border:none;border-radius:0;box-shadow:none;
+  }
+  .thumb:target .board{
+    transform:none;
+  }
+
+  /* ===========================================================
+     PATTERN 01 — OVERTURE (editorial cover)
+     =========================================================== */
+  .b1{
+    background:var(--paper);
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.06  0 0 0 0 0.04  0 0 0 0.16 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    color:var(--ink);
+    font:400 16px/1.55 "Spectral",serif;
+    overflow:hidden;
+  }
+  .b1::before{
+    /* halftone dots, lower-left */
+    content:"";position:absolute;left:-40px;bottom:-60px;
+    width:560px;height:560px;
+    background-image:radial-gradient(var(--ink) 1.4px, transparent 1.7px);
+    background-size:18px 18px;
+    opacity:.07;pointer-events:none;
+  }
+  .b1::after{
+    /* warm halo, upper-right */
+    content:"";position:absolute;right:-160px;top:-160px;
+    width:760px;height:760px;
+    background:radial-gradient(circle at 30% 30%, rgba(255,122,0,.22), transparent 60%);
+    pointer-events:none;
+  }
+  .b1-marquee{
+    position:absolute;left:0;right:0;top:0;
+    background:var(--ink);color:var(--paper);
+    padding:20px 56px;
+    font:500 16px/1 "JetBrains Mono",monospace;
+    letter-spacing:.22em;text-transform:uppercase;
+    display:flex;gap:60px;
+    white-space:nowrap;overflow:hidden;
+  }
+  .b1-marquee span{display:inline-flex;align-items:center;gap:14px}
+  .b1-marquee span::before{content:"●";color:var(--vermilion);font-size:9px;transform:translateY(-3px)}
+  .b1-edge{
+    position:absolute;left:30px;top:140px;bottom:90px;
+    width:36px;
+    display:flex;align-items:center;justify-content:center;
+    writing-mode:vertical-rl;
+    transform:rotate(180deg);
+    font:700 11px/1 "JetBrains Mono",monospace;
+    letter-spacing:.42em;text-transform:uppercase;color:var(--muted);
+  }
+  .b1-edge::before,.b1-edge::after{
+    content:"";display:block;width:1px;flex:1;background:var(--rule);
+  }
+  .b1-edge::before{margin-bottom:18px}
+  .b1-edge::after{margin-top:18px}
+  .b1-folio{
+    position:absolute;left:104px;top:108px;
+    display:flex;align-items:center;gap:18px;
+    font:600 14px/1 "JetBrains Mono",monospace;
+    letter-spacing:.32em;text-transform:uppercase;color:var(--muted);
+  }
+  .b1-folio::before{content:"";display:block;width:60px;height:1px;background:var(--vermilion)}
+  .b1-folio .num{color:var(--vermilion);font-weight:700}
+  .b1-meta{
+    position:absolute;right:64px;top:104px;
+    text-align:right;
+    font:500 12px/1.6 "JetBrains Mono",monospace;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  }
+  .b1-meta b{color:var(--ink);font-weight:700}
+
+  .b1-wordmark{
+    position:absolute;left:88px;top:208px;
+    margin:0;
+    font-family:"Fraunces",serif;
+    font-variation-settings:"opsz" 144,"wght" 800,"SOFT" 100,"WONK" 1;
+    font-size:440px;line-height:.86;
+    letter-spacing:-.045em;color:var(--ink);
+  }
+  .b1-wordmark em{
+    font-style:normal;color:var(--vermilion);
+    font-variation-settings:"opsz" 144,"wght" 600,"SOFT" 100,"WONK" 1;
+  }
+  .b1-wordmark .period{color:var(--vermilion)}
+
+  .b1-tagline{
+    position:absolute;left:96px;top:660px;
+    margin:0;max-width:760px;
+    font-family:"Fraunces",serif;
+    font-variation-settings:"opsz" 60,"wght" 400,"SOFT" 80;
+    font-size:54px;line-height:1.18;letter-spacing:-.012em;
+    color:var(--ink-soft);
+  }
+  .b1-tagline em{
+    font-style:italic;color:var(--vermilion);
+    font-variation-settings:"opsz" 60,"wght" 500,"SOFT" 100;
+  }
+
+  .b1-pills{
+    position:absolute;left:96px;top:802px;
+    display:flex;flex-wrap:wrap;gap:10px;
+    max-width:1060px;
+  }
+  .b1-pills .pill{
+    padding:11px 18px;border-radius:999px;
+    border:1.5px solid var(--ink);
+    background:transparent;color:var(--ink);
+    font:600 14px/1 "JetBrains Mono",monospace;
+    letter-spacing:.18em;text-transform:uppercase;
+  }
+  .b1-pills .pill.solid{
+    background:var(--ink);color:var(--paper);
+    border-color:var(--ink);
+  }
+
+  .b1-yokai{
+    position:absolute;right:96px;top:184px;
+    width:760px;height:780px;
+  }
+  .b1-yokai .ycard{
+    position:absolute;
+    width:480px;aspect-ratio:1/1;
+    background:var(--washi);
+    border-radius:32px;
+    box-shadow:0 30px 60px -22px rgba(20,17,13,.4),0 1px 0 rgba(20,17,13,.1);
+    border:1px solid var(--rule);
+    overflow:hidden;
+  }
+  .b1-yokai .ycard img{
+    width:100%;height:100%;object-fit:contain;display:block;
+    padding:9%;
+    filter:drop-shadow(0 10px 18px rgba(20,17,13,.18));
+  }
+  .b1-yokai .ycard .stamp{
+    position:absolute;top:22px;left:22px;
+    font:700 14px/1 "JetBrains Mono",monospace;
+    letter-spacing:.24em;color:var(--vermilion);
+    background:var(--paper);
+    padding:9px 14px;border-radius:999px;
+    border:1px solid var(--vermilion);
+  }
+  .b1-yokai .ycard .label{
+    position:absolute;bottom:20px;left:22px;right:22px;
+    display:flex;justify-content:space-between;align-items:flex-end;
+    font:500 13px/1.3 "JetBrains Mono",monospace;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  .b1-yokai .ycard .label .ph{
+    font-size:18px;color:var(--vermilion);font-weight:700;letter-spacing:.04em;
+  }
+  .b1-yokai .yc1{top:0;right:0;transform:rotate(4deg);background:var(--paper-warm)}
+  .b1-yokai .yc2{top:140px;right:240px;transform:rotate(-5deg);background:var(--washi-deep)}
+  .b1-yokai .yc3{top:300px;right:60px;transform:rotate(2deg);background:var(--washi)}
+
+  .b1-chop{
+    position:absolute;right:120px;bottom:110px;
+    width:160px;height:160px;
+    border-radius:30px;
+    overflow:hidden;
+    transform:rotate(-7deg);
+    box-shadow:0 18px 32px -10px rgba(20,17,13,.42), 0 0 0 1px rgba(20,17,13,.08);
+    z-index:5;
+    background:var(--vermilion);
+  }
+  .b1-chop img{
+    display:block;width:100%;height:100%;object-fit:cover;
+  }
+
+  .b1-viz{
+    position:absolute;left:96px;bottom:84px;
+    width:540px;
+    padding:24px 28px 20px;
+    border:1px solid var(--rule);
+    background:linear-gradient(180deg, rgba(255,255,255,.4), rgba(255,255,255,.1));
+    border-radius:18px;
+  }
+  .b1-viz-tag{
+    position:absolute;top:-11px;left:24px;
+    background:var(--paper);
+    padding:0 10px;
+    font:700 11px/1 "JetBrains Mono",monospace;
+    letter-spacing:.26em;color:var(--vermilion);
+  }
+  .b1-pv{display:flex;align-items:flex-end;gap:7px;height:64px;margin-bottom:10px}
+  .b1-pv .bar{
+    flex:1;
+    background:linear-gradient(180deg,var(--mora-orange),var(--mora-orange-shadow));
+    border-radius:2px 2px 0 0;
+    box-shadow:inset 0 -2px 0 rgba(0,0,0,.2);
+  }
+  .b1-pv .bar.t{background:linear-gradient(180deg,var(--mora-teal),var(--mora-teal-shadow))}
+  .b1-pv .bar.v{background:linear-gradient(180deg,var(--vermilion),var(--vermilion-deep))}
+  .b1-pv-labels{
+    display:flex;justify-content:space-between;
+    font:500 12px/1 "JetBrains Mono",monospace;
+    letter-spacing:.1em;color:var(--muted);
+  }
+  .b1-pv-labels .ok{color:var(--mora-teal)}
+  .b1-pv-labels .sub{color:var(--vermilion)}
+
+  /* ===========================================================
+     PATTERN 07 — OVERTURE / OPENDYSLEXIC TITLE
+     Same composition as Pattern 01 but the "Mora." wordmark uses
+     OpenDyslexic instead of Fraunces — the dyslexia-friendly typeface
+     this product is built around. Body type stays in Spectral and
+     JetBrains Mono so the contrast lands cleanly on the title.
+     =========================================================== */
+  .b1d .b1-wordmark{
+    font-family:var(--dyslexic);
+    font-variation-settings:normal;
+    font-weight:700;
+    font-size:368px;
+    line-height:.95;
+    letter-spacing:-.02em;
+    margin:0 0 28px -8px;
+  }
+  .b1d .b1-wordmark em{
+    font-family:var(--dyslexic);
+    font-variation-settings:normal;
+    font-weight:700;
+    font-style:italic;
+    color:var(--vermilion);
+  }
+  .b1d .b1-wordmark .period{
+    color:var(--vermilion);
+    font-style:normal;
+  }
+
+  /* ===========================================================
+     PATTERN 02 — SUBSTITUTION SLAB (dark phoneme math)
+     =========================================================== */
+  .b2{
+    background:var(--ink);
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.98  0 0 0 0 0.95  0 0 0 0 0.88  0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    color:var(--paper);
+    overflow:hidden;
+  }
+  .b2::before{
+    /* glowing orange disc upper-right */
+    content:"";position:absolute;right:-180px;top:-200px;
+    width:760px;height:760px;
+    background:radial-gradient(circle at 50% 50%, rgba(255,122,0,.22), transparent 60%);
+    pointer-events:none;
+  }
+  .b2::after{
+    /* teal glow lower-left */
+    content:"";position:absolute;left:-220px;bottom:-220px;
+    width:760px;height:760px;
+    background:radial-gradient(circle at 50% 50%, rgba(0,168,150,.16), transparent 65%);
+    pointer-events:none;
+  }
+  .b2-stripe{
+    position:absolute;left:0;right:0;top:0;height:6px;
+    background:linear-gradient(90deg,var(--vermilion),var(--mora-orange) 35%,var(--gold) 60%,var(--mora-teal));
+  }
+  .b2-folio{
+    position:absolute;left:88px;top:88px;
+    display:flex;align-items:center;gap:18px;
+    font:700 16px/1 "JetBrains Mono",monospace;
+    letter-spacing:.32em;text-transform:uppercase;color:var(--washi);
+  }
+  .b2-folio::before{content:"";display:block;width:64px;height:1px;background:var(--mora-orange)}
+  .b2-folio .num{color:var(--mora-orange);font-weight:800}
+
+  .b2-meta{
+    position:absolute;right:88px;top:84px;
+    text-align:right;
+    font:500 13px/1.55 "JetBrains Mono",monospace;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--haze);
+  }
+  .b2-meta b{color:var(--paper);font-weight:700}
+
+  .b2-headline{
+    position:absolute;left:88px;top:168px;width:1100px;
+    margin:0;
+    font-family:"Fraunces",serif;
+    font-variation-settings:"opsz" 96,"wght" 600,"SOFT" 30;
+    font-size:84px;line-height:1.02;letter-spacing:-.022em;color:var(--paper);
+  }
+  .b2-headline em{
+    font-style:italic;color:var(--mora-orange);
+    font-variation-settings:"opsz" 96,"wght" 500,"SOFT" 100;
+  }
+
+  .b2-stage{
+    position:absolute;left:88px;top:382px;right:88px;
+  }
+  .b2-row{
+    display:grid;grid-template-columns:1fr 160px 1fr 420px;
+    align-items:center;gap:32px;
+    padding:26px 0;
+    border-top:1px solid rgba(251,243,227,.18);
+    font-family:"Fraunces",serif;
+    font-variation-settings:"opsz" 144,"wght" 500,"SOFT" 80;
+    font-size:96px;line-height:1;
+  }
+  .b2-row:last-child{border-bottom:1px solid rgba(251,243,227,.18)}
+  .b2-row .heard{color:var(--vermilion);font-style:italic;text-align:right;letter-spacing:-.02em}
+  .b2-row .target{color:var(--mora-teal);text-align:left;letter-spacing:-.02em}
+  .b2-row .arrow{
+    text-align:center;
+    font:600 28px/1.2 "JetBrains Mono",monospace;
+    color:var(--washi);letter-spacing:.06em;text-transform:uppercase;
+  }
+  .b2-row .arrow span{display:block;font-size:38px;color:var(--mora-orange);margin:4px 0}
+  .b2-row .gloss{
+    font:500 16px/1.5 "JetBrains Mono",monospace;
+    color:var(--haze);letter-spacing:.1em;text-transform:uppercase;
+    text-align:right;
+  }
+  .b2-row .gloss b{color:var(--paper);font-weight:700;letter-spacing:.04em;text-transform:none;font-family:"Spectral",serif;font-style:italic}
+
+  .b2-bottom{
+    position:absolute;left:88px;right:88px;bottom:80px;
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:36px;
+  }
+  .b2-brand{
+    font-family:"Fraunces",serif;
+    font-variation-settings:"opsz" 144,"wght" 800,"SOFT" 100,"WONK" 1;
+    font-size:64px;line-height:.9;letter-spacing:-.04em;
+    color:var(--paper);
+    margin:0;
+  }
+  .b2-brand em{font-style:normal;color:var(--mora-orange)}
+  .b2-brand .period{color:var(--mora-orange)}
+  .b2-brand-sub{
+    font:500 13px/1 "JetBrains Mono",monospace;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--haze);
+    margin-top:10px;
+  }
+  .b2-badges{
+    display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;
+    max-width:920px;
+  }
+  .b2-badge{
+    padding:11px 18px;border-radius:999px;
+    border:1.5px solid var(--washi);
+    font:600 13px/1 "JetBrains Mono",monospace;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--paper);
+  }
+  .b2-badge.solid{background:var(--mora-orange);border-color:var(--mora-orange);color:var(--ink)}
+  .b2-badge.teal{border-color:var(--mora-teal);color:var(--mora-teal)}
+
+  /* ===========================================================
+     PATTERN 03 — THE NUMBERS (editorial stats grid)
+     =========================================================== */
+  .b3{
+    background:var(--paper);
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.06  0 0 0 0 0.04  0 0 0 0.16 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    color:var(--ink);
+    overflow:hidden;
+  }
+  .b3-rule{
+    position:absolute;left:96px;right:96px;
+    border:0;border-top:2px solid var(--ink);
+    margin:0;
+  }
+  .b3-rule.top{top:96px}
+  .b3-rule.bot{bottom:96px}
+  .b3-folio{
+    position:absolute;left:96px;top:124px;
+    display:flex;align-items:center;gap:18px;
+    font:700 14px/1 "JetBrains Mono",monospace;
+    letter-spacing:.32em;text-transform:uppercase;color:var(--muted);
+  }
+  .b3-folio .num{color:var(--vermilion);font-weight:800}
+  .b3-folio::after{content:"";display:block;flex:1;height:1px;background:var(--rule);max-width:200px}
+  .b3-meta{
+    position:absolute;right:96px;top:120px;
+    font:500 12px/1.55 "JetBrains Mono",monospace;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+    text-align:right;
+  }
+  .b3-meta b{color:var(--ink);font-weight:700}
+
+  .b3-headline{
+    position:absolute;left:96px;top:188px;width:1320px;
+    margin:0;
+    font-family:"Fraunces",serif;
+    font-variation-settings:"opsz" 144,"wght" 700,"SOFT" 50,"WONK" 1;
+    font-size:108px;line-height:.95;letter-spacing:-.04em;color:var(--ink);
+  }
+  .b3-headline em{
+    font-style:italic;color:var(--vermilion);
+    font-variation-settings:"opsz" 144,"wght" 600,"SOFT" 100,"WONK" 1;
+  }
+  .b3-lede{
+    position:absolute;left:96px;top:380px;width:920px;
+    margin:0;
+    font:400 24px/1.45 "Spectral",serif;color:var(--ink-soft);
+  }
+  .b3-lede em{font-style:italic;color:var(--vermilion)}
+
+  .b3-grid{
+    position:absolute;left:96px;right:96px;top:496px;
+    display:grid;grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+  }
+  .b3-stat{
+    padding:36px 28px 38px;
+    border-right:1px solid var(--rule);
+  }
+  .b3-stat:last-child{border-right:none}
+  .b3-big{
+    display:block;
+    font-family:"Fraunces",serif;
+    font-variation-settings:"opsz" 144,"wght" 700,"SOFT" 50,"WONK" 1;
+    font-size:148px;line-height:.92;letter-spacing:-.05em;color:var(--ink);
+    margin-bottom:18px;
+  }
+  .b3-big sup{
+    font-size:.36em;
+    color:var(--vermilion);
+    vertical-align:top;
+    margin-left:4px;
+    font-variation-settings:"opsz" 48,"wght" 700,"SOFT" 50;
+  }
+  .b3-big em{
+    font-style:italic;color:var(--vermilion);
+    font-variation-settings:"opsz" 144,"wght" 600,"SOFT" 100,"WONK" 1;
+  }
+  .b3-label{
+    font:500 14px/1.45 "JetBrains Mono",monospace;
+    letter-spacing:.16em;text-transform:uppercase;
+    color:var(--muted);
+  }
+  .b3-label b{color:var(--ink);font-weight:700}
+
+  .b3-bottom{
+    position:absolute;left:96px;right:96px;bottom:128px;
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:48px;
+  }
+  .b3-brand{
+    font-family:"Fraunces",serif;
+    font-variation-settings:"opsz" 144,"wght" 800,"SOFT" 100,"WONK" 1;
+    font-size:88px;line-height:.85;letter-spacing:-.045em;
+    color:var(--ink);margin:0;
+  }
+  .b3-brand em{font-style:normal;color:var(--vermilion)}
+  .b3-brand .period{color:var(--vermilion)}
+  .b3-tagline{
+    text-align:right;font-style:italic;
+    font-family:"Fraunces",serif;
+    font-variation-settings:"opsz" 60,"wght" 400,"SOFT" 80;
+    font-size:30px;line-height:1.2;color:var(--ink-soft);
+    margin:0;max-width:600px;
+  }
+  .b3-tagline b{color:var(--vermilion);font-weight:600;font-style:normal;font-variation-settings:"opsz" 60,"wght" 600,"SOFT" 100}
+  .b3-tagline small{
+    display:block;margin-top:14px;
+    font:500 12px/1 "JetBrains Mono",monospace;
+    letter-spacing:.18em;text-transform:uppercase;
+    color:var(--muted);font-style:normal;
+  }
+
+  /* corner halftones */
+  .b3-dots{
+    position:absolute;
+    width:300px;height:300px;
+    background-image:radial-gradient(var(--ink) 1.4px, transparent 1.7px);
+    background-size:18px 18px;
+    opacity:.07;pointer-events:none;
+  }
+  .b3-dots.tr{top:-30px;right:-30px}
+  .b3-dots.bl{bottom:-30px;left:-30px}
+
+  /* ===========================================================
+     PATTERN 04 — PULL QUOTE (emotional centerpiece)
+     =========================================================== */
+  .b4{
+    background:var(--paper-warm);
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.18  0 0 0 0 0.12  0 0 0 0 0.07  0 0 0 0.12 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
+      radial-gradient(circle at 80% 20%, rgba(255,122,0,.12), transparent 55%),
+      radial-gradient(circle at 15% 85%, rgba(196,52,28,.08), transparent 60%);
+    color:var(--ink);
+    overflow:hidden;
+  }
+  .b4-watermark{
+    position:absolute;right:-90px;bottom:-60px;
+    width:760px;height:760px;
+    opacity:.085;
+    pointer-events:none;
+    transform:rotate(-6deg);
+  }
+  .b4-watermark img{width:100%;height:100%;object-fit:contain}
+  .b4-folio{
+    position:absolute;left:120px;top:120px;
+    display:flex;align-items:center;gap:18px;
+    font:700 14px/1 "JetBrains Mono",monospace;
+    letter-spacing:.34em;text-transform:uppercase;color:var(--muted);
+  }
+  .b4-folio .num{color:var(--vermilion);font-weight:800}
+  .b4-folio::before{content:"";width:64px;height:1px;background:var(--vermilion);display:block}
+  .b4-meta{
+    position:absolute;right:120px;top:120px;
+    text-align:right;
+    font:500 12px/1.6 "JetBrains Mono",monospace;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+  }
+  .b4-meta b{color:var(--ink);font-weight:700}
+
+  .b4-quote-mark{
+    position:absolute;left:80px;top:218px;
+    font-family:"Fraunces",serif;
+    font-variation-settings:"opsz" 144,"wght" 800,"SOFT" 100;
+    font-size:380px;line-height:.85;
+    color:var(--vermilion);
+    letter-spacing:-.05em;
+    pointer-events:none;
+  }
+
+  .b4-quote{
+    position:absolute;left:240px;top:380px;width:1480px;
+    margin:0;
+    font-family:"Fraunces",serif;
+    font-variation-settings:"opsz" 144,"wght" 500,"SOFT" 100,"WONK" 1;
+    font-size:128px;line-height:1.04;letter-spacing:-.024em;
+    color:var(--ink);
+    font-style:italic;
+  }
+  .b4-quote em{
+    font-style:italic;color:var(--vermilion);
+    font-variation-settings:"opsz" 144,"wght" 600,"SOFT" 100,"WONK" 1;
+  }
+  .b4-quote b{font-style:normal;font-weight:600}
+
+  .b4-signed{
+    position:absolute;left:240px;top:716px;
+    display:flex;align-items:center;gap:22px;
+    font:600 16px/1.4 "JetBrains Mono",monospace;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--muted);
+  }
+  .b4-signed::before{content:"";display:block;width:60px;height:2px;background:var(--ink)}
+  .b4-signed b{color:var(--ink);font-weight:700}
+
+  .b4-context{
+    position:absolute;left:240px;top:780px;
+    width:1100px;
+    font:400 22px/1.55 "Spectral",serif;
+    color:var(--ink-soft);font-style:italic;
+  }
+  .b4-context b{color:var(--vermilion);font-style:normal}
+
+  .b4-chop{
+    position:absolute;right:140px;bottom:140px;
+    width:240px;height:240px;
+    background:var(--ink);
+    border-radius:46px;
+    overflow:hidden;
+    transform:rotate(-6deg);
+    box-shadow:0 22px 40px -10px rgba(20,17,13,.45), 0 0 0 1px rgba(20,17,13,.1);
+    display:flex;flex-direction:column;
+  }
+  .b4-chop .glyph{
+    flex:1;display:block;
+    width:100%;height:100%;
+    object-fit:cover;
+  }
+  .b4-chop .label{
+    background:rgba(20,17,13,.92);
+    text-align:center;
+    padding:8px 0;
+    font:700 13px/1 "JetBrains Mono",monospace;
+    letter-spacing:.32em;color:var(--paper);
+  }
+
+  .b4-brand{
+    position:absolute;left:96px;bottom:80px;
+    font-family:"Fraunces",serif;
+    font-variation-settings:"opsz" 144,"wght" 800,"SOFT" 100,"WONK" 1;
+    font-size:64px;line-height:.85;letter-spacing:-.045em;
+    color:var(--ink);
+  }
+  .b4-brand em{font-style:normal;color:var(--vermilion)}
+  .b4-brand .period{color:var(--vermilion)}
+
+  /* ===========================================================
+     PATTERN 05 — YOKAI TRIUMVIRATE (washi mentor showcase)
+     =========================================================== */
+  .b5{
+    background:var(--washi);
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.36  0 0 0 0 0.27  0 0 0 0 0.16  0 0 0 0.18 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
+      radial-gradient(ellipse at 50% 45%, rgba(255,122,0,.16), transparent 60%);
+    color:var(--ink);
+    overflow:hidden;
+  }
+  .b5::before{
+    /* halftone bottom band */
+    content:"";position:absolute;left:0;right:0;bottom:0;height:200px;
+    background-image:radial-gradient(var(--ink) 1.4px, transparent 1.8px);
+    background-size:20px 20px;
+    background-position:bottom;
+    opacity:.08;pointer-events:none;
+    mask-image:linear-gradient(transparent 0%, black 100%);
+  }
+  .b5-folio{
+    position:absolute;left:96px;top:96px;
+    display:flex;align-items:center;gap:18px;
+    font:700 15px/1 "JetBrains Mono",monospace;
+    letter-spacing:.32em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  .b5-folio::before{content:"";display:block;width:64px;height:1px;background:var(--vermilion)}
+  .b5-folio .num{color:var(--vermilion);font-weight:800}
+  .b5-meta{
+    position:absolute;right:96px;top:90px;
+    text-align:right;
+    font:500 12px/1.55 "JetBrains Mono",monospace;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  .b5-meta b{color:var(--ink);font-weight:700}
+
+  .b5-headline{
+    position:absolute;left:0;right:0;top:166px;
+    text-align:center;
+    margin:0;
+    font-family:"Fraunces",serif;
+    font-variation-settings:"opsz" 144,"wght" 700,"SOFT" 50,"WONK" 1;
+    font-size:118px;line-height:.95;letter-spacing:-.038em;color:var(--ink);
+  }
+  .b5-headline em{
+    font-style:italic;color:var(--vermilion);
+    font-variation-settings:"opsz" 144,"wght" 600,"SOFT" 100,"WONK" 1;
+  }
+  .b5-tagline{
+    position:absolute;left:0;right:0;top:296px;
+    text-align:center;
+    margin:0 auto;max-width:1300px;
+    font-family:"Fraunces",serif;
+    font-variation-settings:"opsz" 60,"wght" 400,"SOFT" 80;
+    font-size:34px;line-height:1.35;letter-spacing:-.008em;
+    color:var(--ink-soft);font-style:italic;
+  }
+  .b5-tagline b{color:var(--ink);font-style:normal;font-weight:600}
+  .b5-tagline em{color:var(--vermilion);font-style:italic}
+
+  .b5-stage{
+    position:absolute;left:96px;right:96px;top:362px;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:32px;
+  }
+  .b5-card{
+    position:relative;
+    background:var(--paper);
+    border-radius:32px;
+    border:1px solid var(--rule);
+    box-shadow:0 24px 50px -22px rgba(20,17,13,.45);
+    overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .b5-card.c1{transform:rotate(-2.2deg);background:var(--paper-warm);transform-origin:50% 70%}
+  .b5-card.c2{transform:rotate(0.6deg) translateY(-14px);background:var(--paper);z-index:2}
+  .b5-card.c3{transform:rotate(2.4deg);background:var(--washi-deep);transform-origin:50% 70%}
+  .b5-card .stamp{
+    position:absolute;top:20px;left:20px;
+    font:700 14px/1 "JetBrains Mono",monospace;
+    letter-spacing:.22em;color:var(--vermilion);
+    background:var(--paper);
+    padding:9px 14px;border-radius:999px;
+    border:1.5px solid var(--vermilion);
+    z-index:2;
+  }
+  .b5-card .order{
+    position:absolute;top:18px;right:22px;
+    font-family:"Fraunces",serif;
+    font-variation-settings:"opsz" 60,"wght" 800,"SOFT" 50;
+    font-size:34px;color:var(--vermilion);line-height:.85;letter-spacing:-.04em;
+    z-index:2;
+  }
+  .b5-card .yokai{
+    height:340px;
+    display:flex;align-items:center;justify-content:center;
+    padding:48px 24px 8px;
+    overflow:hidden;
+  }
+  .b5-card .yokai img{
+    max-width:100%;max-height:100%;
+    width:auto;height:auto;
+    object-fit:contain;
+    filter:drop-shadow(0 16px 24px rgba(20,17,13,.22));
+  }
+  .b5-card .info{
+    padding:14px 22px 18px;
+    border-top:1px solid var(--rule);
+  }
+  .b5-card .info .name{
+    font-family:"Fraunces",serif;
+    font-variation-settings:"opsz" 60,"wght" 700,"SOFT" 30;
+    font-size:30px;line-height:1;letter-spacing:-.018em;color:var(--ink);
+    margin:0 0 6px;
+  }
+  .b5-card .info .name em{color:var(--vermilion);font-style:italic}
+  .b5-card .info .gloss{
+    font:500 11px/1.5 "JetBrains Mono",monospace;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+    margin:0;
+  }
+
+  .b5-bottom{
+    position:absolute;left:0;right:0;bottom:78px;
+    display:flex;justify-content:center;align-items:center;gap:18px;
+    flex-direction:column;
+  }
+  .b5-brand{
+    font-family:"Fraunces",serif;
+    font-variation-settings:"opsz" 144,"wght" 800,"SOFT" 100,"WONK" 1;
+    font-size:54px;line-height:1;letter-spacing:-.045em;color:var(--ink);
+  }
+  .b5-brand em{font-style:normal;color:var(--vermilion)}
+  .b5-brand .period{color:var(--vermilion)}
+  .b5-credits{
+    font:500 12px/1 "JetBrains Mono",monospace;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--muted);
+  }
+
+  /* ===========================================================
+     PATTERN 06 — TERMINAL (dev / code aesthetic)
+     =========================================================== */
+  .b6{
+    background:var(--ink);
+    background-image:
+      linear-gradient(180deg, #0c0a07 0%, var(--ink) 60%, #0c0a07 100%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.98  0 0 0 0 0.95  0 0 0 0 0.88  0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    background-blend-mode:overlay,normal;
+    color:var(--paper);
+    overflow:hidden;
+  }
+  .b6::before{
+    /* scanline overlay */
+    content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 2px,
+      rgba(255,255,255,.018) 2px,
+      rgba(255,255,255,.018) 4px
+    );
+    pointer-events:none;
+  }
+  .b6::after{
+    /* corner glow */
+    content:"";position:absolute;left:-220px;top:-200px;
+    width:760px;height:760px;
+    background:radial-gradient(circle, rgba(0,168,150,.18), transparent 65%);
+    pointer-events:none;
+  }
+  .b6-stripe{
+    position:absolute;left:0;right:0;top:0;height:6px;
+    background:linear-gradient(90deg,var(--mora-teal),var(--mora-orange) 50%,var(--vermilion));
+  }
+  .b6-folio{
+    position:absolute;left:88px;top:90px;
+    display:flex;align-items:center;gap:18px;
+    font:700 14px/1 "JetBrains Mono",monospace;
+    letter-spacing:.32em;text-transform:uppercase;color:var(--washi);
+  }
+  .b6-folio::before{content:"";width:60px;height:1px;background:var(--mora-teal);display:block}
+  .b6-folio .num{color:var(--mora-teal);font-weight:800}
+  .b6-meta{
+    position:absolute;right:88px;top:86px;
+    text-align:right;
+    font:500 12px/1.6 "JetBrains Mono",monospace;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--haze);
+  }
+  .b6-meta b{color:var(--paper);font-weight:700}
+
+  .b6-headline{
+    position:absolute;left:88px;top:172px;width:1100px;
+    margin:0;
+    font-family:"Fraunces",serif;
+    font-variation-settings:"opsz" 144,"wght" 700,"SOFT" 30,"WONK" 1;
+    font-size:104px;line-height:.96;letter-spacing:-.034em;color:var(--paper);
+  }
+  .b6-headline em{
+    font-style:italic;color:var(--mora-teal);
+    font-variation-settings:"opsz" 144,"wght" 600,"SOFT" 80,"WONK" 1;
+  }
+
+  .b6-terminal{
+    position:absolute;left:88px;top:404px;width:1180px;
+    background:rgba(10,8,6,.85);
+    border:1px solid #2c2418;
+    border-radius:14px;
+    padding:24px 28px 26px;
+    box-shadow:0 30px 60px -22px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.04);
+    font:500 22px/1.7 "JetBrains Mono",monospace;
+  }
+  .b6-terminal .titlebar{
+    display:flex;align-items:center;gap:8px;
+    margin:-8px -10px 18px;padding:0 4px 12px;
+    border-bottom:1px solid #2c2418;
+  }
+  .b6-terminal .titlebar .dot{
+    width:14px;height:14px;border-radius:50%;
+  }
+  .b6-terminal .titlebar .d1{background:#ff5f56}
+  .b6-terminal .titlebar .d2{background:#ffbd2e}
+  .b6-terminal .titlebar .d3{background:#27c93f}
+  .b6-terminal .titlebar .label{
+    margin-left:14px;color:var(--haze);
+    font-size:14px;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .b6-terminal .line{display:block;white-space:nowrap;color:var(--haze)}
+  .b6-terminal .prompt{color:var(--mora-teal);margin-right:10px;font-weight:700}
+  .b6-terminal .cmd{color:var(--paper)}
+  .b6-terminal .arrow{color:var(--mora-orange);margin-right:10px;font-weight:700}
+  .b6-terminal .ok{color:var(--mora-teal);font-weight:700}
+  .b6-terminal .warn{color:var(--vermilion);font-weight:700}
+  .b6-terminal .accent{color:var(--mora-orange);font-weight:700}
+  .b6-terminal .dim{color:var(--haze);opacity:.85}
+  .b6-terminal .blink{color:var(--mora-teal);animation:blink 1.1s step-end infinite}
+  @keyframes blink{50%{opacity:0}}
+
+  .b6-bars{
+    position:absolute;right:88px;top:404px;width:520px;
+    background:rgba(10,8,6,.6);
+    border:1px solid #2c2418;
+    border-radius:14px;
+    padding:30px 26px 24px;
+  }
+  .b6-bars-tag{
+    position:absolute;top:-11px;left:24px;
+    background:var(--ink);
+    padding:0 10px;
+    font:700 12px/1 "JetBrains Mono",monospace;
+    letter-spacing:.26em;color:var(--mora-orange);
+  }
+  .b6-pv{display:flex;align-items:flex-end;gap:8px;height:120px;margin-bottom:14px}
+  .b6-pv .bar{
+    flex:1;border-radius:3px 3px 0 0;
+    background:linear-gradient(180deg,var(--mora-orange),var(--mora-orange-shadow));
+    box-shadow:inset 0 -2px 0 rgba(0,0,0,.2),0 0 18px rgba(255,122,0,.18);
+  }
+  .b6-pv .bar.t{background:linear-gradient(180deg,var(--mora-teal),var(--mora-teal-shadow));box-shadow:inset 0 -2px 0 rgba(0,0,0,.2),0 0 18px rgba(0,168,150,.18)}
+  .b6-pv .bar.v{background:linear-gradient(180deg,var(--vermilion),var(--vermilion-deep));box-shadow:inset 0 -2px 0 rgba(0,0,0,.2),0 0 18px rgba(196,52,28,.2)}
+  .b6-pv-labels{
+    display:flex;justify-content:space-between;
+    font:600 13px/1 "JetBrains Mono",monospace;
+    letter-spacing:.1em;color:var(--haze);
+  }
+  .b6-pv-labels .ok{color:var(--mora-teal)}
+  .b6-pv-labels .sub{color:var(--vermilion)}
+
+  .b6-bottom{
+    position:absolute;left:88px;right:88px;bottom:64px;
+    display:flex;justify-content:space-between;align-items:flex-end;
+  }
+  .b6-brand{
+    font-family:"Fraunces",serif;
+    font-variation-settings:"opsz" 144,"wght" 800,"SOFT" 100,"WONK" 1;
+    font-size:64px;line-height:.85;letter-spacing:-.045em;color:var(--paper);margin:0;
+  }
+  .b6-brand em{font-style:normal;color:var(--mora-teal)}
+  .b6-brand .period{color:var(--mora-teal)}
+  .b6-brand-sub{
+    font:600 13px/1 "JetBrains Mono",monospace;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--haze);
+    margin-top:10px;
+  }
+  .b6-credit{
+    text-align:right;
+    font:500 12px/1.6 "JetBrains Mono",monospace;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--haze);
+  }
+  .b6-credit b{color:var(--mora-orange);font-weight:700}
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <h1>Mora · 16:9 Cover Art <em>Gallery</em></h1>
+  <p>
+    Six 1920×1080 thumbnails for OG image / YouTube. Click <code>Open native</code> on any board to view it full-size, then export with Chrome DevTools → <code>Capture node screenshot</code>, or run the headless render script: <code>tools/og/render-og.sh</code>.
+  </p>
+</header>
+
+<main class="gallery">
+
+  <!-- ===========================================================
+       PATTERN 01 — OVERTURE
+       =========================================================== -->
+  <article class="thumb" id="native-01">
+    <div class="thumb-meta">
+      <span class="num">01</span>
+      <h2>Overture · Editorial cover</h2>
+      <p class="desc">Paper-cream wordmark hero with floating yokai card stack. Magazine-cover register.</p>
+      <a class="open" href="#native-01">Open native</a>
+    </div>
+    <div class="frame">
+      <div class="board b1">
+        <div class="b1-marquee">
+          <span>On-device only</span>
+          <span>Built with Opus 4.7</span>
+          <span>5 days · 100+ PRs</span>
+          <span>Orton-Gillingham phonics</span>
+          <span>CoreML wav2vec2</span>
+          <span>L1-Japanese aware</span>
+        </div>
+
+        <div class="b1-edge">Built with Opus 4.7 — Anthropic × Cerebral Valley · April 2026</div>
+
+        <div class="b1-folio"><span class="num">00</span><span>Overture</span></div>
+        <div class="b1-meta">
+          <div><b>github.com/youtalk/mora</b></div>
+          <div>v0.1 · MPL-2.0 · Apr 2026</div>
+        </div>
+
+        <h1 class="b1-wordmark">M<em>o</em>ra<span class="period">.</span></h1>
+        <p class="b1-tagline">A different door into reading <em>— for kids who learn differently.</em></p>
+
+        <div class="b1-pills">
+          <span class="pill solid">Built with Opus 4.7</span>
+          <span class="pill">iPad-first</span>
+          <span class="pill">On-device</span>
+          <span class="pill">L1-Japanese aware</span>
+          <span class="pill">CoreML · wav2vec2</span>
+        </div>
+
+        <div class="b1-viz">
+          <span class="b1-viz-tag">INFERENCE · 16 kHz · CoreML · INT8</span>
+          <div class="b1-pv">
+            <div class="bar" style="height:24%"></div>
+            <div class="bar t" style="height:48%"></div>
+            <div class="bar" style="height:88%"></div>
+            <div class="bar" style="height:62%"></div>
+            <div class="bar t" style="height:36%"></div>
+            <div class="bar v" style="height:78%"></div>
+            <div class="bar" style="height:42%"></div>
+            <div class="bar t" style="height:90%"></div>
+            <div class="bar" style="height:30%"></div>
+            <div class="bar" style="height:54%"></div>
+            <div class="bar t" style="height:70%"></div>
+            <div class="bar" style="height:24%"></div>
+          </div>
+          <div class="b1-pv-labels">
+            <span class="ok">/ʃ/ matched · 0.92</span>
+            <span>posterior · 41 frames</span>
+            <span class="sub">/v/ → /b/ flagged</span>
+          </div>
+        </div>
+
+        <div class="b1-yokai">
+          <div class="ycard yc2">
+            <span class="stamp">/r/</span>
+            <img src="img/yokai/r.png" alt="">
+            <div class="label"><span>Mentor 02</span><span class="ph">/r/</span></div>
+          </div>
+          <div class="ycard yc1">
+            <span class="stamp">/ʃ/</span>
+            <img src="img/yokai/sh.png" alt="">
+            <div class="label"><span>Mentor 01</span><span class="ph">/sh/</span></div>
+          </div>
+          <div class="ycard yc3">
+            <span class="stamp">/æ/</span>
+            <img src="img/yokai/short_a.png" alt="">
+            <div class="label"><span>Mentor 03</span><span class="ph">/æ/</span></div>
+          </div>
+        </div>
+
+        <div class="b1-chop"><img src="img/AppIcon.png" alt=""></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ===========================================================
+       PATTERN 02 — SUBSTITUTION SLAB
+       =========================================================== -->
+  <article class="thumb" id="native-02">
+    <div class="thumb-meta">
+      <span class="num">02</span>
+      <h2>Substitution slab · Dark phoneme math</h2>
+      <p class="desc">Ink ground with three giant L1-Japanese substitutions. The pitch in one glance.</p>
+      <a class="open" href="#native-02">Open native</a>
+    </div>
+    <div class="frame">
+      <div class="board b2">
+        <div class="b2-stripe"></div>
+        <div class="b2-folio"><span class="num">04</span><span>L1-Aware Coaching</span></div>
+        <div class="b2-meta">
+          <div><b>Mora</b> · A different door into reading</div>
+          <div>github.com/youtalk/mora · MPL-2.0</div>
+        </div>
+
+        <h1 class="b2-headline">What L1-Japanese sounds like, <em>mathematically.</em></h1>
+
+        <div class="b2-stage">
+          <div class="b2-row">
+            <span class="heard">b</span>
+            <span class="arrow">heard<span>←</span>target</span>
+            <span class="target">v</span>
+            <span class="gloss">No /v/ in JP — defaults to <b>bilabial</b></span>
+          </div>
+          <div class="b2-row">
+            <span class="heard">r</span>
+            <span class="arrow">heard<span>←</span>target</span>
+            <span class="target">l</span>
+            <span class="gloss">JP ら-row → English /l/, /ɹ/, or <b>tap</b></span>
+          </div>
+          <div class="b2-row">
+            <span class="heard">s</span>
+            <span class="arrow">heard<span>←</span>target</span>
+            <span class="target">th</span>
+            <span class="gloss">/θ/ absent — alveolar fricative <b>substitutes</b></span>
+          </div>
+        </div>
+
+        <div class="b2-bottom">
+          <div>
+            <h3 class="b2-brand">M<em>o</em>ra<span class="period">.</span></h3>
+            <div class="b2-brand-sub">On-device dyslexia + ESL tutor</div>
+          </div>
+          <div class="b2-badges">
+            <span class="b2-badge solid">Built with Opus 4.7</span>
+            <span class="b2-badge teal">CoreML · wav2vec2</span>
+            <span class="b2-badge">iPad-first · MPL-2.0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ===========================================================
+       PATTERN 03 — THE NUMBERS
+       =========================================================== -->
+  <article class="thumb" id="native-03">
+    <div class="thumb-meta">
+      <span class="num">03</span>
+      <h2>The Numbers · Hackathon stats</h2>
+      <p class="desc">Editorial stat slab — five days, one hundred PRs, zero cloud calls.</p>
+      <a class="open" href="#native-03">Open native</a>
+    </div>
+    <div class="frame">
+      <div class="board b3">
+        <span class="b3-dots tr"></span>
+        <span class="b3-dots bl"></span>
+
+        <hr class="b3-rule top">
+        <hr class="b3-rule bot">
+
+        <div class="b3-folio"><span class="num">05</span><span>The Numbers</span></div>
+        <div class="b3-meta">
+          <div><b>Built with Opus 4.7</b> · Anthropic × Cerebral Valley</div>
+          <div>April 21 — 28, 2026 · Kitchen-table edition</div>
+        </div>
+
+        <h1 class="b3-headline">Five days. <em>A working app.</em></h1>
+        <p class="b3-lede">Hackathon constraints met head-on. Every number measured, not estimated — across one hundred merged pull requests on a single iPad.</p>
+
+        <div class="b3-grid">
+          <div class="b3-stat">
+            <span class="b3-big">100<sup>+</sup></span>
+            <span class="b3-label"><b>Merged PRs</b><br>Apr 21 – 26</span>
+          </div>
+          <div class="b3-stat">
+            <span class="b3-big">5</span>
+            <span class="b3-label"><b>SPM packages</b><br>Core ← Engines ← UI</span>
+          </div>
+          <div class="b3-stat">
+            <span class="b3-big">25.84</span>
+            <span class="b3-label"><b>MB CoreML</b><br>INT8 wav2vec2</span>
+          </div>
+          <div class="b3-stat">
+            <span class="b3-big"><em>0</em></span>
+            <span class="b3-label"><b>Cloud calls</b><br>at runtime</span>
+          </div>
+        </div>
+
+        <div class="b3-bottom">
+          <h3 class="b3-brand">M<em>o</em>ra<span class="period">.</span></h3>
+          <p class="b3-tagline">A different door into reading <b>— for kids who learn differently, in a language that isn't home yet.</b><small>github.com/youtalk/mora · MPL-2.0</small></p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ===========================================================
+       PATTERN 04 — PULL QUOTE
+       =========================================================== -->
+  <article class="thumb" id="native-04">
+    <div class="thumb-meta">
+      <span class="num">04</span>
+      <h2>Pull quote · The why</h2>
+      <p class="desc">Personal centerpiece with chop seal. The emotional thread of the project in one sentence.</p>
+      <a class="open" href="#native-04">Open native</a>
+    </div>
+    <div class="frame">
+      <div class="board b4">
+        <div class="b4-watermark"><img src="img/yokai/sh.png" alt=""></div>
+
+        <div class="b4-folio"><span class="num">01</span><span>The Ask</span></div>
+        <div class="b4-meta">
+          <div><b>Mora</b> · An on-device dyslexia + ESL tutor</div>
+          <div>Built in 5 days with Opus 4.7</div>
+        </div>
+
+        <div class="b4-quote-mark" aria-hidden="true">&#10077;</div>
+        <p class="b4-quote">I built Mora for <em>one kid</em> I love.</p>
+
+        <div class="b4-signed">
+          <b>Yutaka Kondoh</b><span>· author · @y_kondoh</span>
+        </div>
+        <p class="b4-context">
+          A child close to me lives with dyslexia. Last year, our family moved across an ocean, and English became the second language they'd learn to read. <b>So I built the tool I wished existed.</b>
+        </p>
+
+        <div class="b4-chop">
+          <img class="glyph" src="img/AppIcon.png" alt="">
+          <span class="label">MORA</span>
+        </div>
+
+        <div class="b4-brand">M<em>o</em>ra<span class="period">.</span></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ===========================================================
+       PATTERN 05 — YOKAI TRIUMVIRATE
+       =========================================================== -->
+  <article class="thumb" id="native-05">
+    <div class="thumb-meta">
+      <span class="num">05</span>
+      <h2>Yokai triumvirate · Mentor showcase</h2>
+      <p class="desc">Three illustrated mentor cards on washi. Yokai-forward, illustration-first.</p>
+      <a class="open" href="#native-05">Open native</a>
+    </div>
+    <div class="frame">
+      <div class="board b5">
+        <div class="b5-folio"><span class="num">03</span><span>What It Does</span></div>
+        <div class="b5-meta">
+          <div><b>Mora</b> · iPad-first · on-device only</div>
+          <div>github.com/youtalk/mora</div>
+        </div>
+
+        <h1 class="b5-headline">Mentors, <em>not graders.</em></h1>
+        <p class="b5-tagline">Phonics that <b>listens</b> for L1-Japanese — <em>not against it.</em></p>
+
+        <div class="b5-stage">
+          <div class="b5-card c1">
+            <span class="stamp">/ʃ/</span>
+            <span class="order">01</span>
+            <div class="yokai"><img src="img/yokai/sh.png" alt=""></div>
+            <div class="info">
+              <h4 class="name">Sh<em>i</em>ra-uoh</h4>
+              <p class="gloss">Mentor 01 · /sh/ · Week one</p>
+            </div>
+          </div>
+          <div class="b5-card c2">
+            <span class="stamp">/r/</span>
+            <span class="order">02</span>
+            <div class="yokai"><img src="img/yokai/r.png" alt=""></div>
+            <div class="info">
+              <h4 class="name">R<em>a</em>iju</h4>
+              <p class="gloss">Mentor 02 · /r/ · Week two</p>
+            </div>
+          </div>
+          <div class="b5-card c3">
+            <span class="stamp">/æ/</span>
+            <span class="order">03</span>
+            <div class="yokai"><img src="img/yokai/short_a.png" alt=""></div>
+            <div class="info">
+              <h4 class="name">Ap<em>p</em>uru-oni</h4>
+              <p class="gloss">Mentor 03 · /æ/ · Week three</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="b5-bottom">
+          <div class="b5-brand">M<em>o</em>ra<span class="period">.</span></div>
+          <div class="b5-credits">Built with Opus 4.7 · Anthropic × Cerebral Valley · April 2026</div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ===========================================================
+       PATTERN 06 — TERMINAL
+       =========================================================== -->
+  <article class="thumb" id="native-06">
+    <div class="thumb-meta">
+      <span class="num">06</span>
+      <h2>Terminal · Built with Opus 4.7</h2>
+      <p class="desc">Dev-aimed thumbnail with terminal trace and live phoneme posterior. For the AI builder audience.</p>
+      <a class="open" href="#native-06">Open native</a>
+    </div>
+    <div class="frame">
+      <div class="board b6">
+        <div class="b6-stripe"></div>
+        <div class="b6-folio"><span class="num">06</span><span>Built with Opus 4.7</span></div>
+        <div class="b6-meta">
+          <div><b>Mora</b> · github.com/youtalk/mora</div>
+          <div>Anthropic × Cerebral Valley · 5-day hackathon</div>
+        </div>
+
+        <h1 class="b6-headline">The model isn't a coworker. <em>It's a workshop.</em></h1>
+
+        <div class="b6-terminal" aria-hidden="true">
+          <div class="titlebar">
+            <span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span>
+            <span class="label">~/mora — opus-4.7 · claude code · 1 process</span>
+          </div>
+          <span class="line"><span class="prompt">$</span><span class="cmd">git log --oneline | wc -l</span></span>
+          <span class="line"><span class="dim">     </span><span class="accent">112</span></span>
+          <span class="line"><span class="prompt">$</span><span class="cmd">ls docs/superpowers/specs | wc -l</span></span>
+          <span class="line"><span class="dim">      </span><span class="accent">38</span></span>
+          <span class="line"><span class="prompt">$</span><span class="cmd">./mora --device ipad-pro-13 --watch</span></span>
+          <span class="line"><span class="arrow">▸</span><span class="dim">wav2vec2 loaded · </span><span class="ok">25.84 MB · INT8 · MIT</span></span>
+          <span class="line"><span class="arrow">▸</span><span class="dim">phase=warmup · yokai=</span><span class="accent">/sh/ shira-uoh</span></span>
+          <span class="line"><span class="arrow">▸</span><span class="dim">phase=decode · word=</span><span class="accent">ship</span><span class="dim"> · grapheme={s,h,i,p}</span></span>
+          <span class="line"><span class="arrow">▸</span><span class="dim">engineA · </span><span class="ok">/ʃ/ matched · conf 0.92</span></span>
+          <span class="line"><span class="arrow">▸</span><span class="dim">engineA · </span><span class="warn">/v/ → /b/ substitution</span><span class="dim"> · L1=ja</span></span>
+          <span class="line"><span class="arrow">▸</span><span class="dim">phase=summary · session complete · </span><span class="ok">+1 streak</span></span>
+          <span class="line"><span class="prompt">$</span><span class="blink">▮</span></span>
+        </div>
+
+        <div class="b6-bars">
+          <span class="b6-bars-tag">PHONEME · POSTERIOR · LIVE</span>
+          <div class="b6-pv">
+            <div class="bar" style="height:32%"></div>
+            <div class="bar t" style="height:58%"></div>
+            <div class="bar" style="height:88%"></div>
+            <div class="bar" style="height:74%"></div>
+            <div class="bar t" style="height:46%"></div>
+            <div class="bar v" style="height:80%"></div>
+            <div class="bar" style="height:54%"></div>
+            <div class="bar t" style="height:96%"></div>
+            <div class="bar" style="height:38%"></div>
+            <div class="bar" style="height:62%"></div>
+            <div class="bar t" style="height:70%"></div>
+            <div class="bar" style="height:30%"></div>
+          </div>
+          <div class="b6-pv-labels">
+            <span class="ok">/ʃ/ · 0.92</span>
+            <span>16 kHz · 41 fr</span>
+            <span class="sub">/v/ → /b/</span>
+          </div>
+        </div>
+
+        <div class="b6-bottom">
+          <div>
+            <h3 class="b6-brand">M<em>o</em>ra<span class="period">.</span></h3>
+            <div class="b6-brand-sub">A different door into reading</div>
+          </div>
+          <div class="b6-credit">
+            <div><b>100+ PRs</b> · 5 days · 1 kid</div>
+            <div>spec → plan → execute · parallel sub-agents on worktrees</div>
+            <div>oslog → claude · live debug</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ===========================================================
+       PATTERN 07 — OVERTURE / OPENDYSLEXIC TITLE
+       =========================================================== -->
+  <article class="thumb" id="native-07">
+    <div class="thumb-meta">
+      <span class="num">07</span>
+      <h2>Overture · OpenDyslexic title</h2>
+      <p class="desc">Same composition as Pattern 01, but the "Mora." wordmark is set in OpenDyslexic — the dyslexia-friendly typeface this product is built around.</p>
+      <a class="open" href="#native-07">Open native</a>
+    </div>
+    <div class="frame">
+      <div class="board b1 b1d">
+        <div class="b1-marquee">
+          <span>On-device only</span>
+          <span>Built with Opus 4.7</span>
+          <span>5 days · 100+ PRs</span>
+          <span>Orton-Gillingham phonics</span>
+          <span>CoreML wav2vec2</span>
+          <span>L1-Japanese aware</span>
+        </div>
+
+        <div class="b1-edge">Built with Opus 4.7 — Anthropic × Cerebral Valley · April 2026</div>
+
+        <div class="b1-folio"><span class="num">00</span><span>Overture</span></div>
+        <div class="b1-meta">
+          <div><b>github.com/youtalk/mora</b></div>
+          <div>v0.1 · MPL-2.0 · Apr 2026</div>
+        </div>
+
+        <h1 class="b1-wordmark">M<em>o</em>ra<span class="period">.</span></h1>
+        <p class="b1-tagline">A different door into reading <em>— for kids who learn differently.</em></p>
+
+        <div class="b1-pills">
+          <span class="pill solid">Built with Opus 4.7</span>
+          <span class="pill">iPad-first</span>
+          <span class="pill">On-device</span>
+          <span class="pill">L1-Japanese aware</span>
+          <span class="pill">CoreML · wav2vec2</span>
+        </div>
+
+        <div class="b1-viz">
+          <span class="b1-viz-tag">INFERENCE · 16 kHz · CoreML · INT8</span>
+          <div class="b1-pv">
+            <div class="bar" style="height:24%"></div>
+            <div class="bar t" style="height:48%"></div>
+            <div class="bar" style="height:88%"></div>
+            <div class="bar" style="height:62%"></div>
+            <div class="bar t" style="height:36%"></div>
+            <div class="bar v" style="height:78%"></div>
+            <div class="bar" style="height:42%"></div>
+            <div class="bar t" style="height:90%"></div>
+            <div class="bar" style="height:30%"></div>
+            <div class="bar" style="height:54%"></div>
+            <div class="bar t" style="height:70%"></div>
+            <div class="bar" style="height:24%"></div>
+          </div>
+          <div class="b1-pv-labels">
+            <span class="ok">/ʃ/ matched · 0.92</span>
+            <span>posterior · 41 frames</span>
+            <span class="sub">/v/ → /b/ flagged</span>
+          </div>
+        </div>
+
+        <div class="b1-yokai">
+          <div class="ycard yc2">
+            <span class="stamp">/r/</span>
+            <img src="img/yokai/r.png" alt="">
+            <div class="label"><span>Mentor 02</span><span class="ph">/r/</span></div>
+          </div>
+          <div class="ycard yc1">
+            <span class="stamp">/ʃ/</span>
+            <img src="img/yokai/sh.png" alt="">
+            <div class="label"><span>Mentor 01</span><span class="ph">/sh/</span></div>
+          </div>
+          <div class="ycard yc3">
+            <span class="stamp">/æ/</span>
+            <img src="img/yokai/short_a.png" alt="">
+            <div class="label"><span>Mentor 03</span><span class="ph">/æ/</span></div>
+          </div>
+        </div>
+
+        <div class="b1-chop"><img src="img/AppIcon.png" alt=""></div>
+      </div>
+    </div>
+  </article>
+
+</main>
+
+</body>
+</html>

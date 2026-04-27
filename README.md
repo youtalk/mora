@@ -1,5 +1,7 @@
 # Mora
 
+<a href="https://www.youtalk.jp/mora"><img src="docs/img/og/og-01.png" alt="Mora — A different door into reading. Built with Opus 4.7." width="900"></a>
+
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
 [![Built with Opus 4.7](https://img.shields.io/badge/Built_with-Opus_4.7-orange.svg)](https://www.youtalk.jp/mora)
 [![Hackathon Stage 1](https://img.shields.io/badge/Hackathon-Stage_1_2026--04--26-blue.svg)](https://www.youtalk.jp/mora)
