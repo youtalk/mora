@@ -29,13 +29,13 @@ public struct EnglishL1Profile: L1Profile {
 
     public func interestCategoryDisplayName(key: String, at level: LearnerLevel) -> String {
         switch key {
-        case "animals":   return "Animals"
+        case "animals": return "Animals"
         case "dinosaurs": return "Dinosaurs"
-        case "vehicles":  return "Vehicles"
-        case "space":     return "Space"
-        case "sports":    return "Sports"
-        case "robots":    return "Robots"
-        default:          return key
+        case "vehicles": return "Vehicles"
+        case "space": return "Space"
+        case "sports": return "Sports"
+        case "robots": return "Robots"
+        default: return key
         }
     }
 
