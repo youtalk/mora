@@ -172,13 +172,8 @@
     padding-top:72px;padding-bottom:96px;
     position:relative;overflow:hidden;
   }
-  .hero::after{
-    content:"";position:absolute;
-    inset:auto -120px -120px auto;
-    width:520px;height:520px;
-    background:radial-gradient(circle at 30% 30%, rgba(255,122,0,.18), transparent 60%);
-    pointer-events:none;
-  }
+  /* Soft warm aura behind the yokai stack — anchored to the cards themselves
+     instead of floating in a corner, so it reads as glow, not stray shadow. */
   .hero-grid{
     display:grid;grid-template-columns:1.35fr 1fr;gap:64px;align-items:start;
   }
@@ -298,6 +293,18 @@
     height:560px;
     display:block;
   }
+  .yokai-stack::before{
+    content:"";
+    position:absolute;
+    inset:8% -4% 8% -4%;
+    background:
+      radial-gradient(60% 55% at 50% 50%, rgba(255,122,0,.22), transparent 70%),
+      radial-gradient(45% 40% at 30% 70%, rgba(196,52,28,.14), transparent 75%);
+    filter:blur(8px);
+    pointer-events:none;
+    z-index:0;
+  }
+  .yokai-card{z-index:1}
   .yokai-card{
     position:absolute;
     width:78%;aspect-ratio:1/1;
@@ -364,10 +371,12 @@
 
   /* — SECTION 01 the ask — */
   .ask-grid{
-    display:grid;grid-template-columns:1.1fr 1.4fr;gap:80px;
+    display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.6fr);gap:64px;
+    align-items:start;
   }
+  .ask-grid .col-left{position:sticky;top:96px}
   .ask-grid .col-left h2{margin-top:0}
-  .ask-grid .col-right p{font-size:18px;line-height:1.65;max-width:50ch}
+  .ask-grid .col-right p{font-size:18px;line-height:1.65;max-width:62ch}
   .ask-grid .col-right p:first-child::first-letter{
     font-family:"Fraunces",serif;
     font-variation-settings:"opsz" 144,"wght" 800,"SOFT" 80,"WONK" 1;
@@ -744,6 +753,8 @@
        collapses to 0px wide, dropping every yokai card to ~2px. */
     .yokai-stack{height:480px;width:100%;max-width:520px;margin:0 auto}
     .ask-grid{grid-template-columns:1fr;gap:32px}
+    .ask-grid .col-left{position:static}
+    .ask-grid .col-right p{max-width:none}
     .pillars{grid-template-columns:repeat(2,1fr)}
     .subs-grid{grid-template-columns:1fr;gap:36px}
     .stats{grid-template-columns:repeat(3,1fr)}
@@ -769,12 +780,17 @@
     footer .inner{grid-template-columns:1fr;gap:28px}
     footer .brand-large{font-size:56px}
     .hero-folio .meta{display:none}
-    /* Stacked yokai cards — keep all three within the viewport. */
-    .yokai-stack{height:420px;max-width:none}
-    .yokai-card{width:64%}
+    /* Stacked yokai cards — keep all three within the viewport.
+       Height tuned to bottommost card edge (top + width) plus a small
+       breath for shadow + rotation overhang; no large empty band below. */
+    .yokai-stack{height:380px;max-width:none}
+    .yokai-card{width:62%}
     .yokai-card.c1{top:0;right:4%}
-    .yokai-card.c2{top:60px;right:32%}
-    .yokai-card.c3{top:140px;right:8%}
+    .yokai-card.c2{top:54px;right:30%}
+    .yokai-card.c3{top:120px;right:8%}
+    /* On mobile the aura would sit awkwardly across the narrow stack —
+       suppress it; the cards alone carry enough visual weight. */
+    .yokai-stack::before{display:none}
   }
 
   @media (prefers-reduced-motion:reduce){
