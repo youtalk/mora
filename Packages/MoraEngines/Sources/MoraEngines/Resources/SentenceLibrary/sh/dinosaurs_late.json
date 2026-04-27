@@ -231,6 +231,15 @@
               ]
             }
           ]
+        },
+        "2": {
+          "text": "Shen dashed past Sharon.",
+          "words": [
+            { "surface": "Shen", "graphemes": ["sh", "e", "n"], "phonemes": ["ʃ", "ɛ", "n"] },
+            { "surface": "dashed", "graphemes": ["d", "a", "sh", "e", "d"], "phonemes": ["d", "æ", "ʃ", "t"] },
+            { "surface": "past", "graphemes": ["p", "a", "s", "t"], "phonemes": ["p", "æ", "s", "t"] },
+            { "surface": "Sharon", "graphemes": ["sh", "a", "r", "o", "n"], "phonemes": ["ʃ", "æ", "r", "ə", "n"] }
+          ]
         }
       }
     },
@@ -441,6 +450,16 @@
                 "f"
               ]
             }
+          ]
+        },
+        "2": {
+          "text": "Sharon washed the shiny shelf.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh", "a", "r", "o", "n"], "phonemes": ["ʃ", "æ", "r", "ə", "n"] },
+            { "surface": "washed", "graphemes": ["w", "a", "sh", "e", "d"], "phonemes": ["w", "ɒ", "ʃ", "t"] },
+            { "surface": "the", "graphemes": ["th", "e"], "phonemes": ["ð", "ə"] },
+            { "surface": "shiny", "graphemes": ["sh", "i", "n", "y"], "phonemes": ["ʃ", "aɪ", "n", "i"] },
+            { "surface": "shelf", "graphemes": ["sh", "e", "l", "f"], "phonemes": ["ʃ", "ɛ", "l", "f"] }
           ]
         }
       }
@@ -671,6 +690,15 @@
               ]
             }
           ]
+        },
+        "2": {
+          "text": "Shep crushed a fossil.",
+          "words": [
+            { "surface": "Shep", "graphemes": ["sh", "e", "p"], "phonemes": ["ʃ", "ɛ", "p"] },
+            { "surface": "crushed", "graphemes": ["c", "r", "u", "sh", "e", "d"], "phonemes": ["k", "r", "ʌ", "ʃ", "t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fossil", "graphemes": ["f", "o", "s", "s", "i", "l"], "phonemes": ["f", "ɒ", "s", "ɪ", "l"] }
+          ]
         }
       }
     },
@@ -879,6 +907,15 @@
                 "r"
               ]
             }
+          ]
+        },
+        "2": {
+          "text": "Shen dashed to shelter.",
+          "words": [
+            { "surface": "Shen", "graphemes": ["sh", "e", "n"], "phonemes": ["ʃ", "ɛ", "n"] },
+            { "surface": "dashed", "graphemes": ["d", "a", "sh", "e", "d"], "phonemes": ["d", "æ", "ʃ", "t"] },
+            { "surface": "to", "graphemes": ["t", "o"], "phonemes": ["t", "u"] },
+            { "surface": "shelter", "graphemes": ["sh", "e", "l", "t", "e", "r"], "phonemes": ["ʃ", "ɛ", "l", "t", "ə", "r"] }
           ]
         }
       }
@@ -1104,6 +1141,15 @@
               ]
             }
           ]
+        },
+        "2": {
+          "text": "Sharon shut the shed.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh", "a", "r", "o", "n"], "phonemes": ["ʃ", "æ", "r", "ə", "n"] },
+            { "surface": "shut", "graphemes": ["sh", "u", "t"], "phonemes": ["ʃ", "ʌ", "t"] },
+            { "surface": "the", "graphemes": ["th", "e"], "phonemes": ["ð", "ə"] },
+            { "surface": "shed", "graphemes": ["sh", "e", "d"], "phonemes": ["ʃ", "ɛ", "d"] }
+          ]
         }
       }
     },
@@ -1315,6 +1361,15 @@
                 "t"
               ]
             }
+          ]
+        },
+        "2": {
+          "text": "A shy Allosaur rushed.",
+          "words": [
+            { "surface": "A", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "shy", "graphemes": ["sh", "y"], "phonemes": ["ʃ", "aɪ"] },
+            { "surface": "Allosaur", "graphemes": ["a", "l", "l", "o", "s", "a", "u", "r"], "phonemes": ["æ", "l", "ə", "s", "ɔ", "r"] },
+            { "surface": "rushed", "graphemes": ["r", "u", "sh", "e", "d"], "phonemes": ["r", "ʌ", "ʃ", "t"] }
           ]
         }
       }
@@ -1539,6 +1594,16 @@
               ]
             }
           ]
+        },
+        "2": {
+          "text": "Shep washed the shiny armor.",
+          "words": [
+            { "surface": "Shep", "graphemes": ["sh", "e", "p"], "phonemes": ["ʃ", "ɛ", "p"] },
+            { "surface": "washed", "graphemes": ["w", "a", "sh", "e", "d"], "phonemes": ["w", "ɒ", "ʃ", "t"] },
+            { "surface": "the", "graphemes": ["th", "e"], "phonemes": ["ð", "ə"] },
+            { "surface": "shiny", "graphemes": ["sh", "i", "n", "y"], "phonemes": ["ʃ", "aɪ", "n", "i"] },
+            { "surface": "armor", "graphemes": ["a", "r", "m", "o", "r"], "phonemes": ["ɑ", "r", "m", "ə", "r"] }
+          ]
         }
       }
     },
@@ -1750,6 +1815,16 @@
               ]
             }
           ]
+        },
+        "2": {
+          "text": "Shen sheltered a shaggy raptor.",
+          "words": [
+            { "surface": "Shen", "graphemes": ["sh", "e", "n"], "phonemes": ["ʃ", "ɛ", "n"] },
+            { "surface": "sheltered", "graphemes": ["sh", "e", "l", "t", "e", "r", "e", "d"], "phonemes": ["ʃ", "ɛ", "l", "t", "ə", "r", "d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "shaggy", "graphemes": ["sh", "a", "g", "g", "y"], "phonemes": ["ʃ", "æ", "g", "i"] },
+            { "surface": "raptor", "graphemes": ["r", "a", "p", "t", "o", "r"], "phonemes": ["r", "æ", "p", "t", "ɔ", "r"] }
+          ]
         }
       }
     },
@@ -1959,6 +2034,15 @@
                 "d"
               ]
             }
+          ]
+        },
+        "2": {
+          "text": "Shep shut the shed.",
+          "words": [
+            { "surface": "Shep", "graphemes": ["sh", "e", "p"], "phonemes": ["ʃ", "ɛ", "p"] },
+            { "surface": "shut", "graphemes": ["sh", "u", "t"], "phonemes": ["ʃ", "ʌ", "t"] },
+            { "surface": "the", "graphemes": ["th", "e"], "phonemes": ["ð", "ə"] },
+            { "surface": "shed", "graphemes": ["sh", "e", "d"], "phonemes": ["ʃ", "ɛ", "d"] }
           ]
         }
       }
@@ -2179,6 +2263,16 @@
               ]
             }
           ]
+        },
+        "2": {
+          "text": "Shen washed a shiny Stego.",
+          "words": [
+            { "surface": "Shen", "graphemes": ["sh", "e", "n"], "phonemes": ["ʃ", "ɛ", "n"] },
+            { "surface": "washed", "graphemes": ["w", "a", "sh", "e", "d"], "phonemes": ["w", "ɒ", "ʃ", "t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "shiny", "graphemes": ["sh", "i", "n", "y"], "phonemes": ["ʃ", "aɪ", "n", "i"] },
+            { "surface": "Stego", "graphemes": ["s", "t", "e", "g", "o"], "phonemes": ["s", "t", "ɛ", "g", "o"] }
+          ]
         }
       }
     },
@@ -2388,6 +2482,15 @@
                 "d"
               ]
             }
+          ]
+        },
+        "2": {
+          "text": "Sharon shut the shed.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh", "a", "r", "o", "n"], "phonemes": ["ʃ", "æ", "r", "ə", "n"] },
+            { "surface": "shut", "graphemes": ["sh", "u", "t"], "phonemes": ["ʃ", "ʌ", "t"] },
+            { "surface": "the", "graphemes": ["th", "e"], "phonemes": ["ð", "ə"] },
+            { "surface": "shed", "graphemes": ["sh", "e", "d"], "phonemes": ["ʃ", "ɛ", "d"] }
           ]
         }
       }
@@ -2635,6 +2738,16 @@
               ]
             }
           ]
+        },
+        "2": {
+          "text": "Sharon sheltered a shiny hadrosaur.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh", "a", "r", "o", "n"], "phonemes": ["ʃ", "æ", "r", "ə", "n"] },
+            { "surface": "sheltered", "graphemes": ["sh", "e", "l", "t", "e", "r", "e", "d"], "phonemes": ["ʃ", "ɛ", "l", "t", "ə", "r", "d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "shiny", "graphemes": ["sh", "i", "n", "y"], "phonemes": ["ʃ", "aɪ", "n", "i"] },
+            { "surface": "hadrosaur", "graphemes": ["h", "a", "d", "r", "o", "s", "a", "u", "r"], "phonemes": ["h", "æ", "d", "r", "ə", "s", "ɔ", "r"] }
+          ]
         }
       }
     },
@@ -2840,6 +2953,15 @@
                 "t"
               ]
             }
+          ]
+        },
+        "2": {
+          "text": "A shy Spino dashed.",
+          "words": [
+            { "surface": "A", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "shy", "graphemes": ["sh", "y"], "phonemes": ["ʃ", "aɪ"] },
+            { "surface": "Spino", "graphemes": ["s", "p", "i", "n", "o"], "phonemes": ["s", "p", "aɪ", "n", "o"] },
+            { "surface": "dashed", "graphemes": ["d", "a", "sh", "e", "d"], "phonemes": ["d", "æ", "ʃ", "t"] }
           ]
         }
       }
@@ -3051,6 +3173,15 @@
                 "t"
               ]
             }
+          ]
+        },
+        "2": {
+          "text": "Sharon rushed to shut.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh", "a", "r", "o", "n"], "phonemes": ["ʃ", "æ", "r", "ə", "n"] },
+            { "surface": "rushed", "graphemes": ["r", "u", "sh", "e", "d"], "phonemes": ["r", "ʌ", "ʃ", "t"] },
+            { "surface": "to", "graphemes": ["t", "o"], "phonemes": ["t", "u"] },
+            { "surface": "shut", "graphemes": ["sh", "u", "t"], "phonemes": ["ʃ", "ʌ", "t"] }
           ]
         }
       }
@@ -3297,6 +3428,15 @@
               ]
             }
           ]
+        },
+        "2": {
+          "text": "Sharon crushed an Allosaur.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh", "a", "r", "o", "n"], "phonemes": ["ʃ", "æ", "r", "ə", "n"] },
+            { "surface": "crushed", "graphemes": ["c", "r", "u", "sh", "e", "d"], "phonemes": ["k", "r", "ʌ", "ʃ", "t"] },
+            { "surface": "an", "graphemes": ["a", "n"], "phonemes": ["æ", "n"] },
+            { "surface": "Allosaur", "graphemes": ["a", "l", "l", "o", "s", "a", "u", "r"], "phonemes": ["æ", "l", "ə", "s", "ɔ", "r"] }
+          ]
         }
       }
     },
@@ -3521,6 +3661,15 @@
               ]
             }
           ]
+        },
+        "2": {
+          "text": "Shen dashed to shelter.",
+          "words": [
+            { "surface": "Shen", "graphemes": ["sh", "e", "n"], "phonemes": ["ʃ", "ɛ", "n"] },
+            { "surface": "dashed", "graphemes": ["d", "a", "sh", "e", "d"], "phonemes": ["d", "æ", "ʃ", "t"] },
+            { "surface": "to", "graphemes": ["t", "o"], "phonemes": ["t", "u"] },
+            { "surface": "shelter", "graphemes": ["sh", "e", "l", "t", "e", "r"], "phonemes": ["ʃ", "ɛ", "l", "t", "ə", "r"] }
+          ]
         }
       }
     },
@@ -3718,6 +3867,16 @@
                 "l"
               ]
             }
+          ]
+        },
+        "2": {
+          "text": "Shep washed the shiny dorsal.",
+          "words": [
+            { "surface": "Shep", "graphemes": ["sh", "e", "p"], "phonemes": ["ʃ", "ɛ", "p"] },
+            { "surface": "washed", "graphemes": ["w", "a", "sh", "e", "d"], "phonemes": ["w", "ɒ", "ʃ", "t"] },
+            { "surface": "the", "graphemes": ["th", "e"], "phonemes": ["ð", "ə"] },
+            { "surface": "shiny", "graphemes": ["sh", "i", "n", "y"], "phonemes": ["ʃ", "aɪ", "n", "i"] },
+            { "surface": "dorsal", "graphemes": ["d", "o", "r", "s", "a", "l"], "phonemes": ["d", "ɔ", "r", "s", "ə", "l"] }
           ]
         }
       }
@@ -3940,6 +4099,15 @@
               ]
             }
           ]
+        },
+        "2": {
+          "text": "Sharon rushed to shelter.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh", "a", "r", "o", "n"], "phonemes": ["ʃ", "æ", "r", "ə", "n"] },
+            { "surface": "rushed", "graphemes": ["r", "u", "sh", "e", "d"], "phonemes": ["r", "ʌ", "ʃ", "t"] },
+            { "surface": "to", "graphemes": ["t", "o"], "phonemes": ["t", "u"] },
+            { "surface": "shelter", "graphemes": ["sh", "e", "l", "t", "e", "r"], "phonemes": ["ʃ", "ɛ", "l", "t", "ə", "r"] }
+          ]
         }
       }
     },
@@ -4160,6 +4328,16 @@
                 "r"
               ]
             }
+          ]
+        },
+        "2": {
+          "text": "Shen saw a shaggy predator.",
+          "words": [
+            { "surface": "Shen", "graphemes": ["sh", "e", "n"], "phonemes": ["ʃ", "ɛ", "n"] },
+            { "surface": "saw", "graphemes": ["s", "a", "w"], "phonemes": ["s", "ɔ", "w"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "shaggy", "graphemes": ["sh", "a", "g", "g", "y"], "phonemes": ["ʃ", "æ", "g", "i"] },
+            { "surface": "predator", "graphemes": ["p", "r", "e", "d", "a", "t", "o", "r"], "phonemes": ["p", "r", "ɛ", "d", "ə", "t", "ɔ", "r"] }
           ]
         }
       }
@@ -4397,6 +4575,16 @@
                 "r"
               ]
             }
+          ]
+        },
+        "2": {
+          "text": "Sharon sheltered a shiny hadrosaur.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh", "a", "r", "o", "n"], "phonemes": ["ʃ", "æ", "r", "ə", "n"] },
+            { "surface": "sheltered", "graphemes": ["sh", "e", "l", "t", "e", "r", "e", "d"], "phonemes": ["ʃ", "ɛ", "l", "t", "ə", "r", "d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "shiny", "graphemes": ["sh", "i", "n", "y"], "phonemes": ["ʃ", "aɪ", "n", "i"] },
+            { "surface": "hadrosaur", "graphemes": ["h", "a", "d", "r", "o", "s", "a", "u", "r"], "phonemes": ["h", "æ", "d", "r", "ə", "s", "ɔ", "r"] }
           ]
         }
       }
