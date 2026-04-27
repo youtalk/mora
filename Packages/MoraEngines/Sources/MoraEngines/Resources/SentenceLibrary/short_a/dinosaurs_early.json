@@ -30,6 +30,17 @@
             { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
             { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
           ]
+        },
+        "2": {
+          "text": "Adam and Anna had an ant.",
+          "words": [
+            { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+            { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+            { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+            { "surface": "had",  "graphemes": ["h","a","d"],     "phonemes": ["h","æ","d"] },
+            { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+            { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
+          ]
         }
       }
     },
@@ -54,6 +65,17 @@
           "text": "Andy fed an ant.",
           "words": [
             { "surface": "Andy", "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] },
+            { "surface": "fed",  "graphemes": ["f","e","d"],     "phonemes": ["f","ɛ","d"] },
+            { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+            { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
+          ]
+        },
+        "2": {
+          "text": "Andy and Al fed an ant.",
+          "words": [
+            { "surface": "Andy", "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] },
+            { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+            { "surface": "Al",   "graphemes": ["a","l"],         "phonemes": ["æ","l"] },
             { "surface": "fed",  "graphemes": ["f","e","d"],     "phonemes": ["f","ɛ","d"] },
             { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
             { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
@@ -86,6 +108,17 @@
             { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
             { "surface": "dino", "graphemes": ["d","i","n","o"], "phonemes": ["d","aɪ","n","oʊ"] }
           ]
+        },
+        "2": {
+          "text": "Anna pat a dino and Adam.",
+          "words": [
+            { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+            { "surface": "pat",  "graphemes": ["p","a","t"],     "phonemes": ["p","æ","t"] },
+            { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+            { "surface": "dino", "graphemes": ["d","i","n","o"], "phonemes": ["d","aɪ","n","oʊ"] },
+            { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+            { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] }
+          ]
         }
       }
     },
@@ -114,6 +147,18 @@
             { "surface": "had",  "graphemes": ["h","a","d"],     "phonemes": ["h","æ","d"] },
             { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
             { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
+          ]
+        },
+        "2": {
+          "text": "A dino had an ant and Andy.",
+          "words": [
+            { "surface": "A",    "graphemes": ["a"],             "phonemes": ["ə"] },
+            { "surface": "dino", "graphemes": ["d","i","n","o"], "phonemes": ["d","aɪ","n","oʊ"] },
+            { "surface": "had",  "graphemes": ["h","a","d"],     "phonemes": ["h","æ","d"] },
+            { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+            { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+            { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+            { "surface": "Andy", "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] }
           ]
         }
       }
@@ -144,6 +189,19 @@
             { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
             { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
           ]
+        },
+        "2": {
+          "text": "Adam ran past an ant and a fast.",
+          "words": [
+            { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+            { "surface": "ran",  "graphemes": ["r","a","n"],     "phonemes": ["r","æ","n"] },
+            { "surface": "past", "graphemes": ["p","a","s","t"], "phonemes": ["p","æ","s","t"] },
+            { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+            { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+            { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+            { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+            { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] }
+          ]
         }
       }
     },
@@ -171,6 +229,17 @@
             { "surface": "had",  "graphemes": ["h","a","d"],     "phonemes": ["h","æ","d"] },
             { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
             { "surface": "dino", "graphemes": ["d","i","n","o"], "phonemes": ["d","aɪ","n","oʊ"] }
+          ]
+        },
+        "2": {
+          "text": "Anna had a dino and Al.",
+          "words": [
+            { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+            { "surface": "had",  "graphemes": ["h","a","d"],     "phonemes": ["h","æ","d"] },
+            { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+            { "surface": "dino", "graphemes": ["d","i","n","o"], "phonemes": ["d","aɪ","n","oʊ"] },
+            { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+            { "surface": "Al",   "graphemes": ["a","l"],         "phonemes": ["æ","l"] }
           ]
         }
       }
@@ -200,6 +269,17 @@
             { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
             { "surface": "dino", "graphemes": ["d","i","n","o"], "phonemes": ["d","aɪ","n","oʊ"] }
           ]
+        },
+        "2": {
+          "text": "Andy fed a dino and Adam.",
+          "words": [
+            { "surface": "Andy", "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] },
+            { "surface": "fed",  "graphemes": ["f","e","d"],     "phonemes": ["f","ɛ","d"] },
+            { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+            { "surface": "dino", "graphemes": ["d","i","n","o"], "phonemes": ["d","aɪ","n","oʊ"] },
+            { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+            { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] }
+          ]
         }
       }
     },
@@ -227,6 +307,17 @@
             { "surface": "big",  "graphemes": ["b","i","g"],     "phonemes": ["b","ɪ","g"] },
             { "surface": "dino", "graphemes": ["d","i","n","o"], "phonemes": ["d","aɪ","n","oʊ"] },
             { "surface": "sat",  "graphemes": ["s","a","t"],     "phonemes": ["s","æ","t"] }
+          ]
+        },
+        "2": {
+          "text": "A big dino sat with Adam.",
+          "words": [
+            { "surface": "A",    "graphemes": ["a"],             "phonemes": ["ə"] },
+            { "surface": "big",  "graphemes": ["b","i","g"],     "phonemes": ["b","ɪ","g"] },
+            { "surface": "dino", "graphemes": ["d","i","n","o"], "phonemes": ["d","aɪ","n","oʊ"] },
+            { "surface": "sat",  "graphemes": ["s","a","t"],     "phonemes": ["s","æ","t"] },
+            { "surface": "with", "graphemes": ["w","i","th"],    "phonemes": ["w","ɪ","ð"] },
+            { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] }
           ]
         }
       }
@@ -257,6 +348,18 @@
             { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
             { "surface": "ran",  "graphemes": ["r","a","n"],     "phonemes": ["r","æ","n"] }
           ]
+        },
+        "2": {
+          "text": "Adam and Anna ran with an ant.",
+          "words": [
+            { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+            { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+            { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+            { "surface": "ran",  "graphemes": ["r","a","n"],     "phonemes": ["r","æ","n"] },
+            { "surface": "with", "graphemes": ["w","i","th"],    "phonemes": ["w","ɪ","ð"] },
+            { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+            { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
+          ]
         }
       }
     },
@@ -286,6 +389,17 @@
             { "surface": "got",  "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
             { "surface": "mad",  "graphemes": ["m","a","d"],     "phonemes": ["m","æ","d"] }
           ]
+        },
+        "2": {
+          "text": "An ant sat on a dino.",
+          "words": [
+            { "surface": "An",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+            { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+            { "surface": "sat",  "graphemes": ["s","a","t"],     "phonemes": ["s","æ","t"] },
+            { "surface": "on",   "graphemes": ["o","n"],         "phonemes": ["ɒ","n"] },
+            { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+            { "surface": "dino", "graphemes": ["d","i","n","o"], "phonemes": ["d","aɪ","n","oʊ"] }
+          ]
         }
       }
     },
@@ -313,6 +427,17 @@
             { "surface": "got",  "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
             { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
             { "surface": "dino", "graphemes": ["d","i","n","o"], "phonemes": ["d","aɪ","n","oʊ"] }
+          ]
+        },
+        "2": {
+          "text": "Anna got a dino and Andy.",
+          "words": [
+            { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+            { "surface": "got",  "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+            { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+            { "surface": "dino", "graphemes": ["d","i","n","o"], "phonemes": ["d","aɪ","n","oʊ"] },
+            { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+            { "surface": "Andy", "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] }
           ]
         }
       }
@@ -343,6 +468,17 @@
             { "surface": "past", "graphemes": ["p","a","s","t"], "phonemes": ["p","æ","s","t"] },
             { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] }
           ]
+        },
+        "2": {
+          "text": "A dino sat and an ant.",
+          "words": [
+            { "surface": "A",    "graphemes": ["a"],             "phonemes": ["ə"] },
+            { "surface": "dino", "graphemes": ["d","i","n","o"], "phonemes": ["d","aɪ","n","oʊ"] },
+            { "surface": "sat",  "graphemes": ["s","a","t"],     "phonemes": ["s","æ","t"] },
+            { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+            { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+            { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
+          ]
         }
       }
     },
@@ -370,6 +506,16 @@
             { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
             { "surface": "dino", "graphemes": ["d","i","n","o"], "phonemes": ["d","aɪ","n","oʊ"] }
           ]
+        },
+        "2": {
+          "text": "Adam had a tan dino.",
+          "words": [
+            { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+            { "surface": "had",  "graphemes": ["h","a","d"],     "phonemes": ["h","æ","d"] },
+            { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
+            { "surface": "tan",  "graphemes": ["t","a","n"],     "phonemes": ["t","æ","n"] },
+            { "surface": "dino", "graphemes": ["d","i","n","o"], "phonemes": ["d","aɪ","n","oʊ"] }
+          ]
         }
       }
     },
@@ -394,6 +540,17 @@
           "text": "Anna fed an ant.",
           "words": [
             { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+            { "surface": "fed",  "graphemes": ["f","e","d"],     "phonemes": ["f","ɛ","d"] },
+            { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+            { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
+          ]
+        },
+        "2": {
+          "text": "Anna and Andy fed an ant.",
+          "words": [
+            { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+            { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+            { "surface": "Andy", "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] },
             { "surface": "fed",  "graphemes": ["f","e","d"],     "phonemes": ["f","ɛ","d"] },
             { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
             { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
@@ -427,6 +584,18 @@
             { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
             { "surface": "sat",  "graphemes": ["s","a","t"],     "phonemes": ["s","æ","t"] }
           ]
+        },
+        "2": {
+          "text": "Al and Adam sat with an ant.",
+          "words": [
+            { "surface": "Al",   "graphemes": ["a","l"],         "phonemes": ["æ","l"] },
+            { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+            { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+            { "surface": "sat",  "graphemes": ["s","a","t"],     "phonemes": ["s","æ","t"] },
+            { "surface": "with", "graphemes": ["w","i","th"],    "phonemes": ["w","ɪ","ð"] },
+            { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+            { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
+          ]
         }
       }
     },
@@ -455,6 +624,17 @@
             { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
             { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
           ]
+        },
+        "2": {
+          "text": "Andy got an ant and Al.",
+          "words": [
+            { "surface": "Andy", "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] },
+            { "surface": "got",  "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+            { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+            { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+            { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+            { "surface": "Al",   "graphemes": ["a","l"],         "phonemes": ["æ","l"] }
+          ]
         }
       }
     },
@@ -482,6 +662,17 @@
             { "surface": "met",  "graphemes": ["m","e","t"],     "phonemes": ["m","ɛ","t"] },
             { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
             { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
+          ]
+        },
+        "2": {
+          "text": "Adam met an ant and Anna.",
+          "words": [
+            { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+            { "surface": "met",  "graphemes": ["m","e","t"],     "phonemes": ["m","ɛ","t"] },
+            { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+            { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+            { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+            { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] }
           ]
         }
       }
@@ -512,6 +703,16 @@
             { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
             { "surface": "dino", "graphemes": ["d","i","n","o"], "phonemes": ["d","aɪ","n","oʊ"] }
           ]
+        },
+        "2": {
+          "text": "Anna sat with an ant.",
+          "words": [
+            { "surface": "Anna", "graphemes": ["a","n","n","a"], "phonemes": ["æ","n","ə"] },
+            { "surface": "sat",  "graphemes": ["s","a","t"],     "phonemes": ["s","æ","t"] },
+            { "surface": "with", "graphemes": ["w","i","th"],    "phonemes": ["w","ɪ","ð"] },
+            { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+            { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
+          ]
         }
       }
     },
@@ -541,6 +742,16 @@
             { "surface": "a",    "graphemes": ["a"],             "phonemes": ["ə"] },
             { "surface": "dino", "graphemes": ["d","i","n","o"], "phonemes": ["d","aɪ","n","oʊ"] }
           ]
+        },
+        "2": {
+          "text": "An ant sat and Adam.",
+          "words": [
+            { "surface": "An",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+            { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] },
+            { "surface": "sat",  "graphemes": ["s","a","t"],     "phonemes": ["s","æ","t"] },
+            { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+            { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] }
+          ]
         }
       }
     },
@@ -565,6 +776,17 @@
           "text": "Adam got an ant.",
           "words": [
             { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+            { "surface": "got",  "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
+            { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
+            { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
+          ]
+        },
+        "2": {
+          "text": "Adam and Andy got an ant.",
+          "words": [
+            { "surface": "Adam", "graphemes": ["a","d","a","m"], "phonemes": ["æ","d","ə","m"] },
+            { "surface": "and",  "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
+            { "surface": "Andy", "graphemes": ["a","n","d","y"], "phonemes": ["æ","n","d","i"] },
             { "surface": "got",  "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
             { "surface": "an",   "graphemes": ["a","n"],         "phonemes": ["æ","n"] },
             { "surface": "ant",  "graphemes": ["a","n","t"],     "phonemes": ["æ","n","t"] }
