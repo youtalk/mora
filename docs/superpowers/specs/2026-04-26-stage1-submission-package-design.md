@@ -33,9 +33,9 @@
 
 ## 3. Positioning narrative
 
-**Lead:** "Build From What You Know" problem statement. A father builds an
+**Lead:** "Build From What You Know" problem statement. A parent builds an
 on-device, dyslexia-aware ESL tutor for an 8-year-old L1-Japanese child close to
-him after moving from Japan to the US, after the school's IEP-blocked-by-ESL
+them after moving from Japan to the US, after the school's IEP-blocked-by-ESL
 policy adds a one-year delay before the child gets structured dyslexia support,
 and after Barton tutoring is priced out of reach.
 
@@ -47,7 +47,7 @@ skill that streams Apple OSLog from the running iPad straight into Claude's
 context so debugging becomes a conversation instead of a screenshot round-trip.
 
 **Why this combination:** Impact (30%) is mora's strongest pillar — a real domain
-expert (the father) building for a real specific user (a child close to him)
+expert (the parent) building for a real specific user (a child close to them)
 addresses the highest-weighted criterion head-on. The Claude Code workflow innovations
 directly hit Opus 4.7 Use (25%). Together they cover 55% of the rubric. Demo
 (25%) is carried by the iPad recording itself; Depth (20%) is carried by the
@@ -92,7 +92,7 @@ Restructured against Mike Brown's three-act × nine-pod framework
 | Pod | Time | Visual | Message | Criterion |
 |---|---|---|---|---|
 | **Act 1 — The Problem** | | | | |
-| 1.1 — Who | 0:00–0:20 | Opening shot: the child's hands on iPad (no face) → home screen | Father, dyslexic 8yo child, L1-Japanese, US ESL | Impact |
+| 1.1 — Who | 0:00–0:20 | Opening shot: the child's hands on iPad (no face) → home screen | Parent, dyslexic 8yo child, L1-Japanese, US ESL | Impact |
 | 1.2 — Why | 0:20–0:40 | Cut to a calendar/clock motif over the home screen | IEP gated behind ESL → 1-year delay; Barton priced out | Impact |
 | 1.3 — What | 0:40–1:00 | Yokai weekly intro screen, voice clip plays under VO | "So I built mora" — OG phonics + yokai shell, fully on-device | Impact + Demo |
 | **Act 2 — The Solution** | | | | |
@@ -347,7 +347,7 @@ Updates required at HEAD only:
   [GitHub repo →]   [License: MPL-2.0]   [Built with Claude Code]
 
 [The problem]
-  Father → child personal narrative (3 paragraphs).
+  Parent → child personal narrative (3 paragraphs).
   IEP-blocked-by-ESL structural gap.
   Barton tutoring out of reach.
   On-device privacy as a non-negotiable for a child user.
