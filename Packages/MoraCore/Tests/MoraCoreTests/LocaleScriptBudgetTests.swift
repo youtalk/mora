@@ -8,8 +8,9 @@ final class LocaleScriptBudgetTests: XCTestCase {
     /// that return `nil` from `allowedScriptBudget(at:)` are skipped.
     func test_all_profile_level_combinations_respect_script_budget() {
         let profiles: [any L1Profile] = [
-            JapaneseL1Profile()
-            // PR 2 will append KoreanL1Profile() and EnglishL1Profile()
+            JapaneseL1Profile(),
+            KoreanL1Profile(),
+            EnglishL1Profile(),
         ]
 
         for profile in profiles {

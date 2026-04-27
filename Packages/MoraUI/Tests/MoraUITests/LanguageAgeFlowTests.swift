@@ -78,6 +78,42 @@ final class LanguageAgeFlowTests: XCTestCase {
         XCTAssertFalse(defaults.bool(forKey: LanguageAgeState.onboardedKey))
     }
 
+    func test_pickerRows_areActive_forJaKoEn() {
+        let activeIDs = LanguageAgeFlow.activeLanguageIdentifiers
+        XCTAssertEqual(Set(activeIDs), Set(["ja", "ko", "en"]))
+        let disabledIDs = LanguageAgeFlow.comingSoonLanguageIdentifiers
+        XCTAssertEqual(Set(disabledIDs), Set(["zh"]))
+    }
+
+    func test_defaultLanguageID_followsSystemLocale() {
+        XCTAssertEqual(
+            LanguageAgeFlow.defaultLanguageID(for: Locale(identifier: "ja_JP")), "ja")
+        XCTAssertEqual(
+            LanguageAgeFlow.defaultLanguageID(for: Locale(identifier: "ko_KR")), "ko")
+        XCTAssertEqual(
+            LanguageAgeFlow.defaultLanguageID(for: Locale(identifier: "en_US")), "en")
+    }
+
+    func test_defaultLanguageID_unsupportedLocale_fallsBackToEnglish() {
+        XCTAssertEqual(
+            LanguageAgeFlow.defaultLanguageID(for: Locale(identifier: "zh_CN")), "en")
+        XCTAssertEqual(
+            LanguageAgeFlow.defaultLanguageID(for: Locale(identifier: "es_ES")), "en")
+        XCTAssertEqual(
+            LanguageAgeFlow.defaultLanguageID(for: Locale(identifier: "vi_VN")), "en")
+        XCTAssertEqual(
+            LanguageAgeFlow.defaultLanguageID(for: Locale(identifier: "")), "en")
+    }
+
+    func test_state_initialLanguageID_followsSystemLocale() {
+        XCTAssertEqual(
+            LanguageAgeState(systemLocale: Locale(identifier: "ja_JP")).selectedLanguageID, "ja")
+        XCTAssertEqual(
+            LanguageAgeState(systemLocale: Locale(identifier: "ko_KR")).selectedLanguageID, "ko")
+        XCTAssertEqual(
+            LanguageAgeState(systemLocale: Locale(identifier: "vi_VN")).selectedLanguageID, "en")
+    }
+
     func test_finalize_failsWhenLanguageIDEmpty() throws {
         let container = try MoraModelContainer.inMemory()
         let state = LanguageAgeState()

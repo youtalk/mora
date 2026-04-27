@@ -12,5 +12,11 @@ final class L1ProfileResolverTests: XCTestCase {
         XCTAssertEqual(L1ProfileResolver.profile(for: "xx").identifier, "ja")
     }
 
-    // PR 2 adds: profile_for_ko, profile_for_en
+    func test_profile_for_ko_returnsKoreanProfile() {
+        XCTAssertEqual(L1ProfileResolver.profile(for: "ko").identifier, "ko")
+    }
+
+    func test_profile_for_en_returnsEnglishProfile() {
+        XCTAssertEqual(L1ProfileResolver.profile(for: "en").identifier, "en")
+    }
 }
