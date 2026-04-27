@@ -30,6 +30,16 @@
             { "surface": "a",      "graphemes": ["a"],                   "phonemes": ["ə"] },
             { "surface": "robot",  "graphemes": ["r","o","b","o","t"],   "phonemes": ["r","o","b","ɒ","t"] }
           ]
+        },
+        "2": {
+          "text": "Sharon had a shiny robot.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh", "a", "r", "o", "n"], "phonemes": ["ʃ", "æ", "r", "ə", "n"] },
+            { "surface": "had", "graphemes": ["h", "a", "d"], "phonemes": ["h", "æ", "d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "shiny", "graphemes": ["sh", "i", "n", "y"], "phonemes": ["ʃ", "aɪ", "n", "i"] },
+            { "surface": "robot", "graphemes": ["r", "o", "b", "o", "t"], "phonemes": ["r", "o", "b", "ɒ", "t"] }
+          ]
         }
       }
     },
@@ -58,6 +68,16 @@
             { "surface": "the",   "graphemes": ["th","e"],              "phonemes": ["ð","ə"] },
             { "surface": "robot", "graphemes": ["r","o","b","o","t"],   "phonemes": ["r","o","b","ɒ","t"] }
           ]
+        },
+        "2": {
+          "text": "Shep fixed the shiny robot.",
+          "words": [
+            { "surface": "Shep", "graphemes": ["sh", "e", "p"], "phonemes": ["ʃ", "ɛ", "p"] },
+            { "surface": "fixed", "graphemes": ["f", "i", "x", "e", "d"], "phonemes": ["f", "ɪ", "k", "s", "t"] },
+            { "surface": "the", "graphemes": ["th", "e"], "phonemes": ["ð", "ə"] },
+            { "surface": "shiny", "graphemes": ["sh", "i", "n", "y"], "phonemes": ["ʃ", "aɪ", "n", "i"] },
+            { "surface": "robot", "graphemes": ["r", "o", "b", "o", "t"], "phonemes": ["r", "o", "b", "ɒ", "t"] }
+          ]
         }
       }
     },
@@ -85,6 +105,16 @@
             { "surface": "had",    "graphemes": ["h","a","d"],           "phonemes": ["h","æ","d"] },
             { "surface": "a",      "graphemes": ["a"],                   "phonemes": ["ə"] },
             { "surface": "robot",  "graphemes": ["r","o","b","o","t"],   "phonemes": ["r","o","b","ɒ","t"] }
+          ]
+        },
+        "2": {
+          "text": "Sharon had a sharp robot.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh", "a", "r", "o", "n"], "phonemes": ["ʃ", "æ", "r", "ə", "n"] },
+            { "surface": "had", "graphemes": ["h", "a", "d"], "phonemes": ["h", "æ", "d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "sharp", "graphemes": ["sh", "a", "r", "p"], "phonemes": ["ʃ", "ɑ", "r", "p"] },
+            { "surface": "robot", "graphemes": ["r", "o", "b", "o", "t"], "phonemes": ["r", "o", "b", "ɒ", "t"] }
           ]
         }
       }
@@ -115,6 +145,16 @@
             { "surface": "a",     "graphemes": ["a"],                   "phonemes": ["ə"] },
             { "surface": "bot",   "graphemes": ["b","o","t"],           "phonemes": ["b","ɒ","t"] }
           ]
+        },
+        "2": {
+          "text": "Shen got a shiny bot.",
+          "words": [
+            { "surface": "Shen", "graphemes": ["sh", "e", "n"], "phonemes": ["ʃ", "ɛ", "n"] },
+            { "surface": "got", "graphemes": ["g", "o", "t"], "phonemes": ["g", "ɒ", "t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "shiny", "graphemes": ["sh", "i", "n", "y"], "phonemes": ["ʃ", "aɪ", "n", "i"] },
+            { "surface": "bot", "graphemes": ["b", "o", "t"], "phonemes": ["b", "ɒ", "t"] }
+          ]
         }
       }
     },
@@ -143,6 +183,15 @@
             { "surface": "the",   "graphemes": ["th","e"],              "phonemes": ["ð","ə"] },
             { "surface": "shed",  "graphemes": ["sh","e","d"],          "phonemes": ["ʃ","ɛ","d"] }
           ]
+        },
+        "2": {
+          "text": "Shep shut the shed.",
+          "words": [
+            { "surface": "Shep", "graphemes": ["sh", "e", "p"], "phonemes": ["ʃ", "ɛ", "p"] },
+            { "surface": "shut", "graphemes": ["sh", "u", "t"], "phonemes": ["ʃ", "ʌ", "t"] },
+            { "surface": "the", "graphemes": ["th", "e"], "phonemes": ["ð", "ə"] },
+            { "surface": "shed", "graphemes": ["sh", "e", "d"], "phonemes": ["ʃ", "ɛ", "d"] }
+          ]
         }
       }
     },
@@ -169,6 +218,16 @@
             { "surface": "shut",   "graphemes": ["sh","u","t"],              "phonemes": ["ʃ","ʌ","t"] },
             { "surface": "a",      "graphemes": ["a"],                       "phonemes": ["ə"] },
             { "surface": "robot",  "graphemes": ["r","o","b","o","t"],       "phonemes": ["r","o","b","ɒ","t"] }
+          ]
+        },
+        "2": {
+          "text": "Sharon shut a shiny robot.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh", "a", "r", "o", "n"], "phonemes": ["ʃ", "æ", "r", "ə", "n"] },
+            { "surface": "shut", "graphemes": ["sh", "u", "t"], "phonemes": ["ʃ", "ʌ", "t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "shiny", "graphemes": ["sh", "i", "n", "y"], "phonemes": ["ʃ", "aɪ", "n", "i"] },
+            { "surface": "robot", "graphemes": ["r", "o", "b", "o", "t"], "phonemes": ["r", "o", "b", "ɒ", "t"] }
           ]
         }
       }
@@ -199,6 +258,15 @@
             { "surface": "the",    "graphemes": ["th","e"],              "phonemes": ["ð","ə"] },
             { "surface": "shed",   "graphemes": ["sh","e","d"],          "phonemes": ["ʃ","ɛ","d"] }
           ]
+        },
+        "2": {
+          "text": "Shen shut the shed.",
+          "words": [
+            { "surface": "Shen", "graphemes": ["sh", "e", "n"], "phonemes": ["ʃ", "ɛ", "n"] },
+            { "surface": "shut", "graphemes": ["sh", "u", "t"], "phonemes": ["ʃ", "ʌ", "t"] },
+            { "surface": "the", "graphemes": ["th", "e"], "phonemes": ["ð", "ə"] },
+            { "surface": "shed", "graphemes": ["sh", "e", "d"], "phonemes": ["ʃ", "ɛ", "d"] }
+          ]
         }
       }
     },
@@ -226,6 +294,16 @@
             { "surface": "had",   "graphemes": ["h","a","d"],           "phonemes": ["h","æ","d"] },
             { "surface": "a",     "graphemes": ["a"],                   "phonemes": ["ə"] },
             { "surface": "robot", "graphemes": ["r","o","b","o","t"],   "phonemes": ["r","o","b","ɒ","t"] }
+          ]
+        },
+        "2": {
+          "text": "Shep had a sharp robot.",
+          "words": [
+            { "surface": "Shep", "graphemes": ["sh", "e", "p"], "phonemes": ["ʃ", "ɛ", "p"] },
+            { "surface": "had", "graphemes": ["h", "a", "d"], "phonemes": ["h", "æ", "d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "sharp", "graphemes": ["sh", "a", "r", "p"], "phonemes": ["ʃ", "ɑ", "r", "p"] },
+            { "surface": "robot", "graphemes": ["r", "o", "b", "o", "t"], "phonemes": ["r", "o", "b", "ɒ", "t"] }
           ]
         }
       }
@@ -256,6 +334,16 @@
             { "surface": "a",      "graphemes": ["a"],                   "phonemes": ["ə"] },
             { "surface": "robot",  "graphemes": ["r","o","b","o","t"],   "phonemes": ["r","o","b","ɒ","t"] }
           ]
+        },
+        "2": {
+          "text": "Sharon had a shiny robot.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh", "a", "r", "o", "n"], "phonemes": ["ʃ", "æ", "r", "ə", "n"] },
+            { "surface": "had", "graphemes": ["h", "a", "d"], "phonemes": ["h", "æ", "d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "shiny", "graphemes": ["sh", "i", "n", "y"], "phonemes": ["ʃ", "aɪ", "n", "i"] },
+            { "surface": "robot", "graphemes": ["r", "o", "b", "o", "t"], "phonemes": ["r", "o", "b", "ɒ", "t"] }
+          ]
         }
       }
     },
@@ -284,6 +372,16 @@
             { "surface": "a",     "graphemes": ["a"],                   "phonemes": ["ə"] },
             { "surface": "motor", "graphemes": ["m","o","t","o","r"],   "phonemes": ["m","o","t","ə","r"] }
           ]
+        },
+        "2": {
+          "text": "Shen got a shiny motor.",
+          "words": [
+            { "surface": "Shen", "graphemes": ["sh", "e", "n"], "phonemes": ["ʃ", "ɛ", "n"] },
+            { "surface": "got", "graphemes": ["g", "o", "t"], "phonemes": ["g", "ɒ", "t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "shiny", "graphemes": ["sh", "i", "n", "y"], "phonemes": ["ʃ", "aɪ", "n", "i"] },
+            { "surface": "motor", "graphemes": ["m", "o", "t", "o", "r"], "phonemes": ["m", "o", "t", "ə", "r"] }
+          ]
         }
       }
     },
@@ -310,6 +408,16 @@
             { "surface": "shut",   "graphemes": ["sh","u","t"],              "phonemes": ["ʃ","ʌ","t"] },
             { "surface": "the",    "graphemes": ["th","e"],                  "phonemes": ["ð","ə"] },
             { "surface": "robot",  "graphemes": ["r","o","b","o","t"],       "phonemes": ["r","o","b","ɒ","t"] }
+          ]
+        },
+        "2": {
+          "text": "Shep shut the shiny robot.",
+          "words": [
+            { "surface": "Shep", "graphemes": ["sh", "e", "p"], "phonemes": ["ʃ", "ɛ", "p"] },
+            { "surface": "shut", "graphemes": ["sh", "u", "t"], "phonemes": ["ʃ", "ʌ", "t"] },
+            { "surface": "the", "graphemes": ["th", "e"], "phonemes": ["ð", "ə"] },
+            { "surface": "shiny", "graphemes": ["sh", "i", "n", "y"], "phonemes": ["ʃ", "aɪ", "n", "i"] },
+            { "surface": "robot", "graphemes": ["r", "o", "b", "o", "t"], "phonemes": ["r", "o", "b", "ɒ", "t"] }
           ]
         }
       }
@@ -338,6 +446,16 @@
             { "surface": "had",    "graphemes": ["h","a","d"],           "phonemes": ["h","æ","d"] },
             { "surface": "a",      "graphemes": ["a"],                   "phonemes": ["ə"] },
             { "surface": "bot",    "graphemes": ["b","o","t"],           "phonemes": ["b","ɒ","t"] }
+          ]
+        },
+        "2": {
+          "text": "Sharon had a sharp bot.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh", "a", "r", "o", "n"], "phonemes": ["ʃ", "æ", "r", "ə", "n"] },
+            { "surface": "had", "graphemes": ["h", "a", "d"], "phonemes": ["h", "æ", "d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "sharp", "graphemes": ["sh", "a", "r", "p"], "phonemes": ["ʃ", "ɑ", "r", "p"] },
+            { "surface": "bot", "graphemes": ["b", "o", "t"], "phonemes": ["b", "ɒ", "t"] }
           ]
         }
       }
@@ -368,6 +486,16 @@
             { "surface": "the",    "graphemes": ["th","e"],              "phonemes": ["ð","ə"] },
             { "surface": "lever",  "graphemes": ["l","e","v","e","r"],   "phonemes": ["l","ɛ","v","ə","r"] }
           ]
+        },
+        "2": {
+          "text": "Sharon set the shiny lever.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh", "a", "r", "o", "n"], "phonemes": ["ʃ", "æ", "r", "ə", "n"] },
+            { "surface": "set", "graphemes": ["s", "e", "t"], "phonemes": ["s", "ɛ", "t"] },
+            { "surface": "the", "graphemes": ["th", "e"], "phonemes": ["ð", "ə"] },
+            { "surface": "shiny", "graphemes": ["sh", "i", "n", "y"], "phonemes": ["ʃ", "aɪ", "n", "i"] },
+            { "surface": "lever", "graphemes": ["l", "e", "v", "e", "r"], "phonemes": ["l", "ɛ", "v", "ə", "r"] }
+          ]
         }
       }
     },
@@ -396,6 +524,16 @@
             { "surface": "had",   "graphemes": ["h","a","d"],           "phonemes": ["h","æ","d"] },
             { "surface": "a",     "graphemes": ["a"],                   "phonemes": ["ə"] },
             { "surface": "shed",  "graphemes": ["sh","e","d"],          "phonemes": ["ʃ","ɛ","d"] }
+          ]
+        },
+        "2": {
+          "text": "Shep had a sharp shed.",
+          "words": [
+            { "surface": "Shep", "graphemes": ["sh", "e", "p"], "phonemes": ["ʃ", "ɛ", "p"] },
+            { "surface": "had", "graphemes": ["h", "a", "d"], "phonemes": ["h", "æ", "d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "sharp", "graphemes": ["sh", "a", "r", "p"], "phonemes": ["ʃ", "ɑ", "r", "p"] },
+            { "surface": "shed", "graphemes": ["sh", "e", "d"], "phonemes": ["ʃ", "ɛ", "d"] }
           ]
         }
       }
@@ -426,6 +564,16 @@
             { "surface": "the",    "graphemes": ["th","e"],              "phonemes": ["ð","ə"] },
             { "surface": "shed",   "graphemes": ["sh","e","d"],          "phonemes": ["ʃ","ɛ","d"] }
           ]
+        },
+        "2": {
+          "text": "Sharon shut the shiny shed.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh", "a", "r", "o", "n"], "phonemes": ["ʃ", "æ", "r", "ə", "n"] },
+            { "surface": "shut", "graphemes": ["sh", "u", "t"], "phonemes": ["ʃ", "ʌ", "t"] },
+            { "surface": "the", "graphemes": ["th", "e"], "phonemes": ["ð", "ə"] },
+            { "surface": "shiny", "graphemes": ["sh", "i", "n", "y"], "phonemes": ["ʃ", "aɪ", "n", "i"] },
+            { "surface": "shed", "graphemes": ["sh", "e", "d"], "phonemes": ["ʃ", "ɛ", "d"] }
+          ]
         }
       }
     },
@@ -454,6 +602,16 @@
             { "surface": "had",    "graphemes": ["h","a","d"],           "phonemes": ["h","æ","d"] },
             { "surface": "a",      "graphemes": ["a"],                   "phonemes": ["ə"] },
             { "surface": "robot",  "graphemes": ["r","o","b","o","t"],   "phonemes": ["r","o","b","ɒ","t"] }
+          ]
+        },
+        "2": {
+          "text": "Sharon had a sharp robot.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh", "a", "r", "o", "n"], "phonemes": ["ʃ", "æ", "r", "ə", "n"] },
+            { "surface": "had", "graphemes": ["h", "a", "d"], "phonemes": ["h", "æ", "d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "sharp", "graphemes": ["sh", "a", "r", "p"], "phonemes": ["ʃ", "ɑ", "r", "p"] },
+            { "surface": "robot", "graphemes": ["r", "o", "b", "o", "t"], "phonemes": ["r", "o", "b", "ɒ", "t"] }
           ]
         }
       }
@@ -484,6 +642,16 @@
             { "surface": "a",     "graphemes": ["a"],                   "phonemes": ["ə"] },
             { "surface": "robot", "graphemes": ["r","o","b","o","t"],   "phonemes": ["r","o","b","ɒ","t"] }
           ]
+        },
+        "2": {
+          "text": "Shen had a shiny robot.",
+          "words": [
+            { "surface": "Shen", "graphemes": ["sh", "e", "n"], "phonemes": ["ʃ", "ɛ", "n"] },
+            { "surface": "had", "graphemes": ["h", "a", "d"], "phonemes": ["h", "æ", "d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "shiny", "graphemes": ["sh", "i", "n", "y"], "phonemes": ["ʃ", "aɪ", "n", "i"] },
+            { "surface": "robot", "graphemes": ["r", "o", "b", "o", "t"], "phonemes": ["r", "o", "b", "ɒ", "t"] }
+          ]
         }
       }
     },
@@ -512,6 +680,16 @@
             { "surface": "had",    "graphemes": ["h","a","d"],               "phonemes": ["h","æ","d"] },
             { "surface": "a",      "graphemes": ["a"],                       "phonemes": ["ə"] },
             { "surface": "bot",    "graphemes": ["b","o","t"],               "phonemes": ["b","ɒ","t"] }
+          ]
+        },
+        "2": {
+          "text": "Sharon had a sharp bot.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh", "a", "r", "o", "n"], "phonemes": ["ʃ", "æ", "r", "ə", "n"] },
+            { "surface": "had", "graphemes": ["h", "a", "d"], "phonemes": ["h", "æ", "d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "sharp", "graphemes": ["sh", "a", "r", "p"], "phonemes": ["ʃ", "ɑ", "r", "p"] },
+            { "surface": "bot", "graphemes": ["b", "o", "t"], "phonemes": ["b", "ɒ", "t"] }
           ]
         }
       }
@@ -542,6 +720,16 @@
             { "surface": "a",      "graphemes": ["a"],                   "phonemes": ["ə"] },
             { "surface": "motor",  "graphemes": ["m","o","t","o","r"],   "phonemes": ["m","o","t","ə","r"] }
           ]
+        },
+        "2": {
+          "text": "Sharon got a shiny motor.",
+          "words": [
+            { "surface": "Sharon", "graphemes": ["sh", "a", "r", "o", "n"], "phonemes": ["ʃ", "æ", "r", "ə", "n"] },
+            { "surface": "got", "graphemes": ["g", "o", "t"], "phonemes": ["g", "ɒ", "t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "shiny", "graphemes": ["sh", "i", "n", "y"], "phonemes": ["ʃ", "aɪ", "n", "i"] },
+            { "surface": "motor", "graphemes": ["m", "o", "t", "o", "r"], "phonemes": ["m", "o", "t", "ə", "r"] }
+          ]
         }
       }
     },
@@ -570,6 +758,16 @@
             { "surface": "had",     "graphemes": ["h","a","d"],                 "phonemes": ["h","æ","d"] },
             { "surface": "a",       "graphemes": ["a"],                         "phonemes": ["ə"] },
             { "surface": "robot",   "graphemes": ["r","o","b","o","t"],         "phonemes": ["r","o","b","ɒ","t"] }
+          ]
+        },
+        "2": {
+          "text": "Shep had a shy robot.",
+          "words": [
+            { "surface": "Shep", "graphemes": ["sh", "e", "p"], "phonemes": ["ʃ", "ɛ", "p"] },
+            { "surface": "had", "graphemes": ["h", "a", "d"], "phonemes": ["h", "æ", "d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "shy", "graphemes": ["sh", "y"], "phonemes": ["ʃ", "aɪ"] },
+            { "surface": "robot", "graphemes": ["r", "o", "b", "o", "t"], "phonemes": ["r", "o", "b", "ɒ", "t"] }
           ]
         }
       }

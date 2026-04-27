@@ -9,28 +9,294 @@
       "text": "Thad and Theo had a thin algorithm on the path.",
       "targetCount": 6,
       "targetInitialContentWords": 3,
-      "interestWords": ["algorithm"],
+      "interestWords": [
+        "algorithm"
+      ],
       "words": [
-        { "surface": "Thad",      "graphemes": ["th","a","d"],                            "phonemes": ["θ","æ","d"] },
-        { "surface": "and",       "graphemes": ["a","n","d"],                             "phonemes": ["æ","n","d"] },
-        { "surface": "Theo",      "graphemes": ["th","e","o"],                            "phonemes": ["θ","i","oʊ"] },
-        { "surface": "had",       "graphemes": ["h","a","d"],                             "phonemes": ["h","æ","d"] },
-        { "surface": "a",         "graphemes": ["a"],                                     "phonemes": ["ə"] },
-        { "surface": "thin",      "graphemes": ["th","i","n"],                            "phonemes": ["θ","ɪ","n"] },
-        { "surface": "algorithm", "graphemes": ["a","l","g","o","r","i","th","m"],       "phonemes": ["æ","l","g","ə","r","ɪ","θ","m"] },
-        { "surface": "on",        "graphemes": ["o","n"],                                 "phonemes": ["ɒ","n"] },
-        { "surface": "the",       "graphemes": ["th","e"],                                "phonemes": ["ð","ə"] },
-        { "surface": "path",      "graphemes": ["p","a","th"],                            "phonemes": ["p","æ","θ"] }
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "had",
+          "graphemes": [
+            "h",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "h",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "algorithm",
+          "graphemes": [
+            "a",
+            "l",
+            "g",
+            "o",
+            "r",
+            "i",
+            "th",
+            "m"
+          ],
+          "phonemes": [
+            "æ",
+            "l",
+            "g",
+            "ə",
+            "r",
+            "ɪ",
+            "θ",
+            "m"
+          ]
+        },
+        {
+          "surface": "on",
+          "graphemes": [
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "path",
+          "graphemes": [
+            "p",
+            "a",
+            "th"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "θ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Thad had a thin algorithm.",
           "words": [
-            { "surface": "Thad",      "graphemes": ["th","a","d"],                            "phonemes": ["θ","æ","d"] },
-            { "surface": "had",       "graphemes": ["h","a","d"],                             "phonemes": ["h","æ","d"] },
-            { "surface": "a",         "graphemes": ["a"],                                     "phonemes": ["ə"] },
-            { "surface": "thin",      "graphemes": ["th","i","n"],                            "phonemes": ["θ","ɪ","n"] },
-            { "surface": "algorithm", "graphemes": ["a","l","g","o","r","i","th","m"],       "phonemes": ["æ","l","g","ə","r","ɪ","θ","m"] }
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "had",
+              "graphemes": [
+                "h",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "algorithm",
+              "graphemes": [
+                "a",
+                "l",
+                "g",
+                "o",
+                "r",
+                "i",
+                "th",
+                "m"
+              ],
+              "phonemes": [
+                "æ",
+                "l",
+                "g",
+                "ə",
+                "r",
+                "ɪ",
+                "θ",
+                "m"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Thad had a thin algorithm.",
+          "words": [
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "had",
+              "graphemes": [
+                "h",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "algorithm",
+              "graphemes": [
+                "a",
+                "l",
+                "g",
+                "o",
+                "r",
+                "i",
+                "th",
+                "m"
+              ],
+              "phonemes": [
+                "æ",
+                "l",
+                "g",
+                "ə",
+                "r",
+                "ɪ",
+                "θ",
+                "m"
+              ]
+            }
           ]
         }
       }
@@ -39,27 +305,271 @@
       "text": "A thin python ran past Thad with Theo and Beth.",
       "targetCount": 6,
       "targetInitialContentWords": 3,
-      "interestWords": ["python"],
+      "interestWords": [
+        "python"
+      ],
       "words": [
-        { "surface": "A",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "thin",   "graphemes": ["th","i","n"],            "phonemes": ["θ","ɪ","n"] },
-        { "surface": "python", "graphemes": ["p","y","th","o","n"],    "phonemes": ["p","aɪ","θ","ə","n"] },
-        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
-        { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
-        { "surface": "Thad",   "graphemes": ["th","a","d"],            "phonemes": ["θ","æ","d"] },
-        { "surface": "with",   "graphemes": ["w","i","th"],            "phonemes": ["w","ɪ","θ"] },
-        { "surface": "Theo",   "graphemes": ["th","e","o"],            "phonemes": ["θ","i","oʊ"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "Beth",   "graphemes": ["b","e","th"],            "phonemes": ["b","ɛ","θ"] }
+        {
+          "surface": "A",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "python",
+          "graphemes": [
+            "p",
+            "y",
+            "th",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "p",
+            "aɪ",
+            "θ",
+            "ə",
+            "n"
+          ]
+        },
+        {
+          "surface": "ran",
+          "graphemes": [
+            "r",
+            "a",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "n"
+          ]
+        },
+        {
+          "surface": "past",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "t"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "t"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "with",
+          "graphemes": [
+            "w",
+            "i",
+            "th"
+          ],
+          "phonemes": [
+            "w",
+            "ɪ",
+            "θ"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Beth",
+          "graphemes": [
+            "b",
+            "e",
+            "th"
+          ],
+          "phonemes": [
+            "b",
+            "ɛ",
+            "θ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "A thin python ran.",
           "words": [
-            { "surface": "A",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-            { "surface": "thin",   "graphemes": ["th","i","n"],            "phonemes": ["θ","ɪ","n"] },
-            { "surface": "python", "graphemes": ["p","y","th","o","n"],    "phonemes": ["p","aɪ","θ","ə","n"] },
-            { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] }
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "python",
+              "graphemes": [
+                "p",
+                "y",
+                "th",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "p",
+                "aɪ",
+                "θ",
+                "ə",
+                "n"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "A thin python ran past.",
+          "words": [
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "python",
+              "graphemes": [
+                "p",
+                "y",
+                "th",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "p",
+                "aɪ",
+                "θ",
+                "ə",
+                "n"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            },
+            {
+              "surface": "past",
+              "graphemes": [
+                "p",
+                "a",
+                "s",
+                "t"
+              ],
+              "phonemes": [
+                "p",
+                "æ",
+                "s",
+                "t"
+              ]
+            }
           ]
         }
       }
@@ -68,27 +578,284 @@
       "text": "Thad fixed a thin sensor and Theo got the bot.",
       "targetCount": 4,
       "targetInitialContentWords": 3,
-      "interestWords": ["sensor", "bot"],
+      "interestWords": [
+        "sensor",
+        "bot"
+      ],
       "words": [
-        { "surface": "Thad",   "graphemes": ["th","a","d"],                "phonemes": ["θ","æ","d"] },
-        { "surface": "fixed",  "graphemes": ["f","i","x","e","d"],         "phonemes": ["f","ɪ","k","s","t"] },
-        { "surface": "a",      "graphemes": ["a"],                         "phonemes": ["ə"] },
-        { "surface": "thin",   "graphemes": ["th","i","n"],                "phonemes": ["θ","ɪ","n"] },
-        { "surface": "sensor", "graphemes": ["s","e","n","s","o","r"],     "phonemes": ["s","ɛ","n","s","ɔ","r"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
-        { "surface": "Theo",   "graphemes": ["th","e","o"],                "phonemes": ["θ","i","oʊ"] },
-        { "surface": "got",    "graphemes": ["g","o","t"],                 "phonemes": ["g","ɒ","t"] },
-        { "surface": "the",    "graphemes": ["th","e"],                    "phonemes": ["ð","ə"] },
-        { "surface": "bot",    "graphemes": ["b","o","t"],                 "phonemes": ["b","ɒ","t"] }
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "fixed",
+          "graphemes": [
+            "f",
+            "i",
+            "x",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "f",
+            "ɪ",
+            "k",
+            "s",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "sensor",
+          "graphemes": [
+            "s",
+            "e",
+            "n",
+            "s",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "s",
+            "ɛ",
+            "n",
+            "s",
+            "ɔ",
+            "r"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "bot",
+          "graphemes": [
+            "b",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "b",
+            "ɒ",
+            "t"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Thad fixed a sensor.",
           "words": [
-            { "surface": "Thad",   "graphemes": ["th","a","d"],                "phonemes": ["θ","æ","d"] },
-            { "surface": "fixed",  "graphemes": ["f","i","x","e","d"],         "phonemes": ["f","ɪ","k","s","t"] },
-            { "surface": "a",      "graphemes": ["a"],                         "phonemes": ["ə"] },
-            { "surface": "sensor", "graphemes": ["s","e","n","s","o","r"],     "phonemes": ["s","ɛ","n","s","ɔ","r"] }
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "fixed",
+              "graphemes": [
+                "f",
+                "i",
+                "x",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "f",
+                "ɪ",
+                "k",
+                "s",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "sensor",
+              "graphemes": [
+                "s",
+                "e",
+                "n",
+                "s",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "n",
+                "s",
+                "ɔ",
+                "r"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Thad fixed a thin sensor.",
+          "words": [
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "fixed",
+              "graphemes": [
+                "f",
+                "i",
+                "x",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "f",
+                "ɪ",
+                "k",
+                "s",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "sensor",
+              "graphemes": [
+                "s",
+                "e",
+                "n",
+                "s",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "n",
+                "s",
+                "ɔ",
+                "r"
+              ]
+            }
           ]
         }
       }
@@ -97,26 +864,254 @@
       "text": "Theo and Thad set a thin servo with Beth.",
       "targetCount": 5,
       "targetInitialContentWords": 3,
-      "interestWords": ["servo"],
+      "interestWords": [
+        "servo"
+      ],
       "words": [
-        { "surface": "Theo",  "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
-        { "surface": "and",   "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
-        { "surface": "Thad",  "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
-        { "surface": "set",   "graphemes": ["s","e","t"],          "phonemes": ["s","ɛ","t"] },
-        { "surface": "a",     "graphemes": ["a"],                  "phonemes": ["ə"] },
-        { "surface": "thin",  "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
-        { "surface": "servo", "graphemes": ["s","e","r","v","o"],  "phonemes": ["s","ɜ","r","v","oʊ"] },
-        { "surface": "with",  "graphemes": ["w","i","th"],         "phonemes": ["w","ɪ","θ"] },
-        { "surface": "Beth",  "graphemes": ["b","e","th"],         "phonemes": ["b","ɛ","θ"] }
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "set",
+          "graphemes": [
+            "s",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "s",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "servo",
+          "graphemes": [
+            "s",
+            "e",
+            "r",
+            "v",
+            "o"
+          ],
+          "phonemes": [
+            "s",
+            "ɜ",
+            "r",
+            "v",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "with",
+          "graphemes": [
+            "w",
+            "i",
+            "th"
+          ],
+          "phonemes": [
+            "w",
+            "ɪ",
+            "θ"
+          ]
+        },
+        {
+          "surface": "Beth",
+          "graphemes": [
+            "b",
+            "e",
+            "th"
+          ],
+          "phonemes": [
+            "b",
+            "ɛ",
+            "θ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Theo set a servo.",
           "words": [
-            { "surface": "Theo",  "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
-            { "surface": "set",   "graphemes": ["s","e","t"],          "phonemes": ["s","ɛ","t"] },
-            { "surface": "a",     "graphemes": ["a"],                  "phonemes": ["ə"] },
-            { "surface": "servo", "graphemes": ["s","e","r","v","o"],  "phonemes": ["s","ɜ","r","v","oʊ"] }
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "set",
+              "graphemes": [
+                "s",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "servo",
+              "graphemes": [
+                "s",
+                "e",
+                "r",
+                "v",
+                "o"
+              ],
+              "phonemes": [
+                "s",
+                "ɜ",
+                "r",
+                "v",
+                "oʊ"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Theo set a thin servo.",
+          "words": [
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "set",
+              "graphemes": [
+                "s",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "servo",
+              "graphemes": [
+                "s",
+                "e",
+                "r",
+                "v",
+                "o"
+              ],
+              "phonemes": [
+                "s",
+                "ɜ",
+                "r",
+                "v",
+                "oʊ"
+              ]
+            }
           ]
         }
       }
@@ -125,26 +1120,280 @@
       "text": "A swift thin algorithm hid with Thad and Theo.",
       "targetCount": 5,
       "targetInitialContentWords": 3,
-      "interestWords": ["algorithm"],
+      "interestWords": [
+        "algorithm"
+      ],
       "words": [
-        { "surface": "A",         "graphemes": ["a"],                                     "phonemes": ["ə"] },
-        { "surface": "swift",     "graphemes": ["s","w","i","f","t"],                     "phonemes": ["s","w","ɪ","f","t"] },
-        { "surface": "thin",      "graphemes": ["th","i","n"],                            "phonemes": ["θ","ɪ","n"] },
-        { "surface": "algorithm", "graphemes": ["a","l","g","o","r","i","th","m"],       "phonemes": ["æ","l","g","ə","r","ɪ","θ","m"] },
-        { "surface": "hid",       "graphemes": ["h","i","d"],                             "phonemes": ["h","ɪ","d"] },
-        { "surface": "with",      "graphemes": ["w","i","th"],                            "phonemes": ["w","ɪ","θ"] },
-        { "surface": "Thad",      "graphemes": ["th","a","d"],                            "phonemes": ["θ","æ","d"] },
-        { "surface": "and",       "graphemes": ["a","n","d"],                             "phonemes": ["æ","n","d"] },
-        { "surface": "Theo",      "graphemes": ["th","e","o"],                            "phonemes": ["θ","i","oʊ"] }
+        {
+          "surface": "A",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "swift",
+          "graphemes": [
+            "s",
+            "w",
+            "i",
+            "f",
+            "t"
+          ],
+          "phonemes": [
+            "s",
+            "w",
+            "ɪ",
+            "f",
+            "t"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "algorithm",
+          "graphemes": [
+            "a",
+            "l",
+            "g",
+            "o",
+            "r",
+            "i",
+            "th",
+            "m"
+          ],
+          "phonemes": [
+            "æ",
+            "l",
+            "g",
+            "ə",
+            "r",
+            "ɪ",
+            "θ",
+            "m"
+          ]
+        },
+        {
+          "surface": "hid",
+          "graphemes": [
+            "h",
+            "i",
+            "d"
+          ],
+          "phonemes": [
+            "h",
+            "ɪ",
+            "d"
+          ]
+        },
+        {
+          "surface": "with",
+          "graphemes": [
+            "w",
+            "i",
+            "th"
+          ],
+          "phonemes": [
+            "w",
+            "ɪ",
+            "θ"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "A thin algorithm hid.",
           "words": [
-            { "surface": "A",         "graphemes": ["a"],                                     "phonemes": ["ə"] },
-            { "surface": "thin",      "graphemes": ["th","i","n"],                            "phonemes": ["θ","ɪ","n"] },
-            { "surface": "algorithm", "graphemes": ["a","l","g","o","r","i","th","m"],       "phonemes": ["æ","l","g","ə","r","ɪ","θ","m"] },
-            { "surface": "hid",       "graphemes": ["h","i","d"],                             "phonemes": ["h","ɪ","d"] }
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "algorithm",
+              "graphemes": [
+                "a",
+                "l",
+                "g",
+                "o",
+                "r",
+                "i",
+                "th",
+                "m"
+              ],
+              "phonemes": [
+                "æ",
+                "l",
+                "g",
+                "ə",
+                "r",
+                "ɪ",
+                "θ",
+                "m"
+              ]
+            },
+            {
+              "surface": "hid",
+              "graphemes": [
+                "h",
+                "i",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "ɪ",
+                "d"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "A swift thin algorithm hid.",
+          "words": [
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "swift",
+              "graphemes": [
+                "s",
+                "w",
+                "i",
+                "f",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "w",
+                "ɪ",
+                "f",
+                "t"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "algorithm",
+              "graphemes": [
+                "a",
+                "l",
+                "g",
+                "o",
+                "r",
+                "i",
+                "th",
+                "m"
+              ],
+              "phonemes": [
+                "æ",
+                "l",
+                "g",
+                "ə",
+                "r",
+                "ɪ",
+                "θ",
+                "m"
+              ]
+            },
+            {
+              "surface": "hid",
+              "graphemes": [
+                "h",
+                "i",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "ɪ",
+                "d"
+              ]
+            }
           ]
         }
       }
@@ -153,28 +1402,297 @@
       "text": "Thad and Theo met a thin actuator at the shed.",
       "targetCount": 4,
       "targetInitialContentWords": 3,
-      "interestWords": ["actuator"],
+      "interestWords": [
+        "actuator"
+      ],
       "words": [
-        { "surface": "Thad",     "graphemes": ["th","a","d"],                        "phonemes": ["θ","æ","d"] },
-        { "surface": "and",      "graphemes": ["a","n","d"],                         "phonemes": ["æ","n","d"] },
-        { "surface": "Theo",     "graphemes": ["th","e","o"],                        "phonemes": ["θ","i","oʊ"] },
-        { "surface": "met",      "graphemes": ["m","e","t"],                         "phonemes": ["m","ɛ","t"] },
-        { "surface": "a",        "graphemes": ["a"],                                 "phonemes": ["ə"] },
-        { "surface": "thin",     "graphemes": ["th","i","n"],                        "phonemes": ["θ","ɪ","n"] },
-        { "surface": "actuator", "graphemes": ["a","c","t","u","a","t","o","r"],   "phonemes": ["æ","k","t","j","u","eɪ","t","ɔ","r"] },
-        { "surface": "at",       "graphemes": ["a","t"],                             "phonemes": ["æ","t"] },
-        { "surface": "the",      "graphemes": ["th","e"],                            "phonemes": ["ð","ə"] },
-        { "surface": "shed",     "graphemes": ["sh","e","d"],                        "phonemes": ["ʃ","ɛ","d"] }
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "met",
+          "graphemes": [
+            "m",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "m",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "actuator",
+          "graphemes": [
+            "a",
+            "c",
+            "t",
+            "u",
+            "a",
+            "t",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "æ",
+            "k",
+            "t",
+            "j",
+            "u",
+            "eɪ",
+            "t",
+            "ɔ",
+            "r"
+          ]
+        },
+        {
+          "surface": "at",
+          "graphemes": [
+            "a",
+            "t"
+          ],
+          "phonemes": [
+            "æ",
+            "t"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "shed",
+          "graphemes": [
+            "sh",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "ʃ",
+            "ɛ",
+            "d"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Thad met a thin actuator.",
           "words": [
-            { "surface": "Thad",     "graphemes": ["th","a","d"],                        "phonemes": ["θ","æ","d"] },
-            { "surface": "met",      "graphemes": ["m","e","t"],                         "phonemes": ["m","ɛ","t"] },
-            { "surface": "a",        "graphemes": ["a"],                                 "phonemes": ["ə"] },
-            { "surface": "thin",     "graphemes": ["th","i","n"],                        "phonemes": ["θ","ɪ","n"] },
-            { "surface": "actuator", "graphemes": ["a","c","t","u","a","t","o","r"],   "phonemes": ["æ","k","t","j","u","eɪ","t","ɔ","r"] }
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "met",
+              "graphemes": [
+                "m",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "m",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "actuator",
+              "graphemes": [
+                "a",
+                "c",
+                "t",
+                "u",
+                "a",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "æ",
+                "k",
+                "t",
+                "j",
+                "u",
+                "eɪ",
+                "t",
+                "ɔ",
+                "r"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Thad met a thin actuator.",
+          "words": [
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "met",
+              "graphemes": [
+                "m",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "m",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "actuator",
+              "graphemes": [
+                "a",
+                "c",
+                "t",
+                "u",
+                "a",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "æ",
+                "k",
+                "t",
+                "j",
+                "u",
+                "eɪ",
+                "t",
+                "ɔ",
+                "r"
+              ]
+            }
           ]
         }
       }
@@ -183,25 +1701,234 @@
       "text": "A thin sensor sat with Thad and Theo.",
       "targetCount": 4,
       "targetInitialContentWords": 3,
-      "interestWords": ["sensor"],
+      "interestWords": [
+        "sensor"
+      ],
       "words": [
-        { "surface": "A",      "graphemes": ["a"],                         "phonemes": ["ə"] },
-        { "surface": "thin",   "graphemes": ["th","i","n"],                "phonemes": ["θ","ɪ","n"] },
-        { "surface": "sensor", "graphemes": ["s","e","n","s","o","r"],     "phonemes": ["s","ɛ","n","s","ɔ","r"] },
-        { "surface": "sat",    "graphemes": ["s","a","t"],                 "phonemes": ["s","æ","t"] },
-        { "surface": "with",   "graphemes": ["w","i","th"],                "phonemes": ["w","ɪ","θ"] },
-        { "surface": "Thad",   "graphemes": ["th","a","d"],                "phonemes": ["θ","æ","d"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
-        { "surface": "Theo",   "graphemes": ["th","e","o"],                "phonemes": ["θ","i","oʊ"] }
+        {
+          "surface": "A",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "sensor",
+          "graphemes": [
+            "s",
+            "e",
+            "n",
+            "s",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "s",
+            "ɛ",
+            "n",
+            "s",
+            "ɔ",
+            "r"
+          ]
+        },
+        {
+          "surface": "sat",
+          "graphemes": [
+            "s",
+            "a",
+            "t"
+          ],
+          "phonemes": [
+            "s",
+            "æ",
+            "t"
+          ]
+        },
+        {
+          "surface": "with",
+          "graphemes": [
+            "w",
+            "i",
+            "th"
+          ],
+          "phonemes": [
+            "w",
+            "ɪ",
+            "θ"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "A thin sensor sat.",
           "words": [
-            { "surface": "A",      "graphemes": ["a"],                         "phonemes": ["ə"] },
-            { "surface": "thin",   "graphemes": ["th","i","n"],                "phonemes": ["θ","ɪ","n"] },
-            { "surface": "sensor", "graphemes": ["s","e","n","s","o","r"],     "phonemes": ["s","ɛ","n","s","ɔ","r"] },
-            { "surface": "sat",    "graphemes": ["s","a","t"],                 "phonemes": ["s","æ","t"] }
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "sensor",
+              "graphemes": [
+                "s",
+                "e",
+                "n",
+                "s",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "n",
+                "s",
+                "ɔ",
+                "r"
+              ]
+            },
+            {
+              "surface": "sat",
+              "graphemes": [
+                "s",
+                "a",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "æ",
+                "t"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "A thin sensor sat.",
+          "words": [
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "sensor",
+              "graphemes": [
+                "s",
+                "e",
+                "n",
+                "s",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "n",
+                "s",
+                "ɔ",
+                "r"
+              ]
+            },
+            {
+              "surface": "sat",
+              "graphemes": [
+                "s",
+                "a",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "æ",
+                "t"
+              ]
+            }
           ]
         }
       }
@@ -210,27 +1937,276 @@
       "text": "Theo got a thin python and Thad got the algorithm.",
       "targetCount": 6,
       "targetInitialContentWords": 3,
-      "interestWords": ["python", "algorithm"],
+      "interestWords": [
+        "python",
+        "algorithm"
+      ],
       "words": [
-        { "surface": "Theo",      "graphemes": ["th","e","o"],                            "phonemes": ["θ","i","oʊ"] },
-        { "surface": "got",       "graphemes": ["g","o","t"],                             "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",         "graphemes": ["a"],                                     "phonemes": ["ə"] },
-        { "surface": "thin",      "graphemes": ["th","i","n"],                            "phonemes": ["θ","ɪ","n"] },
-        { "surface": "python",    "graphemes": ["p","y","th","o","n"],                    "phonemes": ["p","aɪ","θ","ə","n"] },
-        { "surface": "and",       "graphemes": ["a","n","d"],                             "phonemes": ["æ","n","d"] },
-        { "surface": "Thad",      "graphemes": ["th","a","d"],                            "phonemes": ["θ","æ","d"] },
-        { "surface": "got",       "graphemes": ["g","o","t"],                             "phonemes": ["g","ɒ","t"] },
-        { "surface": "the",       "graphemes": ["th","e"],                                "phonemes": ["ð","ə"] },
-        { "surface": "algorithm", "graphemes": ["a","l","g","o","r","i","th","m"],       "phonemes": ["æ","l","g","ə","r","ɪ","θ","m"] }
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "python",
+          "graphemes": [
+            "p",
+            "y",
+            "th",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "p",
+            "aɪ",
+            "θ",
+            "ə",
+            "n"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "algorithm",
+          "graphemes": [
+            "a",
+            "l",
+            "g",
+            "o",
+            "r",
+            "i",
+            "th",
+            "m"
+          ],
+          "phonemes": [
+            "æ",
+            "l",
+            "g",
+            "ə",
+            "r",
+            "ɪ",
+            "θ",
+            "m"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Theo got a python.",
           "words": [
-            { "surface": "Theo",      "graphemes": ["th","e","o"],                            "phonemes": ["θ","i","oʊ"] },
-            { "surface": "got",       "graphemes": ["g","o","t"],                             "phonemes": ["g","ɒ","t"] },
-            { "surface": "a",         "graphemes": ["a"],                                     "phonemes": ["ə"] },
-            { "surface": "python",    "graphemes": ["p","y","th","o","n"],                    "phonemes": ["p","aɪ","θ","ə","n"] }
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "python",
+              "graphemes": [
+                "p",
+                "y",
+                "th",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "p",
+                "aɪ",
+                "θ",
+                "ə",
+                "n"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Theo got a thin python.",
+          "words": [
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "python",
+              "graphemes": [
+                "p",
+                "y",
+                "th",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "p",
+                "aɪ",
+                "θ",
+                "ə",
+                "n"
+              ]
+            }
           ]
         }
       }
@@ -239,27 +2215,264 @@
       "text": "Thad and Theo had a thin servo at the gym.",
       "targetCount": 4,
       "targetInitialContentWords": 3,
-      "interestWords": ["servo", "gym"],
+      "interestWords": [
+        "servo",
+        "gym"
+      ],
       "words": [
-        { "surface": "Thad",  "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
-        { "surface": "and",   "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
-        { "surface": "Theo",  "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
-        { "surface": "had",   "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
-        { "surface": "a",     "graphemes": ["a"],                  "phonemes": ["ə"] },
-        { "surface": "thin",  "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
-        { "surface": "servo", "graphemes": ["s","e","r","v","o"],  "phonemes": ["s","ɜ","r","v","oʊ"] },
-        { "surface": "at",    "graphemes": ["a","t"],              "phonemes": ["æ","t"] },
-        { "surface": "the",   "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
-        { "surface": "gym",   "graphemes": ["g","y","m"],          "phonemes": ["dʒ","ɪ","m"] }
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "had",
+          "graphemes": [
+            "h",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "h",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "servo",
+          "graphemes": [
+            "s",
+            "e",
+            "r",
+            "v",
+            "o"
+          ],
+          "phonemes": [
+            "s",
+            "ɜ",
+            "r",
+            "v",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "at",
+          "graphemes": [
+            "a",
+            "t"
+          ],
+          "phonemes": [
+            "æ",
+            "t"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "gym",
+          "graphemes": [
+            "g",
+            "y",
+            "m"
+          ],
+          "phonemes": [
+            "dʒ",
+            "ɪ",
+            "m"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Thad had a servo.",
           "words": [
-            { "surface": "Thad",  "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
-            { "surface": "had",   "graphemes": ["h","a","d"],          "phonemes": ["h","æ","d"] },
-            { "surface": "a",     "graphemes": ["a"],                  "phonemes": ["ə"] },
-            { "surface": "servo", "graphemes": ["s","e","r","v","o"],  "phonemes": ["s","ɜ","r","v","oʊ"] }
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "had",
+              "graphemes": [
+                "h",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "servo",
+              "graphemes": [
+                "s",
+                "e",
+                "r",
+                "v",
+                "o"
+              ],
+              "phonemes": [
+                "s",
+                "ɜ",
+                "r",
+                "v",
+                "oʊ"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Thad had a thin servo.",
+          "words": [
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "had",
+              "graphemes": [
+                "h",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "servo",
+              "graphemes": [
+                "s",
+                "e",
+                "r",
+                "v",
+                "o"
+              ],
+              "phonemes": [
+                "s",
+                "ɜ",
+                "r",
+                "v",
+                "oʊ"
+              ]
+            }
           ]
         }
       }
@@ -268,27 +2481,275 @@
       "text": "A swift thin python hid with Thad, Theo, and Beth.",
       "targetCount": 6,
       "targetInitialContentWords": 3,
-      "interestWords": ["python"],
+      "interestWords": [
+        "python"
+      ],
       "words": [
-        { "surface": "A",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "swift",  "graphemes": ["s","w","i","f","t"],     "phonemes": ["s","w","ɪ","f","t"] },
-        { "surface": "thin",   "graphemes": ["th","i","n"],            "phonemes": ["θ","ɪ","n"] },
-        { "surface": "python", "graphemes": ["p","y","th","o","n"],    "phonemes": ["p","aɪ","θ","ə","n"] },
-        { "surface": "hid",    "graphemes": ["h","i","d"],             "phonemes": ["h","ɪ","d"] },
-        { "surface": "with",   "graphemes": ["w","i","th"],            "phonemes": ["w","ɪ","θ"] },
-        { "surface": "Thad",   "graphemes": ["th","a","d"],            "phonemes": ["θ","æ","d"] },
-        { "surface": "Theo",   "graphemes": ["th","e","o"],            "phonemes": ["θ","i","oʊ"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "Beth",   "graphemes": ["b","e","th"],            "phonemes": ["b","ɛ","θ"] }
+        {
+          "surface": "A",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "swift",
+          "graphemes": [
+            "s",
+            "w",
+            "i",
+            "f",
+            "t"
+          ],
+          "phonemes": [
+            "s",
+            "w",
+            "ɪ",
+            "f",
+            "t"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "python",
+          "graphemes": [
+            "p",
+            "y",
+            "th",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "p",
+            "aɪ",
+            "θ",
+            "ə",
+            "n"
+          ]
+        },
+        {
+          "surface": "hid",
+          "graphemes": [
+            "h",
+            "i",
+            "d"
+          ],
+          "phonemes": [
+            "h",
+            "ɪ",
+            "d"
+          ]
+        },
+        {
+          "surface": "with",
+          "graphemes": [
+            "w",
+            "i",
+            "th"
+          ],
+          "phonemes": [
+            "w",
+            "ɪ",
+            "θ"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Beth",
+          "graphemes": [
+            "b",
+            "e",
+            "th"
+          ],
+          "phonemes": [
+            "b",
+            "ɛ",
+            "θ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "A thin python hid.",
           "words": [
-            { "surface": "A",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-            { "surface": "thin",   "graphemes": ["th","i","n"],            "phonemes": ["θ","ɪ","n"] },
-            { "surface": "python", "graphemes": ["p","y","th","o","n"],    "phonemes": ["p","aɪ","θ","ə","n"] },
-            { "surface": "hid",    "graphemes": ["h","i","d"],             "phonemes": ["h","ɪ","d"] }
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "python",
+              "graphemes": [
+                "p",
+                "y",
+                "th",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "p",
+                "aɪ",
+                "θ",
+                "ə",
+                "n"
+              ]
+            },
+            {
+              "surface": "hid",
+              "graphemes": [
+                "h",
+                "i",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "ɪ",
+                "d"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "A swift thin python hid.",
+          "words": [
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "swift",
+              "graphemes": [
+                "s",
+                "w",
+                "i",
+                "f",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "w",
+                "ɪ",
+                "f",
+                "t"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "python",
+              "graphemes": [
+                "p",
+                "y",
+                "th",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "p",
+                "aɪ",
+                "θ",
+                "ə",
+                "n"
+              ]
+            },
+            {
+              "surface": "hid",
+              "graphemes": [
+                "h",
+                "i",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "ɪ",
+                "d"
+              ]
+            }
           ]
         }
       }
@@ -297,27 +2758,257 @@
       "text": "Thad let Theo run a thin algorithm at the gym.",
       "targetCount": 5,
       "targetInitialContentWords": 3,
-      "interestWords": ["algorithm", "gym"],
+      "interestWords": [
+        "algorithm",
+        "gym"
+      ],
       "words": [
-        { "surface": "Thad",      "graphemes": ["th","a","d"],                            "phonemes": ["θ","æ","d"] },
-        { "surface": "let",       "graphemes": ["l","e","t"],                             "phonemes": ["l","ɛ","t"] },
-        { "surface": "Theo",      "graphemes": ["th","e","o"],                            "phonemes": ["θ","i","oʊ"] },
-        { "surface": "run",       "graphemes": ["r","u","n"],                             "phonemes": ["r","ʌ","n"] },
-        { "surface": "a",         "graphemes": ["a"],                                     "phonemes": ["ə"] },
-        { "surface": "thin",      "graphemes": ["th","i","n"],                            "phonemes": ["θ","ɪ","n"] },
-        { "surface": "algorithm", "graphemes": ["a","l","g","o","r","i","th","m"],       "phonemes": ["æ","l","g","ə","r","ɪ","θ","m"] },
-        { "surface": "at",        "graphemes": ["a","t"],                                 "phonemes": ["æ","t"] },
-        { "surface": "the",       "graphemes": ["th","e"],                                "phonemes": ["ð","ə"] },
-        { "surface": "gym",       "graphemes": ["g","y","m"],                             "phonemes": ["dʒ","ɪ","m"] }
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "let",
+          "graphemes": [
+            "l",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "l",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "run",
+          "graphemes": [
+            "r",
+            "u",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "ʌ",
+            "n"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "algorithm",
+          "graphemes": [
+            "a",
+            "l",
+            "g",
+            "o",
+            "r",
+            "i",
+            "th",
+            "m"
+          ],
+          "phonemes": [
+            "æ",
+            "l",
+            "g",
+            "ə",
+            "r",
+            "ɪ",
+            "θ",
+            "m"
+          ]
+        },
+        {
+          "surface": "at",
+          "graphemes": [
+            "a",
+            "t"
+          ],
+          "phonemes": [
+            "æ",
+            "t"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "gym",
+          "graphemes": [
+            "g",
+            "y",
+            "m"
+          ],
+          "phonemes": [
+            "dʒ",
+            "ɪ",
+            "m"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Thad let Theo run.",
           "words": [
-            { "surface": "Thad",      "graphemes": ["th","a","d"],                            "phonemes": ["θ","æ","d"] },
-            { "surface": "let",       "graphemes": ["l","e","t"],                             "phonemes": ["l","ɛ","t"] },
-            { "surface": "Theo",      "graphemes": ["th","e","o"],                            "phonemes": ["θ","i","oʊ"] },
-            { "surface": "run",       "graphemes": ["r","u","n"],                             "phonemes": ["r","ʌ","n"] }
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "let",
+              "graphemes": [
+                "l",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "l",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "run",
+              "graphemes": [
+                "r",
+                "u",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ʌ",
+                "n"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Thad let Theo run.",
+          "words": [
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "let",
+              "graphemes": [
+                "l",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "l",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "run",
+              "graphemes": [
+                "r",
+                "u",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ʌ",
+                "n"
+              ]
+            }
           ]
         }
       }
@@ -326,27 +3017,283 @@
       "text": "Theo had a thin sensor and Thad had the actuator.",
       "targetCount": 4,
       "targetInitialContentWords": 3,
-      "interestWords": ["sensor", "actuator"],
+      "interestWords": [
+        "sensor",
+        "actuator"
+      ],
       "words": [
-        { "surface": "Theo",     "graphemes": ["th","e","o"],                        "phonemes": ["θ","i","oʊ"] },
-        { "surface": "had",      "graphemes": ["h","a","d"],                         "phonemes": ["h","æ","d"] },
-        { "surface": "a",        "graphemes": ["a"],                                 "phonemes": ["ə"] },
-        { "surface": "thin",     "graphemes": ["th","i","n"],                        "phonemes": ["θ","ɪ","n"] },
-        { "surface": "sensor",   "graphemes": ["s","e","n","s","o","r"],             "phonemes": ["s","ɛ","n","s","ɔ","r"] },
-        { "surface": "and",      "graphemes": ["a","n","d"],                         "phonemes": ["æ","n","d"] },
-        { "surface": "Thad",     "graphemes": ["th","a","d"],                        "phonemes": ["θ","æ","d"] },
-        { "surface": "had",      "graphemes": ["h","a","d"],                         "phonemes": ["h","æ","d"] },
-        { "surface": "the",      "graphemes": ["th","e"],                            "phonemes": ["ð","ə"] },
-        { "surface": "actuator", "graphemes": ["a","c","t","u","a","t","o","r"],   "phonemes": ["æ","k","t","j","u","eɪ","t","ɔ","r"] }
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "had",
+          "graphemes": [
+            "h",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "h",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "sensor",
+          "graphemes": [
+            "s",
+            "e",
+            "n",
+            "s",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "s",
+            "ɛ",
+            "n",
+            "s",
+            "ɔ",
+            "r"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "had",
+          "graphemes": [
+            "h",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "h",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "actuator",
+          "graphemes": [
+            "a",
+            "c",
+            "t",
+            "u",
+            "a",
+            "t",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "æ",
+            "k",
+            "t",
+            "j",
+            "u",
+            "eɪ",
+            "t",
+            "ɔ",
+            "r"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Theo had a sensor.",
           "words": [
-            { "surface": "Theo",     "graphemes": ["th","e","o"],                        "phonemes": ["θ","i","oʊ"] },
-            { "surface": "had",      "graphemes": ["h","a","d"],                         "phonemes": ["h","æ","d"] },
-            { "surface": "a",        "graphemes": ["a"],                                 "phonemes": ["ə"] },
-            { "surface": "sensor",   "graphemes": ["s","e","n","s","o","r"],             "phonemes": ["s","ɛ","n","s","ɔ","r"] }
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "had",
+              "graphemes": [
+                "h",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "sensor",
+              "graphemes": [
+                "s",
+                "e",
+                "n",
+                "s",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "n",
+                "s",
+                "ɔ",
+                "r"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Theo had a thin sensor.",
+          "words": [
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "had",
+              "graphemes": [
+                "h",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "sensor",
+              "graphemes": [
+                "s",
+                "e",
+                "n",
+                "s",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "n",
+                "s",
+                "ɔ",
+                "r"
+              ]
+            }
           ]
         }
       }
@@ -355,26 +3302,259 @@
       "text": "A thin algorithm sat with Thad, Theo, and Seth.",
       "targetCount": 6,
       "targetInitialContentWords": 3,
-      "interestWords": ["algorithm"],
+      "interestWords": [
+        "algorithm"
+      ],
       "words": [
-        { "surface": "A",         "graphemes": ["a"],                                     "phonemes": ["ə"] },
-        { "surface": "thin",      "graphemes": ["th","i","n"],                            "phonemes": ["θ","ɪ","n"] },
-        { "surface": "algorithm", "graphemes": ["a","l","g","o","r","i","th","m"],       "phonemes": ["æ","l","g","ə","r","ɪ","θ","m"] },
-        { "surface": "sat",       "graphemes": ["s","a","t"],                             "phonemes": ["s","æ","t"] },
-        { "surface": "with",      "graphemes": ["w","i","th"],                            "phonemes": ["w","ɪ","θ"] },
-        { "surface": "Thad",      "graphemes": ["th","a","d"],                            "phonemes": ["θ","æ","d"] },
-        { "surface": "Theo",      "graphemes": ["th","e","o"],                            "phonemes": ["θ","i","oʊ"] },
-        { "surface": "and",       "graphemes": ["a","n","d"],                             "phonemes": ["æ","n","d"] },
-        { "surface": "Seth",      "graphemes": ["s","e","th"],                            "phonemes": ["s","ɛ","θ"] }
+        {
+          "surface": "A",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "algorithm",
+          "graphemes": [
+            "a",
+            "l",
+            "g",
+            "o",
+            "r",
+            "i",
+            "th",
+            "m"
+          ],
+          "phonemes": [
+            "æ",
+            "l",
+            "g",
+            "ə",
+            "r",
+            "ɪ",
+            "θ",
+            "m"
+          ]
+        },
+        {
+          "surface": "sat",
+          "graphemes": [
+            "s",
+            "a",
+            "t"
+          ],
+          "phonemes": [
+            "s",
+            "æ",
+            "t"
+          ]
+        },
+        {
+          "surface": "with",
+          "graphemes": [
+            "w",
+            "i",
+            "th"
+          ],
+          "phonemes": [
+            "w",
+            "ɪ",
+            "θ"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Seth",
+          "graphemes": [
+            "s",
+            "e",
+            "th"
+          ],
+          "phonemes": [
+            "s",
+            "ɛ",
+            "θ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "A thin algorithm sat.",
           "words": [
-            { "surface": "A",         "graphemes": ["a"],                                     "phonemes": ["ə"] },
-            { "surface": "thin",      "graphemes": ["th","i","n"],                            "phonemes": ["θ","ɪ","n"] },
-            { "surface": "algorithm", "graphemes": ["a","l","g","o","r","i","th","m"],       "phonemes": ["æ","l","g","ə","r","ɪ","θ","m"] },
-            { "surface": "sat",       "graphemes": ["s","a","t"],                             "phonemes": ["s","æ","t"] }
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "algorithm",
+              "graphemes": [
+                "a",
+                "l",
+                "g",
+                "o",
+                "r",
+                "i",
+                "th",
+                "m"
+              ],
+              "phonemes": [
+                "æ",
+                "l",
+                "g",
+                "ə",
+                "r",
+                "ɪ",
+                "θ",
+                "m"
+              ]
+            },
+            {
+              "surface": "sat",
+              "graphemes": [
+                "s",
+                "a",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "æ",
+                "t"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "A thin algorithm sat.",
+          "words": [
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "algorithm",
+              "graphemes": [
+                "a",
+                "l",
+                "g",
+                "o",
+                "r",
+                "i",
+                "th",
+                "m"
+              ],
+              "phonemes": [
+                "æ",
+                "l",
+                "g",
+                "ə",
+                "r",
+                "ɪ",
+                "θ",
+                "m"
+              ]
+            },
+            {
+              "surface": "sat",
+              "graphemes": [
+                "s",
+                "a",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "æ",
+                "t"
+              ]
+            }
           ]
         }
       }
@@ -383,27 +3563,266 @@
       "text": "Thad got a thin servo and Theo got the kit.",
       "targetCount": 4,
       "targetInitialContentWords": 3,
-      "interestWords": ["servo", "kit"],
+      "interestWords": [
+        "servo",
+        "kit"
+      ],
       "words": [
-        { "surface": "Thad",  "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
-        { "surface": "got",   "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",     "graphemes": ["a"],                  "phonemes": ["ə"] },
-        { "surface": "thin",  "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
-        { "surface": "servo", "graphemes": ["s","e","r","v","o"],  "phonemes": ["s","ɜ","r","v","oʊ"] },
-        { "surface": "and",   "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
-        { "surface": "Theo",  "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
-        { "surface": "got",   "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
-        { "surface": "the",   "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
-        { "surface": "kit",   "graphemes": ["k","i","t"],          "phonemes": ["k","ɪ","t"] }
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "servo",
+          "graphemes": [
+            "s",
+            "e",
+            "r",
+            "v",
+            "o"
+          ],
+          "phonemes": [
+            "s",
+            "ɜ",
+            "r",
+            "v",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "kit",
+          "graphemes": [
+            "k",
+            "i",
+            "t"
+          ],
+          "phonemes": [
+            "k",
+            "ɪ",
+            "t"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Thad got a servo.",
           "words": [
-            { "surface": "Thad",  "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
-            { "surface": "got",   "graphemes": ["g","o","t"],          "phonemes": ["g","ɒ","t"] },
-            { "surface": "a",     "graphemes": ["a"],                  "phonemes": ["ə"] },
-            { "surface": "servo", "graphemes": ["s","e","r","v","o"],  "phonemes": ["s","ɜ","r","v","oʊ"] }
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "servo",
+              "graphemes": [
+                "s",
+                "e",
+                "r",
+                "v",
+                "o"
+              ],
+              "phonemes": [
+                "s",
+                "ɜ",
+                "r",
+                "v",
+                "oʊ"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Thad got a thin servo.",
+          "words": [
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "servo",
+              "graphemes": [
+                "s",
+                "e",
+                "r",
+                "v",
+                "o"
+              ],
+              "phonemes": [
+                "s",
+                "ɜ",
+                "r",
+                "v",
+                "oʊ"
+              ]
+            }
           ]
         }
       }
@@ -412,26 +3831,283 @@
       "text": "A swift thin actuator hid with Thad and Theo.",
       "targetCount": 4,
       "targetInitialContentWords": 3,
-      "interestWords": ["actuator"],
+      "interestWords": [
+        "actuator"
+      ],
       "words": [
-        { "surface": "A",        "graphemes": ["a"],                                 "phonemes": ["ə"] },
-        { "surface": "swift",    "graphemes": ["s","w","i","f","t"],                 "phonemes": ["s","w","ɪ","f","t"] },
-        { "surface": "thin",     "graphemes": ["th","i","n"],                        "phonemes": ["θ","ɪ","n"] },
-        { "surface": "actuator", "graphemes": ["a","c","t","u","a","t","o","r"],   "phonemes": ["æ","k","t","j","u","eɪ","t","ɔ","r"] },
-        { "surface": "hid",      "graphemes": ["h","i","d"],                         "phonemes": ["h","ɪ","d"] },
-        { "surface": "with",     "graphemes": ["w","i","th"],                        "phonemes": ["w","ɪ","θ"] },
-        { "surface": "Thad",     "graphemes": ["th","a","d"],                        "phonemes": ["θ","æ","d"] },
-        { "surface": "and",      "graphemes": ["a","n","d"],                         "phonemes": ["æ","n","d"] },
-        { "surface": "Theo",     "graphemes": ["th","e","o"],                        "phonemes": ["θ","i","oʊ"] }
+        {
+          "surface": "A",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "swift",
+          "graphemes": [
+            "s",
+            "w",
+            "i",
+            "f",
+            "t"
+          ],
+          "phonemes": [
+            "s",
+            "w",
+            "ɪ",
+            "f",
+            "t"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "actuator",
+          "graphemes": [
+            "a",
+            "c",
+            "t",
+            "u",
+            "a",
+            "t",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "æ",
+            "k",
+            "t",
+            "j",
+            "u",
+            "eɪ",
+            "t",
+            "ɔ",
+            "r"
+          ]
+        },
+        {
+          "surface": "hid",
+          "graphemes": [
+            "h",
+            "i",
+            "d"
+          ],
+          "phonemes": [
+            "h",
+            "ɪ",
+            "d"
+          ]
+        },
+        {
+          "surface": "with",
+          "graphemes": [
+            "w",
+            "i",
+            "th"
+          ],
+          "phonemes": [
+            "w",
+            "ɪ",
+            "θ"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "A thin actuator hid.",
           "words": [
-            { "surface": "A",        "graphemes": ["a"],                                 "phonemes": ["ə"] },
-            { "surface": "thin",     "graphemes": ["th","i","n"],                        "phonemes": ["θ","ɪ","n"] },
-            { "surface": "actuator", "graphemes": ["a","c","t","u","a","t","o","r"],   "phonemes": ["æ","k","t","j","u","eɪ","t","ɔ","r"] },
-            { "surface": "hid",      "graphemes": ["h","i","d"],                         "phonemes": ["h","ɪ","d"] }
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "actuator",
+              "graphemes": [
+                "a",
+                "c",
+                "t",
+                "u",
+                "a",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "æ",
+                "k",
+                "t",
+                "j",
+                "u",
+                "eɪ",
+                "t",
+                "ɔ",
+                "r"
+              ]
+            },
+            {
+              "surface": "hid",
+              "graphemes": [
+                "h",
+                "i",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "ɪ",
+                "d"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "A swift thin actuator hid.",
+          "words": [
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "swift",
+              "graphemes": [
+                "s",
+                "w",
+                "i",
+                "f",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "w",
+                "ɪ",
+                "f",
+                "t"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "actuator",
+              "graphemes": [
+                "a",
+                "c",
+                "t",
+                "u",
+                "a",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "æ",
+                "k",
+                "t",
+                "j",
+                "u",
+                "eɪ",
+                "t",
+                "ɔ",
+                "r"
+              ]
+            },
+            {
+              "surface": "hid",
+              "graphemes": [
+                "h",
+                "i",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "ɪ",
+                "d"
+              ]
+            }
           ]
         }
       }
@@ -440,27 +4116,263 @@
       "text": "Theo and Thad set a thin python on the path.",
       "targetCount": 6,
       "targetInitialContentWords": 3,
-      "interestWords": ["python"],
+      "interestWords": [
+        "python"
+      ],
       "words": [
-        { "surface": "Theo",   "graphemes": ["th","e","o"],            "phonemes": ["θ","i","oʊ"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "Thad",   "graphemes": ["th","a","d"],            "phonemes": ["θ","æ","d"] },
-        { "surface": "set",    "graphemes": ["s","e","t"],             "phonemes": ["s","ɛ","t"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "thin",   "graphemes": ["th","i","n"],            "phonemes": ["θ","ɪ","n"] },
-        { "surface": "python", "graphemes": ["p","y","th","o","n"],    "phonemes": ["p","aɪ","θ","ə","n"] },
-        { "surface": "on",     "graphemes": ["o","n"],                 "phonemes": ["ɒ","n"] },
-        { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
-        { "surface": "path",   "graphemes": ["p","a","th"],            "phonemes": ["p","æ","θ"] }
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "set",
+          "graphemes": [
+            "s",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "s",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "python",
+          "graphemes": [
+            "p",
+            "y",
+            "th",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "p",
+            "aɪ",
+            "θ",
+            "ə",
+            "n"
+          ]
+        },
+        {
+          "surface": "on",
+          "graphemes": [
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "path",
+          "graphemes": [
+            "p",
+            "a",
+            "th"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "θ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Theo set a python.",
           "words": [
-            { "surface": "Theo",   "graphemes": ["th","e","o"],            "phonemes": ["θ","i","oʊ"] },
-            { "surface": "set",    "graphemes": ["s","e","t"],             "phonemes": ["s","ɛ","t"] },
-            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-            { "surface": "python", "graphemes": ["p","y","th","o","n"],    "phonemes": ["p","aɪ","θ","ə","n"] }
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "set",
+              "graphemes": [
+                "s",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "python",
+              "graphemes": [
+                "p",
+                "y",
+                "th",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "p",
+                "aɪ",
+                "θ",
+                "ə",
+                "n"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Theo set a thin python.",
+          "words": [
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "set",
+              "graphemes": [
+                "s",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "python",
+              "graphemes": [
+                "p",
+                "y",
+                "th",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "p",
+                "aɪ",
+                "θ",
+                "ə",
+                "n"
+              ]
+            }
           ]
         }
       }
@@ -469,26 +4381,254 @@
       "text": "A thin servo met Thad, Theo, and Beth.",
       "targetCount": 4,
       "targetInitialContentWords": 3,
-      "interestWords": ["servo"],
+      "interestWords": [
+        "servo"
+      ],
       "words": [
-        { "surface": "A",     "graphemes": ["a"],                  "phonemes": ["ə"] },
-        { "surface": "thin",  "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
-        { "surface": "servo", "graphemes": ["s","e","r","v","o"],  "phonemes": ["s","ɜ","r","v","oʊ"] },
-        { "surface": "met",   "graphemes": ["m","e","t"],          "phonemes": ["m","ɛ","t"] },
-        { "surface": "Thad",  "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
-        { "surface": "Theo",  "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
-        { "surface": "and",   "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
-        { "surface": "Beth",  "graphemes": ["b","e","th"],         "phonemes": ["b","ɛ","θ"] }
+        {
+          "surface": "A",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "servo",
+          "graphemes": [
+            "s",
+            "e",
+            "r",
+            "v",
+            "o"
+          ],
+          "phonemes": [
+            "s",
+            "ɜ",
+            "r",
+            "v",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "met",
+          "graphemes": [
+            "m",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "m",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Beth",
+          "graphemes": [
+            "b",
+            "e",
+            "th"
+          ],
+          "phonemes": [
+            "b",
+            "ɛ",
+            "θ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "A thin servo met Thad.",
           "words": [
-            { "surface": "A",     "graphemes": ["a"],                  "phonemes": ["ə"] },
-            { "surface": "thin",  "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
-            { "surface": "servo", "graphemes": ["s","e","r","v","o"],  "phonemes": ["s","ɜ","r","v","oʊ"] },
-            { "surface": "met",   "graphemes": ["m","e","t"],          "phonemes": ["m","ɛ","t"] },
-            { "surface": "Thad",  "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] }
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "servo",
+              "graphemes": [
+                "s",
+                "e",
+                "r",
+                "v",
+                "o"
+              ],
+              "phonemes": [
+                "s",
+                "ɜ",
+                "r",
+                "v",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "met",
+              "graphemes": [
+                "m",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "m",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "A thin servo met Thad.",
+          "words": [
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "servo",
+              "graphemes": [
+                "s",
+                "e",
+                "r",
+                "v",
+                "o"
+              ],
+              "phonemes": [
+                "s",
+                "ɜ",
+                "r",
+                "v",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "met",
+              "graphemes": [
+                "m",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "m",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            }
           ]
         }
       }
@@ -497,28 +4637,297 @@
       "text": "Thad and Theo had a thin actuator at the shed.",
       "targetCount": 4,
       "targetInitialContentWords": 3,
-      "interestWords": ["actuator"],
+      "interestWords": [
+        "actuator"
+      ],
       "words": [
-        { "surface": "Thad",     "graphemes": ["th","a","d"],                        "phonemes": ["θ","æ","d"] },
-        { "surface": "and",      "graphemes": ["a","n","d"],                         "phonemes": ["æ","n","d"] },
-        { "surface": "Theo",     "graphemes": ["th","e","o"],                        "phonemes": ["θ","i","oʊ"] },
-        { "surface": "had",      "graphemes": ["h","a","d"],                         "phonemes": ["h","æ","d"] },
-        { "surface": "a",        "graphemes": ["a"],                                 "phonemes": ["ə"] },
-        { "surface": "thin",     "graphemes": ["th","i","n"],                        "phonemes": ["θ","ɪ","n"] },
-        { "surface": "actuator", "graphemes": ["a","c","t","u","a","t","o","r"],   "phonemes": ["æ","k","t","j","u","eɪ","t","ɔ","r"] },
-        { "surface": "at",       "graphemes": ["a","t"],                             "phonemes": ["æ","t"] },
-        { "surface": "the",      "graphemes": ["th","e"],                            "phonemes": ["ð","ə"] },
-        { "surface": "shed",     "graphemes": ["sh","e","d"],                        "phonemes": ["ʃ","ɛ","d"] }
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "had",
+          "graphemes": [
+            "h",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "h",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "actuator",
+          "graphemes": [
+            "a",
+            "c",
+            "t",
+            "u",
+            "a",
+            "t",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "æ",
+            "k",
+            "t",
+            "j",
+            "u",
+            "eɪ",
+            "t",
+            "ɔ",
+            "r"
+          ]
+        },
+        {
+          "surface": "at",
+          "graphemes": [
+            "a",
+            "t"
+          ],
+          "phonemes": [
+            "æ",
+            "t"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "shed",
+          "graphemes": [
+            "sh",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "ʃ",
+            "ɛ",
+            "d"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Thad had a thin actuator.",
           "words": [
-            { "surface": "Thad",     "graphemes": ["th","a","d"],                        "phonemes": ["θ","æ","d"] },
-            { "surface": "had",      "graphemes": ["h","a","d"],                         "phonemes": ["h","æ","d"] },
-            { "surface": "a",        "graphemes": ["a"],                                 "phonemes": ["ə"] },
-            { "surface": "thin",     "graphemes": ["th","i","n"],                        "phonemes": ["θ","ɪ","n"] },
-            { "surface": "actuator", "graphemes": ["a","c","t","u","a","t","o","r"],   "phonemes": ["æ","k","t","j","u","eɪ","t","ɔ","r"] }
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "had",
+              "graphemes": [
+                "h",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "actuator",
+              "graphemes": [
+                "a",
+                "c",
+                "t",
+                "u",
+                "a",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "æ",
+                "k",
+                "t",
+                "j",
+                "u",
+                "eɪ",
+                "t",
+                "ɔ",
+                "r"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Thad had a thin actuator.",
+          "words": [
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "had",
+              "graphemes": [
+                "h",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "actuator",
+              "graphemes": [
+                "a",
+                "c",
+                "t",
+                "u",
+                "a",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "æ",
+                "k",
+                "t",
+                "j",
+                "u",
+                "eɪ",
+                "t",
+                "ɔ",
+                "r"
+              ]
+            }
           ]
         }
       }
@@ -527,28 +4936,297 @@
       "text": "Theo cut a thin algorithm and Thad had the bot.",
       "targetCount": 5,
       "targetInitialContentWords": 3,
-      "interestWords": ["algorithm", "bot"],
+      "interestWords": [
+        "algorithm",
+        "bot"
+      ],
       "words": [
-        { "surface": "Theo",      "graphemes": ["th","e","o"],                            "phonemes": ["θ","i","oʊ"] },
-        { "surface": "cut",       "graphemes": ["c","u","t"],                             "phonemes": ["k","ʌ","t"] },
-        { "surface": "a",         "graphemes": ["a"],                                     "phonemes": ["ə"] },
-        { "surface": "thin",      "graphemes": ["th","i","n"],                            "phonemes": ["θ","ɪ","n"] },
-        { "surface": "algorithm", "graphemes": ["a","l","g","o","r","i","th","m"],       "phonemes": ["æ","l","g","ə","r","ɪ","θ","m"] },
-        { "surface": "and",       "graphemes": ["a","n","d"],                             "phonemes": ["æ","n","d"] },
-        { "surface": "Thad",      "graphemes": ["th","a","d"],                            "phonemes": ["θ","æ","d"] },
-        { "surface": "had",       "graphemes": ["h","a","d"],                             "phonemes": ["h","æ","d"] },
-        { "surface": "the",       "graphemes": ["th","e"],                                "phonemes": ["ð","ə"] },
-        { "surface": "bot",       "graphemes": ["b","o","t"],                             "phonemes": ["b","ɒ","t"] }
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "cut",
+          "graphemes": [
+            "c",
+            "u",
+            "t"
+          ],
+          "phonemes": [
+            "k",
+            "ʌ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "algorithm",
+          "graphemes": [
+            "a",
+            "l",
+            "g",
+            "o",
+            "r",
+            "i",
+            "th",
+            "m"
+          ],
+          "phonemes": [
+            "æ",
+            "l",
+            "g",
+            "ə",
+            "r",
+            "ɪ",
+            "θ",
+            "m"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "had",
+          "graphemes": [
+            "h",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "h",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "bot",
+          "graphemes": [
+            "b",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "b",
+            "ɒ",
+            "t"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Theo cut a thin algorithm.",
           "words": [
-            { "surface": "Theo",      "graphemes": ["th","e","o"],                            "phonemes": ["θ","i","oʊ"] },
-            { "surface": "cut",       "graphemes": ["c","u","t"],                             "phonemes": ["k","ʌ","t"] },
-            { "surface": "a",         "graphemes": ["a"],                                     "phonemes": ["ə"] },
-            { "surface": "thin",      "graphemes": ["th","i","n"],                            "phonemes": ["θ","ɪ","n"] },
-            { "surface": "algorithm", "graphemes": ["a","l","g","o","r","i","th","m"],       "phonemes": ["æ","l","g","ə","r","ɪ","θ","m"] }
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "cut",
+              "graphemes": [
+                "c",
+                "u",
+                "t"
+              ],
+              "phonemes": [
+                "k",
+                "ʌ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "algorithm",
+              "graphemes": [
+                "a",
+                "l",
+                "g",
+                "o",
+                "r",
+                "i",
+                "th",
+                "m"
+              ],
+              "phonemes": [
+                "æ",
+                "l",
+                "g",
+                "ə",
+                "r",
+                "ɪ",
+                "θ",
+                "m"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Theo cut a thin algorithm.",
+          "words": [
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "cut",
+              "graphemes": [
+                "c",
+                "u",
+                "t"
+              ],
+              "phonemes": [
+                "k",
+                "ʌ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "algorithm",
+              "graphemes": [
+                "a",
+                "l",
+                "g",
+                "o",
+                "r",
+                "i",
+                "th",
+                "m"
+              ],
+              "phonemes": [
+                "æ",
+                "l",
+                "g",
+                "ə",
+                "r",
+                "ɪ",
+                "θ",
+                "m"
+              ]
+            }
           ]
         }
       }
@@ -557,26 +5235,241 @@
       "text": "A thin python hid with Thad, Theo, and Seth.",
       "targetCount": 6,
       "targetInitialContentWords": 3,
-      "interestWords": ["python"],
+      "interestWords": [
+        "python"
+      ],
       "words": [
-        { "surface": "A",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "thin",   "graphemes": ["th","i","n"],            "phonemes": ["θ","ɪ","n"] },
-        { "surface": "python", "graphemes": ["p","y","th","o","n"],    "phonemes": ["p","aɪ","θ","ə","n"] },
-        { "surface": "hid",    "graphemes": ["h","i","d"],             "phonemes": ["h","ɪ","d"] },
-        { "surface": "with",   "graphemes": ["w","i","th"],            "phonemes": ["w","ɪ","θ"] },
-        { "surface": "Thad",   "graphemes": ["th","a","d"],            "phonemes": ["θ","æ","d"] },
-        { "surface": "Theo",   "graphemes": ["th","e","o"],            "phonemes": ["θ","i","oʊ"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "Seth",   "graphemes": ["s","e","th"],            "phonemes": ["s","ɛ","θ"] }
+        {
+          "surface": "A",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "python",
+          "graphemes": [
+            "p",
+            "y",
+            "th",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "p",
+            "aɪ",
+            "θ",
+            "ə",
+            "n"
+          ]
+        },
+        {
+          "surface": "hid",
+          "graphemes": [
+            "h",
+            "i",
+            "d"
+          ],
+          "phonemes": [
+            "h",
+            "ɪ",
+            "d"
+          ]
+        },
+        {
+          "surface": "with",
+          "graphemes": [
+            "w",
+            "i",
+            "th"
+          ],
+          "phonemes": [
+            "w",
+            "ɪ",
+            "θ"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Seth",
+          "graphemes": [
+            "s",
+            "e",
+            "th"
+          ],
+          "phonemes": [
+            "s",
+            "ɛ",
+            "θ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "A thin python hid.",
           "words": [
-            { "surface": "A",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-            { "surface": "thin",   "graphemes": ["th","i","n"],            "phonemes": ["θ","ɪ","n"] },
-            { "surface": "python", "graphemes": ["p","y","th","o","n"],    "phonemes": ["p","aɪ","θ","ə","n"] },
-            { "surface": "hid",    "graphemes": ["h","i","d"],             "phonemes": ["h","ɪ","d"] }
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "python",
+              "graphemes": [
+                "p",
+                "y",
+                "th",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "p",
+                "aɪ",
+                "θ",
+                "ə",
+                "n"
+              ]
+            },
+            {
+              "surface": "hid",
+              "graphemes": [
+                "h",
+                "i",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "ɪ",
+                "d"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "A thin python hid.",
+          "words": [
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "python",
+              "graphemes": [
+                "p",
+                "y",
+                "th",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "p",
+                "aɪ",
+                "θ",
+                "ə",
+                "n"
+              ]
+            },
+            {
+              "surface": "hid",
+              "graphemes": [
+                "h",
+                "i",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "ɪ",
+                "d"
+              ]
+            }
           ]
         }
       }

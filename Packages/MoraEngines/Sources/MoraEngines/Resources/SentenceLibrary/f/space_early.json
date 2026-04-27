@@ -30,6 +30,15 @@
             { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
             { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] }
           ]
+        },
+        "2": {
+          "text": "Fred fit a flag.",
+          "words": [
+            { "surface": "Fred", "graphemes": ["f","r","e","d"], "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"], "phonemes": ["f","l","æ","g"] }
+          ]
         }
       }
     },
@@ -56,6 +65,15 @@
             { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
             { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
             { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        },
+        "2": {
+          "text": "Fran fit a flag.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"], "phonemes": ["f","r","æ","n"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"], "phonemes": ["f","l","æ","g"] }
           ]
         }
       }
@@ -86,6 +104,15 @@
             { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
             { "surface": "ship", "graphemes": ["sh","i","p"],        "phonemes": ["ʃ","ɪ","p"] }
           ]
+        },
+        "2": {
+          "text": "Finn got a ship.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"], "phonemes": ["f","ɪ","n"] },
+            { "surface": "got", "graphemes": ["g","o","t"], "phonemes": ["g","ɒ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "ship", "graphemes": ["sh","i","p"], "phonemes": ["ʃ","ɪ","p"] }
+          ]
         }
       }
     },
@@ -112,6 +139,16 @@
             { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
             { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
             { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        },
+        "2": {
+          "text": "Fran fit a fast flag.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"], "phonemes": ["f","r","æ","n"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"], "phonemes": ["f","l","æ","g"] }
           ]
         }
       }
@@ -140,6 +177,15 @@
             { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
             { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
           ]
+        },
+        "2": {
+          "text": "Fred fit a flag.",
+          "words": [
+            { "surface": "Fred", "graphemes": ["f","r","e","d"], "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"], "phonemes": ["f","l","æ","g"] }
+          ]
         }
       }
     },
@@ -166,6 +212,15 @@
             { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
             { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
             { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        },
+        "2": {
+          "text": "Fran fit a flag.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"], "phonemes": ["f","r","æ","n"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"], "phonemes": ["f","l","æ","g"] }
           ]
         }
       }
@@ -196,6 +251,15 @@
             { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
             { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
           ]
+        },
+        "2": {
+          "text": "Fred fit a flag.",
+          "words": [
+            { "surface": "Fred", "graphemes": ["f","r","e","d"], "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"], "phonemes": ["f","l","æ","g"] }
+          ]
         }
       }
     },
@@ -222,6 +286,15 @@
             { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
             { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
             { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        },
+        "2": {
+          "text": "Finn fit a flag.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"], "phonemes": ["f","ɪ","n"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"], "phonemes": ["f","l","æ","g"] }
           ]
         }
       }
@@ -252,6 +325,15 @@
             { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
             { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
           ]
+        },
+        "2": {
+          "text": "Fran fit a flag.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"], "phonemes": ["f","r","æ","n"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"], "phonemes": ["f","l","æ","g"] }
+          ]
         }
       }
     },
@@ -281,6 +363,16 @@
             { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
             { "surface": "jet",  "graphemes": ["j","e","t"],         "phonemes": ["dʒ","ɛ","t"] }
           ]
+        },
+        "2": {
+          "text": "Finn got a fast jet.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"], "phonemes": ["f","ɪ","n"] },
+            { "surface": "got", "graphemes": ["g","o","t"], "phonemes": ["g","ɒ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
+            { "surface": "jet", "graphemes": ["j","e","t"], "phonemes": ["dʒ","ɛ","t"] }
+          ]
         }
       }
     },
@@ -306,6 +398,16 @@
             { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
             { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
             { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        },
+        "2": {
+          "text": "Fran fit a fast flag.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"], "phonemes": ["f","r","æ","n"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"], "phonemes": ["f","l","æ","g"] }
           ]
         }
       }
@@ -336,6 +438,15 @@
             { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
             { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
           ]
+        },
+        "2": {
+          "text": "Finn fit a flag.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"], "phonemes": ["f","ɪ","n"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"], "phonemes": ["f","l","æ","g"] }
+          ]
         }
       }
     },
@@ -365,6 +476,16 @@
             { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
             { "surface": "jet",  "graphemes": ["j","e","t"],         "phonemes": ["dʒ","ɛ","t"] }
           ]
+        },
+        "2": {
+          "text": "Fred fit a fast jet.",
+          "words": [
+            { "surface": "Fred", "graphemes": ["f","r","e","d"], "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
+            { "surface": "jet", "graphemes": ["j","e","t"], "phonemes": ["dʒ","ɛ","t"] }
+          ]
         }
       }
     },
@@ -391,6 +512,15 @@
             { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
             { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
             { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] }
+          ]
+        },
+        "2": {
+          "text": "Finn fit a flag.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"], "phonemes": ["f","ɪ","n"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"], "phonemes": ["f","l","æ","g"] }
           ]
         }
       }
@@ -421,6 +551,16 @@
             { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
             { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
           ]
+        },
+        "2": {
+          "text": "Fran fit a fast flag.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"], "phonemes": ["f","r","æ","n"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"], "phonemes": ["f","l","æ","g"] }
+          ]
         }
       }
     },
@@ -449,6 +589,16 @@
             { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
             { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
             { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        },
+        "2": {
+          "text": "Fred fit a fast flag.",
+          "words": [
+            { "surface": "Fred", "graphemes": ["f","r","e","d"], "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"], "phonemes": ["f","l","æ","g"] }
           ]
         }
       }
@@ -479,6 +629,15 @@
             { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
             { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
           ]
+        },
+        "2": {
+          "text": "Fred fit a flag.",
+          "words": [
+            { "surface": "Fred", "graphemes": ["f","r","e","d"], "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"], "phonemes": ["f","l","æ","g"] }
+          ]
         }
       }
     },
@@ -507,6 +666,16 @@
             { "surface": "fit",    "graphemes": ["f","i","t"],             "phonemes": ["f","ɪ","t"] },
             { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
             { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] }
+          ]
+        },
+        "2": {
+          "text": "Fran fit a fast flag.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"], "phonemes": ["f","r","æ","n"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"], "phonemes": ["f","l","æ","g"] }
           ]
         }
       }
@@ -537,6 +706,15 @@
             { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
             { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
           ]
+        },
+        "2": {
+          "text": "Finn fit a flag.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"], "phonemes": ["f","ɪ","n"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"], "phonemes": ["f","l","æ","g"] }
+          ]
         }
       }
     },
@@ -565,6 +743,16 @@
             { "surface": "fit",  "graphemes": ["f","i","t"],         "phonemes": ["f","ɪ","t"] },
             { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
             { "surface": "flag", "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
+          ]
+        },
+        "2": {
+          "text": "Fran fit a fast flag.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"], "phonemes": ["f","r","æ","n"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"], "phonemes": ["f","l","æ","g"] }
           ]
         }
       }

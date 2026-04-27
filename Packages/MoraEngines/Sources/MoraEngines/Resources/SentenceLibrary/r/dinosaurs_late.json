@@ -9,27 +9,255 @@
       "text": "Rex and Ron ran past a raptor in the dark.",
       "targetCount": 6,
       "targetInitialContentWords": 4,
-      "interestWords": ["raptor"],
+      "interestWords": [
+        "raptor"
+      ],
       "words": [
-        { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
-        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
-        { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
-        { "surface": "in",     "graphemes": ["i","n"],                 "phonemes": ["ɪ","n"] },
-        { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
-        { "surface": "dark",   "graphemes": ["d","a","r","k"],         "phonemes": ["d","ɑ","r","k"] }
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Ron",
+          "graphemes": [
+            "r",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "ran",
+          "graphemes": [
+            "r",
+            "a",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "n"
+          ]
+        },
+        {
+          "surface": "past",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "t"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "raptor",
+          "graphemes": [
+            "r",
+            "a",
+            "p",
+            "t",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "p",
+            "t",
+            "ɚ"
+          ]
+        },
+        {
+          "surface": "in",
+          "graphemes": [
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "dark",
+          "graphemes": [
+            "d",
+            "a",
+            "r",
+            "k"
+          ],
+          "phonemes": [
+            "d",
+            "ɑ",
+            "r",
+            "k"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rex and Ron ran.",
           "words": [
-            { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
-            { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-            { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
-            { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] }
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "and",
+              "graphemes": [
+                "a",
+                "n",
+                "d"
+              ],
+              "phonemes": [
+                "æ",
+                "n",
+                "d"
+              ]
+            },
+            {
+              "surface": "Ron",
+              "graphemes": [
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "n"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rex and Ron ran.",
+          "words": [
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "and",
+              "graphemes": [
+                "a",
+                "n",
+                "d"
+              ],
+              "phonemes": [
+                "æ",
+                "n",
+                "d"
+              ]
+            },
+            {
+              "surface": "Ron",
+              "graphemes": [
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "n"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            }
           ]
         }
       }
@@ -38,26 +266,262 @@
       "text": "Rip rested and Rob ran past a red raptor.",
       "targetCount": 6,
       "targetInitialContentWords": 6,
-      "interestWords": ["raptor"],
+      "interestWords": [
+        "raptor"
+      ],
       "words": [
-        { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
-        { "surface": "rested", "graphemes": ["r","e","s","t","e","d"], "phonemes": ["r","ɛ","s","t","ɪ","d"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
-        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
-        { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "red",    "graphemes": ["r","e","d"],             "phonemes": ["r","ɛ","d"] },
-        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] }
+        {
+          "surface": "Rip",
+          "graphemes": [
+            "r",
+            "i",
+            "p"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "p"
+          ]
+        },
+        {
+          "surface": "rested",
+          "graphemes": [
+            "r",
+            "e",
+            "s",
+            "t",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "s",
+            "t",
+            "ɪ",
+            "d"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Rob",
+          "graphemes": [
+            "r",
+            "o",
+            "b"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "b"
+          ]
+        },
+        {
+          "surface": "ran",
+          "graphemes": [
+            "r",
+            "a",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "n"
+          ]
+        },
+        {
+          "surface": "past",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "t"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "raptor",
+          "graphemes": [
+            "r",
+            "a",
+            "p",
+            "t",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "p",
+            "t",
+            "ɚ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rip rested and ran.",
           "words": [
-            { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
-            { "surface": "rested", "graphemes": ["r","e","s","t","e","d"], "phonemes": ["r","ɛ","s","t","ɪ","d"] },
-            { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-            { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] }
+            {
+              "surface": "Rip",
+              "graphemes": [
+                "r",
+                "i",
+                "p"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "p"
+              ]
+            },
+            {
+              "surface": "rested",
+              "graphemes": [
+                "r",
+                "e",
+                "s",
+                "t",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "s",
+                "t",
+                "ɪ",
+                "d"
+              ]
+            },
+            {
+              "surface": "and",
+              "graphemes": [
+                "a",
+                "n",
+                "d"
+              ],
+              "phonemes": [
+                "æ",
+                "n",
+                "d"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rip rested and ran.",
+          "words": [
+            {
+              "surface": "Rip",
+              "graphemes": [
+                "r",
+                "i",
+                "p"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "p"
+              ]
+            },
+            {
+              "surface": "rested",
+              "graphemes": [
+                "r",
+                "e",
+                "s",
+                "t",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "s",
+                "t",
+                "ɪ",
+                "d"
+              ]
+            },
+            {
+              "surface": "and",
+              "graphemes": [
+                "a",
+                "n",
+                "d"
+              ],
+              "phonemes": [
+                "æ",
+                "n",
+                "d"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            }
           ]
         }
       }
@@ -66,27 +530,244 @@
       "text": "Rex got a rib and Ron got a red raptor.",
       "targetCount": 7,
       "targetInitialContentWords": 6,
-      "interestWords": ["rib", "raptor"],
+      "interestWords": [
+        "rib",
+        "raptor"
+      ],
       "words": [
-        { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
-        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "rib",    "graphemes": ["r","i","b"],             "phonemes": ["r","ɪ","b"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
-        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "red",    "graphemes": ["r","e","d"],             "phonemes": ["r","ɛ","d"] },
-        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] }
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "rib",
+          "graphemes": [
+            "r",
+            "i",
+            "b"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "b"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Ron",
+          "graphemes": [
+            "r",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "raptor",
+          "graphemes": [
+            "r",
+            "a",
+            "p",
+            "t",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "p",
+            "t",
+            "ɚ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rex got a rib.",
           "words": [
-            { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
-            { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
-            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-            { "surface": "rib",    "graphemes": ["r","i","b"],             "phonemes": ["r","ɪ","b"] }
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "rib",
+              "graphemes": [
+                "r",
+                "i",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "b"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rex got a rib.",
+          "words": [
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "rib",
+              "graphemes": [
+                "r",
+                "i",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "b"
+              ]
+            }
           ]
         }
       }
@@ -95,27 +776,252 @@
       "text": "Ron and Rip met a raptor and a rat in the dark.",
       "targetCount": 6,
       "targetInitialContentWords": 5,
-      "interestWords": ["raptor", "rat"],
+      "interestWords": [
+        "raptor",
+        "rat"
+      ],
       "words": [
-        { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
-        { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "rat",    "graphemes": ["r","a","t"],             "phonemes": ["r","æ","t"] },
-        { "surface": "in",     "graphemes": ["i","n"],                 "phonemes": ["ɪ","n"] }
+        {
+          "surface": "Ron",
+          "graphemes": [
+            "r",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Rip",
+          "graphemes": [
+            "r",
+            "i",
+            "p"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "p"
+          ]
+        },
+        {
+          "surface": "met",
+          "graphemes": [
+            "m",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "m",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "raptor",
+          "graphemes": [
+            "r",
+            "a",
+            "p",
+            "t",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "p",
+            "t",
+            "ɚ"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "rat",
+          "graphemes": [
+            "r",
+            "a",
+            "t"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "t"
+          ]
+        },
+        {
+          "surface": "in",
+          "graphemes": [
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "ɪ",
+            "n"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rip met a raptor.",
           "words": [
-            { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
-            { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
-            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-            { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] }
+            {
+              "surface": "Rip",
+              "graphemes": [
+                "r",
+                "i",
+                "p"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "p"
+              ]
+            },
+            {
+              "surface": "met",
+              "graphemes": [
+                "m",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "m",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "raptor",
+              "graphemes": [
+                "r",
+                "a",
+                "p",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "p",
+                "t",
+                "ɚ"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rip met a raptor.",
+          "words": [
+            {
+              "surface": "Rip",
+              "graphemes": [
+                "r",
+                "i",
+                "p"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "p"
+              ]
+            },
+            {
+              "surface": "met",
+              "graphemes": [
+                "m",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "m",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "raptor",
+              "graphemes": [
+                "r",
+                "a",
+                "p",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "p",
+                "t",
+                "ɚ"
+              ]
+            }
           ]
         }
       }
@@ -124,27 +1030,261 @@
       "text": "Rex hid in the dark and a raptor ran past.",
       "targetCount": 5,
       "targetInitialContentWords": 3,
-      "interestWords": ["raptor"],
+      "interestWords": [
+        "raptor"
+      ],
       "words": [
-        { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
-        { "surface": "hid",    "graphemes": ["h","i","d"],             "phonemes": ["h","ɪ","d"] },
-        { "surface": "in",     "graphemes": ["i","n"],                 "phonemes": ["ɪ","n"] },
-        { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
-        { "surface": "dark",   "graphemes": ["d","a","r","k"],         "phonemes": ["d","ɑ","r","k"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
-        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
-        { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] }
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "hid",
+          "graphemes": [
+            "h",
+            "i",
+            "d"
+          ],
+          "phonemes": [
+            "h",
+            "ɪ",
+            "d"
+          ]
+        },
+        {
+          "surface": "in",
+          "graphemes": [
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "dark",
+          "graphemes": [
+            "d",
+            "a",
+            "r",
+            "k"
+          ],
+          "phonemes": [
+            "d",
+            "ɑ",
+            "r",
+            "k"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "raptor",
+          "graphemes": [
+            "r",
+            "a",
+            "p",
+            "t",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "p",
+            "t",
+            "ɚ"
+          ]
+        },
+        {
+          "surface": "ran",
+          "graphemes": [
+            "r",
+            "a",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "n"
+          ]
+        },
+        {
+          "surface": "past",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "t"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "t"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "A raptor ran past.",
           "words": [
-            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-            { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
-            { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
-            { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] }
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "raptor",
+              "graphemes": [
+                "r",
+                "a",
+                "p",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "p",
+                "t",
+                "ɚ"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            },
+            {
+              "surface": "past",
+              "graphemes": [
+                "p",
+                "a",
+                "s",
+                "t"
+              ],
+              "phonemes": [
+                "p",
+                "æ",
+                "s",
+                "t"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "A raptor ran past.",
+          "words": [
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "raptor",
+              "graphemes": [
+                "r",
+                "a",
+                "p",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "p",
+                "t",
+                "ɚ"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            },
+            {
+              "surface": "past",
+              "graphemes": [
+                "p",
+                "a",
+                "s",
+                "t"
+              ],
+              "phonemes": [
+                "p",
+                "æ",
+                "s",
+                "t"
+              ]
+            }
           ]
         }
       }
@@ -153,27 +1293,251 @@
       "text": "Rob and Rex got a red rib at the pit.",
       "targetCount": 5,
       "targetInitialContentWords": 4,
-      "interestWords": ["rib"],
+      "interestWords": [
+        "rib"
+      ],
       "words": [
-        { "surface": "Rob", "graphemes": ["r","o","b"],     "phonemes": ["r","ɒ","b"] },
-        { "surface": "and", "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
-        { "surface": "Rex", "graphemes": ["r","e","x"],     "phonemes": ["r","ɛ","ks"] },
-        { "surface": "got", "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",   "graphemes": ["a"],             "phonemes": ["ə"] },
-        { "surface": "red", "graphemes": ["r","e","d"],     "phonemes": ["r","ɛ","d"] },
-        { "surface": "rib", "graphemes": ["r","i","b"],     "phonemes": ["r","ɪ","b"] },
-        { "surface": "at",  "graphemes": ["a","t"],         "phonemes": ["æ","t"] },
-        { "surface": "the", "graphemes": ["th","e"],        "phonemes": ["ð","ə"] },
-        { "surface": "pit", "graphemes": ["p","i","t"],     "phonemes": ["p","ɪ","t"] }
+        {
+          "surface": "Rob",
+          "graphemes": [
+            "r",
+            "o",
+            "b"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "b"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "rib",
+          "graphemes": [
+            "r",
+            "i",
+            "b"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "b"
+          ]
+        },
+        {
+          "surface": "at",
+          "graphemes": [
+            "a",
+            "t"
+          ],
+          "phonemes": [
+            "æ",
+            "t"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "pit",
+          "graphemes": [
+            "p",
+            "i",
+            "t"
+          ],
+          "phonemes": [
+            "p",
+            "ɪ",
+            "t"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rex got a rib.",
           "words": [
-            { "surface": "Rex", "graphemes": ["r","e","x"],     "phonemes": ["r","ɛ","ks"] },
-            { "surface": "got", "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
-            { "surface": "a",   "graphemes": ["a"],             "phonemes": ["ə"] },
-            { "surface": "rib", "graphemes": ["r","i","b"],     "phonemes": ["r","ɪ","b"] }
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "rib",
+              "graphemes": [
+                "r",
+                "i",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "b"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rex got a red rib.",
+          "words": [
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "red",
+              "graphemes": [
+                "r",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "d"
+              ]
+            },
+            {
+              "surface": "rib",
+              "graphemes": [
+                "r",
+                "i",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "b"
+              ]
+            }
           ]
         }
       }
@@ -182,27 +1546,254 @@
       "text": "Rip and Rex ran past a raptor and a rib.",
       "targetCount": 6,
       "targetInitialContentWords": 5,
-      "interestWords": ["raptor", "rib"],
+      "interestWords": [
+        "raptor",
+        "rib"
+      ],
       "words": [
-        { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
-        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
-        { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "rib",    "graphemes": ["r","i","b"],             "phonemes": ["r","ɪ","b"] }
+        {
+          "surface": "Rip",
+          "graphemes": [
+            "r",
+            "i",
+            "p"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "p"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "ran",
+          "graphemes": [
+            "r",
+            "a",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "n"
+          ]
+        },
+        {
+          "surface": "past",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "t"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "raptor",
+          "graphemes": [
+            "r",
+            "a",
+            "p",
+            "t",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "p",
+            "t",
+            "ɚ"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "rib",
+          "graphemes": [
+            "r",
+            "i",
+            "b"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "b"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rip and Rex ran.",
           "words": [
-            { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
-            { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-            { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
-            { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] }
+            {
+              "surface": "Rip",
+              "graphemes": [
+                "r",
+                "i",
+                "p"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "p"
+              ]
+            },
+            {
+              "surface": "and",
+              "graphemes": [
+                "a",
+                "n",
+                "d"
+              ],
+              "phonemes": [
+                "æ",
+                "n",
+                "d"
+              ]
+            },
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rip and Rex ran.",
+          "words": [
+            {
+              "surface": "Rip",
+              "graphemes": [
+                "r",
+                "i",
+                "p"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "p"
+              ]
+            },
+            {
+              "surface": "and",
+              "graphemes": [
+                "a",
+                "n",
+                "d"
+              ],
+              "phonemes": [
+                "æ",
+                "n",
+                "d"
+              ]
+            },
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            }
           ]
         }
       }
@@ -211,26 +1802,248 @@
       "text": "Ron rested and met a raptor in the dark.",
       "targetCount": 4,
       "targetInitialContentWords": 3,
-      "interestWords": ["raptor"],
+      "interestWords": [
+        "raptor"
+      ],
       "words": [
-        { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
-        { "surface": "rested", "graphemes": ["r","e","s","t","e","d"], "phonemes": ["r","ɛ","s","t","ɪ","d"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
-        { "surface": "in",     "graphemes": ["i","n"],                 "phonemes": ["ɪ","n"] },
-        { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
-        { "surface": "dark",   "graphemes": ["d","a","r","k"],         "phonemes": ["d","ɑ","r","k"] }
+        {
+          "surface": "Ron",
+          "graphemes": [
+            "r",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "rested",
+          "graphemes": [
+            "r",
+            "e",
+            "s",
+            "t",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "s",
+            "t",
+            "ɪ",
+            "d"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "met",
+          "graphemes": [
+            "m",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "m",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "raptor",
+          "graphemes": [
+            "r",
+            "a",
+            "p",
+            "t",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "p",
+            "t",
+            "ɚ"
+          ]
+        },
+        {
+          "surface": "in",
+          "graphemes": [
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "dark",
+          "graphemes": [
+            "d",
+            "a",
+            "r",
+            "k"
+          ],
+          "phonemes": [
+            "d",
+            "ɑ",
+            "r",
+            "k"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Ron met a raptor.",
           "words": [
-            { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
-            { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
-            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-            { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] }
+            {
+              "surface": "Ron",
+              "graphemes": [
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "n"
+              ]
+            },
+            {
+              "surface": "met",
+              "graphemes": [
+                "m",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "m",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "raptor",
+              "graphemes": [
+                "r",
+                "a",
+                "p",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "p",
+                "t",
+                "ɚ"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Ron met a raptor.",
+          "words": [
+            {
+              "surface": "Ron",
+              "graphemes": [
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "n"
+              ]
+            },
+            {
+              "surface": "met",
+              "graphemes": [
+                "m",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "m",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "raptor",
+              "graphemes": [
+                "r",
+                "a",
+                "p",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "p",
+                "t",
+                "ɚ"
+              ]
+            }
           ]
         }
       }
@@ -239,26 +2052,241 @@
       "text": "Rex got a raptor and Rip got a rib.",
       "targetCount": 6,
       "targetInitialContentWords": 5,
-      "interestWords": ["raptor", "rib"],
+      "interestWords": [
+        "raptor",
+        "rib"
+      ],
       "words": [
-        { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
-        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
-        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "rib",    "graphemes": ["r","i","b"],             "phonemes": ["r","ɪ","b"] }
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "raptor",
+          "graphemes": [
+            "r",
+            "a",
+            "p",
+            "t",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "p",
+            "t",
+            "ɚ"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Rip",
+          "graphemes": [
+            "r",
+            "i",
+            "p"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "p"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "rib",
+          "graphemes": [
+            "r",
+            "i",
+            "b"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "b"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rex got a raptor.",
           "words": [
-            { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
-            { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
-            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-            { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] }
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "raptor",
+              "graphemes": [
+                "r",
+                "a",
+                "p",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "p",
+                "t",
+                "ɚ"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rex got a raptor.",
+          "words": [
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "raptor",
+              "graphemes": [
+                "r",
+                "a",
+                "p",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "p",
+                "t",
+                "ɚ"
+              ]
+            }
           ]
         }
       }
@@ -267,26 +2295,245 @@
       "text": "Rob ran past a barn and met a raptor.",
       "targetCount": 5,
       "targetInitialContentWords": 3,
-      "interestWords": ["raptor", "barn"],
+      "interestWords": [
+        "raptor",
+        "barn"
+      ],
       "words": [
-        { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
-        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
-        { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "barn",   "graphemes": ["b","a","r","n"],         "phonemes": ["b","ɑ","r","n"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] }
+        {
+          "surface": "Rob",
+          "graphemes": [
+            "r",
+            "o",
+            "b"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "b"
+          ]
+        },
+        {
+          "surface": "ran",
+          "graphemes": [
+            "r",
+            "a",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "n"
+          ]
+        },
+        {
+          "surface": "past",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "t"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "barn",
+          "graphemes": [
+            "b",
+            "a",
+            "r",
+            "n"
+          ],
+          "phonemes": [
+            "b",
+            "ɑ",
+            "r",
+            "n"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "met",
+          "graphemes": [
+            "m",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "m",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "raptor",
+          "graphemes": [
+            "r",
+            "a",
+            "p",
+            "t",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "p",
+            "t",
+            "ɚ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rob met a raptor.",
           "words": [
-            { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
-            { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
-            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-            { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] }
+            {
+              "surface": "Rob",
+              "graphemes": [
+                "r",
+                "o",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "b"
+              ]
+            },
+            {
+              "surface": "met",
+              "graphemes": [
+                "m",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "m",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "raptor",
+              "graphemes": [
+                "r",
+                "a",
+                "p",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "p",
+                "t",
+                "ɚ"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rob met a raptor.",
+          "words": [
+            {
+              "surface": "Rob",
+              "graphemes": [
+                "r",
+                "o",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "b"
+              ]
+            },
+            {
+              "surface": "met",
+              "graphemes": [
+                "m",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "m",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "raptor",
+              "graphemes": [
+                "r",
+                "a",
+                "p",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "p",
+                "t",
+                "ɚ"
+              ]
+            }
           ]
         }
       }
@@ -295,27 +2542,261 @@
       "text": "Rex rested and Ron got a red rib in a pit.",
       "targetCount": 6,
       "targetInitialContentWords": 5,
-      "interestWords": ["rib"],
+      "interestWords": [
+        "rib"
+      ],
       "words": [
-        { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
-        { "surface": "rested", "graphemes": ["r","e","s","t","e","d"], "phonemes": ["r","ɛ","s","t","ɪ","d"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
-        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "red",    "graphemes": ["r","e","d"],             "phonemes": ["r","ɛ","d"] },
-        { "surface": "rib",    "graphemes": ["r","i","b"],             "phonemes": ["r","ɪ","b"] },
-        { "surface": "in",     "graphemes": ["i","n"],                 "phonemes": ["ɪ","n"] },
-        { "surface": "pits",   "graphemes": ["p","i","t","s"],         "phonemes": ["p","ɪ","t","s"] }
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "rested",
+          "graphemes": [
+            "r",
+            "e",
+            "s",
+            "t",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "s",
+            "t",
+            "ɪ",
+            "d"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Ron",
+          "graphemes": [
+            "r",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "rib",
+          "graphemes": [
+            "r",
+            "i",
+            "b"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "b"
+          ]
+        },
+        {
+          "surface": "in",
+          "graphemes": [
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "pits",
+          "graphemes": [
+            "p",
+            "i",
+            "t",
+            "s"
+          ],
+          "phonemes": [
+            "p",
+            "ɪ",
+            "t",
+            "s"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Ron got a rib.",
           "words": [
-            { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
-            { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
-            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-            { "surface": "rib",    "graphemes": ["r","i","b"],             "phonemes": ["r","ɪ","b"] }
+            {
+              "surface": "Ron",
+              "graphemes": [
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "n"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "rib",
+              "graphemes": [
+                "r",
+                "i",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "b"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Ron got a red rib.",
+          "words": [
+            {
+              "surface": "Ron",
+              "graphemes": [
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "n"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "red",
+              "graphemes": [
+                "r",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "d"
+              ]
+            },
+            {
+              "surface": "rib",
+              "graphemes": [
+                "r",
+                "i",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "b"
+              ]
+            }
           ]
         }
       }
@@ -324,27 +2805,255 @@
       "text": "Rip ran and Rob ran and a raptor met them.",
       "targetCount": 5,
       "targetInitialContentWords": 5,
-      "interestWords": ["raptor"],
+      "interestWords": [
+        "raptor"
+      ],
       "words": [
-        { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
-        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
-        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
-        { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
-        { "surface": "them",   "graphemes": ["th","e","m"],            "phonemes": ["ð","ɛ","m"] }
+        {
+          "surface": "Rip",
+          "graphemes": [
+            "r",
+            "i",
+            "p"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "p"
+          ]
+        },
+        {
+          "surface": "ran",
+          "graphemes": [
+            "r",
+            "a",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "n"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Rob",
+          "graphemes": [
+            "r",
+            "o",
+            "b"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "b"
+          ]
+        },
+        {
+          "surface": "ran",
+          "graphemes": [
+            "r",
+            "a",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "n"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "raptor",
+          "graphemes": [
+            "r",
+            "a",
+            "p",
+            "t",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "p",
+            "t",
+            "ɚ"
+          ]
+        },
+        {
+          "surface": "met",
+          "graphemes": [
+            "m",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "m",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "them",
+          "graphemes": [
+            "th",
+            "e",
+            "m"
+          ],
+          "phonemes": [
+            "ð",
+            "ɛ",
+            "m"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rip and Rob ran.",
           "words": [
-            { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
-            { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-            { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
-            { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] }
+            {
+              "surface": "Rip",
+              "graphemes": [
+                "r",
+                "i",
+                "p"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "p"
+              ]
+            },
+            {
+              "surface": "and",
+              "graphemes": [
+                "a",
+                "n",
+                "d"
+              ],
+              "phonemes": [
+                "æ",
+                "n",
+                "d"
+              ]
+            },
+            {
+              "surface": "Rob",
+              "graphemes": [
+                "r",
+                "o",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "b"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rip and Rob ran.",
+          "words": [
+            {
+              "surface": "Rip",
+              "graphemes": [
+                "r",
+                "i",
+                "p"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "p"
+              ]
+            },
+            {
+              "surface": "and",
+              "graphemes": [
+                "a",
+                "n",
+                "d"
+              ],
+              "phonemes": [
+                "æ",
+                "n",
+                "d"
+              ]
+            },
+            {
+              "surface": "Rob",
+              "graphemes": [
+                "r",
+                "o",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "b"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            }
           ]
         }
       }
@@ -353,26 +3062,248 @@
       "text": "Ron met a raptor in the dark and rested.",
       "targetCount": 5,
       "targetInitialContentWords": 4,
-      "interestWords": ["raptor"],
+      "interestWords": [
+        "raptor"
+      ],
       "words": [
-        { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
-        { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
-        { "surface": "in",     "graphemes": ["i","n"],                 "phonemes": ["ɪ","n"] },
-        { "surface": "the",    "graphemes": ["th","e"],                "phonemes": ["ð","ə"] },
-        { "surface": "dark",   "graphemes": ["d","a","r","k"],         "phonemes": ["d","ɑ","r","k"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "rested", "graphemes": ["r","e","s","t","e","d"], "phonemes": ["r","ɛ","s","t","ɪ","d"] }
+        {
+          "surface": "Ron",
+          "graphemes": [
+            "r",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "met",
+          "graphemes": [
+            "m",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "m",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "raptor",
+          "graphemes": [
+            "r",
+            "a",
+            "p",
+            "t",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "p",
+            "t",
+            "ɚ"
+          ]
+        },
+        {
+          "surface": "in",
+          "graphemes": [
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "dark",
+          "graphemes": [
+            "d",
+            "a",
+            "r",
+            "k"
+          ],
+          "phonemes": [
+            "d",
+            "ɑ",
+            "r",
+            "k"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "rested",
+          "graphemes": [
+            "r",
+            "e",
+            "s",
+            "t",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "s",
+            "t",
+            "ɪ",
+            "d"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Ron met a raptor.",
           "words": [
-            { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
-            { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
-            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-            { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] }
+            {
+              "surface": "Ron",
+              "graphemes": [
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "n"
+              ]
+            },
+            {
+              "surface": "met",
+              "graphemes": [
+                "m",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "m",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "raptor",
+              "graphemes": [
+                "r",
+                "a",
+                "p",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "p",
+                "t",
+                "ɚ"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Ron met a raptor.",
+          "words": [
+            {
+              "surface": "Ron",
+              "graphemes": [
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "n"
+              ]
+            },
+            {
+              "surface": "met",
+              "graphemes": [
+                "m",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "m",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "raptor",
+              "graphemes": [
+                "r",
+                "a",
+                "p",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "p",
+                "t",
+                "ɚ"
+              ]
+            }
           ]
         }
       }
@@ -381,26 +3312,231 @@
       "text": "Rex got a rib and Rip got a raptor.",
       "targetCount": 6,
       "targetInitialContentWords": 5,
-      "interestWords": ["rib", "raptor"],
+      "interestWords": [
+        "rib",
+        "raptor"
+      ],
       "words": [
-        { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
-        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "rib",    "graphemes": ["r","i","b"],             "phonemes": ["r","ɪ","b"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
-        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] }
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "rib",
+          "graphemes": [
+            "r",
+            "i",
+            "b"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "b"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Rip",
+          "graphemes": [
+            "r",
+            "i",
+            "p"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "p"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "raptor",
+          "graphemes": [
+            "r",
+            "a",
+            "p",
+            "t",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "p",
+            "t",
+            "ɚ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rex got a rib.",
           "words": [
-            { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
-            { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
-            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-            { "surface": "rib",    "graphemes": ["r","i","b"],             "phonemes": ["r","ɪ","b"] }
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "rib",
+              "graphemes": [
+                "r",
+                "i",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "b"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rex got a rib.",
+          "words": [
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "rib",
+              "graphemes": [
+                "r",
+                "i",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "b"
+              ]
+            }
           ]
         }
       }
@@ -409,27 +3545,261 @@
       "text": "Rip and Ron ran past a red raptor in swamps.",
       "targetCount": 6,
       "targetInitialContentWords": 5,
-      "interestWords": ["raptor"],
+      "interestWords": [
+        "raptor"
+      ],
       "words": [
-        { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
-        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
-        { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "red",    "graphemes": ["r","e","d"],             "phonemes": ["r","ɛ","d"] },
-        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
-        { "surface": "in",     "graphemes": ["i","n"],                 "phonemes": ["ɪ","n"] },
-        { "surface": "swamps", "graphemes": ["s","w","a","m","p","s"], "phonemes": ["s","w","ɒ","m","p","s"] }
+        {
+          "surface": "Rip",
+          "graphemes": [
+            "r",
+            "i",
+            "p"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "p"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Ron",
+          "graphemes": [
+            "r",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "ran",
+          "graphemes": [
+            "r",
+            "a",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "n"
+          ]
+        },
+        {
+          "surface": "past",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "t"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "raptor",
+          "graphemes": [
+            "r",
+            "a",
+            "p",
+            "t",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "p",
+            "t",
+            "ɚ"
+          ]
+        },
+        {
+          "surface": "in",
+          "graphemes": [
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "swamps",
+          "graphemes": [
+            "s",
+            "w",
+            "a",
+            "m",
+            "p",
+            "s"
+          ],
+          "phonemes": [
+            "s",
+            "w",
+            "ɒ",
+            "m",
+            "p",
+            "s"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rip and Ron ran.",
           "words": [
-            { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
-            { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-            { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
-            { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] }
+            {
+              "surface": "Rip",
+              "graphemes": [
+                "r",
+                "i",
+                "p"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "p"
+              ]
+            },
+            {
+              "surface": "and",
+              "graphemes": [
+                "a",
+                "n",
+                "d"
+              ],
+              "phonemes": [
+                "æ",
+                "n",
+                "d"
+              ]
+            },
+            {
+              "surface": "Ron",
+              "graphemes": [
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "n"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rip and Ron ran.",
+          "words": [
+            {
+              "surface": "Rip",
+              "graphemes": [
+                "r",
+                "i",
+                "p"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "p"
+              ]
+            },
+            {
+              "surface": "and",
+              "graphemes": [
+                "a",
+                "n",
+                "d"
+              ],
+              "phonemes": [
+                "æ",
+                "n",
+                "d"
+              ]
+            },
+            {
+              "surface": "Ron",
+              "graphemes": [
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "n"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            }
           ]
         }
       }
@@ -438,26 +3808,226 @@
       "text": "Rex got a rib and Ron got a rat.",
       "targetCount": 5,
       "targetInitialContentWords": 5,
-      "interestWords": ["rib", "rat"],
+      "interestWords": [
+        "rib",
+        "rat"
+      ],
       "words": [
-        { "surface": "Rex", "graphemes": ["r","e","x"],     "phonemes": ["r","ɛ","ks"] },
-        { "surface": "got", "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",   "graphemes": ["a"],             "phonemes": ["ə"] },
-        { "surface": "rib", "graphemes": ["r","i","b"],     "phonemes": ["r","ɪ","b"] },
-        { "surface": "and", "graphemes": ["a","n","d"],     "phonemes": ["æ","n","d"] },
-        { "surface": "Ron", "graphemes": ["r","o","n"],     "phonemes": ["r","ɒ","n"] },
-        { "surface": "got", "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",   "graphemes": ["a"],             "phonemes": ["ə"] },
-        { "surface": "rat", "graphemes": ["r","a","t"],     "phonemes": ["r","æ","t"] }
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "rib",
+          "graphemes": [
+            "r",
+            "i",
+            "b"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "b"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Ron",
+          "graphemes": [
+            "r",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "rat",
+          "graphemes": [
+            "r",
+            "a",
+            "t"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "t"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rex got a rib.",
           "words": [
-            { "surface": "Rex", "graphemes": ["r","e","x"],     "phonemes": ["r","ɛ","ks"] },
-            { "surface": "got", "graphemes": ["g","o","t"],     "phonemes": ["g","ɒ","t"] },
-            { "surface": "a",   "graphemes": ["a"],             "phonemes": ["ə"] },
-            { "surface": "rib", "graphemes": ["r","i","b"],     "phonemes": ["r","ɪ","b"] }
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "rib",
+              "graphemes": [
+                "r",
+                "i",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "b"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rex got a rib.",
+          "words": [
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "rib",
+              "graphemes": [
+                "r",
+                "i",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "b"
+              ]
+            }
           ]
         }
       }
@@ -466,27 +4036,260 @@
       "text": "Rip rested and Rex met a raptor in a barn.",
       "targetCount": 6,
       "targetInitialContentWords": 4,
-      "interestWords": ["raptor", "barn"],
+      "interestWords": [
+        "raptor",
+        "barn"
+      ],
       "words": [
-        { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
-        { "surface": "rested", "graphemes": ["r","e","s","t","e","d"], "phonemes": ["r","ɛ","s","t","ɪ","d"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
-        { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
-        { "surface": "in",     "graphemes": ["i","n"],                 "phonemes": ["ɪ","n"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "barn",   "graphemes": ["b","a","r","n"],         "phonemes": ["b","ɑ","r","n"] }
+        {
+          "surface": "Rip",
+          "graphemes": [
+            "r",
+            "i",
+            "p"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "p"
+          ]
+        },
+        {
+          "surface": "rested",
+          "graphemes": [
+            "r",
+            "e",
+            "s",
+            "t",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "s",
+            "t",
+            "ɪ",
+            "d"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "met",
+          "graphemes": [
+            "m",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "m",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "raptor",
+          "graphemes": [
+            "r",
+            "a",
+            "p",
+            "t",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "p",
+            "t",
+            "ɚ"
+          ]
+        },
+        {
+          "surface": "in",
+          "graphemes": [
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "barn",
+          "graphemes": [
+            "b",
+            "a",
+            "r",
+            "n"
+          ],
+          "phonemes": [
+            "b",
+            "ɑ",
+            "r",
+            "n"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rex met a raptor.",
           "words": [
-            { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
-            { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
-            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-            { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] }
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "met",
+              "graphemes": [
+                "m",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "m",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "raptor",
+              "graphemes": [
+                "r",
+                "a",
+                "p",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "p",
+                "t",
+                "ɚ"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rex met a raptor.",
+          "words": [
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "met",
+              "graphemes": [
+                "m",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "m",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "raptor",
+              "graphemes": [
+                "r",
+                "a",
+                "p",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "p",
+                "t",
+                "ɚ"
+              ]
+            }
           ]
         }
       }
@@ -495,27 +4298,254 @@
       "text": "Rob and Rex ran past a raptor and a rat.",
       "targetCount": 5,
       "targetInitialContentWords": 4,
-      "interestWords": ["raptor", "rat"],
+      "interestWords": [
+        "raptor",
+        "rat"
+      ],
       "words": [
-        { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
-        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
-        { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "rat",    "graphemes": ["r","a","t"],             "phonemes": ["r","æ","t"] }
+        {
+          "surface": "Rob",
+          "graphemes": [
+            "r",
+            "o",
+            "b"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "b"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "ran",
+          "graphemes": [
+            "r",
+            "a",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "n"
+          ]
+        },
+        {
+          "surface": "past",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "t"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "raptor",
+          "graphemes": [
+            "r",
+            "a",
+            "p",
+            "t",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "p",
+            "t",
+            "ɚ"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "rat",
+          "graphemes": [
+            "r",
+            "a",
+            "t"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "t"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rob and Rex ran.",
           "words": [
-            { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
-            { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-            { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
-            { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] }
+            {
+              "surface": "Rob",
+              "graphemes": [
+                "r",
+                "o",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "b"
+              ]
+            },
+            {
+              "surface": "and",
+              "graphemes": [
+                "a",
+                "n",
+                "d"
+              ],
+              "phonemes": [
+                "æ",
+                "n",
+                "d"
+              ]
+            },
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rob and Rex ran.",
+          "words": [
+            {
+              "surface": "Rob",
+              "graphemes": [
+                "r",
+                "o",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "b"
+              ]
+            },
+            {
+              "surface": "and",
+              "graphemes": [
+                "a",
+                "n",
+                "d"
+              ],
+              "phonemes": [
+                "æ",
+                "n",
+                "d"
+              ]
+            },
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            }
           ]
         }
       }
@@ -524,27 +4554,266 @@
       "text": "Ron rested and a raptor and a rat ran past.",
       "targetCount": 5,
       "targetInitialContentWords": 4,
-      "interestWords": ["raptor", "rat"],
+      "interestWords": [
+        "raptor",
+        "rat"
+      ],
       "words": [
-        { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
-        { "surface": "rested", "graphemes": ["r","e","s","t","e","d"], "phonemes": ["r","ɛ","s","t","ɪ","d"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "rat",    "graphemes": ["r","a","t"],             "phonemes": ["r","æ","t"] },
-        { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
-        { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] }
+        {
+          "surface": "Ron",
+          "graphemes": [
+            "r",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "rested",
+          "graphemes": [
+            "r",
+            "e",
+            "s",
+            "t",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "s",
+            "t",
+            "ɪ",
+            "d"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "raptor",
+          "graphemes": [
+            "r",
+            "a",
+            "p",
+            "t",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "p",
+            "t",
+            "ɚ"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "rat",
+          "graphemes": [
+            "r",
+            "a",
+            "t"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "t"
+          ]
+        },
+        {
+          "surface": "ran",
+          "graphemes": [
+            "r",
+            "a",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "n"
+          ]
+        },
+        {
+          "surface": "past",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "t"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "t"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "A raptor ran past.",
           "words": [
-            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-            { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
-            { "surface": "ran",    "graphemes": ["r","a","n"],             "phonemes": ["r","æ","n"] },
-            { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] }
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "raptor",
+              "graphemes": [
+                "r",
+                "a",
+                "p",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "p",
+                "t",
+                "ɚ"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            },
+            {
+              "surface": "past",
+              "graphemes": [
+                "p",
+                "a",
+                "s",
+                "t"
+              ],
+              "phonemes": [
+                "p",
+                "æ",
+                "s",
+                "t"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "A raptor ran past.",
+          "words": [
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "raptor",
+              "graphemes": [
+                "r",
+                "a",
+                "p",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "p",
+                "t",
+                "ɚ"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            },
+            {
+              "surface": "past",
+              "graphemes": [
+                "p",
+                "a",
+                "s",
+                "t"
+              ],
+              "phonemes": [
+                "p",
+                "æ",
+                "s",
+                "t"
+              ]
+            }
           ]
         }
       }
@@ -553,27 +4822,267 @@
       "text": "Rex met a red raptor and Rip got a rib.",
       "targetCount": 7,
       "targetInitialContentWords": 6,
-      "interestWords": ["raptor", "rib"],
+      "interestWords": [
+        "raptor",
+        "rib"
+      ],
       "words": [
-        { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
-        { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "red",    "graphemes": ["r","e","d"],             "phonemes": ["r","ɛ","d"] },
-        { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
-        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "rib",    "graphemes": ["r","i","b"],             "phonemes": ["r","ɪ","b"] }
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "met",
+          "graphemes": [
+            "m",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "m",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "raptor",
+          "graphemes": [
+            "r",
+            "a",
+            "p",
+            "t",
+            "o",
+            "r"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "p",
+            "t",
+            "ɚ"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Rip",
+          "graphemes": [
+            "r",
+            "i",
+            "p"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "p"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "rib",
+          "graphemes": [
+            "r",
+            "i",
+            "b"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "b"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rex met a raptor.",
           "words": [
-            { "surface": "Rex",    "graphemes": ["r","e","x"],             "phonemes": ["r","ɛ","ks"] },
-            { "surface": "met",    "graphemes": ["m","e","t"],             "phonemes": ["m","ɛ","t"] },
-            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-            { "surface": "raptor", "graphemes": ["r","a","p","t","o","r"], "phonemes": ["r","æ","p","t","ɚ"] }
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "met",
+              "graphemes": [
+                "m",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "m",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "raptor",
+              "graphemes": [
+                "r",
+                "a",
+                "p",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "p",
+                "t",
+                "ɚ"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rex met a red raptor.",
+          "words": [
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "met",
+              "graphemes": [
+                "m",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "m",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "red",
+              "graphemes": [
+                "r",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "d"
+              ]
+            },
+            {
+              "surface": "raptor",
+              "graphemes": [
+                "r",
+                "a",
+                "p",
+                "t",
+                "o",
+                "r"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "p",
+                "t",
+                "ɚ"
+              ]
+            }
           ]
         }
       }

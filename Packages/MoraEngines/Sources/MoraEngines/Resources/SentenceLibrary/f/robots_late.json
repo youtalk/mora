@@ -31,6 +31,15 @@
             { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
             { "surface": "fan",      "graphemes": ["f","a","n"],                     "phonemes": ["f","æ","n"] }
           ]
+        },
+        "2": {
+          "text": "Fred fixed a fan.",
+          "words": [
+            { "surface": "Fred", "graphemes": ["f","r","e","d"], "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fan", "graphemes": ["f","a","n"], "phonemes": ["f","æ","n"] }
+          ]
         }
       }
     },
@@ -60,6 +69,16 @@
             { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
             { "surface": "fan",    "graphemes": ["f","a","n"],             "phonemes": ["f","æ","n"] }
           ]
+        },
+        "2": {
+          "text": "Fran lifted a fast fan.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"], "phonemes": ["f","r","æ","n"] },
+            { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
+            { "surface": "fan", "graphemes": ["f","a","n"], "phonemes": ["f","æ","n"] }
+          ]
         }
       }
     },
@@ -87,6 +106,16 @@
             { "surface": "Finn",     "graphemes": ["f","i","n","n"],                 "phonemes": ["f","ɪ","n"] },
             { "surface": "fixed",    "graphemes": ["f","i","x","e","d"],             "phonemes": ["f","ɪ","k","s","t"] },
             { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+            { "surface": "forklift", "graphemes": ["f","o","r","k","l","i","f","t"], "phonemes": ["f","ɔ","r","k","l","ɪ","f","t"] }
+          ]
+        },
+        "2": {
+          "text": "Finn fixed a fast forklift.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"], "phonemes": ["f","ɪ","n"] },
+            { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
             { "surface": "forklift", "graphemes": ["f","o","r","k","l","i","f","t"], "phonemes": ["f","ɔ","r","k","l","ɪ","f","t"] }
           ]
         }
@@ -118,6 +147,16 @@
             { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
             { "surface": "fan",    "graphemes": ["f","a","n"],             "phonemes": ["f","æ","n"] }
           ]
+        },
+        "2": {
+          "text": "Fred fit a fast fan.",
+          "words": [
+            { "surface": "Fred", "graphemes": ["f","r","e","d"], "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
+            { "surface": "fan", "graphemes": ["f","a","n"], "phonemes": ["f","æ","n"] }
+          ]
         }
       }
     },
@@ -146,6 +185,16 @@
             { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
             { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
             { "surface": "fan",    "graphemes": ["f","a","n"],             "phonemes": ["f","æ","n"] }
+          ]
+        },
+        "2": {
+          "text": "Finn lifted a fast fan.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"], "phonemes": ["f","ɪ","n"] },
+            { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
+            { "surface": "fan", "graphemes": ["f","a","n"], "phonemes": ["f","æ","n"] }
           ]
         }
       }
@@ -176,6 +225,16 @@
             { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
             { "surface": "bot",    "graphemes": ["b","o","t"],             "phonemes": ["b","ɒ","t"] }
           ]
+        },
+        "2": {
+          "text": "Fran fixed a fast bot.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"], "phonemes": ["f","r","æ","n"] },
+            { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
+            { "surface": "bot", "graphemes": ["b","o","t"], "phonemes": ["b","ɒ","t"] }
+          ]
         }
       }
     },
@@ -204,6 +263,15 @@
             { "surface": "fit",      "graphemes": ["f","i","t"],                     "phonemes": ["f","ɪ","t"] },
             { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
             { "surface": "flag",     "graphemes": ["f","l","a","g"],                 "phonemes": ["f","l","æ","g"] }
+          ]
+        },
+        "2": {
+          "text": "Fran fit a flag.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"], "phonemes": ["f","r","æ","n"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"], "phonemes": ["f","l","æ","g"] }
           ]
         }
       }
@@ -234,6 +302,16 @@
             { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
             { "surface": "bot",    "graphemes": ["b","o","t"],             "phonemes": ["b","ɒ","t"] }
           ]
+        },
+        "2": {
+          "text": "Fred fixed a fast bot.",
+          "words": [
+            { "surface": "Fred", "graphemes": ["f","r","e","d"], "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
+            { "surface": "bot", "graphemes": ["b","o","t"], "phonemes": ["b","ɒ","t"] }
+          ]
         }
       }
     },
@@ -262,6 +340,15 @@
             { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
             { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
             { "surface": "fan",    "graphemes": ["f","a","n"],             "phonemes": ["f","æ","n"] }
+          ]
+        },
+        "2": {
+          "text": "Fran lifted a fan.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"], "phonemes": ["f","r","æ","n"] },
+            { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fan", "graphemes": ["f","a","n"], "phonemes": ["f","æ","n"] }
           ]
         }
       }
@@ -292,6 +379,16 @@
             { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
             { "surface": "bot",   "graphemes": ["b","o","t"],         "phonemes": ["b","ɒ","t"] }
           ]
+        },
+        "2": {
+          "text": "Finn fit a fast bot.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"], "phonemes": ["f","ɪ","n"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
+            { "surface": "bot", "graphemes": ["b","o","t"], "phonemes": ["b","ɒ","t"] }
+          ]
         }
       }
     },
@@ -319,6 +416,16 @@
             { "surface": "Fred",     "graphemes": ["f","r","e","d"],                 "phonemes": ["f","r","ɛ","d"] },
             { "surface": "fit",      "graphemes": ["f","i","t"],                     "phonemes": ["f","ɪ","t"] },
             { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
+            { "surface": "forklift", "graphemes": ["f","o","r","k","l","i","f","t"], "phonemes": ["f","ɔ","r","k","l","ɪ","f","t"] }
+          ]
+        },
+        "2": {
+          "text": "Fred fit a fast forklift.",
+          "words": [
+            { "surface": "Fred", "graphemes": ["f","r","e","d"], "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
             { "surface": "forklift", "graphemes": ["f","o","r","k","l","i","f","t"], "phonemes": ["f","ɔ","r","k","l","ɪ","f","t"] }
           ]
         }
@@ -350,6 +457,16 @@
             { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
             { "surface": "forklift", "graphemes": ["f","o","r","k","l","i","f","t"], "phonemes": ["f","ɔ","r","k","l","ɪ","f","t"] }
           ]
+        },
+        "2": {
+          "text": "Fran lifted a fast forklift.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"], "phonemes": ["f","r","æ","n"] },
+            { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
+            { "surface": "forklift", "graphemes": ["f","o","r","k","l","i","f","t"], "phonemes": ["f","ɔ","r","k","l","ɪ","f","t"] }
+          ]
         }
       }
     },
@@ -378,6 +495,15 @@
             { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
             { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
             { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
+          ]
+        },
+        "2": {
+          "text": "Fred fixed a fan.",
+          "words": [
+            { "surface": "Fred", "graphemes": ["f","r","e","d"], "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fan", "graphemes": ["f","a","n"], "phonemes": ["f","æ","n"] }
           ]
         }
       }
@@ -408,6 +534,16 @@
             { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
             { "surface": "flag",  "graphemes": ["f","l","a","g"],     "phonemes": ["f","l","æ","g"] }
           ]
+        },
+        "2": {
+          "text": "Finn fixed a fast flag.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"], "phonemes": ["f","ɪ","n"] },
+            { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"], "phonemes": ["f","l","æ","g"] }
+          ]
         }
       }
     },
@@ -436,6 +572,15 @@
             { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
             { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
             { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] }
+          ]
+        },
+        "2": {
+          "text": "Fran lifted a flag.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"], "phonemes": ["f","r","æ","n"] },
+            { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"], "phonemes": ["f","l","æ","g"] }
           ]
         }
       }
@@ -466,6 +611,16 @@
             { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
             { "surface": "bot",    "graphemes": ["b","o","t"],             "phonemes": ["b","ɒ","t"] }
           ]
+        },
+        "2": {
+          "text": "Finn fit a fast bot.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"], "phonemes": ["f","ɪ","n"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
+            { "surface": "bot", "graphemes": ["b","o","t"], "phonemes": ["b","ɒ","t"] }
+          ]
         }
       }
     },
@@ -494,6 +649,15 @@
             { "surface": "fit",      "graphemes": ["f","i","t"],                     "phonemes": ["f","ɪ","t"] },
             { "surface": "a",        "graphemes": ["a"],                             "phonemes": ["ə"] },
             { "surface": "flag",     "graphemes": ["f","l","a","g"],                 "phonemes": ["f","l","æ","g"] }
+          ]
+        },
+        "2": {
+          "text": "Fred fit a flag.",
+          "words": [
+            { "surface": "Fred", "graphemes": ["f","r","e","d"], "phonemes": ["f","r","ɛ","d"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"], "phonemes": ["f","l","æ","g"] }
           ]
         }
       }
@@ -524,6 +688,16 @@
             { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
             { "surface": "bot",   "graphemes": ["b","o","t"],         "phonemes": ["b","ɒ","t"] }
           ]
+        },
+        "2": {
+          "text": "Finn fixed a fast bot.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"], "phonemes": ["f","ɪ","n"] },
+            { "surface": "fixed", "graphemes": ["f","i","x","e","d"], "phonemes": ["f","ɪ","k","s","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
+            { "surface": "bot", "graphemes": ["b","o","t"], "phonemes": ["b","ɒ","t"] }
+          ]
         }
       }
     },
@@ -553,6 +727,16 @@
             { "surface": "a",     "graphemes": ["a"],                 "phonemes": ["ə"] },
             { "surface": "fan",   "graphemes": ["f","a","n"],         "phonemes": ["f","æ","n"] }
           ]
+        },
+        "2": {
+          "text": "Fran fit a fast fan.",
+          "words": [
+            { "surface": "Fran", "graphemes": ["f","r","a","n"], "phonemes": ["f","r","æ","n"] },
+            { "surface": "fit", "graphemes": ["f","i","t"], "phonemes": ["f","ɪ","t"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "fast", "graphemes": ["f","a","s","t"], "phonemes": ["f","æ","s","t"] },
+            { "surface": "fan", "graphemes": ["f","a","n"], "phonemes": ["f","æ","n"] }
+          ]
         }
       }
     },
@@ -581,6 +765,15 @@
             { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
             { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
             { "surface": "flag",   "graphemes": ["f","l","a","g"],         "phonemes": ["f","l","æ","g"] }
+          ]
+        },
+        "2": {
+          "text": "Finn lifted a flag.",
+          "words": [
+            { "surface": "Finn", "graphemes": ["f","i","n","n"], "phonemes": ["f","ɪ","n"] },
+            { "surface": "lifted", "graphemes": ["l","i","f","t","e","d"], "phonemes": ["l","ɪ","f","t","ɪ","d"] },
+            { "surface": "a", "graphemes": ["a"], "phonemes": ["ə"] },
+            { "surface": "flag", "graphemes": ["f","l","a","g"], "phonemes": ["f","l","æ","g"] }
           ]
         }
       }
