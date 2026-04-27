@@ -2068,15 +2068,15 @@ EOF
 
 ## Phase D — Child-speaker calibration pass
 
-Phase D is a measurement + tuning exercise, not feature work. The son's fixtures stay on Yutaka's laptop and are never committed. The PR output of Phase D is a numeric update to `PhonemeThresholds.swift` (possibly a no-op if the data agrees with literature).
+Phase D is a measurement + tuning exercise, not feature work. The child's fixtures stay on Yutaka's laptop and are never committed. The PR output of Phase D is a numeric update to `PhonemeThresholds.swift` (possibly a no-op if the data agrees with literature).
 
-### Task 15: Record son's fixtures (local only)
+### Task 15: Record the child's fixtures (local only)
 
 **Files:** none committed. This task produces local WAVs.
 
 - [ ] **Step 1: Record**
 
-Using the same DEBUG fixture recorder on iPad (with Yutaka sitting next to the son):
+Using the same DEBUG fixture recorder on iPad (with Yutaka sitting next to the child):
 
 - Minimum 3 takes per (target, label) row from Task 13's table — ideally more.
 - Speaker tag: `child`.
@@ -2100,7 +2100,7 @@ Nothing to check in. Proceed to Task 16.
 
 ---
 
-### Task 16: Run bench against son's fixtures
+### Task 16: Run bench against the child's fixtures
 
 **Files:** none committed. This task produces a local CSV.
 
@@ -2159,7 +2159,7 @@ Run: `(cd Packages/MoraEngines && swift test)`
 
 If a test now fails because the adult-proxy fixture score has drifted outside its assertion bound, widen the bound by at most 5 points (70 → 65 for `matched`, 40 → 45 for `substitutedBy`). Document the widening in the commit message. Any wider widening means the child shift is too aggressive — roll back and try a smaller shift.
 
-- [ ] **Step 4: Re-run the bench against son's fixtures**
+- [ ] **Step 4: Re-run the bench against the child's fixtures**
 
 Same command as Task 16, step 2. Compare the new Engine A numbers. Expected: the targeted `matched` rows for the shifted phoneme now cluster ≥ 60, closer to parity with SpeechAce.
 
@@ -2180,7 +2180,7 @@ EOF
 
 - [ ] **Step 6: If no thresholds need adjusting**
 
-That outcome is acceptable. Do not create an empty commit. Close Phase D with a short note in the PR description: "Child-speaker calibration pass: no threshold changes needed. Son's fixtures score within literature-derived bounds for all supported pairs."
+That outcome is acceptable. Do not create an empty commit. Close Phase D with a short note in the PR description: "Child-speaker calibration pass: no threshold changes needed. The child's fixtures score within literature-derived bounds for all supported pairs."
 
 ---
 

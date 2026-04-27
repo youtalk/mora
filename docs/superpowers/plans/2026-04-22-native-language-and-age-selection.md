@@ -2961,7 +2961,7 @@ Replace the whole §14 section with this table of resolutions. Items without a f
 | 2 | `13+` tile label | Shipped as `13+`. PR 4 simulator smoke confirmed readable on iPad 10.9"; no non-JP parent testers available at this time. Revisit when an actual 13+ tester exists. |
 | 3 | `NameView` skip affordance location | Kept top-right (alpha spec §9.2). PR 3 review confirmed visual weight acceptable with the shorter JP `スキップ` string. |
 | 4 | Interest display name age variance | Deferred. Alpha shipped age-invariant category names. Preschool bucket may prefer `わんわん` etc.; revisit when that bucket is authored. |
-| 5 | Home IPA subline | Kept English per §9. Field test deferred (no alpha user outside the dev's son). |
+| 5 | Home IPA subline | Kept English per §9. Field test deferred (no alpha user outside a child close to the dev). |
 ```
 
 - [ ] **Step 2: Verify the spec still reads coherently.**

@@ -26,7 +26,7 @@ A side branch handles adult-proxy fixture recordings and `PhonemeThresholds` cal
 
 ## 2. Motivation & Context
 
-The son has been using the sh-week content alone for long enough that engagement is fraying. The canonical product spec (§4) says explicitly "A-only would likely bore the child within weeks", and even within A-day the current single-target loop compresses that timeline further: five consecutive sessions ask the same question, decode the same words, and play the same three sentences. Narrative variety is the cheapest lever available — we already own five yokai with portraits and voice clips, and four usable weeks of phoneme targets that the learner needs for L1-interference reasons (`th/f/r/æ`). Putting those into the weekly rotation is a two-PR job.
+The child has been using the sh-week content alone for long enough that engagement is fraying. The canonical product spec (§4) says explicitly "A-only would likely bore the child within weeks", and even within A-day the current single-target loop compresses that timeline further: five consecutive sessions ask the same question, decode the same words, and play the same three sentences. Narrative variety is the cheapest lever available — we already own five yokai with portraits and voice clips, and four usable weeks of phoneme targets that the learner needs for L1-interference reasons (`th/f/r/æ`). Putting those into the weekly rotation is a two-PR job.
 
 It also unblocks a pile of tests and dogfooding that is currently gated on there being more than one week. The `SystematicPrincipleTests` that the canonical spec §15 calls for — "no session contains two different targets" — cannot be meaningfully written until rotation exists. `BestiaryView` has no entry path except through R5 unit tests. The `Skill` domain type still has no warmup-candidate field, so `SessionContainerView.bootstrap` hardcodes `[s, sh, ch]` as an inline literal.
 
@@ -228,7 +228,7 @@ if encounter.sessionCompletionCount >= 5 {
 
 ### Why session-count, not calendar days
 
-- The spec §6 timeline was written assuming a 5-sessions-per-week cadence, one per weekday. The son's actual cadence is noisier (weekend practice, skipped school days). Hardcoding calendar-day logic would either penalize skipped days (advancement stalls) or double-advance on catch-up days. Counting completed sessions is monotonic, matches what the child observes, and reads cleanly from one persisted field.
+- The spec §6 timeline was written assuming a 5-sessions-per-week cadence, one per weekday. The child's actual cadence is noisier (weekend practice, skipped school days). Hardcoding calendar-day logic would either penalize skipped days (advancement stalls) or double-advance on catch-up days. Counting completed sessions is monotonic, matches what the child observes, and reads cleanly from one persisted field.
 - The "Monday intro is the first session; Friday befriend is the fifth" framing stays intact visually. Per-day labels in `MoraStrings` can still read "Today is Monday with `sh`" on `sessionCompletionCount == 0` if we want that affect; not in scope for this spec.
 
 ## 8. Data Model Changes
@@ -253,7 +253,7 @@ No changes to `BestiaryEntryEntity`, `SessionSummaryEntity`, `LearnerProfile`, `
 
 ### Migration impact
 
-Zero. `MoraModelContainer.schema` is unchanged. Existing users (the son's device) preserve their `DailyStreak` and any in-flight encounters on upgrade.
+Zero. `MoraModelContainer.schema` is unchanged. Existing users (the child's device) preserve their `DailyStreak` and any in-flight encounters on upgrade.
 
 ## 9. Content JSON Requirements
 
@@ -403,7 +403,7 @@ All existing tests that construct `Skill(...)` directly continue to work because
 | Content quality regression in auto-drafted JSONs | Generated word lists include orthographic or phonological edge cases (silent letters, /r/-colored vowels, etc.). | `WordDecodabilityTests` rejects untaught-grapheme words at CI time. Yutaka reviews each JSON in PR 1 diff with focus on naturalness. Two-pass author: first draft → decodability audit → refine. |
 | `YokaiOrchestrator.resume` state drift | A crash mid-session leaves `dayGainSoFar` stale. Restart re-zeros it, which could let the day cap be exceeded on the first correct trial after resume. | Acceptable v1 behavior — day cap is a safeguard, not a hard limit, and over-fill is in the learner's favor. Note in code comment. |
 | Friday floor-guarantee over-ramps and finishes early | A well-performing learner hits 100% at trial 3 of session 5, then trials 4–10 do nothing. | Acceptable: meter caps at 1.0, the learner sees the befriend cutscene at session end, and the extra trials are still useful practice. If the UX feels flat, a later polish PR can add a "bonus claps" micro-reward when already at 100%. |
-| Curriculum-complete state traps the learner | Son completes all 5 yokai in 5 weeks with no re-entry path. | Minimal terminal screen linking to `BestiaryView`. SRS cameos (§Non-Goals) are the proper re-engagement vehicle and land in a later plan. |
+| Curriculum-complete state traps the learner | The child completes all 5 yokai in 5 weeks with no re-entry path. | Minimal terminal screen linking to `BestiaryView`. SRS cameos (§Non-Goals) are the proper re-engagement vehicle and land in a later plan. |
 
 ### Dependencies
 

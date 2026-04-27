@@ -3616,7 +3616,7 @@ After all phases merge, confirm:
 - [ ] `xcodebuild build` on a clean checkout succeeds.
 - [ ] All Swift package tests pass individually (`swift test` in each of MoraCore, MoraEngines, MoraUI, MoraTesting).
 - [ ] `swift-format lint --strict --recursive Mora Packages/*/Sources Packages/*/Tests` clean.
-- [ ] Manual α with the son: one full week runs end-to-end without breaking; child can name the yokai and reproduce its sound gesture at end of week.
+- [ ] Manual α with the child: one full week runs end-to-end without breaking; child can name the yokai and reproduce its sound gesture at end of week.
 
 ---
 

@@ -22,11 +22,11 @@ The learning loop is fully offline. Cross-device parent access (iPad, iPhone, Ma
 
 ## 2. Motivation & Context
 
-The target user's family recently moved from Japan to the United States. The son was diagnosed with dyslexia in Japan, but the impact is more severe in English because of the orthographic depth of English compared to the phonologically shallow Japanese writing system.
+The target user's family recently moved from Japan to the United States. The child was diagnosed with dyslexia in Japan, but the impact is more severe in English because of the orthographic depth of English compared to the phonologically shallow Japanese writing system.
 
-The local US school has enrolled him in ESL and states that an IEP can only begin after ESL completes. From the family's perspective this delays structured dyslexia support by approximately one year. Barton-certified tutoring is financially out of reach.
+The local US school has enrolled them in ESL and states that an IEP can only begin after ESL completes. From the family's perspective this delays structured dyslexia support by approximately one year. Barton-certified tutoring is financially out of reach.
 
-mora is being built so that Yutaka can provide structured, multisensory phonics instruction to his son without waiting for an IEP and without paying for private tutoring. The architecture is intentionally designed so that once the Japanese-L1 prototype is validated, the same codebase can serve learners of other L1s (Korean, Mandarin, Spanish, etc.).
+mora is being built so that Yutaka can provide structured, multisensory phonics instruction to a child close to him without waiting for an IEP and without paying for private tutoring. The architecture is intentionally designed so that once the Japanese-L1 prototype is validated, the same codebase can serve learners of other L1s (Korean, Mandarin, Spanish, etc.).
 
 ## 3. Goals and Non-Goals
 
@@ -50,7 +50,7 @@ mora is being built so that Yutaka can provide structured, multisensory phonics 
 
 ## 4. Approach: Balanced Foundation
 
-Three phasing strategies were considered (see brainstorming session): "Son-First Sprint" (fastest to son, A only in v1), "Balanced Foundation" (A+C rotation from v1, LLM deferred), and "Full Stack v1" (on-device LLM in v1). Balanced Foundation was chosen because:
+Three phasing strategies were considered (see brainstorming session): "Child-First Sprint" (fastest to the child, A only in v1), "Balanced Foundation" (A+C rotation from v1, LLM deferred), and "Full Stack v1" (on-device LLM in v1). Balanced Foundation was chosen because:
 
 - **A-only would likely bore the child within weeks.** The interest-based story payoff of C is essential for sustained daily use.
 - **On-device LLM in v1 would extend delivery to 4–6 months.** The family is already losing time while ESL is pending; a 2–3 month v1 is worth more than a 6-month v1.
@@ -513,7 +513,7 @@ Falsely counting a correctly-spoken word as wrong is the most motivation-damagin
 
 ### Layer 4: User (field validation)
 
-- **Weekly retrospective with the son.** Actual usage logs reviewed in Parent Mode.
+- **Weekly retrospective with the child.** Actual usage logs reviewed in Parent Mode.
 - **TestFlight α** with family only, minimum two weeks.
 - **TestFlight β** (if feasible) with 3–5 families of Japanese L1 dyslexic learners.
 - **ASR false-negative rate** counted weekly; goal < 5% per session.
@@ -564,7 +564,7 @@ The following are not resolved by this spec and should be addressed during plann
 1. **Story-library authoring tooling.** Will Yutaka author stories inside a dedicated Mac tool, or edit JSON directly with a decodability linter? The former is more pleasant and could itself ship as part of v1.5 Parent Mode.
 2. **Voice selection for TTS.** `en-US` enhanced voices differ across iPadOS versions. Which specific voice IDs to prefer, and what fallback order?
 3. **Session scheduling on school days.** Should the app require daily use to maintain a streak, or offer "rest days" so that missing a day does not break motivation?
-4. **Handwriting placement.** Apple Pencil handwriting is v2, but if it turns out to be motivationally important during α testing with the son, we may need to promote a minimal "trace the letter" activity into v1.5 rather than v2.
+4. **Handwriting placement.** Apple Pencil handwriting is v2, but if it turns out to be motivationally important during α testing with the child, we may need to promote a minimal "trace the letter" activity into v1.5 rather than v2.
 5. **CloudKit Family Sharing UX details.** iCloud Family can automatically propose shares, but not all families are configured that way. The QR/code pairing flow must be robust without it.
 6. **ASR availability on older iPads.** `SFSpeechRecognizer.supportsOnDeviceRecognition` is locale- and hardware-dependent. The target device list should be tested before v1 release.
 7. **Second-language UI strings.** `JapaneseL1Profile` supplies Japanese UI strings. Should English fallbacks be bundled in v1 (for when the parent navigates the app in English-language mode), or deferred to v2?

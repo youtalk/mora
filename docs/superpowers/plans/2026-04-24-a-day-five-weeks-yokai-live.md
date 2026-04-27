@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Realign the v1 A-day ladder to the bundled yokai cast (`sh → th → f → r → short_a`), drive weekly rotation through `YokaiEncounterEntity`, and wire the dormant `YokaiOrchestrator` into live sessions so the son can use the app daily across five weeks.
+**Goal:** Realign the v1 A-day ladder to the bundled yokai cast (`sh → th → f → r → short_a`), drive weekly rotation through `YokaiEncounterEntity`, and wire the dormant `YokaiOrchestrator` into live sessions so the child can use the app daily across five weeks.
 
 **Architecture:** Two-PR stack plus an independent side branch.
 - **PR 1 (Curriculum Spine):** realigns `CurriculumEngine.defaultV1Ladder()`, adds per-skill warmup candidates and yokai IDs, authors four new bundled decoding JSONs, and makes `SessionContainerView.bootstrap` resolve the active `YokaiEncounterEntity` (creating an initial `sh` encounter on first launch). Leaves yokai UI dormant.

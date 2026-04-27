@@ -209,7 +209,7 @@ The four panels share a common layout (top: title, middle: visual, bottom: body 
 | Body (`yokaiIntroSessionBody`) | 1回 だいたい 10分。 |
 | CTA (`yokaiIntroNext`) | つぎへ |
 
-The "だいたい 10分" wording is empirically grounded: the developer observed his son completing one full session in ~10 minutes. Earlier "15分" was authored from spec assumptions and rejected as inflated.
+The "だいたい 10分" wording is empirically grounded: the developer observed a child close to him completing one full session in ~10 minutes. Earlier "15分" was authored from spec assumptions and rejected as inflated.
 
 #### Panel 4 — `ProgressPanel`
 

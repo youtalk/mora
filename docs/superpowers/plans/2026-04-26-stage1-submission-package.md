@@ -410,8 +410,8 @@ Content (verbatim — write to `/Users/yutaka.kondo/src/mora/docs/index.html`):
 </div>
 
 <h2>The problem</h2>
-<p>My son is eight. He has dyslexia. He's also learning English as a second language — his first language is Japanese, and our family moved from Japan to the US last year.</p>
-<p>His school's IEP — the structured plan for dyslexia support — is gated behind finishing ESL. That's a one-year delay before he gets the help he actually needs. Barton tutoring, the gold-standard structured-literacy program, is priced out of reach for a family-funded effort.</p>
+<p>A child close to me is eight. They have dyslexia. They're also learning English as a second language — their first language is Japanese, and our family moved from Japan to the US last year.</p>
+<p>Their school's IEP — the structured plan for dyslexia support — is gated behind finishing ESL. That's a one-year delay before they get the help they actually need. Barton tutoring, the gold-standard structured-literacy program, is priced out of reach for a family-funded effort.</p>
 <p>For a child user, on-device privacy is non-negotiable: no audio, no transcripts, no per-trial details may leave the iPad.</p>
 
 <h2>What it does</h2>
@@ -591,11 +591,11 @@ with the yokai reading first.
 
 ### Task B3: [U] Capture opening shot (Pod 1.1)
 
-5–10s of son's hands on iPad. **No face.** One take is enough.
+5–10s of the child's hands on iPad. **No face.** One take is enough.
 
 - [ ] **Step 1:** Set up iPad on a table or lap with mora's home screen
 visible. Daylight if possible (window light is fine).
-- [ ] **Step 2:** Use a phone (held by Yutaka or spouse) to record the son's
+- [ ] **Step 2:** Use a phone (held by Yutaka or spouse) to record the child's
 hands tapping the screen. Frame from the side or over-shoulder; verify face
 is out of frame.
 - [ ] **Step 3:** AirDrop to Mac into `~/mora-stage1-video/pod_1_1_hands.mp4`.
