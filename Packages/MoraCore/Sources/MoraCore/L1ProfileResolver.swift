@@ -10,7 +10,8 @@ public enum L1ProfileResolver {
     public static func profile(for identifier: String) -> any L1Profile {
         switch identifier {
         case "ja": return JapaneseL1Profile()
-        // PR 2 will add cases "ko" → KoreanL1Profile(), "en" → EnglishL1Profile()
+        case "ko": return KoreanL1Profile()
+        case "en": return EnglishL1Profile()
         default: return JapaneseL1Profile()
         }
     }
