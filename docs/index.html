@@ -39,8 +39,8 @@
   }
 
   *,*::before,*::after{box-sizing:border-box}
-  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink)}
-  html{scroll-behavior:smooth}
+  html,body{margin:0;padding:0;color:var(--ink)}
+  html{scroll-behavior:smooth;background:var(--paper)}
   body{
     font:400 17px/1.6 "Spectral", "Iowan Old Style", Georgia, serif;
     font-feature-settings:"liga" 1,"kern" 1,"onum" 1;
@@ -48,17 +48,11 @@
     text-rendering:optimizeLegibility;
     overflow-x:hidden;
     position:relative;
-  }
-
-  /* — Paper grain overlay (persistent) — */
-  body::before{
-    content:"";
-    position:fixed;inset:0;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.06  0 0 0 0 0.04  0 0 0 0.085 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-    opacity:.85;
-    mix-blend-mode:multiply;
-    pointer-events:none;
-    z-index:9000;
+    /* Paper grain tiled on body. A position:fixed + mix-blend-mode overlay
+       triggers a Safari narrow-viewport bug that drops composited layers
+       above it (hero text, yokai cards) — leaves only shadows visible. */
+    background-color:var(--paper);
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.06  0 0 0 0 0.04  0 0 0 0.16 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   }
   /* — Halftone dot field bottom-left — */
   body::after{
@@ -771,6 +765,12 @@
     footer .inner{grid-template-columns:1fr;gap:28px}
     footer .brand-large{font-size:56px}
     .hero-folio .meta{display:none}
+    /* Stacked yokai cards — keep all three within the viewport. */
+    .yokai-stack{height:420px;max-width:none}
+    .yokai-card{width:64%}
+    .yokai-card.c1{top:0;right:4%}
+    .yokai-card.c2{top:60px;right:32%}
+    .yokai-card.c3{top:140px;right:8%}
   }
 
   @media (prefers-reduced-motion:reduce){
