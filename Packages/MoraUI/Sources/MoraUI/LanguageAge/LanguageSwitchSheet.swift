@@ -28,16 +28,16 @@ public final class LanguageSwitchSheet: ObservableObject {
         pickedID == currentIdentifier
     }
 
-    public func simulateSelect(identifier: String) {
+    public func select(identifier: String) {
         pickedID = identifier
     }
 
-    public func simulateConfirm() {
+    public func confirm() {
         guard !isConfirmDisabled else { return }
         onCommit(pickedID)
     }
 
-    public func simulateCancel() {
+    public func cancel() {
         onCancel()
     }
 }
@@ -66,12 +66,12 @@ public struct LanguageSwitchSheetView: View {
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
                         Button(strings.languageSwitchSheetCancel) {
-                            model.simulateCancel()
+                            model.cancel()
                         }
                     }
                     ToolbarItem(placement: .confirmationAction) {
                         Button(strings.languageSwitchSheetConfirm) {
-                            model.simulateConfirm()
+                            model.confirm()
                         }
                         .disabled(model.isConfirmDisabled)
                     }

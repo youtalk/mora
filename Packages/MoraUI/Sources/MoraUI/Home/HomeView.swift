@@ -8,6 +8,8 @@ import SwiftUI
 import UIKit
 #endif
 
+private let homeViewLog = Logger(subsystem: "tech.reenable.Mora", category: "HomeView")
+
 #if DEBUG
 private let debugBarLog = Logger(subsystem: "tech.reenable.Mora", category: "DebugBar")
 #endif
@@ -111,12 +113,24 @@ public struct HomeView: View {
             wordmark
             Button {
                 guard let profile = profiles.first else { return }
+                let previousID = profile.l1Identifier
                 languageSheet = LanguageSwitchSheet(
-                    currentIdentifier: profile.l1Identifier,
+                    currentIdentifier: previousID,
                     onCommit: { newID in
                         profile.l1Identifier = newID
-                        try? modelContext.save()
-                        languageSheet = nil
+                        do {
+                            try modelContext.save()
+                            languageSheet = nil
+                        } catch {
+                            // Revert the in-memory change so it doesn't drift
+                            // from disk; leave the sheet open so the user sees
+                            // their tap didn't take rather than silently losing
+                            // it on next launch.
+                            profile.l1Identifier = previousID
+                            homeViewLog.error(
+                                "Failed to persist language switch to \(newID, privacy: .public): \(error.localizedDescription, privacy: .public)"
+                            )
+                        }
                     },
                     onCancel: {
                         languageSheet = nil

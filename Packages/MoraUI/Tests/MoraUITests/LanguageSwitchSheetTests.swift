@@ -11,8 +11,8 @@ final class LanguageSwitchSheetTests: XCTestCase {
             onCommit: { committed = $0 },
             onCancel: {}
         )
-        sheet.simulateSelect(identifier: "ko")
-        sheet.simulateConfirm()
+        sheet.select(identifier: "ko")
+        sheet.confirm()
         XCTAssertEqual(committed, "ko")
     }
 
@@ -23,7 +23,7 @@ final class LanguageSwitchSheetTests: XCTestCase {
             onCommit: { _ in },
             onCancel: { cancelled = true }
         )
-        sheet.simulateCancel()
+        sheet.cancel()
         XCTAssertTrue(cancelled)
     }
 
@@ -43,7 +43,7 @@ final class LanguageSwitchSheetTests: XCTestCase {
             onCommit: { _ in },
             onCancel: {}
         )
-        sheet.simulateSelect(identifier: "en")
+        sheet.select(identifier: "en")
         XCTAssertEqual(sheet.pickedID, "en")
         XCTAssertFalse(sheet.isConfirmDisabled)
     }
