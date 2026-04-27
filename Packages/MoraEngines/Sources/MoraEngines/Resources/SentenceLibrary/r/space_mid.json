@@ -9,26 +9,247 @@
       "text": "Rex and Ron set a red rim past Mars.",
       "targetCount": 6,
       "targetInitialContentWords": 4,
-      "interestWords": ["Mars", "rim"],
+      "interestWords": [
+        "Mars",
+        "rim"
+      ],
       "words": [
-        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
-        { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
-        { "surface": "set",  "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
-        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] },
-        { "surface": "past", "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
-        { "surface": "Mars", "graphemes": ["m","a","r","s"],     "phonemes": ["m","ɑ","r","z"] }
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Ron",
+          "graphemes": [
+            "r",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "set",
+          "graphemes": [
+            "s",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "s",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "rim",
+          "graphemes": [
+            "r",
+            "i",
+            "m"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "m"
+          ]
+        },
+        {
+          "surface": "past",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "t"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "t"
+          ]
+        },
+        {
+          "surface": "Mars",
+          "graphemes": [
+            "m",
+            "a",
+            "r",
+            "s"
+          ],
+          "phonemes": [
+            "m",
+            "ɑ",
+            "r",
+            "z"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Ron set a rim.",
           "words": [
-            { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
-            { "surface": "set",  "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
-            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-            { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+            {
+              "surface": "Ron",
+              "graphemes": [
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "n"
+              ]
+            },
+            {
+              "surface": "set",
+              "graphemes": [
+                "s",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "rim",
+              "graphemes": [
+                "r",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "m"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Ron set a red rim.",
+          "words": [
+            {
+              "surface": "Ron",
+              "graphemes": [
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "n"
+              ]
+            },
+            {
+              "surface": "set",
+              "graphemes": [
+                "s",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "red",
+              "graphemes": [
+                "r",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "d"
+              ]
+            },
+            {
+              "surface": "rim",
+              "graphemes": [
+                "r",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "m"
+              ]
+            }
           ]
         }
       }
@@ -37,27 +258,273 @@
       "text": "Rip ran past a red rim and a star.",
       "targetCount": 6,
       "targetInitialContentWords": 4,
-      "interestWords": ["rim", "star"],
+      "interestWords": [
+        "rim",
+        "star"
+      ],
       "words": [
-        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
-        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
-        { "surface": "past", "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
-        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] }
+        {
+          "surface": "Rip",
+          "graphemes": [
+            "r",
+            "i",
+            "p"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "p"
+          ]
+        },
+        {
+          "surface": "ran",
+          "graphemes": [
+            "r",
+            "a",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "n"
+          ]
+        },
+        {
+          "surface": "past",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "t"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "rim",
+          "graphemes": [
+            "r",
+            "i",
+            "m"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "m"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "star",
+          "graphemes": [
+            "s",
+            "t",
+            "a",
+            "r"
+          ],
+          "phonemes": [
+            "s",
+            "t",
+            "ɑ",
+            "r"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rip ran past a rim.",
           "words": [
-            { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
-            { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
-            { "surface": "past", "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
-            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-            { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+            {
+              "surface": "Rip",
+              "graphemes": [
+                "r",
+                "i",
+                "p"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "p"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            },
+            {
+              "surface": "past",
+              "graphemes": [
+                "p",
+                "a",
+                "s",
+                "t"
+              ],
+              "phonemes": [
+                "p",
+                "æ",
+                "s",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "rim",
+              "graphemes": [
+                "r",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "m"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rip ran past a red rim.",
+          "words": [
+            {
+              "surface": "Rip",
+              "graphemes": [
+                "r",
+                "i",
+                "p"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "p"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            },
+            {
+              "surface": "past",
+              "graphemes": [
+                "p",
+                "a",
+                "s",
+                "t"
+              ],
+              "phonemes": [
+                "p",
+                "æ",
+                "s",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "red",
+              "graphemes": [
+                "r",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "d"
+              ]
+            },
+            {
+              "surface": "rim",
+              "graphemes": [
+                "r",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "m"
+              ]
+            }
           ]
         }
       }
@@ -66,27 +533,241 @@
       "text": "Rex got a rim and Ron got a red star.",
       "targetCount": 6,
       "targetInitialContentWords": 5,
-      "interestWords": ["star", "rim"],
+      "interestWords": [
+        "star",
+        "rim"
+      ],
       "words": [
-        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
-        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
-        { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
-        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
-        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] }
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "rim",
+          "graphemes": [
+            "r",
+            "i",
+            "m"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "m"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Ron",
+          "graphemes": [
+            "r",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "star",
+          "graphemes": [
+            "s",
+            "t",
+            "a",
+            "r"
+          ],
+          "phonemes": [
+            "s",
+            "t",
+            "ɑ",
+            "r"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rex got a rim.",
           "words": [
-            { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
-            { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
-            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-            { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "rim",
+              "graphemes": [
+                "r",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "m"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rex got a rim.",
+          "words": [
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "rim",
+              "graphemes": [
+                "r",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "m"
+              ]
+            }
           ]
         }
       }
@@ -95,26 +776,247 @@
       "text": "Ron and Rip got a red rim past Mars.",
       "targetCount": 6,
       "targetInitialContentWords": 4,
-      "interestWords": ["rim", "Mars"],
+      "interestWords": [
+        "rim",
+        "Mars"
+      ],
       "words": [
-        { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
-        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
-        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
-        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] },
-        { "surface": "past", "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
-        { "surface": "Mars", "graphemes": ["m","a","r","s"],     "phonemes": ["m","ɑ","r","z"] }
+        {
+          "surface": "Ron",
+          "graphemes": [
+            "r",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Rip",
+          "graphemes": [
+            "r",
+            "i",
+            "p"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "p"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "rim",
+          "graphemes": [
+            "r",
+            "i",
+            "m"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "m"
+          ]
+        },
+        {
+          "surface": "past",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "t"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "t"
+          ]
+        },
+        {
+          "surface": "Mars",
+          "graphemes": [
+            "m",
+            "a",
+            "r",
+            "s"
+          ],
+          "phonemes": [
+            "m",
+            "ɑ",
+            "r",
+            "z"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rip got a rim.",
           "words": [
-            { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
-            { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
-            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-            { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+            {
+              "surface": "Rip",
+              "graphemes": [
+                "r",
+                "i",
+                "p"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "p"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "rim",
+              "graphemes": [
+                "r",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "m"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rip got a red rim.",
+          "words": [
+            {
+              "surface": "Rip",
+              "graphemes": [
+                "r",
+                "i",
+                "p"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "p"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "red",
+              "graphemes": [
+                "r",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "d"
+              ]
+            },
+            {
+              "surface": "rim",
+              "graphemes": [
+                "r",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "m"
+              ]
+            }
           ]
         }
       }
@@ -123,27 +1025,254 @@
       "text": "Rex set a red rim and Rob got a star.",
       "targetCount": 6,
       "targetInitialContentWords": 5,
-      "interestWords": ["rim", "star"],
+      "interestWords": [
+        "rim",
+        "star"
+      ],
       "words": [
-        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
-        { "surface": "set",  "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
-        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
-        { "surface": "Rob",  "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
-        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] }
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "set",
+          "graphemes": [
+            "s",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "s",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "rim",
+          "graphemes": [
+            "r",
+            "i",
+            "m"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "m"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Rob",
+          "graphemes": [
+            "r",
+            "o",
+            "b"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "b"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "star",
+          "graphemes": [
+            "s",
+            "t",
+            "a",
+            "r"
+          ],
+          "phonemes": [
+            "s",
+            "t",
+            "ɑ",
+            "r"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rex set a rim.",
           "words": [
-            { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
-            { "surface": "set",  "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
-            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-            { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "set",
+              "graphemes": [
+                "s",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "rim",
+              "graphemes": [
+                "r",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "m"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rex set a red rim.",
+          "words": [
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "set",
+              "graphemes": [
+                "s",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "red",
+              "graphemes": [
+                "r",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "d"
+              ]
+            },
+            {
+              "surface": "rim",
+              "graphemes": [
+                "r",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "m"
+              ]
+            }
           ]
         }
       }
@@ -152,27 +1281,241 @@
       "text": "Rip got a rim and Rex got a red star.",
       "targetCount": 6,
       "targetInitialContentWords": 5,
-      "interestWords": ["rim", "star"],
+      "interestWords": [
+        "rim",
+        "star"
+      ],
       "words": [
-        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
-        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
-        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
-        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
-        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] }
+        {
+          "surface": "Rip",
+          "graphemes": [
+            "r",
+            "i",
+            "p"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "p"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "rim",
+          "graphemes": [
+            "r",
+            "i",
+            "m"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "m"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "star",
+          "graphemes": [
+            "s",
+            "t",
+            "a",
+            "r"
+          ],
+          "phonemes": [
+            "s",
+            "t",
+            "ɑ",
+            "r"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rip got a rim.",
           "words": [
-            { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
-            { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
-            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-            { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+            {
+              "surface": "Rip",
+              "graphemes": [
+                "r",
+                "i",
+                "p"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "p"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "rim",
+              "graphemes": [
+                "r",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "m"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rip got a rim.",
+          "words": [
+            {
+              "surface": "Rip",
+              "graphemes": [
+                "r",
+                "i",
+                "p"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "p"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "rim",
+              "graphemes": [
+                "r",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "m"
+              ]
+            }
           ]
         }
       }
@@ -181,27 +1524,263 @@
       "text": "Rob ran and a red rim hit a star.",
       "targetCount": 5,
       "targetInitialContentWords": 4,
-      "interestWords": ["rim", "star"],
+      "interestWords": [
+        "rim",
+        "star"
+      ],
       "words": [
-        { "surface": "Rob",  "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
-        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
-        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] },
-        { "surface": "hit",  "graphemes": ["h","i","t"],         "phonemes": ["h","ɪ","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] }
+        {
+          "surface": "Rob",
+          "graphemes": [
+            "r",
+            "o",
+            "b"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "b"
+          ]
+        },
+        {
+          "surface": "ran",
+          "graphemes": [
+            "r",
+            "a",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "n"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "rim",
+          "graphemes": [
+            "r",
+            "i",
+            "m"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "m"
+          ]
+        },
+        {
+          "surface": "hit",
+          "graphemes": [
+            "h",
+            "i",
+            "t"
+          ],
+          "phonemes": [
+            "h",
+            "ɪ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "star",
+          "graphemes": [
+            "s",
+            "t",
+            "a",
+            "r"
+          ],
+          "phonemes": [
+            "s",
+            "t",
+            "ɑ",
+            "r"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "A rim hit a star.",
           "words": [
-            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-            { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] },
-            { "surface": "hit",  "graphemes": ["h","i","t"],         "phonemes": ["h","ɪ","t"] },
-            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-            { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] }
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "rim",
+              "graphemes": [
+                "r",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "m"
+              ]
+            },
+            {
+              "surface": "hit",
+              "graphemes": [
+                "h",
+                "i",
+                "t"
+              ],
+              "phonemes": [
+                "h",
+                "ɪ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "star",
+              "graphemes": [
+                "s",
+                "t",
+                "a",
+                "r"
+              ],
+              "phonemes": [
+                "s",
+                "t",
+                "ɑ",
+                "r"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "A red rim hit a star.",
+          "words": [
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "red",
+              "graphemes": [
+                "r",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "d"
+              ]
+            },
+            {
+              "surface": "rim",
+              "graphemes": [
+                "r",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "m"
+              ]
+            },
+            {
+              "surface": "hit",
+              "graphemes": [
+                "h",
+                "i",
+                "t"
+              ],
+              "phonemes": [
+                "h",
+                "ɪ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "star",
+              "graphemes": [
+                "s",
+                "t",
+                "a",
+                "r"
+              ],
+              "phonemes": [
+                "s",
+                "t",
+                "ɑ",
+                "r"
+              ]
+            }
           ]
         }
       }
@@ -210,26 +1789,244 @@
       "text": "Rex and Rip ran past Mars and a star.",
       "targetCount": 5,
       "targetInitialContentWords": 3,
-      "interestWords": ["Mars", "star"],
+      "interestWords": [
+        "Mars",
+        "star"
+      ],
       "words": [
-        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
-        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
-        { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] },
-        { "surface": "past", "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
-        { "surface": "Mars", "graphemes": ["m","a","r","s"],     "phonemes": ["m","ɑ","r","z"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] }
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Rip",
+          "graphemes": [
+            "r",
+            "i",
+            "p"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "p"
+          ]
+        },
+        {
+          "surface": "ran",
+          "graphemes": [
+            "r",
+            "a",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "n"
+          ]
+        },
+        {
+          "surface": "past",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "t"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "t"
+          ]
+        },
+        {
+          "surface": "Mars",
+          "graphemes": [
+            "m",
+            "a",
+            "r",
+            "s"
+          ],
+          "phonemes": [
+            "m",
+            "ɑ",
+            "r",
+            "z"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "star",
+          "graphemes": [
+            "s",
+            "t",
+            "a",
+            "r"
+          ],
+          "phonemes": [
+            "s",
+            "t",
+            "ɑ",
+            "r"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rex and Rip ran.",
           "words": [
-            { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
-            { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
-            { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
-            { "surface": "ran",  "graphemes": ["r","a","n"],         "phonemes": ["r","æ","n"] }
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "and",
+              "graphemes": [
+                "a",
+                "n",
+                "d"
+              ],
+              "phonemes": [
+                "æ",
+                "n",
+                "d"
+              ]
+            },
+            {
+              "surface": "Rip",
+              "graphemes": [
+                "r",
+                "i",
+                "p"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "p"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rex and Rip ran.",
+          "words": [
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "and",
+              "graphemes": [
+                "a",
+                "n",
+                "d"
+              ],
+              "phonemes": [
+                "æ",
+                "n",
+                "d"
+              ]
+            },
+            {
+              "surface": "Rip",
+              "graphemes": [
+                "r",
+                "i",
+                "p"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "p"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            }
           ]
         }
       }
@@ -238,27 +2035,258 @@
       "text": "Rob got a red star and Ron got a rim.",
       "targetCount": 6,
       "targetInitialContentWords": 5,
-      "interestWords": ["star", "rim"],
+      "interestWords": [
+        "star",
+        "rim"
+      ],
       "words": [
-        { "surface": "Rob",  "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
-        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
-        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
-        { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
-        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+        {
+          "surface": "Rob",
+          "graphemes": [
+            "r",
+            "o",
+            "b"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "b"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "star",
+          "graphemes": [
+            "s",
+            "t",
+            "a",
+            "r"
+          ],
+          "phonemes": [
+            "s",
+            "t",
+            "ɑ",
+            "r"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Ron",
+          "graphemes": [
+            "r",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "rim",
+          "graphemes": [
+            "r",
+            "i",
+            "m"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "m"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rob got a star.",
           "words": [
-            { "surface": "Rob",  "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
-            { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
-            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-            { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] }
+            {
+              "surface": "Rob",
+              "graphemes": [
+                "r",
+                "o",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "b"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "star",
+              "graphemes": [
+                "s",
+                "t",
+                "a",
+                "r"
+              ],
+              "phonemes": [
+                "s",
+                "t",
+                "ɑ",
+                "r"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rob got a red star.",
+          "words": [
+            {
+              "surface": "Rob",
+              "graphemes": [
+                "r",
+                "o",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "b"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "red",
+              "graphemes": [
+                "r",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "d"
+              ]
+            },
+            {
+              "surface": "star",
+              "graphemes": [
+                "s",
+                "t",
+                "a",
+                "r"
+              ],
+              "phonemes": [
+                "s",
+                "t",
+                "ɑ",
+                "r"
+              ]
+            }
           ]
         }
       }
@@ -267,27 +2295,245 @@
       "text": "Rex set a star and Rip set a red rim.",
       "targetCount": 6,
       "targetInitialContentWords": 5,
-      "interestWords": ["star", "rim"],
+      "interestWords": [
+        "star",
+        "rim"
+      ],
       "words": [
-        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
-        { "surface": "set",  "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
-        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
-        { "surface": "set",  "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
-        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "set",
+          "graphemes": [
+            "s",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "s",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "star",
+          "graphemes": [
+            "s",
+            "t",
+            "a",
+            "r"
+          ],
+          "phonemes": [
+            "s",
+            "t",
+            "ɑ",
+            "r"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Rip",
+          "graphemes": [
+            "r",
+            "i",
+            "p"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "p"
+          ]
+        },
+        {
+          "surface": "set",
+          "graphemes": [
+            "s",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "s",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "rim",
+          "graphemes": [
+            "r",
+            "i",
+            "m"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "m"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rex set a star.",
           "words": [
-            { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
-            { "surface": "set",  "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
-            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-            { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] }
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "set",
+              "graphemes": [
+                "s",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "star",
+              "graphemes": [
+                "s",
+                "t",
+                "a",
+                "r"
+              ],
+              "phonemes": [
+                "s",
+                "t",
+                "ɑ",
+                "r"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rex set a star.",
+          "words": [
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "set",
+              "graphemes": [
+                "s",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "star",
+              "graphemes": [
+                "s",
+                "t",
+                "a",
+                "r"
+              ],
+              "phonemes": [
+                "s",
+                "t",
+                "ɑ",
+                "r"
+              ]
+            }
           ]
         }
       }
@@ -296,27 +2542,245 @@
       "text": "Ron got a star and Rex got a red rim.",
       "targetCount": 6,
       "targetInitialContentWords": 5,
-      "interestWords": ["star", "rim"],
+      "interestWords": [
+        "star",
+        "rim"
+      ],
       "words": [
-        { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
-        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
-        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
-        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
-        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+        {
+          "surface": "Ron",
+          "graphemes": [
+            "r",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "star",
+          "graphemes": [
+            "s",
+            "t",
+            "a",
+            "r"
+          ],
+          "phonemes": [
+            "s",
+            "t",
+            "ɑ",
+            "r"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "rim",
+          "graphemes": [
+            "r",
+            "i",
+            "m"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "m"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Ron got a star.",
           "words": [
-            { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
-            { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
-            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-            { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] }
+            {
+              "surface": "Ron",
+              "graphemes": [
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "n"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "star",
+              "graphemes": [
+                "s",
+                "t",
+                "a",
+                "r"
+              ],
+              "phonemes": [
+                "s",
+                "t",
+                "ɑ",
+                "r"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Ron got a star.",
+          "words": [
+            {
+              "surface": "Ron",
+              "graphemes": [
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "n"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "star",
+              "graphemes": [
+                "s",
+                "t",
+                "a",
+                "r"
+              ],
+              "phonemes": [
+                "s",
+                "t",
+                "ɑ",
+                "r"
+              ]
+            }
           ]
         }
       }
@@ -325,27 +2789,266 @@
       "text": "Rip rested and Rob got a red rim past Mars.",
       "targetCount": 7,
       "targetInitialContentWords": 5,
-      "interestWords": ["rim", "Mars"],
+      "interestWords": [
+        "rim",
+        "Mars"
+      ],
       "words": [
-        { "surface": "Rip",    "graphemes": ["r","i","p"],             "phonemes": ["r","ɪ","p"] },
-        { "surface": "rested", "graphemes": ["r","e","s","t","e","d"], "phonemes": ["r","ɛ","s","t","ɪ","d"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
-        { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "red",    "graphemes": ["r","e","d"],             "phonemes": ["r","ɛ","d"] },
-        { "surface": "rim",    "graphemes": ["r","i","m"],             "phonemes": ["r","ɪ","m"] },
-        { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
-        { "surface": "Mars",   "graphemes": ["m","a","r","s"],         "phonemes": ["m","ɑ","r","z"] }
+        {
+          "surface": "Rip",
+          "graphemes": [
+            "r",
+            "i",
+            "p"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "p"
+          ]
+        },
+        {
+          "surface": "rested",
+          "graphemes": [
+            "r",
+            "e",
+            "s",
+            "t",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "s",
+            "t",
+            "ɪ",
+            "d"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Rob",
+          "graphemes": [
+            "r",
+            "o",
+            "b"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "b"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "rim",
+          "graphemes": [
+            "r",
+            "i",
+            "m"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "m"
+          ]
+        },
+        {
+          "surface": "past",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "t"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "t"
+          ]
+        },
+        {
+          "surface": "Mars",
+          "graphemes": [
+            "m",
+            "a",
+            "r",
+            "s"
+          ],
+          "phonemes": [
+            "m",
+            "ɑ",
+            "r",
+            "z"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rob got a rim.",
           "words": [
-            { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
-            { "surface": "got",    "graphemes": ["g","o","t"],             "phonemes": ["g","ɒ","t"] },
-            { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-            { "surface": "rim",    "graphemes": ["r","i","m"],             "phonemes": ["r","ɪ","m"] }
+            {
+              "surface": "Rob",
+              "graphemes": [
+                "r",
+                "o",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "b"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "rim",
+              "graphemes": [
+                "r",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "m"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rob got a red rim.",
+          "words": [
+            {
+              "surface": "Rob",
+              "graphemes": [
+                "r",
+                "o",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "b"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "red",
+              "graphemes": [
+                "r",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "d"
+              ]
+            },
+            {
+              "surface": "rim",
+              "graphemes": [
+                "r",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "m"
+              ]
+            }
           ]
         }
       }
@@ -354,27 +3057,258 @@
       "text": "Rex and Ron got a red star and a rim.",
       "targetCount": 6,
       "targetInitialContentWords": 4,
-      "interestWords": ["star", "rim"],
+      "interestWords": [
+        "star",
+        "rim"
+      ],
       "words": [
-        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
-        { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
-        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
-        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Ron",
+          "graphemes": [
+            "r",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "star",
+          "graphemes": [
+            "s",
+            "t",
+            "a",
+            "r"
+          ],
+          "phonemes": [
+            "s",
+            "t",
+            "ɑ",
+            "r"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "rim",
+          "graphemes": [
+            "r",
+            "i",
+            "m"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "m"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Ron got a star.",
           "words": [
-            { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
-            { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
-            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-            { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] }
+            {
+              "surface": "Ron",
+              "graphemes": [
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "n"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "star",
+              "graphemes": [
+                "s",
+                "t",
+                "a",
+                "r"
+              ],
+              "phonemes": [
+                "s",
+                "t",
+                "ɑ",
+                "r"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Ron got a red star.",
+          "words": [
+            {
+              "surface": "Ron",
+              "graphemes": [
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "n"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "red",
+              "graphemes": [
+                "r",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "d"
+              ]
+            },
+            {
+              "surface": "star",
+              "graphemes": [
+                "s",
+                "t",
+                "a",
+                "r"
+              ],
+              "phonemes": [
+                "s",
+                "t",
+                "ɑ",
+                "r"
+              ]
+            }
           ]
         }
       }
@@ -383,26 +3317,230 @@
       "text": "Rob and Rip set a rim past a star.",
       "targetCount": 5,
       "targetInitialContentWords": 4,
-      "interestWords": ["rim", "star"],
+      "interestWords": [
+        "rim",
+        "star"
+      ],
       "words": [
-        { "surface": "Rob",  "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
-        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
-        { "surface": "set",  "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] },
-        { "surface": "past", "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] }
+        {
+          "surface": "Rob",
+          "graphemes": [
+            "r",
+            "o",
+            "b"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "b"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Rip",
+          "graphemes": [
+            "r",
+            "i",
+            "p"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "p"
+          ]
+        },
+        {
+          "surface": "set",
+          "graphemes": [
+            "s",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "s",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "rim",
+          "graphemes": [
+            "r",
+            "i",
+            "m"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "m"
+          ]
+        },
+        {
+          "surface": "past",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "t"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "star",
+          "graphemes": [
+            "s",
+            "t",
+            "a",
+            "r"
+          ],
+          "phonemes": [
+            "s",
+            "t",
+            "ɑ",
+            "r"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rip set a rim.",
           "words": [
-            { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
-            { "surface": "set",  "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
-            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-            { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+            {
+              "surface": "Rip",
+              "graphemes": [
+                "r",
+                "i",
+                "p"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "p"
+              ]
+            },
+            {
+              "surface": "set",
+              "graphemes": [
+                "s",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "rim",
+              "graphemes": [
+                "r",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "m"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rip set a rim.",
+          "words": [
+            {
+              "surface": "Rip",
+              "graphemes": [
+                "r",
+                "i",
+                "p"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "p"
+              ]
+            },
+            {
+              "surface": "set",
+              "graphemes": [
+                "s",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "rim",
+              "graphemes": [
+                "r",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "m"
+              ]
+            }
           ]
         }
       }
@@ -411,27 +3549,258 @@
       "text": "Rex got a red star and Rip got a rim.",
       "targetCount": 6,
       "targetInitialContentWords": 5,
-      "interestWords": ["star", "rim"],
+      "interestWords": [
+        "star",
+        "rim"
+      ],
       "words": [
-        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
-        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
-        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
-        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
-        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "star",
+          "graphemes": [
+            "s",
+            "t",
+            "a",
+            "r"
+          ],
+          "phonemes": [
+            "s",
+            "t",
+            "ɑ",
+            "r"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Rip",
+          "graphemes": [
+            "r",
+            "i",
+            "p"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "p"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "rim",
+          "graphemes": [
+            "r",
+            "i",
+            "m"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "m"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rex got a star.",
           "words": [
-            { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
-            { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
-            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-            { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] }
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "star",
+              "graphemes": [
+                "s",
+                "t",
+                "a",
+                "r"
+              ],
+              "phonemes": [
+                "s",
+                "t",
+                "ɑ",
+                "r"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rex got a red star.",
+          "words": [
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "red",
+              "graphemes": [
+                "r",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "d"
+              ]
+            },
+            {
+              "surface": "star",
+              "graphemes": [
+                "s",
+                "t",
+                "a",
+                "r"
+              ],
+              "phonemes": [
+                "s",
+                "t",
+                "ɑ",
+                "r"
+              ]
+            }
           ]
         }
       }
@@ -440,26 +3809,245 @@
       "text": "Ron met Rex on a red rim past Mars.",
       "targetCount": 6,
       "targetInitialContentWords": 4,
-      "interestWords": ["rim", "Mars"],
+      "interestWords": [
+        "rim",
+        "Mars"
+      ],
       "words": [
-        { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
-        { "surface": "met",  "graphemes": ["m","e","t"],         "phonemes": ["m","ɛ","t"] },
-        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
-        { "surface": "on",   "graphemes": ["o","n"],             "phonemes": ["ɒ","n"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
-        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] },
-        { "surface": "past", "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
-        { "surface": "Mars", "graphemes": ["m","a","r","s"],     "phonemes": ["m","ɑ","r","z"] }
+        {
+          "surface": "Ron",
+          "graphemes": [
+            "r",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "met",
+          "graphemes": [
+            "m",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "m",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "on",
+          "graphemes": [
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "rim",
+          "graphemes": [
+            "r",
+            "i",
+            "m"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "m"
+          ]
+        },
+        {
+          "surface": "past",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "t"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "t"
+          ]
+        },
+        {
+          "surface": "Mars",
+          "graphemes": [
+            "m",
+            "a",
+            "r",
+            "s"
+          ],
+          "phonemes": [
+            "m",
+            "ɑ",
+            "r",
+            "z"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Ron met a rim.",
           "words": [
-            { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
-            { "surface": "met",  "graphemes": ["m","e","t"],         "phonemes": ["m","ɛ","t"] },
-            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-            { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+            {
+              "surface": "Ron",
+              "graphemes": [
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "n"
+              ]
+            },
+            {
+              "surface": "met",
+              "graphemes": [
+                "m",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "m",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "rim",
+              "graphemes": [
+                "r",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "m"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Ron met a red rim.",
+          "words": [
+            {
+              "surface": "Ron",
+              "graphemes": [
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "n"
+              ]
+            },
+            {
+              "surface": "met",
+              "graphemes": [
+                "m",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "m",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "red",
+              "graphemes": [
+                "r",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "d"
+              ]
+            },
+            {
+              "surface": "rim",
+              "graphemes": [
+                "r",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "m"
+              ]
+            }
           ]
         }
       }
@@ -468,27 +4056,260 @@
       "text": "Rex and Rob set a red star past a rim.",
       "targetCount": 6,
       "targetInitialContentWords": 4,
-      "interestWords": ["star", "rim"],
+      "interestWords": [
+        "star",
+        "rim"
+      ],
       "words": [
-        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
-        { "surface": "Rob",  "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
-        { "surface": "set",  "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
-        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] },
-        { "surface": "past", "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Rob",
+          "graphemes": [
+            "r",
+            "o",
+            "b"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "b"
+          ]
+        },
+        {
+          "surface": "set",
+          "graphemes": [
+            "s",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "s",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "star",
+          "graphemes": [
+            "s",
+            "t",
+            "a",
+            "r"
+          ],
+          "phonemes": [
+            "s",
+            "t",
+            "ɑ",
+            "r"
+          ]
+        },
+        {
+          "surface": "past",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "t"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "rim",
+          "graphemes": [
+            "r",
+            "i",
+            "m"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "m"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rob set a star.",
           "words": [
-            { "surface": "Rob",  "graphemes": ["r","o","b"],         "phonemes": ["r","ɒ","b"] },
-            { "surface": "set",  "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
-            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-            { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] }
+            {
+              "surface": "Rob",
+              "graphemes": [
+                "r",
+                "o",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "b"
+              ]
+            },
+            {
+              "surface": "set",
+              "graphemes": [
+                "s",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "star",
+              "graphemes": [
+                "s",
+                "t",
+                "a",
+                "r"
+              ],
+              "phonemes": [
+                "s",
+                "t",
+                "ɑ",
+                "r"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rob set a red star.",
+          "words": [
+            {
+              "surface": "Rob",
+              "graphemes": [
+                "r",
+                "o",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "b"
+              ]
+            },
+            {
+              "surface": "set",
+              "graphemes": [
+                "s",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "red",
+              "graphemes": [
+                "r",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "d"
+              ]
+            },
+            {
+              "surface": "star",
+              "graphemes": [
+                "s",
+                "t",
+                "a",
+                "r"
+              ],
+              "phonemes": [
+                "s",
+                "t",
+                "ɑ",
+                "r"
+              ]
+            }
           ]
         }
       }
@@ -497,27 +4318,245 @@
       "text": "Rip and Ron got a star and a red rim.",
       "targetCount": 6,
       "targetInitialContentWords": 4,
-      "interestWords": ["star", "rim"],
+      "interestWords": [
+        "star",
+        "rim"
+      ],
       "words": [
-        { "surface": "Rip",  "graphemes": ["r","i","p"],         "phonemes": ["r","ɪ","p"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
-        { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
-        { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
-        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+        {
+          "surface": "Rip",
+          "graphemes": [
+            "r",
+            "i",
+            "p"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "p"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Ron",
+          "graphemes": [
+            "r",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "star",
+          "graphemes": [
+            "s",
+            "t",
+            "a",
+            "r"
+          ],
+          "phonemes": [
+            "s",
+            "t",
+            "ɑ",
+            "r"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "rim",
+          "graphemes": [
+            "r",
+            "i",
+            "m"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "m"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Ron got a star.",
           "words": [
-            { "surface": "Ron",  "graphemes": ["r","o","n"],         "phonemes": ["r","ɒ","n"] },
-            { "surface": "got",  "graphemes": ["g","o","t"],         "phonemes": ["g","ɒ","t"] },
-            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-            { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] }
+            {
+              "surface": "Ron",
+              "graphemes": [
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "n"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "star",
+              "graphemes": [
+                "s",
+                "t",
+                "a",
+                "r"
+              ],
+              "phonemes": [
+                "s",
+                "t",
+                "ɑ",
+                "r"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Ron got a star.",
+          "words": [
+            {
+              "surface": "Ron",
+              "graphemes": [
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "n"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "star",
+              "graphemes": [
+                "s",
+                "t",
+                "a",
+                "r"
+              ],
+              "phonemes": [
+                "s",
+                "t",
+                "ɑ",
+                "r"
+              ]
+            }
           ]
         }
       }
@@ -526,27 +4565,246 @@
       "text": "Rex set a rim and a red star past Mars.",
       "targetCount": 6,
       "targetInitialContentWords": 3,
-      "interestWords": ["rim", "star", "Mars"],
+      "interestWords": [
+        "rim",
+        "star",
+        "Mars"
+      ],
       "words": [
-        { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
-        { "surface": "set",  "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],         "phonemes": ["æ","n","d"] },
-        { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-        { "surface": "red",  "graphemes": ["r","e","d"],         "phonemes": ["r","ɛ","d"] },
-        { "surface": "star", "graphemes": ["s","t","a","r"],     "phonemes": ["s","t","ɑ","r"] },
-        { "surface": "past", "graphemes": ["p","a","s","t"],     "phonemes": ["p","æ","s","t"] },
-        { "surface": "Mars", "graphemes": ["m","a","r","s"],     "phonemes": ["m","ɑ","r","z"] }
+        {
+          "surface": "Rex",
+          "graphemes": [
+            "r",
+            "e",
+            "x"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "ks"
+          ]
+        },
+        {
+          "surface": "set",
+          "graphemes": [
+            "s",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "s",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "rim",
+          "graphemes": [
+            "r",
+            "i",
+            "m"
+          ],
+          "phonemes": [
+            "r",
+            "ɪ",
+            "m"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "star",
+          "graphemes": [
+            "s",
+            "t",
+            "a",
+            "r"
+          ],
+          "phonemes": [
+            "s",
+            "t",
+            "ɑ",
+            "r"
+          ]
+        },
+        {
+          "surface": "past",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "t"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "t"
+          ]
+        },
+        {
+          "surface": "Mars",
+          "graphemes": [
+            "m",
+            "a",
+            "r",
+            "s"
+          ],
+          "phonemes": [
+            "m",
+            "ɑ",
+            "r",
+            "z"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rex set a rim.",
           "words": [
-            { "surface": "Rex",  "graphemes": ["r","e","x"],         "phonemes": ["r","ɛ","ks"] },
-            { "surface": "set",  "graphemes": ["s","e","t"],         "phonemes": ["s","ɛ","t"] },
-            { "surface": "a",    "graphemes": ["a"],                 "phonemes": ["ə"] },
-            { "surface": "rim",  "graphemes": ["r","i","m"],         "phonemes": ["r","ɪ","m"] }
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "set",
+              "graphemes": [
+                "s",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "rim",
+              "graphemes": [
+                "r",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "m"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rex set a rim.",
+          "words": [
+            {
+              "surface": "Rex",
+              "graphemes": [
+                "r",
+                "e",
+                "x"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "ks"
+              ]
+            },
+            {
+              "surface": "set",
+              "graphemes": [
+                "s",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "rim",
+              "graphemes": [
+                "r",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "r",
+                "ɪ",
+                "m"
+              ]
+            }
           ]
         }
       }
@@ -555,25 +4813,246 @@
       "text": "Rob and Ron rested past a red star.",
       "targetCount": 5,
       "targetInitialContentWords": 4,
-      "interestWords": ["star"],
+      "interestWords": [
+        "star"
+      ],
       "words": [
-        { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-        { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
-        { "surface": "rested", "graphemes": ["r","e","s","t","e","d"], "phonemes": ["r","ɛ","s","t","ɪ","d"] },
-        { "surface": "past",   "graphemes": ["p","a","s","t"],         "phonemes": ["p","æ","s","t"] },
-        { "surface": "a",      "graphemes": ["a"],                     "phonemes": ["ə"] },
-        { "surface": "red",    "graphemes": ["r","e","d"],             "phonemes": ["r","ɛ","d"] },
-        { "surface": "star",   "graphemes": ["s","t","a","r"],         "phonemes": ["s","t","ɑ","r"] }
+        {
+          "surface": "Rob",
+          "graphemes": [
+            "r",
+            "o",
+            "b"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "b"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Ron",
+          "graphemes": [
+            "r",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "rested",
+          "graphemes": [
+            "r",
+            "e",
+            "s",
+            "t",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "s",
+            "t",
+            "ɪ",
+            "d"
+          ]
+        },
+        {
+          "surface": "past",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "t"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "red",
+          "graphemes": [
+            "r",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "r",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "star",
+          "graphemes": [
+            "s",
+            "t",
+            "a",
+            "r"
+          ],
+          "phonemes": [
+            "s",
+            "t",
+            "ɑ",
+            "r"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Rob and Ron rested.",
           "words": [
-            { "surface": "Rob",    "graphemes": ["r","o","b"],             "phonemes": ["r","ɒ","b"] },
-            { "surface": "and",    "graphemes": ["a","n","d"],             "phonemes": ["æ","n","d"] },
-            { "surface": "Ron",    "graphemes": ["r","o","n"],             "phonemes": ["r","ɒ","n"] },
-            { "surface": "rested", "graphemes": ["r","e","s","t","e","d"], "phonemes": ["r","ɛ","s","t","ɪ","d"] }
+            {
+              "surface": "Rob",
+              "graphemes": [
+                "r",
+                "o",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "b"
+              ]
+            },
+            {
+              "surface": "and",
+              "graphemes": [
+                "a",
+                "n",
+                "d"
+              ],
+              "phonemes": [
+                "æ",
+                "n",
+                "d"
+              ]
+            },
+            {
+              "surface": "Ron",
+              "graphemes": [
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "n"
+              ]
+            },
+            {
+              "surface": "rested",
+              "graphemes": [
+                "r",
+                "e",
+                "s",
+                "t",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "s",
+                "t",
+                "ɪ",
+                "d"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Rob and Ron rested.",
+          "words": [
+            {
+              "surface": "Rob",
+              "graphemes": [
+                "r",
+                "o",
+                "b"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "b"
+              ]
+            },
+            {
+              "surface": "and",
+              "graphemes": [
+                "a",
+                "n",
+                "d"
+              ],
+              "phonemes": [
+                "æ",
+                "n",
+                "d"
+              ]
+            },
+            {
+              "surface": "Ron",
+              "graphemes": [
+                "r",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "ɒ",
+                "n"
+              ]
+            },
+            {
+              "surface": "rested",
+              "graphemes": [
+                "r",
+                "e",
+                "s",
+                "t",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "r",
+                "ɛ",
+                "s",
+                "t",
+                "ɪ",
+                "d"
+              ]
+            }
           ]
         }
       }
