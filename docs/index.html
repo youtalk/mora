@@ -170,12 +170,13 @@
   }
   h2{
     font-family:var(--dyslexic);
+    font-variation-settings:normal;
     font-weight:700;
     font-size:clamp(30px,4.2vw,56px);
     letter-spacing:-.01em;line-height:1.12;
     margin-bottom:24px;
   }
-  h2 em{font-style:italic;font-weight:400}
+  h2 em{font-style:italic;font-weight:400;font-variation-settings:normal}
   h3{font-size:clamp(22px,2.4vw,30px);font-variation-settings:"opsz" 36,"wght" 600,"SOFT" 30;line-height:1.15;margin-bottom:12px}
   h4{font-size:18px;font-variation-settings:"opsz" 14,"wght" 700,"SOFT" 30;letter-spacing:0;line-height:1.2}
   p{margin:0 0 16px}
@@ -202,6 +203,7 @@
 
   h1.wordmark{
     font-family:var(--dyslexic);
+    font-variation-settings:normal;
     font-weight:700;
     font-size:clamp(80px,14vw,200px);
     line-height:.92;
@@ -212,6 +214,7 @@
   h1.wordmark em{
     font-style:normal;color:var(--vermilion);
     font-weight:400;
+    font-variation-settings:normal;
   }
   h1.wordmark .period{color:var(--vermilion)}
 
@@ -497,7 +500,7 @@
   .l1-section .folio::before{background:var(--mora-orange)}
   .l1-section .folio .num{color:var(--mora-orange)}
   .l1-section h2{color:var(--paper);max-width:18ch}
-  .l1-section h2 em{font-style:italic;color:var(--mora-orange);font-variation-settings:"opsz" 96,"wght" 600,"SOFT" 100}
+  .l1-section h2 em{font-style:italic;color:var(--mora-orange);font-weight:400}
   .l1-section p.lede{color:var(--washi)}
 
   .subs-grid{
@@ -964,7 +967,7 @@
 <!-- ============== 03 · WHAT IT DOES ============== -->
 <section id="what">
   <div class="folio"><span class="num">03</span> What It Does</div>
-  <h2>Four pieces. <em style="color:var(--vermilion);font-style:italic;font-variation-settings:'opsz' 96,'wght' 600,'SOFT' 100">One daily quest.</em></h2>
+  <h2>Four pieces. <em style="color:var(--vermilion)">One daily quest.</em></h2>
   <p class="lede">Each day is a short A-Day session: warmup → decode → sentences → summary. The yokai shell turns it into a quest the kid wants to come back to, instead of a drill he has to be coaxed into.</p>
 
   <div class="pillars">
@@ -1042,7 +1045,7 @@
 <!-- ============== 05 · THE NUMBERS ============== -->
 <section>
   <div class="folio"><span class="num">05</span> The Numbers</div>
-  <h2>Five days. <em style="color:var(--vermilion);font-style:italic;font-variation-settings:'opsz' 96,'wght' 600,'SOFT' 100">A working app.</em></h2>
+  <h2>Five days. <em style="color:var(--vermilion)">A working app.</em></h2>
   <p class="lede">Hackathon constraints met head-on. Every number measured, not estimated.</p>
 
   <div class="stats">
@@ -1078,7 +1081,7 @@
 <!-- ============== 06 · BUILT WITH OPUS 4.7 ============== -->
 <section id="how">
   <div class="folio"><span class="num">06</span> Built with Opus 4.7</div>
-  <h2>The model isn’t a coworker. <em style="color:var(--vermilion);font-style:italic;font-variation-settings:'opsz' 96,'wght' 600,'SOFT' 100">It’s a workshop.</em></h2>
+  <h2>The model isn’t a coworker. <em style="color:var(--vermilion)">It’s a workshop.</em></h2>
   <p class="lede">I’m not a Swift engineer by trade. Three Claude Code workflow patterns let one person ship a real iPad app in five days.</p>
 
   <div class="workflow">
@@ -1122,7 +1125,7 @@
 <!-- ============== 07 · ARCHITECTURE ============== -->
 <section class="arch-section">
   <div class="folio"><span class="num">07</span> Architecture</div>
-  <h2>Five Swift packages. <em style="color:var(--vermilion);font-style:italic;font-variation-settings:'opsz' 96,'wght' 600,'SOFT' 100">One way down.</em></h2>
+  <h2>Five Swift packages. <em style="color:var(--vermilion)">One way down.</em></h2>
   <p class="lede">A thin iOS app target wires SwiftData and presents <code>RootView</code>. All real logic lives in five local SPM packages with strictly one-way dependencies — the kind of layering that lets a single author keep moving without untangling cycles every other day.</p>
 
   <div class="arch-grid">
