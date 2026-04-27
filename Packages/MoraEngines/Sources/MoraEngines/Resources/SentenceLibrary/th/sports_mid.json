@@ -9,27 +9,275 @@
       "text": "Thad and Theo had a thin marathon on the path.",
       "targetCount": 6,
       "targetInitialContentWords": 3,
-      "interestWords": ["marathon"],
+      "interestWords": [
+        "marathon"
+      ],
       "words": [
-        { "surface": "Thad",     "graphemes": ["th","a","d"],                       "phonemes": ["θ","æ","d"] },
-        { "surface": "and",      "graphemes": ["a","n","d"],                        "phonemes": ["æ","n","d"] },
-        { "surface": "Theo",     "graphemes": ["th","e","o"],                       "phonemes": ["θ","i","oʊ"] },
-        { "surface": "had",      "graphemes": ["h","a","d"],                        "phonemes": ["h","æ","d"] },
-        { "surface": "a",        "graphemes": ["a"],                                "phonemes": ["ə"] },
-        { "surface": "thin",     "graphemes": ["th","i","n"],                       "phonemes": ["θ","ɪ","n"] },
-        { "surface": "marathon", "graphemes": ["m","a","r","a","th","o","n"],      "phonemes": ["m","æ","r","ə","θ","ə","n"] },
-        { "surface": "on",       "graphemes": ["o","n"],                            "phonemes": ["ɒ","n"] },
-        { "surface": "the",      "graphemes": ["th","e"],                           "phonemes": ["ð","ə"] },
-        { "surface": "path",     "graphemes": ["p","a","th"],                       "phonemes": ["p","æ","θ"] }
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "had",
+          "graphemes": [
+            "h",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "h",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "marathon",
+          "graphemes": [
+            "m",
+            "a",
+            "r",
+            "a",
+            "th",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "m",
+            "æ",
+            "r",
+            "ə",
+            "θ",
+            "ə",
+            "n"
+          ]
+        },
+        {
+          "surface": "on",
+          "graphemes": [
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "path",
+          "graphemes": [
+            "p",
+            "a",
+            "th"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "θ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Thad had a marathon.",
           "words": [
-            { "surface": "Thad",     "graphemes": ["th","a","d"],                       "phonemes": ["θ","æ","d"] },
-            { "surface": "had",      "graphemes": ["h","a","d"],                        "phonemes": ["h","æ","d"] },
-            { "surface": "a",        "graphemes": ["a"],                                "phonemes": ["ə"] },
-            { "surface": "marathon", "graphemes": ["m","a","r","a","th","o","n"],      "phonemes": ["m","æ","r","ə","θ","ə","n"] }
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "had",
+              "graphemes": [
+                "h",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "marathon",
+              "graphemes": [
+                "m",
+                "a",
+                "r",
+                "a",
+                "th",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "m",
+                "æ",
+                "r",
+                "ə",
+                "θ",
+                "ə",
+                "n"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Thad had a thin marathon.",
+          "words": [
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "had",
+              "graphemes": [
+                "h",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "marathon",
+              "graphemes": [
+                "m",
+                "a",
+                "r",
+                "a",
+                "th",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "m",
+                "æ",
+                "r",
+                "ə",
+                "θ",
+                "ə",
+                "n"
+              ]
+            }
           ]
         }
       }
@@ -38,27 +286,254 @@
       "text": "Theo got a thin bath and Thad got the gym.",
       "targetCount": 5,
       "targetInitialContentWords": 3,
-      "interestWords": ["bath", "gym"],
+      "interestWords": [
+        "bath",
+        "gym"
+      ],
       "words": [
-        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
-        { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
-        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
-        { "surface": "bath", "graphemes": ["b","a","th"],     "phonemes": ["b","æ","θ"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
-        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
-        { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
-        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
-        { "surface": "gym",  "graphemes": ["g","y","m"],      "phonemes": ["dʒ","ɪ","m"] }
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "bath",
+          "graphemes": [
+            "b",
+            "a",
+            "th"
+          ],
+          "phonemes": [
+            "b",
+            "æ",
+            "θ"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "gym",
+          "graphemes": [
+            "g",
+            "y",
+            "m"
+          ],
+          "phonemes": [
+            "dʒ",
+            "ɪ",
+            "m"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Theo got a bath.",
           "words": [
-            { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
-            { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
-            { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
-            { "surface": "bath", "graphemes": ["b","a","th"],     "phonemes": ["b","æ","θ"] }
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "bath",
+              "graphemes": [
+                "b",
+                "a",
+                "th"
+              ],
+              "phonemes": [
+                "b",
+                "æ",
+                "θ"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Theo got a thin bath.",
+          "words": [
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "bath",
+              "graphemes": [
+                "b",
+                "a",
+                "th"
+              ],
+              "phonemes": [
+                "b",
+                "æ",
+                "θ"
+              ]
+            }
           ]
         }
       }
@@ -67,28 +542,288 @@
       "text": "A thin marathon met Thad and Theo at the path.",
       "targetCount": 6,
       "targetInitialContentWords": 3,
-      "interestWords": ["marathon"],
+      "interestWords": [
+        "marathon"
+      ],
       "words": [
-        { "surface": "A",        "graphemes": ["a"],                                "phonemes": ["ə"] },
-        { "surface": "thin",     "graphemes": ["th","i","n"],                       "phonemes": ["θ","ɪ","n"] },
-        { "surface": "marathon", "graphemes": ["m","a","r","a","th","o","n"],      "phonemes": ["m","æ","r","ə","θ","ə","n"] },
-        { "surface": "met",      "graphemes": ["m","e","t"],                        "phonemes": ["m","ɛ","t"] },
-        { "surface": "Thad",     "graphemes": ["th","a","d"],                       "phonemes": ["θ","æ","d"] },
-        { "surface": "and",      "graphemes": ["a","n","d"],                        "phonemes": ["æ","n","d"] },
-        { "surface": "Theo",     "graphemes": ["th","e","o"],                       "phonemes": ["θ","i","oʊ"] },
-        { "surface": "at",       "graphemes": ["a","t"],                            "phonemes": ["æ","t"] },
-        { "surface": "the",      "graphemes": ["th","e"],                           "phonemes": ["ð","ə"] },
-        { "surface": "path",     "graphemes": ["p","a","th"],                       "phonemes": ["p","æ","θ"] }
+        {
+          "surface": "A",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "marathon",
+          "graphemes": [
+            "m",
+            "a",
+            "r",
+            "a",
+            "th",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "m",
+            "æ",
+            "r",
+            "ə",
+            "θ",
+            "ə",
+            "n"
+          ]
+        },
+        {
+          "surface": "met",
+          "graphemes": [
+            "m",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "m",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "at",
+          "graphemes": [
+            "a",
+            "t"
+          ],
+          "phonemes": [
+            "æ",
+            "t"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "path",
+          "graphemes": [
+            "p",
+            "a",
+            "th"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "θ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "A thin marathon met Thad.",
           "words": [
-            { "surface": "A",        "graphemes": ["a"],                                "phonemes": ["ə"] },
-            { "surface": "thin",     "graphemes": ["th","i","n"],                       "phonemes": ["θ","ɪ","n"] },
-            { "surface": "marathon", "graphemes": ["m","a","r","a","th","o","n"],      "phonemes": ["m","æ","r","ə","θ","ə","n"] },
-            { "surface": "met",      "graphemes": ["m","e","t"],                        "phonemes": ["m","ɛ","t"] },
-            { "surface": "Thad",     "graphemes": ["th","a","d"],                       "phonemes": ["θ","æ","d"] }
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "marathon",
+              "graphemes": [
+                "m",
+                "a",
+                "r",
+                "a",
+                "th",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "m",
+                "æ",
+                "r",
+                "ə",
+                "θ",
+                "ə",
+                "n"
+              ]
+            },
+            {
+              "surface": "met",
+              "graphemes": [
+                "m",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "m",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "A thin marathon met Thad.",
+          "words": [
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "marathon",
+              "graphemes": [
+                "m",
+                "a",
+                "r",
+                "a",
+                "th",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "m",
+                "æ",
+                "r",
+                "ə",
+                "θ",
+                "ə",
+                "n"
+              ]
+            },
+            {
+              "surface": "met",
+              "graphemes": [
+                "m",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "m",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            }
           ]
         }
       }
@@ -97,27 +832,255 @@
       "text": "Thad and Theo ran a thin marathon at the gym.",
       "targetCount": 5,
       "targetInitialContentWords": 3,
-      "interestWords": ["marathon", "gym"],
+      "interestWords": [
+        "marathon",
+        "gym"
+      ],
       "words": [
-        { "surface": "Thad",     "graphemes": ["th","a","d"],                       "phonemes": ["θ","æ","d"] },
-        { "surface": "and",      "graphemes": ["a","n","d"],                        "phonemes": ["æ","n","d"] },
-        { "surface": "Theo",     "graphemes": ["th","e","o"],                       "phonemes": ["θ","i","oʊ"] },
-        { "surface": "ran",      "graphemes": ["r","a","n"],                        "phonemes": ["r","æ","n"] },
-        { "surface": "a",        "graphemes": ["a"],                                "phonemes": ["ə"] },
-        { "surface": "thin",     "graphemes": ["th","i","n"],                       "phonemes": ["θ","ɪ","n"] },
-        { "surface": "marathon", "graphemes": ["m","a","r","a","th","o","n"],      "phonemes": ["m","æ","r","ə","θ","ə","n"] },
-        { "surface": "at",       "graphemes": ["a","t"],                            "phonemes": ["æ","t"] },
-        { "surface": "the",      "graphemes": ["th","e"],                           "phonemes": ["ð","ə"] },
-        { "surface": "gym",      "graphemes": ["g","y","m"],                        "phonemes": ["dʒ","ɪ","m"] }
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "ran",
+          "graphemes": [
+            "r",
+            "a",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "n"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "marathon",
+          "graphemes": [
+            "m",
+            "a",
+            "r",
+            "a",
+            "th",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "m",
+            "æ",
+            "r",
+            "ə",
+            "θ",
+            "ə",
+            "n"
+          ]
+        },
+        {
+          "surface": "at",
+          "graphemes": [
+            "a",
+            "t"
+          ],
+          "phonemes": [
+            "æ",
+            "t"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "gym",
+          "graphemes": [
+            "g",
+            "y",
+            "m"
+          ],
+          "phonemes": [
+            "dʒ",
+            "ɪ",
+            "m"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Thad and Theo ran.",
           "words": [
-            { "surface": "Thad",     "graphemes": ["th","a","d"],                       "phonemes": ["θ","æ","d"] },
-            { "surface": "and",      "graphemes": ["a","n","d"],                        "phonemes": ["æ","n","d"] },
-            { "surface": "Theo",     "graphemes": ["th","e","o"],                       "phonemes": ["θ","i","oʊ"] },
-            { "surface": "ran",      "graphemes": ["r","a","n"],                        "phonemes": ["r","æ","n"] }
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "and",
+              "graphemes": [
+                "a",
+                "n",
+                "d"
+              ],
+              "phonemes": [
+                "æ",
+                "n",
+                "d"
+              ]
+            },
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Thad and Theo ran.",
+          "words": [
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "and",
+              "graphemes": [
+                "a",
+                "n",
+                "d"
+              ],
+              "phonemes": [
+                "æ",
+                "n",
+                "d"
+              ]
+            },
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            }
           ]
         }
       }
@@ -126,26 +1089,242 @@
       "text": "Theo and Thad had a thin bath with Beth.",
       "targetCount": 6,
       "targetInitialContentWords": 3,
-      "interestWords": ["bath"],
+      "interestWords": [
+        "bath"
+      ],
       "words": [
-        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
-        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
-        { "surface": "had",  "graphemes": ["h","a","d"],      "phonemes": ["h","æ","d"] },
-        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
-        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
-        { "surface": "bath", "graphemes": ["b","a","th"],     "phonemes": ["b","æ","θ"] },
-        { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
-        { "surface": "Beth", "graphemes": ["b","e","th"],     "phonemes": ["b","ɛ","θ"] }
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "had",
+          "graphemes": [
+            "h",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "h",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "bath",
+          "graphemes": [
+            "b",
+            "a",
+            "th"
+          ],
+          "phonemes": [
+            "b",
+            "æ",
+            "θ"
+          ]
+        },
+        {
+          "surface": "with",
+          "graphemes": [
+            "w",
+            "i",
+            "th"
+          ],
+          "phonemes": [
+            "w",
+            "ɪ",
+            "θ"
+          ]
+        },
+        {
+          "surface": "Beth",
+          "graphemes": [
+            "b",
+            "e",
+            "th"
+          ],
+          "phonemes": [
+            "b",
+            "ɛ",
+            "θ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Theo had a bath.",
           "words": [
-            { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
-            { "surface": "had",  "graphemes": ["h","a","d"],      "phonemes": ["h","æ","d"] },
-            { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
-            { "surface": "bath", "graphemes": ["b","a","th"],     "phonemes": ["b","æ","θ"] }
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "had",
+              "graphemes": [
+                "h",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "bath",
+              "graphemes": [
+                "b",
+                "a",
+                "th"
+              ],
+              "phonemes": [
+                "b",
+                "æ",
+                "θ"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Theo had a thin bath.",
+          "words": [
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "had",
+              "graphemes": [
+                "h",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "bath",
+              "graphemes": [
+                "b",
+                "a",
+                "th"
+              ],
+              "phonemes": [
+                "b",
+                "æ",
+                "θ"
+              ]
+            }
           ]
         }
       }
@@ -154,26 +1333,276 @@
       "text": "A swift thin marathon ran past Thad with Theo.",
       "targetCount": 5,
       "targetInitialContentWords": 3,
-      "interestWords": ["marathon"],
+      "interestWords": [
+        "marathon"
+      ],
       "words": [
-        { "surface": "A",        "graphemes": ["a"],                                "phonemes": ["ə"] },
-        { "surface": "swift",    "graphemes": ["s","w","i","f","t"],                "phonemes": ["s","w","ɪ","f","t"] },
-        { "surface": "thin",     "graphemes": ["th","i","n"],                       "phonemes": ["θ","ɪ","n"] },
-        { "surface": "marathon", "graphemes": ["m","a","r","a","th","o","n"],      "phonemes": ["m","æ","r","ə","θ","ə","n"] },
-        { "surface": "ran",      "graphemes": ["r","a","n"],                        "phonemes": ["r","æ","n"] },
-        { "surface": "past",     "graphemes": ["p","a","s","t"],                    "phonemes": ["p","æ","s","t"] },
-        { "surface": "Thad",     "graphemes": ["th","a","d"],                       "phonemes": ["θ","æ","d"] },
-        { "surface": "with",     "graphemes": ["w","i","th"],                       "phonemes": ["w","ɪ","θ"] },
-        { "surface": "Theo",     "graphemes": ["th","e","o"],                       "phonemes": ["θ","i","oʊ"] }
+        {
+          "surface": "A",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "swift",
+          "graphemes": [
+            "s",
+            "w",
+            "i",
+            "f",
+            "t"
+          ],
+          "phonemes": [
+            "s",
+            "w",
+            "ɪ",
+            "f",
+            "t"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "marathon",
+          "graphemes": [
+            "m",
+            "a",
+            "r",
+            "a",
+            "th",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "m",
+            "æ",
+            "r",
+            "ə",
+            "θ",
+            "ə",
+            "n"
+          ]
+        },
+        {
+          "surface": "ran",
+          "graphemes": [
+            "r",
+            "a",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "n"
+          ]
+        },
+        {
+          "surface": "past",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "t"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "t"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "with",
+          "graphemes": [
+            "w",
+            "i",
+            "th"
+          ],
+          "phonemes": [
+            "w",
+            "ɪ",
+            "θ"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "A thin marathon ran.",
           "words": [
-            { "surface": "A",        "graphemes": ["a"],                                "phonemes": ["ə"] },
-            { "surface": "thin",     "graphemes": ["th","i","n"],                       "phonemes": ["θ","ɪ","n"] },
-            { "surface": "marathon", "graphemes": ["m","a","r","a","th","o","n"],      "phonemes": ["m","æ","r","ə","θ","ə","n"] },
-            { "surface": "ran",      "graphemes": ["r","a","n"],                        "phonemes": ["r","æ","n"] }
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "marathon",
+              "graphemes": [
+                "m",
+                "a",
+                "r",
+                "a",
+                "th",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "m",
+                "æ",
+                "r",
+                "ə",
+                "θ",
+                "ə",
+                "n"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "A swift thin marathon ran.",
+          "words": [
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "swift",
+              "graphemes": [
+                "s",
+                "w",
+                "i",
+                "f",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "w",
+                "ɪ",
+                "f",
+                "t"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "marathon",
+              "graphemes": [
+                "m",
+                "a",
+                "r",
+                "a",
+                "th",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "m",
+                "æ",
+                "r",
+                "ə",
+                "θ",
+                "ə",
+                "n"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            }
           ]
         }
       }
@@ -182,27 +1611,252 @@
       "text": "Thad and Theo set a thin bat at the gym.",
       "targetCount": 4,
       "targetInitialContentWords": 3,
-      "interestWords": ["bat", "gym"],
+      "interestWords": [
+        "bat",
+        "gym"
+      ],
       "words": [
-        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
-        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
-        { "surface": "set",  "graphemes": ["s","e","t"],      "phonemes": ["s","ɛ","t"] },
-        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
-        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
-        { "surface": "bat",  "graphemes": ["b","a","t"],      "phonemes": ["b","æ","t"] },
-        { "surface": "at",   "graphemes": ["a","t"],          "phonemes": ["æ","t"] },
-        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
-        { "surface": "gym",  "graphemes": ["g","y","m"],      "phonemes": ["dʒ","ɪ","m"] }
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "set",
+          "graphemes": [
+            "s",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "s",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "bat",
+          "graphemes": [
+            "b",
+            "a",
+            "t"
+          ],
+          "phonemes": [
+            "b",
+            "æ",
+            "t"
+          ]
+        },
+        {
+          "surface": "at",
+          "graphemes": [
+            "a",
+            "t"
+          ],
+          "phonemes": [
+            "æ",
+            "t"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "gym",
+          "graphemes": [
+            "g",
+            "y",
+            "m"
+          ],
+          "phonemes": [
+            "dʒ",
+            "ɪ",
+            "m"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Thad set a bat.",
           "words": [
-            { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
-            { "surface": "set",  "graphemes": ["s","e","t"],      "phonemes": ["s","ɛ","t"] },
-            { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
-            { "surface": "bat",  "graphemes": ["b","a","t"],      "phonemes": ["b","æ","t"] }
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "set",
+              "graphemes": [
+                "s",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "bat",
+              "graphemes": [
+                "b",
+                "a",
+                "t"
+              ],
+              "phonemes": [
+                "b",
+                "æ",
+                "t"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Thad set a thin bat.",
+          "words": [
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "set",
+              "graphemes": [
+                "s",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "bat",
+              "graphemes": [
+                "b",
+                "a",
+                "t"
+              ],
+              "phonemes": [
+                "b",
+                "æ",
+                "t"
+              ]
+            }
           ]
         }
       }
@@ -211,26 +1865,229 @@
       "text": "A thin bath sat with Thad, Theo, and Seth.",
       "targetCount": 6,
       "targetInitialContentWords": 3,
-      "interestWords": ["bath"],
+      "interestWords": [
+        "bath"
+      ],
       "words": [
-        { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
-        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
-        { "surface": "bath", "graphemes": ["b","a","th"],     "phonemes": ["b","æ","θ"] },
-        { "surface": "sat",  "graphemes": ["s","a","t"],      "phonemes": ["s","æ","t"] },
-        { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
-        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
-        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
-        { "surface": "Seth", "graphemes": ["s","e","th"],     "phonemes": ["s","ɛ","θ"] }
+        {
+          "surface": "A",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "bath",
+          "graphemes": [
+            "b",
+            "a",
+            "th"
+          ],
+          "phonemes": [
+            "b",
+            "æ",
+            "θ"
+          ]
+        },
+        {
+          "surface": "sat",
+          "graphemes": [
+            "s",
+            "a",
+            "t"
+          ],
+          "phonemes": [
+            "s",
+            "æ",
+            "t"
+          ]
+        },
+        {
+          "surface": "with",
+          "graphemes": [
+            "w",
+            "i",
+            "th"
+          ],
+          "phonemes": [
+            "w",
+            "ɪ",
+            "θ"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Seth",
+          "graphemes": [
+            "s",
+            "e",
+            "th"
+          ],
+          "phonemes": [
+            "s",
+            "ɛ",
+            "θ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "A thin bath sat.",
           "words": [
-            { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
-            { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
-            { "surface": "bath", "graphemes": ["b","a","th"],     "phonemes": ["b","æ","θ"] },
-            { "surface": "sat",  "graphemes": ["s","a","t"],      "phonemes": ["s","æ","t"] }
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "bath",
+              "graphemes": [
+                "b",
+                "a",
+                "th"
+              ],
+              "phonemes": [
+                "b",
+                "æ",
+                "θ"
+              ]
+            },
+            {
+              "surface": "sat",
+              "graphemes": [
+                "s",
+                "a",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "æ",
+                "t"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "A thin bath sat.",
+          "words": [
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "bath",
+              "graphemes": [
+                "b",
+                "a",
+                "th"
+              ],
+              "phonemes": [
+                "b",
+                "æ",
+                "θ"
+              ]
+            },
+            {
+              "surface": "sat",
+              "graphemes": [
+                "s",
+                "a",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "æ",
+                "t"
+              ]
+            }
           ]
         }
       }
@@ -239,27 +2096,260 @@
       "text": "Theo got a thin pass and Thad got the bat.",
       "targetCount": 4,
       "targetInitialContentWords": 3,
-      "interestWords": ["pass", "bat"],
+      "interestWords": [
+        "pass",
+        "bat"
+      ],
       "words": [
-        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
-        { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
-        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
-        { "surface": "pass", "graphemes": ["p","a","s","s"],  "phonemes": ["p","æ","s","s"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
-        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
-        { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
-        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
-        { "surface": "bat",  "graphemes": ["b","a","t"],      "phonemes": ["b","æ","t"] }
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "pass",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "s"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "s"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "bat",
+          "graphemes": [
+            "b",
+            "a",
+            "t"
+          ],
+          "phonemes": [
+            "b",
+            "æ",
+            "t"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Theo got a pass.",
           "words": [
-            { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
-            { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
-            { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
-            { "surface": "pass", "graphemes": ["p","a","s","s"],  "phonemes": ["p","æ","s","s"] }
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "pass",
+              "graphemes": [
+                "p",
+                "a",
+                "s",
+                "s"
+              ],
+              "phonemes": [
+                "p",
+                "æ",
+                "s",
+                "s"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Theo got a thin pass.",
+          "words": [
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "pass",
+              "graphemes": [
+                "p",
+                "a",
+                "s",
+                "s"
+              ],
+              "phonemes": [
+                "p",
+                "æ",
+                "s",
+                "s"
+              ]
+            }
           ]
         }
       }
@@ -268,27 +2358,247 @@
       "text": "Thad let Theo dash a thin lap on the path.",
       "targetCount": 5,
       "targetInitialContentWords": 3,
-      "interestWords": ["dash", "lap"],
+      "interestWords": [
+        "dash",
+        "lap"
+      ],
       "words": [
-        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
-        { "surface": "let",  "graphemes": ["l","e","t"],      "phonemes": ["l","ɛ","t"] },
-        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
-        { "surface": "dash", "graphemes": ["d","a","sh"],     "phonemes": ["d","æ","ʃ"] },
-        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
-        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
-        { "surface": "lap",  "graphemes": ["l","a","p"],      "phonemes": ["l","æ","p"] },
-        { "surface": "on",   "graphemes": ["o","n"],          "phonemes": ["ɒ","n"] },
-        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
-        { "surface": "path", "graphemes": ["p","a","th"],     "phonemes": ["p","æ","θ"] }
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "let",
+          "graphemes": [
+            "l",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "l",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "dash",
+          "graphemes": [
+            "d",
+            "a",
+            "sh"
+          ],
+          "phonemes": [
+            "d",
+            "æ",
+            "ʃ"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "lap",
+          "graphemes": [
+            "l",
+            "a",
+            "p"
+          ],
+          "phonemes": [
+            "l",
+            "æ",
+            "p"
+          ]
+        },
+        {
+          "surface": "on",
+          "graphemes": [
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "path",
+          "graphemes": [
+            "p",
+            "a",
+            "th"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "θ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Thad let Theo dash.",
           "words": [
-            { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
-            { "surface": "let",  "graphemes": ["l","e","t"],      "phonemes": ["l","ɛ","t"] },
-            { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
-            { "surface": "dash", "graphemes": ["d","a","sh"],     "phonemes": ["d","æ","ʃ"] }
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "let",
+              "graphemes": [
+                "l",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "l",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "dash",
+              "graphemes": [
+                "d",
+                "a",
+                "sh"
+              ],
+              "phonemes": [
+                "d",
+                "æ",
+                "ʃ"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Thad let Theo dash.",
+          "words": [
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "let",
+              "graphemes": [
+                "l",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "l",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "dash",
+              "graphemes": [
+                "d",
+                "a",
+                "sh"
+              ],
+              "phonemes": [
+                "d",
+                "æ",
+                "ʃ"
+              ]
+            }
           ]
         }
       }
@@ -297,26 +2607,242 @@
       "text": "A thin gym met Thad, Theo, and Beth.",
       "targetCount": 4,
       "targetInitialContentWords": 3,
-      "interestWords": ["gym"],
+      "interestWords": [
+        "gym"
+      ],
       "words": [
-        { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
-        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
-        { "surface": "gym",  "graphemes": ["g","y","m"],      "phonemes": ["dʒ","ɪ","m"] },
-        { "surface": "met",  "graphemes": ["m","e","t"],      "phonemes": ["m","ɛ","t"] },
-        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
-        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
-        { "surface": "Beth", "graphemes": ["b","e","th"],     "phonemes": ["b","ɛ","θ"] }
+        {
+          "surface": "A",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "gym",
+          "graphemes": [
+            "g",
+            "y",
+            "m"
+          ],
+          "phonemes": [
+            "dʒ",
+            "ɪ",
+            "m"
+          ]
+        },
+        {
+          "surface": "met",
+          "graphemes": [
+            "m",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "m",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Beth",
+          "graphemes": [
+            "b",
+            "e",
+            "th"
+          ],
+          "phonemes": [
+            "b",
+            "ɛ",
+            "θ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "A thin gym met Thad.",
           "words": [
-            { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
-            { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
-            { "surface": "gym",  "graphemes": ["g","y","m"],      "phonemes": ["dʒ","ɪ","m"] },
-            { "surface": "met",  "graphemes": ["m","e","t"],      "phonemes": ["m","ɛ","t"] },
-            { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] }
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "gym",
+              "graphemes": [
+                "g",
+                "y",
+                "m"
+              ],
+              "phonemes": [
+                "dʒ",
+                "ɪ",
+                "m"
+              ]
+            },
+            {
+              "surface": "met",
+              "graphemes": [
+                "m",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "m",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "A thin gym met Thad.",
+          "words": [
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "gym",
+              "graphemes": [
+                "g",
+                "y",
+                "m"
+              ],
+              "phonemes": [
+                "dʒ",
+                "ɪ",
+                "m"
+              ]
+            },
+            {
+              "surface": "met",
+              "graphemes": [
+                "m",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "m",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            }
           ]
         }
       }
@@ -325,26 +2851,266 @@
       "text": "Thad and Theo had a thin marathon with Beth.",
       "targetCount": 6,
       "targetInitialContentWords": 3,
-      "interestWords": ["marathon"],
+      "interestWords": [
+        "marathon"
+      ],
       "words": [
-        { "surface": "Thad",     "graphemes": ["th","a","d"],                       "phonemes": ["θ","æ","d"] },
-        { "surface": "and",      "graphemes": ["a","n","d"],                        "phonemes": ["æ","n","d"] },
-        { "surface": "Theo",     "graphemes": ["th","e","o"],                       "phonemes": ["θ","i","oʊ"] },
-        { "surface": "had",      "graphemes": ["h","a","d"],                        "phonemes": ["h","æ","d"] },
-        { "surface": "a",        "graphemes": ["a"],                                "phonemes": ["ə"] },
-        { "surface": "thin",     "graphemes": ["th","i","n"],                       "phonemes": ["θ","ɪ","n"] },
-        { "surface": "marathon", "graphemes": ["m","a","r","a","th","o","n"],      "phonemes": ["m","æ","r","ə","θ","ə","n"] },
-        { "surface": "with",     "graphemes": ["w","i","th"],                       "phonemes": ["w","ɪ","θ"] },
-        { "surface": "Beth",     "graphemes": ["b","e","th"],                       "phonemes": ["b","ɛ","θ"] }
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "had",
+          "graphemes": [
+            "h",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "h",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "marathon",
+          "graphemes": [
+            "m",
+            "a",
+            "r",
+            "a",
+            "th",
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "m",
+            "æ",
+            "r",
+            "ə",
+            "θ",
+            "ə",
+            "n"
+          ]
+        },
+        {
+          "surface": "with",
+          "graphemes": [
+            "w",
+            "i",
+            "th"
+          ],
+          "phonemes": [
+            "w",
+            "ɪ",
+            "θ"
+          ]
+        },
+        {
+          "surface": "Beth",
+          "graphemes": [
+            "b",
+            "e",
+            "th"
+          ],
+          "phonemes": [
+            "b",
+            "ɛ",
+            "θ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Thad had a marathon.",
           "words": [
-            { "surface": "Thad",     "graphemes": ["th","a","d"],                       "phonemes": ["θ","æ","d"] },
-            { "surface": "had",      "graphemes": ["h","a","d"],                        "phonemes": ["h","æ","d"] },
-            { "surface": "a",        "graphemes": ["a"],                                "phonemes": ["ə"] },
-            { "surface": "marathon", "graphemes": ["m","a","r","a","th","o","n"],      "phonemes": ["m","æ","r","ə","θ","ə","n"] }
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "had",
+              "graphemes": [
+                "h",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "marathon",
+              "graphemes": [
+                "m",
+                "a",
+                "r",
+                "a",
+                "th",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "m",
+                "æ",
+                "r",
+                "ə",
+                "θ",
+                "ə",
+                "n"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Thad had a thin marathon.",
+          "words": [
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "had",
+              "graphemes": [
+                "h",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "marathon",
+              "graphemes": [
+                "m",
+                "a",
+                "r",
+                "a",
+                "th",
+                "o",
+                "n"
+              ],
+              "phonemes": [
+                "m",
+                "æ",
+                "r",
+                "ə",
+                "θ",
+                "ə",
+                "n"
+              ]
+            }
           ]
         }
       }
@@ -353,26 +3119,250 @@
       "text": "A swift thin bath sat with Thad and Theo.",
       "targetCount": 5,
       "targetInitialContentWords": 3,
-      "interestWords": ["bath"],
+      "interestWords": [
+        "bath"
+      ],
       "words": [
-        { "surface": "A",     "graphemes": ["a"],                  "phonemes": ["ə"] },
-        { "surface": "swift", "graphemes": ["s","w","i","f","t"],  "phonemes": ["s","w","ɪ","f","t"] },
-        { "surface": "thin",  "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
-        { "surface": "bath",  "graphemes": ["b","a","th"],         "phonemes": ["b","æ","θ"] },
-        { "surface": "sat",   "graphemes": ["s","a","t"],          "phonemes": ["s","æ","t"] },
-        { "surface": "with",  "graphemes": ["w","i","th"],         "phonemes": ["w","ɪ","θ"] },
-        { "surface": "Thad",  "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
-        { "surface": "and",   "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
-        { "surface": "Theo",  "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] }
+        {
+          "surface": "A",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "swift",
+          "graphemes": [
+            "s",
+            "w",
+            "i",
+            "f",
+            "t"
+          ],
+          "phonemes": [
+            "s",
+            "w",
+            "ɪ",
+            "f",
+            "t"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "bath",
+          "graphemes": [
+            "b",
+            "a",
+            "th"
+          ],
+          "phonemes": [
+            "b",
+            "æ",
+            "θ"
+          ]
+        },
+        {
+          "surface": "sat",
+          "graphemes": [
+            "s",
+            "a",
+            "t"
+          ],
+          "phonemes": [
+            "s",
+            "æ",
+            "t"
+          ]
+        },
+        {
+          "surface": "with",
+          "graphemes": [
+            "w",
+            "i",
+            "th"
+          ],
+          "phonemes": [
+            "w",
+            "ɪ",
+            "θ"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "A thin bath sat.",
           "words": [
-            { "surface": "A",     "graphemes": ["a"],                  "phonemes": ["ə"] },
-            { "surface": "thin",  "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
-            { "surface": "bath",  "graphemes": ["b","a","th"],         "phonemes": ["b","æ","θ"] },
-            { "surface": "sat",   "graphemes": ["s","a","t"],          "phonemes": ["s","æ","t"] }
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "bath",
+              "graphemes": [
+                "b",
+                "a",
+                "th"
+              ],
+              "phonemes": [
+                "b",
+                "æ",
+                "θ"
+              ]
+            },
+            {
+              "surface": "sat",
+              "graphemes": [
+                "s",
+                "a",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "æ",
+                "t"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "A swift thin bath sat.",
+          "words": [
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "swift",
+              "graphemes": [
+                "s",
+                "w",
+                "i",
+                "f",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "w",
+                "ɪ",
+                "f",
+                "t"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "bath",
+              "graphemes": [
+                "b",
+                "a",
+                "th"
+              ],
+              "phonemes": [
+                "b",
+                "æ",
+                "θ"
+              ]
+            },
+            {
+              "surface": "sat",
+              "graphemes": [
+                "s",
+                "a",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "æ",
+                "t"
+              ]
+            }
           ]
         }
       }
@@ -381,27 +3371,257 @@
       "text": "Theo and Thad set a thin pass at the path.",
       "targetCount": 5,
       "targetInitialContentWords": 3,
-      "interestWords": ["pass"],
+      "interestWords": [
+        "pass"
+      ],
       "words": [
-        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
-        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
-        { "surface": "set",  "graphemes": ["s","e","t"],      "phonemes": ["s","ɛ","t"] },
-        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
-        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
-        { "surface": "pass", "graphemes": ["p","a","s","s"],  "phonemes": ["p","æ","s","s"] },
-        { "surface": "at",   "graphemes": ["a","t"],          "phonemes": ["æ","t"] },
-        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
-        { "surface": "path", "graphemes": ["p","a","th"],     "phonemes": ["p","æ","θ"] }
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "set",
+          "graphemes": [
+            "s",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "s",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "pass",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "s"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "s"
+          ]
+        },
+        {
+          "surface": "at",
+          "graphemes": [
+            "a",
+            "t"
+          ],
+          "phonemes": [
+            "æ",
+            "t"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "path",
+          "graphemes": [
+            "p",
+            "a",
+            "th"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "θ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Theo set a pass.",
           "words": [
-            { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
-            { "surface": "set",  "graphemes": ["s","e","t"],      "phonemes": ["s","ɛ","t"] },
-            { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
-            { "surface": "pass", "graphemes": ["p","a","s","s"],  "phonemes": ["p","æ","s","s"] }
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "set",
+              "graphemes": [
+                "s",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "pass",
+              "graphemes": [
+                "p",
+                "a",
+                "s",
+                "s"
+              ],
+              "phonemes": [
+                "p",
+                "æ",
+                "s",
+                "s"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Theo set a thin pass.",
+          "words": [
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "set",
+              "graphemes": [
+                "s",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "s",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "pass",
+              "graphemes": [
+                "p",
+                "a",
+                "s",
+                "s"
+              ],
+              "phonemes": [
+                "p",
+                "æ",
+                "s",
+                "s"
+              ]
+            }
           ]
         }
       }
@@ -410,27 +3630,260 @@
       "text": "Thad got a thin pass and Theo got the bath.",
       "targetCount": 5,
       "targetInitialContentWords": 3,
-      "interestWords": ["pass", "bath"],
+      "interestWords": [
+        "pass",
+        "bath"
+      ],
       "words": [
-        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
-        { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
-        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
-        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
-        { "surface": "pass", "graphemes": ["p","a","s","s"],  "phonemes": ["p","æ","s","s"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
-        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
-        { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
-        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
-        { "surface": "bath", "graphemes": ["b","a","th"],     "phonemes": ["b","æ","θ"] }
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "pass",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "s"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "s"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "got",
+          "graphemes": [
+            "g",
+            "o",
+            "t"
+          ],
+          "phonemes": [
+            "g",
+            "ɒ",
+            "t"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "bath",
+          "graphemes": [
+            "b",
+            "a",
+            "th"
+          ],
+          "phonemes": [
+            "b",
+            "æ",
+            "θ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Thad got a pass.",
           "words": [
-            { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
-            { "surface": "got",  "graphemes": ["g","o","t"],      "phonemes": ["g","ɒ","t"] },
-            { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
-            { "surface": "pass", "graphemes": ["p","a","s","s"],  "phonemes": ["p","æ","s","s"] }
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "pass",
+              "graphemes": [
+                "p",
+                "a",
+                "s",
+                "s"
+              ],
+              "phonemes": [
+                "p",
+                "æ",
+                "s",
+                "s"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Thad got a thin pass.",
+          "words": [
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "got",
+              "graphemes": [
+                "g",
+                "o",
+                "t"
+              ],
+              "phonemes": [
+                "g",
+                "ɒ",
+                "t"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "pass",
+              "graphemes": [
+                "p",
+                "a",
+                "s",
+                "s"
+              ],
+              "phonemes": [
+                "p",
+                "æ",
+                "s",
+                "s"
+              ]
+            }
           ]
         }
       }
@@ -439,25 +3892,216 @@
       "text": "A thin lap ran with Thad and Theo.",
       "targetCount": 4,
       "targetInitialContentWords": 3,
-      "interestWords": ["lap"],
+      "interestWords": [
+        "lap"
+      ],
       "words": [
-        { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
-        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
-        { "surface": "lap",  "graphemes": ["l","a","p"],      "phonemes": ["l","æ","p"] },
-        { "surface": "ran",  "graphemes": ["r","a","n"],      "phonemes": ["r","æ","n"] },
-        { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
-        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
-        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] }
+        {
+          "surface": "A",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "lap",
+          "graphemes": [
+            "l",
+            "a",
+            "p"
+          ],
+          "phonemes": [
+            "l",
+            "æ",
+            "p"
+          ]
+        },
+        {
+          "surface": "ran",
+          "graphemes": [
+            "r",
+            "a",
+            "n"
+          ],
+          "phonemes": [
+            "r",
+            "æ",
+            "n"
+          ]
+        },
+        {
+          "surface": "with",
+          "graphemes": [
+            "w",
+            "i",
+            "th"
+          ],
+          "phonemes": [
+            "w",
+            "ɪ",
+            "θ"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "A thin lap ran.",
           "words": [
-            { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
-            { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
-            { "surface": "lap",  "graphemes": ["l","a","p"],      "phonemes": ["l","æ","p"] },
-            { "surface": "ran",  "graphemes": ["r","a","n"],      "phonemes": ["r","æ","n"] }
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "lap",
+              "graphemes": [
+                "l",
+                "a",
+                "p"
+              ],
+              "phonemes": [
+                "l",
+                "æ",
+                "p"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "A thin lap ran.",
+          "words": [
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "lap",
+              "graphemes": [
+                "l",
+                "a",
+                "p"
+              ],
+              "phonemes": [
+                "l",
+                "æ",
+                "p"
+              ]
+            },
+            {
+              "surface": "ran",
+              "graphemes": [
+                "r",
+                "a",
+                "n"
+              ],
+              "phonemes": [
+                "r",
+                "æ",
+                "n"
+              ]
+            }
           ]
         }
       }
@@ -466,27 +4110,258 @@
       "text": "Thad and Theo dashed a thin lap on the path.",
       "targetCount": 5,
       "targetInitialContentWords": 3,
-      "interestWords": ["lap"],
+      "interestWords": [
+        "lap"
+      ],
       "words": [
-        { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
-        { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
-        { "surface": "Theo",   "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
-        { "surface": "dashed", "graphemes": ["d","a","sh","e","d"], "phonemes": ["d","æ","ʃ","ɛ","d"] },
-        { "surface": "a",      "graphemes": ["a"],                  "phonemes": ["ə"] },
-        { "surface": "thin",   "graphemes": ["th","i","n"],         "phonemes": ["θ","ɪ","n"] },
-        { "surface": "lap",    "graphemes": ["l","a","p"],          "phonemes": ["l","æ","p"] },
-        { "surface": "on",     "graphemes": ["o","n"],              "phonemes": ["ɒ","n"] },
-        { "surface": "the",    "graphemes": ["th","e"],             "phonemes": ["ð","ə"] },
-        { "surface": "path",   "graphemes": ["p","a","th"],         "phonemes": ["p","æ","θ"] }
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "dashed",
+          "graphemes": [
+            "d",
+            "a",
+            "sh",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "d",
+            "æ",
+            "ʃ",
+            "ɛ",
+            "d"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "lap",
+          "graphemes": [
+            "l",
+            "a",
+            "p"
+          ],
+          "phonemes": [
+            "l",
+            "æ",
+            "p"
+          ]
+        },
+        {
+          "surface": "on",
+          "graphemes": [
+            "o",
+            "n"
+          ],
+          "phonemes": [
+            "ɒ",
+            "n"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "path",
+          "graphemes": [
+            "p",
+            "a",
+            "th"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "θ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Thad and Theo dashed.",
           "words": [
-            { "surface": "Thad",   "graphemes": ["th","a","d"],         "phonemes": ["θ","æ","d"] },
-            { "surface": "and",    "graphemes": ["a","n","d"],          "phonemes": ["æ","n","d"] },
-            { "surface": "Theo",   "graphemes": ["th","e","o"],         "phonemes": ["θ","i","oʊ"] },
-            { "surface": "dashed", "graphemes": ["d","a","sh","e","d"], "phonemes": ["d","æ","ʃ","ɛ","d"] }
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "and",
+              "graphemes": [
+                "a",
+                "n",
+                "d"
+              ],
+              "phonemes": [
+                "æ",
+                "n",
+                "d"
+              ]
+            },
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "dashed",
+              "graphemes": [
+                "d",
+                "a",
+                "sh",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "d",
+                "æ",
+                "ʃ",
+                "ɛ",
+                "d"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Thad and Theo dashed.",
+          "words": [
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "and",
+              "graphemes": [
+                "a",
+                "n",
+                "d"
+              ],
+              "phonemes": [
+                "æ",
+                "n",
+                "d"
+              ]
+            },
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "dashed",
+              "graphemes": [
+                "d",
+                "a",
+                "sh",
+                "e",
+                "d"
+              ],
+              "phonemes": [
+                "d",
+                "æ",
+                "ʃ",
+                "ɛ",
+                "d"
+              ]
+            }
           ]
         }
       }
@@ -495,26 +4370,244 @@
       "text": "Theo let Thad swim a thin lap with Beth.",
       "targetCount": 5,
       "targetInitialContentWords": 3,
-      "interestWords": ["swim", "lap"],
+      "interestWords": [
+        "swim",
+        "lap"
+      ],
       "words": [
-        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
-        { "surface": "let",  "graphemes": ["l","e","t"],      "phonemes": ["l","ɛ","t"] },
-        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
-        { "surface": "swim", "graphemes": ["s","w","i","m"],  "phonemes": ["s","w","ɪ","m"] },
-        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
-        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
-        { "surface": "lap",  "graphemes": ["l","a","p"],      "phonemes": ["l","æ","p"] },
-        { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
-        { "surface": "Beth", "graphemes": ["b","e","th"],     "phonemes": ["b","ɛ","θ"] }
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "let",
+          "graphemes": [
+            "l",
+            "e",
+            "t"
+          ],
+          "phonemes": [
+            "l",
+            "ɛ",
+            "t"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "swim",
+          "graphemes": [
+            "s",
+            "w",
+            "i",
+            "m"
+          ],
+          "phonemes": [
+            "s",
+            "w",
+            "ɪ",
+            "m"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "lap",
+          "graphemes": [
+            "l",
+            "a",
+            "p"
+          ],
+          "phonemes": [
+            "l",
+            "æ",
+            "p"
+          ]
+        },
+        {
+          "surface": "with",
+          "graphemes": [
+            "w",
+            "i",
+            "th"
+          ],
+          "phonemes": [
+            "w",
+            "ɪ",
+            "θ"
+          ]
+        },
+        {
+          "surface": "Beth",
+          "graphemes": [
+            "b",
+            "e",
+            "th"
+          ],
+          "phonemes": [
+            "b",
+            "ɛ",
+            "θ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Theo let Thad swim.",
           "words": [
-            { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
-            { "surface": "let",  "graphemes": ["l","e","t"],      "phonemes": ["l","ɛ","t"] },
-            { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
-            { "surface": "swim", "graphemes": ["s","w","i","m"],  "phonemes": ["s","w","ɪ","m"] }
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "let",
+              "graphemes": [
+                "l",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "l",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "swim",
+              "graphemes": [
+                "s",
+                "w",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "s",
+                "w",
+                "ɪ",
+                "m"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Theo let Thad swim.",
+          "words": [
+            {
+              "surface": "Theo",
+              "graphemes": [
+                "th",
+                "e",
+                "o"
+              ],
+              "phonemes": [
+                "θ",
+                "i",
+                "oʊ"
+              ]
+            },
+            {
+              "surface": "let",
+              "graphemes": [
+                "l",
+                "e",
+                "t"
+              ],
+              "phonemes": [
+                "l",
+                "ɛ",
+                "t"
+              ]
+            },
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "swim",
+              "graphemes": [
+                "s",
+                "w",
+                "i",
+                "m"
+              ],
+              "phonemes": [
+                "s",
+                "w",
+                "ɪ",
+                "m"
+              ]
+            }
           ]
         }
       }
@@ -523,26 +4616,235 @@
       "text": "A thin pass hid with Thad, Theo, and Seth.",
       "targetCount": 5,
       "targetInitialContentWords": 3,
-      "interestWords": ["pass"],
+      "interestWords": [
+        "pass"
+      ],
       "words": [
-        { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
-        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
-        { "surface": "pass", "graphemes": ["p","a","s","s"],  "phonemes": ["p","æ","s","s"] },
-        { "surface": "hid",  "graphemes": ["h","i","d"],      "phonemes": ["h","ɪ","d"] },
-        { "surface": "with", "graphemes": ["w","i","th"],     "phonemes": ["w","ɪ","θ"] },
-        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
-        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
-        { "surface": "Seth", "graphemes": ["s","e","th"],     "phonemes": ["s","ɛ","θ"] }
+        {
+          "surface": "A",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "pass",
+          "graphemes": [
+            "p",
+            "a",
+            "s",
+            "s"
+          ],
+          "phonemes": [
+            "p",
+            "æ",
+            "s",
+            "s"
+          ]
+        },
+        {
+          "surface": "hid",
+          "graphemes": [
+            "h",
+            "i",
+            "d"
+          ],
+          "phonemes": [
+            "h",
+            "ɪ",
+            "d"
+          ]
+        },
+        {
+          "surface": "with",
+          "graphemes": [
+            "w",
+            "i",
+            "th"
+          ],
+          "phonemes": [
+            "w",
+            "ɪ",
+            "θ"
+          ]
+        },
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Seth",
+          "graphemes": [
+            "s",
+            "e",
+            "th"
+          ],
+          "phonemes": [
+            "s",
+            "ɛ",
+            "θ"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "A thin pass hid.",
           "words": [
-            { "surface": "A",    "graphemes": ["a"],              "phonemes": ["ə"] },
-            { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
-            { "surface": "pass", "graphemes": ["p","a","s","s"],  "phonemes": ["p","æ","s","s"] },
-            { "surface": "hid",  "graphemes": ["h","i","d"],      "phonemes": ["h","ɪ","d"] }
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "pass",
+              "graphemes": [
+                "p",
+                "a",
+                "s",
+                "s"
+              ],
+              "phonemes": [
+                "p",
+                "æ",
+                "s",
+                "s"
+              ]
+            },
+            {
+              "surface": "hid",
+              "graphemes": [
+                "h",
+                "i",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "ɪ",
+                "d"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "A thin pass hid.",
+          "words": [
+            {
+              "surface": "A",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "pass",
+              "graphemes": [
+                "p",
+                "a",
+                "s",
+                "s"
+              ],
+              "phonemes": [
+                "p",
+                "æ",
+                "s",
+                "s"
+              ]
+            },
+            {
+              "surface": "hid",
+              "graphemes": [
+                "h",
+                "i",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "ɪ",
+                "d"
+              ]
+            }
           ]
         }
       }
@@ -551,27 +4853,251 @@
       "text": "Thad and Theo had a thin gym at the shed.",
       "targetCount": 4,
       "targetInitialContentWords": 3,
-      "interestWords": ["gym"],
+      "interestWords": [
+        "gym"
+      ],
       "words": [
-        { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
-        { "surface": "and",  "graphemes": ["a","n","d"],      "phonemes": ["æ","n","d"] },
-        { "surface": "Theo", "graphemes": ["th","e","o"],     "phonemes": ["θ","i","oʊ"] },
-        { "surface": "had",  "graphemes": ["h","a","d"],      "phonemes": ["h","æ","d"] },
-        { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
-        { "surface": "thin", "graphemes": ["th","i","n"],     "phonemes": ["θ","ɪ","n"] },
-        { "surface": "gym",  "graphemes": ["g","y","m"],      "phonemes": ["dʒ","ɪ","m"] },
-        { "surface": "at",   "graphemes": ["a","t"],          "phonemes": ["æ","t"] },
-        { "surface": "the",  "graphemes": ["th","e"],         "phonemes": ["ð","ə"] },
-        { "surface": "shed", "graphemes": ["sh","e","d"],     "phonemes": ["ʃ","ɛ","d"] }
+        {
+          "surface": "Thad",
+          "graphemes": [
+            "th",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "θ",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "and",
+          "graphemes": [
+            "a",
+            "n",
+            "d"
+          ],
+          "phonemes": [
+            "æ",
+            "n",
+            "d"
+          ]
+        },
+        {
+          "surface": "Theo",
+          "graphemes": [
+            "th",
+            "e",
+            "o"
+          ],
+          "phonemes": [
+            "θ",
+            "i",
+            "oʊ"
+          ]
+        },
+        {
+          "surface": "had",
+          "graphemes": [
+            "h",
+            "a",
+            "d"
+          ],
+          "phonemes": [
+            "h",
+            "æ",
+            "d"
+          ]
+        },
+        {
+          "surface": "a",
+          "graphemes": [
+            "a"
+          ],
+          "phonemes": [
+            "ə"
+          ]
+        },
+        {
+          "surface": "thin",
+          "graphemes": [
+            "th",
+            "i",
+            "n"
+          ],
+          "phonemes": [
+            "θ",
+            "ɪ",
+            "n"
+          ]
+        },
+        {
+          "surface": "gym",
+          "graphemes": [
+            "g",
+            "y",
+            "m"
+          ],
+          "phonemes": [
+            "dʒ",
+            "ɪ",
+            "m"
+          ]
+        },
+        {
+          "surface": "at",
+          "graphemes": [
+            "a",
+            "t"
+          ],
+          "phonemes": [
+            "æ",
+            "t"
+          ]
+        },
+        {
+          "surface": "the",
+          "graphemes": [
+            "th",
+            "e"
+          ],
+          "phonemes": [
+            "ð",
+            "ə"
+          ]
+        },
+        {
+          "surface": "shed",
+          "graphemes": [
+            "sh",
+            "e",
+            "d"
+          ],
+          "phonemes": [
+            "ʃ",
+            "ɛ",
+            "d"
+          ]
+        }
       ],
       "byDay": {
         "1": {
           "text": "Thad had a gym.",
           "words": [
-            { "surface": "Thad", "graphemes": ["th","a","d"],     "phonemes": ["θ","æ","d"] },
-            { "surface": "had",  "graphemes": ["h","a","d"],      "phonemes": ["h","æ","d"] },
-            { "surface": "a",    "graphemes": ["a"],              "phonemes": ["ə"] },
-            { "surface": "gym",  "graphemes": ["g","y","m"],      "phonemes": ["dʒ","ɪ","m"] }
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "had",
+              "graphemes": [
+                "h",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "gym",
+              "graphemes": [
+                "g",
+                "y",
+                "m"
+              ],
+              "phonemes": [
+                "dʒ",
+                "ɪ",
+                "m"
+              ]
+            }
+          ]
+        },
+        "2": {
+          "text": "Thad had a thin gym.",
+          "words": [
+            {
+              "surface": "Thad",
+              "graphemes": [
+                "th",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "θ",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "had",
+              "graphemes": [
+                "h",
+                "a",
+                "d"
+              ],
+              "phonemes": [
+                "h",
+                "æ",
+                "d"
+              ]
+            },
+            {
+              "surface": "a",
+              "graphemes": [
+                "a"
+              ],
+              "phonemes": [
+                "ə"
+              ]
+            },
+            {
+              "surface": "thin",
+              "graphemes": [
+                "th",
+                "i",
+                "n"
+              ],
+              "phonemes": [
+                "θ",
+                "ɪ",
+                "n"
+              ]
+            },
+            {
+              "surface": "gym",
+              "graphemes": [
+                "g",
+                "y",
+                "m"
+              ],
+              "phonemes": [
+                "dʒ",
+                "ɪ",
+                "m"
+              ]
+            }
           ]
         }
       }
