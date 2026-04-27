@@ -15,7 +15,9 @@
 <meta name="twitter:site" content="@y_kondoh">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet">
 <style>
   :root{
     --ink:#14110d;
@@ -36,6 +38,11 @@
     --haze:#a89880;
     --max:1320px;
     --gutter:32px;
+    /* Dyslexia-friendly display stack used on the page's most prominent
+       reading: wordmark, section headlines, tagline, pull quote, big stats,
+       footer brand, memo numerals, sub-row substitutions. The product is for
+       dyslexic readers — the page should walk that talk where it counts. */
+    --dyslexic:"OpenDyslexic","OpenDyslexic Regular","Comic Sans MS",sans-serif;
   }
 
   *,*::before,*::after{box-sizing:border-box}
@@ -106,9 +113,9 @@
   }
   nav.top .brand{
     display:flex;align-items:baseline;gap:14px;
-    font-family:"Fraunces",serif;
-    font-variation-settings:"opsz" 144,"wght" 700,"SOFT" 50;
-    font-size:26px;letter-spacing:-.02em;
+    font-family:var(--dyslexic);
+    font-weight:700;
+    font-size:22px;letter-spacing:-.01em;
   }
   nav.top .brand .dot{
     width:9px;height:9px;border-radius:50%;background:var(--vermilion);
@@ -161,7 +168,14 @@
     letter-spacing:-.022em;
     line-height:1.04;
   }
-  h2{font-size:clamp(36px,5vw,68px);font-variation-settings:"opsz" 96,"wght" 600,"SOFT" 30;letter-spacing:-.02em;line-height:1.05;margin-bottom:24px}
+  h2{
+    font-family:var(--dyslexic);
+    font-weight:700;
+    font-size:clamp(30px,4.2vw,56px);
+    letter-spacing:-.01em;line-height:1.12;
+    margin-bottom:24px;
+  }
+  h2 em{font-style:italic;font-weight:400}
   h3{font-size:clamp(22px,2.4vw,30px);font-variation-settings:"opsz" 36,"wght" 600,"SOFT" 30;line-height:1.15;margin-bottom:12px}
   h4{font-size:18px;font-variation-settings:"opsz" 14,"wght" 700,"SOFT" 30;letter-spacing:0;line-height:1.2}
   p{margin:0 0 16px}
@@ -187,31 +201,31 @@
   .hero-folio .meta b{color:var(--ink);font-weight:700}
 
   h1.wordmark{
-    font-family:"Fraunces",serif;
-    font-variation-settings:"opsz" 144,"wght" 800,"SOFT" 100,"WONK" 1;
-    font-size:clamp(96px,18vw,260px);
-    line-height:.86;
-    letter-spacing:-.045em;
-    margin:0 0 28px -8px;
+    font-family:var(--dyslexic);
+    font-weight:700;
+    font-size:clamp(80px,14vw,200px);
+    line-height:.92;
+    letter-spacing:-.025em;
+    margin:0 0 28px -4px;
     color:var(--ink);
   }
   h1.wordmark em{
     font-style:normal;color:var(--vermilion);
-    font-variation-settings:"opsz" 144,"wght" 600,"SOFT" 100,"WONK" 1;
+    font-weight:400;
   }
   h1.wordmark .period{color:var(--vermilion)}
 
   .tagline{
-    font-family:"Fraunces",serif;
-    font-variation-settings:"opsz" 60,"wght" 400,"SOFT" 80;
-    font-size:clamp(22px,2.6vw,32px);
-    line-height:1.25;
-    letter-spacing:-.01em;
+    font-family:var(--dyslexic);
+    font-weight:400;
+    font-size:clamp(18px,2.1vw,26px);
+    line-height:1.4;
+    letter-spacing:0;
     color:var(--ink-soft);
-    max-width:24ch;
+    max-width:28ch;
     margin-bottom:28px;
   }
-  .tagline em{font-style:italic;color:var(--vermilion);font-variation-settings:"opsz" 60,"wght" 500,"SOFT" 100}
+  .tagline em{font-style:italic;color:var(--vermilion);font-weight:700}
 
   .hero-subline{
     font-size:16px;color:var(--muted);
@@ -389,11 +403,11 @@
     margin:32px 0;
     padding:28px 0 28px 28px;
     border-left:3px solid var(--vermilion);
-    font-family:"Fraunces",serif;
-    font-variation-settings:"opsz" 60,"wght" 500,"SOFT" 100;
-    font-size:28px;line-height:1.3;color:var(--ink);
+    font-family:var(--dyslexic);
+    font-weight:400;
+    font-size:23px;line-height:1.45;color:var(--ink);
     font-style:italic;
-    max-width:30ch;
+    max-width:32ch;
   }
   .pull-quote::before{
     content:"“";display:block;
@@ -497,9 +511,9 @@
     gap:18px;align-items:center;
     padding:22px 0;
     border-top:1px solid rgba(251,243,227,.16);
-    font-family:"Fraunces",serif;
-    font-variation-settings:"opsz" 96,"wght" 500,"SOFT" 80;
-    font-size:38px;
+    font-family:var(--dyslexic);
+    font-weight:700;
+    font-size:30px;
     transition:padding-left .3s;
   }
   .sub-row:hover{padding-left:14px}
@@ -547,17 +561,17 @@
   .stat:last-child{border-right:none}
   .stat:hover{background:var(--washi)}
   .stat .big{
-    font-family:"Fraunces",serif;
-    font-variation-settings:"opsz" 144,"wght" 700,"SOFT" 50,"WONK" 1;
-    font-size:clamp(48px,6vw,84px);
-    line-height:1;
-    letter-spacing:-.04em;
+    font-family:var(--dyslexic);
+    font-weight:700;
+    font-size:clamp(42px,5vw,72px);
+    line-height:1.05;
+    letter-spacing:-.02em;
     color:var(--ink);
     margin-bottom:10px;
     display:block;
   }
   .stat .big sup{
-    font-size:.4em;font-variation-settings:"opsz" 48,"wght" 600,"SOFT" 50;
+    font-size:.4em;
     color:var(--vermilion);vertical-align:top;margin-left:2px;
     font-weight:700;
   }
@@ -581,12 +595,12 @@
   }
   .memo:hover{transform:translateY(-4px);box-shadow:0 16px 36px -18px rgba(20,17,13,.3)}
   .memo .num{
-    font-family:"Fraunces",serif;
-    font-variation-settings:"opsz" 144,"wght" 800,"SOFT" 80;
-    font-size:88px;line-height:.85;
+    font-family:var(--dyslexic);
+    font-weight:700;
+    font-size:64px;line-height:.95;
     color:var(--vermilion);
-    margin:-8px 0 8px -2px;
-    letter-spacing:-.04em;
+    margin:-4px 0 8px -2px;
+    letter-spacing:-.02em;
   }
   .memo h4{font-size:22px;margin-bottom:14px;font-variation-settings:"opsz" 36,"wght" 700,"SOFT" 30}
   .memo p{font-size:15px;line-height:1.6;color:var(--ink-soft)}
@@ -692,9 +706,9 @@
   }
   footer .inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;align-items:start}
   footer .brand-large{
-    font-family:"Fraunces",serif;
-    font-variation-settings:"opsz" 144,"wght" 800,"SOFT" 100,"WONK" 1;
-    font-size:96px;line-height:.85;letter-spacing:-.04em;
+    font-family:var(--dyslexic);
+    font-weight:700;
+    font-size:76px;line-height:.95;letter-spacing:-.02em;
     color:var(--paper);margin:0 0 18px;
   }
   footer .brand-large em{color:var(--mora-orange);font-style:normal}
