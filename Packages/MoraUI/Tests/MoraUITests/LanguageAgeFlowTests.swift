@@ -130,4 +130,12 @@ final class LanguageAgeFlowTests: XCTestCase {
         )
         XCTAssertTrue(profiles.isEmpty)
     }
+
+    func test_agePicker_showsThreeTiles_for6_7_8() {
+        XCTAssertEqual(LanguageAgeFlow.ageOptions, [6, 7, 8])
+    }
+
+    func test_agePicker_defaultSelection_is7() {
+        XCTAssertEqual(LanguageAgeFlow.defaultAge, 7)
+    }
 }

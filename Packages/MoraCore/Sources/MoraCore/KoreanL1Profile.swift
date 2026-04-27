@@ -203,6 +203,10 @@ public struct KoreanL1Profile: L1Profile {
         completionComeBack: "내일 또 만나요",
         a11yCloseSession: "퀘스트를 끝내기",
         a11yMicButton: "마이크",
-        a11yStreakChip: { days in "\(days)일 연속" }
+        a11yStreakChip: { days in "\(days)일 연속" },
+        homeChangeLanguageButton: "언어 바꾸기",
+        languageSwitchSheetTitle: "언어 선택",
+        languageSwitchSheetCancel: "취소",
+        languageSwitchSheetConfirm: "확인"
     )
 }

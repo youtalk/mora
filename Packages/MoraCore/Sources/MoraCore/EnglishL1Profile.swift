@@ -162,7 +162,10 @@ public struct EnglishL1Profile: L1Profile {
         completionComeBack: "See you tomorrow!",
         a11yCloseSession: "End the quest",
         a11yMicButton: "Mic",
-        a11yStreakChip: { days in "\(days)-day streak" }
-        // PR 3 will append the four language-switch fields.
+        a11yStreakChip: { days in "\(days)-day streak" },
+        homeChangeLanguageButton: "Change language",
+        languageSwitchSheetTitle: "Pick a language",
+        languageSwitchSheetCancel: "Cancel",
+        languageSwitchSheetConfirm: "Done"
     )
 }

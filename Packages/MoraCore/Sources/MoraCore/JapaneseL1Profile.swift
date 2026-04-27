@@ -297,7 +297,11 @@ public struct JapaneseL1Profile: L1Profile {
         a11yCloseSession: "クエストを おわる",
         a11yMicButton: "マイク",
         // `日` G1 kept.
-        a11yStreakChip: { days in "\(days)日 れんぞく" }
+        a11yStreakChip: { days in "\(days)日 れんぞく" },
+        homeChangeLanguageButton: "ことばを かえる",
+        languageSwitchSheetTitle: "ことばを えらぶ",
+        languageSwitchSheetCancel: "キャンセル",
+        languageSwitchSheetConfirm: "OK"
     )
 
     /// Ages ≤6 (entry tier). Kanji budget: empty — every kanji collapses to
@@ -434,7 +438,11 @@ public struct JapaneseL1Profile: L1Profile {
         a11yCloseSession: "クエストを おわる",
         a11yMicButton: "マイク",
         // `日` G1 → にち
-        a11yStreakChip: { days in "\(days)にち れんぞく" }
+        a11yStreakChip: { days in "\(days)にち れんぞく" },
+        homeChangeLanguageButton: "ことばを かえる",
+        languageSwitchSheetTitle: "ことばを えらぶ",
+        languageSwitchSheetCancel: "キャンセル",
+        languageSwitchSheetConfirm: "OK"
     )
 
     /// Ages 8+ (advanced tier). Kanji budget: only JPKanjiLevel.grade1And2
@@ -554,6 +562,10 @@ public struct JapaneseL1Profile: L1Profile {
         completionComeBack: "明日も またね",
         a11yCloseSession: "クエストを おわる",
         a11yMicButton: "マイク",
-        a11yStreakChip: { days in "\(days)日 れんぞく" }
+        a11yStreakChip: { days in "\(days)日 れんぞく" },
+        homeChangeLanguageButton: "ことばを かえる",
+        languageSwitchSheetTitle: "ことばを えらぶ",
+        languageSwitchSheetCancel: "キャンセル",
+        languageSwitchSheetConfirm: "OK"
     )
 }

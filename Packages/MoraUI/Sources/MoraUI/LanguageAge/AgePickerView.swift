@@ -7,15 +7,6 @@ struct AgePickerView: View {
     @Binding var selectedAge: Int?
     let onContinue: () -> Void
 
-    /// 4..12 plus a sentinel `13` that renders as "13+" and maps to the
-    /// 13-and-over bucket internally. Under-4 is out of scope in alpha.
-    private let ages: [Int] = Array(4...12) + [13]
-    private let columns = [
-        GridItem(.flexible(), spacing: MoraTheme.Space.md),
-        GridItem(.flexible(), spacing: MoraTheme.Space.md),
-        GridItem(.flexible(), spacing: MoraTheme.Space.md),
-    ]
-
     var body: some View {
         ZStack {
             MoraTheme.Background.page.ignoresSafeArea()
@@ -25,8 +16,8 @@ struct AgePickerView: View {
                     .foregroundStyle(MoraTheme.Ink.primary)
                     .padding(.top, MoraTheme.Space.xxl)
 
-                LazyVGrid(columns: columns, spacing: MoraTheme.Space.md) {
-                    ForEach(ages, id: \.self) { age in
+                HStack(spacing: MoraTheme.Space.md) {
+                    ForEach(LanguageAgeFlow.ageOptions, id: \.self) { age in
                         tile(age)
                     }
                 }
@@ -62,12 +53,11 @@ struct AgePickerView: View {
 
     private func tile(_ age: Int) -> some View {
         let selected = selectedAge == age
-        let label = age == 13 ? "13+" : "\(age)"
         return Button {
             selectedAge = age
         } label: {
-            Text(label)
-                .font(MoraType.hero(72))
+            Text("\(age)")
+                .font(MoraType.hero(120))
                 .foregroundStyle(MoraTheme.Ink.primary)
                 .frame(maxWidth: .infinity, minHeight: 120)
                 .background(

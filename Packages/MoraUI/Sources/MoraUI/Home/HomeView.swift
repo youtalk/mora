@@ -8,6 +8,8 @@ import SwiftUI
 import UIKit
 #endif
 
+private let homeViewLog = Logger(subsystem: "tech.reenable.Mora", category: "HomeView")
+
 #if DEBUG
 private let debugBarLog = Logger(subsystem: "tech.reenable.Mora", category: "DebugBar")
 #endif
@@ -60,11 +62,10 @@ public struct HomeView: View {
     // after downloading a premium voice flips the gate off immediately.
     @State private var needsBetterVoice: Bool = AppleTTSEngine.needsEnhancedVoice
     @State private var installedVoices: [String] = AppleTTSEngine.installedEnglishVoiceSummaries()
+    @State private var languageSheet: LanguageSwitchSheet?
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.moraStrings) private var strings
-    #if DEBUG
-    @Environment(\.modelContext) private var debugContext
-    #endif
+    @Environment(\.modelContext) private var modelContext
 
     public init() {}
 
@@ -98,6 +99,10 @@ public struct HomeView: View {
             YokaiIntroFlow(mode: .replay) { showYokaiIntroReplay = false }
                 .environment(\.moraStrings, strings)
         }
+        .sheet(item: $languageSheet) { model in
+            LanguageSwitchSheetView(model: model)
+                .environment(\.moraStrings, strings)
+        }
         #if os(iOS)
         .navigationBarHidden(true)
         #endif
@@ -106,6 +111,38 @@ public struct HomeView: View {
     private var header: some View {
         HStack {
             wordmark
+            Button {
+                guard let profile = profiles.first else { return }
+                let previousID = profile.l1Identifier
+                languageSheet = LanguageSwitchSheet(
+                    currentIdentifier: previousID,
+                    onCommit: { newID in
+                        profile.l1Identifier = newID
+                        do {
+                            try modelContext.save()
+                            languageSheet = nil
+                        } catch {
+                            // Revert the in-memory change so it doesn't drift
+                            // from disk; leave the sheet open so the user sees
+                            // their tap didn't take rather than silently losing
+                            // it on next launch.
+                            profile.l1Identifier = previousID
+                            homeViewLog.error(
+                                "Failed to persist language switch to \(newID, privacy: .public): \(error.localizedDescription, privacy: .public)"
+                            )
+                        }
+                    },
+                    onCancel: {
+                        languageSheet = nil
+                    }
+                )
+            } label: {
+                Image(systemName: "globe")
+                    .foregroundStyle(MoraTheme.Ink.muted)
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(strings.homeChangeLanguageButton)
+
             Spacer()
             StreakChip(count: streaks.first?.currentCount ?? 0)
         }
@@ -390,7 +427,7 @@ public struct HomeView: View {
             streak = existing
         } else {
             streak = DailyStreak()
-            debugContext.insert(streak)
+            modelContext.insert(streak)
         }
         // Route through the real DailyStreak rules instead of mutating fields
         // directly: simulate "the next day" so each tap counts as one more
@@ -430,7 +467,7 @@ public struct HomeView: View {
 
         var befriendedIDs = Set(bestiary.map(\.yokaiID))
         if let id = currentYokaiID, !befriendedIDs.contains(id) {
-            debugContext.insert(BestiaryEntryEntity(yokaiID: id, befriendedAt: now))
+            modelContext.insert(BestiaryEntryEntity(yokaiID: id, befriendedAt: now))
             befriendedIDs.insert(id)
         }
 
@@ -438,7 +475,7 @@ public struct HomeView: View {
             !befriendedIDs.contains($0)
         })
         if let nextID {
-            debugContext.insert(
+            modelContext.insert(
                 YokaiEncounterEntity(
                     yokaiID: nextID,
                     weekStart: now,
@@ -460,9 +497,9 @@ public struct HomeView: View {
     private func resetCurriculum() {
         debugBarLog.info("resetCurriculum: wiping encounters, bestiary, cameos, streak, profile.createdAt")
         do {
-            try debugContext.delete(model: YokaiEncounterEntity.self)
-            try debugContext.delete(model: BestiaryEntryEntity.self)
-            try debugContext.delete(model: YokaiCameoEntity.self)
+            try modelContext.delete(model: YokaiEncounterEntity.self)
+            try modelContext.delete(model: BestiaryEntryEntity.self)
+            try modelContext.delete(model: YokaiCameoEntity.self)
         } catch {
             assertionFailure("Failed to delete debug models: \(error)")
         }
@@ -479,7 +516,7 @@ public struct HomeView: View {
 
     private func persistDebugChanges() {
         do {
-            try debugContext.save()
+            try modelContext.save()
         } catch {
             assertionFailure("Failed to persist debug change: \(error)")
         }
