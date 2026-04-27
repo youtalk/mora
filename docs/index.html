@@ -586,6 +586,7 @@
     background:var(--ink);color:var(--paper);
     padding:14px 16px;border-radius:10px;
     font:500 12px/1.55 "JetBrains Mono",monospace;
+    white-space:pre-wrap;
     overflow:hidden;
     border:1px solid var(--ink-soft);
   }
@@ -738,7 +739,10 @@
   /* — Responsive — */
   @media (max-width:1080px){
     .hero-grid{grid-template-columns:1fr;gap:48px}
-    .yokai-stack{height:480px;max-width:520px;margin:0 auto}
+    /* width:100% is load-bearing: without it, margin:0 auto turns the
+       all-position:absolute stack into a shrink-to-fit box that
+       collapses to 0px wide, dropping every yokai card to ~2px. */
+    .yokai-stack{height:480px;width:100%;max-width:520px;margin:0 auto}
     .ask-grid{grid-template-columns:1fr;gap:32px}
     .pillars{grid-template-columns:repeat(2,1fr)}
     .subs-grid{grid-template-columns:1fr;gap:36px}
@@ -893,13 +897,6 @@
   <div class="ask-grid">
     <div class="col-left">
       <h2>I built Mora for one kid I love.</h2>
-      <div class="pull-quote">
-        “If nobody else was going to build the right tool, I would.”
-      </div>
-      <div class="signed">
-        <span>A parent’s note</span>
-        <b>— Y.</b>
-      </div>
     </div>
 
     <div class="col-right">
@@ -1059,39 +1056,33 @@
       <div class="num">i.</div>
       <h4>Spec → Plan → Execute, repeat.</h4>
       <p>Every PR backed by a written spec under <code>docs/superpowers/specs/</code> and an implementation plan under <code>docs/superpowers/plans/</code>. The repo doubles as its own architecture record.</p>
-      <div class="terminal">
-<span class="prompt">$</span> <span class="cmd">git log --oneline | wc -l</span>
+      <div class="terminal"><span class="prompt">$</span> <span class="cmd">git log --oneline | wc -l</span>
 <span class="out">     <span class="accent">112</span></span>
 <span class="prompt">$</span> <span class="cmd">ls docs/superpowers/specs | wc -l</span>
-<span class="out">      <span class="accent">38</span></span>
-      </div>
+<span class="out">      <span class="accent">38</span></span></div>
     </div>
 
     <div class="memo">
       <div class="num">ii.</div>
       <h4>Parallel sub-agents on isolated worktrees.</h4>
       <p>A four-phoneme decodable-sentence content batch that would have taken six hours sequential, finished in one. Each phase ran as a sub-agent in its own <code>git worktree</code> — no cross-batch state, no merge conflicts.</p>
-      <div class="terminal">
-<span class="prompt">$</span> <span class="cmd">git worktree list</span>
+      <div class="terminal"><span class="prompt">$</span> <span class="cmd">git worktree list</span>
 <span class="out">main           [base]</span>
 <span class="out">wt-phoneme-r   <span class="accent">▸ batch-r</span></span>
 <span class="out">wt-phoneme-l   <span class="accent">▸ batch-l</span></span>
 <span class="out">wt-phoneme-sh  <span class="accent">▸ batch-sh</span></span>
-<span class="out">wt-phoneme-th  <span class="accent">▸ batch-th</span></span>
-      </div>
+<span class="out">wt-phoneme-th  <span class="accent">▸ batch-th</span></span></div>
     </div>
 
     <div class="memo">
       <div class="num">iii.</div>
       <h4>OSLog → Claude’s context, live.</h4>
       <p>I authored a Claude Code skill <code>oslog-stream-to-file</code> that pipes Apple OSLog from the running iPad into <code>/tmp/&lt;repo&gt;.log</code>, which Claude reads directly. Debug round-trip collapsed from “screenshot Console.app” to a sentence in chat.</p>
-      <div class="terminal">
-<span class="prompt">[skill]</span> <span class="cmd">oslog-stream-to-file</span>
+      <div class="terminal"><span class="prompt">[skill]</span> <span class="cmd">oslog-stream-to-file</span>
 <span class="out">► tail -F /tmp/mora.log</span>
 <span class="out">15:02:11 <span class="accent">[Orchestrator]</span> phase=decode word=ship</span>
 <span class="out">15:02:13 <span class="accent">[EngineA]</span> ∕ʃ∕ matched · conf=0.92</span>
-<span class="out">15:02:14 <span class="accent">[EngineA]</span> ∕v∕ → ∕b∕ substitution</span>
-      </div>
+<span class="out">15:02:14 <span class="accent">[EngineA]</span> ∕v∕ → ∕b∕ substitution</span></div>
     </div>
   </div>
 </section>
