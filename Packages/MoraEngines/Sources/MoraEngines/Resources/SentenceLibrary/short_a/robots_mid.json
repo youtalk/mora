@@ -30,6 +30,17 @@
             { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
             { "surface": "arm",      "graphemes": ["a","r","m"],                 "phonemes": ["ɑ","r","m"] }
           ]
+        },
+        "2": {
+          "text": "Adam and Anna had an arm.",
+          "words": [
+            { "surface": "Adam",     "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
+            { "surface": "and",      "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+            { "surface": "Anna",     "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] },
+            { "surface": "had",      "graphemes": ["h","a","d"],                 "phonemes": ["h","æ","d"] },
+            { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "arm",      "graphemes": ["a","r","m"],                 "phonemes": ["ɑ","r","m"] }
+          ]
         }
       }
     },
@@ -57,6 +68,17 @@
             { "surface": "fed",      "graphemes": ["f","e","d"],                 "phonemes": ["f","ɛ","d"] },
             { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
             { "surface": "armature", "graphemes": ["a","r","m","a","t","u","r","e"], "phonemes": ["ɑ","r","m","ə","tʃ","ɚ"] }
+          ]
+        },
+        "2": {
+          "text": "Andy fed an armature and Al.",
+          "words": [
+            { "surface": "Andy",     "graphemes": ["a","n","d","y"],             "phonemes": ["æ","n","d","i"] },
+            { "surface": "fed",      "graphemes": ["f","e","d"],                 "phonemes": ["f","ɛ","d"] },
+            { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "armature", "graphemes": ["a","r","m","a","t","u","r","e"], "phonemes": ["ɑ","r","m","ə","tʃ","ɚ"] },
+            { "surface": "and",      "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+            { "surface": "Al",       "graphemes": ["a","l"],                     "phonemes": ["æ","l"] }
           ]
         }
       }
@@ -86,6 +108,17 @@
             { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
             { "surface": "arm",      "graphemes": ["a","r","m"],                 "phonemes": ["ɑ","r","m"] }
           ]
+        },
+        "2": {
+          "text": "Anna pat an arm and Adam.",
+          "words": [
+            { "surface": "Anna",     "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] },
+            { "surface": "pat",      "graphemes": ["p","a","t"],                 "phonemes": ["p","æ","t"] },
+            { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "arm",      "graphemes": ["a","r","m"],                 "phonemes": ["ɑ","r","m"] },
+            { "surface": "and",      "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+            { "surface": "Adam",     "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] }
+          ]
         }
       }
     },
@@ -110,6 +143,17 @@
           "text": "Andy got an armature.",
           "words": [
             { "surface": "Andy",     "graphemes": ["a","n","d","y"],             "phonemes": ["æ","n","d","i"] },
+            { "surface": "got",      "graphemes": ["g","o","t"],                 "phonemes": ["g","ɒ","t"] },
+            { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "armature", "graphemes": ["a","r","m","a","t","u","r","e"], "phonemes": ["ɑ","r","m","ə","tʃ","ɚ"] }
+          ]
+        },
+        "2": {
+          "text": "Andy and Anna got an armature.",
+          "words": [
+            { "surface": "Andy",     "graphemes": ["a","n","d","y"],             "phonemes": ["æ","n","d","i"] },
+            { "surface": "and",      "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+            { "surface": "Anna",     "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] },
             { "surface": "got",      "graphemes": ["g","o","t"],                 "phonemes": ["g","ɒ","t"] },
             { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
             { "surface": "armature", "graphemes": ["a","r","m","a","t","u","r","e"], "phonemes": ["ɑ","r","m","ə","tʃ","ɚ"] }
@@ -143,6 +187,18 @@
             { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
             { "surface": "actuator", "graphemes": ["a","c","t","u","a","t","o","r"], "phonemes": ["æ","k","tʃ","u","eɪ","t","ɚ"] }
           ]
+        },
+        "2": {
+          "text": "Adam set an actuator and an arm.",
+          "words": [
+            { "surface": "Adam",     "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
+            { "surface": "set",      "graphemes": ["s","e","t"],                 "phonemes": ["s","ɛ","t"] },
+            { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "actuator", "graphemes": ["a","c","t","u","a","t","o","r"], "phonemes": ["æ","k","tʃ","u","eɪ","t","ɚ"] },
+            { "surface": "and",      "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+            { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "arm",      "graphemes": ["a","r","m"],                 "phonemes": ["ɑ","r","m"] }
+          ]
         }
       }
     },
@@ -170,6 +226,17 @@
             { "surface": "had",      "graphemes": ["h","a","d"],                 "phonemes": ["h","æ","d"] },
             { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
             { "surface": "assembly", "graphemes": ["a","s","s","e","m","b","l","y"], "phonemes": ["ə","s","ɛ","m","b","l","i"] }
+          ]
+        },
+        "2": {
+          "text": "Anna had an assembly and Adam.",
+          "words": [
+            { "surface": "Anna",     "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] },
+            { "surface": "had",      "graphemes": ["h","a","d"],                 "phonemes": ["h","æ","d"] },
+            { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "assembly", "graphemes": ["a","s","s","e","m","b","l","y"], "phonemes": ["ə","s","ɛ","m","b","l","i"] },
+            { "surface": "and",      "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+            { "surface": "Adam",     "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] }
           ]
         }
       }
@@ -199,6 +266,17 @@
             { "surface": "past",     "graphemes": ["p","a","s","t"],             "phonemes": ["p","æ","s","t"] },
             { "surface": "Andy",     "graphemes": ["a","n","d","y"],             "phonemes": ["æ","n","d","i"] }
           ]
+        },
+        "2": {
+          "text": "An actuator and an armature ran.",
+          "words": [
+            { "surface": "An",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "actuator", "graphemes": ["a","c","t","u","a","t","o","r"], "phonemes": ["æ","k","tʃ","u","eɪ","t","ɚ"] },
+            { "surface": "and",      "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+            { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "armature", "graphemes": ["a","r","m","a","t","u","r","e"], "phonemes": ["ɑ","r","m","ə","tʃ","ɚ"] },
+            { "surface": "ran",      "graphemes": ["r","a","n"],                 "phonemes": ["r","æ","n"] }
+          ]
         }
       }
     },
@@ -226,6 +304,17 @@
             { "surface": "met",      "graphemes": ["m","e","t"],                 "phonemes": ["m","ɛ","t"] },
             { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
             { "surface": "arm",      "graphemes": ["a","r","m"],                 "phonemes": ["ɑ","r","m"] }
+          ]
+        },
+        "2": {
+          "text": "Adam met an arm and Al.",
+          "words": [
+            { "surface": "Adam",     "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
+            { "surface": "met",      "graphemes": ["m","e","t"],                 "phonemes": ["m","ɛ","t"] },
+            { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "arm",      "graphemes": ["a","r","m"],                 "phonemes": ["ɑ","r","m"] },
+            { "surface": "and",      "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+            { "surface": "Al",       "graphemes": ["a","l"],                     "phonemes": ["æ","l"] }
           ]
         }
       }
@@ -257,6 +346,18 @@
             { "surface": "with",     "graphemes": ["w","i","th"],                "phonemes": ["w","ɪ","ð"] },
             { "surface": "Anna",     "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] }
           ]
+        },
+        "2": {
+          "text": "An armature sat with Anna and Adam.",
+          "words": [
+            { "surface": "An",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "armature", "graphemes": ["a","r","m","a","t","u","r","e"], "phonemes": ["ɑ","r","m","ə","tʃ","ɚ"] },
+            { "surface": "sat",      "graphemes": ["s","a","t"],                 "phonemes": ["s","æ","t"] },
+            { "surface": "with",     "graphemes": ["w","i","th"],                "phonemes": ["w","ɪ","ð"] },
+            { "surface": "Anna",     "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] },
+            { "surface": "and",      "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+            { "surface": "Adam",     "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] }
+          ]
         }
       }
     },
@@ -284,6 +385,17 @@
             { "surface": "got",      "graphemes": ["g","o","t"],                 "phonemes": ["g","ɒ","t"] },
             { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
             { "surface": "actuator", "graphemes": ["a","c","t","u","a","t","o","r"], "phonemes": ["æ","k","tʃ","u","eɪ","t","ɚ"] }
+          ]
+        },
+        "2": {
+          "text": "Andy got an actuator and Anna.",
+          "words": [
+            { "surface": "Andy",     "graphemes": ["a","n","d","y"],             "phonemes": ["æ","n","d","i"] },
+            { "surface": "got",      "graphemes": ["g","o","t"],                 "phonemes": ["g","ɒ","t"] },
+            { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "actuator", "graphemes": ["a","c","t","u","a","t","o","r"], "phonemes": ["æ","k","tʃ","u","eɪ","t","ɚ"] },
+            { "surface": "and",      "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+            { "surface": "Anna",     "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] }
           ]
         }
       }
@@ -313,6 +425,17 @@
             { "surface": "with",     "graphemes": ["w","i","th"],                "phonemes": ["w","ɪ","ð"] },
             { "surface": "Anna",     "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] }
           ]
+        },
+        "2": {
+          "text": "An assembly and an arm sat.",
+          "words": [
+            { "surface": "An",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "assembly", "graphemes": ["a","s","s","e","m","b","l","y"], "phonemes": ["ə","s","ɛ","m","b","l","i"] },
+            { "surface": "and",      "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+            { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "arm",      "graphemes": ["a","r","m"],                 "phonemes": ["ɑ","r","m"] },
+            { "surface": "sat",      "graphemes": ["s","a","t"],                 "phonemes": ["s","æ","t"] }
+          ]
         }
       }
     },
@@ -341,6 +464,17 @@
             { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
             { "surface": "arm",      "graphemes": ["a","r","m"],                 "phonemes": ["ɑ","r","m"] }
           ]
+        },
+        "2": {
+          "text": "Adam and Andy fed an arm.",
+          "words": [
+            { "surface": "Adam",     "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
+            { "surface": "and",      "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+            { "surface": "Andy",     "graphemes": ["a","n","d","y"],             "phonemes": ["æ","n","d","i"] },
+            { "surface": "fed",      "graphemes": ["f","e","d"],                 "phonemes": ["f","ɛ","d"] },
+            { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "arm",      "graphemes": ["a","r","m"],                 "phonemes": ["ɑ","r","m"] }
+          ]
         }
       }
     },
@@ -365,6 +499,17 @@
           "text": "Sam had an actuator.",
           "words": [
             { "surface": "Sam",      "graphemes": ["s","a","m"],                 "phonemes": ["s","æ","m"] },
+            { "surface": "had",      "graphemes": ["h","a","d"],                 "phonemes": ["h","æ","d"] },
+            { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "actuator", "graphemes": ["a","c","t","u","a","t","o","r"], "phonemes": ["æ","k","tʃ","u","eɪ","t","ɚ"] }
+          ]
+        },
+        "2": {
+          "text": "Sam and Pat had an actuator.",
+          "words": [
+            { "surface": "Sam",      "graphemes": ["s","a","m"],                 "phonemes": ["s","æ","m"] },
+            { "surface": "and",      "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+            { "surface": "Pat",      "graphemes": ["p","a","t"],                 "phonemes": ["p","æ","t"] },
             { "surface": "had",      "graphemes": ["h","a","d"],                 "phonemes": ["h","æ","d"] },
             { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
             { "surface": "actuator", "graphemes": ["a","c","t","u","a","t","o","r"], "phonemes": ["æ","k","tʃ","u","eɪ","t","ɚ"] }
@@ -425,6 +570,17 @@
             { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
             { "surface": "arm",      "graphemes": ["a","r","m"],                 "phonemes": ["ɑ","r","m"] }
           ]
+        },
+        "2": {
+          "text": "Anna got an arm and Andy.",
+          "words": [
+            { "surface": "Anna",     "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] },
+            { "surface": "got",      "graphemes": ["g","o","t"],                 "phonemes": ["g","ɒ","t"] },
+            { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "arm",      "graphemes": ["a","r","m"],                 "phonemes": ["ɑ","r","m"] },
+            { "surface": "and",      "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+            { "surface": "Andy",     "graphemes": ["a","n","d","y"],             "phonemes": ["æ","n","d","i"] }
+          ]
         }
       }
     },
@@ -452,6 +608,17 @@
             { "surface": "pat",      "graphemes": ["p","a","t"],                 "phonemes": ["p","æ","t"] },
             { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
             { "surface": "assembly", "graphemes": ["a","s","s","e","m","b","l","y"], "phonemes": ["ə","s","ɛ","m","b","l","i"] }
+          ]
+        },
+        "2": {
+          "text": "Adam pat an assembly and Anna.",
+          "words": [
+            { "surface": "Adam",     "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
+            { "surface": "pat",      "graphemes": ["p","a","t"],                 "phonemes": ["p","æ","t"] },
+            { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "assembly", "graphemes": ["a","s","s","e","m","b","l","y"], "phonemes": ["ə","s","ɛ","m","b","l","i"] },
+            { "surface": "and",      "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+            { "surface": "Anna",     "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] }
           ]
         }
       }
@@ -481,6 +648,17 @@
             { "surface": "had",      "graphemes": ["h","a","d"],                 "phonemes": ["h","æ","d"] },
             { "surface": "Adam",     "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] }
           ]
+        },
+        "2": {
+          "text": "An assembly had Adam and Anna.",
+          "words": [
+            { "surface": "An",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "assembly", "graphemes": ["a","s","s","e","m","b","l","y"], "phonemes": ["ə","s","ɛ","m","b","l","i"] },
+            { "surface": "had",      "graphemes": ["h","a","d"],                 "phonemes": ["h","æ","d"] },
+            { "surface": "Adam",     "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
+            { "surface": "and",      "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+            { "surface": "Anna",     "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] }
+          ]
         }
       }
     },
@@ -504,6 +682,17 @@
         "1": {
           "text": "Adam fed an actuator.",
           "words": [
+            { "surface": "Adam",     "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
+            { "surface": "fed",      "graphemes": ["f","e","d"],                 "phonemes": ["f","ɛ","d"] },
+            { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "actuator", "graphemes": ["a","c","t","u","a","t","o","r"], "phonemes": ["æ","k","tʃ","u","eɪ","t","ɚ"] }
+          ]
+        },
+        "2": {
+          "text": "Al and Adam fed an actuator.",
+          "words": [
+            { "surface": "Al",       "graphemes": ["a","l"],                     "phonemes": ["æ","l"] },
+            { "surface": "and",      "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
             { "surface": "Adam",     "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
             { "surface": "fed",      "graphemes": ["f","e","d"],                 "phonemes": ["f","ɛ","d"] },
             { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
@@ -539,6 +728,17 @@
             { "surface": "with",     "graphemes": ["w","i","th"],                "phonemes": ["w","ɪ","ð"] },
             { "surface": "Anna",     "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] }
           ]
+        },
+        "2": {
+          "text": "An arm and an actuator sat.",
+          "words": [
+            { "surface": "An",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "arm",      "graphemes": ["a","r","m"],                 "phonemes": ["ɑ","r","m"] },
+            { "surface": "and",      "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+            { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "actuator", "graphemes": ["a","c","t","u","a","t","o","r"], "phonemes": ["æ","k","tʃ","u","eɪ","t","ɚ"] },
+            { "surface": "sat",      "graphemes": ["s","a","t"],                 "phonemes": ["s","æ","t"] }
+          ]
         }
       }
     },
@@ -563,6 +763,17 @@
           "text": "Adam had an armature.",
           "words": [
             { "surface": "Adam",     "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
+            { "surface": "had",      "graphemes": ["h","a","d"],                 "phonemes": ["h","æ","d"] },
+            { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
+            { "surface": "armature", "graphemes": ["a","r","m","a","t","u","r","e"], "phonemes": ["ɑ","r","m","ə","tʃ","ɚ"] }
+          ]
+        },
+        "2": {
+          "text": "Adam and Anna had an armature.",
+          "words": [
+            { "surface": "Adam",     "graphemes": ["a","d","a","m"],             "phonemes": ["æ","d","ə","m"] },
+            { "surface": "and",      "graphemes": ["a","n","d"],                 "phonemes": ["æ","n","d"] },
+            { "surface": "Anna",     "graphemes": ["a","n","n","a"],             "phonemes": ["æ","n","ə"] },
             { "surface": "had",      "graphemes": ["h","a","d"],                 "phonemes": ["h","æ","d"] },
             { "surface": "an",       "graphemes": ["a","n"],                     "phonemes": ["æ","n"] },
             { "surface": "armature", "graphemes": ["a","r","m","a","t","u","r","e"], "phonemes": ["ɑ","r","m","ə","tʃ","ɚ"] }
